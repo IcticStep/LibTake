@@ -1,8 +1,6 @@
 #ifndef LIT_INPUT_INCLUDED
 #define LIT_INPUT_INCLUDED
 
-#define _EMISSION
-
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 #include "ShaderLibrary/SurfaceInput.hlsl"
