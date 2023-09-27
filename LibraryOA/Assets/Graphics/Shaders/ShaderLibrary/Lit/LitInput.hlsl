@@ -5,7 +5,8 @@
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "ShaderLibrary/SurfaceInput.hlsl"
+#include "ShaderLibrary/Lit/LitMaps.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
 
 // NOTE: Do not ifdef the properties here as SRP batcher can not handle different layouts.
@@ -17,7 +18,7 @@ float4 _BaseMap_ST;
 half4 _BaseColor;
 half4 _SpecularColor;
 half _Smoothness;
-half _BumpScale;
+half _NormalScale;
 
 half4 _EmissionColor;
 CBUFFER_END
@@ -35,7 +36,7 @@ UNITY_DOTS_INSTANCING_START(MaterialPropertyMetadata)
     UNITY_DOTS_INSTANCED_PROP(float4, _SpecularColor)
     UNITY_DOTS_INSTANCED_PROP(float , _Smoothness)
     UNITY_DOTS_INSTANCED_PROP(float , _Metallic)
-    UNITY_DOTS_INSTANCED_PROP(float , _BumpScale)
+    UNITY_DOTS_INSTANCED_PROP(float , _NormalScale)
 
     UNITY_DOTS_INSTANCED_PROP(float4, _EmissionColor)
 UNITY_DOTS_INSTANCING_END(MaterialPropertyMetadata)
@@ -46,20 +47,10 @@ UNITY_DOTS_INSTANCING_END(MaterialPropertyMetadata)
 #define _BaseColor              UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float4 , _BaseColor)
 #define _SpecularColor          UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float4 , _SpecularColor)
 #define _Smoothness             UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float  , _Smoothness)
-#define _BumpScale              UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float  , _BumpScale)
+#define _NormalScale            UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float  , _NormalScale)
 
 #define _EmissionColor          UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float4 , _EmissionColor)
 #endif
-
-half SampleOcclusion(float2 uv)
-{
-    #ifdef _OCCLUSIONMAP
-        half occ = SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, uv).g;
-        return LerpWhiteTo(occ, _OcclusionStrength);
-    #else
-        return half(1.0);
-    #endif
-}
 
 inline void InitializeStandardLitSurfaceData(float2 uv, out SurfaceData outSurfaceData)
 {
@@ -74,7 +65,7 @@ inline void InitializeStandardLitSurfaceData(float2 uv, out SurfaceData outSurfa
 
     outSurfaceData.smoothness = _Smoothness;
     outSurfaceData.normalTS = SampleNormal(uv, TEXTURE2D_ARGS(_NormalMap, sampler_NormalMap), _NormalScale);
-    outSurfaceData.occlusion = SampleOcclusion(uv);
+    outSurfaceData.occlusion = 1.0h;
     outSurfaceData.emission = SampleEmission(uv, _EmissionColor.rgb, TEXTURE2D_ARGS(_EmissionMap, sampler_EmissionMap));
 
     outSurfaceData.clearCoatMask = half(0.0);
