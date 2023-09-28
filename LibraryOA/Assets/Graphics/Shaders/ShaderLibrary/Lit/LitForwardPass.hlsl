@@ -205,6 +205,12 @@ void LitPassFragment(
     InitializeInputData(input, surfaceData.normalTS, inputData);
     SETUP_DEBUG_TEXTURE_DATA(inputData, input.uv, _BaseMap);
 
+    #ifdef _EMISSION_FRESNEL
+        half NoV = saturate(dot(vData.normalWS, vData.viewDirectionWS));
+        half fresnelTerm = pow(1.0 - NoV, _EmissionFresnelPower);
+        surfaceData.emission *= fresnelTerm;
+    #endif
+
     #ifdef _DBUFFER
         ApplyDecalToSurfaceData(input.positionCS, surfaceData, inputData);
     #endif

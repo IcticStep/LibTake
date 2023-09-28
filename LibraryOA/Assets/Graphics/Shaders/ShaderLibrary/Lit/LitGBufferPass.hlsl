@@ -168,17 +168,23 @@ FragmentOutput LitGBufferPassFragment(Varyings input)
     SurfaceData surfaceData;
     InitializeStandardLitSurfaceData(input.uv, surfaceData);
 
-#ifdef LOD_FADE_CROSSFADE
-    LODFadeCrossFade(input.positionCS);
-#endif
+    #ifdef LOD_FADE_CROSSFADE
+        LODFadeCrossFade(input.positionCS);
+    #endif
 
     InputData inputData;
     InitializeInputData(input, surfaceData.normalTS, inputData);
     SETUP_DEBUG_TEXTURE_DATA(inputData, input.uv, _BaseMap);
 
-#ifdef _DBUFFER
-    ApplyDecalToSurfaceData(input.positionCS, surfaceData, inputData);
-#endif
+    #ifdef _EMISSION_FRESNEL
+        half NoV = saturate(dot(vData.normalWS, vData.viewDirectionWS));
+        half fresnelTerm = pow(1.0 - NoV, _EmissionFresnelPower);
+        surfaceData.emission *= fresnelTerm;
+    #endif
+
+    #ifdef _DBUFFER
+        ApplyDecalToSurfaceData(input.positionCS, surfaceData, inputData);
+    #endif
 
     // Stripped down version of UniversalFragmentPBR().
 
