@@ -24,6 +24,7 @@ namespace Code.Editor.ShaderGUI.Properties.Lit
         public static readonly int EnableEmissionFresnelID = Shader.PropertyToID("_EnableEmissionFresnel");
         public static readonly int SpecularHighlightsID = Shader.PropertyToID("_SpecularHighlights");
         public static readonly int EnvironmentReflectionsID = Shader.PropertyToID("_EnvironmentReflections");
+        
         public InputsProperties(MaterialProperty[] properties)
         {
             SpecularColor = BaseShaderGUI.FindProperty("_SpecularColor", properties, false);
