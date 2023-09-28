@@ -25,8 +25,8 @@ Shader "LibOA/Lit"
         _SpecularColor("SpecularColor", Color) = (0.2, 0.2, 0.2, 1.0)
         _SpecularColorMap("SpecularColorMap", 2D) = "white" {}
 
-        [Normal] _NormalMap("Normal Map", 2D) = "bump" {}
-        _NormalScale("Normal Scale", Float) = 1.0
+        [Normal] _BumpMap("Normal Map", 2D) = "bump" {}
+        _BumpScale("Normal Scale", Float) = 1.0
 
         [HDR] _EmissionColor("Emission Color", Color) = (0,0,0)
         _EmissionMap("Emission Map", 2D) = "white" {}
@@ -437,5 +437,5 @@ Shader "LibOA/Lit"
     }
 
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
-    //CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.LitShader"
+    CustomEditor "Code.Editor.ShaderGUI.LitGUI"
 }

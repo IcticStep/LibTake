@@ -206,7 +206,7 @@ void LitPassFragment(
     SETUP_DEBUG_TEXTURE_DATA(inputData, input.uv, _BaseMap);
 
     #ifdef _EMISSION_FRESNEL
-        half NoV = saturate(dot(vData.normalWS, vData.viewDirectionWS));
+        half NoV = saturate(dot(inputData.normalWS, inputData.viewDirectionWS));
         half fresnelTerm = pow(1.0 - NoV, _EmissionFresnelPower);
         surfaceData.emission *= fresnelTerm;
     #endif
