@@ -20,12 +20,12 @@ namespace Zenject
             get { return _container; }
         }
 
-        public virtual T Create(UnityEngine.Object prefab)
+        public virtual T Create(UnityEngine.Object type)
         {
-            Assert.That(prefab != null,
+            Assert.That(type != null,
                "Null prefab given to factory create method when instantiating object with type '{0}'.", typeof(T));
 
-            return _container.InstantiatePrefabForComponent<T>(prefab);
+            return _container.InstantiatePrefabForComponent<T>(type);
         }
 
         // Note: We can't really validate here without access to the prefab
