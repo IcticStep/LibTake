@@ -20,12 +20,12 @@ namespace Zenject
             get { return _container; }
         }
 
-        public virtual T Create(string prefabResourceName)
+        public virtual T Create(string type)
         {
-            Assert.That(!string.IsNullOrEmpty(prefabResourceName),
+            Assert.That(!string.IsNullOrEmpty(type),
               "Null or empty prefab resource name given to factory create method when instantiating object with type '{0}'.", typeof(T));
 
-            var prefab = (GameObject)Resources.Load(prefabResourceName);
+            var prefab = (GameObject)Resources.Load(type);
             return _container.InstantiatePrefabForComponent<T>(prefab);
         }
 

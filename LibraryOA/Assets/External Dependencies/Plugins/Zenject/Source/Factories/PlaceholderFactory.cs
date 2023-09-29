@@ -39,12 +39,12 @@ namespace Zenject
 #if !NOT_UNITY3D
         [NotNull]
 #endif
-        public virtual TValue Create(TParam1 param)
+        public virtual TValue Create(TParam1 type)
         {
             return CreateInternal(
                 new List<TypeValuePair>
                 {
-                    InjectUtil.CreateTypePair(param)
+                    InjectUtil.CreateTypePair(type)
                 });
         }
 
