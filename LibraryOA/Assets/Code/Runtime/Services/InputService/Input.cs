@@ -24,13 +24,13 @@ public partial class @Input: IInputActionCollection2, IDisposable
     ""name"": ""Input"",
     ""maps"": [
         {
-            ""name"": ""MainActionMap"",
-            ""id"": ""73606eb5-8fb8-4bcb-9a71-d86a080f5128"",
+            ""name"": ""Player"",
+            ""id"": ""dda0375b-7df2-4257-b68c-9c7077bdde91"",
             ""actions"": [
                 {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
-                    ""id"": ""cca4bba9-7f4f-4de6-93d1-adc28925be52"",
+                    ""id"": ""7e52b7e3-9ca9-4d2c-86b1-01852b4a43a7"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -39,19 +39,8 @@ public partial class @Input: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Movement"",
-                    ""id"": ""fd04ed51-a23c-4f1f-b9b5-fdce180ce2fb"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""2D Vector"",
-                    ""id"": ""b200a733-e87d-44e2-a7b1-9e857a4d4818"",
+                    ""id"": ""71e510c3-8a00-4d02-906e-71d8d7017fb2"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -62,44 +51,44 @@ public partial class @Input: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""b05e0091-7962-4ce3-9681-ac4964699f0e"",
+                    ""id"": ""48c1c69b-d762-4d57-a01b-231fb06155ea"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mobile"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""cdd8004c-8cda-44b7-9090-06eb9514e633"",
+                    ""id"": ""fb290e38-bcbe-4484-8cac-6c463a0c4175"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mobile"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""2b63b752-8e0e-4fb5-9a5e-46332fce2fdf"",
+                    ""id"": ""d73c3dce-e489-47a3-8a53-cd2861936d0e"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mobile"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""5c3f7f44-3103-4ad0-b7e0-1186c89b365a"",
+                    ""id"": ""822128f8-eb62-45ce-b496-a353145953b3"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mobile"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -109,15 +98,21 @@ public partial class @Input: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Mobile"",
-            ""bindingGroup"": ""Mobile"",
-            ""devices"": []
+            ""name"": ""PC and mobile"",
+            ""bindingGroup"": ""PC and mobile"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
-        // MainActionMap
-        m_MainActionMap = asset.FindActionMap("MainActionMap", throwIfNotFound: true);
-        m_MainActionMap_Movement = m_MainActionMap.FindAction("Movement", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -176,61 +171,61 @@ public partial class @Input: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // MainActionMap
-    private readonly InputActionMap m_MainActionMap;
-    private List<IMainActionMapActions> m_MainActionMapActionsCallbackInterfaces = new List<IMainActionMapActions>();
-    private readonly InputAction m_MainActionMap_Movement;
-    public struct MainActionMapActions
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_Movement;
+    public struct PlayerActions
     {
         private @Input m_Wrapper;
-        public MainActionMapActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_MainActionMap_Movement;
-        public InputActionMap Get() { return m_Wrapper.m_MainActionMap; }
+        public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MainActionMapActions set) { return set.Get(); }
-        public void AddCallbacks(IMainActionMapActions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActions instance)
         {
-            if (instance == null || m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
         }
 
-        private void UnregisterCallbacks(IMainActionMapActions instance)
+        private void UnregisterCallbacks(IPlayerActions instance)
         {
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
         }
 
-        public void RemoveCallbacks(IMainActionMapActions instance)
+        public void RemoveCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMainActionMapActions instance)
+        public void SetCallbacks(IPlayerActions instance)
         {
-            foreach (var item in m_Wrapper.m_MainActionMapActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MainActionMapActions @MainActionMap => new MainActionMapActions(this);
-    private int m_MobileSchemeIndex = -1;
-    public InputControlScheme MobileScheme
+    public PlayerActions @Player => new PlayerActions(this);
+    private int m_PCandmobileSchemeIndex = -1;
+    public InputControlScheme PCandmobileScheme
     {
         get
         {
-            if (m_MobileSchemeIndex == -1) m_MobileSchemeIndex = asset.FindControlSchemeIndex("Mobile");
-            return asset.controlSchemes[m_MobileSchemeIndex];
+            if (m_PCandmobileSchemeIndex == -1) m_PCandmobileSchemeIndex = asset.FindControlSchemeIndex("PC and mobile");
+            return asset.controlSchemes[m_PCandmobileSchemeIndex];
         }
     }
-    public interface IMainActionMapActions
+    public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
     }
