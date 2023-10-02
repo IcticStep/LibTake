@@ -2,13 +2,13 @@
     "name": "Input",
     "maps": [
         {
-            "name": "MainActionMap",
-            "id": "73606eb5-8fb8-4bcb-9a71-d86a080f5128",
+            "name": "Player",
+            "id": "dda0375b-7df2-4257-b68c-9c7077bdde91",
             "actions": [
                 {
                     "name": "Movement",
                     "type": "Value",
-                    "id": "cca4bba9-7f4f-4de6-93d1-adc28925be52",
+                    "id": "7e52b7e3-9ca9-4d2c-86b1-01852b4a43a7",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,19 +17,8 @@
             ],
             "bindings": [
                 {
-                    "name": "Movement",
-                    "id": "fd04ed51-a23c-4f1f-b9b5-fdce180ce2fb",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
-                    "id": "b200a733-e87d-44e2-a7b1-9e857a4d4818",
+                    "id": "71e510c3-8a00-4d02-906e-71d8d7017fb2",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -40,44 +29,44 @@
                 },
                 {
                     "name": "up",
-                    "id": "b05e0091-7962-4ce3-9681-ac4964699f0e",
+                    "id": "48c1c69b-d762-4d57-a01b-231fb06155ea",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "cdd8004c-8cda-44b7-9090-06eb9514e633",
+                    "id": "fb290e38-bcbe-4484-8cac-6c463a0c4175",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "2b63b752-8e0e-4fb5-9a5e-46332fce2fdf",
+                    "id": "d73c3dce-e489-47a3-8a53-cd2861936d0e",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "5c3f7f44-3103-4ad0-b7e0-1186c89b365a",
+                    "id": "822128f8-eb62-45ce-b496-a353145953b3",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -87,9 +76,15 @@
     ],
     "controlSchemes": [
         {
-            "name": "Mobile",
-            "bindingGroup": "Mobile",
-            "devices": []
+            "name": "PC and mobile",
+            "bindingGroup": "PC and mobile",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }
