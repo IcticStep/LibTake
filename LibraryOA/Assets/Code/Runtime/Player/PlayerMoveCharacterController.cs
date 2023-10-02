@@ -1,4 +1,5 @@
 using Code.Runtime.Services.InputService;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -6,11 +7,11 @@ using Zenject;
 namespace Code.Runtime.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    internal sealed class PlayerMove : MonoBehaviour
+    internal sealed class PlayerMoveCharacterController : MonoBehaviour
     {
         private const float MinimalInputThreshold = 0.001f;
         
-        [FormerlySerializedAs("_speed")] [SerializeField] private float _baseSpeed = 10f;
+        [SerializeField] private float _baseSpeed = 10f;
         [SerializeField] private float _inertiaDecayRate = 2f;
         
         private IInputService _input;
