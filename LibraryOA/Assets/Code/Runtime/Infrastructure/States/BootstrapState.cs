@@ -1,5 +1,6 @@
 using Code.Runtime.Infrastructure.Services;
 using Code.Runtime.Infrastructure.States.Api;
+using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.States
 {
@@ -16,8 +17,8 @@ namespace Code.Runtime.Infrastructure.States
             _sceneLoader = sceneLoader;
         }
 
-        public async void Start() =>
-            await _sceneLoader.LoadSceneAsync(InitialSceneName, OnInitSceneLoaded);
+        public void Start() =>
+            _sceneLoader.LoadSceneAsync(InitialSceneName, OnInitSceneLoaded).Forget();
 
         private void OnInitSceneLoaded() =>
             _stateMachine.EnterState<LoadLevelState, string>(MainSceneName);
