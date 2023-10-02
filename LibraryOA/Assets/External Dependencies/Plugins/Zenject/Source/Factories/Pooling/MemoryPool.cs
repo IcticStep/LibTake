@@ -62,9 +62,9 @@ namespace Zenject
             // Optional
         }
 
-        TValue IFactory<TParam1, TValue>.Create(TParam1 p1)
+        TValue IFactory<TParam1, TValue>.Create(TParam1 type)
         {
-            return Spawn(p1);
+            return Spawn(type);
         }
     }
 
