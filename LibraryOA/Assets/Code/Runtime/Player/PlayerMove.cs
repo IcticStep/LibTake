@@ -7,7 +7,7 @@ using Zenject;
 namespace Code.Runtime.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    internal sealed class PlayerMoveCharacterController : MonoBehaviour
+    internal sealed class PlayerMove : MonoBehaviour
     {
         private const float MinimalInputThreshold = 0.001f;
         
