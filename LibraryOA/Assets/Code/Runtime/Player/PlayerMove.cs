@@ -1,7 +1,5 @@
 using Code.Runtime.Services.InputService;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Player
@@ -13,7 +11,8 @@ namespace Code.Runtime.Player
         
         [SerializeField] private float _baseSpeed = 10f;
         [SerializeField] private float _inertiaDecayRate = 2f;
-        
+        [SerializeField] private float _rotationSpeed = 1;
+
         private IInputService _input;
         private Camera _camera;
         private CharacterController _characterController;
@@ -36,6 +35,11 @@ namespace Code.Runtime.Player
             Vector3 direction = GetMovementDirection(input);
             _currentVelocity = CalculateVelocity(input, direction);
             ApplyVelocity();
+
+            if (input != Vector2.zero)
+            {
+                SetRotation(direction);
+            }
         }
 
         private Vector3 GetMovementDirection(Vector2 input)
@@ -44,6 +48,12 @@ namespace Code.Runtime.Player
             movementDirection.y = 0;
             movementDirection.Normalize();
             return movementDirection;
+        }
+        
+        private void SetRotation(Vector3 direction)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
         }
 
         private Vector3 CalculateVelocity(Vector2 input, Vector3 direction)
