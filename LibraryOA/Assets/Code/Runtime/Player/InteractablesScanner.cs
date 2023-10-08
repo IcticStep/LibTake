@@ -1,19 +1,25 @@
 using System;
 using Code.Runtime.Infrastructure.Services;
 using Code.Runtime.Logic;
+using Code.Runtime.Logic.Interactions;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Player
 {
-    internal sealed class InteractablesScanner : MonoBehaviour
+    public sealed class InteractablesScanner : MonoBehaviour
     {
         [SerializeField] private Transform _rayStartPoint;
         [SerializeField] private float _rayLength;
         
         private IPhysicsService _physicsService;
         private Interactable _focusedInteractable;
+
+        public float RayLength => _rayLength;
+        public Vector3? RayStart => _rayStartPoint != null ? 
+            _rayStartPoint.position 
+            : null;
 
         public Interactable FocusedInteractable
         {
