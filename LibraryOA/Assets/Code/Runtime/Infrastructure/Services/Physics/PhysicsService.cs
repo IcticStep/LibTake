@@ -11,7 +11,7 @@ namespace Code.Runtime.Infrastructure.Services.Physics
         public Interactable RaycastForInteractable(Vector3 rayStart, Vector3 direction, float maxDistance)
         {
             ClearSingleHitBuffer();
-            return UnityEngine.Physics.RaycastNonAlloc(rayStart, direction, _singleHitBuffer, maxDistance) > 0 
+            return UnityEngine.Physics.RaycastNonAlloc(rayStart, direction, _singleHitBuffer, maxDistance, _interactableLayerMask) > 0 
                 ? _singleHitBuffer[0].collider.GetComponent<Interactable>() 
                 : default(Interactable);
         }
