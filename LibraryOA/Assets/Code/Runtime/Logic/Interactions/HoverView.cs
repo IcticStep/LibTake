@@ -1,8 +1,6 @@
-using System;
 using Code.Runtime.Infrastructure.Services.PlayerProvider;
 using Code.Runtime.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions

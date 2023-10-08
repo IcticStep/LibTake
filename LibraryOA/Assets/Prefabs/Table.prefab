@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fc51f162aa4429ac66a5476e1959ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HasBook>k__BackingField: 0
+  <HasBook>k__BackingField: 1
 --- !u!114 &7219790119627646056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.16
       objectReference: {fileID: 0}
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
@@ -273,12 +273,12 @@ PrefabInstance:
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70710653
       objectReference: {fileID: 0}
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.70710707
       objectReference: {fileID: 0}
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
@@ -293,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
