@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Infrastructure.Services;
+using Code.Runtime.Infrastructure.Services.Physics;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
 using UnityEngine;

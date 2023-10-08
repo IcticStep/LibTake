@@ -1,7 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 
-namespace Code.Runtime.Infrastructure.Services
+namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
     internal interface ISceneLoader
     {
