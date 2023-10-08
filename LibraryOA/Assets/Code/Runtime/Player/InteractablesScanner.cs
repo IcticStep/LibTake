@@ -13,9 +13,9 @@ namespace Code.Runtime.Player
         [SerializeField] private float _rayLength;
         
         private IPhysicsService _physicsService;
-        private IInteractable _focusedInteractable;
+        private Interactable _focusedInteractable;
 
-        public IInteractable FocusedInteractable
+        public Interactable FocusedInteractable
         {
             get => _focusedInteractable;
             private set
@@ -35,7 +35,7 @@ namespace Code.Runtime.Player
         private void Update() =>
             FocusedInteractable = RaycastInteractables();
 
-        private IInteractable RaycastInteractables()
+        private Interactable RaycastInteractables()
         {
             Vector3 rayStart = _rayStartPoint.position;
             return _physicsService.RaycastForInteractable(rayStart, Vector3.forward, _rayLength);
