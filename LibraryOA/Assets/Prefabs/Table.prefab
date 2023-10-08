@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8800051127091526988}
+  - component: {fileID: 4447928255380591062}
+  - component: {fileID: 7219790119627646056}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -33,6 +35,33 @@ Transform:
   - {fileID: 5541764527306874971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4447928255380591062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980478301530929324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04fc51f162aa4429ac66a5476e1959ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <HasBook>k__BackingField: 0
+--- !u!114 &7219790119627646056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980478301530929324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f1062f96614b9486f9403810395da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bookStorage: {fileID: 4447928255380591062}
+  _bookObject: {fileID: 8713839225489217984}
 --- !u!1001 &3675457797290513295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178,6 +207,12 @@ PrefabInstance:
 --- !u!4 &5541764527306874971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
+    type: 3}
+  m_PrefabInstance: {fileID: 5815776108413108988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8713839225489217984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2907090143310289724, guid: fabdfbb5aac872944bb651fb87670202,
     type: 3}
   m_PrefabInstance: {fileID: 5815776108413108988}
   m_PrefabAsset: {fileID: 0}
