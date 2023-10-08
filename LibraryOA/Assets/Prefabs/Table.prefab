@@ -79,7 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c6d3520a314ae2b69c26a4147b0788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bookTable: {fileID: 74610576885403607}
+  _interactable: {fileID: 74610576885403607}
+  _targetMeshRenderer: {fileID: 301827770547105415}
+  _hoverMaterial: {fileID: 2100000, guid: 13afae703739b11449c8f26a9e9c644b, type: 2}
 --- !u!1 &5980478301530929324
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +235,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65db4434858e73e4796c8f654bb1aec0, type: 3}
+--- !u!23 &301827770547105415 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3977126688331808008, guid: 65db4434858e73e4796c8f654bb1aec0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3675457797290513295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3285562539654788848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204917584732939647, guid: 65db4434858e73e4796c8f654bb1aec0,
@@ -255,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.145
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2043936004264845991, guid: fabdfbb5aac872944bb651fb87670202,
         type: 3}

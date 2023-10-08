@@ -2,15 +2,20 @@ using System;
 using Code.Runtime.Infrastructure.Services.PlayerProvider;
 using Code.Runtime.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class BookTableView : MonoBehaviour
+    internal sealed class HoverView : MonoBehaviour
     {
-        [SerializeField] private BookTable _bookTable;
+        [SerializeField] private Interactable _interactable;
+        [SerializeField] private MeshRenderer _targetMeshRenderer;
+        [SerializeField] private Material _hoverMaterial;
+
         private IPlayerProviderService _playerProviderService;
         private InteractablesScanner _interactablesScanner;
+        private Material _defaultMaterial;
 
         [Inject]
         private void Construct(IPlayerProviderService playerProviderService) =>
@@ -24,6 +29,7 @@ namespace Code.Runtime.Logic.Interactions
             _interactablesScanner = _playerProviderService.Player.GetComponent<InteractablesScanner>();
             _interactablesScanner.FocusedInteractable += OnInteractableFocused;
             _interactablesScanner.UnfocusedInteractable += OnInteractableUnfocused;
+            _defaultMaterial = _targetMeshRenderer.material;
         }
 
         private void OnDestroy()
@@ -37,16 +43,18 @@ namespace Code.Runtime.Logic.Interactions
 
         private void OnInteractableFocused(Interactable interactable)
         {
-            if(interactable != _bookTable)
+            if(interactable != _interactable)
                 return;
-            Debug.Log("Table focused.");
+
+            _targetMeshRenderer.material = _hoverMaterial;
         }
 
         private void OnInteractableUnfocused(Interactable interactable)
         {
-            if(interactable != _bookTable)
+            if(interactable != _interactable)
                 return;
-            Debug.Log("Table unfocused.");
+
+            _targetMeshRenderer.material = _defaultMaterial;
         }
     }
 }
