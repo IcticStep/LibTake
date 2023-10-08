@@ -1,8 +1,7 @@
-using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services
+namespace Code.Runtime.Infrastructure.Services.Physics
 {
     internal sealed class PhysicsService : IPhysicsService
     {
@@ -12,7 +11,7 @@ namespace Code.Runtime.Infrastructure.Services
         public Interactable RaycastForInteractable(Vector3 rayStart, Vector3 direction, float maxDistance)
         {
             ClearSingleHitBuffer();
-            return Physics.RaycastNonAlloc(rayStart, direction, _singleHitBuffer, maxDistance) > 0 
+            return UnityEngine.Physics.RaycastNonAlloc(rayStart, direction, _singleHitBuffer, maxDistance) > 0 
                 ? _singleHitBuffer[0].collider.GetComponent<Interactable>() 
                 : default(Interactable);
         }
