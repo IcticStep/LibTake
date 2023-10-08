@@ -28,7 +28,8 @@ namespace Code.Runtime.Player
             {
                 _focusedInteractable = value;
                 Updated?.Invoke();
-                Debug.Log($"Current focused interactable: {nameof(_focusedInteractable)} | {_focusedInteractable}.");
+                if(_focusedInteractable is not null)
+                    Debug.Log($"Current focused interactable: {_focusedInteractable.gameObject.name} | {_focusedInteractable.name}.");
             }
         }
 
@@ -38,8 +39,12 @@ namespace Code.Runtime.Player
         private void Construct(IPhysicsService physicsService) =>
             _physicsService = physicsService;
 
-        private void Update() =>
-            FocusedInteractable = RaycastInteractables();
+        private void Update()
+        {
+            Interactable raycasted = RaycastInteractables();
+            if(raycasted == FocusedInteractable) return;
+            FocusedInteractable = raycasted;
+        }
 
         private Interactable RaycastInteractables()
         {
