@@ -692,6 +692,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400930432576634979, guid: 10ae38e2cf6de044d93b67ae373e9783,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4447928255380591062, guid: 10ae38e2cf6de044d93b67ae373e9783,
+        type: 3}
+      propertyPath: <HasBook>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5980478301530929324, guid: 10ae38e2cf6de044d93b67ae373e9783,
         type: 3}
       propertyPath: m_Name
