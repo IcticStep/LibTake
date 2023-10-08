@@ -23,6 +23,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         private void InstallServices()
         {
+            Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
         }
 
