@@ -1,3 +1,4 @@
+using Code.Runtime.Infrastructure.Services.Physics;
 using Code.Runtime.Services.InputService;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,7 @@ namespace Code.Runtime.Player
         private Camera _camera;
         private CharacterController _characterController;
         private Vector3 _currentVelocity;
+        private IPhysicsService _physicsService;
 
         private void Awake()
         {
@@ -25,8 +27,11 @@ namespace Code.Runtime.Player
         }
 
         [Inject]
-        private void Construct(IInputService input) =>
+        private void Construct(IInputService input, IPhysicsService physicsService)
+        {
             _input = input;
+            _physicsService = physicsService;
+        }
 
         private void Update()
         {
@@ -34,6 +39,7 @@ namespace Code.Runtime.Player
             
             Vector3 direction = GetMovementDirection(input);
             _currentVelocity = CalculateVelocity(input, direction);
+            _currentVelocity += _physicsService.Gravity;
             ApplyVelocity();
 
             if (input != Vector2.zero)
