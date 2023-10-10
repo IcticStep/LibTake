@@ -1,7 +1,7 @@
 using Code.Runtime.Logic.Interactions;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services.Physics
+namespace Code.Runtime.Services.Physics
 {
     internal interface IPhysicsService
     {

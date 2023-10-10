@@ -2,7 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace Code.Runtime.Infrastructure.Services.SaveLoad
+namespace Code.Runtime.Infrastructure.Services.SceneMenegment
 {
     internal sealed class SceneLoader : ISceneLoader
     {
