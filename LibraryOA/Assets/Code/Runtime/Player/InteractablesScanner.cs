@@ -1,6 +1,6 @@
 using System;
-using Code.Runtime.Infrastructure.Services.Physics;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Physics;
 using UnityEngine;
 using Zenject;
 
