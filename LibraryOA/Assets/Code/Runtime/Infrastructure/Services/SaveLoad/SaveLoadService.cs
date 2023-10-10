@@ -15,7 +15,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
         }
 
         public void SaveProgress() =>
-            PlayerPrefs.SetString(ProgressKey, _progressService.PlayerProgress.ToJson());
+            PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
 
         public PlayerProgress LoadProgress() =>
             PlayerPrefs.GetString(ProgressKey).ToDeserialized<PlayerProgress>();

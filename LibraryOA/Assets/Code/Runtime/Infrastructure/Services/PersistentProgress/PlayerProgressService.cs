@@ -4,6 +4,6 @@ namespace Code.Runtime.Infrastructure.Services.PersistentProgress
 {
     internal sealed class PlayerProgressService : IPlayerProgressService
     {
-        public PlayerProgress PlayerProgress { get; set; }
+        public PlayerProgress Progress { get; set; }
     }
 }

@@ -48,6 +48,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         private void InstallGlobalStates()
         {
             Container.Bind<BootstrapState>().AsSingle();
+            Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
             Container.Bind<GameLoopState>().AsSingle();
         }
