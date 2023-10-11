@@ -54,8 +54,8 @@ namespace Code.Runtime.Player
 
         private Interactable RaycastInteractables()
         {
-            Vector3 rayStart = _rayStartPoint.position;
-            return _physicsService.RaycastForInteractable(rayStart, _rayStartPoint.forward, _rayLength);
+            Vector3 start = _rayStartPoint.position;
+            return _physicsService.RaycastSphereForInteractable(start, _rayLength);
         }
 
         private void DebugFocusedInteractableChange()
