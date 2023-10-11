@@ -21,5 +21,8 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _playerProviderInitializer.InitPlayer(player);
             return player;
         }
+
+        public GameObject CreateBookSlot(Vector3 at) =>
+            _assetProvider.Instantiate(AssetPath.BookSlot, at);
     }
 }

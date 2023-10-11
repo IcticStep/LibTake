@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class BookTable : Interactable
+    internal sealed class BookSlot : Interactable
     {
         public override bool CanInteract() =>
             true;
 
         public override void Interact() =>
-            Debug.Log($"Interacted with {nameof(BookTable)}.");
+            Debug.Log($"Interacted with {nameof(BookSlot)}.");
     }
 }
