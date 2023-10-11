@@ -1,5 +1,7 @@
 using Code.Runtime.Infrastructure.AssetManagement;
-using Code.Runtime.Services.PlayerProvider;
+using Code.Runtime.Logic;
+using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Player;
 using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.Factories
@@ -21,5 +23,21 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _playerProviderInitializer.InitPlayer(player);
             return player;
         }
+
+        public GameObject CreateBookSlot(string id, bool hasBook, Vector3 at, Transform parent)
+        {
+            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at, parent);
+            
+            Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
+            ((IUniqueIdInitializer)interactable).Id = id;
+
+            BookStorage bookStorage = bookSlot.GetComponent<BookStorage>();
+            ((IHasBookInitializer)bookStorage).InitHasBook(hasBook);
+            
+            return bookSlot;
+        }
+
+        public GameObject CreateBookSlot(Vector3 at, Transform parent = null) =>
+            _assetProvider.Instantiate(AssetPath.BookSlot, at, parent);
     }
 }
