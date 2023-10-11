@@ -7,7 +7,7 @@ namespace Code.Editor.CustomEditors
     [CustomEditor(typeof(BookSlotSpawner))]
     internal sealed class BookSlotSpawnerEditor : UnityEditor.Editor
     {
-        [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected)]
+        [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected | GizmoType.Selected )]
         public static void RenderCustomGizmo(BookSlotSpawner spawner, GizmoType gizmo)
         {
             Color previousColor = Gizmos.color;
