@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debef9e5b2534e8d8df3571118cd8413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 
 --- !u!114 &305989145435600299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +96,7 @@ GameObject:
   - component: {fileID: 4447928255380591062}
   - component: {fileID: 7219790119627646056}
   m_Layer: 0
-  m_Name: Table
+  m_Name: BookSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
