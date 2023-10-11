@@ -1,5 +1,5 @@
 using Code.Runtime.Infrastructure.AssetManagement;
-using Code.Runtime.Services.PlayerProvider;
+using Code.Runtime.Services.Player;
 using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.Factories

@@ -7,7 +7,7 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Physics;
-using Code.Runtime.Services.PlayerProvider;
+using Code.Runtime.Services.Player;
 using Zenject;
 
 namespace Code.Runtime.Infrastructure.DiInstallers
@@ -37,6 +37,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IInputService>().To<InputService>().AsSingle();
             Container.BindInterfacesTo<PlayerProviderService>().AsSingle();
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
+            Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
         }
 
         private void InstallStateMachine()

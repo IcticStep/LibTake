@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.Services.PlayerProvider
+namespace Code.Runtime.Services.Player
 {
     internal sealed class PlayerProviderService : IPlayerProviderService, IPlayerProviderInitializer
     {

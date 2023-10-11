@@ -1,5 +1,5 @@
 using Code.Runtime.Player;
-using Code.Runtime.Services.PlayerProvider;
+using Code.Runtime.Services.Player;
 using UnityEngine;
 using Zenject;
 
