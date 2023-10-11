@@ -14,6 +14,7 @@ namespace Code.Runtime.Services.Player
                 throw new InvalidOperationException("Can't insert more than one book into player inventory!");
 
             HasBook = true;
+            Updated?.Invoke();
         }
 
         public void RemoveBook()
@@ -22,6 +23,7 @@ namespace Code.Runtime.Services.Player
                 throw new InvalidOperationException("Can't remove book from player inventory when empty!");
 
             HasBook = false;
+            Updated?.Invoke();
         }
     }
 }

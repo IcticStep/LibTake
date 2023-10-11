@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debef9e5b2534e8d8df3571118cd8413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 
+  _bookStorage: {fileID: 4447928255380591062}
 --- !u!114 &305989145435600299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fc51f162aa4429ac66a5476e1959ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HasBook>k__BackingField: 1
+  _hasBook: 1
 --- !u!114 &7219790119627646056
 MonoBehaviour:
   m_ObjectHideFlags: 0
