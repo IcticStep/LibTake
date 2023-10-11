@@ -6,5 +6,10 @@ namespace Code.Runtime.Data
     internal sealed class PlayerProgress
     {
         public BookSlot PlayerInventory;
+
+        public PlayerProgress()
+        {
+            PlayerInventory = new BookSlot();
+        }
     }
 }

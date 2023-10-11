@@ -1,5 +1,5 @@
 using Code.Runtime.Player;
-using Code.Runtime.Services.PlayerProvider;
+using Code.Runtime.Services.Player;
 using UnityEngine;
 using Zenject;
 
@@ -21,9 +21,6 @@ namespace Code.Runtime.Logic.Interactions
 
         private void Start()
         {
-            if(_playerProviderService.Player is null) 
-                return;
-            
             _interactablesScanner = _playerProviderService.Player.GetComponent<InteractablesScanner>();
             _interactablesScanner.FocusedInteractable += OnInteractableFocused;
             _interactablesScanner.UnfocusedInteractable += OnInteractableUnfocused;
@@ -32,16 +29,13 @@ namespace Code.Runtime.Logic.Interactions
 
         private void OnDestroy()
         {
-            if(_playerProviderService.Player is null) 
-                return;
-
             _interactablesScanner.FocusedInteractable -= OnInteractableFocused;
             _interactablesScanner.UnfocusedInteractable -= OnInteractableUnfocused;
         }
 
         private void OnInteractableFocused(Interactable interactable)
         {
-            if(interactable != _interactable)
+            if(interactable.Id != _interactable.Id) 
                 return;
 
             _targetMeshRenderer.material = _hoverMaterial;
@@ -49,7 +43,7 @@ namespace Code.Runtime.Logic.Interactions
 
         private void OnInteractableUnfocused(Interactable interactable)
         {
-            if(interactable != _interactable)
+            if(interactable.Id != _interactable.Id)
                 return;
 
             _targetMeshRenderer.material = _defaultMaterial;

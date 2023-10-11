@@ -32,10 +32,10 @@ namespace Code.Runtime.Player
                     UnfocusedInteractable?.Invoke(oldValue);
                 if(_currentFocusedInteractable != null && _currentFocusedInteractable != oldValue)
                     FocusedInteractable?.Invoke(_currentFocusedInteractable);
-                
-                DebugFocusedInteractableChange();
             }
         }
+
+        public bool HasFocusedInteractable => CurrentFocusedInteractable is not null;
 
         public event Action Updated;
         public event Action<Interactable> FocusedInteractable;
