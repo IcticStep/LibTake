@@ -1,4 +1,4 @@
-using Code.Runtime.Services.PlayerProvider;
+using Code.Runtime.Services.Player;
 using Zenject;
 
 namespace Code.Runtime.Services.Interactions
