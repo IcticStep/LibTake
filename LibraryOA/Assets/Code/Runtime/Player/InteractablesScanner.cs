@@ -52,11 +52,8 @@ namespace Code.Runtime.Player
             CurrentFocusedInteractable = raycasted;
         }
 
-        private Interactable RaycastInteractables()
-        {
-            Vector3 start = _rayStartPoint.position;
-            return _physicsService.RaycastSphereForInteractable(start, _rayLength);
-        }
+        private Interactable RaycastInteractables() =>
+            _physicsService.RaycastSphereForInteractable(_rayStartPoint.position, _rayStartPoint.TransformDirection(Vector3.forward), _rayLength);
 
         private void DebugFocusedInteractableChange()
         {
