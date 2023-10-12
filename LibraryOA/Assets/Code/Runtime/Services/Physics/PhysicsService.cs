@@ -11,22 +11,27 @@ namespace Code.Runtime.Services.Physics
 
         public Vector3 Gravity => UnityEngine.Physics.gravity;
         
-        public Interactable RaycastSphereForInteractable(Vector3 position, float radius)
+        public Interactable RaycastSphereForInteractable(Vector3 position, Vector3 forwardDirection, float radius)
         {
             ClearHitBuffer10();
             int collisions = UnityEngine.Physics.OverlapSphereNonAlloc(position, radius, _hitColliderBuffer10, _interactableLayerMask);
             if(collisions == 0) 
                 return default(Interactable);
 
-            Transform selectedTransform = _hitColliderBuffer10
-                .Where(value => value is not null)
-                .Select(collider => collider.gameObject.GetComponent<Interactable>())
-                .Where(interactable => interactable is not null)
-                .Select(interactable => interactable.transform)
-                .OrderBy(transform => Vector3.Dot(position, transform.position))
-                .FirstOrDefault();
+            Collider result = _hitColliderBuffer10[0];
+            float resultDot = Vector3.Dot(forwardDirection, result.transform.position);
+            for(int i = 1; i < collisions; i++)
+            {
+                Collider current = _hitColliderBuffer10[i];
+                float currentDot = Vector3.Dot(forwardDirection, position - current.transform.position);
+                if(!(currentDot > resultDot))
+                    continue;
 
-            return selectedTransform?.GetComponent<Interactable>();
+                result = current;
+                resultDot = currentDot;
+            }
+            
+            return result.GetComponent<Interactable>();
         }
 
         private void ClearHitBuffer10()
