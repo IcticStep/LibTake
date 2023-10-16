@@ -107,8 +107,8 @@ Material:
     - _ColorThreshold: 1
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth_Detection_Fade_Value: 0.001
-    - _Depth_Detection_Step_Value: 0.015
+    - _Depth_Detection_Fade_Value: 0.01
+    - _Depth_Detection_Step_Value: 0.01
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -121,8 +121,8 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _NormalThreshold: 1
-    - _Normal_Detection_Fade_Value: 0
-    - _Normal_Detection_Step_value: 0
+    - _Normal_Detection_Fade_Value: 0.1
+    - _Normal_Detection_Step_value: 0.75
     - _OVERLAY: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
