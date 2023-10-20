@@ -8,5 +8,8 @@ namespace Code.Runtime.Logic.Interactions
         private readonly BookStorage _bookStorage = new BookStorage();
 
         public IBookStorage BookStorage => _bookStorage;
+
+        public void Initialize(string initialBookId) =>
+            _bookStorage.InsertBook(initialBookId);
     }
 }

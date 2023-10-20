@@ -5,6 +5,6 @@ namespace Code.Runtime.Infrastructure.Services.Factories
     internal interface IGameFactory
     {
         GameObject CreatePlayer(Vector3 at);
-        GameObject CreateBookSlot(string id, bool hasBook, Vector3 transformPosition, Transform transform);
+        GameObject CreateBookSlot(string bookSlotId, Vector3 at, Transform parent, string initialBookId = null);
     }
 }

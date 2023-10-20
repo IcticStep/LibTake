@@ -24,13 +24,19 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _playerProviderInitializer.InitPlayer(player);
             return player;
         }
-
-        public GameObject CreateBookSlot(string id, bool hasBook, Vector3 at, Transform parent)
+        
+        public GameObject CreateBookSlot(string bookSlotId, Vector3 at, Transform parent, string initialBookId = null)
         {
             GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at, parent);
             
             Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
-            interactable.InitId(id);
+            interactable.InitId(bookSlotId);
+
+            if(!string.IsNullOrWhiteSpace(initialBookId))
+            {
+                BookStorageHolder bookStorageHolder = bookSlot.GetComponentInChildren<BookStorageHolder>();
+                bookStorageHolder.Initialize(initialBookId);
+            }
 
             return bookSlot;
         }
