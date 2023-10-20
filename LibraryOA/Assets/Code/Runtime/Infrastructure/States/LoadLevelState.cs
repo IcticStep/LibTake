@@ -22,19 +22,29 @@ namespace Code.Runtime.Infrastructure.States
         public void Start(string payload) =>
             _sceneLoader.LoadSceneAsync(payload, OnLevelLoaded).Forget();
 
+        public void Exit()
+        {
+            
+        }
+
         private void OnLevelLoaded()
         {
             InitGameWorld();
             _stateMachine.EnterState<GameLoopState>();
         }
 
+        private void InitGameWorld()
+        {
+            InitPlayer();
+            InitBookSlots();
+        }
+
         // TODO: refactor finding initial point to something clever
-        private void InitGameWorld() =>
+        private GameObject InitPlayer() =>
             _gameFactory.CreatePlayer(GameObject.FindWithTag("PlayerInitialPoint").transform.position);
 
-        public void Exit()
+        private void InitBookSlots()
         {
-            
         }
     }
 }
