@@ -2,7 +2,7 @@ using Code.Runtime.Player;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.CustomEditors
+namespace Code.Editor.Editors
 {
     [CustomEditor(typeof(InteractablesScanner))]
     public sealed class InteractablesScannerEditor : UnityEditor.Editor

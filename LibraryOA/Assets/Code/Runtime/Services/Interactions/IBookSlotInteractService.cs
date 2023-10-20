@@ -1,10 +1,10 @@
-using Code.Runtime.Logic;
+using Code.Runtime.Data;
 
 namespace Code.Runtime.Services.Interactions
 {
     internal interface IBookSlotInteractService
     {
-        bool CanInteract(BookStorage bookStorage);
-        void Interact(BookStorage bookStorage);
+        bool CanInteract(IBookStorage bookStorage);
+        void Interact(IBookStorage bookStorage);
     }
 }

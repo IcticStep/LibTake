@@ -15,6 +15,7 @@ namespace Code.Runtime.Infrastructure.States
             _statesResolvers = new Dictionary<Type, Func<IExitableState>>
             {
                 [typeof(BootstrapState)] = container.Resolve<BootstrapState>,
+                [typeof(WarmupState)] = container.Resolve<WarmupState>,
                 [typeof(LoadProgressState)] = container.Resolve<LoadProgressState>,
                 [typeof(LoadLevelState)] = container.Resolve<LoadLevelState>,
                 [typeof(GameLoopState)] = container.Resolve<GameLoopState>,
