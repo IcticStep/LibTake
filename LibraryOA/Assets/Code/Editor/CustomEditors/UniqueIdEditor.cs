@@ -46,7 +46,8 @@ namespace Code.Editor.CustomEditors
 
         private void Generate(UniqueId uniqueId)
         {
-            (uniqueId as IUniqueIdInitializer).Id = $"{uniqueId.gameObject.scene.name}_{Guid.NewGuid().ToString()}";
+            string id = $"{uniqueId.gameObject.scene.name}_{Guid.NewGuid().ToString()}";
+            uniqueId.InitId(id);
 
             if(Application.isPlaying)
                 return;
