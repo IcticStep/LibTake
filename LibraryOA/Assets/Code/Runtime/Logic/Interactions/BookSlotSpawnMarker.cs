@@ -1,14 +1,14 @@
-using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.StaticData;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
     [RequireComponent(typeof(UniqueId))]
-    public sealed class BookSlotMarker : MonoBehaviour
+    public sealed class BookSlotSpawnMarker : MonoBehaviour
     {
         [SerializeField] private StaticBook _initialBook;
-        public string InitialBookId => _initialBook.Id;
+        
+        // ReSharper disable once Unity.NoNullPropagation
+        public string InitialBookId => _initialBook?.Id;
     }
 }
