@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace Code.Editor.CustomEditors
+namespace Code.Editor.Editors
 {
     [CustomEditor(typeof(UniqueId))]
     internal sealed class UniqueIdEditor : UnityEditor.Editor

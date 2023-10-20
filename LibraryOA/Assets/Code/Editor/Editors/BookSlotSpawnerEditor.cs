@@ -2,7 +2,7 @@ using Code.Runtime.Logic.Interactions;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.CustomEditors
+namespace Code.Editor.Editors
 {
     [CustomEditor(typeof(BookSlotSpawner))]
     internal sealed class BookSlotSpawnerEditor : UnityEditor.Editor

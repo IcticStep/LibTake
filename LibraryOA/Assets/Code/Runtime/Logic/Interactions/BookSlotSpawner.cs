@@ -1,6 +1,6 @@
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.StaticData;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
@@ -8,7 +8,7 @@ namespace Code.Runtime.Logic.Interactions
     [RequireComponent(typeof(UniqueId))]
     public sealed class BookSlotSpawner : MonoBehaviour
     {
-        [SerializeField] private string _initialBookId;
+        [SerializeField] private StaticBook _initialBook;
         private string _bookSlotId;
         private IGameFactory _gameFactory;
         private Transform _transform;
@@ -24,6 +24,7 @@ namespace Code.Runtime.Logic.Interactions
         }
 
         private void Start() =>
-            _gameFactory.CreateBookSlot(_bookSlotId, _transform.position, _transform, _initialBookId);
+            // ReSharper disable once Unity.NoNullPropagation
+            _gameFactory.CreateBookSlot(_bookSlotId, _transform.position, _transform, _initialBook?.Id);
     }
 }
