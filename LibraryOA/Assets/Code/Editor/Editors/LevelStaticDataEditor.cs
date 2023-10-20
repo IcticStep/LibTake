@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.SpawnMarkers;
 using Code.Runtime.StaticData;
 using UnityEditor;
 using UnityEngine;
@@ -26,13 +27,13 @@ namespace Code.Editor.Editors
 
         private void UpdateLevelData(LevelStaticData levelData)
         {
-            List<BookSlotSpawnData> bookSlotsSpawns = FindObjectsOfType<BookSlotSpawnMarker>()
-                .Select(x => new BookSlotSpawnData(x.GetComponent<UniqueId>().Id, x.GetComponent<BookSlotSpawnMarker>().InitialBookId, x.transform.position))
+            List<BookSlotSpawnData> bookSlotsSpawns = FindObjectsOfType<BookSlotSpawn>()
+                .Select(x => new BookSlotSpawnData(x.GetComponent<UniqueId>().Id, x.GetComponent<BookSlotSpawn>().InitialBookId, x.transform.position))
                 .ToList();
-
             string sceneKey = SceneManager.GetActiveScene().name;
+            Vector3 playerPosition = FindObjectOfType<PlayerInitialSpawn>().transform.position;
 
-            levelData.Initialize(sceneKey, bookSlotsSpawns);
+            levelData.UpdateData(sceneKey, bookSlotsSpawns, playerPosition);
             EditorUtility.SetDirty(target);
         }
     }}

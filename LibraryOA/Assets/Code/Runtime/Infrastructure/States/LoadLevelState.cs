@@ -50,9 +50,8 @@ namespace Code.Runtime.Infrastructure.States
             InitBookSlots();
         }
 
-        // TODO: refactor finding initial point to something clever
         private GameObject InitPlayer() =>
-            _gameFactory.CreatePlayer(GameObject.FindWithTag("PlayerInitialPoint").transform.position);
+            _gameFactory.CreatePlayer(_levelData.PlayerInitialPosition);
 
         private void InitBookSlots()
         {
