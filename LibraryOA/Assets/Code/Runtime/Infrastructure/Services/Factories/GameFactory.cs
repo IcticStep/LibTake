@@ -1,3 +1,4 @@
+using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
@@ -31,9 +32,6 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
             interactable.InitId(id);
 
-            BookStorage bookStorage = bookSlot.GetComponent<BookStorage>();
-            bookStorage.InitHasBook(hasBook);
-            
             return bookSlot;
         }
 
