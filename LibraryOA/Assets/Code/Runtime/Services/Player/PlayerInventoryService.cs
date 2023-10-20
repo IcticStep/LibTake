@@ -1,29 +1,30 @@
 using System;
+using Code.Runtime.Data;
+using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Player
 {
+    [UsedImplicitly]
     internal sealed class PlayerInventoryService : IPlayerInventoryService
     {
-        public bool HasBook { get; private set; }
+        private readonly BookStorage _bookStorage = new();
+
+        public string CurrentBookId => _bookStorage.CurrentBookId;
+        public bool HasBook => _bookStorage.HasBook;
 
         public event Action Updated;
 
-        public void InsertBook()
+        public void InsertBook(string id)
         {
-            if(HasBook)
-                throw new InvalidOperationException("Can't insert more than one book into player inventory!");
-
-            HasBook = true;
+            _bookStorage.InsertBook(id);
             Updated?.Invoke();
         }
 
-        public void RemoveBook()
+        public string RemoveBook()
         {
-            if(!HasBook)
-                throw new InvalidOperationException("Can't remove book from player inventory when empty!");
-
-            HasBook = false;
+            string removedId = _bookStorage.RemoveBook();
             Updated?.Invoke();
+            return removedId;
         }
     }
 }

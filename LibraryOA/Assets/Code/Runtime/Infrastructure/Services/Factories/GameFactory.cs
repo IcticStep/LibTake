@@ -1,3 +1,4 @@
+using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
@@ -23,17 +24,20 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _playerProviderInitializer.InitPlayer(player);
             return player;
         }
-
-        public GameObject CreateBookSlot(string id, bool hasBook, Vector3 at, Transform parent)
+        
+        public GameObject CreateBookSlot(string bookSlotId, Vector3 at, string initialBookId = null)
         {
-            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at, parent);
+            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at);
             
             Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
-            interactable.InitId(id);
+            interactable.InitId(bookSlotId);
 
-            BookStorage bookStorage = bookSlot.GetComponent<BookStorage>();
-            bookStorage.InitHasBook(hasBook);
-            
+            if(!string.IsNullOrWhiteSpace(initialBookId))
+            {
+                BookStorageHolder bookStorageHolder = bookSlot.GetComponentInChildren<BookStorageHolder>();
+                bookStorageHolder.Initialize(initialBookId);
+            }
+
             return bookSlot;
         }
 

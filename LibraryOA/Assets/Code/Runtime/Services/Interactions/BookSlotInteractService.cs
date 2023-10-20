@@ -1,9 +1,10 @@
-using System;
-using Code.Runtime.Logic;
+using Code.Runtime.Data;
 using Code.Runtime.Services.Player;
+using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions
 {
+    [UsedImplicitly]
     internal sealed class BookSlotInteractService : IBookSlotInteractService
     {
         private readonly IPlayerInventoryService _playerInventoryService;
@@ -13,10 +14,10 @@ namespace Code.Runtime.Services.Interactions
             _playerInventoryService = playerInventoryService;
         }
 
-        public bool CanInteract(BookStorage bookStorage) =>
+        public bool CanInteract(IBookStorage bookStorage) =>
             bookStorage.HasBook || _playerInventoryService.HasBook;
 
-        public void Interact(BookStorage bookStorage)
+        public void Interact(IBookStorage bookStorage)
         {
             if(!CanInteract(bookStorage))
                 return;
@@ -24,15 +25,16 @@ namespace Code.Runtime.Services.Interactions
             if(_playerInventoryService.HasBook && bookStorage.HasBook)
                 return;
 
+            string bookId;
             if(!_playerInventoryService.HasBook)
             {
-                _playerInventoryService.InsertBook();
-                bookStorage.RemoveBook();
+                bookId = bookStorage.RemoveBook();
+                _playerInventoryService.InsertBook(bookId);
                 return;
             }
 
-            _playerInventoryService.RemoveBook();
-            bookStorage.InsertBook();
+            bookId = _playerInventoryService.RemoveBook();
+            bookStorage.InsertBook(bookId);
         }
     }
 }

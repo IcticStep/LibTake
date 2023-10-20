@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7942971220972001146}
   - component: {fileID: 15375809440215958}
-  - component: {fileID: 74610576885403607}
+  - component: {fileID: 5475589924342636869}
+  - component: {fileID: 2981744462768712211}
   - component: {fileID: 305989145435600299}
   m_Layer: 6
   m_Name: Interactable
@@ -55,7 +56,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 4, z: 1}
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &74610576885403607
+--- !u!114 &5475589924342636869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817948418896455810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b952ad4ff95846f09b2142f7f84cf3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2981744462768712211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debef9e5b2534e8d8df3571118cd8413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bookStorage: {fileID: 4447928255380591062}
+  _bookStorageObject: {fileID: 5475589924342636869}
 --- !u!114 &305989145435600299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c6d3520a314ae2b69c26a4147b0788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactable: {fileID: 74610576885403607}
+  _interactable: {fileID: 2981744462768712211}
   _targetMeshRenderer: {fileID: 6090648407315704912}
   _hoverMaterial: {fileID: 2100000, guid: 13afae703739b11449c8f26a9e9c644b, type: 2}
 --- !u!1 &5980478301530929324
@@ -93,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8800051127091526988}
   - component: {fileID: 5989820583441905872}
-  - component: {fileID: 4447928255380591062}
   - component: {fileID: 7219790119627646056}
   m_Layer: 0
   m_Name: BookSlot
@@ -141,19 +153,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 2, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &4447928255380591062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5980478301530929324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04fc51f162aa4429ac66a5476e1959ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hasBook: 1
 --- !u!114 &7219790119627646056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f1062f96614b9486f9403810395da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bookStorage: {fileID: 4447928255380591062}
+  _bookStorageObject: {fileID: 5475589924342636869}
   _bookObject: {fileID: 5577513949317197191}
 --- !u!1001 &2175573884966652507
 PrefabInstance:
