@@ -51,7 +51,7 @@ namespace Code.Runtime.Logic
             if(string.IsNullOrWhiteSpace(bookId))
                 return null;
             
-            StaticBook data = _staticData.GetBookData(bookId);
+            StaticBook data = _staticData.ForBook(bookId);
             return data.StaticBookType.Material;
         }
     }
