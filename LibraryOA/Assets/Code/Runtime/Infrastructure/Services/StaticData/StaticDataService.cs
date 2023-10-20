@@ -7,18 +7,35 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
 {
     internal sealed class StaticDataService : IStaticDataService
     {
+        private const string BooksPath = "Static Data/Books/Instances";
+        private const string LevelsPath = "Static Data/Levels";
+
         private Dictionary<string, StaticBook> _books = new();
+        private Dictionary<string, LevelStaticData> _levels = new();
+        
+        public void LoadAll()
+        {
+            LoadBooks();
+            LoadLevels();
+        }
 
-        public void LoadAll() =>
-            LoadBookTypes();
-
-        public void LoadBookTypes() =>
+        public void LoadBooks() =>
             _books = Resources
-                .LoadAll<StaticBook>("Static Data/Books/Instances")
-                .ToDictionary(book => book.Id, book => book);
+                .LoadAll<StaticBook>(BooksPath)
+                .ToDictionary(x => x.Id, x => x);
+        
+        public void LoadLevels() =>
+            _levels = Resources
+                .LoadAll<LevelStaticData>(LevelsPath)
+                .ToDictionary(x => x.LevelKey, x => x);
 
-        public StaticBook GetBookData(string id) =>
+        public StaticBook ForBook(string id) =>
             _books.TryGetValue(id, out StaticBook result)
+                ? result
+                : null;
+        
+        public LevelStaticData ForLevel(string key) =>
+            _levels.TryGetValue(key, out LevelStaticData result)
                 ? result
                 : null;
     }

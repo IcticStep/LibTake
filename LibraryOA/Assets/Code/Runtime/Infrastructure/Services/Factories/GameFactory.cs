@@ -25,9 +25,9 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             return player;
         }
         
-        public GameObject CreateBookSlot(string bookSlotId, Vector3 at, Transform parent, string initialBookId = null)
+        public GameObject CreateBookSlot(string bookSlotId, Vector3 at, string initialBookId = null)
         {
-            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at, parent);
+            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at);
             
             Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
             interactable.InitId(bookSlotId);
