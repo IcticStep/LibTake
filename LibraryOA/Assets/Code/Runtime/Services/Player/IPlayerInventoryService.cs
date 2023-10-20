@@ -1,12 +1,9 @@
 using System;
+using Code.Runtime.Data;
 
 namespace Code.Runtime.Services.Player
 {
-    internal interface IPlayerInventoryService
+    internal interface IPlayerInventoryService : IBookStorage
     {
-        bool HasBook { get; }
-        event Action Updated;
-        void InsertBook();
-        void RemoveBook();
     }
 }
