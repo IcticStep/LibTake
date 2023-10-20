@@ -2,10 +2,12 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic
 {
-    public sealed class UniqueId : MonoBehaviour, IUniqueIdInitializer
+    public sealed class UniqueId : MonoBehaviour
     {
         [SerializeField] private string _id;
-        string IUniqueIdInitializer.Id { get => _id; set => _id = value; }
         public string Id => _id;
+
+        public void InitId(string id) =>
+            _id = id;
     }
 }
