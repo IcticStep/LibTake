@@ -11,11 +11,11 @@ namespace Code.Runtime.StaticData
         public string LevelKey { get; private set; }
 
         [SerializeField] 
-        private List<BookSlotData> _bookSlots;
+        private List<BookSlotSpawnData> _bookSlots;
 
-        public IReadOnlyList<BookSlotData> BookSlots => _bookSlots;
+        public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         
-        public void Initialize(string levelKey, List<BookSlotData> bookSlots)
+        public void Initialize(string levelKey, List<BookSlotSpawnData> bookSlots)
         {
             LevelKey = levelKey;
             _bookSlots = bookSlots;
