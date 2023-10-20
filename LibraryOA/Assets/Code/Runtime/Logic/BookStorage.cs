@@ -3,12 +3,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic
 {
-    internal interface IHasBookInitializer
-    {
-        public void InitHasBook(bool value);
-    }
-
-    internal sealed class BookStorage : MonoBehaviour, IHasBookInitializer
+    internal sealed class BookStorage : MonoBehaviour
     {
         [SerializeField] private bool _hasBook;
 
@@ -20,7 +15,7 @@ namespace Code.Runtime.Logic
 
         public event Action Updated;
 
-        void IHasBookInitializer.InitHasBook(bool value) =>
+        public void InitHasBook(bool value) =>
             _hasBook = value;
 
         public void InsertBook()
