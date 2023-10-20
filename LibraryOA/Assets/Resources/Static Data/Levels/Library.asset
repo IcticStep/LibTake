@@ -23,7 +23,7 @@ MonoBehaviour:
   - SlotId: Library_fea71ae0-b026-403d-bba4-9d930fbfdb6e
     InitialBookId: 
     Position: {x: 0.16, y: 0, z: 0.2140001}
-  - SlotId: BookSlotSpawMarker_17c72ed1-0ac2-425f-8c23-7da06a964946
+  - SlotId: BookSlotSpawn_a1e90da3-5969-40ba-ad30-e6f6fb3476ce
     InitialBookId: e1b093f9-e3fa-4487-a9e8-1402a35f1944
     Position: {x: -2.2217648, y: 0, z: 0.2140001}
   <PlayerInitialPosition>k__BackingField: {x: -0.95, y: 0.92435944, z: 1.5997596}
