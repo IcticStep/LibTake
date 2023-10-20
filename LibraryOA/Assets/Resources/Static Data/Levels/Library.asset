@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f03a311cc84ee68c5077a111763204, type: 3}
+  m_Name: Library
+  m_EditorClassIdentifier: 
+  <LevelKey>k__BackingField: Library
+  _bookSlots:
+  - SlotId: Library_61beb807-f90f-442a-9947-44857574e19d
+    InitialBookId: 
+    Position: {x: 5.698765, y: 0, z: 0.4100001}
+  - SlotId: Library_ceb57e92-6eb2-4d26-b34f-784c3b2efb89
+    InitialBookId: 90fcadc7-db9e-412e-822d-ec8d9446dcd3
+    Position: {x: 0.4, y: 0, z: 0.28999996}
+  - SlotId: Library_802906fd-a630-486f-8095-d61e14fba6ce
+    InitialBookId: 
+    Position: {x: 2.79, y: 0, z: 0.33000016}
+  - SlotId: Library_277c18b7-e6ae-4cc3-8ff0-98564ed53bb8
+    InitialBookId: e1b093f9-e3fa-4487-a9e8-1402a35f1944
+    Position: {x: -1.553, y: 0, z: 0.2140001}
