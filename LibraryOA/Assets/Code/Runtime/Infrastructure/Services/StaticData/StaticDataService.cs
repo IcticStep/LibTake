@@ -5,10 +5,13 @@ using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.StaticData
 {
-    internal sealed class StaticDataService
+    internal sealed class StaticDataService : IStaticDataService
     {
         private Dictionary<string, StaticBook> _books = new();
-        
+
+        public void LoadAll() =>
+            LoadBookTypes();
+
         public void LoadBookTypes() =>
             _books = Resources
                 .LoadAll<StaticBook>("Static Data/Books/Instances")

@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
+using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions;
@@ -38,6 +39,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         private void InstallServices()
         {
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
             Container.BindInterfacesTo<PlayerProviderService>().AsSingle();
