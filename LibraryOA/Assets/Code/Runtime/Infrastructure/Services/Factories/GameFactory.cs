@@ -29,10 +29,10 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at, parent);
             
             Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
-            ((IUniqueIdInitializer)interactable).Id = id;
+            interactable.InitId(id);
 
             BookStorage bookStorage = bookSlot.GetComponent<BookStorage>();
-            ((IHasBookInitializer)bookStorage).InitHasBook(hasBook);
+            bookStorage.InitHasBook(hasBook);
             
             return bookSlot;
         }
