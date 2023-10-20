@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44693cf43a8e4c648500544c6545898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBook: 1
+  _initialBookId: e1b093f9-e3fa-4487-a9e8-1402a35f1944
 --- !u!114 &448717720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44693cf43a8e4c648500544c6545898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBook: 0
+  _initialBookId: 
 --- !u!114 &555224892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44693cf43a8e4c648500544c6545898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasBook: 1
+  _initialBookId: 
 --- !u!114 &1903974879
 MonoBehaviour:
   m_ObjectHideFlags: 0
