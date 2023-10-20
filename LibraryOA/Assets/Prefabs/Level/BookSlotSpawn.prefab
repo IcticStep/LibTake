@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4609812483745622825}
   - component: {fileID: 7073766934825612539}
   m_Layer: 0
-  m_Name: BookSlotSpawMarker
+  m_Name: BookSlotSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d2cd23f5204ea4957a136881c67774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Library_277c18b7-e6ae-4cc3-8ff0-98564ed53bb8
+  _id: BookSlotSpawMarker_17c72ed1-0ac2-425f-8c23-7da06a964946
 --- !u!114 &7073766934825612539
 MonoBehaviour:
   m_ObjectHideFlags: 0

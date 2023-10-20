@@ -13,12 +13,16 @@ namespace Code.Runtime.StaticData
         [SerializeField] 
         private List<BookSlotSpawnData> _bookSlots;
 
+        [field: ReadOnly, SerializeField]
+        public Vector3 PlayerInitialPosition { get; private set; }
+
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         
-        public void Initialize(string levelKey, List<BookSlotSpawnData> bookSlots)
+        public void UpdateData(string levelKey, List<BookSlotSpawnData> bookSlots, Vector3 playerInitialPosition)
         {
             LevelKey = levelKey;
             _bookSlots = bookSlots;
+            PlayerInitialPosition = playerInitialPosition;
         }
     }
 }

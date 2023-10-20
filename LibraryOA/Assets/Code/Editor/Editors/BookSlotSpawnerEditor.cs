@@ -1,18 +1,19 @@
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.SpawnMarkers;
 using UnityEditor;
 using UnityEngine;
 
 namespace Code.Editor.Editors
 {
-    [CustomEditor(typeof(BookSlotSpawnMarker))]
+    [CustomEditor(typeof(BookSlotSpawn))]
     internal sealed class BookSlotSpawnerEditor : UnityEditor.Editor
     {
         [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected | GizmoType.Selected )]
-        public static void RenderCustomGizmo(BookSlotSpawnMarker spawnMarker, GizmoType gizmo)
+        public static void RenderCustomGizmo(BookSlotSpawn spawn, GizmoType gizmo)
         {
             Color previousColor = Gizmos.color;
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(spawnMarker.transform.position, 0.5f);
+            Gizmos.DrawSphere(spawn.transform.position, 0.5f);
             Gizmos.color = previousColor;
         }
     }

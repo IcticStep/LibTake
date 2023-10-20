@@ -1,10 +1,10 @@
 using Code.Runtime.StaticData;
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Interactions
+namespace Code.Runtime.Logic.SpawnMarkers
 {
     [RequireComponent(typeof(UniqueId))]
-    public sealed class BookSlotSpawnMarker : MonoBehaviour
+    public sealed class BookSlotSpawn : MonoBehaviour
     {
         [SerializeField] private StaticBook _initialBook;
         
