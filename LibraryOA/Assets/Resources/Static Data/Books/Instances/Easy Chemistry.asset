@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
   m_Name: Easy Chemistry
   m_EditorClassIdentifier: 
-  <Title>k__BackingField: Easy Biology
-  <BookType>k__BackingField: {fileID: 11400000, guid: 8232aaf6057b0334fbb9c78e317dbcdd,
+  <Id>k__BackingField: 21865609-0ba5-4a26-ad09-8e0c571523b2
+  <Title>k__BackingField: Easy Chemistry
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 09326f92432b3c44baf9b0d86b62c172,
     type: 2}

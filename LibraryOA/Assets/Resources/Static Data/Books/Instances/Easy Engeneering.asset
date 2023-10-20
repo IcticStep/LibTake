@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
   m_Name: Easy Engeneering
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: e1b093f9-e3fa-4487-a9e8-1402a35f1944
   <Title>k__BackingField: Easy Engineering
-  <BookType>k__BackingField: {fileID: 11400000, guid: 97e8ed4f296df364e926322ca109b3de,
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 97e8ed4f296df364e926322ca109b3de,
     type: 2}

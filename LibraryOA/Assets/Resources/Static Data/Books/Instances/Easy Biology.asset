@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
   m_Name: Easy Biology
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: 286a7315-8e64-4b04-b125-248d075fc4df
   <Title>k__BackingField: Easy Biology
-  <BookType>k__BackingField: {fileID: 11400000, guid: 8232aaf6057b0334fbb9c78e317dbcdd,
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 8232aaf6057b0334fbb9c78e317dbcdd,
     type: 2}

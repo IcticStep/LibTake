@@ -20,7 +20,7 @@ namespace Code.Runtime.Infrastructure.States
             _sceneLoader.LoadSceneAsync(InitialSceneName, OnInitSceneLoaded).Forget();
 
         private void OnInitSceneLoaded() =>
-            _stateMachine.EnterState<LoadProgressState>();
+            _stateMachine.EnterState<WarmupState>();
 
         public void Exit()
         {
