@@ -3,13 +3,9 @@ using System;
 namespace Code.Runtime.Data
 {
     [Serializable]
-    internal sealed class PlayerProgress
+    public sealed class PlayerProgress
     {
-        public BookSlot PlayerInventory;
-
-        public PlayerProgress()
-        {
-            PlayerInventory = new BookSlot();
-        }
+        public BookSlot PlayerInventory = new();
+        public SkillStats SkillStats = new();
     }
 }
