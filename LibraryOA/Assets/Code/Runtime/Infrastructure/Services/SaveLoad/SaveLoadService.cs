@@ -1,4 +1,5 @@
 using Code.Runtime.Data;
+using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 

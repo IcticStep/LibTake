@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Runtime.Data
+namespace Code.Runtime.Data.Progress
 {
     [Serializable]
     public sealed class SkillStats
