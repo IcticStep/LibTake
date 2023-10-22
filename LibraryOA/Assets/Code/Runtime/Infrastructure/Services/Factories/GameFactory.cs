@@ -35,7 +35,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             if(!string.IsNullOrWhiteSpace(initialBookId))
             {
                 BookStorageHolder bookStorageHolder = bookSlot.GetComponentInChildren<BookStorageHolder>();
-                bookStorageHolder.Initialize(initialBookId);
+                bookStorageHolder.Initialize(bookSlotId, initialBookId);
             }
 
             return bookSlot;
