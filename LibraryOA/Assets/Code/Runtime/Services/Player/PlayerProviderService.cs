@@ -2,13 +2,16 @@ using UnityEngine;
 
 namespace Code.Runtime.Services.Player
 {
-    internal sealed class PlayerProviderService : IPlayerProviderService, IPlayerProviderInitializer
+    internal sealed class PlayerProviderService : IPlayerProviderService
     {
         private GameObject _player;
 
         public GameObject Player => _player;
 
-        void IPlayerProviderInitializer.InitPlayer(GameObject player) =>
+        public void RegisterPlayer(GameObject player) =>
             _player = player;
+        
+        public void UnregisterPlayer() =>
+            _player = null;
     }
 }

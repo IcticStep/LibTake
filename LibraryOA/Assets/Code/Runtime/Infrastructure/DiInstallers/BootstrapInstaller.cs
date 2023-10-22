@@ -20,6 +20,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IInitializable>().To<BootstrapInstaller>().FromInstance(this).AsSingle();
             InstallInfrastructureServices();
             InstallServices();
+            InstallFactories();
             InstallStateMachine();
             InstallGlobalStates();
         }
@@ -44,9 +45,14 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
             Container.BindInterfacesTo<PlayerProviderService>().AsSingle();
-            Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
             Container.Bind<IBookSlotInteractService>().To<BookSlotInteractService>().AsSingle();
+        }
+
+        private void InstallFactories()
+        {
+            Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
+            Container.Bind<IBookSlotFactory>().To<BookSlotFactory>().AsSingle();
         }
 
         private void InstallStateMachine()
