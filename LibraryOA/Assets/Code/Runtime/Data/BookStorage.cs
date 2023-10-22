@@ -12,7 +12,7 @@ namespace Code.Runtime.Data
         public void InsertBook(string id)
         {
             if(HasBook)
-                throw new InvalidOperationException("Can't insert more than one book into player inventory!");
+                throw new InvalidOperationException("Can't insert more than one book into storage!");
 
             CurrentBookId = id;
             Updated?.Invoke();
@@ -21,7 +21,7 @@ namespace Code.Runtime.Data
         public string RemoveBook()
         {
             if(!HasBook)
-                throw new InvalidOperationException("Can't remove book from player inventory when empty!");
+                throw new InvalidOperationException("Can't remove book from storage when empty!");
 
             string removed = CurrentBookId;
             CurrentBookId = string.Empty;

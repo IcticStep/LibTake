@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
+using Code.Runtime.Services.Player;
 using Code.Runtime.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -14,30 +15,35 @@ namespace Code.Runtime.Infrastructure.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
-        private readonly IGameFactory _gameFactory;
+        private readonly IBookSlotFactory _bookSlotFactory;
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IPlayerProgressService _playerProgress;
+        private readonly IPlayerInventoryService _playerInventory;
+        private readonly IPlayerFactory _playerFactory;
 
         private string _levelName;
         private LevelStaticData _levelData;
 
-        public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IGameFactory gameFactory,
-            IStaticDataService staticData, ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress)
+        public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
+            ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IPlayerInventoryService playerInventory,
+            IBookSlotFactory bookSlotFactory, IPlayerFactory playerFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
-            _gameFactory = gameFactory;
+            _bookSlotFactory = bookSlotFactory;
             _staticData = staticData;
             _saveLoadRegistry = saveLoadRegistry;
             _playerProgress = playerProgress;
+            _playerInventory = playerInventory;
+            _playerFactory = playerFactory;
         }
 
         public void Start(string payload)
         {
             _levelName = payload;
-            _sceneLoader.LoadSceneAsync(payload, OnLevelLoaded).Forget();
             _levelData = _staticData.ForLevel(_levelName);
+            _sceneLoader.LoadSceneAsync(payload, OnLevelLoaded).Forget();
         }
 
         public void Exit()
@@ -47,33 +53,35 @@ namespace Code.Runtime.Infrastructure.States
 
         private void OnLevelLoaded()
         {
+            InitPlayer();
             InitGameWorld();
             InformProgressReaders();
             
             _stateMachine.EnterState<GameLoopState>();
         }
 
-        private void InformProgressReaders()
-        {
-            foreach(ISavedProgressReader progressReader in _saveLoadRegistry.ProgressReaders)
-                progressReader.LoadProgress(_playerProgress.Progress);
-        }
-
-        private void InitGameWorld()
-        {
-            InitPlayer();
+        private void InitGameWorld() =>
             InitBookSlots();
-        }
 
-        private GameObject InitPlayer() =>
-            _gameFactory.CreatePlayer(_levelData.PlayerInitialPosition);
+        private GameObject InitPlayer()
+        {
+            GameObject player = _playerFactory.Create(_levelData.PlayerInitialPosition);
+            _saveLoadRegistry.Register(_playerInventory);
+            return player;
+        }
 
         private void InitBookSlots()
         {
             foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
             {
-                _gameFactory.CreateBookSlot(spawn.SlotId, spawn.Position, spawn.InitialBookId);
+                _bookSlotFactory.Create(spawn.SlotId, spawn.Position, spawn.InitialBookId);
             }
+        }
+
+        private void InformProgressReaders()
+        {
+            foreach(ISavedProgressReader progressReader in _saveLoadRegistry.ProgressReaders)
+                progressReader.LoadProgress(_playerProgress.Progress);
         }
     }
 }

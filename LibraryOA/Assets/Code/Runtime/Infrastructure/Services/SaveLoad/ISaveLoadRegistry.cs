@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
@@ -6,6 +7,8 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
     {
         IReadOnlyList<ISavedProgressReader> ProgressReaders { get; }
         IReadOnlyList<ISavedProgress> ProgressWriters { get; }
+        void RegisterAllComponents(GameObject gameObject);
+        void UnregisterAllComponents(GameObject gameObject);
         void Unregister(ISavedProgressReader progressReader);
         void Register(ISavedProgressReader progressReader);
     }

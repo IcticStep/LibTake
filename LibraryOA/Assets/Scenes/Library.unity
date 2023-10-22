@@ -580,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 3171045716626334996, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
       propertyPath: m_Name
-      value: BookSlotSpawn
+      value: BookSlotSpawn4
       objectReference: {fileID: 0}
     - target: {fileID: 4609812483745622825, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
@@ -734,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 3171045716626334996, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
       propertyPath: m_Name
-      value: BookSlotSpawn
+      value: BookSlotSpawn3
       objectReference: {fileID: 0}
     - target: {fileID: 4609812483745622825, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
@@ -745,8 +745,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _initialBook
       value: 
-      objectReference: {fileID: 11400000, guid: d15b6a2b5ae431048b75b924f4e9c0c8,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -819,7 +818,7 @@ PrefabInstance:
     - target: {fileID: 3171045716626334996, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
       propertyPath: m_Name
-      value: BookSlotSpawn
+      value: BookSlotSpawn2
       objectReference: {fileID: 0}
     - target: {fileID: 4609812483745622825, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
@@ -842,6 +841,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1479339064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1520341313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520341315}
+  - component: {fileID: 1520341314}
+  - component: {fileID: 1520341316}
+  m_Layer: 0
+  m_Name: SaveTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1520341314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520341313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e32e9e822a47dc903515347625bbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1520341316}
+--- !u!4 &1520341315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520341313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.27, y: 0.59, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1520341316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520341313}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.43159223, z: 1}
+  m_Center: {x: 0, y: -0.2842039, z: 0}
 --- !u!1 &1684872611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1216,7 @@ PrefabInstance:
     - target: {fileID: 3171045716626334996, guid: d826446db0f17d44f9a7a1e88697ed28,
         type: 3}
       propertyPath: m_Name
-      value: BookSlotSpawn
+      value: BookSlotSpawn1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1234,3 +1300,4 @@ SceneRoots:
   - {fileID: 9149977666116708609}
   - {fileID: 1796631426}
   - {fileID: 1762189251}
+  - {fileID: 1520341315}
