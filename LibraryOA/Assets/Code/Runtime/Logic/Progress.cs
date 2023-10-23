@@ -9,16 +9,29 @@ namespace Code.Runtime.Logic
 {
     internal sealed class Progress : MonoBehaviour, ISavedProgress
     {
-        public float Value { get; private set; }
         private string _id;
         private float _timeToFinish;
+        private float _value;
         private UniTask? _fillingTask;
         private CancellationTokenSource _cancellationTokenSource;
 
         public bool Empty => Value == 0;
         public bool Full => Value >= 1;
         public bool InProgress => _fillingTask is not null;
-        public bool CanBeStarted => !InProgress && !Full; 
+        public bool CanBeStarted => !InProgress && !Full;
+        public float MaxValue { get; private set; } = 1;
+        
+        public float Value
+        {
+            get => _value;
+            private set
+            {
+                _value = value;
+                Updated?.Invoke(_value);
+            }
+        }
+
+        public Action<float> Updated;
 
         public void Initialize(string ownerId, float timeToFinish)
         {
