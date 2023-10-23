@@ -11,11 +11,14 @@ namespace Code.Runtime.Services.Interactions
     {
         private readonly IBookSlotInteractionService _bookSlotInteractionService;
         private readonly IPlayerProgressService _playerProgressService;
+        private readonly IReadBookService _readBookService;
 
-        public ReadingTableInteractionService(IBookSlotInteractionService bookSlotInteractionService, IPlayerProgressService playerProgressService)
+        public ReadingTableInteractionService(IBookSlotInteractionService bookSlotInteractionService, IPlayerProgressService playerProgressService,
+            IReadBookService readBookService)
         {
             _bookSlotInteractionService = bookSlotInteractionService;
             _playerProgressService = playerProgressService;
+            _readBookService = readBookService;
         }
 
         public bool CanInteract(IBookStorage bookStorage, Progress progress) =>
@@ -50,6 +53,6 @@ namespace Code.Runtime.Services.Interactions
             _playerProgressService.Progress.PlayerData.ReadBooks.IsBookRead(bookStorage);
 
         private Action GetOnProgressFinishCallback(IBookStorage bookStorage) =>
-            () => _playerProgressService.Progress.PlayerData.ReadBooks.AddReadBook(bookStorage.CurrentBookId);
+            () => _readBookService.ReadBook(bookStorage.CurrentBookId);
     }
 }

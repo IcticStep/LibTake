@@ -45,10 +45,11 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
-            Container.BindInterfacesTo<PlayerProviderService>().AsSingle();
+            Container.Bind<IPlayerProviderService>().To<PlayerProviderService>().AsSingle();
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
             Container.Bind<IBookSlotInteractionService>().To<BookSlotInteractionService>().AsSingle();
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
+            Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
         }
 
         private void InstallFactories()

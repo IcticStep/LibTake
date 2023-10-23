@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3630ec991c40008bd94760f189df1c, type: 3}
   m_Name: Chemistry
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Chemistry
+  <BookType>k__BackingField: 5
   <Material>k__BackingField: {fileID: 2100000, guid: 39f52d31035ef3c4593184ae737d8433,
     type: 2}
