@@ -2,14 +2,19 @@ using System;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Physics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Player
 {
     public sealed class InteractablesScanner : MonoBehaviour
     {
-        [SerializeField] private Transform _rayStartPoint;
-        [SerializeField] private float _rayLength;
+        [SerializeField] 
+        private Transform _rayStartPoint;
+        [SerializeField] 
+        private float _rayLength;
+        [SerializeField]
+        private bool _logging;
         
         private IPhysicsService _physicsService;
         private Interactable _currentFocusedInteractable;
@@ -32,6 +37,9 @@ namespace Code.Runtime.Player
                     UnfocusedInteractable?.Invoke(oldValue);
                 if(_currentFocusedInteractable != null && _currentFocusedInteractable != oldValue)
                     FocusedInteractable?.Invoke(_currentFocusedInteractable);
+                
+                if(_logging)
+                    Debug.Log($"{nameof(_currentFocusedInteractable)} set to {_currentFocusedInteractable?.name}.");
             }
         }
 

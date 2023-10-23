@@ -7,7 +7,7 @@ namespace Code.Runtime.StaticData
     public sealed class StaticBookType : ScriptableObject
     {
         [field: SerializeField]
-        public string Name { get; private set; }
+        public BookType BookType { get; private set; }
         [field: SerializeField]
         public Material Material { get; private set; }
     }

@@ -1,6 +1,7 @@
 using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.StaticData;
 using UnityEngine;
 using Zenject;

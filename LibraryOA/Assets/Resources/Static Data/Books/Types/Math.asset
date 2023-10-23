@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3630ec991c40008bd94760f189df1c, type: 3}
   m_Name: Math
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Math
+  <BookType>k__BackingField: 4
   <Material>k__BackingField: {fileID: 2100000, guid: d4d5962fb3d1092418e52aff2c4b74ea,
     type: 2}
