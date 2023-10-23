@@ -5,11 +5,11 @@ using JetBrains.Annotations;
 namespace Code.Runtime.Services.Interactions
 {
     [UsedImplicitly]
-    internal sealed class BookSlotInteractService : IBookSlotInteractService
+    internal sealed class BookSlotInteractionService : IBookSlotInteractionService
     {
         private readonly IPlayerInventoryService _playerInventoryService;
 
-        public BookSlotInteractService(IPlayerInventoryService playerInventoryService)
+        public BookSlotInteractionService(IPlayerInventoryService playerInventoryService)
         {
             _playerInventoryService = playerInventoryService;
         }
