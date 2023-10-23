@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4985088180897340317}
   - component: {fileID: 4093452936799277596}
   - component: {fileID: 8367924536344103221}
+  - component: {fileID: 4841188373155321836}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -80,6 +81,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bookStorageObject: {fileID: 4093452936799277596}
+--- !u!114 &4841188373155321836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862531959078406648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c6d3520a314ae2b69c26a4147b0788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactable: {fileID: 8367924536344103221}
+  _targetMeshRenderer: {fileID: 8920140395515967231}
+  _hoverMaterial: {fileID: 2100000, guid: 13afae703739b11449c8f26a9e9c644b, type: 2}
 --- !u!1 &3051894274289638350
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +333,12 @@ PrefabInstance:
 --- !u!4 &7746640721796959632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6377511052627405420, guid: 105423e2cc228384984640bc2c30f380,
+    type: 3}
+  m_PrefabInstance: {fileID: 3675183801886271484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8920140395515967231 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5245097486898696451, guid: 105423e2cc228384984640bc2c30f380,
     type: 3}
   m_PrefabInstance: {fileID: 3675183801886271484}
   m_PrefabAsset: {fileID: 0}
