@@ -35,10 +35,14 @@ namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
             return readingTable;
         }
 
-        private void InitProgress(string objectId, GameObject readingTable, StaticReadingTable data) =>
-            readingTable
-                .GetComponentInChildren<Progress>()
-                .Initialize(objectId, data.SecondsToRead);
+        private void InitProgress(string objectId, GameObject readingTable, StaticReadingTable data)
+        {
+            Progress progress = readingTable
+                .GetComponentInChildren<Progress>();
+
+            progress.Initialize(objectId, data.SecondsToRead);
+            _saveLoadRegistry.Register(progress);
+        }
 
         private GameObject Instantiate(Vector3 at) =>
             _assetProvider.Instantiate(AssetPath.ReadingTable, at);
