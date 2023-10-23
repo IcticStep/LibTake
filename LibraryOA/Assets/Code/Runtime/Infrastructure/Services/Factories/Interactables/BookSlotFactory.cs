@@ -4,7 +4,7 @@ using Code.Runtime.Logic.Interactions;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services.Factories
+namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
 {
     [UsedImplicitly]
     internal sealed class BookSlotFactory : IBookSlotFactory

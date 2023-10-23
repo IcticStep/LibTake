@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.Infrastructure.Services.Factories.Interactables;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
@@ -6,6 +7,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Player;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.SpawnersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -21,13 +23,14 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerProgressService _playerProgress;
         private readonly IPlayerInventoryService _playerInventory;
         private readonly IPlayerFactory _playerFactory;
+        private readonly IReadingTableFactory _readingTableFactory;
 
         private string _levelName;
         private LevelStaticData _levelData;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IPlayerInventoryService playerInventory,
-            IBookSlotFactory bookSlotFactory, IPlayerFactory playerFactory)
+            IBookSlotFactory bookSlotFactory, IPlayerFactory playerFactory, IReadingTableFactory readingTableFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -37,6 +40,7 @@ namespace Code.Runtime.Infrastructure.States
             _playerProgress = playerProgress;
             _playerInventory = playerInventory;
             _playerFactory = playerFactory;
+            _readingTableFactory = readingTableFactory;
         }
 
         public void Start(string payload)
@@ -60,8 +64,11 @@ namespace Code.Runtime.Infrastructure.States
             _stateMachine.EnterState<GameLoopState>();
         }
 
-        private void InitGameWorld() =>
+        private void InitGameWorld()
+        {
             InitBookSlots();
+            InitReadingTables();
+        }
 
         private GameObject InitPlayer()
         {
@@ -74,7 +81,15 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
             {
-                _bookSlotFactory.Create(spawn.SlotId, spawn.Position, spawn.InitialBookId);
+                _bookSlotFactory.Create(spawn.Id, spawn.Position, spawn.InitialBookId);
+            }
+        }
+        
+        private void InitReadingTables()
+        {
+            foreach(ReadingTableSpawnData readingTable in _levelData.ReadingTables)
+            {
+                _readingTableFactory.Create(readingTable.Id, readingTable.Position, readingTable.InitialBookId);
             }
         }
 
