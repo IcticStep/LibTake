@@ -3,6 +3,7 @@ using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
+using Code.Runtime.Logic.Interactions.Data;
 using UnityEngine;
 using Zenject;
 

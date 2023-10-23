@@ -1,4 +1,5 @@
 using Code.Runtime.Data;
+using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions;
 using UnityEngine;
 using Zenject;

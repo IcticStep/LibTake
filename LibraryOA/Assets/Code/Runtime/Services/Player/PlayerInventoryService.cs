@@ -2,6 +2,7 @@ using System;
 using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
+using Code.Runtime.Logic.Interactions.Data;
 using JetBrains.Annotations;
 using Zenject;
 
@@ -31,7 +32,7 @@ namespace Code.Runtime.Services.Player
 
         public void LoadProgress(PlayerProgress progress)
         {
-            BookData savedData = progress.PlayerInventory;
+            BookData savedData = progress.PlayerData.BookInHands;
 
             if(_bookStorage.HasBook)
                 _bookStorage.RemoveBook();
@@ -43,7 +44,7 @@ namespace Code.Runtime.Services.Player
         }
 
         public void UpdateProgress(PlayerProgress progress) =>
-            progress.PlayerInventory.BookId = _bookStorage.CurrentBookId;
+            progress.PlayerData.BookInHands.BookId = _bookStorage.CurrentBookId;
 
         public string RemoveBook()
         {

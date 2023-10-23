@@ -5,8 +5,7 @@ namespace Code.Runtime.Data.Progress
     [Serializable]
     public sealed class PlayerProgress
     {
-        public BookData PlayerInventory = new();
-        public SkillStats SkillStats = new();
+        public PlayerData PlayerData = new();
         public WorldData WorldData = new();
     }
 }
