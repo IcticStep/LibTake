@@ -37,12 +37,12 @@ namespace Code.Runtime.Logic.Interactions
         {
             BookData savedData = progress.WorldData.BookHoldersState.GetDataForId(_storageId);
 
+            if(savedData is null)
+                return;
+
             if(_bookStorage.HasBook)
                 _bookStorage.RemoveBook();
 
-            if(savedData is null)
-                return;
-            
             if(string.IsNullOrEmpty(savedData.BookId))
                 return;
 

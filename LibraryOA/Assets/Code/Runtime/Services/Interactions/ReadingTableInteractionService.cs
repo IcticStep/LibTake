@@ -1,12 +1,7 @@
 using System;
-using System.Threading;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Logic.Interactions.Data;
-using Code.Runtime.Player;
-using Code.Runtime.Services.Player;
-using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
-using Unity.VisualScripting;
 using Progress = Code.Runtime.Logic.Progress;
 
 namespace Code.Runtime.Services.Interactions
@@ -28,13 +23,13 @@ namespace Code.Runtime.Services.Interactions
 
         public void Interact(IBookStorage bookStorage, Progress progress)
         {
-            if(bookStorage.HasBook)
+            if(!bookStorage.HasBook && !progress.Empty)
             {
-                StartReadingIfPossible(bookStorage, progress);
+                progress.Reset();
                 return;
             }
-            
-            progress.Reset();
+
+            StartReadingIfPossible(bookStorage, progress);
         }
 
         public void StartReadingIfPossible(IBookStorage bookStorage, Progress progress)
