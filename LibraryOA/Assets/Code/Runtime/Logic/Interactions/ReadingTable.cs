@@ -1,12 +1,13 @@
 using Code.Runtime.Data;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class ReadingTable : Interactable
+    internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener
     {
         [SerializeField] 
         private BookStorageHolder _bookStorageObject;
@@ -32,5 +33,11 @@ namespace Code.Runtime.Logic.Interactions
 
         public override void Interact() =>
             _bookSlotInteractionService.Interact(_bookStorage);
+
+        public void OnHoverStart() =>
+            _readingTableInteractionService.StartReadingIfPossible(_bookStorage, _progress);
+
+        public void OnHoverEnd() =>
+            _readingTableInteractionService.StopReading(_progress);
     }
 }
