@@ -10,21 +10,27 @@ namespace Code.Runtime.Logic.Interactions
     {
         [SerializeField] 
         private BookStorageHolder _bookStorageObject;
+        [SerializeField]
+        private Progress _progress;
         
         private IReadingTableInteractionService _readingTableInteractionService;
         private IBookStorage _bookStorage;
+        private IBookSlotInteractionService _bookSlotInteractionService;
 
         private void Start() =>
             _bookStorage = _bookStorageObject.BookStorage;
 
         [Inject]
-        private void Construct(IReadingTableInteractionService readingTableInteractionService) =>
+        private void Construct(IReadingTableInteractionService readingTableInteractionService, IBookSlotInteractionService bookSlotInteractionService)
+        {
             _readingTableInteractionService = readingTableInteractionService;
-        
+            _bookSlotInteractionService = bookSlotInteractionService;
+        }
+
         public override bool CanInteract() =>
-            _readingTableInteractionService.CanInteract(_bookStorage);
+            _bookSlotInteractionService.CanInteract(_bookStorage);
 
         public override void Interact() =>
-            _readingTableInteractionService.Interact(_bookStorage);
+            _bookSlotInteractionService.Interact(_bookStorage);
     }
 }

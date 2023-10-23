@@ -16,6 +16,9 @@ namespace Code.Runtime.Player
 
         private void Start() =>
             _input.InteractButtonPressed += InteractIfPossible;
+        
+        private void OnDestroy() =>
+            _input.InteractButtonPressed -= InteractIfPossible;
 
         private void InteractIfPossible()
         {
