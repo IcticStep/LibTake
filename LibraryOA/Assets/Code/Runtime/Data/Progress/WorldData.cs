@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -6,8 +8,11 @@ namespace Code.Runtime.Data.Progress
     public sealed class WorldData
     {
         public BookHoldersState BookHoldersState = new();
-        
-       
+        public ProgressesStates ProgressesStates;
+    }
 
+    [Serializable]
+    public class ProgressesStates
+    {
     }
 }

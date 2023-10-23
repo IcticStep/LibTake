@@ -23,6 +23,5 @@ namespace Code.Runtime.Data.Progress
             
             _bookHolders.Add(new BookIdentifiedHolderData(id, data));
         }
-
     }
 }

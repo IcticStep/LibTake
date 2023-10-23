@@ -6,7 +6,9 @@ namespace Code.Runtime.Services.Interactions
 {
     internal interface IReadingTableInteractionService
     {
-        bool CanInteract(IBookStorage bookStorage);
+        bool CanInteract(IBookStorage bookStorage, Progress progress);
         void Interact(IBookStorage bookStorage, Progress progress);
+        void StartReadingIfPossible(IBookStorage bookStorage, Progress progress);
+        void StopReading(Progress progress);
     }
 }
