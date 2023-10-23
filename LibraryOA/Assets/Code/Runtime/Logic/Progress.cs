@@ -60,17 +60,25 @@ namespace Code.Runtime.Logic
             {
                 await UniTask.NextFrame(cancellationToken);
                 if(_cancellationTokenSource.IsCancellationRequested)
+                {
+                    Debug.Log($"Progress cancelled.");
                     break;
-                
-                Value += CalculateFillingAmount(Time.deltaTime);
+                }
+
+                Debug.Log($"Progress: {Value}.");
+                Value += CalculateFillingAmount();
+                Debug.Log($"Progress: {Value}.");
             }
 
             _fillingTask = null;
             _cancellationTokenSource = null;
+            if(Full)
+                Debug.Log($"Progress completed.");
+            
             onFinishCallback.Invoke();
         }
 
-        private float CalculateFillingAmount(float deltaTime) =>
-            _timeToFinish / deltaTime;
+        private float CalculateFillingAmount() =>
+            Time.deltaTime / _timeToFinish;
     }
 }

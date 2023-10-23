@@ -28,16 +28,29 @@ namespace Code.Runtime.Logic.Interactions
             _bookSlotInteractionService = bookSlotInteractionService;
         }
 
-        public override bool CanInteract() =>
-            _bookSlotInteractionService.CanInteract(_bookStorage);
+        public override bool CanInteract()
+        {
+            Debug.Log("Can interact check.");
+            return _bookSlotInteractionService.CanInteract(_bookStorage);
+        }
 
-        public override void Interact() =>
+        public override void Interact()
+        {
+            Debug.Log("Interact request.");
             _bookSlotInteractionService.Interact(_bookStorage);
+            _readingTableInteractionService.Interact(_bookStorage, _progress);
+        }
 
-        public void OnHoverStart() =>
+        public void OnHoverStart()
+        {
+            Debug.Log("Hovered");
             _readingTableInteractionService.StartReadingIfPossible(_bookStorage, _progress);
+        }
 
-        public void OnHoverEnd() =>
+        public void OnHoverEnd()
+        {
+            Debug.Log("Unhovered");
             _readingTableInteractionService.StopReading(_progress);
+        }
     }
 }

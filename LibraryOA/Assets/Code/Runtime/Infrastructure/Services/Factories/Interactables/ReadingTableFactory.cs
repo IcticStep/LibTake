@@ -1,6 +1,9 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
+using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.StaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -11,37 +14,46 @@ namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
     {
         private readonly IAssetProvider _assetProvider;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
+        private readonly IStaticDataService _staticDataService;
 
-        public ReadingTableFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry)
+        public ReadingTableFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry, IStaticDataService staticDataService)
         {
             _assetProvider = assetProvider;
             _saveLoadRegistry = saveLoadRegistry;
+            _staticDataService = staticDataService;
         }
         
-        public GameObject Create(string bookSlotId, Vector3 at, string initialBookId = null)
+        public GameObject Create(string objectId, Vector3 at, string initialBookId = null)
         {
-            GameObject bookSlot = Instantiate(at);
+            GameObject readingTable = Instantiate(at);
+            StaticReadingTable data = _staticDataService.ReadingTableData;
             
-            //InitInteractable(bookSlotId, bookSlot);
-            InitBookStorage(bookSlotId, initialBookId, bookSlot);
+            InitInteractable(objectId, readingTable);
+            InitProgress(objectId, readingTable, data);
+            InitBookStorage(objectId, initialBookId, readingTable);
 
-            return bookSlot;
+            return readingTable;
         }
+
+        private void InitProgress(string objectId, GameObject readingTable, StaticReadingTable data) =>
+            readingTable
+                .GetComponentInChildren<Progress>()
+                .Initialize(objectId, data.SecondsToRead);
 
         private GameObject Instantiate(Vector3 at) =>
             _assetProvider.Instantiate(AssetPath.ReadingTable, at);
 
-        private static void InitInteractable(string bookSlotId, GameObject bookSlot)
+        private static void InitInteractable(string objectId, GameObject readingTable)
         {
-            Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
-            interactable.InitId(bookSlotId);
+            Interactable interactable = readingTable.GetComponentInChildren<Interactable>();
+            interactable.InitId(objectId);
         }
 
-        private void InitBookStorage(string bookSlotId, string initialBookId, GameObject bookSlot)
+        private void InitBookStorage(string objectId, string initialBookId, GameObject readingTable)
         {
-            BookStorageHolder bookStorage = bookSlot.GetComponentInChildren<BookStorageHolder>();
+            BookStorageHolder bookStorage = readingTable.GetComponentInChildren<BookStorageHolder>();
             _saveLoadRegistry.Register(bookStorage);
-            bookStorage.Initialize(bookSlotId, initialBookId);
+            bookStorage.Initialize(objectId, initialBookId);
         }
     }
 }
