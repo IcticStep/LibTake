@@ -35,7 +35,7 @@ namespace Code.Runtime.Logic.Interactions
 
         public void LoadProgress(PlayerProgress progress)
         {
-            BookData savedData = progress.WorldData.GetDataForId(_storageId);
+            BookData savedData = progress.WorldData.BookHoldersState.GetDataForId(_storageId);
 
             if(_bookStorage.HasBook)
                 _bookStorage.RemoveBook();
@@ -53,6 +53,6 @@ namespace Code.Runtime.Logic.Interactions
             UpdateProgress(_progressService.Progress);
 
         public void UpdateProgress(PlayerProgress progress) =>
-            progress.WorldData.SetDataForId(_storageId, new BookData(_bookStorage.CurrentBookId));
+            progress.WorldData.BookHoldersState.SetDataForId(_storageId, new BookData(_bookStorage.CurrentBookId));
     }
 }

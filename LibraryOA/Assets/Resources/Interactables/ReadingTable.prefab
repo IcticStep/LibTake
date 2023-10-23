@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5612651232955193232}
   - component: {fileID: 4985088180897340317}
   - component: {fileID: 4093452936799277596}
+  - component: {fileID: 2086143251755747177}
   - component: {fileID: 8367924536344103221}
   - component: {fileID: 4841188373155321836}
   m_Layer: 6
@@ -68,6 +69,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b952ad4ff95846f09b2142f7f84cf3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2086143251755747177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862531959078406648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bedf8e0d5d443eb402a082cffe5de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8367924536344103221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bookStorageObject: {fileID: 4093452936799277596}
+  _progress: {fileID: 2086143251755747177}
 --- !u!114 &4841188373155321836
 MonoBehaviour:
   m_ObjectHideFlags: 0

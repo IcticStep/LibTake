@@ -12,8 +12,9 @@ namespace Code.Runtime.Logic.Interactions
         [SerializeField] private Material _hoverMaterial;
 
         private IPlayerProviderService _playerProviderService;
-        private InteractablesScanner _interactablesScanner;
         private Material _defaultMaterial;
+        
+        private InteractablesScanner InteractablesScanner => _playerProviderService.InteractablesScanner;
 
         [Inject]
         private void Construct(IPlayerProviderService playerProviderService) =>
@@ -21,16 +22,15 @@ namespace Code.Runtime.Logic.Interactions
 
         private void Start()
         {
-            _interactablesScanner = _playerProviderService.Player.GetComponent<InteractablesScanner>();
-            _interactablesScanner.FocusedInteractable += OnInteractableFocused;
-            _interactablesScanner.UnfocusedInteractable += OnInteractableUnfocused;
+            InteractablesScanner.FocusedInteractable += OnInteractableFocused;
+            InteractablesScanner.UnfocusedInteractable += OnInteractableUnfocused;
             _defaultMaterial = _targetMeshRenderer.material;
         }
 
         private void OnDestroy()
         {
-            _interactablesScanner.FocusedInteractable -= OnInteractableFocused;
-            _interactablesScanner.UnfocusedInteractable -= OnInteractableUnfocused;
+            InteractablesScanner.FocusedInteractable -= OnInteractableFocused;
+            InteractablesScanner.UnfocusedInteractable -= OnInteractableUnfocused;
         }
 
         private void OnInteractableFocused(Interactable interactable)
