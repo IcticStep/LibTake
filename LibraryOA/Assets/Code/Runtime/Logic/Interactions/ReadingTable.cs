@@ -1,7 +1,5 @@
-using Code.Runtime.Data;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -28,29 +26,19 @@ namespace Code.Runtime.Logic.Interactions
             _bookSlotInteractionService = bookSlotInteractionService;
         }
 
-        public override bool CanInteract()
-        {
-            Debug.Log("Can interact check.");
-            return _bookSlotInteractionService.CanInteract(_bookStorage);
-        }
+        public override bool CanInteract() =>
+            _bookSlotInteractionService.CanInteract(_bookStorage);
 
         public override void Interact()
         {
-            Debug.Log("Interact request.");
             _bookSlotInteractionService.Interact(_bookStorage);
             _readingTableInteractionService.Interact(_bookStorage, _progress);
         }
 
-        public void OnHoverStart()
-        {
-            Debug.Log("Hovered");
+        public void OnHoverStart() =>
             _readingTableInteractionService.StartReadingIfPossible(_bookStorage, _progress);
-        }
 
-        public void OnHoverEnd()
-        {
-            Debug.Log("Unhovered");
+        public void OnHoverEnd() =>
             _readingTableInteractionService.StopReading(_progress);
-        }
     }
 }
