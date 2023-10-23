@@ -1,8 +1,11 @@
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Code.Runtime.Infrastructure.AssetManagement
 {
+    [UsedImplicitly]
     public class AssetProvider : IAssetProvider
     {
         private readonly DiContainer _container;
@@ -18,7 +21,9 @@ namespace Code.Runtime.Infrastructure.AssetManagement
         public GameObject Instantiate(string path, Vector3 at, Quaternion rotation, Transform parent = null)
         {
             GameObject prefab = Resources.Load<GameObject>(path);
-            return _container.InstantiatePrefab(prefab, at, rotation, parent);
+            GameObject result = _container.InstantiatePrefab(prefab, at, rotation, parent);
+            SceneManager.MoveGameObjectToScene(result, SceneManager.GetActiveScene());
+            return result;
         }
     }
 }
