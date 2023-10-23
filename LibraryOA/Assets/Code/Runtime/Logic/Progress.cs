@@ -27,7 +27,7 @@ namespace Code.Runtime.Logic
             private set
             {
                 _value = value;
-                Updated?.Invoke(_value);
+                Updated?.Invoke(Value);
             }
         }
 
@@ -40,10 +40,10 @@ namespace Code.Runtime.Logic
         }
         
         public void LoadProgress(PlayerProgress progress) =>
-            throw new System.NotImplementedException();
+            Value = progress.WorldData.ProgressesStates.GetDataForId(_id);
 
         public void UpdateProgress(PlayerProgress progress) =>
-            throw new System.NotImplementedException();
+            progress.WorldData.ProgressesStates.SetDataForId(_id, Value);
 
         public void StartFilling(Action onFinishCallback)
         {

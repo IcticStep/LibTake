@@ -6,11 +6,6 @@ namespace Code.Runtime.Data.Progress
     public sealed class WorldData
     {
         public BookHoldersState BookHoldersState = new();
-        public ProgressesStates ProgressesStates;
-    }
-
-    [Serializable]
-    public class ProgressesStates
-    {
+        public ProgressesStates ProgressesStates = new();
     }
 }
