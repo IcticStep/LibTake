@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Code.Runtime.Logic.SpawnMarkers;
+using Code.Runtime.StaticData.SpawnersStaticData;
 using Code.Runtime.Utils;
 using UnityEngine;
 
@@ -10,19 +12,23 @@ namespace Code.Runtime.StaticData
         [field: ReadOnly, SerializeField]
         public string LevelKey { get; private set; }
 
-        [SerializeField] 
-        private List<BookSlotSpawnData> _bookSlots;
-
         [field: ReadOnly, SerializeField]
         public Vector3 PlayerInitialPosition { get; private set; }
 
+        [SerializeField] 
+        private List<BookSlotSpawnData> _bookSlots;
+        [SerializeField] 
+        private List<ReadingTableSpawnData> _readingTables;
+
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
+        public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
         
-        public void UpdateData(string levelKey, List<BookSlotSpawnData> bookSlots, Vector3 playerInitialPosition)
+        public void UpdateData(string levelKey, Vector3 playerInitialPosition, List<BookSlotSpawnData> bookSlots, List<ReadingTableSpawnData> readingTables)
         {
             LevelKey = levelKey;
-            _bookSlots = bookSlots;
             PlayerInitialPosition = playerInitialPosition;
+            _bookSlots = bookSlots;
+            _readingTables = readingTables;
         }
     }
 }
