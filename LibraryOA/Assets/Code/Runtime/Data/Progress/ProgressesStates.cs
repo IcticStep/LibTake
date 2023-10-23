@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -9,20 +10,20 @@ namespace Code.Runtime.Data.Progress
     public class ProgressesStates
     {
         [SerializeField]
-        private List<IdentifiedData<float>> _bookHolders = new();
+        private List<IdentifiedData<float>> _progressValues = new();
 
         public float GetDataForId(string id) =>
-            (_bookHolders.FirstOrDefault(x => x.Id == id)?.Data)
+            (_progressValues.FirstOrDefault(x => x.Id == id)?.Data)
             ?? default(float);
 
         public void SetDataForId(string id, float value)
         {
-            IdentifiedData<float> savedData = _bookHolders.FirstOrDefault(x => x.Id == id);
+            IdentifiedData<float> savedData = _progressValues.FirstOrDefault(x => x.Id == id);
 
             if(savedData is not null)
-                _bookHolders.Remove(savedData);
+                _progressValues.Remove(savedData);
 
-            _bookHolders.Add(new IdentifiedData<float>(id, value));
+            _progressValues.Add(new IdentifiedData<float>(id, value));
         }
     }
 }
