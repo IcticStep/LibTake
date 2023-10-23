@@ -5,25 +5,25 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class BookSlot : Interactable
+    internal sealed class ReadingTable : Interactable
     {
         [SerializeField] 
         private BookStorageHolder _bookStorageObject;
         
-        private IBookSlotInteractionService _bookSlotInteractionService;
+        private IReadingTableInteractionService _readingTableInteractionService;
         private IBookStorage _bookStorage;
 
         private void Start() =>
             _bookStorage = _bookStorageObject.BookStorage;
 
         [Inject]
-        private void Construct(IBookSlotInteractionService bookSlotInteractionService) =>
-            _bookSlotInteractionService = bookSlotInteractionService;
+        private void Construct(IReadingTableInteractionService readingTableInteractionService) =>
+            _readingTableInteractionService = readingTableInteractionService;
         
         public override bool CanInteract() =>
-            _bookSlotInteractionService.CanInteract(_bookStorage);
+            _readingTableInteractionService.CanInteract(_bookStorage);
 
         public override void Interact() =>
-            _bookSlotInteractionService.Interact(_bookStorage);
+            _readingTableInteractionService.Interact(_bookStorage);
     }
 }

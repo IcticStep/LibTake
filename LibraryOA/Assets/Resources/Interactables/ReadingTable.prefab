@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5612651232955193232}
   - component: {fileID: 4985088180897340317}
   - component: {fileID: 4093452936799277596}
-  - component: {fileID: 4293646630028968576}
+  - component: {fileID: 8367924536344103221}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -49,7 +49,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b952ad4ff95846f09b2142f7f84cf3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4293646630028968576
+--- !u!114 &8367924536344103221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,11 +76,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2862531959078406648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f1062f96614b9486f9403810395da2, type: 3}
+  m_Script: {fileID: 11500000, guid: ff78d6ea1e274165b5d801e149e6a565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bookStorageObject: {fileID: 4093452936799277596}
-  _bookObject: {fileID: 8916762392369861101}
 --- !u!1 &3051894274289638350
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +89,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4640352370649884595}
+  - component: {fileID: 2556374569958298819}
+  - component: {fileID: 1010836182465094242}
   m_Layer: 0
   m_Name: ReadingTable
   m_TagString: Untagged
@@ -115,6 +116,41 @@ Transform:
   - {fileID: 5612651232955193232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &2556374569958298819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051894274289638350}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4834509, y: 0.8842619, z: 1.1862476}
+  m_Center: {x: -0.08717966, y: 0.43747053, z: 0.057459295}
+--- !u!114 &1010836182465094242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051894274289638350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f1062f96614b9486f9403810395da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bookStorageObject: {fileID: 4093452936799277596}
+  _bookObject: {fileID: 8916762392369861101}
 --- !u!1001 &2947829904921540145
 PrefabInstance:
   m_ObjectHideFlags: 0

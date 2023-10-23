@@ -47,7 +47,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IInputService>().To<InputService>().AsSingle();
             Container.BindInterfacesTo<PlayerProviderService>().AsSingle();
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
-            Container.Bind<IBookSlotInteractService>().To<BookSlotInteractService>().AsSingle();
+            Container.Bind<IBookSlotInteractionService>().To<BookSlotInteractionService>().AsSingle();
+            Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
         }
 
         private void InstallFactories()
