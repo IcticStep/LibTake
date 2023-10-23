@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3630ec991c40008bd94760f189df1c, type: 3}
   m_Name: Programming
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Programming
+  <BookType>k__BackingField: 3
   <Material>k__BackingField: {fileID: 2100000, guid: f61b172feb06490489171efc8f45bf23,
     type: 2}
