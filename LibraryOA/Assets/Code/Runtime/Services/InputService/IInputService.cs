@@ -5,7 +5,9 @@ namespace Code.Runtime.Services.InputService
 {
     public interface IInputService
     {
-        public Vector2 GetMovement();
-        public event Action InteractButtonPressed;
+        event Action InteractButtonPressed;
+        void Dispose();
+        Vector2 GetMovement();
+        void RegisterMovementProvider(IInputProvider<Vector2> movementProvide);
     }
 }
