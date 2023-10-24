@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Physics;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,6 +19,7 @@ namespace Code.Runtime.Player
         
         private IPhysicsService _physicsService;
         private Interactable _currentFocusedInteractable;
+        private IInteractablesRegistry _interactablesRegistry;
 
         public float RayLength => _rayLength;
         public Vector3? RayStart => _rayStartPoint != null ? 
@@ -50,23 +52,31 @@ namespace Code.Runtime.Player
         public event Action<Interactable> UnfocusedInteractable;
 
         [Inject]
-        private void Construct(IPhysicsService physicsService) =>
+        private void Construct(IPhysicsService physicsService, IInteractablesRegistry interactablesRegistry)
+        {
             _physicsService = physicsService;
+            _interactablesRegistry = interactablesRegistry;
+        }
 
         private void Update()
         {
-            Interactable raycasted = RaycastInteractables();
+            Interactable raycasted = FindInteractables();
             if(raycasted == CurrentFocusedInteractable) return;
             CurrentFocusedInteractable = raycasted;
         }
 
-        private Interactable RaycastInteractables() =>
-            _physicsService.RaycastSphereForInteractable(_rayStartPoint.position, _rayStartPoint.TransformDirection(Vector3.forward), _rayLength);
-
-        private void DebugFocusedInteractableChange()
+        private Interactable FindInteractables()
         {
-            if (_currentFocusedInteractable is not null)
-                Debug.Log($"Current focused interactable: {_currentFocusedInteractable.gameObject.name} | {_currentFocusedInteractable.name}.");
+            Collider found = FindCollider();
+            if(found is null)
+                return default(Interactable);
+            return _interactablesRegistry.GetInteractableByCollider(found);
         }
+
+        private Collider FindCollider() =>
+            _physicsService.RaycastSphereForInteractable(
+                _rayStartPoint.position,
+                _rayStartPoint.TransformDirection(Vector3.forward),
+                _rayLength);
     }
 }
