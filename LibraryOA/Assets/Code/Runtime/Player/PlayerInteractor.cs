@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Code.Runtime.Player
 {
-    internal sealed class PlayerInteract : MonoBehaviour
+    internal sealed class PlayerInteractor : MonoBehaviour
     {
         [SerializeField] private InteractablesScanner _interactablesScanner;
         private IInputService _input;

@@ -1,6 +1,7 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Interactions;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -11,11 +12,13 @@ namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
     {
         private readonly IAssetProvider _assetProvider;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
+        private readonly IInteractablesRegistry _interactablesRegistry;
 
-        public BookSlotFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry)
+        public BookSlotFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry, IInteractablesRegistry interactablesRegistry)
         {
             _assetProvider = assetProvider;
             _saveLoadRegistry = saveLoadRegistry;
+            _interactablesRegistry = interactablesRegistry;
         }
         
         public GameObject Create(string bookSlotId, Vector3 at, string initialBookId = null)
@@ -31,10 +34,12 @@ namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
         private GameObject Instantiate(Vector3 at) =>
             _assetProvider.Instantiate(AssetPath.BookSlot, at);
 
-        private static void InitInteractable(string bookSlotId, GameObject bookSlot)
+        private void InitInteractable(string bookSlotId, GameObject bookSlot)
         {
             Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
+            Collider collider = interactable.GetComponent<Collider>();
             interactable.InitId(bookSlotId);
+            _interactablesRegistry.Register(interactable, collider);
         }
 
         private void InitBookStorage(string bookSlotId, string initialBookId, GameObject bookSlot)
