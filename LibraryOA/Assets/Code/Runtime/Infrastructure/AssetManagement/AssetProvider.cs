@@ -15,6 +15,9 @@ namespace Code.Runtime.Infrastructure.AssetManagement
             _container = container;
         }
 
+        public GameObject Instantiate(string path, Transform parent = null) =>
+            Instantiate(path, Vector3.zero, parent);
+
         public GameObject Instantiate(string path, Vector3 at, Transform parent = null) =>
             Instantiate(path, at, Quaternion.identity, parent);
 

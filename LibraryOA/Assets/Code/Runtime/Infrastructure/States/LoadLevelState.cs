@@ -24,13 +24,15 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerInventoryService _playerInventory;
         private readonly IPlayerFactory _playerFactory;
         private readonly IReadingTableFactory _readingTableFactory;
+        private readonly IHudFactory _hudFactory;
 
         private string _levelName;
         private LevelStaticData _levelData;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IPlayerInventoryService playerInventory,
-            IBookSlotFactory bookSlotFactory, IPlayerFactory playerFactory, IReadingTableFactory readingTableFactory)
+            IBookSlotFactory bookSlotFactory, IPlayerFactory playerFactory, IReadingTableFactory readingTableFactory, 
+            IHudFactory hudFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -41,6 +43,7 @@ namespace Code.Runtime.Infrastructure.States
             _playerInventory = playerInventory;
             _playerFactory = playerFactory;
             _readingTableFactory = readingTableFactory;
+            _hudFactory = hudFactory;
         }
 
         public void Start(string payload)
@@ -60,6 +63,7 @@ namespace Code.Runtime.Infrastructure.States
             InitPlayer();
             InitGameWorld();
             InformProgressReaders();
+            InitUi();
             
             _stateMachine.EnterState<GameLoopState>();
         }
@@ -77,6 +81,9 @@ namespace Code.Runtime.Infrastructure.States
             return player;
         }
 
+        private void InitUi() =>
+            _hudFactory.Create();
+
         private void InitBookSlots()
         {
             foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
@@ -84,7 +91,7 @@ namespace Code.Runtime.Infrastructure.States
                 _bookSlotFactory.Create(spawn.Id, spawn.Position, spawn.InitialBookId);
             }
         }
-        
+
         private void InitReadingTables()
         {
             foreach(ReadingTableSpawnData readingTable in _levelData.ReadingTables)
