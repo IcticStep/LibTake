@@ -45,6 +45,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
+            Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
             Container.Bind<IPlayerProviderService>().To<PlayerProviderService>().AsSingle();
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
             Container.Bind<IBookSlotInteractionService>().To<BookSlotInteractionService>().AsSingle();
