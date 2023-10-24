@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Interactions;
 using Code.Runtime.StaticData;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -15,12 +16,15 @@ namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
         private readonly IAssetProvider _assetProvider;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IStaticDataService _staticDataService;
+        private readonly IInteractablesRegistry _interactablesRegistry;
 
-        public ReadingTableFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry, IStaticDataService staticDataService)
+        public ReadingTableFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry, 
+            IStaticDataService staticDataService, IInteractablesRegistry interactablesRegistry)
         {
             _assetProvider = assetProvider;
             _saveLoadRegistry = saveLoadRegistry;
             _staticDataService = staticDataService;
+            _interactablesRegistry = interactablesRegistry;
         }
         
         public GameObject Create(string objectId, Vector3 at, string initialBookId = null)
@@ -47,10 +51,12 @@ namespace Code.Runtime.Infrastructure.Services.Factories.Interactables
         private GameObject Instantiate(Vector3 at) =>
             _assetProvider.Instantiate(AssetPath.ReadingTable, at);
 
-        private static void InitInteractable(string objectId, GameObject readingTable)
+        private void InitInteractable(string objectId, GameObject readingTable)
         {
             Interactable interactable = readingTable.GetComponentInChildren<Interactable>();
+            Collider collider = interactable.GetComponent<Collider>();
             interactable.InitId(objectId);
+            _interactablesRegistry.Register(interactable, collider);
         }
 
         private void InitBookStorage(string objectId, string initialBookId, GameObject readingTable)
