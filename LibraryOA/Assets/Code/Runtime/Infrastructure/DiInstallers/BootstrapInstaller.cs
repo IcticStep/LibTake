@@ -58,6 +58,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
             Container.Bind<IBookSlotFactory>().To<BookSlotFactory>().AsSingle();
             Container.Bind<IReadingTableFactory>().To<ReadingTableFactory>().AsSingle();
+            Container.Bind<IHudFactory>().To<HudFactory>().AsSingle();
         }
 
         private void InstallStateMachine()

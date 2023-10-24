@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseSpeed: 4
-  _inertiaDecayRate: 20
-  _rotationSpeed: 3
+  _inertiaDecayRate: 15
+  _rotationSpeed: 20
 --- !u!114 &4826805810013803409
 MonoBehaviour:
   m_ObjectHideFlags: 0
