@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12818722b9914dd7bedc664e8faea202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 4
-  _inertiaDecayRate: 15
+  _baseSpeed: 10
+  _inertiaDecayRate: 25
   _rotationSpeed: 20
 --- !u!114 &4826805810013803409
 MonoBehaviour:
@@ -268,7 +268,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2876374805685704836}
@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 8906968435465288124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.349}
+  m_LocalPosition: {x: 0, y: 0, z: 0.509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -482,17 +482,17 @@ PrefabInstance:
     - target: {fileID: 4768372941021041765, guid: 506252b7f601bee49be8ca5a13fdb63d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.39
+      value: 0.657
       objectReference: {fileID: 0}
     - target: {fileID: 4768372941021041765, guid: 506252b7f601bee49be8ca5a13fdb63d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.79335374
+      value: 0.9914448
       objectReference: {fileID: 0}
     - target: {fileID: 4768372941021041765, guid: 506252b7f601bee49be8ca5a13fdb63d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6087609
+      value: -0.1305265
       objectReference: {fileID: 0}
     - target: {fileID: 4768372941021041765, guid: 506252b7f601bee49be8ca5a13fdb63d,
         type: 3}
@@ -507,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 4768372941021041765, guid: 506252b7f601bee49be8ca5a13fdb63d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -75
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 4768372941021041765, guid: 506252b7f601bee49be8ca5a13fdb63d,
         type: 3}

@@ -5,6 +5,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
+using Code.Runtime.Player;
 using Code.Runtime.Services.Player;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.SpawnersStaticData;
@@ -60,9 +61,10 @@ namespace Code.Runtime.Infrastructure.States
 
         private void OnLevelLoaded()
         {
-            InitPlayer();
+            GameObject player = InitPlayer();
             InitGameWorld();
             InformProgressReaders();
+            InitCamera(player);
             InitUi();
             
             _stateMachine.EnterState<GameLoopState>();
@@ -99,6 +101,11 @@ namespace Code.Runtime.Infrastructure.States
                 _readingTableFactory.Create(readingTable.Id, readingTable.Position, readingTable.InitialBookId);
             }
         }
+
+        private void InitCamera(GameObject player) =>
+            Camera.main!
+                .GetComponent<CameraFollow>()
+                .SetTarget(player.transform);
 
         private void InformProgressReaders()
         {
