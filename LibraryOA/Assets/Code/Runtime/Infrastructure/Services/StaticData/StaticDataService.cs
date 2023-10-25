@@ -12,6 +12,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string BooksPath = "Static Data/Books/Instances";
         private const string LevelsPath = "Static Data/Levels";
         private const string ReadingTablePath = "Static Data/Interactables/ReadingTableData";
+        private const string DebugToolsPath = "Static Data/DebugTools/Debug tools data";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
