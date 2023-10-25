@@ -15,9 +15,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
-        
+
         public StaticReadingTable ReadingTableData { get; private set; }
-        
+
         public void LoadAll()
         {
             LoadBooks();
@@ -29,7 +29,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             _books = Resources
                 .LoadAll<StaticBook>(BooksPath)
                 .ToDictionary(x => x.Id, x => x);
-        
+
         public void LoadLevels() =>
             _levels = Resources
                 .LoadAll<LevelStaticData>(LevelsPath)
@@ -43,7 +43,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             _books.TryGetValue(id, out StaticBook result)
                 ? result
                 : null;
-        
+
         public LevelStaticData ForLevel(string key) =>
             _levels.TryGetValue(key, out LevelStaticData result)
                 ? result
