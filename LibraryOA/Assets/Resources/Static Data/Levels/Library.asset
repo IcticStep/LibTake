@@ -15,19 +15,19 @@ MonoBehaviour:
   <LevelKey>k__BackingField: Library
   <PlayerInitialPosition>k__BackingField: {x: -0.95, y: 0.92435944, z: 1.5997596}
   _bookSlots:
-  - Id: Library_fea71ae0-b026-403d-bba4-9d930fbfdb6e
-    InitialBookId: 
-    Position: {x: 0.16, y: 0, z: 0.2140001}
-  - Id: BookSlotSpawn_a1e90da3-5969-40ba-ad30-e6f6fb3476ce
-    InitialBookId: e1b093f9-e3fa-4487-a9e8-1402a35f1944
-    Position: {x: -2.2217648, y: 0, z: 0.2140001}
   - Id: Library_94a109dd-5faa-4901-b0fc-e691f780931c
     InitialBookId: 
-    Position: {x: 2.83, y: 0, z: 0.2140001}
+    Position: {x: 2.83, y: 0, z: 15.92976}
+  - Id: BookSlotSpawn_cd2df654-49b1-4205-be82-0c63303631f3
+    InitialBookId: e1b093f9-e3fa-4487-a9e8-1402a35f1944
+    Position: {x: -2.2217648, y: 0, z: 15.989759}
+  - Id: Library_fea71ae0-b026-403d-bba4-9d930fbfdb6e
+    InitialBookId: 
+    Position: {x: 0.16, y: 0, z: 15.649759}
   - Id: Library_b452df8d-7e56-4104-b146-37e3b8b154e6
     InitialBookId: 3e9bc412-e8a2-4137-94ab-353ed169eb56
-    Position: {x: 5.08, y: 0, z: 0.2140001}
+    Position: {x: 5.08, y: 0, z: 16.32976}
   _readingTables:
   - Id: Library_14bc67dc-2eb0-416f-9b6c-1b53d388a119
     InitialBookId: 
-    Position: {x: 2.87, y: 0, z: 2.0937595}
+    Position: {x: -9.72, y: 0, z: 4.3597593}
