@@ -6,9 +6,6 @@ namespace Code.Runtime.StaticData.DebugTools
     internal sealed class DebugToolsData : ScriptableObject
     {
         [field: SerializeField]
-        public GameObject ProfilerPrefab;
-        
-        [field: SerializeField]
         public GameObject ConsolePrefab;
     }
 }
