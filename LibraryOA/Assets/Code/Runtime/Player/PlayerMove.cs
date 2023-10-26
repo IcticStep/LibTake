@@ -52,7 +52,6 @@ namespace Code.Runtime.Player
         {
             Vector3 movementDirection = _camera.transform.TransformDirection(input);
             movementDirection.y = 0;
-            movementDirection.Normalize();
             return movementDirection;
         }
         
