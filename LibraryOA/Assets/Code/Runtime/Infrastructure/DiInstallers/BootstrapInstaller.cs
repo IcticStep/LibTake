@@ -11,6 +11,7 @@ using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Infrastructure.DiInstallers
@@ -29,6 +30,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         public void Initialize()
         {
+            Application.targetFrameRate = 60;
             Container.Resolve<GameStateMachine>().EnterState<BootstrapState>();
         }
 
