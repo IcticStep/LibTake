@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.AssetManagement;
+using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.Factories.Interactables;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
@@ -10,6 +11,7 @@ using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Infrastructure.DiInstallers
@@ -28,6 +30,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         public void Initialize()
         {
+            Application.targetFrameRate = 60;
             Container.Resolve<GameStateMachine>().EnterState<BootstrapState>();
         }
 
@@ -51,6 +54,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IBookSlotInteractionService>().To<BookSlotInteractionService>().AsSingle();
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
+            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
         }
 
         private void InstallFactories()
