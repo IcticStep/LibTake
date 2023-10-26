@@ -1,7 +1,6 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.Factories;
-using Code.Runtime.Infrastructure.Services.Factories.Interactables;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
@@ -60,8 +59,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         private void InstallFactories()
         {
             Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
-            Container.Bind<IBookSlotFactory>().To<BookSlotFactory>().AsSingle();
-            Container.Bind<IReadingTableFactory>().To<ReadingTableFactory>().AsSingle();
+            Container.Bind<IInteractablesFactory>().To<InteractablesFactory>().AsSingle();
             Container.Bind<IHudFactory>().To<HudFactory>().AsSingle();
         }
 
