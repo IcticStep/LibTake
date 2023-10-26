@@ -1,33 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f03a311cc84ee68c5077a111763204, type: 3}
-  m_Name: Library
-  m_EditorClassIdentifier: 
-  <LevelKey>k__BackingField: Library
-  <PlayerInitialPosition>k__BackingField: {x: -0.95, y: 0.92435944, z: 1.5997596}
-  _bookSlots:
-  - Id: Library_94a109dd-5faa-4901-b0fc-e691f780931c
-    InitialBookId: 
-    Position: {x: 2.83, y: 0, z: 15.92976}
-  - Id: BookSlotSpawn_cd2df654-49b1-4205-be82-0c63303631f3
-    InitialBookId: e1b093f9-e3fa-4487-a9e8-1402a35f1944
-    Position: {x: -2.2217648, y: 0, z: 15.989759}
-  - Id: Library_fea71ae0-b026-403d-bba4-9d930fbfdb6e
-    InitialBookId: 
-    Position: {x: 0.16, y: 0, z: 15.649759}
-  - Id: Library_b452df8d-7e56-4104-b146-37e3b8b154e6
-    InitialBookId: 3e9bc412-e8a2-4137-94ab-353ed169eb56
-    Position: {x: 5.08, y: 0, z: 16.32976}
-  _readingTables:
-  - Id: Library_14bc67dc-2eb0-416f-9b6c-1b53d388a119
-    InitialBookId: 
-    Position: {x: -9.72, y: 0, z: 4.3597593}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5b61661b6b215dedca9a77259807017be470b8859507577a47dfc43095881429
+size 1215
