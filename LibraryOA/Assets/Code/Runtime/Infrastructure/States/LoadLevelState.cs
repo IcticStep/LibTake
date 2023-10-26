@@ -1,5 +1,4 @@
 using Code.Runtime.Infrastructure.Services.Factories;
-using Code.Runtime.Infrastructure.Services.Factories.Interactables;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
@@ -18,13 +17,12 @@ namespace Code.Runtime.Infrastructure.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
-        private readonly IBookSlotFactory _bookSlotFactory;
+        private readonly IInteractablesFactory _interactablesFactory;
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IPlayerProgressService _playerProgress;
         private readonly IPlayerInventoryService _playerInventory;
         private readonly IPlayerFactory _playerFactory;
-        private readonly IReadingTableFactory _readingTableFactory;
         private readonly IHudFactory _hudFactory;
 
         private string _levelName;
@@ -32,18 +30,16 @@ namespace Code.Runtime.Infrastructure.States
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IPlayerInventoryService playerInventory,
-            IBookSlotFactory bookSlotFactory, IPlayerFactory playerFactory, IReadingTableFactory readingTableFactory, 
-            IHudFactory hudFactory)
+            IInteractablesFactory interactablesFactory, IPlayerFactory playerFactory, IHudFactory hudFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
-            _bookSlotFactory = bookSlotFactory;
+            _interactablesFactory = interactablesFactory;
             _staticData = staticData;
             _saveLoadRegistry = saveLoadRegistry;
             _playerProgress = playerProgress;
             _playerInventory = playerInventory;
             _playerFactory = playerFactory;
-            _readingTableFactory = readingTableFactory;
             _hudFactory = hudFactory;
         }
 
@@ -90,7 +86,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
             {
-                _bookSlotFactory.Create(spawn.Id, spawn.Position, spawn.InitialBookId);
+                _interactablesFactory.CreateBookSlot(spawn.Id, spawn.Position, spawn.InitialBookId);
             }
         }
 
@@ -98,7 +94,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(ReadingTableSpawnData readingTable in _levelData.ReadingTables)
             {
-                _readingTableFactory.Create(readingTable.Id, readingTable.Position, readingTable.InitialBookId);
+                _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.InitialBookId);
             }
         }
 
