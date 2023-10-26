@@ -8,14 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bricks
-  m_Shader: {fileID: 4800000, guid: c85b65c1d2f618e4f9812ff71ac7bcbb, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0ca6dca7396eb48e5849247ffd444914, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _EMISSION
-  - _ENVIRONMENTREFLECTIONS_OFF
-  - _SPECULARHIGHLIGHTS_OFF
-  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -28,8 +26,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: a1e662e3b17978644934464d489d2cba, type: 3}
-        m_Scale: {x: 1.5, y: 1}
+        m_Texture: {fileID: 2800000, guid: 941291ae84509234490f7378a238a308, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0.6}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -52,8 +50,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a1e662e3b17978644934464d489d2cba, type: 3}
-        m_Scale: {x: 1.5, y: 1}
+        m_Texture: {fileID: 2800000, guid: 941291ae84509234490f7378a238a308, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0.6}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -93,6 +91,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _BlendOp: 0
     - _BumpScale: 3
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
