@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _counterText: {fileID: 39225846}
-  _framesBeforeUpdate: 10
+  _secondsUpdateInterval: 0.1
 --- !u!1001 &56987669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6434,6 +6434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SwitchToEntryScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422948970805916915, guid: fc8eb16564d96344884cad7909237c1f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3851391371442323269, guid: fc8eb16564d96344884cad7909237c1f,
         type: 3}
