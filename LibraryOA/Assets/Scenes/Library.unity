@@ -2937,13 +2937,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855096771}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.93, y: 3.59, z: -7.9}
+  m_LocalRotation: {x: 0.6532815, y: -0.27059805, z: 0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: -2.93, y: 3.056, z: -7.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1287538641}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 45}
 --- !u!1001 &857435591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3130,7 +3130,7 @@ Transform:
   m_GameObject: {fileID: 862289975}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -11.311, y: 4.221, z: -11.958}
+  m_LocalPosition: {x: -12.08, y: 4.221, z: -12.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3919,6 +3919,7 @@ Transform:
   - {fileID: 1297442630}
   - {fileID: 1387147548}
   - {fileID: 1572374219}
+  - {fileID: 1767483188}
   - {fileID: 862289978}
   - {fileID: 855096774}
   - {fileID: 932832808}
@@ -5135,13 +5136,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572374216}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.85, y: 3.59, z: -10.79}
+  m_LocalRotation: {x: 0.6532815, y: -0.27059805, z: 0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: -5.85, y: 3.056, z: -10.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1287538641}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 45}
 --- !u!1 &1677463034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5645,6 +5646,124 @@ Transform:
   - {fileID: 1520341315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1767483187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1767483188}
+  - component: {fileID: 1767483190}
+  - component: {fileID: 1767483189}
+  m_Layer: 0
+  m_Name: Spot Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1767483188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767483187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6532815, y: -0.27059805, z: 0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: -8.513, y: 3.056, z: -13.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1287538641}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 45}
+--- !u!114 &1767483189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767483187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &1767483190
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767483187}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 3
+  m_Range: 10
+  m_SpotAngle: 117.692795
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 2
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 1.026e-42, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1001 &1780331852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6036,36 +6155,28 @@ LightProbeGroup:
   m_GameObject: {fileID: 2000434426}
   m_Enabled: 1
   m_SourcePositions:
-  - {x: 0.3762865, y: 4.989948, z: 2.944459}
-  - {x: 0.36636925, y: 5.020411, z: -2.9651036}
-  - {x: 0.28786182, y: -0.12871516, z: 2.971259}
-  - {x: 0.26739216, y: -0.15424606, z: -2.9651036}
   - {x: 7.4505067, y: 4.970349, z: 2.7270627}
   - {x: 7.4206915, y: -0.23519179, z: 2.7442532}
   - {x: 7.4394445, y: -0.21017772, z: -2.7910213}
   - {x: 7.436844, y: 4.9703255, z: -2.7123046}
   - {x: 4.528378, y: -0.23519179, z: 2.0405684}
   - {x: 4.528378, y: 4.3484316, z: 2.0405684}
-  - {x: -1.0732031, y: 3.593141, z: 0.0013129711}
-  - {x: -1.0732031, y: 0.14966008, z: 0.0013129711}
+  - {x: -1.4582539, y: 3.593141, z: 0.0013129711}
+  - {x: -2.0162039, y: 0.14966008, z: 0.0013129711}
   - {x: 10.481636, y: 5.074624, z: -2.7670927}
   - {x: 10.481636, y: -0.18085495, z: -2.7670927}
-  - {x: 10.481636, y: 3.6019304, z: -6.5931687}
-  - {x: 10.481636, y: -0.18085495, z: -6.5931687}
-  - {x: 7.7772465, y: 3.6019304, z: -9.562739}
-  - {x: 7.7772465, y: 0.065460205, z: -9.562739}
-  - {x: 4.995472, y: 3.6019304, z: -12.429142}
-  - {x: 4.995472, y: 0.065460205, z: -12.429142}
+  - {x: 10.23031, y: 2.774492, z: -6.4341493}
+  - {x: 10.481636, y: -0.18085495, z: -6.446172}
+  - {x: 6.034728, y: 3.0028217, z: -11.437004}
+  - {x: 6.082914, y: 0.065460205, z: -11.412099}
   - {x: 2.208798, y: 3.6019304, z: -15.263616}
   - {x: 2.208798, y: 0.065460205, z: -15.263616}
   - {x: -2.987793, y: 4.900787, z: -11.280576}
   - {x: -2.987793, y: -0.1863006, z: -11.280576}
   - {x: 3.3771753, y: 4.236357, z: -5.8296084}
   - {x: 3.2801151, y: -0.21133494, z: -5.8296084}
-  - {x: -0.21214199, y: -0.21133494, z: -5.873627}
-  - {x: -0.11508179, y: 4.96282, z: -5.873627}
-  - {x: -0.21214199, y: -0.21133494, z: -8.665265}
-  - {x: -0.11508179, y: 4.96282, z: -8.665265}
+  - {x: -1.3732014, y: -0.21133494, z: -4.2880697}
+  - {x: -1.2761412, y: 4.96282, z: -4.2880697}
   - {x: 10.644025, y: 3.6770735, z: 2.0405684}
   - {x: 10.644025, y: -0.23519179, z: 2.0405684}
   - {x: 10.639951, y: -0.21017772, z: -2.0380542}
@@ -6130,14 +6241,12 @@ LightProbeGroup:
   - {x: 16.43237, y: -0.23519179, z: 11.00963}
   - {x: 5.214077, y: 4.970349, z: 11.036857}
   - {x: 5.1842613, y: -0.23519179, z: 11.054048}
-  - {x: 3.0527658, y: 4.970349, z: 7.564832}
-  - {x: 3.0229502, y: -0.23519179, z: 7.582023}
-  - {x: -0.09816551, y: 4.970349, z: 5.7688985}
-  - {x: -0.12798119, y: -0.23519179, z: 5.7860894}
-  - {x: -0.09816551, y: 4.970349, z: 5.7688985}
-  - {x: -0.12798119, y: -0.23519179, z: 5.7860894}
-  - {x: 0.039113045, y: 4.970349, z: 9.038929}
-  - {x: 0.009297371, y: -0.23519179, z: 9.05612}
+  - {x: 4.3868065, y: 4.970349, z: 7.215513}
+  - {x: 4.356991, y: -0.23519179, z: 7.232704}
+  - {x: -1.138938, y: 4.970349, z: 5.7688985}
+  - {x: -1.1687536, y: -0.23519179, z: 5.7860894}
+  - {x: 0.2762394, y: 4.970349, z: 9.336208}
+  - {x: 0.24642372, y: -0.23519179, z: 9.353399}
   m_Dering: 1
 --- !u!4 &2000434428
 Transform:
