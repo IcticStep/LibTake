@@ -26,6 +26,7 @@ namespace Code.Editor.Windows.BookSlot
         private Slider _circleRadiusSlider;
         private SliderInt _objectCountSlider;
         private List<BookSlotSpawn> _spawns;
+        private bool _initialized;
 
         private BookSlotSpawnContainer Container => _containerField.value as BookSlotSpawnContainer;
         private float CircleRadius => _circleRadiusSlider.value;
@@ -41,7 +42,7 @@ namespace Code.Editor.Windows.BookSlot
             VisualElement gui = _visualTreeAsset.Instantiate();
             VisualElement root = rootVisualElement;
             root.Add(gui);
-
+            
             _containerField = root.Q<ObjectField>(ContainerFieldName);
             _toolBox = root.Q<IMGUIContainer>(ToolBoxName);
             _circleRadiusSlider = root.Q<Slider>(CircleRadiusSliderName);
@@ -52,8 +53,13 @@ namespace Code.Editor.Windows.BookSlot
         {
             SetToolBoxVisibility();
             if(!HasTarget)
+            {
+                _initialized = false;
                 return;
+            }
 
+            InitializeWindow();
+            UpdateContainer();
             AdjustObjectsCount();
             SetObjectsInCircle();
         }
@@ -63,10 +69,22 @@ namespace Code.Editor.Windows.BookSlot
                 ? DisplayStyle.Flex
                 : DisplayStyle.None;
 
+        private void InitializeWindow()
+        {
+            if(_initialized)
+                return;
+            
+            _spawns = Container.GetComponentsInChildren<BookSlotSpawn>().ToList();
+            _circleRadiusSlider.value = Container.CircleRadius;
+            _objectCountSlider.value = _spawns.Count;
+            _initialized = true;
+        }
+
+        private void UpdateContainer() =>
+            Container.CircleRadius = CircleRadius;
+
         private void AdjustObjectsCount()
         {
-            _spawns ??= Container.GetComponentsInChildren<BookSlotSpawn>().ToList();
-
             AddIfLess();
             RemoveIfMore();
         }
