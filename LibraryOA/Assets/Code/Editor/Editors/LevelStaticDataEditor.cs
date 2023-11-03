@@ -26,7 +26,7 @@ namespace Code.Editor.Editors
             }
         }
 
-        private void UpdateLevelData(LevelStaticData levelData)
+        public static void UpdateLevelData(LevelStaticData levelData)
         {
             List<BookSlotSpawnData> bookSlotsSpawns = FindObjectsOfType<BookSlotSpawn>()
                 .Select(BookSlotSpawnData.NewFrom)
@@ -38,6 +38,6 @@ namespace Code.Editor.Editors
             Vector3 playerPosition = FindObjectOfType<PlayerInitialSpawn>().transform.position;
 
             levelData.UpdateData(sceneKey, playerPosition, bookSlotsSpawns, readingTableSpawns);
-            EditorUtility.SetDirty(target);
+            EditorUtility.SetDirty(levelData);
         }
     }}

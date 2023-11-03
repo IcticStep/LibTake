@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Code.Runtime.Infrastructure.Services.StaticData
 {
     [UsedImplicitly]
-    internal sealed class StaticDataService : IStaticDataService
+    public sealed class StaticDataService : IStaticDataService
     {
         private const string BooksPath = "Static Data/Books/Instances";
         private const string LevelsPath = "Static Data/Levels";
