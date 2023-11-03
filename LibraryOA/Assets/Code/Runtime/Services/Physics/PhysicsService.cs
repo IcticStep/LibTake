@@ -15,17 +15,17 @@ namespace Code.Runtime.Services.Physics
         
         public Collider RaycastSphereForInteractable(Vector3 position, Vector3 forwardDirection, float radius)
         {
-            ClearHitBuffer10();
             int collisions = UnityEngine.Physics.OverlapSphereNonAlloc(position, radius, _hitColliderBuffer10, _interactableLayerMask);
             if(collisions == 0) 
                 return default(Collider);
 
             Collider result = _hitColliderBuffer10[0];
-            float resultDot = Vector3.Dot(forwardDirection, result.transform.position);
+            float resultDot = Vector3.Dot(forwardDirection, result.transform.position - position);
             for(int i = 1; i < collisions; i++)
             {
                 Collider current = _hitColliderBuffer10[i];
-                float currentDot = Vector3.Dot(forwardDirection, position - current.transform.position);
+                Vector3 relativePosition = current.transform.position - position;
+                float currentDot = Vector3.Dot(forwardDirection, relativePosition.normalized);
                 if(!(currentDot > resultDot))
                     continue;
 
@@ -34,12 +34,6 @@ namespace Code.Runtime.Services.Physics
             }
             
             return result;
-        }
-
-        private void ClearHitBuffer10()
-        {
-            for(int i = 0; i < _hitColliderBuffer10.Length; i++)
-                _hitColliderBuffer10[i] = default(Collider);
         }
     }
 }
