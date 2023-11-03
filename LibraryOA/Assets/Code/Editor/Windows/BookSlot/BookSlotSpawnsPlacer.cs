@@ -59,6 +59,9 @@ namespace Code.Editor.Windows.BookSlot
 
         private void OnGUI()
         {
+            if(Application.isPlaying)
+                return;
+            
             SetToolBoxVisibility();
             if(!HasTarget)
             {
