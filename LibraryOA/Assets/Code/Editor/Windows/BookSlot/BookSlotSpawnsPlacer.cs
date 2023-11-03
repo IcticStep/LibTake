@@ -15,6 +15,7 @@ namespace Code.Editor.Windows.BookSlot
         private const string ToolBoxName = "ToolBox";
         private const string CircleRadiusSliderName = "CircleRaidusSlider";
         private const string ObjectCountSliderName = "ObjectCountsSlider";
+        private const string SkipObjectSliderName = "ObjectSkipSlider";
 
         [SerializeField]
         private VisualTreeAsset _visualTreeAsset;
@@ -25,13 +26,16 @@ namespace Code.Editor.Windows.BookSlot
         private IMGUIContainer _toolBox;
         private Slider _circleRadiusSlider;
         private SliderInt _objectCountSlider;
+        private SliderInt _skipObjectSlider;
+        
         private List<BookSlotSpawn> _spawns;
         private bool _initialized;
 
+        private BookSlotSpawnContainer Container => _containerField.value as BookSlotSpawnContainer;
+        private float CircleRadius => _circleRadiusSlider.value;
+        private int TargetSpawnsCount => _objectCountSlider.value - ObjectsToSkip;
+        private int ObjectsToSkip => _skipObjectSlider.value;
         private bool HasTarget => _containerField.value != null;
-        private float TargetSpawnsCount => _objectCountSlider.value;
-        internal float CircleRadius => _circleRadiusSlider.value;
-        internal BookSlotSpawnContainer Container => _containerField.value as BookSlotSpawnContainer;
 
         [MenuItem("Tools/BookSlotSpawns")]
         public static void OpenWindow() =>
@@ -47,6 +51,7 @@ namespace Code.Editor.Windows.BookSlot
             _toolBox = root.Q<IMGUIContainer>(ToolBoxName);
             _circleRadiusSlider = root.Q<Slider>(CircleRadiusSliderName);
             _objectCountSlider = root.Q<SliderInt>(ObjectCountSliderName);
+            _skipObjectSlider = root.Q<SliderInt>(SkipObjectSliderName);
         }
 
         private void OnGUI()
@@ -77,11 +82,15 @@ namespace Code.Editor.Windows.BookSlot
             _spawns = Container.GetComponentsInChildren<BookSlotSpawn>().ToList();
             _circleRadiusSlider.value = Container.CircleRadius;
             _objectCountSlider.value = _spawns.Count;
+            _skipObjectSlider.value = Container.ObjectsToSkip;
             _initialized = true;
         }
 
-        private void UpdateContainer() =>
+        private void UpdateContainer()
+        {
             Container.CircleRadius = CircleRadius;
+            Container.ObjectsToSkip = ObjectsToSkip;
+        }
 
         private void AdjustObjectsCount()
         {
@@ -91,12 +100,12 @@ namespace Code.Editor.Windows.BookSlot
 
         private void SetObjectsInCircle()
         {
-            float angleStep = 2 * Mathf.PI / TargetSpawnsCount;
+            float angleStep = 2 * Mathf.PI / (TargetSpawnsCount + ObjectsToSkip);
             Vector3 containerPosition = Container.transform.position;
             
             for (int i = 0; i < TargetSpawnsCount; i++)
             {
-                float angle = i * angleStep;
+                float angle = (i + ObjectsToSkip) * angleStep;
                 Vector3 position = new(
                     Mathf.Cos(angle) * CircleRadius,
                     0f,

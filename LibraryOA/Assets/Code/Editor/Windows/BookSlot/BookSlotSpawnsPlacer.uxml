@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/Code/Editor/Windows/BookSlot/BookSlotSpawns.uss?fileID=7433441132597879392&amp;guid=24c372030e52d634f950ef94c266fded&amp;type=3#BookSlotSpawns" />
     <ui:IMGUIContainer name="Root" style="flex-shrink: 0; width: 100%; height: 100%;">
         <uie:ObjectField label="Book slot container" name="ContainerField" type="Code.Runtime.Logic.SpawnMarkers.BookSlotSpawnContainer, Assembly-CSharp" />
         <ui:IMGUIContainer name="ToolBox">
-            <ui:Slider picking-mode="Ignore" label="Circle Radius" value="1" high-value="10" name="CircleRaidusSlider" show-input-field="true" low-value="0.01" />
-            <ui:SliderInt picking-mode="Ignore" label="Objects Count" value="42" high-value="100" name="ObjectCountsSlider" show-input-field="true" inverted="false" />
+            <ui:Slider picking-mode="Ignore" label="Circle radius" value="1" high-value="10" name="CircleRaidusSlider" show-input-field="true" low-value="0.01" />
+            <ui:SliderInt picking-mode="Ignore" label="Objects total" value="42" high-value="100" name="ObjectCountsSlider" show-input-field="true" inverted="false" />
+            <ui:SliderInt picking-mode="Ignore" label="Skip objects" value="5" high-value="10" name="ObjectSkipSlider" show-input-field="true" inverted="false" />
         </ui:IMGUIContainer>
     </ui:IMGUIContainer>
 </ui:UXML>

@@ -6,5 +6,8 @@ namespace Code.Runtime.Logic.SpawnMarkers
     {
         [field: SerializeField]
         public float CircleRadius { get; set; } = 1;
+
+        [field: SerializeField]
+        public int ObjectsToSkip { get; set; } = 0;
     }
 }
