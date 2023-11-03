@@ -2,7 +2,7 @@ using Code.Runtime.StaticData;
 
 namespace Code.Runtime.Infrastructure.Services.StaticData
 {
-    internal interface IStaticDataService
+    public interface IStaticDataService
     {
         StaticReadingTable ReadingTableData { get; }
         void LoadAll();
