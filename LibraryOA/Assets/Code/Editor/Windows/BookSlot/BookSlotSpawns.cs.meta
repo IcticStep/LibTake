@@ -7,6 +7,8 @@ MonoImporter:
   - m_ViewDataDictionary: {instanceID: 0}
   - _visualTreeAsset: {fileID: 9197481963319205126, guid: 8f5afbd540180024abe3eeed191ced0d,
       type: 3}
+  - _bookSlotSpawnPrefab: {fileID: 7073766934825612539, guid: d826446db0f17d44f9a7a1e88697ed28,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
