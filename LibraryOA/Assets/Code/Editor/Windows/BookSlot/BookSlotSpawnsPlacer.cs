@@ -16,6 +16,7 @@ namespace Code.Editor.Windows.BookSlot
         private const string CircleRadiusSliderName = "CircleRaidusSlider";
         private const string ObjectCountSliderName = "ObjectCountsSlider";
         private const string SkipObjectSliderName = "ObjectSkipSlider";
+        private const string InfoLabelName = "InfoLabel";
 
         [SerializeField]
         private VisualTreeAsset _visualTreeAsset;
@@ -27,7 +28,8 @@ namespace Code.Editor.Windows.BookSlot
         private Slider _circleRadiusSlider;
         private SliderInt _objectCountSlider;
         private SliderInt _skipObjectSlider;
-        
+        private Label _infoLabel;
+
         private List<BookSlotSpawn> _spawns;
         private bool _initialized;
 
@@ -52,6 +54,7 @@ namespace Code.Editor.Windows.BookSlot
             _circleRadiusSlider = root.Q<Slider>(CircleRadiusSliderName);
             _objectCountSlider = root.Q<SliderInt>(ObjectCountSliderName);
             _skipObjectSlider = root.Q<SliderInt>(SkipObjectSliderName);
+            _infoLabel = root.Q<Label>(InfoLabelName);
         }
 
         private void OnGUI()
@@ -67,6 +70,7 @@ namespace Code.Editor.Windows.BookSlot
             UpdateContainer();
             AdjustObjectsCount();
             SetObjectsInCircle();
+            UpdateInfoUi();
         }
 
         private void SetToolBoxVisibility() =>
@@ -115,6 +119,14 @@ namespace Code.Editor.Windows.BookSlot
                 _spawns[i].transform.localPosition = position;
                 _spawns[i].transform.LookAt(containerPosition);
             }
+        }
+
+        private void UpdateInfoUi()
+        {
+            float circleLength = 2 * Mathf.PI * CircleRadius;
+            int totalObjectsPlaces = TargetSpawnsCount + ObjectsToSkip;
+            _infoLabel.text = $"Circle length: {circleLength}\n" +
+                              $"Length per object: {circleLength / totalObjectsPlaces}";
         }
 
         private void AddIfLess()

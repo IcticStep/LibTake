@@ -5,6 +5,7 @@
             <ui:Slider picking-mode="Ignore" label="Circle radius" value="1" high-value="10" name="CircleRaidusSlider" show-input-field="true" low-value="0.01" />
             <ui:SliderInt picking-mode="Ignore" label="Objects total" value="42" high-value="100" name="ObjectCountsSlider" show-input-field="true" inverted="false" />
             <ui:SliderInt picking-mode="Ignore" label="Skip objects" value="5" high-value="10" name="ObjectSkipSlider" show-input-field="true" inverted="false" />
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InfoLabel" />
         </ui:IMGUIContainer>
     </ui:IMGUIContainer>
 </ui:UXML>
