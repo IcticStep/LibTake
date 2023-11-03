@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 namespace Code.Editor.Windows.BookSlot
 {
-    public class BookSlotSpawns : EditorWindow
+    public class BookSlotSpawnsPlacer : EditorWindow
     {
         private const string ContainerFieldName = "ContainerField";
         private const string ToolBoxName = "ToolBox";
@@ -28,14 +28,14 @@ namespace Code.Editor.Windows.BookSlot
         private List<BookSlotSpawn> _spawns;
         private bool _initialized;
 
-        private BookSlotSpawnContainer Container => _containerField.value as BookSlotSpawnContainer;
-        private float CircleRadius => _circleRadiusSlider.value;
-        private float TargetSpawnsCount => _objectCountSlider.value;
         private bool HasTarget => _containerField.value != null;
+        private float TargetSpawnsCount => _objectCountSlider.value;
+        internal float CircleRadius => _circleRadiusSlider.value;
+        internal BookSlotSpawnContainer Container => _containerField.value as BookSlotSpawnContainer;
 
         [MenuItem("Tools/BookSlotSpawns")]
-        public static void ShowExample() =>
-            GetWindow<BookSlotSpawns>();
+        public static void OpenWindow() =>
+            GetWindow<BookSlotSpawnsPlacer>();
 
         public void CreateGUI()
         {
