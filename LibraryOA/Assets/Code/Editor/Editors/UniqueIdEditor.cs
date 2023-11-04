@@ -12,7 +12,7 @@ namespace Code.Editor.Editors
     {
         private void OnEnable()
         {
-            UniqueId uniqueId = (UniqueId) target;
+            UniqueId uniqueId = (UniqueId)target;
       
             if(IsPrefab(uniqueId))
                 return;

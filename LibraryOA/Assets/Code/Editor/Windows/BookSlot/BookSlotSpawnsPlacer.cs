@@ -88,8 +88,8 @@ namespace Code.Editor.Windows.BookSlot
             
             _spawns = Container.GetComponentsInChildren<BookSlotSpawn>().ToList();
             _circleRadiusSlider.value = Container.CircleRadius;
-            _objectCountSlider.value = _spawns.Count;
             _skipObjectSlider.value = Container.ObjectsToSkip;
+            _objectCountSlider.value = _spawns.Count + ObjectsToSkip;
             _initialized = true;
         }
 
