@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Code.Editor.Editors;
+using Code.Runtime.Logic;
 using Code.Runtime.Logic.SpawnMarkers;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -18,6 +20,8 @@ namespace Code.Editor.Windows.BookSlot
         private const string SkipObjectSliderName = "ObjectSkipSlider";
         private const string InfoLabelName = "InfoLabel";
 
+        private readonly UniqueIdUpdater _uniqueIdUpdater = new();
+        
         [SerializeField]
         private VisualTreeAsset _visualTreeAsset;
         [SerializeField]
@@ -140,7 +144,7 @@ namespace Code.Editor.Windows.BookSlot
 
         private void RemoveIfMore()
         {
-            for(int i = _spawns.Count; i > TargetSpawnsCount; i--)
+            for(int i = _spawns.Count; i > TargetSpawnsCount && i > 0; i--)
                 RemoveObject();
         }
 
@@ -149,6 +153,10 @@ namespace Code.Editor.Windows.BookSlot
             BookSlotSpawn spawn = PrefabUtility
                 .InstantiatePrefab(_bookSlotSpawnPrefab, Container.transform)
                 .GetComponentInChildren<BookSlotSpawn>();
+
+            UniqueId uniqueId = spawn.GetComponentInChildren<UniqueId>();
+            _uniqueIdUpdater.UpdateUniqueId(uniqueId);
+            
             _spawns.Add(spawn);
         }
 
