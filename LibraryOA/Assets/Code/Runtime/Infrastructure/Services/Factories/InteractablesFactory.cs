@@ -5,6 +5,7 @@ using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.SpawnersStaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -27,12 +28,12 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _staticDataService = staticDataService;
         }
         
-        public GameObject CreateBookSlot(string bookSlotId, Vector3 at, string initialBookId = null)
+        public GameObject CreateBookSlot(BookSlotSpawnData spawnData)
         {
-            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, at);
+            GameObject bookSlot = _assetProvider.Instantiate(AssetPath.BookSlot, spawnData.Position, spawnData.TransformRotation);
             
-            InitInteractable(bookSlotId, bookSlot);
-            InitBookStorage(bookSlotId, initialBookId, bookSlot);
+            InitInteractable(spawnData.Id, bookSlot);
+            InitBookStorage(spawnData.Id, spawnData.InitialBookId, bookSlot);
 
             return bookSlot;
         }
