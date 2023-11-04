@@ -17,18 +17,23 @@ namespace Code.Runtime.StaticData.SpawnersStaticData
         public string InitialBookId;
         
         [ReadOnly] 
-        public Vector3 Position; 
+        public Vector3 Position;
 
-        public BookSlotSpawnData(string id, string initialBookId, Vector3 position)
+        [ReadOnly]
+        public Quaternion TransformRotation;
+
+        public BookSlotSpawnData(string id, string initialBookId, Vector3 position, Quaternion transformRotation)
         {
             Id = id;
             InitialBookId = initialBookId;
             Position = position;
+            TransformRotation = transformRotation;
         }
         
         public static BookSlotSpawnData NewFrom(BookSlotSpawn readingTableSpawn) =>
             new(readingTableSpawn.GetComponent<UniqueId>().Id,
                 readingTableSpawn.GetComponent<BookSlotSpawn>().InitialBookId,
-                readingTableSpawn.transform.position);
+                readingTableSpawn.transform.position,
+                readingTableSpawn.transform.rotation);
     }
 }

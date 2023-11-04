@@ -86,7 +86,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
             {
-                _interactablesFactory.CreateBookSlot(spawn.Id, spawn.Position, spawn.InitialBookId);
+                _interactablesFactory.CreateBookSlot(spawn);
             }
         }
 
