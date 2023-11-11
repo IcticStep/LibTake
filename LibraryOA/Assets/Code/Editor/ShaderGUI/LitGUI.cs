@@ -34,15 +34,7 @@ namespace Code.Editor.ShaderGUI
         public override void DrawSurfaceInputs(Material material)
         {
             base.DrawSurfaceInputs(material);
-            materialEditor.ShaderProperty(_inputs.Smoothness, new GUIContent("Smoothness"));
-            materialEditor.TexturePropertySingleLine(new GUIContent("Specular Map"),
-                _inputs.SpecularColorMap, _inputs.SpecularColor);
-            DrawNormalArea(materialEditor, _inputs.NormalMap, _inputs.NormalScale);
             
-            DrawEmissionProperties(material, true);
-            FloatToggle.DrawFloatToggle(new GUIContent("Emission Fresnel"), _inputs.EnableEmissionFresnel);
-            materialEditor.ShaderProperty(_inputs.EmissionFresnelPower, new GUIContent("Emission Fresnel Power"));
-                
             DrawTileOffset(materialEditor, baseMapProp);
         }
 

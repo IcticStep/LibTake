@@ -20,19 +20,6 @@ Shader "LibOA/Lit"
         [MainTexture] _BaseMap("Albedo", 2D) = "white" {}
         [MainColor] _BaseColor("Color", Color) = (1,1,1,1)
 
-        _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.5
-
-        _SpecularColor("SpecularColor", Color) = (0.2, 0.2, 0.2, 1.0)
-        _SpecularColorMap("SpecularColorMap", 2D) = "white" {}
-
-        [Normal] _BumpMap("Normal Map", 2D) = "bump" {}
-        _BumpScale("Normal Scale", Float) = 1.0
-
-        [HDR] _EmissionColor("Emission Color", Color) = (0,0,0)
-        _EmissionMap("Emission Map", 2D) = "white" {}
-        [ToggleUI] _EnableEmissionFresnel("Enable Emission Fresnel", Float) = 0.0
-        _EmissionFresnelPower("Emission Fresnel Power", Float) = 1.0
-
         [ToggleOff] _SpecularHighlights("Specular Highlights", Float) = 1.0
         [ToggleOff] _EnvironmentReflections("Environment Reflections", Float) = 1.0
 
@@ -98,11 +85,6 @@ Shader "LibOA/Lit"
             #pragma shader_feature_local_fragment _SURFACE_TYPE_TRANSPARENT
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature_local_fragment _ _ALPHAPREMULTIPLY_ON _ALPHAMODULATE_ON
-
-            #pragma shader_feature_local _NORMALMAP
-
-            #pragma shader_feature_local_fragment _EMISSION
-            #pragma shader_feature_local_fragment _EMISSION_FRESNEL
 
             #pragma shader_feature_local _RECEIVE_SHADOWS_OFFs
             #pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
@@ -229,11 +211,6 @@ Shader "LibOA/Lit"
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             //#pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
 
-            #pragma shader_feature_local _NORMALMAP
-
-            #pragma shader_feature_local_fragment _EMISSION
-            #pragma shader_feature_local_fragment _EMISSION_FRESNEL
-
             #pragma shader_feature_local _RECEIVE_SHADOWS_OFF
             #pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
             #pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
@@ -339,7 +316,6 @@ Shader "LibOA/Lit"
 
             // -------------------------------------
             // Material Keywords
-            #pragma shader_feature_local _NORMALMAP
             #pragma shader_feature_local_fragment _ALPHATEST_ON
 
             // -------------------------------------
@@ -385,7 +361,6 @@ Shader "LibOA/Lit"
 
             // -------------------------------------
             // Material Keywords
-            #pragma shader_feature_local_fragment _EMISSION
             #pragma shader_feature_local_fragment _ALPHATEST_ON
             #pragma shader_feature EDITOR_VISUALIZATION
 
