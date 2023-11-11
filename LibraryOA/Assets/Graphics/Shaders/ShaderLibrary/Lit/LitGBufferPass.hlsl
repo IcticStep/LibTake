@@ -7,10 +7,6 @@
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
 #endif
 
-#if defined(_NORMALMAP) || (_DETAIL)
-    #define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR
-#endif
-
 // keep this file in sync with LitForwardPass.hlsl
 
 struct Attributes
@@ -33,9 +29,7 @@ struct Varyings
     #endif
 
     half3 normalWS : TEXCOORD2;
-    #if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
-        half4 tangentWS : TEXCOORD3;    // xyz: tangent, w: sign
-    #endif
+
     #ifdef _ADDITIONAL_LIGHTS_VERTEX
         half3 vertexLighting : TEXCOORD4;    // xyz: vertex lighting
     #endif
@@ -64,13 +58,7 @@ void InitializeInputData(Varyings input, half3 normalTS, out InputData inputData
 
     inputData.positionCS = input.positionCS;
     half3 viewDirWS = GetWorldSpaceNormalizeViewDir(input.positionWS);
-    #if defined(_NORMALMAP) || defined(_DETAIL)
-        float sgn = input.tangentWS.w;      // should be either +1 or -1
-        float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
-        inputData.normalWS = TransformTangentToWorld(normalTS, half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz));
-    #else
-        inputData.normalWS = input.normalWS;
-    #endif
+    inputData.normalWS = input.normalWS;
 
     inputData.normalWS = NormalizeNormalPerPixel(inputData.normalWS);
     inputData.viewDirectionWS = viewDirWS;
@@ -128,12 +116,6 @@ Varyings LitGBufferPassVertex(Attributes input)
     // already normalized from normal transform to WS.
     output.normalWS = normalInput.normalWS;
 
-    #if defined(REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR)
-        real sign = input.tangentOS.w * GetOddNegativeScale();
-        half4 tangentWS = half4(normalInput.tangentWS.xyz, sign);
-        output.tangentWS = tangentWS;
-    #endif
-
     OUTPUT_LIGHTMAP_UV(input.staticLightmapUV, unity_LightmapST, output.staticLightmapUV);
     #ifdef DYNAMICLIGHTMAP_ON
         output.dynamicLightmapUV = input.dynamicLightmapUV.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
@@ -175,12 +157,6 @@ FragmentOutput LitGBufferPassFragment(Varyings input)
     InputData inputData;
     InitializeInputData(input, surfaceData.normalTS, inputData);
     SETUP_DEBUG_TEXTURE_DATA(inputData, input.uv, _BaseMap);
-
-    #ifdef _EMISSION_FRESNEL
-        half NoV = saturate(dot(inputData.normalWS, inputData.viewDirectionWS));
-        half fresnelTerm = pow(1.0 - NoV, _EmissionFresnelPower);
-        surfaceData.emission *= fresnelTerm;
-    #endif
 
     #ifdef _DBUFFER
         ApplyDecalToSurfaceData(input.positionCS, surfaceData, inputData);
