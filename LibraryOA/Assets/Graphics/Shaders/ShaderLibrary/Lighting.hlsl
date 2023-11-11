@@ -274,8 +274,8 @@ half4 LitFragment(InputData inputData, SurfaceData surfaceData)
     LightingData lightingData = CreateLightingData(inputData, surfaceData);
 
     lightingData.giColor = LitGlobalIllumination(brdfData, inputData.bakedGI, aoFactor.indirectAmbientOcclusion, 
-                                                inputData.positionWS, inputData.normalWS, inputData.viewDirectionWS, 
-                                                inputData.normalizedScreenSpaceUV);
+                                                inputData.positionWS, inputData.normalWS, inputData.viewDirectionWS);
+                                                
 #ifdef _LIGHT_LAYERS
     if (IsMatchingLightLayer(mainLight.layerMask, meshRenderingLayers))
 #endif
