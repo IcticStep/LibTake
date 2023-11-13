@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 985fd8990327535429578bf7b68fa5e7
+guid: e433cbdb090090e4f9524388c823d636
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bricks
-    second: {fileID: 2100000, guid: 52df665b6d06076419f0962dc049934c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: UberMaterial
-    second: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Window
-    second: {fileID: 2100000, guid: 1aa5288ad2aea124c8da715ac97ff370, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
