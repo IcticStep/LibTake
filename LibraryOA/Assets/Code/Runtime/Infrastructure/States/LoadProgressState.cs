@@ -7,7 +7,7 @@ namespace Code.Runtime.Infrastructure.States
 {
     internal sealed class LoadProgressState : IState
     {
-        private const string MainSceneName = "Library";
+        private const string MainSceneName = "CharacterTest";
         
         private readonly GameStateMachine _stateMachine;
         private readonly IPlayerProgressService _playerProgressService;
