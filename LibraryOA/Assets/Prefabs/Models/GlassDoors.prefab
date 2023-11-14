@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0a94d7746c403c14c9dfff883182b835,
         type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 1.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 0a94d7746c403c14c9dfff883182b835,
         type: 3}
