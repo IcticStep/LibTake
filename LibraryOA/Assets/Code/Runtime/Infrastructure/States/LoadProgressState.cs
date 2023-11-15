@@ -1,6 +1,7 @@
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
+using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 
 namespace Code.Runtime.Infrastructure.States
@@ -12,18 +13,23 @@ namespace Code.Runtime.Infrastructure.States
         private readonly GameStateMachine _stateMachine;
         private readonly IPlayerProgressService _playerProgressService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IStaticDataService _staticDataService;
 
-        public LoadProgressState(GameStateMachine stateMachine, IPlayerProgressService playerProgressService, ISaveLoadService saveLoadService)
+        public LoadProgressState(GameStateMachine stateMachine, IPlayerProgressService playerProgressService,
+            ISaveLoadService saveLoadService, IStaticDataService staticDataService)
         {
             _stateMachine = stateMachine;
             _playerProgressService = playerProgressService;
             _saveLoadService = saveLoadService;
+            _staticDataService = staticDataService;
         }
 
         public void Start()
         {
             LoadProgressOrCreateNew();
-            _stateMachine.EnterState<LoadLevelState, string>(MainSceneName);
+            
+            string startScene = _staticDataService.StartupSettings.StartScene;
+            _stateMachine.EnterState<LoadLevelState, string>(startScene);
         }
 
         private void LoadProgressOrCreateNew() =>

@@ -12,17 +12,20 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string BooksPath = "Static Data/Books/Instances";
         private const string LevelsPath = "Static Data/Levels";
         private const string ReadingTablePath = "Static Data/Interactables/ReadingTableData";
+        private const string StartupSettingsPath = "Static Data/StartupSettings";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
 
         public StaticReadingTable ReadingTableData { get; private set; }
+        public StartupSettings StartupSettings { get; private set; }
 
         public void LoadAll()
         {
             LoadBooks();
             LoadLevels();
             LoadInteractables();
+            LoadStartupSettings();
         }
 
         public void LoadBooks() =>
@@ -38,6 +41,10 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public void LoadInteractables() =>
             ReadingTableData = Resources
                 .Load<StaticReadingTable>(ReadingTablePath);
+        
+        public void LoadStartupSettings() =>
+            StartupSettings = Resources
+                .Load<StartupSettings>(StartupSettingsPath);
 
         public StaticBook ForBook(string id) =>
             _books.TryGetValue(id, out StaticBook result)
