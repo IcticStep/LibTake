@@ -1,8 +1,7 @@
-using Code.Runtime.Data;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions.Data;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.ReadingTable
 {
     internal interface IReadingTableInteractionService
     {

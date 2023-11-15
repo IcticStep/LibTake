@@ -1,4 +1,4 @@
-using Code.Runtime.Player;
+using Code.Runtime.Logic.Player;
 using UnityEditor;
 using UnityEngine;
 
