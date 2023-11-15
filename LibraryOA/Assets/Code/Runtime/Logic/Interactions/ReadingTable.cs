@@ -1,11 +1,14 @@
+using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions;
+using Code.Runtime.Services.Interactions.BookSlotInteraction;
+using Code.Runtime.Services.Interactions.ReadingTable;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener
+    internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
     {
         [SerializeField] 
         private BookStorageHolder _bookStorageObject;
@@ -15,6 +18,8 @@ namespace Code.Runtime.Logic.Interactions
         private IReadingTableInteractionService _readingTableInteractionService;
         private IBookStorage _bookStorage;
         private IBookSlotInteractionService _bookSlotInteractionService;
+        
+        public bool InProgress => _progress.InProgress;
 
         private void Start() =>
             _bookStorage = _bookStorageObject.BookStorage;

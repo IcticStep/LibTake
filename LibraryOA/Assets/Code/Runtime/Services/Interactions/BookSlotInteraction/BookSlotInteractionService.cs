@@ -1,9 +1,8 @@
-using Code.Runtime.Data;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Player;
 using JetBrains.Annotations;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.BookSlotInteraction
 {
     [UsedImplicitly]
     internal sealed class BookSlotInteractionService : IBookSlotInteractionService

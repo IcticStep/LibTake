@@ -1,7 +1,6 @@
-using Code.Runtime.Data;
 using Code.Runtime.Logic.Interactions.Data;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.BookSlotInteraction
 {
     internal interface IBookSlotInteractionService
     {

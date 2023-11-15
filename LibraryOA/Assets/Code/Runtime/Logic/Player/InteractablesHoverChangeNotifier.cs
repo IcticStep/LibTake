@@ -1,4 +1,5 @@
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Services.Interactions;
 using UnityEngine;
 

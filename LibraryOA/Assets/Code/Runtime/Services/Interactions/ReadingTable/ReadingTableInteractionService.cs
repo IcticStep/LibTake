@@ -1,10 +1,12 @@
 using System;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Logic.Interactions.Data;
+using Code.Runtime.Services.Interactions.BookSlotInteraction;
+using Code.Runtime.Services.Interactions.ReadBook;
 using JetBrains.Annotations;
 using Progress = Code.Runtime.Logic.Progress;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.ReadingTable
 {
     [UsedImplicitly]
     internal sealed class ReadingTableInteractionService : IReadingTableInteractionService

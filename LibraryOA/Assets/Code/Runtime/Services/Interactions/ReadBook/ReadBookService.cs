@@ -4,7 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.StaticData;
 using JetBrains.Annotations;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.ReadBook
 {
     [UsedImplicitly]
     internal sealed class ReadBookService : IReadBookService

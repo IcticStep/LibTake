@@ -3,7 +3,7 @@ using Code.Runtime.Logic.Interactions;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.Registry
 {
     [UsedImplicitly]
     internal sealed class InteractablesRegistry : IInteractablesRegistry
