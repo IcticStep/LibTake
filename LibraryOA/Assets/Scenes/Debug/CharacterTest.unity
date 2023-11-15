@@ -1030,6 +1030,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookSlotSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7073766934825612539, guid: d826446db0f17d44f9a7a1e88697ed28,
+        type: 3}
+      propertyPath: _initialBook
+      value: 
+      objectReference: {fileID: 11400000, guid: b9b16622f2ba3c5489a758af9ec5d4f2,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10747,6 +10753,12 @@ PrefabInstance:
       propertyPath: _id
       value: Library_629469be-00d1-4a0a-8b5e-7d3ecaa0225b
       objectReference: {fileID: 0}
+    - target: {fileID: 7073766934825612539, guid: d826446db0f17d44f9a7a1e88697ed28,
+        type: 3}
+      propertyPath: _initialBook
+      value: 
+      objectReference: {fileID: 11400000, guid: d93a4842e4ca5d64c8982a91b551ad6c,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
