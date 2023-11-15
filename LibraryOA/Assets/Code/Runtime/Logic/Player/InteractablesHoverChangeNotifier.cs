@@ -1,9 +1,8 @@
-using System;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions;
 using UnityEngine;
 
-namespace Code.Runtime.Player
+namespace Code.Runtime.Logic.Player
 {
     internal sealed class InteractablesHoverChangeNotifier : MonoBehaviour
     {

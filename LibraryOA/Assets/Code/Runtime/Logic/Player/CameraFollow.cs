@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Runtime.Player
+namespace Code.Runtime.Logic.Player
 {
     internal sealed class CameraFollow : MonoBehaviour
     {

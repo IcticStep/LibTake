@@ -3,7 +3,7 @@ using Code.Runtime.Services.Physics;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Player
+namespace Code.Runtime.Logic.Player
 {
     [RequireComponent(typeof(CharacterController))]
     internal sealed class PlayerMove : MonoBehaviour
@@ -17,8 +17,10 @@ namespace Code.Runtime.Player
         private IInputService _input;
         private Camera _camera;
         private CharacterController _characterController;
-        private Vector3 _currentVelocity;
         private IPhysicsService _physicsService;
+
+        public Vector3 CurrentHorizontalVelocity { get; private set; }
+        public Vector3 CurrentVelocity { get; private set; }
 
         private void Awake()
         {
@@ -38,8 +40,8 @@ namespace Code.Runtime.Player
             Vector2 input = _input.GetMovement();
             
             Vector3 direction = GetMovementDirection(input);
-            _currentVelocity = CalculateVelocity(input, direction);
-            _currentVelocity += _physicsService.Gravity;
+            CurrentHorizontalVelocity = CalculateHorizontalVelocity(input, direction);
+            CurrentVelocity = CurrentHorizontalVelocity + _physicsService.Gravity;
             ApplyVelocity();
 
             if (input != Vector2.zero)
@@ -61,18 +63,18 @@ namespace Code.Runtime.Player
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
         }
 
-        private Vector3 CalculateVelocity(Vector2 input, Vector3 direction)
+        private Vector3 CalculateHorizontalVelocity(Vector2 input, Vector3 direction)
         {
             if (HasInput(input))
                 return _baseSpeed * direction;
             
-            return Vector3.Lerp(_currentVelocity, Vector3.zero, _inertiaDecayRate * Time.deltaTime);
+            return Vector3.Lerp(CurrentHorizontalVelocity, Vector3.zero, _inertiaDecayRate * Time.deltaTime);
         }
 
         private static bool HasInput(Vector2 input) =>
             input.magnitude > MinimalInputThreshold;
 
         private void ApplyVelocity() =>
-            _characterController.Move(_currentVelocity * Time.deltaTime);
+            _characterController.Move(CurrentVelocity * Time.deltaTime);
     }
 }

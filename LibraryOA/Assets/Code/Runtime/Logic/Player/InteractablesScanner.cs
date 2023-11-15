@@ -3,10 +3,9 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Physics;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Code.Runtime.Player
+namespace Code.Runtime.Logic.Player
 {
     public sealed class InteractablesScanner : MonoBehaviour
     {
