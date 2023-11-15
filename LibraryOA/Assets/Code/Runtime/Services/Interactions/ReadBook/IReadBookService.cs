@@ -1,4 +1,4 @@
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.ReadBook
 {
     internal interface IReadBookService
     {

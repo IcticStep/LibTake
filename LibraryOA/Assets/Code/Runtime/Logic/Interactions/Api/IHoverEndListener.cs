@@ -1,4 +1,4 @@
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Logic.Interactions.Api
 {
     public interface IHoverEndListener
     {

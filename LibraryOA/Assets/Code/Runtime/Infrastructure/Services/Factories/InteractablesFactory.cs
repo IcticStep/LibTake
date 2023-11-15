@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions;
+using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.SpawnersStaticData;
 using JetBrains.Annotations;
