@@ -1,7 +1,7 @@
 using Code.Runtime.Logic.Interactions;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Interactions
+namespace Code.Runtime.Services.Interactions.Registry
 {
     internal interface IInteractablesRegistry
     {

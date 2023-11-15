@@ -1,6 +1,7 @@
 using System;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions;
+using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Physics;
 using UnityEngine;
 using Zenject;
@@ -21,8 +22,8 @@ namespace Code.Runtime.Logic.Player
         private IInteractablesRegistry _interactablesRegistry;
 
         public float RayLength => _rayLength;
-        public Vector3? RayStart => _rayStartPoint != null ? 
-            _rayStartPoint.position 
+        public Vector3? RayStart => _rayStartPoint != null 
+            ? _rayStartPoint.position 
             : null;
 
         public Interactable CurrentFocusedInteractable
