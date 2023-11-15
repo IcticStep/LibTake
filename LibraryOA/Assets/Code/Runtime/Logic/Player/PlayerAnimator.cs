@@ -1,4 +1,6 @@
 using System;
+using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Services.Player;
 using UnityEngine;
 using Zenject;
@@ -13,6 +15,9 @@ namespace Code.Runtime.Logic.Player
         private PlayerMove _playerMove;
         [SerializeField]
         private Animator _animator;
+        [SerializeField]
+        private InteractablesScanner _interactablesScanner;
+        
         private IPlayerInventoryService _playerInventory;
         private int _handleItemLayer;
         private int _doLayerIndex;
@@ -25,6 +30,7 @@ namespace Code.Runtime.Logic.Player
         {
             _playerMove ??= GetComponent<PlayerMove>();
             _animator ??= GetComponentInChildren<Animator>();
+            _interactablesScanner ??= GetComponent<InteractablesScanner>();
         }
 
         private void Awake()
@@ -39,13 +45,19 @@ namespace Code.Runtime.Logic.Player
             UpdateAnimatorBook();
 
             _playerInventory.Updated += UpdateAnimatorBook;
+            _interactablesScanner.FocusedInteractable += UpdateDoAnimation;
         }
 
-        private void Update() =>
+        private void Update()
+        {
             UpdateAnimatorSpeed();
+            UpdateDoAnimation(_interactablesScanner.CurrentFocusedInteractable);
+        }
 
-        private void OnDestroy() =>
+        private void OnDestroy()
+        {
             _playerInventory.Updated -= UpdateAnimatorBook;
+        }
 
         private void UpdateAnimatorSpeed()
         {
@@ -59,9 +71,33 @@ namespace Code.Runtime.Logic.Player
                     ? 1
                     : 0);
 
-        private void UpdateAnimatorDo()
+        private void UpdateDoAnimation(Interactable interactable)
         {
-            _animator.SetLayerWeight(_doLayerIndex, 1);
+            if(interactable == null)
+            {
+                StopDoAnimation();
+                return;
+            }
+
+            if(interactable is not IProgressOwner progressOwner)
+            {
+                StopDoAnimation();
+                return;
+            }
+
+            if(!progressOwner.InProgress)
+            {
+                StopDoAnimation();
+                return;
+            }
+            
+            StartDoAnimation();
         }
+
+        private void StartDoAnimation() =>
+            _animator.SetLayerWeight(_doLayerIndex, 1);
+
+        private void StopDoAnimation() =>
+            _animator.SetLayerWeight(_doLayerIndex, 0);
     }
 }
