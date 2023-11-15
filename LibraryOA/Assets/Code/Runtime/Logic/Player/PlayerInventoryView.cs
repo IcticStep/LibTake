@@ -4,7 +4,7 @@ using Code.Runtime.StaticData;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Player
+namespace Code.Runtime.Logic.Player
 {
     internal sealed class PlayerInventoryView : MonoBehaviour
     {
