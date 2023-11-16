@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 068f63ac3d2d19243be7b56aa8198dba
+guid: 48bc1eaa4633bf043a0774bcbf56db21
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Paper
+      name: UberMaterial
     second: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
   materials:
     materialImportMode: 2
