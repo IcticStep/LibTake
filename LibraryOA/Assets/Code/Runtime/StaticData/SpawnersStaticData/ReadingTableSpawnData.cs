@@ -10,7 +10,6 @@ namespace Code.Runtime.StaticData.SpawnersStaticData
     [Serializable]
     public class ReadingTableSpawnData
     {
-        [FormerlySerializedAs("ID")]
         [ReadOnly] 
         public string Id;
         
@@ -18,18 +17,23 @@ namespace Code.Runtime.StaticData.SpawnersStaticData
         public string InitialBookId;
         
         [ReadOnly] 
-        public Vector3 Position; 
+        public Vector3 Position;
 
-        public ReadingTableSpawnData(string id, string initialBookId, Vector3 position)
+        [ReadOnly] 
+        public Quaternion Rotation;
+
+        public ReadingTableSpawnData(string id, string initialBookId, Vector3 position, Quaternion rotation)
         {
             Id = id;
             InitialBookId = initialBookId;
             Position = position;
+            Rotation = rotation;
         }
 
         public static ReadingTableSpawnData NewFrom(ReadingTableSpawn readingTableSpawn) =>
             new(readingTableSpawn.GetComponent<UniqueId>().Id,
                 readingTableSpawn.GetComponent<ReadingTableSpawn>().InitialBookId,
-                readingTableSpawn.transform.position);
+                readingTableSpawn.transform.position,
+                readingTableSpawn.transform.rotation);
     }
 }
