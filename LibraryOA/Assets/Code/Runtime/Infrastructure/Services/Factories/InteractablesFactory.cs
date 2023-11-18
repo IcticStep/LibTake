@@ -39,9 +39,9 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             return bookSlot;
         }
 
-        public GameObject CreateReadingTable(string objectId, Vector3 at, string initialBookId = null)
+        public GameObject CreateReadingTable(string objectId, Vector3 at, Quaternion rotation, string initialBookId = null)
         {
-            GameObject readingTable = _assetProvider.Instantiate(AssetPath.ReadingTable, at);
+            GameObject readingTable = _assetProvider.Instantiate(AssetPath.ReadingTable, at, rotation);
             StaticReadingTable data = _staticDataService.ReadingTableData;
             
             InitInteractable(objectId, readingTable);
