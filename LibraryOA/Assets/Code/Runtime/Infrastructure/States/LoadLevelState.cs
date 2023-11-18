@@ -94,7 +94,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(ReadingTableSpawnData readingTable in _levelData.ReadingTables)
             {
-                _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.InitialBookId);
+                _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
             }
         }
 
