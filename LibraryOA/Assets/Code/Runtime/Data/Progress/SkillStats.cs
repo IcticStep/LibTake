@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.StaticData;
+using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,7 +13,7 @@ namespace Code.Runtime.Data.Progress
     [Serializable]
     public sealed class SkillStats
     {
-        [SerializeField]
+        [JsonProperty]
         private List<Skill> _skills = new();
 
         public event Action Updated;

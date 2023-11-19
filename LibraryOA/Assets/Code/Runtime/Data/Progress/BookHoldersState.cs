@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Code.Runtime.Data.Progress
@@ -8,7 +9,7 @@ namespace Code.Runtime.Data.Progress
     [Serializable]
     public class BookHoldersState
     {
-        [SerializeField]
+        [JsonProperty]
         private List<BookIdentifiedHolderData> _bookHolders = new();
         
         public BookData GetDataForId(string id) =>
