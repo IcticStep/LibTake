@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 068f63ac3d2d19243be7b56aa8198dba
+guid: 6734fe2a90849744fa8ff3be4417ba87
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Outline
-    second: {fileID: 2100000, guid: 954408071d8292a4597d1ba14907e63c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Paper
-    second: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: UberMaterial
-    second: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
