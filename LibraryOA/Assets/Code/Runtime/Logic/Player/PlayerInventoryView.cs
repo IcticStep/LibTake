@@ -8,7 +8,7 @@ namespace Code.Runtime.Logic.Player
 {
     internal sealed class PlayerInventoryView : MonoBehaviour
     {
-        [SerializeField] private GameObject _bookObject;
+        [SerializeField] private Book _bookObject;
         private IPlayerInventoryService _playerInventoryService;
         private MeshRenderer _bookMeshRenderer;
         private IStaticDataService _staticData;
@@ -35,7 +35,7 @@ namespace Code.Runtime.Logic.Player
         private void UpdateView()
         {
             SetMaterialIfAny();
-            _bookObject.SetActive(_playerInventoryService.HasBook);
+            _bookObject.gameObject.SetActive(_playerInventoryService.HasBook);
         }
 
         private void SetMaterialIfAny()
@@ -44,7 +44,7 @@ namespace Code.Runtime.Logic.Player
             if(targetMaterial is null)
                 return;
 
-            _bookMeshRenderer.material = targetMaterial;
+            _bookObject.SetMaterial(targetMaterial);
         }
 
         private Material GetBookMaterial()
