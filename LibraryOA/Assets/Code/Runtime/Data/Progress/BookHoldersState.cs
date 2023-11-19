@@ -10,19 +10,14 @@ namespace Code.Runtime.Data.Progress
     public class BookHoldersState
     {
         [JsonProperty]
-        private List<BookIdentifiedHolderData> _bookHolders = new();
+        private Dictionary<string, BookData> _bookHolders = new();
         
         public BookData GetDataForId(string id) =>
-            _bookHolders.FirstOrDefault(x => x.Id == id)?.BookData;
+            _bookHolders.TryGetValue(id, out BookData data)
+                ? data
+                : default(BookData);
         
-        public void SetDataForId(string id, BookData data)
-        {
-            BookIdentifiedHolderData savedData = _bookHolders.FirstOrDefault(x => x.Id == id);
-
-            if(savedData is not null)
-                _bookHolders.Remove(savedData);
-            
-            _bookHolders.Add(new BookIdentifiedHolderData(id, data));
-        }
+        public void SetDataForId(string id, BookData data) =>
+            _bookHolders[id] = data;
     }
 }
