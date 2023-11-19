@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
+    [UsedImplicitly]
     internal sealed class SaveLoadRegistry : ISaveLoadRegistry
     {
         private readonly List<ISavedProgressReader> _progressReaders = new();

@@ -8813,8 +8813,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.43159223, z: 1}
-  m_Center: {x: 0, y: -0.2842039, z: 0}
+  m_Size: {x: 2.4678426, y: 3.7674844, z: 5.080566}
+  m_Center: {x: 0.7339213, y: 1.3837422, z: 1.5298965}
 --- !u!1 &1536982702
 GameObject:
   m_ObjectHideFlags: 0
@@ -11262,6 +11262,12 @@ PrefabInstance:
       propertyPath: _id
       value: Library_629469be-00d1-4a0a-8b5e-7d3ecaa0225b
       objectReference: {fileID: 0}
+    - target: {fileID: 7073766934825612539, guid: d826446db0f17d44f9a7a1e88697ed28,
+        type: 3}
+      propertyPath: _initialBook
+      value: 
+      objectReference: {fileID: 11400000, guid: 41543c9f66d648f4bace87d694b3606f,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
