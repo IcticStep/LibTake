@@ -1,6 +1,7 @@
 using System;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Logic.Interactions.Api;
+using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Player;
 using UnityEngine;
 using Zenject;
@@ -9,10 +10,8 @@ namespace Code.Runtime.Logic.Player
 {
     internal sealed class PlayerAnimator : MonoBehaviour
     {
-        private static readonly int _speedParameter = Animator.StringToHash("SqrSpeed");
+        private static readonly int _speedParameter = Animator.StringToHash("SpeedPercents");
 
-        [SerializeField]
-        private PlayerMove _playerMove;
         [SerializeField]
         private Animator _animator;
         [SerializeField]
@@ -21,14 +20,17 @@ namespace Code.Runtime.Logic.Player
         private IPlayerInventoryService _playerInventory;
         private int _handleItemLayer;
         private int _doLayerIndex;
+        private IInputService _inputService;
 
         [Inject]
-        private void Construct(IPlayerInventoryService playerInventory) =>
+        private void Construct(IPlayerInventoryService playerInventory, IInputService inputService)
+        {
             _playerInventory = playerInventory;
+            _inputService = inputService;
+        }
 
         private void OnValidate()
         {
-            _playerMove ??= GetComponent<PlayerMove>();
             _animator ??= GetComponentInChildren<Animator>();
             _interactablesScanner ??= GetComponent<InteractablesScanner>();
         }
@@ -54,16 +56,11 @@ namespace Code.Runtime.Logic.Player
             UpdateDoAnimation(_interactablesScanner.CurrentFocusedInteractable);
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _playerInventory.Updated -= UpdateAnimatorBook;
-        }
 
-        private void UpdateAnimatorSpeed()
-        {
-            float sqrMagnitude = _playerMove.CurrentHorizontalVelocity.sqrMagnitude;
-            _animator.SetFloat(_speedParameter, sqrMagnitude);
-        }
+        private void UpdateAnimatorSpeed() =>
+            _animator.SetFloat(_speedParameter, _inputService.GetMovement().magnitude);
 
         private void UpdateAnimatorBook() =>
             _animator.SetLayerWeight(_handleItemLayer,
@@ -73,6 +70,7 @@ namespace Code.Runtime.Logic.Player
 
         private void UpdateDoAnimation(Interactable interactable)
         {
+            // ReSharper disable once Unity.PerformanceCriticalCodeNullComparison
             if(interactable == null)
             {
                 StopDoAnimation();
