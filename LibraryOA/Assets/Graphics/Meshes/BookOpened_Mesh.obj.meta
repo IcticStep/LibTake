@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 894b2e694832a824ead423f1c375e0cc
+guid: f75483fd7f160f4438d43bfb8dcd4070
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Outline
-    second: {fileID: 2100000, guid: 9396fab7c129358409f3bbb52b4cea15, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: UberMaterial
-    second: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -58,7 +48,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

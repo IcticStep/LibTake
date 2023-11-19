@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d2cd23f5204ea4957a136881c67774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Library_14bc67dc-2eb0-416f-9b6c-1b53d388a119
+  _id: ReadingTableSpawn_f2236742-8d33-4b54-bde7-9fab7a0c39d2
 --- !u!114 &5904267938761980737
 MonoBehaviour:
   m_ObjectHideFlags: 0
