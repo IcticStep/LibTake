@@ -11,7 +11,7 @@ namespace Code.Runtime.Logic
     internal sealed class BookStorageView : MonoBehaviour
     {
         [SerializeField] private BookStorageHolder _bookStorageObject;
-        [SerializeField] private GameObject _bookObject;
+        [SerializeField] private Book _bookObject;
 
         private IBookStorage _bookStorage;
         private MeshRenderer _bookMeshRenderer;
@@ -36,7 +36,7 @@ namespace Code.Runtime.Logic
         private void UpdateView()
         {
             SetMaterialIfAny();
-            _bookObject.SetActive(_bookStorage.HasBook);
+            _bookObject.gameObject.SetActive(_bookStorage.HasBook);
         }
 
         private void SetMaterialIfAny()
@@ -45,7 +45,7 @@ namespace Code.Runtime.Logic
             if(targetMaterial is null)
                 return;
 
-            _bookMeshRenderer.material = targetMaterial;
+            _bookObject.SetMaterial(targetMaterial);
         }
 
         private Material GetBookMaterial()
