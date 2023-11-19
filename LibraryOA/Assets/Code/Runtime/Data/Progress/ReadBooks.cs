@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using UnityEngine;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -9,7 +8,7 @@ namespace Code.Runtime.Data.Progress
     public class ReadBooks
     {
         [JsonProperty]
-        private List<string> _booksRead = new();
+        private HashSet<string> _booksRead = new();
 
         public bool IsBookRead(string bookId) =>
             _booksRead.Contains(bookId);
