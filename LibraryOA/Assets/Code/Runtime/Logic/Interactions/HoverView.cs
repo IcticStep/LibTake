@@ -8,11 +8,9 @@ namespace Code.Runtime.Logic.Interactions
     internal sealed class HoverView : MonoBehaviour
     {
         [SerializeField] private Interactable _interactable;
-        [SerializeField] private MeshRenderer _targetMeshRenderer;
-        [SerializeField] private Material _hoverMaterial;
+        [SerializeField] private MeshRenderer[] _hoverMeshes;
 
         private IPlayerProviderService _playerProviderService;
-        private Material _defaultMaterial;
         
         private InteractablesScanner InteractablesScanner => _playerProviderService.InteractablesScanner;
 
@@ -24,7 +22,6 @@ namespace Code.Runtime.Logic.Interactions
         {
             InteractablesScanner.FocusedInteractable += OnInteractableFocused;
             InteractablesScanner.UnfocusedInteractable += OnInteractableUnfocused;
-            _defaultMaterial = _targetMeshRenderer.material;
         }
 
         private void OnDestroy()
@@ -38,7 +35,7 @@ namespace Code.Runtime.Logic.Interactions
             if(interactable.Id != _interactable.Id) 
                 return;
 
-            _targetMeshRenderer.material = _hoverMaterial;
+            ShowHover();
         }
 
         private void OnInteractableUnfocused(Interactable interactable)
@@ -46,7 +43,21 @@ namespace Code.Runtime.Logic.Interactions
             if(interactable.Id != _interactable.Id)
                 return;
 
-            _targetMeshRenderer.material = _defaultMaterial;
+            HideHover();
+        }
+
+        private void ShowHover()
+        {
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for(int i = 0; i < _hoverMeshes.Length; i++)
+                _hoverMeshes[i].enabled = true;
+        }
+
+        private void HideHover()
+        {
+            // ReSharper disable once ForCanBeConvertedToForeach
+            for(int i = 0; i < _hoverMeshes.Length; i++)
+                _hoverMeshes[i].enabled = false;
         }
     }
 }
