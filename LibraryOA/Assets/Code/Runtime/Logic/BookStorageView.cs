@@ -41,9 +41,11 @@ namespace Code.Runtime.Logic
 
         private void SetMaterialIfAny()
         {
-            Material material = GetBookMaterial();
-            if(material is not null)
-                _bookMeshRenderer.material = material;
+            Material targetMaterial = GetBookMaterial();
+            if(targetMaterial is null)
+                return;
+
+            _bookMeshRenderer.material = targetMaterial;
         }
 
         private Material GetBookMaterial()
