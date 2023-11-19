@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Infrastructure.States.Exceptions;
+using JetBrains.Annotations;
 using Zenject;
 
 namespace Code.Runtime.Infrastructure.States
 {
+    [UsedImplicitly]
     internal sealed class GameStateFactory : IFactory<Type, IExitableState>, IGameStateFactory
     {
         private readonly Dictionary<Type, Func<IExitableState>> _statesResolvers;
