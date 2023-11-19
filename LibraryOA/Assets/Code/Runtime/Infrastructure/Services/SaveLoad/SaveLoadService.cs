@@ -1,10 +1,12 @@
 using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
+    [UsedImplicitly]
     internal sealed class SaveLoadService : ISaveLoadService
     {
         private const string ProgressKey = "Progress";
