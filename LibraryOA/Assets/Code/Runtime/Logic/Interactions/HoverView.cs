@@ -22,6 +22,8 @@ namespace Code.Runtime.Logic.Interactions
         {
             InteractablesScanner.FocusedInteractable += OnInteractableFocused;
             InteractablesScanner.UnfocusedInteractable += OnInteractableUnfocused;
+            
+            HideHover();
         }
 
         private void OnDestroy()
