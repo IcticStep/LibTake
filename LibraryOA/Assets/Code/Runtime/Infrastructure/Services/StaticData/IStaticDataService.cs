@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Code.Runtime.StaticData;
 
 namespace Code.Runtime.Infrastructure.Services.StaticData
@@ -7,6 +8,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         StartupSettings StartupSettings { get; }
         StaticReadingTable ReadingTableData { get; }
         TruckStaticData TruckData { get; }
+        IReadOnlyList<StaticBook> AllBooks { get; }
         void LoadAll();
         void LoadBooks();
         void LoadLevels();

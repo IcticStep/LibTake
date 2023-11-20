@@ -6,6 +6,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States;
+using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadBook;
@@ -14,6 +15,7 @@ using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Random;
 using Code.Runtime.Services.TruckDriving;
 using UnityEngine;
 using Zenject;
@@ -51,6 +53,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         private void InstallServices()
         {
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
+            Container.Bind<IRandomService>().To<RandomService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
             Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
             Container.Bind<IPlayerProviderService>().To<PlayerProviderService>().AsSingle();
@@ -59,6 +62,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
+            Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
             Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
         }
