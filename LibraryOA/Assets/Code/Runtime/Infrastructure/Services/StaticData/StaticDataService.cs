@@ -21,6 +21,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public StartupSettings StartupSettings { get; private set; }
         public StaticReadingTable ReadingTableData { get; private set; }
         public TruckStaticData TruckData { private set; get; }
+        public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
 
         public void LoadAll()
         {

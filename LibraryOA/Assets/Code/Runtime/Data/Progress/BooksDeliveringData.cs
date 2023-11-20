@@ -19,7 +19,7 @@ namespace Code.Runtime.Data.Progress
         public void AddToPreparedForDelivering(string bookId) =>
             _preparedForDelivering.Add(bookId);
         
-        public void AddToDelivering(IEnumerable<string> bookId) =>
+        public void AddToPreparedForDelivering(IEnumerable<string> bookId) =>
             _preparedForDelivering.AddRange(bookId);
 
         public void DeliverPrepared()
