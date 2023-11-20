@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Code.Runtime.Logic.SpawnMarkers;
 using Code.Runtime.StaticData.SpawnersStaticData;
 using Code.Runtime.Utils;
 using UnityEngine;
@@ -19,16 +18,20 @@ namespace Code.Runtime.StaticData
         private List<BookSlotSpawnData> _bookSlots;
         [SerializeField] 
         private List<ReadingTableSpawnData> _readingTables;
+        [field: SerializeField]
+        public TruckWayStaticData TruckWay { get; private set; }
 
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
         
-        public void UpdateData(string levelKey, Vector3 playerInitialPosition, List<BookSlotSpawnData> bookSlots, List<ReadingTableSpawnData> readingTables)
+        public void UpdateData(string levelKey, Vector3 playerInitialPosition, List<BookSlotSpawnData> bookSlots, 
+            List<ReadingTableSpawnData> readingTables, TruckWayStaticData wayStaticData)
         {
             LevelKey = levelKey;
             PlayerInitialPosition = playerInitialPosition;
             _bookSlots = bookSlots;
             _readingTables = readingTables;
+            TruckWay = wayStaticData;
         }
     }
 }

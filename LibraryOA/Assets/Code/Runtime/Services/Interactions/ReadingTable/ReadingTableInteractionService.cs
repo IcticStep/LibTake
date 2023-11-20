@@ -11,14 +11,12 @@ namespace Code.Runtime.Services.Interactions.ReadingTable
     [UsedImplicitly]
     internal sealed class ReadingTableInteractionService : IReadingTableInteractionService
     {
-        private readonly IBookSlotInteractionService _bookSlotInteractionService;
         private readonly IPlayerProgressService _playerProgressService;
         private readonly IReadBookService _readBookService;
 
         public ReadingTableInteractionService(IBookSlotInteractionService bookSlotInteractionService, IPlayerProgressService playerProgressService,
             IReadBookService readBookService)
         {
-            _bookSlotInteractionService = bookSlotInteractionService;
             _playerProgressService = playerProgressService;
             _readBookService = readBookService;
         }

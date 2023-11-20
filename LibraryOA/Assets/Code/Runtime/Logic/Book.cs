@@ -9,5 +9,11 @@ namespace Code.Runtime.Logic
 
         public void SetMaterial(Material material) =>
             _meshRenderer.material = material;
+
+        public void Show() =>
+            _meshRenderer.enabled = true;
+        
+        public void Hide() =>
+            _meshRenderer.enabled = false;
     }
 }
