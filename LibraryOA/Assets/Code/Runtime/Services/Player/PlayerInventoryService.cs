@@ -17,6 +17,7 @@ namespace Code.Runtime.Services.Player
         public string CurrentBookId => HasBook ? Inventory.Peek() : null;
         public bool HasBook => Inventory.Count > 0;
         public IEnumerable<string> Books => Inventory.AllBooks;
+
         private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
         public event Action Updated;
@@ -30,7 +31,13 @@ namespace Code.Runtime.Services.Player
             Inventory.Push(id);
             Updated?.Invoke();
         }
-        
+
+        public void InsertBooks(IEnumerable<string> bookIds)
+        {
+            foreach(string bookId in bookIds)
+                Inventory.Push(bookId);
+        }
+
         public string RemoveBook()
         {
             string removedId = Inventory.Pop();
