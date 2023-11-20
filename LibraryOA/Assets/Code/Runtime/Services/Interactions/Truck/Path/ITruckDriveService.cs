@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Services.Interactions.Truck.Path
 {
-    internal interface ITruckDeliveryService
+    internal interface ITruckDriveService
     {
         GameObject Truck { get; }
         void RegisterTruck(GameObject truck);
