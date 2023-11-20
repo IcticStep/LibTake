@@ -6,7 +6,7 @@ namespace Code.Runtime.Services.Player
 {
     internal interface IPlayerInventoryService : IBookStorage, ISavedProgressReader
     {
-        IEnumerable<string> Books { get; }
+        IReadOnlyList<string> Books { get; }
         void InsertBooks(IEnumerable<string> bookIds);
     }
 }

@@ -1,15 +1,20 @@
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Interactions.Truck;
+using Zenject;
 
 namespace Code.Runtime.Logic
 {
     internal sealed class Truck : Interactable
     {
-        public override bool CanInteract() =>
-            true;
+        private ITruckInteractionService _truckInteractionService;
 
-        public override void Interact()
-        {
-            
-        }
+        [Inject]
+        private void Construct(ITruckInteractionService truckInteractionService) =>
+            _truckInteractionService = truckInteractionService;
+
+        public override bool CanInteract() =>
+            _truckInteractionService.CanInteract();
+
+        public override void Interact() => _truckInteractionService.Interact();
     }
 }
