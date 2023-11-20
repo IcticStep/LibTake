@@ -1,3 +1,5 @@
+using Code.Runtime.StaticData.SpawnersStaticData;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Runtime.Services.Interactions.Truck.Path
@@ -5,8 +7,8 @@ namespace Code.Runtime.Services.Interactions.Truck.Path
     internal interface ITruckDeliveryService
     {
         GameObject Truck { get; }
-        void RegisterTruck(GameObject truck); 
-        void DriveToLibrary();
+        void RegisterTruck(GameObject truck);
+        public UniTask DriveToLibrary(TruckWayStaticData way);
         void CleanUp();
     }
 }

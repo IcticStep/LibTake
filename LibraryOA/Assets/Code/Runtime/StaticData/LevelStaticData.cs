@@ -19,7 +19,7 @@ namespace Code.Runtime.StaticData
         [SerializeField] 
         private List<ReadingTableSpawnData> _readingTables;
         [field: SerializeField]
-        public TruckWayStaticData TruckWayStaticData { get; private set; }
+        public TruckWayStaticData TruckWay { get; private set; }
 
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
@@ -31,7 +31,7 @@ namespace Code.Runtime.StaticData
             PlayerInitialPosition = playerInitialPosition;
             _bookSlots = bookSlots;
             _readingTables = readingTables;
-            TruckWayStaticData = wayStaticData;
+            TruckWay = wayStaticData;
         }
     }
 }

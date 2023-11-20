@@ -105,7 +105,7 @@ namespace Code.Runtime.Infrastructure.States
 
         private void InitTruck()
         {
-            GameObject truck = _interactablesFactory.CreateTruck(_levelData.TruckWayStaticData);
+            GameObject truck = _interactablesFactory.CreateTruck(_levelData.TruckWay);
             _truckDeliveryService.RegisterTruck(truck);
         }
 

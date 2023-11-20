@@ -1,6 +1,9 @@
+using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.StaticData.SpawnersStaticData;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Splines;
 
 namespace Code.Runtime.Services.Interactions.Truck.Path
 {
@@ -8,13 +11,14 @@ namespace Code.Runtime.Services.Interactions.Truck.Path
     internal sealed class TruckDeliveryService : ITruckDeliveryService
     {
         public GameObject Truck { get; private set; }
-
+        
         public void RegisterTruck(GameObject truck) =>
             Truck = truck;
 
-        public void DriveToLibrary()
-        {
-        }
+        public UniTask DriveToLibrary(TruckWayStaticData way) =>
+            Truck.transform
+                .DOMove(way.LibraryPoint.Position, 1)
+                .ToUniTask();
 
         public void CleanUp() =>
             Truck = null;
