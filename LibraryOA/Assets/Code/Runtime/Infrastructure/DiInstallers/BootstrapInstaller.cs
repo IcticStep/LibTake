@@ -58,7 +58,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
-            Container.Bind<ITruckDeliveryService>().To<TruckDeliveryService>().AsSingle();
+            Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
         }
 
         private void InstallFactories()

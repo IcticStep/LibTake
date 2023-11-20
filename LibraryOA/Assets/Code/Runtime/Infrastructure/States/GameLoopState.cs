@@ -9,13 +9,13 @@ namespace Code.Runtime.Infrastructure.States
 {
     internal sealed class GameLoopState : IState
     {
-        private readonly ITruckDeliveryService _truckDeliveryService;
+        private readonly ITruckDriveService _truckDriveService;
         private readonly IStaticDataService _staticDataService;
         private LevelStaticData _levelStaticData;
 
-        public GameLoopState(ITruckDeliveryService truckDeliveryService, IStaticDataService staticDataService)
+        public GameLoopState(ITruckDriveService truckDriveService, IStaticDataService staticDataService)
         {
-            _truckDeliveryService = truckDeliveryService;
+            _truckDriveService = truckDriveService;
             _staticDataService = staticDataService;
         }
 
@@ -32,7 +32,7 @@ namespace Code.Runtime.Infrastructure.States
 
         private async void DeliverBooks()
         {
-            await _truckDeliveryService.DriveToLibrary(_levelStaticData.TruckWay);
+            await _truckDriveService.DriveToLibrary(_levelStaticData.TruckWay);
         } 
     }
 }

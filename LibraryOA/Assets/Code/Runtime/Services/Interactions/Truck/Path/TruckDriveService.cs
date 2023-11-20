@@ -8,14 +8,14 @@ using UnityEngine;
 namespace Code.Runtime.Services.Interactions.Truck.Path
 {
     [UsedImplicitly]
-    internal sealed class TruckDeliveryService : ITruckDeliveryService
+    internal sealed class TruckDriveService : ITruckDriveService
     {
         private readonly IStaticDataService _staticDataService;
         public GameObject Truck { get; private set; }
 
         private float DrivingSeconds => _staticDataService.TruckData.DrivingSeconds;
 
-        public TruckDeliveryService(IStaticDataService staticDataService)
+        public TruckDriveService(IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
         }
