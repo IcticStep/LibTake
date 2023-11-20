@@ -1,13 +1,18 @@
+using System.Linq;
+using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
-using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Player;
+using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.Truck
 {
-    internal sealed class TruckInteractionService
+    [UsedImplicitly]
+    internal sealed class TruckInteractionService : ITruckInteractionService
     {
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IPlayerProgressService _playerProgressService;
+
+        private BooksDeliveringData DeliveringData => _playerProgressService.Progress.WorldData.BooksDeliveringData;
 
         public TruckInteractionService(IPlayerInventoryService playerInventoryService, IPlayerProgressService playerProgressService)
         {
@@ -15,28 +20,16 @@ namespace Code.Runtime.Services.Interactions.Truck
             _playerProgressService = playerProgressService;
         }
 
-        public bool CanInteract(IBookStorage bookStorage) =>
-            bookStorage.HasBook || _playerInventoryService.HasBook;
+        public bool CanInteract() =>
+            DeliveringData.PreparedForDelivering.Any() && !_playerInventoryService.HasBook;
 
-        public void Interact(IBookStorage bookStorage)
+        public void Interact()
         {
-            if(!CanInteract(bookStorage))
+            if(!CanInteract())
                 return;
 
-            if(_playerInventoryService.HasBook && bookStorage.HasBook)
-                return;
-
-            string bookId;
-            if(!_playerInventoryService.HasBook)
-            {
-                bookId = bookStorage.RemoveBook();
-                _playerInventoryService.InsertBook(bookId);
-                return;
-            }
-
-            bookId = _playerInventoryService.RemoveBook();
-            bookStorage.InsertBook(bookId);
+            _playerInventoryService.InsertBooks(DeliveringData.PreparedForDelivering);
+            DeliveringData.DeliverPrepared();
         }
-
     }
 }

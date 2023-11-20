@@ -11,6 +11,7 @@ using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
+using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Interactions.Truck.Path;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
@@ -44,11 +45,11 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ISaveLoadRegistry>().To<SaveLoadRegistry>().AsSingle();
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
         }
 
         private void InstallServices()
         {
-            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
             Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
@@ -59,6 +60,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
             Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
+            Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
         }
 
         private void InstallFactories()
