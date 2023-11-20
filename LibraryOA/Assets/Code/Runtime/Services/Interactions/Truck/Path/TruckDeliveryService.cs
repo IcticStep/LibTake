@@ -26,6 +26,7 @@ namespace Code.Runtime.Services.Interactions.Truck.Path
         public UniTask DriveToLibrary(TruckWayStaticData way) =>
             Truck.transform
                 .DOMove(way.LibraryPoint.Position, DrivingSeconds)
+                .SetEase(Ease.OutCirc)
                 .ToUniTask();
 
         public void CleanUp() =>
