@@ -34,7 +34,7 @@ namespace Code.Runtime.Logic.Player
 
         private void UpdateView()
         {
-            List<string> books = _playerInventoryService.Books.ToList();
+            IReadOnlyList<string> books = _playerInventoryService.Books;
             for(int i = 0; i < _bookViews.Length; i++)
             {
                 if(i >= books.Count)
