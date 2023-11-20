@@ -7,11 +7,11 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.InputService;
-using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
+using Code.Runtime.Services.Interactions.Truck.Path;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
 using UnityEngine;
@@ -58,6 +58,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
+            Container.Bind<ITruckDeliveryService>().To<TruckDeliveryService>().AsSingle();
         }
 
         private void InstallFactories()

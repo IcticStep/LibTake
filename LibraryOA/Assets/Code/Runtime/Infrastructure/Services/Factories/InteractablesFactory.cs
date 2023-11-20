@@ -1,3 +1,4 @@
+using System.Linq;
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
@@ -8,6 +9,7 @@ using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.SpawnersStaticData;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Splines;
 
 namespace Code.Runtime.Infrastructure.Services.Factories
 {
@@ -36,6 +38,17 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             InitBookStorage(spawnData.Id, spawnData.InitialBookId, bookSlot);
 
             return bookSlot;
+        }
+        
+        public GameObject CreateTruck(TruckWayStaticData truckWayData)
+        {
+            GameObject truck = _assetProvider.Instantiate(AssetPath.Truck, truckWayData.HiddenPoint.Position, truckWayData.HiddenPoint.Rotation);
+            
+            string id = truck.GetComponentInChildren<UniqueId>().Id;
+            
+            InitInteractable(id, truck);
+
+            return truck;
         }
 
         public GameObject CreateReadingTable(string objectId, Vector3 at, Quaternion rotation, string initialBookId = null)

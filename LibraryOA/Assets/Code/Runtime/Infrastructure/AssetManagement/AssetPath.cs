@@ -6,5 +6,6 @@ namespace Code.Runtime.Infrastructure.AssetManagement
         public const string BookSlot = "Level Objects/Interactables/BookSlot";
         public const string ReadingTable = "Level Objects/Interactables/ReadingTable";
         public const string Hud = "Ui/Hud";
+        public const string Truck = "Level Objects/Interactables/Truck";
     }
 }
