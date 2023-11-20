@@ -5,6 +5,7 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Logic.Player;
+using Code.Runtime.Services.Interactions.Truck.Path;
 using Code.Runtime.Services.Player;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.SpawnersStaticData;
@@ -24,13 +25,15 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerInventoryService _playerInventory;
         private readonly IPlayerFactory _playerFactory;
         private readonly IHudFactory _hudFactory;
+        private readonly ITruckDeliveryService _truckDeliveryService;
 
         private string _levelName;
         private LevelStaticData _levelData;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IPlayerInventoryService playerInventory,
-            IInteractablesFactory interactablesFactory, IPlayerFactory playerFactory, IHudFactory hudFactory)
+            IInteractablesFactory interactablesFactory, IPlayerFactory playerFactory, IHudFactory hudFactory,
+            ITruckDeliveryService truckDeliveryService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -41,6 +44,7 @@ namespace Code.Runtime.Infrastructure.States
             _playerInventory = playerInventory;
             _playerFactory = playerFactory;
             _hudFactory = hudFactory;
+            _truckDeliveryService = truckDeliveryService;
         }
 
         public void Start(string payload)
@@ -70,6 +74,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             InitBookSlots();
             InitReadingTables();
+            InitTruck();
         }
 
         private GameObject InitPlayer()
@@ -96,6 +101,12 @@ namespace Code.Runtime.Infrastructure.States
             {
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
             }
+        }
+
+        private void InitTruck()
+        {
+            GameObject truck = _interactablesFactory.CreateTruck(_levelData.TruckWayStaticData);
+            _truckDeliveryService.RegisterTruck(truck);
         }
 
         private void InitCamera(GameObject player) =>
