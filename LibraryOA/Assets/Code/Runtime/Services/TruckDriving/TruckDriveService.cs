@@ -5,7 +5,7 @@ using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Interactions.Truck.Path
+namespace Code.Runtime.Services.TruckDriving
 {
     [UsedImplicitly]
     internal sealed class TruckDriveService : ITruckDriveService

@@ -2,7 +2,7 @@ using Code.Runtime.StaticData.SpawnersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Interactions.Truck.Path
+namespace Code.Runtime.Services.TruckDriving
 {
     internal interface ITruckDriveService
     {

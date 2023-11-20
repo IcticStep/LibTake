@@ -12,9 +12,9 @@ using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Truck;
-using Code.Runtime.Services.Interactions.Truck.Path;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.TruckDriving;
 using UnityEngine;
 using Zenject;
 
