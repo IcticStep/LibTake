@@ -4,8 +4,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
 {
     public interface IStaticDataService
     {
-        StaticReadingTable ReadingTableData { get; }
         StartupSettings StartupSettings { get; }
+        StaticReadingTable ReadingTableData { get; }
+        TruckStaticData TruckData { get; }
         void LoadAll();
         void LoadBooks();
         void LoadLevels();
