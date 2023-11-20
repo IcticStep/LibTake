@@ -7,5 +7,6 @@ namespace Code.Runtime.Data.Progress
     {
         public BookHoldersState BookHoldersState = new();
         public ProgressesStates ProgressesStates = new();
+        public BooksDeliveringData BooksDeliveringData = new();
     }
 }

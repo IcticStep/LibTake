@@ -20,7 +20,7 @@ namespace Code.Editor.Editors
 
             LevelStaticData levelData = (LevelStaticData)target;
 
-            if (GUILayout.Button("Collect"))
+            if(GUILayout.Button("Collect"))
             {
                 UpdateLevelData(levelData);
             }
@@ -31,13 +31,19 @@ namespace Code.Editor.Editors
             List<BookSlotSpawnData> bookSlotsSpawns = FindObjectsOfType<BookSlotSpawn>()
                 .Select(BookSlotSpawnData.NewFrom)
                 .ToList();
+
             List<ReadingTableSpawnData> readingTableSpawns = FindObjectsOfType<ReadingTableSpawn>()
                 .Select(ReadingTableSpawnData.NewFrom)
                 .ToList();
+
             string sceneKey = SceneManager.GetActiveScene().name;
             Vector3 playerPosition = FindObjectOfType<PlayerInitialSpawn>().transform.position;
 
-            levelData.UpdateData(sceneKey, playerPosition, bookSlotsSpawns, readingTableSpawns);
+            TruckWay truckPathWay = FindObjectOfType<TruckWay>();
+            TruckWayStaticData truckPathWayData = TruckWayStaticData.FromWayPoints(truckPathWay.LibraryPoint, truckPathWay.HiddenPoint);
+            
+            levelData.UpdateData(sceneKey, playerPosition, bookSlotsSpawns, readingTableSpawns, truckPathWayData);
             EditorUtility.SetDirty(levelData);
         }
-    }}
+    }
+}
