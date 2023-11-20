@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
@@ -15,6 +16,7 @@ namespace Code.Runtime.Services.Player
 
         public string CurrentBookId => HasBook ? Inventory.Peek() : null;
         public bool HasBook => Inventory.Count > 0;
+        public IEnumerable<string> Books => Inventory.AllBooks;
         private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
         public event Action Updated;
@@ -35,5 +37,8 @@ namespace Code.Runtime.Services.Player
             Updated?.Invoke();
             return removedId;
         }
+
+        public void LoadProgress(PlayerProgress progress) =>
+            Updated?.Invoke();
     }
 }
