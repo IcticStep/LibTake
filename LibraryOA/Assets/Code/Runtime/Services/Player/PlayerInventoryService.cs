@@ -11,11 +11,11 @@ namespace Code.Runtime.Services.Player
     [UsedImplicitly]
     internal sealed class PlayerInventoryService : IPlayerInventoryService
     {
-        private readonly BookStorage _bookStorage = new();
         private IPlayerProgressService _progressService;
 
-        public string CurrentBookId => _bookStorage.CurrentBookId;
-        public bool HasBook => _bookStorage.HasBook;
+        public string CurrentBookId => HasBook ? Inventory.Peek() : null;
+        public bool HasBook => Inventory.Count > 0;
+        private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
         public event Action Updated;
 
@@ -25,31 +25,13 @@ namespace Code.Runtime.Services.Player
 
         public void InsertBook(string id)
         {
-            _bookStorage.InsertBook(id);
-            UpdateProgress(_progressService.Progress);
+            Inventory.Push(id);
             Updated?.Invoke();
         }
-
-        public void LoadProgress(PlayerProgress progress)
-        {
-            BookData savedData = progress.PlayerData.BookInHands;
-
-            if(_bookStorage.HasBook)
-                _bookStorage.RemoveBook();
-            
-            if(savedData is null)
-                return;
-            
-            _bookStorage.InsertBook(savedData.BookId);
-        }
-
-        public void UpdateProgress(PlayerProgress progress) =>
-            progress.PlayerData.BookInHands.BookId = _bookStorage.CurrentBookId;
-
+        
         public string RemoveBook()
         {
-            string removedId = _bookStorage.RemoveBook();
-            UpdateProgress(_progressService.Progress);
+            string removedId = Inventory.Pop();
             Updated?.Invoke();
             return removedId;
         }

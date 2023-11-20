@@ -77,12 +77,8 @@ namespace Code.Runtime.Infrastructure.States
             InitTruck();
         }
 
-        private GameObject InitPlayer()
-        {
-            GameObject player = _playerFactory.Create(_levelData.PlayerInitialPosition);
-            _saveLoadRegistry.Register(_playerInventory);
-            return player;
-        }
+        private GameObject InitPlayer() =>
+            _playerFactory.Create(_levelData.PlayerInitialPosition);
 
         private void InitUi() =>
             _hudFactory.Create();

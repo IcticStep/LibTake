@@ -1,6 +1,6 @@
 using Code.Runtime.Logic.Interactions;
 
-namespace Code.Runtime.Services.Interactions.Truck
+namespace Code.Runtime.Logic
 {
     internal sealed class Truck : Interactable
     {
