@@ -1,6 +1,6 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
-using Code.Runtime.Services.Interactions.Truck.Path;
+using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
