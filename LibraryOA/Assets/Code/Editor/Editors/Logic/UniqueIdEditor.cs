@@ -1,7 +1,7 @@
 using Code.Runtime.Logic;
 using UnityEditor;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.Logic
 {
     [CustomEditor(typeof(UniqueId))]
     internal sealed class UniqueIdEditor : UnityEditor.Editor

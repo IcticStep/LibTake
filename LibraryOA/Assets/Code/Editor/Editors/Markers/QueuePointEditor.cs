@@ -2,7 +2,7 @@ using Code.Runtime.Logic.Markers.CustomersQueue;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.Markers
 {
     [CustomEditor(typeof(QueuePoint))]
     internal sealed class QueuePointEditor : UnityEditor.Editor

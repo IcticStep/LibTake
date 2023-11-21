@@ -2,7 +2,7 @@ using System.Linq;
 using Code.Runtime.StaticData;
 using UnityEditor;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.StaticData
 {
     [CustomEditor(typeof(StartupSettings))]
     internal sealed class StartupSettingsEditor : UnityEditor.Editor

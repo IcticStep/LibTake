@@ -1,9 +1,8 @@
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Spawns;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.Markers
 {
     [CustomEditor(typeof(PlayerInitialSpawn))]
     public sealed class PlayerInitialSpawnEditor : UnityEditor.Editor

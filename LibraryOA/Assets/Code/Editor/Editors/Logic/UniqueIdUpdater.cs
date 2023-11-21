@@ -6,7 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.Logic
 {
     internal sealed class UniqueIdUpdater
     {
