@@ -1,9 +1,8 @@
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Truck;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.Markers
 {
     public static class TruckWayGizmoDrawer
     {

@@ -1,10 +1,9 @@
 using Code.Editor.Windows.BookSlot;
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Spawns;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.Markers
 {
     [CustomEditor(typeof(BookSlotSpawnContainer))]
     internal sealed class BookSlotSpawnContainerEditor : UnityEditor.Editor

@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Code.Runtime.Logic;
-using Code.Runtime.Logic.Interactions;
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Logic.Markers.Truck;
 using Code.Runtime.StaticData;
@@ -11,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Code.Editor.Editors
+namespace Code.Editor.Editors.StaticData
 {
     [CustomEditor(typeof(LevelStaticData))]
     public class LevelStaticDataEditor : UnityEditor.Editor
