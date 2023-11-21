@@ -18,20 +18,29 @@ namespace Code.Runtime.StaticData
         private List<BookSlotSpawnData> _bookSlots;
         [SerializeField] 
         private List<ReadingTableSpawnData> _readingTables;
+
+        [field: SerializeField]
+        public CustomersPointsData CustomersPointsData { get; private set; }
         [field: SerializeField]
         public TruckWayStaticData TruckWay { get; private set; }
 
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
         
-        public void UpdateData(string levelKey, Vector3 playerInitialPosition, List<BookSlotSpawnData> bookSlots, 
-            List<ReadingTableSpawnData> readingTables, TruckWayStaticData wayStaticData)
+        public void UpdateData(
+            string levelKey, 
+            Vector3 playerInitialPosition, 
+            List<BookSlotSpawnData> bookSlots, 
+            List<ReadingTableSpawnData> readingTables,
+            TruckWayStaticData wayStaticData, 
+            CustomersPointsData customersPointsData)
         {
             LevelKey = levelKey;
             PlayerInitialPosition = playerInitialPosition;
             _bookSlots = bookSlots;
             _readingTables = readingTables;
             TruckWay = wayStaticData;
+            CustomersPointsData = customersPointsData;
         }
     }
 }
