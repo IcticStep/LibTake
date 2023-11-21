@@ -1,16 +1,16 @@
-using Code.Runtime.Logic.Markers.CustomersQueue;
+using Code.Runtime.Logic.Markers.Customers;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.Editors.Markers
+namespace Code.Editor.Editors.Markers.Customers
 {
-    [CustomEditor(typeof(QueuePoint))]
-    internal sealed class QueuePointEditor : UnityEditor.Editor
+    [CustomEditor(typeof(CustomersDespawnPoint))]
+    internal sealed class CustomersDespawnPointEditor : UnityEditor.Editor
     {
         private static readonly Color _color = new(1f, 0.67f, 0.14f);
 
         [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected | GizmoType.Selected )]
-        public static void RenderCustomGizmo(QueuePoint spawn, GizmoType gizmo)
+        public static void RenderCustomGizmo(CustomersDespawnPoint spawn, GizmoType gizmo)
         {
             Color previousColor = Gizmos.color;
             Gizmos.color = _color;
