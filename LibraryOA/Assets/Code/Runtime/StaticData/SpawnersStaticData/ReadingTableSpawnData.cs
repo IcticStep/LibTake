@@ -1,6 +1,7 @@
 using System;
 using Code.Runtime.Logic;
-using Code.Runtime.Logic.SpawnMarkers;
+using Code.Runtime.Logic.Markers;
+using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;

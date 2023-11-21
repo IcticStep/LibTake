@@ -1,5 +1,6 @@
 using System;
-using Code.Runtime.Logic.SpawnMarkers;
+using Code.Runtime.Logic.Markers;
+using Code.Runtime.Logic.Markers.Truck;
 
 namespace Code.Runtime.StaticData.SpawnersStaticData
 {
