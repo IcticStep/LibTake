@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadBook;
+using Code.Runtime.Services.Player;
 using JetBrains.Annotations;
 using Progress = Code.Runtime.Logic.Progress;
 
@@ -13,12 +14,14 @@ namespace Code.Runtime.Services.Interactions.ReadingTable
     {
         private readonly IPlayerProgressService _playerProgressService;
         private readonly IReadBookService _readBookService;
+        private readonly IPlayerInventoryService _playerInventoryService;
 
         public ReadingTableInteractionService(IBookSlotInteractionService bookSlotInteractionService, IPlayerProgressService playerProgressService,
-            IReadBookService readBookService)
+            IReadBookService readBookService, IPlayerInventoryService playerInventoryService)
         {
             _playerProgressService = playerProgressService;
             _readBookService = readBookService;
+            _playerInventoryService = playerInventoryService;
         }
 
         public bool CanInteract(IBookStorage bookStorage, Progress progress) =>
@@ -45,7 +48,8 @@ namespace Code.Runtime.Services.Interactions.ReadingTable
             progress.StopFilling();
 
         private bool CanRead(IBookStorage bookStorage, Progress progress) =>
-            bookStorage.HasBook 
+            bookStorage.HasBook
+            && !_playerInventoryService.HasBook
             && progress.CanBeStarted 
             && !BookIsRead(bookStorage.CurrentBookId);
 
