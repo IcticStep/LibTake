@@ -1,4 +1,4 @@
-using Code.Runtime.Logic.Markers.Customers.Queue;
+using Code.Runtime.Logic.Queue;
 using UnityEditor;
 using UnityEngine;
 

@@ -7,6 +7,7 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.BooksDelivering;
+using Code.Runtime.Services.CustomersQueue;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadBook;
@@ -65,6 +66,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
             Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
+            Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
         }
 
         private void InstallFactories()
