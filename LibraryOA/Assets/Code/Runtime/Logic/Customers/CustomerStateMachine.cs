@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Logic.Customers.CustomersStates;
+using Code.Runtime.Services.CustomersQueue;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Runtime.Logic.Customers
 {
@@ -12,11 +14,16 @@ namespace Code.Runtime.Logic.Customers
         
         private Dictionary<Type, ICustomerState> _states;
         private ICustomerState _activeState;
+        private ICustomersQueueProvider _customersQueueProvider;
 
+        [Inject]
+        private void Construct(ICustomersQueueProvider customersQueueProvider) =>
+            _customersQueueProvider = customersQueueProvider;
+        
         private void Awake() =>
             _states = new Dictionary<Type, ICustomerState>
             {
-                [typeof(GoToBookReceivingState)] = new GoToBookReceivingState(this, _queueMember),
+                [typeof(GoToBookReceivingState)] = new GoToBookReceivingState(this, _queueMember, _customersQueueProvider),
                 [typeof(BookReceivingState)] = new BookReceivingState(this),
             };
 

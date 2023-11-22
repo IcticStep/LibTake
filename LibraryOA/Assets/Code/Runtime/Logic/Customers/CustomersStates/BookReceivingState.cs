@@ -11,10 +11,13 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _customerStateMachine = customerStateMachine;
         }
 
-        public void Start() =>
-            throw new NotImplementedException();
-
-        public void Exit() =>
-            throw new NotImplementedException();
+        public void Start()
+        {
+            
+        }
+        
+        public void Exit()
+        {
+        }
     }
 }

@@ -7,17 +7,14 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     {
         private readonly CustomerStateMachine _customerStateMachine;
         private readonly QueueMember _queueMember;
-        private ICustomersQueueProvider _customersQueueProvider;
+        private readonly ICustomersQueueProvider _customersQueueProvider;
 
-        public GoToBookReceivingState(CustomerStateMachine customerStateMachine, QueueMember queueMember)
+        public GoToBookReceivingState(CustomerStateMachine customerStateMachine, QueueMember queueMember, ICustomersQueueProvider customersQueueProvider)
         {
             _customerStateMachine = customerStateMachine;
             _queueMember = queueMember;
-        }
-
-        [Inject]
-        private void Construct(ICustomersQueueProvider customersQueueProvider) =>
             _customersQueueProvider = customersQueueProvider;
+        }
 
         public void Start()
         {
