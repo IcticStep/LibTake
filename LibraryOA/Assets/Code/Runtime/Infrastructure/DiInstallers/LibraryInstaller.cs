@@ -1,14 +1,16 @@
-using Code.Runtime.Logic.Queue;
+using Code.Runtime.Logic.Customers;
 using Code.Runtime.Services.CustomersQueue;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Infrastructure.DiInstallers
 {
     internal sealed class LibraryInstaller : MonoInstaller, IInitializable
     {
+        [FormerlySerializedAs("_customersQueueContainer")]
         [SerializeField]
-        private Queue _customersQueue;
+        private CustomersQueue _customersCustomersQueue;
         
         public override void InstallBindings()
         {
@@ -17,7 +19,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         public void Initialize()
         {
-            Container.Resolve<ICustomersQueueService>().Initialize(_customersQueue);
+            Container.Resolve<ICustomersQueueProvider>().Initialize(_customersCustomersQueue);
         }
     }
 }
