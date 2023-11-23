@@ -7,18 +7,18 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     {
         private readonly CustomerStateMachine _customerStateMachine;
         private readonly QueueMember _queueMember;
-        private readonly ICustomersQueueProvider _customersQueueProvider;
+        private readonly ICustomersQueueService _customersQueueService;
 
-        public GoToBookReceivingState(CustomerStateMachine customerStateMachine, QueueMember queueMember, ICustomersQueueProvider customersQueueProvider)
+        public GoToBookReceivingState(CustomerStateMachine customerStateMachine, QueueMember queueMember, ICustomersQueueService customersQueueService)
         {
             _customerStateMachine = customerStateMachine;
             _queueMember = queueMember;
-            _customersQueueProvider = customersQueueProvider;
+            _customersQueueService = customersQueueService;
         }
 
         public void Start()
         {
-            _customersQueueProvider.CustomersQueue.Enqueue(_queueMember);
+            _customersQueueService.Enqueue(_queueMember);
             _queueMember.BecameFirst += StartReceiving;
         }
 

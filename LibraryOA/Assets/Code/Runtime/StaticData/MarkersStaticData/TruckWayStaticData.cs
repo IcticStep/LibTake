@@ -1,8 +1,7 @@
 using System;
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Truck;
 
-namespace Code.Runtime.StaticData.SpawnersStaticData
+namespace Code.Runtime.StaticData.MarkersStaticData
 {
     [Serializable]
     public sealed class TruckWayStaticData

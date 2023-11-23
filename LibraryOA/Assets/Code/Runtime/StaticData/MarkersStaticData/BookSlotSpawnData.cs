@@ -1,12 +1,10 @@
 using System;
 using Code.Runtime.Logic;
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Runtime.StaticData.SpawnersStaticData
+namespace Code.Runtime.StaticData.MarkersStaticData
 {
     [Serializable]
     public class BookSlotSpawnData

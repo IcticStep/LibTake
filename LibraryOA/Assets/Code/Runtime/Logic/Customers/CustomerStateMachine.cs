@@ -14,16 +14,16 @@ namespace Code.Runtime.Logic.Customers
         
         private Dictionary<Type, ICustomerState> _states;
         private ICustomerState _activeState;
-        private ICustomersQueueProvider _customersQueueProvider;
+        private ICustomersQueueService _customersQueueService;
 
         [Inject]
-        private void Construct(ICustomersQueueProvider customersQueueProvider) =>
-            _customersQueueProvider = customersQueueProvider;
+        private void Construct(ICustomersQueueService customersQueueService) =>
+            _customersQueueService = customersQueueService;
         
         private void Awake() =>
             _states = new Dictionary<Type, ICustomerState>
             {
-                [typeof(GoToBookReceivingState)] = new GoToBookReceivingState(this, _queueMember, _customersQueueProvider),
+                [typeof(GoToBookReceivingState)] = new GoToBookReceivingState(this, _queueMember, _customersQueueService),
                 [typeof(BookReceivingState)] = new BookReceivingState(this),
             };
 

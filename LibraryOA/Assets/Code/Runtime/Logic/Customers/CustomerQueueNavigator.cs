@@ -18,10 +18,10 @@ namespace Code.Runtime.Logic.Customers
 
         private void OnQueuePositionUpdated()
         {
-            if(_queueMember.Point is null)
+            if(_queueMember.CurrentPoint is null)
                 return;
-            
-            _navMeshAgent.destination = _queueMember.Point.Position;
+
+            _navMeshAgent.destination = _queueMember.CurrentPoint.Value;
         }
     }
 }

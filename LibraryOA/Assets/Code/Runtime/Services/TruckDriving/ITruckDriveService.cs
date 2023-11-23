@@ -1,4 +1,4 @@
-using Code.Runtime.StaticData.SpawnersStaticData;
+using Code.Runtime.StaticData.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

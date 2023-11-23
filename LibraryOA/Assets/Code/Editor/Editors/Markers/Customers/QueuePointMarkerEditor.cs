@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Code.Editor.Editors.Markers.Customers
 {
-    [CustomEditor(typeof(QueuePoint))]
-    internal sealed class QueuePointEditor : UnityEditor.Editor
+    [CustomEditor(typeof(QueuePointMarker))]
+    internal sealed class QueuePointMarkerEditor : UnityEditor.Editor
     {
         private static readonly Color _color = new(1f, 0.67f, 0.14f);
 
         [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected | GizmoType.Selected )]
-        public static void RenderCustomGizmo(QueuePoint spawn, GizmoType gizmo)
+        public static void RenderCustomGizmo(QueuePointMarker spawn, GizmoType gizmo)
         {
             Color previousColor = Gizmos.color;
             Gizmos.color = _color;
