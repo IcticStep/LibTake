@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {
@@ -13,7 +14,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         public void Start()
         {
-            
+            Debug.Log("Book receiving state entered.");
         }
         
         public void Exit()
