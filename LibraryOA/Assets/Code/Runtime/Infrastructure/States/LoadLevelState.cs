@@ -86,18 +86,18 @@ namespace Code.Runtime.Infrastructure.States
 
         private void InitBookSlots()
         {
-            foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
+            foreach(BookSlotSpawnData spawn in _levelData.Interactables.BookSlots)
                 _interactablesFactory.CreateBookSlot(spawn);
         }
 
         private void InitReadingTables()
         {
-            foreach(ReadingTableSpawnData readingTable in _levelData.ReadingTables)
+            foreach(ReadingTableSpawnData readingTable in _levelData.Interactables.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
         }
 
         private void InitCustomersQueue() =>
-            _customersQueueService.Initialize(_levelData.QueueData);
+            _customersQueueService.Initialize(_levelData.Customers.QueuePoints);
 
         private void InitTruck()
         {

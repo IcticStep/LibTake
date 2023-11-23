@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.StaticData.MarkersStaticData;
+using UnityEngine;
 
 namespace Code.Runtime.Services.CustomersQueue
 {
@@ -8,8 +10,8 @@ namespace Code.Runtime.Services.CustomersQueue
         int Capacity { get; }
         int MembersCount { get; }
         bool Full { get; }
-        void Initialize(QueueData queueData);
         void Enqueue(QueueMember queueMember);
         void Dequeue();
+        void Initialize(IReadOnlyList<Vector3> queuePoints);
     }
 }
