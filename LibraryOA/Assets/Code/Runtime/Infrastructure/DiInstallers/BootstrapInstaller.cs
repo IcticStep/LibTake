@@ -71,7 +71,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         private void InstallFactories()
         {
-            Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
+            Container.Bind<ICharactersFactory>().To<CharactersFactory>().AsSingle();
             Container.Bind<IInteractablesFactory>().To<InteractablesFactory>().AsSingle();
             Container.Bind<IHudFactory>().To<HudFactory>().AsSingle();
         }

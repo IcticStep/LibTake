@@ -22,7 +22,7 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IPlayerProgressService _playerProgress;
-        private readonly IPlayerFactory _playerFactory;
+        private readonly ICharactersFactory _charactersFactory;
         private readonly IHudFactory _hudFactory;
         private readonly ITruckDriveService _truckDriveService;
         private readonly ICustomersQueueService _customersQueueService;
@@ -32,7 +32,7 @@ namespace Code.Runtime.Infrastructure.States
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IInteractablesFactory interactablesFactory,
-            IPlayerFactory playerFactory, IHudFactory hudFactory, ITruckDriveService truckDriveService,
+            ICharactersFactory charactersFactory, IHudFactory hudFactory, ITruckDriveService truckDriveService,
             ICustomersQueueService customersQueueService)
         {
             _stateMachine = stateMachine;
@@ -41,7 +41,7 @@ namespace Code.Runtime.Infrastructure.States
             _staticData = staticData;
             _saveLoadRegistry = saveLoadRegistry;
             _playerProgress = playerProgress;
-            _playerFactory = playerFactory;
+            _charactersFactory = charactersFactory;
             _hudFactory = hudFactory;
             _truckDriveService = truckDriveService;
             _customersQueueService = customersQueueService;
@@ -79,7 +79,7 @@ namespace Code.Runtime.Infrastructure.States
         }
 
         private GameObject InitPlayer() =>
-            _playerFactory.Create(_levelData.PlayerInitialPosition);
+            _charactersFactory.CreatePlayer(_levelData.PlayerInitialPosition);
 
         private void InitUi() =>
             _hudFactory.Create();
