@@ -26,7 +26,6 @@ namespace Code.Runtime.Services.CustomersQueue
             UpdateMembersPoints();
         }
         
-        [ContextMenu("Dequeue")]
         public void Dequeue()
         {
             QueueMember memberGone = _members.Dequeue();
