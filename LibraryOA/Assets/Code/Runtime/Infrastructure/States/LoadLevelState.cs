@@ -5,10 +5,10 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Logic.Player;
-using Code.Runtime.Services.Player;
+using Code.Runtime.Services.CustomersQueue;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.SpawnersStaticData;
+using Code.Runtime.StaticData.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -22,18 +22,18 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IPlayerProgressService _playerProgress;
-        private readonly IPlayerInventoryService _playerInventory;
         private readonly IPlayerFactory _playerFactory;
         private readonly IHudFactory _hudFactory;
         private readonly ITruckDriveService _truckDriveService;
+        private readonly ICustomersQueueService _customersQueueService;
 
         private string _levelName;
         private LevelStaticData _levelData;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
-            ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IPlayerInventoryService playerInventory,
-            IInteractablesFactory interactablesFactory, IPlayerFactory playerFactory, IHudFactory hudFactory,
-            ITruckDriveService truckDriveService)
+            ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IInteractablesFactory interactablesFactory,
+            IPlayerFactory playerFactory, IHudFactory hudFactory, ITruckDriveService truckDriveService,
+            ICustomersQueueService customersQueueService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -41,10 +41,10 @@ namespace Code.Runtime.Infrastructure.States
             _staticData = staticData;
             _saveLoadRegistry = saveLoadRegistry;
             _playerProgress = playerProgress;
-            _playerInventory = playerInventory;
             _playerFactory = playerFactory;
             _hudFactory = hudFactory;
             _truckDriveService = truckDriveService;
+            _customersQueueService = customersQueueService;
         }
 
         public void Start(string payload)
@@ -75,6 +75,7 @@ namespace Code.Runtime.Infrastructure.States
             InitBookSlots();
             InitReadingTables();
             InitTruck();
+            InitCustomersQueue();
         }
 
         private GameObject InitPlayer() =>
@@ -86,18 +87,17 @@ namespace Code.Runtime.Infrastructure.States
         private void InitBookSlots()
         {
             foreach(BookSlotSpawnData spawn in _levelData.BookSlots)
-            {
                 _interactablesFactory.CreateBookSlot(spawn);
-            }
         }
 
         private void InitReadingTables()
         {
             foreach(ReadingTableSpawnData readingTable in _levelData.ReadingTables)
-            {
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
-            }
         }
+
+        private void InitCustomersQueue() =>
+            _customersQueueService.Initialize(_levelData.QueueData);
 
         private void InitTruck()
         {

@@ -66,7 +66,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
             Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
-            Container.Bind<ICustomersQueueProvider>().To<CustomersQueueProvider>().AsSingle();
+            Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
         }
 
         private void InstallFactories()

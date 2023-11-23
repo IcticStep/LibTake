@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Markers.Customers;
 using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Logic.Markers.Truck;
 using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.SpawnersStaticData;
+using Code.Runtime.StaticData.MarkersStaticData;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,8 +44,9 @@ namespace Code.Editor.Editors.StaticData
             TruckWayStaticData truckPathWayData = TruckWayStaticData.FromWayPoints(truckPathWay.LibraryPoint, truckPathWay.HiddenPoint);
 
             CustomersPointsData customersPointsData = CollectCustomersPointsData();
+            QueueData queueData = CollectQueueData();
 
-            levelData.UpdateData(sceneKey, playerPosition, bookSlotsSpawns, readingTableSpawns, truckPathWayData, customersPointsData);
+            levelData.UpdateData(sceneKey, playerPosition, bookSlotsSpawns, readingTableSpawns, truckPathWayData, customersPointsData, queueData);
             EditorUtility.SetDirty(levelData);
         }
 
@@ -55,5 +57,11 @@ namespace Code.Editor.Editors.StaticData
             CustomersPointsData customersPointsData = new CustomersPointsData(customersSpawnPoint, customersDespawnPoint);
             return customersPointsData;
         }
+
+        private static QueueData CollectQueueData() =>
+            new(FindObjectOfType<CustomersQueueMarker>()
+                .Points
+                .Select(x => x.transform.position)
+                .ToList());
     }
 }

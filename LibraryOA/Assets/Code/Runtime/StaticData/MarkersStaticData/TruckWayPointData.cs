@@ -2,7 +2,7 @@ using System;
 using Code.Runtime.Utils;
 using UnityEngine;
 
-namespace Code.Runtime.StaticData.SpawnersStaticData
+namespace Code.Runtime.StaticData.MarkersStaticData
 {
     [Serializable]
     public sealed class TruckWayPointData

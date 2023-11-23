@@ -5,15 +5,15 @@ namespace Code.Runtime.Logic.Customers
 {
     public sealed class QueueMember : MonoBehaviour
     {
-        public QueuePoint Point { get; private set; }
+        public Vector3? CurrentPoint { get; private set; }
 
-        public bool ActiveMember => Point is not null;
+        public bool ActiveMember => CurrentPoint is not null;
         public event Action Updated;
         public event Action BecameFirst;
         
-        public void UpdatePoint(QueuePoint point)
+        public void UpdatePoint(Vector3? point)
         {
-            Point = point;
+            CurrentPoint = point;
             Updated?.Invoke();
         }
 

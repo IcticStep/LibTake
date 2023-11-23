@@ -1,18 +1,25 @@
 using System.Collections.Generic;
+using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Logic.Customers;
+using Code.Runtime.StaticData.MarkersStaticData;
+using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Customers
+namespace Code.Runtime.Services.CustomersQueue
 {
-    public sealed class CustomersQueue : MonoBehaviour
+    [UsedImplicitly]
+    internal sealed class CustomersQueueService : ICustomersQueueService
     {
-        [field: SerializeField]
-        public QueuePoint[] Points { get; private set; }
-
+        private readonly IStaticDataService _staticDataService;
         private readonly Queue<QueueMember> _members = new();
-
-        public int Capacity => Points.Length;
+        private IReadOnlyList<Vector3> _points;
+        
+        public int Capacity => _points.Count;
         public int MembersCount => _members.Count;
         public bool Full => Capacity == MembersCount;
+
+        public void Initialize(QueueData queueData) =>
+            _points = queueData.Points;
 
         public void Enqueue(QueueMember queueMember)
         {
@@ -20,10 +27,12 @@ namespace Code.Runtime.Logic.Customers
             UpdateMembersPoints();
         }
         
+        [ContextMenu("Dequeue")]
         public void Dequeue()
         {
             QueueMember memberGone = _members.Dequeue();
             memberGone.UpdatePoint(null);
+            UpdateMembersPoints();
         }
 
         private void UpdateMembersPoints()
@@ -31,7 +40,7 @@ namespace Code.Runtime.Logic.Customers
             int index = 0;
             foreach(QueueMember queueMember in _members)
             {
-                queueMember.UpdatePoint(Points[index]);
+                queueMember.UpdatePoint(_points[index]);
                 if(index == 0)
                     queueMember.InformBecameFirst();
                 index++;
