@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers;
-using Code.Runtime.StaticData.MarkersStaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -18,8 +17,8 @@ namespace Code.Runtime.Services.CustomersQueue
         public int MembersCount => _members.Count;
         public bool Full => Capacity == MembersCount;
 
-        public void Initialize(QueueData queueData) =>
-            _points = queueData.Points;
+        public void Initialize(IReadOnlyList<Vector3> queuePoints) =>
+            _points = queuePoints;
 
         public void Enqueue(QueueMember queueMember)
         {

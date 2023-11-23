@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Customers
+namespace Code.Runtime.Logic.Markers.Customers
 {
     public sealed class QueuePointMarker : MonoBehaviour { }
 }

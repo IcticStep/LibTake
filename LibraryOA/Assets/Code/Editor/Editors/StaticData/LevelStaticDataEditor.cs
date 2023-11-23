@@ -29,6 +29,37 @@ namespace Code.Editor.Editors.StaticData
 
         public static void UpdateLevelData(LevelStaticData levelData)
         {
+            string sceneKey = SceneManager.GetActiveScene().name;
+            Vector3 playerPosition = FindObjectOfType<PlayerInitialSpawn>().transform.position;
+            
+            InteractablesData interactablesData = CollectInteractablesData();
+            CustomersData customersData = CollectCustomersData();
+            TruckWayStaticData truckPathWayData = CollectTruckData();
+
+            levelData.UpdateData(sceneKey, playerPosition, customersData, interactablesData, truckPathWayData);
+            EditorUtility.SetDirty(levelData);
+        }
+
+        private static CustomersData CollectCustomersData()
+        {
+            Vector3 spawnPoint = FindObjectOfType<CustomersSpawnPoint>().transform.position;
+            Vector3 despawnPoint = FindObjectOfType<CustomersDespawnPoint>().transform.position;
+            List<Vector3> queuePoints = FindObjectOfType<CustomersQueuePointsContainer>()
+                .Points
+                .Select(x => x.transform.position)
+                .ToList();
+
+            List<Vector3> exitWayPoints = FindObjectOfType<CustomersWayContainer>()
+                .WayPoints
+                .Select(x => x.transform.position)
+                .ToList();
+
+            CustomersData customersData = new(spawnPoint, despawnPoint, queuePoints, exitWayPoints);
+            return customersData;
+        }
+
+        private static InteractablesData CollectInteractablesData()
+        {
             List<BookSlotSpawnData> bookSlotsSpawns = FindObjectsOfType<BookSlotSpawn>()
                 .Select(BookSlotSpawnData.NewFrom)
                 .ToList();
@@ -37,31 +68,14 @@ namespace Code.Editor.Editors.StaticData
                 .Select(ReadingTableSpawnData.NewFrom)
                 .ToList();
 
-            string sceneKey = SceneManager.GetActiveScene().name;
-            Vector3 playerPosition = FindObjectOfType<PlayerInitialSpawn>().transform.position;
+            return new(bookSlotsSpawns, readingTableSpawns);
+        }
 
+        private static TruckWayStaticData CollectTruckData()
+        {
             TruckWay truckPathWay = FindObjectOfType<TruckWay>();
             TruckWayStaticData truckPathWayData = TruckWayStaticData.FromWayPoints(truckPathWay.LibraryPoint, truckPathWay.HiddenPoint);
-
-            CustomersPointsData customersPointsData = CollectCustomersPointsData();
-            QueueData queueData = CollectQueueData();
-
-            levelData.UpdateData(sceneKey, playerPosition, bookSlotsSpawns, readingTableSpawns, truckPathWayData, customersPointsData, queueData);
-            EditorUtility.SetDirty(levelData);
+            return truckPathWayData;
         }
-
-        private static CustomersPointsData CollectCustomersPointsData()
-        {
-            Vector3 customersSpawnPoint = FindObjectOfType<CustomersSpawnPoint>().transform.position;
-            Vector3 customersDespawnPoint = FindObjectOfType<CustomersDespawnPoint>().transform.position;
-            CustomersPointsData customersPointsData = new CustomersPointsData(customersSpawnPoint, customersDespawnPoint);
-            return customersPointsData;
-        }
-
-        private static QueueData CollectQueueData() =>
-            new(FindObjectOfType<CustomersQueueMarker>()
-                .Points
-                .Select(x => x.transform.position)
-                .ToList());
     }
 }

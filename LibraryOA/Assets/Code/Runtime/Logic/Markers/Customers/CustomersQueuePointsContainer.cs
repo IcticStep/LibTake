@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Customers
+namespace Code.Runtime.Logic.Markers.Customers
 {
-    public sealed class CustomersQueueMarker : MonoBehaviour
+    public sealed class CustomersQueuePointsContainer : MonoBehaviour
     {
         [field: SerializeField]
         public QueuePointMarker[] Points { get; private set; }
