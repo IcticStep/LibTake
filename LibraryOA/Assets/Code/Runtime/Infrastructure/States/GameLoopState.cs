@@ -38,17 +38,16 @@ namespace Code.Runtime.Infrastructure.States
         {
             _levelStaticData = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
             DeliverBooks().Forget();
+            SpawnCustomers().Forget();
         }
 
         private async UniTask DeliverBooks()
         {
             await _truckDriveService.DriveToLibrary(_levelStaticData.TruckWay);
             _booksDeliveringService.DeliverBooks();
-
-            await SpawnCustomers();
         }
 
-        private async Task SpawnCustomers()
+        private async UniTask SpawnCustomers()
         {
             for(int i = 0; i < 5; i++)
             {
