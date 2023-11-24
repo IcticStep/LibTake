@@ -62,7 +62,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             _books.TryGetValue(id, out StaticBook result)
                 ? result
                 : null;
-
+        
         public LevelStaticData ForLevel(string key) =>
             _levels.TryGetValue(key, out LevelStaticData result)
                 ? result
