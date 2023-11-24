@@ -35,7 +35,8 @@ namespace Code.Runtime.Logic.Customers
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
                 [typeof(BookReceivingState)] = new BookReceivingState(this),
-                [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService),
+                [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
+                [typeof(DeactivatedState)] = new DeactivatedState(),
             };
 
         private void Start() =>

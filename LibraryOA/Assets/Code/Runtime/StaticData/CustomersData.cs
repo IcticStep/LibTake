@@ -9,8 +9,6 @@ namespace Code.Runtime.StaticData
     {
         [field: SerializeField]
         public Vector3 SpawnPoint { get; private set; }
-        [field: SerializeField]
-        public Vector3 DespawnPoint { get; private set; }
         
         [SerializeField]
         private List<Vector3> _queuePoints;
@@ -21,10 +19,9 @@ namespace Code.Runtime.StaticData
 
         public IReadOnlyList<Vector3> ExitWayPoints => _exitWayPoints;
 
-        public CustomersData(Vector3 spawnPoint, Vector3 despawnPoint, List<Vector3> queuePoints, List<Vector3> exitWayPoints)
+        public CustomersData(Vector3 spawnPoint, List<Vector3> queuePoints, List<Vector3> exitWayPoints)
         {
             SpawnPoint = spawnPoint;
-            DespawnPoint = despawnPoint;
             _queuePoints = queuePoints;
             _exitWayPoints = exitWayPoints;
         }

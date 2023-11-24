@@ -43,7 +43,6 @@ namespace Code.Editor.Editors.StaticData
         private static CustomersData CollectCustomersData()
         {
             Vector3 spawnPoint = FindObjectOfType<CustomersSpawnPoint>().transform.position;
-            Vector3 despawnPoint = FindObjectOfType<CustomersDespawnPoint>().transform.position;
             List<Vector3> queuePoints = FindObjectOfType<CustomersQueuePointsContainer>()
                 .Points
                 .Select(x => x.transform.position)
@@ -54,7 +53,7 @@ namespace Code.Editor.Editors.StaticData
                 .Select(x => x.transform.position)
                 .ToList();
 
-            CustomersData customersData = new(spawnPoint, despawnPoint, queuePoints, exitWayPoints);
+            CustomersData customersData = new(spawnPoint, queuePoints, exitWayPoints);
             return customersData;
         }
 
