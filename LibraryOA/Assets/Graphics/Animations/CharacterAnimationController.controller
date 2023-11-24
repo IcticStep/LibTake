@@ -36,14 +36,14 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -4687401431157208615}
-    m_Position: {x: 70, y: -320, z: 0}
+    m_Position: {x: 580, y: 40, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 90, y: -380, z: 0}
-  m_EntryPosition: {x: 90, y: -240, z: 0}
+  m_AnyStatePosition: {x: 600, y: -20, z: 0}
+  m_EntryPosition: {x: 600, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4687401431157208615}
@@ -108,14 +108,14 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1712914786749665430}
-    m_Position: {x: 180, y: -170, z: 0}
+    m_Position: {x: 570, y: 40, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 200, y: -250, z: 0}
-  m_EntryPosition: {x: 200, y: -90, z: 0}
+  m_AnyStatePosition: {x: 590, y: -40, z: 0}
+  m_EntryPosition: {x: 590, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1712914786749665430}
@@ -2160,14 +2160,14 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1514411974260926719}
-    m_Position: {x: -140, y: -280, z: 0}
+    m_Position: {x: 550, y: 30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -110, y: -360, z: 0}
-  m_EntryPosition: {x: -120, y: -200, z: 0}
+  m_AnyStatePosition: {x: 580, y: -50, z: 0}
+  m_EntryPosition: {x: 570, y: 110, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1514411974260926719}
