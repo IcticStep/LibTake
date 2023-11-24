@@ -10,25 +10,35 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     {
         private readonly CustomerStateMachine _customerStateMachine;
         private readonly IStaticDataService _staticDataService;
+        private readonly CustomerNavigator _customerNavigator;
 
-        public GoAwayState(CustomerStateMachine customerStateMachine, IStaticDataService staticDataService)
+        public GoAwayState(CustomerStateMachine customerStateMachine, IStaticDataService staticDataService, CustomerNavigator customerNavigator)
         {
             _customerStateMachine = customerStateMachine;
             _staticDataService = staticDataService;
+            _customerNavigator = customerNavigator;
         }
 
-        public async void Start()
+        public void Start()
         {
             IReadOnlyList<Vector3> exitWay = GetExitWay();
+            _customerNavigator.SetDestination(exitWay);
+            _customerNavigator.LastPointReached += DeactivatedSelf;
         }
 
-        public void Exit() { }
+        public void Exit() =>
+            _customerNavigator.LastPointReached -= DeactivatedSelf;
+
+        private void DeactivatedSelf() =>
+            _customerStateMachine.Enter<DeactivatedState>();
 
         private IReadOnlyList<Vector3> GetExitWay()
         {
-            LevelStaticData currentLevelData = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
-            IReadOnlyList<Vector3> exitWay = currentLevelData.Customers.ExitWayPoints;
-            return exitWay;
+            string currentLevel = SceneManager.GetActiveScene().name;
+            return _staticDataService
+                .ForLevel(currentLevel)
+                .Customers
+                .ExitWayPoints;
         }
     }
 }

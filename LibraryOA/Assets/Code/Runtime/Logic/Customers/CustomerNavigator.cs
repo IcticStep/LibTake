@@ -74,18 +74,15 @@ namespace Code.Runtime.Logic.Customers
 
         private void SetNextDestination()
         {
-            PointReached?.Invoke();
-
-            if(_destinations.Any())
-            {
-                _currentDestination = _destinations.Dequeue();
-                _navMeshAgent.SetDestination(_currentDestination.Value);
-            }
-            else
+            if(!_destinations.Any())
             {
                 _currentDestination = null;
-                LastPointReached?.Invoke();
+                NotifyReached();
+                return;
             }
+
+            _currentDestination = _destinations.Dequeue();
+            _navMeshAgent.SetDestination(_currentDestination.Value);
         }
 
         private void SetFirstDestination()
@@ -94,7 +91,17 @@ namespace Code.Runtime.Logic.Customers
             _navMeshAgent.SetDestination(_currentDestination.Value);
         }
 
-        private bool DestinationIsReached(Vector3 destination) =>
-            Vector3.Distance(destination, _transform.position.WithY(0)) < _destinationReachedDistance;
+        private void NotifyReached()
+        {
+            PointReached?.Invoke();
+            if(!_destinations.Any())
+                LastPointReached?.Invoke();
+        }
+
+        private bool DestinationIsReached(Vector3 destination)
+        {
+            float distance = Vector3.Distance(destination.WithY(0), _transform.position.WithY(0));
+            return distance < _destinationReachedDistance;
+        }
     }
 }

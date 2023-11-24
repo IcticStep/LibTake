@@ -11,6 +11,7 @@ namespace Code.Runtime.Services.CustomersQueue
     {
         private readonly IStaticDataService _staticDataService;
         private readonly Queue<QueueMember> _membersQueue = new();
+        
         private IReadOnlyList<Vector3> _points;
         
         public int Capacity => _points.Count;

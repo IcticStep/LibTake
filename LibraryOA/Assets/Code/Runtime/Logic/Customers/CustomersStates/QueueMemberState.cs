@@ -27,20 +27,26 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         public void Exit()
         {
+            _customersQueueService.Dequeue();
             _queueMember.Updated -= OnQueueMemberUpdated;
             _customerNavigator.PointReached -= OnPointReached;
         }
-
-        private void OnQueueMemberUpdated()
-        {
-            if(_queueMember.CurrentPoint != null)
-                _customerNavigator.SetDestination(_queueMember.CurrentPoint.Value);
-        }
+ 
+        private void OnQueueMemberUpdated() =>
+            WalkToQueuePlace();
 
         private void OnPointReached()
         {
             if(_queueMember.First)
-                _customerStateMachine.Enter<BookReceivingState>();
+                _customerStateMachine.Enter<GoAwayState>();
+            else
+                WalkToQueuePlace();;
+        }
+
+        private void WalkToQueuePlace()
+        {
+            if(_queueMember.CurrentPoint != null)
+                _customerNavigator.SetDestination(_queueMember.CurrentPoint.Value);
         }
     }
 }
