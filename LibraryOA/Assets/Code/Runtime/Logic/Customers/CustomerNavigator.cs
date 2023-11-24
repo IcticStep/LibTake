@@ -24,6 +24,8 @@ namespace Code.Runtime.Logic.Customers
         private Coroutine _moveToDestinationCoroutine;
         private Vector3? _currentDestination;
 
+        public float SpeedPercents => _navMeshAgent.velocity.magnitude / _navMeshAgent.speed;
+        
         public event Action PointReached;
         public event Action LastPointReached;
 
