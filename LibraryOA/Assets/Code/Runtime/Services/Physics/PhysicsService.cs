@@ -14,6 +14,7 @@ namespace Code.Runtime.Services.Physics
         public Collider RaycastSphereForInteractable(Vector3 position, Vector3 forwardDirection, float radius)
         {
             int collisions = UnityEngine.Physics.OverlapSphereNonAlloc(position, radius, _hitColliderBuffer10, _interactableLayerMask);
+            
             if(collisions == 0) 
                 return default(Collider);
 

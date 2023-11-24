@@ -10,11 +10,11 @@ namespace Code.Runtime.Services.CustomersQueue
     internal sealed class CustomersQueueService : ICustomersQueueService
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly Queue<QueueMember> _members = new();
+        private readonly Queue<QueueMember> _membersQueue = new();
         private IReadOnlyList<Vector3> _points;
         
         public int Capacity => _points.Count;
-        public int MembersCount => _members.Count;
+        public int MembersCount => _membersQueue.Count;
         public bool Full => Capacity == MembersCount;
 
         public void Initialize(IReadOnlyList<Vector3> queuePoints) =>
@@ -22,13 +22,13 @@ namespace Code.Runtime.Services.CustomersQueue
 
         public void Enqueue(QueueMember queueMember)
         {
-            _members.Enqueue(queueMember);
-            UpdateMembersPoints();
+            _membersQueue.Enqueue(queueMember);
+            UpdateMemberPoint(queueMember, _membersQueue.Count-1);
         }
         
         public void Dequeue()
         {
-            QueueMember memberGone = _members.Dequeue();
+            QueueMember memberGone = _membersQueue.Dequeue();
             memberGone.UpdatePoint(null);
             UpdateMembersPoints();
         }
@@ -36,13 +36,18 @@ namespace Code.Runtime.Services.CustomersQueue
         private void UpdateMembersPoints()
         {
             int index = 0;
-            foreach(QueueMember queueMember in _members)
+            foreach(QueueMember queueMember in _membersQueue)
             {
-                queueMember.UpdatePoint(_points[index]);
-                if(index == 0)
-                    queueMember.InformBecameFirst();
+                UpdateMemberPoint(queueMember, index);
                 index++;
             }
+        }
+
+        private void UpdateMemberPoint(QueueMember queueMember, int index)
+        {
+            queueMember.UpdatePoint(_points[index]);
+            if(index == 0)
+                queueMember.InformBecameFirst();
         }
     }
 }

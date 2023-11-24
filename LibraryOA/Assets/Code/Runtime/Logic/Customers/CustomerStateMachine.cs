@@ -8,15 +8,20 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Customers
 {
-    internal sealed class CustomerStateMachine : MonoBehaviour
+    [SelectionBase]
+    public sealed class CustomerStateMachine : MonoBehaviour
     {
         [SerializeField]
         private QueueMember _queueMember;
+        [SerializeField]
+        private CustomerNavigator _customerNavigator;
         
         private Dictionary<Type, ICustomerState> _states;
         private ICustomerState _activeState;
         private ICustomersQueueService _customersQueueService;
         private IStaticDataService _staticDataService;
+
+        public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService)
@@ -28,7 +33,7 @@ namespace Code.Runtime.Logic.Customers
         private void Awake() =>
             _states = new Dictionary<Type, ICustomerState>
             {
-                [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService),
+                [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
                 [typeof(BookReceivingState)] = new BookReceivingState(this),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService),
             };

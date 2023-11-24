@@ -14,7 +14,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         public void Start()
         {
-            Debug.Log("Book receiving state entered.");
+            Debug.Log($"Book receiving state entered. Gameobject name: {_customerStateMachine.gameObject.name}");
         }
         
         public void Exit()
