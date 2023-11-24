@@ -1,4 +1,5 @@
 using Code.Editor.Editors;
+using Code.Editor.Editors.StaticData;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.StaticData;
 using UnityEditor;

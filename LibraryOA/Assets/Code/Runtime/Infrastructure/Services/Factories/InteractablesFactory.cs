@@ -6,7 +6,7 @@ using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.SpawnersStaticData;
+using Code.Runtime.StaticData.MarkersStaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Splines;

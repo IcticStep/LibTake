@@ -1,36 +1,42 @@
-using System.Collections.Generic;
-using Code.Runtime.StaticData.SpawnersStaticData;
+using Code.Runtime.StaticData.MarkersStaticData;
 using Code.Runtime.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData
 {
     [CreateAssetMenu(fileName = "Level", menuName = "Static data/Level")]
     public sealed class LevelStaticData : ScriptableObject
     {
-        [field: ReadOnly, SerializeField]
+        [field: ReadOnly]
+        [field: SerializeField]
         public string LevelKey { get; private set; }
 
-        [field: ReadOnly, SerializeField]
+        [field: ReadOnly]
+        [field: SerializeField]
         public Vector3 PlayerInitialPosition { get; private set; }
 
-        [SerializeField] 
-        private List<BookSlotSpawnData> _bookSlots;
-        [SerializeField] 
-        private List<ReadingTableSpawnData> _readingTables;
+        [field: SerializeField]
+        public InteractablesData Interactables { get; private set; }
+
+        [FormerlySerializedAs("CustomersData")]
+        [field: SerializeField]
+        public CustomersData Customers;
+
         [field: SerializeField]
         public TruckWayStaticData TruckWay { get; private set; }
 
-        public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
-        public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
-        
-        public void UpdateData(string levelKey, Vector3 playerInitialPosition, List<BookSlotSpawnData> bookSlots, 
-            List<ReadingTableSpawnData> readingTables, TruckWayStaticData wayStaticData)
+        public void UpdateData(
+            string levelKey, 
+            Vector3 playerInitialPosition,
+            CustomersData customersData, 
+            InteractablesData interactablesData,
+            TruckWayStaticData wayStaticData)
         {
             LevelKey = levelKey;
             PlayerInitialPosition = playerInitialPosition;
-            _bookSlots = bookSlots;
-            _readingTables = readingTables;
+            Customers = customersData;
+            Interactables = interactablesData;
             TruckWay = wayStaticData;
         }
     }
