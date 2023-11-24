@@ -19,7 +19,7 @@ namespace Code.Runtime.Logic.Customers
 
         private readonly Queue<Vector3> _destinations = new();
 
-        private WaitForSecondsRealtime _waitForInterval;
+        private WaitForSeconds _waitForInterval;
         private Transform _transform;
         private Coroutine _moveToDestinationCoroutine;
         private Vector3? _currentDestination;
@@ -29,7 +29,7 @@ namespace Code.Runtime.Logic.Customers
 
         private void Awake()
         {
-            _waitForInterval = new WaitForSecondsRealtime(_updateInterval);
+            _waitForInterval = new WaitForSeconds(_updateInterval);
             _transform = transform;
         }
 
