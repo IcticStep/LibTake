@@ -9,7 +9,7 @@ namespace Code.Runtime.Data.Progress
     public class PlayerInventoryData
     {
         [JsonProperty]
-        private Stack<string> _books = new();
+        private List<string> _books = new();
 
         public event Action Updated;
 
@@ -18,20 +18,21 @@ namespace Code.Runtime.Data.Progress
 
         public void Push(string bookId)
         {
-            _books.Push(bookId);
+            _books.Add(bookId);
             Updated?.Invoke();
         }
 
         public string Pop()
         {
-            string bookId = _books.Pop();
+            string bookId = _books[^1];
+            _books.RemoveAt(_books.Count - 1);
             Updated?.Invoke();
             return bookId;
         }
 
         public string Peek()
         {
-            string bookId = _books.Peek();
+            string bookId = _books[^1];
             Updated?.Invoke();
             return bookId;
         }
