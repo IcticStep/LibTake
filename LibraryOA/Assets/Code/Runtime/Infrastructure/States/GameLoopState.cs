@@ -49,7 +49,7 @@ namespace Code.Runtime.Infrastructure.States
 
         private async UniTask SpawnCustomers()
         {
-            for(int i = 0; i < 1; i++)
+            for(int i = 0; i < 10; i++)
             {
                 await UniTask.WaitForSeconds(0.5f);
                 _charactersFactory.CreateCustomer(_levelStaticData.Customers.SpawnPoint);
