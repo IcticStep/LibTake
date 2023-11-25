@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic
 {
@@ -6,6 +8,14 @@ namespace Code.Runtime.Logic
     {
         [SerializeField]
         private MeshRenderer[] _secondFloorMeshes;
+        [SerializeField]
+        private bool _hideSecondFloorOnStart = true;
+
+        private void Start()
+        {
+            if(_hideSecondFloorOnStart)
+                HideSecondFloor();
+        }
 
         public void ShowSecondFloor()
         {

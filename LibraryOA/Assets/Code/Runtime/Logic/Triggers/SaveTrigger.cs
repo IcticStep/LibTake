@@ -1,9 +1,8 @@
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Code.Runtime.Logic
+namespace Code.Runtime.Logic.Triggers
 {
     internal sealed class SaveTrigger : MonoBehaviour
     {
@@ -25,7 +24,8 @@ namespace Code.Runtime.Logic
 
         private void OnDrawGizmos()
         {
-            if(!_collider) return;
+            if(!_collider) 
+                return;
       
             Gizmos.color = new Color32(30, 200, 30, 130);
             Gizmos.DrawCube(transform.position + _collider.center, _collider.size);
