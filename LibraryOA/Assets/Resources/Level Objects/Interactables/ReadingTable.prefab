@@ -563,7 +563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5cd3767cb94ade9cb2cc5c6af013bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MeshFilter>k__BackingField: {fileID: 3631784161439207534}
+  _meshFilter: {fileID: 3631784161439207534}
+  _skinnedMeshRenderer: {fileID: 0}
 --- !u!33 &3631784161439207534 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 43adce1cd1ed4d047bcc100138ac3f05,
