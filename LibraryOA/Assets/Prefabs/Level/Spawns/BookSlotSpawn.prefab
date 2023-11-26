@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: BookSlotSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3171045716626334996}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2217648, y: -0.8243594, z: -0.8257594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d2cd23f5204ea4957a136881c67774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: BookSlotSpawn_fcf770fe-41b0-4291-8798-2d67a05f10a0
+  _id: BookSlotSpawn_2147e9c3-ab49-418f-a918-084ff1df1cf7
 --- !u!114 &7073766934825612539
 MonoBehaviour:
   m_ObjectHideFlags: 0

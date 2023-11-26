@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.States.Api;
+using JetBrains.Annotations;
 using IState = Code.Runtime.Infrastructure.States.Api.IState;
 
 namespace Code.Runtime.Infrastructure.States
 {
+    [UsedImplicitly]
     internal sealed class GameStateMachine
     {
         private readonly IGameStateFactory _gameStateFactory;
