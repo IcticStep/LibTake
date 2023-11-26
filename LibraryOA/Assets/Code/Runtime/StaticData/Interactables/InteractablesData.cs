@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEngine;
 
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Interactables
 {
     [Serializable]
     public sealed class InteractablesData

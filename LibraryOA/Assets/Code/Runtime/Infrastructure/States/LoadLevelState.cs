@@ -8,7 +8,8 @@ using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.CustomersQueue;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Level;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

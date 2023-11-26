@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Player;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
+using Code.Runtime.StaticData.Interactables;
+using Code.Runtime.StaticData.Level;
 using JetBrains.Annotations;
 using UnityEngine;
 

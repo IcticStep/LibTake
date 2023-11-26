@@ -2,7 +2,7 @@ using System;
 using Code.Runtime.Utils;
 using UnityEngine;
 
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Books
 {
     [CreateAssetMenu(fileName = "Book", menuName = "Static data/Book")]
     public class StaticBook : ScriptableObject

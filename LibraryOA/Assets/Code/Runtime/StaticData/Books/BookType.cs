@@ -1,4 +1,4 @@
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Books
 {
     public enum BookType
     {
