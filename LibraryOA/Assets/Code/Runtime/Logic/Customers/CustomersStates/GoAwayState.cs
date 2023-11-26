@@ -22,7 +22,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         public void Start()
         {
             IReadOnlyList<Vector3> exitWay = GetExitWay();
-            _customerNavigator.SetDestination(exitWay);
+            _customerNavigator.SetDestination(exitWay, stoppingOnPoints: false);
             _customerNavigator.LastPointReached += DeactivatedSelf;
         }
 
