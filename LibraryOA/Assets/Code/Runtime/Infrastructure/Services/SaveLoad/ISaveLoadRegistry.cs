@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
-    internal interface ISaveLoadRegistry
+    public interface ISaveLoadRegistry
     {
         IReadOnlyList<ISavedProgressReader> ProgressReaders { get; }
         IReadOnlyList<ISavedProgress> ProgressWriters { get; }
