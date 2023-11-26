@@ -2,6 +2,7 @@ using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.ReadBook

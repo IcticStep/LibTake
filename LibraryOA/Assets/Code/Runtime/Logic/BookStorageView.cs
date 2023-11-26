@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
 using UnityEngine;
 using Zenject;
 

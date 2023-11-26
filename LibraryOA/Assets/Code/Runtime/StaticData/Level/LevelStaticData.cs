@@ -1,9 +1,10 @@
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Interactables;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Code.Runtime.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Level
 {
     [CreateAssetMenu(fileName = "Level", menuName = "Static data/Level")]
     public sealed class LevelStaticData : ScriptableObject

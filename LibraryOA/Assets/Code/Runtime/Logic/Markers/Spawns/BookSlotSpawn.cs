@@ -1,4 +1,5 @@
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
 using UnityEngine;
 
 namespace Code.Runtime.Logic.Markers.Spawns

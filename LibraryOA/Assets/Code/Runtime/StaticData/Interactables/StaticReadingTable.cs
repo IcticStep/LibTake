@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Interactables
 {
     [CreateAssetMenu(fileName = "ReadingTableData", menuName = "Static data/Reading table", order = 0)]
     public class StaticReadingTable : ScriptableObject

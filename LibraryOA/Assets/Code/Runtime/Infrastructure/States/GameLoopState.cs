@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Level;
 using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
