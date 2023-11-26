@@ -7,9 +7,8 @@ namespace Code.Editor.Editors.Markers
     {
         public Mesh GetMesh(GameObject prefab) =>
             prefab
-                .GetComponentInChildren<MainMeshMarker>()
-                .MeshFilter
-                .sharedMesh;
+                .GetComponentInChildren<MainMeshGetter>()
+                .Mesh;
 
         public Vector3 GetScale(GameObject prefab) =>
             prefab

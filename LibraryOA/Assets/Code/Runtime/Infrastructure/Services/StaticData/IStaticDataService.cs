@@ -10,11 +10,13 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
     {
         StartupSettings StartupSettings { get; }
         InteractablesStaticData Interactables { get; }
+        StaticPlayer Player { get; }
         BooksDeliveringStaticData BooksDelivering { get; }
         IReadOnlyList<StaticBook> AllBooks { get; }
         void LoadAll();
         void LoadBooks();
         void LoadLevels();
+        void LoadPlayer();
         void LoadInteractables();
         void LoadStartupSettings();
         void LoadBooksDelivering();
