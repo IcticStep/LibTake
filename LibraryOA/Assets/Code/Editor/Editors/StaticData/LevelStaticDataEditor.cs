@@ -5,7 +5,9 @@ using Code.Runtime.Logic.Markers.Customers;
 using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Logic.Markers.Truck;
 using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Interactables;
+using Code.Runtime.StaticData.Level;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,11 +34,11 @@ namespace Code.Editor.Editors.StaticData
             string sceneKey = SceneManager.GetActiveScene().name;
             Vector3 playerPosition = FindObjectOfType<PlayerInitialSpawn>().transform.position;
             
-            InteractablesData interactablesData = CollectInteractablesData();
+            InteractablesSpawnsData interactablesSpawnsData = CollectInteractablesData();
             CustomersData customersData = CollectCustomersData();
             TruckWayStaticData truckPathWayData = CollectTruckData();
 
-            levelData.UpdateData(sceneKey, playerPosition, customersData, interactablesData, truckPathWayData);
+            levelData.UpdateData(sceneKey, playerPosition, customersData, interactablesSpawnsData, truckPathWayData);
             EditorUtility.SetDirty(levelData);
         }
 
@@ -57,7 +59,7 @@ namespace Code.Editor.Editors.StaticData
             return customersData;
         }
 
-        private static InteractablesData CollectInteractablesData()
+        private static InteractablesSpawnsData CollectInteractablesData()
         {
             List<BookSlotSpawnData> bookSlotsSpawns = FindObjectsOfType<BookSlotSpawn>()
                 .Select(BookSlotSpawnData.NewFrom)

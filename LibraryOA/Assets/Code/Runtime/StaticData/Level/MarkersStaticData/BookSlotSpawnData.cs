@@ -4,10 +4,10 @@ using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Utils;
 using UnityEngine;
 
-namespace Code.Runtime.StaticData.MarkersStaticData
+namespace Code.Runtime.StaticData.Level.MarkersStaticData
 {
     [Serializable]
-    public class ReadingTableSpawnData
+    public class BookSlotSpawnData
     {
         [ReadOnly] 
         public string Id;
@@ -18,20 +18,20 @@ namespace Code.Runtime.StaticData.MarkersStaticData
         [ReadOnly] 
         public Vector3 Position;
 
-        [ReadOnly] 
-        public Quaternion Rotation;
+        [ReadOnly]
+        public Quaternion TransformRotation;
 
-        public ReadingTableSpawnData(string id, string initialBookId, Vector3 position, Quaternion rotation)
+        public BookSlotSpawnData(string id, string initialBookId, Vector3 position, Quaternion transformRotation)
         {
             Id = id;
             InitialBookId = initialBookId;
             Position = position;
-            Rotation = rotation;
+            TransformRotation = transformRotation;
         }
-
-        public static ReadingTableSpawnData NewFrom(ReadingTableSpawn readingTableSpawn) =>
+        
+        public static BookSlotSpawnData NewFrom(BookSlotSpawn readingTableSpawn) =>
             new(readingTableSpawn.GetComponent<UniqueId>().Id,
-                readingTableSpawn.GetComponent<ReadingTableSpawn>().InitialBookId,
+                readingTableSpawn.GetComponent<BookSlotSpawn>().InitialBookId,
                 readingTableSpawn.transform.position,
                 readingTableSpawn.transform.rotation);
     }

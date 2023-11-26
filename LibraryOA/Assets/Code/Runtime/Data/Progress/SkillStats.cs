@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
 using Newtonsoft.Json;
 
 namespace Code.Runtime.Data.Progress
