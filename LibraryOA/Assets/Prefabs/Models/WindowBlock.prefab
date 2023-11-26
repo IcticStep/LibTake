@@ -65,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 2047eb59a0c3fcb42ade473ee10d9477,
         type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2047eb59a0c3fcb42ade473ee10d9477,
+        type: 3}
       propertyPath: m_ScaleInLightmap
       value: 0.25
       objectReference: {fileID: 0}

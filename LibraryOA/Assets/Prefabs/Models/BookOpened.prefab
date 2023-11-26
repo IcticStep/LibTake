@@ -54,16 +54,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2855999936973486467}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 6734fe2a90849744fa8ff3be4417ba87,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ab464071429605d46aad4bfc495ad149, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 6734fe2a90849744fa8ff3be4417ba87,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
     - target: {fileID: -8679921383154817045, guid: f75483fd7f160f4438d43bfb8dcd4070,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -114,11 +104,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1947892147016388923, guid: f75483fd7f160f4438d43bfb8dcd4070,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f75483fd7f160f4438d43bfb8dcd4070,
         type: 3}
       propertyPath: m_Name
       value: Book_Mesh_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6734fe2a90849744fa8ff3be4417ba87,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab464071429605d46aad4bfc495ad149, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6734fe2a90849744fa8ff3be4417ba87,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: dae9a63f447b5aa4991c576afb0f5c14, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
