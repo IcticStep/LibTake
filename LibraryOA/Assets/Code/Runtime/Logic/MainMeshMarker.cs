@@ -6,9 +6,9 @@ namespace Code.Runtime.Logic
     public sealed class MainMeshMarker : MonoBehaviour
     {
         [field: SerializeField]
-        public MeshRenderer Mesh { get; private set; }
+        public MeshFilter MeshFilter { get; private set; }
 
         private void OnValidate() =>
-            Mesh ??= GetComponent<MeshRenderer>();
+            MeshFilter ??= GetComponent<MeshFilter>();
     }
 }
