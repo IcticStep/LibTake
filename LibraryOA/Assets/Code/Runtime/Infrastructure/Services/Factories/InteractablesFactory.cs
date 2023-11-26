@@ -15,7 +15,7 @@ using UnityEngine.Splines;
 namespace Code.Runtime.Infrastructure.Services.Factories
 {
     [UsedImplicitly]
-    internal sealed class InteractablesFactory : IInteractablesFactory
+    public sealed class InteractablesFactory : IInteractablesFactory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
