@@ -1,16 +1,20 @@
+using System.Collections.Generic;
+using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Player;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Books;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Player
 {
     internal sealed class PlayerInventoryView : MonoBehaviour
     {
-        [SerializeField] private GameObject _bookObject;
+        [SerializeField]
+        private Book[] _bookViews;
         private IPlayerInventoryService _playerInventoryService;
-        private MeshRenderer _bookMeshRenderer;
         private IStaticDataService _staticData;
 
         [Inject]
@@ -23,31 +27,31 @@ namespace Code.Runtime.Logic.Player
         private void Awake() =>
             _playerInventoryService.Updated += UpdateView;
 
-        private void Start()
-        {
-            _bookMeshRenderer = _bookObject.GetComponent<MeshRenderer>();
+        private void Start() =>
             UpdateView();
-        }
 
         private void OnDestroy() =>
             _playerInventoryService.Updated -= UpdateView;
 
         private void UpdateView()
         {
-            SetMaterialIfAny();
-            _bookObject.SetActive(_playerInventoryService.HasBook);
+            IReadOnlyList<string> books = _playerInventoryService.Books;
+            for(int i = 0; i < _bookViews.Length; i++)
+            {
+                if(i >= books.Count)
+                {
+                    _bookViews[i].Hide();
+                    continue;
+                }
+
+                _bookViews[i].Show();
+                Material targetMaterial = GetBookMaterial(books[i]);
+                _bookViews[i].SetMaterial(targetMaterial);
+            }
         }
 
-        private void SetMaterialIfAny()
+        private Material GetBookMaterial(string bookId)
         {
-            Material material = GetBookMaterial();
-            if(material is not null)
-                _bookMeshRenderer.material = material;
-        }
-
-        private Material GetBookMaterial()
-        {
-            string bookId = _playerInventoryService.CurrentBookId;
             if(string.IsNullOrWhiteSpace(bookId))
                 return null;
             
