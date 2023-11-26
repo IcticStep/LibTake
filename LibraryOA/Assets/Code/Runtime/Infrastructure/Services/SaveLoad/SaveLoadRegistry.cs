@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
     [UsedImplicitly]
-    internal sealed class SaveLoadRegistry : ISaveLoadRegistry
+    public sealed class SaveLoadRegistry : ISaveLoadRegistry
     {
         private readonly List<ISavedProgressReader> _progressReaders = new();
         private readonly List<ISavedProgress> _progressWriters = new();

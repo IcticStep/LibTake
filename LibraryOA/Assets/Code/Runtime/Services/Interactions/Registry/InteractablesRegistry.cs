@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Code.Runtime.Services.Interactions.Registry
 {
     [UsedImplicitly]
-    internal sealed class InteractablesRegistry : IInteractablesRegistry
+    public sealed class InteractablesRegistry : IInteractablesRegistry
     {
         private readonly Dictionary<Collider, Interactable> _interactablesByCollider = new();
 
