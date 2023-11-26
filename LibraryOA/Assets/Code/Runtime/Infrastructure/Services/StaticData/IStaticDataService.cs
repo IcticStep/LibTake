@@ -9,8 +9,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
     public interface IStaticDataService
     {
         StartupSettings StartupSettings { get; }
-        StaticReadingTable ReadingTableData { get; }
-        TruckStaticData TruckData { get; }
+        InteractablesStaticData Interactables { get; }
         BooksDeliveringStaticData BooksDelivering { get; }
         IReadOnlyList<StaticBook> AllBooks { get; }
         void LoadAll();

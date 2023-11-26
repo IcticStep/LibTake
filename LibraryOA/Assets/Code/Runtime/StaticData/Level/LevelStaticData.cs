@@ -18,7 +18,7 @@ namespace Code.Runtime.StaticData.Level
         public Vector3 PlayerInitialPosition { get; private set; }
 
         [field: SerializeField]
-        public InteractablesData Interactables { get; private set; }
+        public InteractablesSpawnsData InteractablesSpawns { get; private set; }
 
         [FormerlySerializedAs("CustomersData")]
         [field: SerializeField]
@@ -31,13 +31,13 @@ namespace Code.Runtime.StaticData.Level
             string levelKey, 
             Vector3 playerInitialPosition,
             CustomersData customersData, 
-            InteractablesData interactablesData,
+            InteractablesSpawnsData interactablesSpawnsData,
             TruckWayStaticData wayStaticData)
         {
             LevelKey = levelKey;
             PlayerInitialPosition = playerInitialPosition;
             Customers = customersData;
-            Interactables = interactablesData;
+            InteractablesSpawns = interactablesSpawnsData;
             TruckWay = wayStaticData;
         }
     }

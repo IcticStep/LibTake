@@ -13,7 +13,7 @@ namespace Code.Runtime.Services.TruckDriving
         private readonly IStaticDataService _staticDataService;
         public GameObject Truck { get; private set; }
 
-        private float DrivingSeconds => _staticDataService.TruckData.DrivingSeconds;
+        private float DrivingSeconds => _staticDataService.Interactables.Truck.DrivingSeconds;
 
         public TruckDriveService(IStaticDataService staticDataService)
         {
