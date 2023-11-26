@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Services.Interactions.Registry
 {
-    internal interface IInteractablesRegistry
+    public interface IInteractablesRegistry
     {
         void Register<T>(T interactable, Collider collider)
             where T : Interactable;
