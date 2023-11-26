@@ -30,9 +30,9 @@ namespace Code.Editor.Editors.Markers
             _staticDataService = new StaticDataService();
             _staticDataService.LoadInteractables();
             
-            GameObject bookSlotPrefab = GetPrefab();
-            _targetMesh = _spawnPreviewHelper.GetMesh(bookSlotPrefab);
-            _targetScale = _spawnPreviewHelper.GetScale(bookSlotPrefab);
+            GameObject prefab = GetPrefab();
+            _targetMesh = _spawnPreviewHelper.GetMesh(prefab);
+            _targetScale = _spawnPreviewHelper.GetScale(prefab);
         }
 
         private static GameObject GetPrefab() =>

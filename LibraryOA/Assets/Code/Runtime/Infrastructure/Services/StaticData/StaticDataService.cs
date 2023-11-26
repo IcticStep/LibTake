@@ -19,12 +19,14 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string TruckPath = "Static Data/Interactables/Truck static data";
         private const string BooksDeliveringPath = "Static Data/Books delivering";
         private const string BookSlotPath = "Static Data/Interactables/BookSlotData";
+        private const string PlayerPath = "Static Data/Player";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
 
         public StartupSettings StartupSettings { get; private set; }
         public InteractablesStaticData Interactables { get; private set; }
+        public StaticPlayer Player { get; private set; }
         public BooksDeliveringStaticData BooksDelivering { get; private set; }
         public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
 
@@ -32,6 +34,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         {
             LoadStartupSettings();
             LoadLevels();
+            LoadPlayer();
             LoadBooks();
             LoadInteractables();
             LoadBooksDelivering();
@@ -46,6 +49,10 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             _levels = Resources
                 .LoadAll<LevelStaticData>(LevelsPath)
                 .ToDictionary(x => x.LevelKey, x => x);
+
+        public void LoadPlayer() =>
+            Player = Resources
+                .Load<StaticPlayer>(PlayerPath);
 
         public void LoadInteractables()
         {
