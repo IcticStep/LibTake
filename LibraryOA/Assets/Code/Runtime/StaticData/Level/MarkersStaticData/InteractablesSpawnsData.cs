@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEngine;
 
-namespace Code.Runtime.StaticData.Interactables
+namespace Code.Runtime.StaticData.Level.MarkersStaticData
 {
     [Serializable]
-    public sealed class InteractablesData
+    public sealed class InteractablesSpawnsData
     {
         [SerializeField] 
         private List<BookSlotSpawnData> _bookSlots;
@@ -16,7 +15,7 @@ namespace Code.Runtime.StaticData.Interactables
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
 
-        public InteractablesData(List<BookSlotSpawnData> bookSlots, List<ReadingTableSpawnData> readingTables)
+        public InteractablesSpawnsData(List<BookSlotSpawnData> bookSlots, List<ReadingTableSpawnData> readingTables)
         {
             _bookSlots = bookSlots;
             _readingTables = readingTables;

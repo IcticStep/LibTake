@@ -87,13 +87,13 @@ namespace Code.Runtime.Infrastructure.States
 
         private void InitBookSlots()
         {
-            foreach(BookSlotSpawnData spawn in _levelData.Interactables.BookSlots)
+            foreach(BookSlotSpawnData spawn in _levelData.InteractablesSpawns.BookSlots)
                 _interactablesFactory.CreateBookSlot(spawn);
         }
 
         private void InitReadingTables()
         {
-            foreach(ReadingTableSpawnData readingTable in _levelData.Interactables.ReadingTables)
+            foreach(ReadingTableSpawnData readingTable in _levelData.InteractablesSpawns.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
         }
 
