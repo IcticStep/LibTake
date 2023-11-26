@@ -44,12 +44,16 @@ namespace Code.Runtime.Logic.Customers
             _moveToDestinationCoroutine = null;
         }
 
-        public void SetDestination(Vector3 destination) =>
+        public void SetDestination(Vector3 destination, bool stoppingOnPoints = true)
+        {
             SetDestination(new[] { destination });
+            _navMeshAgent.autoBraking = stoppingOnPoints;
+        }
 
-        public void SetDestination(IEnumerable<Vector3> destinations)
+        public void SetDestination(IEnumerable<Vector3> destinations, bool stoppingOnPoints = false)
         {
             _destinations.Clear();
+            _navMeshAgent.autoBraking = stoppingOnPoints;
             foreach(Vector3 destination in destinations)
                 _destinations.Enqueue(destination);
         }
