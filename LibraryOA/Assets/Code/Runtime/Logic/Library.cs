@@ -1,32 +1,51 @@
-using System;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic
 {
-    internal sealed class Library : MonoBehaviour
+    public sealed class Library : MonoBehaviour
     {
         [SerializeField]
-        private MeshRenderer[] _secondFloorMeshes;
+        private GameObject[] _secondFloorObjects;
         [SerializeField]
         private bool _hideSecondFloorOnStart = true;
+        
+        private MeshRenderer[] _secondFloorMeshes;
 
-        private void Start()
+        private void Awake()
         {
+            _secondFloorMeshes = _secondFloorObjects
+                .Select(x => x.GetComponentInChildren<MeshRenderer>())
+                .ToArray();
+
+            TurnOnSecondFloor();
+            
             if(_hideSecondFloorOnStart)
                 HideSecondFloor();
         }
 
         public void ShowSecondFloor()
         {
-            for(int i = 0; i < _secondFloorMeshes.Length; i++)
-                _secondFloorMeshes[i].enabled = true;
+            foreach(MeshRenderer meshRenderer in _secondFloorMeshes)
+                meshRenderer.enabled = true;
         }
         
         public void HideSecondFloor()
         {
-            for(int i = 0; i < _secondFloorMeshes.Length; i++)
-                _secondFloorMeshes[i].enabled = false;
+            foreach(MeshRenderer meshRenderer in _secondFloorMeshes)
+                meshRenderer.enabled = false;
+        }
+
+        public void TurnOnSecondFloor()
+        {
+            foreach(GameObject gameObject in _secondFloorObjects)
+                gameObject.SetActive(true);
+        }
+
+        public void TurnOffSecondFloor()
+        {
+            foreach(GameObject gameObject in _secondFloorObjects)
+                gameObject.SetActive(false);
         }
     }
 }
