@@ -2,6 +2,7 @@ using Code.Editor.Editors;
 using Code.Editor.Editors.StaticData;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Level;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;

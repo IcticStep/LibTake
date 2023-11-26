@@ -1,25 +1,27 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Markers.Spawns;
+using Code.Runtime.Logic.Markers.Truck;
 using UnityEditor;
 using UnityEngine;
 
 namespace Code.Editor.Editors.Markers
 {
-    [CustomEditor(typeof(ReadingTableSpawn))]
-    internal sealed class ReadingTableSpawnEditor : UnityEditor.Editor
+    [CustomEditor(typeof(TruckWayPoint))]
+    internal sealed class TruckWayPointEditor : UnityEditor.Editor
     {
         private static readonly SpawnPreviewHelper _spawnPreviewHelper = new();
-        
+        private static readonly Vector3 _offset = Vector3.up * 2f;
+
         private static IStaticDataService _staticDataService;
         private static Mesh _targetMesh;
         private static Vector3 _targetScale;
 
         [DrawGizmo(GizmoType.Active | GizmoType.Pickable | GizmoType.NonSelected | GizmoType.Selected )]
-        public static void RenderCustomGizmo(ReadingTableSpawn spawn, GizmoType gizmo)
+        public static void RenderCustomGizmo(TruckWayPoint point, GizmoType gizmo)
         {
             InitStaticData();
-            Transform spawnTransform = spawn.transform;
-            Gizmos.DrawMesh(_targetMesh, spawnTransform.position, spawnTransform.rotation, _targetScale);
+            Transform spawnTransform = point.transform;
+            Gizmos.DrawMesh(_targetMesh, spawnTransform.position + _offset, spawnTransform.rotation, _targetScale);
         }
         
         private static void InitStaticData()
@@ -38,7 +40,7 @@ namespace Code.Editor.Editors.Markers
         private static GameObject GetPrefab() =>
             _staticDataService
                 .Interactables
-                .ReadingTable
+                .Truck
                 .Prefab;
     }
 }

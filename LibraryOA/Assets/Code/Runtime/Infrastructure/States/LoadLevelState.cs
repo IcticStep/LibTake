@@ -8,7 +8,8 @@ using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.CustomersQueue;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Level;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -86,13 +87,13 @@ namespace Code.Runtime.Infrastructure.States
 
         private void InitBookSlots()
         {
-            foreach(BookSlotSpawnData spawn in _levelData.Interactables.BookSlots)
+            foreach(BookSlotSpawnData spawn in _levelData.InteractablesSpawns.BookSlots)
                 _interactablesFactory.CreateBookSlot(spawn);
         }
 
         private void InitReadingTables()
         {
-            foreach(ReadingTableSpawnData readingTable in _levelData.Interactables.ReadingTables)
+            foreach(ReadingTableSpawnData readingTable in _levelData.InteractablesSpawns.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
         }
 

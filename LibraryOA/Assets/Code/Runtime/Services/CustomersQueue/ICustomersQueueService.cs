@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Code.Runtime.Logic.Customers;
-using Code.Runtime.StaticData.MarkersStaticData;
 using UnityEngine;
 
 namespace Code.Runtime.Services.CustomersQueue

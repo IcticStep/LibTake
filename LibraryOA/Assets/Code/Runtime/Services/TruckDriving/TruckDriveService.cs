@@ -1,5 +1,5 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using JetBrains.Annotations;
@@ -13,7 +13,7 @@ namespace Code.Runtime.Services.TruckDriving
         private readonly IStaticDataService _staticDataService;
         public GameObject Truck { get; private set; }
 
-        private float DrivingSeconds => _staticDataService.TruckData.DrivingSeconds;
+        private float DrivingSeconds => _staticDataService.Interactables.Truck.DrivingSeconds;
 
         public TruckDriveService(IStaticDataService staticDataService)
         {

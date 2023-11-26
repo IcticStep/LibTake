@@ -1,9 +1,10 @@
-using Code.Runtime.StaticData.MarkersStaticData;
+using Code.Runtime.StaticData.Interactables;
+using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Code.Runtime.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Level
 {
     [CreateAssetMenu(fileName = "Level", menuName = "Static data/Level")]
     public sealed class LevelStaticData : ScriptableObject
@@ -17,7 +18,7 @@ namespace Code.Runtime.StaticData
         public Vector3 PlayerInitialPosition { get; private set; }
 
         [field: SerializeField]
-        public InteractablesData Interactables { get; private set; }
+        public InteractablesSpawnsData InteractablesSpawns { get; private set; }
 
         [FormerlySerializedAs("CustomersData")]
         [field: SerializeField]
@@ -30,13 +31,13 @@ namespace Code.Runtime.StaticData
             string levelKey, 
             Vector3 playerInitialPosition,
             CustomersData customersData, 
-            InteractablesData interactablesData,
+            InteractablesSpawnsData interactablesSpawnsData,
             TruckWayStaticData wayStaticData)
         {
             LevelKey = levelKey;
             PlayerInitialPosition = playerInitialPosition;
             Customers = customersData;
-            Interactables = interactablesData;
+            InteractablesSpawns = interactablesSpawnsData;
             TruckWay = wayStaticData;
         }
     }

@@ -137,7 +137,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000030696388}
   m_LocalPosition: {x: 3, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3189656646845974871}
@@ -515,6 +515,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 43adce1cd1ed4d047bcc100138ac3f05,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3014462288676736559, guid: 43adce1cd1ed4d047bcc100138ac3f05,
         type: 3}
       propertyPath: m_Enabled
@@ -528,11 +533,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 43adce1cd1ed4d047bcc100138ac3f05,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2126643135423050139}
   m_SourcePrefab: {fileID: 100100000, guid: 43adce1cd1ed4d047bcc100138ac3f05, type: 3}
 --- !u!4 &416983079005347787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 43adce1cd1ed4d047bcc100138ac3f05,
+    type: 3}
+  m_PrefabInstance: {fileID: 163205578230544416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1045603990941074801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 43adce1cd1ed4d047bcc100138ac3f05,
+    type: 3}
+  m_PrefabInstance: {fileID: 163205578230544416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2126643135423050139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045603990941074801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5cd3767cb94ade9cb2cc5c6af013bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MeshFilter>k__BackingField: {fileID: 3631784161439207534}
+--- !u!33 &3631784161439207534 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 43adce1cd1ed4d047bcc100138ac3f05,
     type: 3}
   m_PrefabInstance: {fileID: 163205578230544416}
   m_PrefabAsset: {fileID: 0}
