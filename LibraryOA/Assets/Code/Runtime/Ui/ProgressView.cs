@@ -11,13 +11,13 @@ namespace Code.Runtime.Ui
         [SerializeField]
         private ProgressBar _progressBar;
 
-        private void OnEnable()
+        private void Start()
         {
             _progress.Updated += UpdateProgressBar;
             UpdateProgressBar(_progress.Value);
         }
 
-        private void OnDisable() =>
+        private void OnDestroy() =>
             _progress.Updated -= UpdateProgressBar;
 
         private void UpdateProgressBar(float value) =>
