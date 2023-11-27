@@ -293,6 +293,11 @@ PrefabInstance:
       propertyPath: _progress
       value: 
       objectReference: {fileID: 2086143251755747177}
+    - target: {fileID: 3072851638680391312, guid: dc35dd98b7333f34b939cbe737cc16b2,
+        type: 3}
+      propertyPath: _ease
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4754773549397298873, guid: dc35dd98b7333f34b939cbe737cc16b2,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
