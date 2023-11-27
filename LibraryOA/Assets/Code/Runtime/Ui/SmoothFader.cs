@@ -34,6 +34,18 @@ namespace Code.Runtime.Ui
             _fadeTween.Restart();
         }
 
+        public void FadeImmediately()
+        {
+            PauseTweens();
+            _canvasGroup.alpha = 0;
+        }
+        
+        public void UnFadeImmediately()
+        {
+            PauseTweens();
+            _canvasGroup.alpha = 1;
+        }
+
         public void UnFade()
         {
             if(_unFadeTween.IsPlaying() || _canvasGroup.alpha != 0)
@@ -41,6 +53,12 @@ namespace Code.Runtime.Ui
             
             _fadeTween.Pause();
             _unFadeTween.Restart();
+        }
+
+        private void PauseTweens()
+        {
+            _fadeTween.Pause();
+            _unFadeTween.Pause();
         }
     }
 }

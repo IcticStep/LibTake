@@ -519,7 +519,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_10
+      name: Button_pressed
       rect:
         serializedVersion: 2
         x: 1790
@@ -540,7 +540,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_11
+      name: Button_idle
       rect:
         serializedVersion: 2
         x: 2192
@@ -666,7 +666,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_17
+      name: RoundedButton_pressed
       rect:
         serializedVersion: 2
         x: 1790
@@ -687,7 +687,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_18
+      name: RoundedButton_idle
       rect:
         serializedVersion: 2
         x: 2192
@@ -1621,17 +1621,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Button_idle: 21300022
+      Button_pressed: 21300020
       GUI_0: 21300000
       GUI_1: 21300002
-      GUI_10: 21300020
-      GUI_11: 21300022
       GUI_12: 21300024
       GUI_13: 21300026
       GUI_14: 21300028
       GUI_15: 21300030
       GUI_16: 21300032
-      GUI_17: 21300034
-      GUI_18: 21300036
       GUI_2: 21300004
       GUI_20: 21300040
       GUI_21: 21300042
@@ -1683,6 +1681,8 @@ TextureImporter:
       GUI_9: 21300018
       ProgressBar_background: 21300046
       ProgressBar_filling: 21300038
+      RoundedButton_idle: 21300036
+      RoundedButton_pressed: 21300034
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

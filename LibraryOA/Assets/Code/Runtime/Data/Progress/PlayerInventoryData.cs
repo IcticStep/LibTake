@@ -13,7 +13,7 @@ namespace Code.Runtime.Data.Progress
         public event Action Updated;
 
         public int Count => _books.Count;
-        public IEnumerable<string> AllBooks => _books;
+        public IReadOnlyList<string> AllBooks => _books;
 
         public void Push(string bookId)
         {
@@ -29,11 +29,7 @@ namespace Code.Runtime.Data.Progress
             return bookId;
         }
 
-        public string Peek()
-        {
-            string bookId = _books[^1];
-            Updated?.Invoke();
-            return bookId;
-        }
+        public string Peek() =>
+            _books[^1];
     }
 }
