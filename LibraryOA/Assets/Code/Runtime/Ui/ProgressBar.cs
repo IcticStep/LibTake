@@ -8,7 +8,7 @@ namespace Code.Runtime.Ui
         [SerializeField]
         private Image _target;
         [SerializeField]
-        private Image _background;
+        private Image[] _imagesParts;
         [SerializeField]
         private float _visualMinimum = 0.01f;
 
@@ -21,8 +21,10 @@ namespace Code.Runtime.Ui
         private void SetVisibility(float value, float maxValue)
         {
             bool shouldBeVisible = ValueIsMoreThanVisualMinimum(value, maxValue);
-            _background.enabled = shouldBeVisible;
             _target.enabled = shouldBeVisible;
+
+            foreach(Image image in _imagesParts)
+                image.enabled = shouldBeVisible;
         }
 
         private bool ValueIsMoreThanVisualMinimum(float value, float maxValue) =>
