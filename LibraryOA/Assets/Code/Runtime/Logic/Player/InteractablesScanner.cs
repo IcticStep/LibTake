@@ -72,9 +72,9 @@ namespace Code.Runtime.Logic.Player
                 return default(Interactable);
             return _interactablesRegistry.GetInteractableByCollider(found);
         }
-
+        
         private Collider FindCollider() =>
-            _physicsService.RaycastSphereForInteractable(
+            _physicsService.RaycastForInteractable(
                 _rayStartPoint.position,
                 _rayStartPoint.TransformDirection(Vector3.forward),
                 _rayLength);
