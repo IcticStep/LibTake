@@ -16,8 +16,9 @@ namespace Code.Runtime.Services.Player
         private IPlayerProgressService _progressService;
 
         public string CurrentBookId => HasBook ? Inventory.Peek() : null;
-        public bool HasBook => Inventory.Count > 0;
-        public IReadOnlyList<string> Books => Inventory.AllBooks.Reverse().ToList();
+        public int Count => Inventory.Count;
+        public bool HasBook => Count > 0;
+        public IReadOnlyList<string> Books => Inventory.AllBooks;
 
         private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
