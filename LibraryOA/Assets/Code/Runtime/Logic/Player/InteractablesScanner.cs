@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Code.Runtime.Data;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Physics;
+using Code.Runtime.Utils.Vector;
 using UnityEngine;
 using Zenject;
 
@@ -11,15 +15,25 @@ namespace Code.Runtime.Logic.Player
     {
         [SerializeField] 
         private Transform _rayStartPoint;
-        [SerializeField] 
+        [SerializeField]
+        [Range(0f, 50f)]
         private float _rayLength;
+        [SerializeField]
+        [Range(0, 50)]
+        private int _raysCount = 3;
+        [SerializeField]
+        [Range(0f, 50f)]
+        private float _raysDegreesInterval = 30f;
         [SerializeField]
         private bool _logging;
         
         private IPhysicsService _physicsService;
         private Interactable _currentFocusedInteractable;
         private IInteractablesRegistry _interactablesRegistry;
-
+        private Rotator _rotator;
+        
+        public IReadOnlyList<Line> CurrentRays { get; private set; }
+        public Vector3 StartPointForward => _rayStartPoint.transform.forward;
         public float RayLength => _rayLength;
         public Vector3? RayStart => _rayStartPoint != null 
             ? _rayStartPoint.position 
@@ -40,7 +54,7 @@ namespace Code.Runtime.Logic.Player
                     FocusedInteractable?.Invoke(_currentFocusedInteractable);
                 
                 if(_logging)
-                    Debug.Log($"{nameof(_currentFocusedInteractable)} set to {_currentFocusedInteractable?.name}.");
+                    Debug.Log($"{nameof(_currentFocusedInteractable)} set to {_currentFocusedInteractable!?.name}.");
             }
         }
 
@@ -56,25 +70,38 @@ namespace Code.Runtime.Logic.Player
             _physicsService = physicsService;
             _interactablesRegistry = interactablesRegistry;
         }
+        
+        private void Awake() =>
+            _rotator = CreateRayVectorsRotator();
+        
+        private void OnValidate() =>
+            _rotator = CreateRayVectorsRotator();
 
         private void Update()
         {
-            Interactable raycasted = FindInteractables();
-            if(raycasted == CurrentFocusedInteractable) return;
+            CurrentRays = _rotator.CreateVectorsRotated(_rayStartPoint.position, _rayStartPoint.forward);
+            Interactable raycasted = FindInteractables(CurrentRays);
+            if(raycasted == CurrentFocusedInteractable) 
+                return;
+            
             CurrentFocusedInteractable = raycasted;
         }
 
-        private Interactable FindInteractables()
+        public Rotator CreateRayVectorsRotator() =>
+            new(_rayLength, _raysCount, _raysDegreesInterval, Vector3.up);
+
+        private Interactable FindInteractables(IReadOnlyList<Line> rays)
         {
-            Collider found = FindCollider();
-            if(found is null)
-                return default(Interactable);
-            return _interactablesRegistry.GetInteractableByCollider(found);
+            Collider found = FindCollider(rays);
+            return found is null 
+                ? null 
+                : _interactablesRegistry.GetInteractableByCollider(found);
         }
         
-        private Collider FindCollider() =>
+        private Collider FindCollider(IReadOnlyList<Line> rays) =>
             _physicsService.RaycastForInteractable(
                 _rayStartPoint.position,
-                _rayLength, new []{_rayStartPoint.TransformDirection(Vector3.forward)});
+                _rayLength, 
+                rays.Select(ray => ray.Normalized));
     }
 }

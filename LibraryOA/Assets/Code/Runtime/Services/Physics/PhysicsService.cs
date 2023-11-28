@@ -19,7 +19,7 @@ namespace Code.Runtime.Services.Physics
             return null;
         }
 
-        private bool RaycastForInteractable(Vector3 position, float distance, Vector3 forwardDirection, out RaycastHit hit) =>
-            UnityEngine.Physics.Raycast(position, forwardDirection, out hit, distance, _interactableLayerMask);
+        private bool RaycastForInteractable(Vector3 position, float distance, Vector3 direction, out RaycastHit hit) =>
+            UnityEngine.Physics.Raycast(position, direction, out hit, distance, _interactableLayerMask);
     }
 }
