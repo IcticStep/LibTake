@@ -4,10 +4,10 @@ namespace Code.Runtime.Logic.Interactions.Data
 {
     public interface IBookStorage
     {
-        string CurrentBookId { get; }
-        bool HasBook { get; }
-        event Action Updated;
-        void InsertBook(string id);
-        string RemoveBook();
+        public string CurrentBookId { get; }
+        public bool HasBook { get; }
+        public event Action Updated;
+        public void InsertBook(string id);
+        public string RemoveBook();
     }
 }
