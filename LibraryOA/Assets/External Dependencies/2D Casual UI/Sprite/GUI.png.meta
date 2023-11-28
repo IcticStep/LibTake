@@ -456,7 +456,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_7
+      name: Round_button
       rect:
         serializedVersion: 2
         x: 958
@@ -1676,11 +1676,11 @@ TextureImporter:
       GUI_66: 21300118
       GUI_67: 21300120
       GUI_68: 21300122
-      GUI_7: 21300014
       GUI_8: 21300016
       GUI_9: 21300018
       ProgressBar_background: 21300046
       ProgressBar_filling: 21300038
+      Round_button: 21300014
       RoundedButton_idle: 21300036
       RoundedButton_pressed: 21300034
   mipmapLimitGroupName: 
