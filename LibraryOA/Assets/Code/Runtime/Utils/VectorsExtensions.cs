@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.Data
+namespace Code.Runtime.Utils
 {
     internal static class VectorsExtensions
     {
