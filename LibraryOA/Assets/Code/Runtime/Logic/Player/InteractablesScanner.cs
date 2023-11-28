@@ -1,6 +1,5 @@
 using System;
 using Code.Runtime.Logic.Interactions;
-using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Physics;
 using UnityEngine;
@@ -76,7 +75,6 @@ namespace Code.Runtime.Logic.Player
         private Collider FindCollider() =>
             _physicsService.RaycastForInteractable(
                 _rayStartPoint.position,
-                _rayStartPoint.TransformDirection(Vector3.forward),
-                _rayLength);
+                _rayLength, new []{_rayStartPoint.TransformDirection(Vector3.forward)});
     }
 }
