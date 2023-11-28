@@ -7,12 +7,10 @@ using Zenject;
 
 namespace Code.Runtime.Ui
 {
-    internal sealed class InteractButton : MonoBehaviour
+    internal sealed class InteractButtonView : MonoBehaviour
     {
         [SerializeField]
         private SmoothFader _smoothFader;
-        [SerializeField]
-        private Button _button;
         [SerializeField]
         private float _updateInterval = 0.1f;
 
@@ -32,15 +30,11 @@ namespace Code.Runtime.Ui
         private void Start()
         {
             UpdateViewImmediately();
-            _button.onClick.AddListener(Interact);
             _updateCoroutine = StartCoroutine(UpdateViewInInterval());
         }
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(Interact);
+        private void OnDestroy() =>
             StopCoroutine(_updateCoroutine);
-        }
 
         private IEnumerator UpdateViewInInterval()
         {
@@ -50,9 +44,6 @@ namespace Code.Runtime.Ui
                 yield return _waitForSeconds;
             }
         }
-
-        private void Interact() =>
-            PlayerInteractor.InteractIfPossible();
 
         private void UpdateView()
         {

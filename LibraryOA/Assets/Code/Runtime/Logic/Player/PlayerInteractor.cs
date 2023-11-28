@@ -24,7 +24,7 @@ namespace Code.Runtime.Logic.Player
             _interactablesScanner.HasFocusedInteractable
             && _interactablesScanner.CurrentFocusedInteractable.CanInteract();
 
-        public void InteractIfPossible()
+        private void InteractIfPossible()
         {
             if(!_interactablesScanner.HasFocusedInteractable)
                 return;
