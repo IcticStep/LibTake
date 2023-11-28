@@ -20,7 +20,11 @@ namespace Code.Runtime.Logic.Player
         private void OnDestroy() =>
             _input.InteractButtonPressed -= InteractIfPossible;
 
-        private void InteractIfPossible()
+        public bool CanInteract() =>
+            _interactablesScanner.HasFocusedInteractable
+            && _interactablesScanner.CurrentFocusedInteractable.CanInteract();
+
+        public void InteractIfPossible()
         {
             if(!_interactablesScanner.HasFocusedInteractable)
                 return;
