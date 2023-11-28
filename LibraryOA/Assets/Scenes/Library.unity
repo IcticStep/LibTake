@@ -3954,11 +3954,6 @@ PrefabInstance:
       propertyPath: _id
       value: Library_ad06fc22-a9e2-4b21-b9e1-236a5236aefe
       objectReference: {fileID: 0}
-    - target: {fileID: 7073766934825612539, guid: d826446db0f17d44f9a7a1e88697ed28,
-        type: 3}
-      propertyPath: _initialBook
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12632,11 +12627,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _id
       value: Library_52ca5e64-a160-4cc4-a0ef-2e2d62327cb5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7073766934825612539, guid: d826446db0f17d44f9a7a1e88697ed28,
-        type: 3}
-      propertyPath: _initialBook
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
