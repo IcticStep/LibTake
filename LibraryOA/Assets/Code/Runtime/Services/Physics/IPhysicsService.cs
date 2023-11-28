@@ -6,6 +6,6 @@ namespace Code.Runtime.Services.Physics
     internal interface IPhysicsService
     {
         Vector3 Gravity { get; }
-        Collider RaycastSphereForInteractable(Vector3 position, Vector3 forwardDirection, float radius);
+        Collider RaycastForInteractable(Vector3 position, Vector3 forwardDirection, float distance);
     }
 }
