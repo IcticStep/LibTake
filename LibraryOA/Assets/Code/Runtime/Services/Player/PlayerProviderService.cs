@@ -22,6 +22,7 @@ namespace Code.Runtime.Services.Player
         {
             Player = null;
             InteractablesScanner = null;
+            PlayerInteractor = null;
         }
     }
 }
