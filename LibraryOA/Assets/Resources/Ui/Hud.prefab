@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8657581473750187292}
   - component: {fileID: 5146898883022006294}
   - component: {fileID: 4253242607566342423}
+  - component: {fileID: 9143700385296910350}
   m_Layer: 5
   m_Name: Interact_button
   m_TagString: Untagged
@@ -167,6 +168,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 8657581473750187292}
   _duration: 0.2
+--- !u!114 &9143700385296910350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84601369469061760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/#(P)
 --- !u!1 &367619775202863024
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +240,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
