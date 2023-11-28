@@ -1,4 +1,4 @@
-using Code.Runtime.Data;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -11,11 +11,15 @@ namespace Code.Runtime.Services.Physics
 
         public Vector3 Gravity => UnityEngine.Physics.gravity;
         
-        public Collider RaycastForInteractable(Vector3 position, Vector3 forwardDirection, float distance)
+        public Collider RaycastForInteractable(Vector3 position, float distance, IEnumerable<Vector3> forwardDirections)
         {
-            if(UnityEngine.Physics.Raycast(position, forwardDirection, out RaycastHit hit, distance, _interactableLayerMask))
-                return hit.collider;
+            foreach(Vector3 forwardDirection in forwardDirections)
+                if(RaycastForInteractable(position, distance, forwardDirection, out RaycastHit hit))
+                    return hit.collider;
             return null;
         }
+
+        private bool RaycastForInteractable(Vector3 position, float distance, Vector3 forwardDirection, out RaycastHit hit) =>
+            UnityEngine.Physics.Raycast(position, forwardDirection, out hit, distance, _interactableLayerMask);
     }
 }
