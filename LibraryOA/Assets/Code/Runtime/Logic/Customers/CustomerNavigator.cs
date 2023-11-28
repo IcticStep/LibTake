@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Data;
+using Code.Runtime.Utils;
+using Code.Runtime.Utils.Vector;
 using UnityEngine;
 using UnityEngine.AI;
 

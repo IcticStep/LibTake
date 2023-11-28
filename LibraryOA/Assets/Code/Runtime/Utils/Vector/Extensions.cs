@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Code.Runtime.Data
+namespace Code.Runtime.Utils.Vector
 {
-    internal static class VectorsExtensions
+    internal static class Extensions
     {
         public static Vector3 WithX(this Vector3 vector3, float x)
         {
