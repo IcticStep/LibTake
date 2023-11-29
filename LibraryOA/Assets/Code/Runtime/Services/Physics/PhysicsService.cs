@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -6,33 +7,19 @@ namespace Code.Runtime.Services.Physics
     [UsedImplicitly]
     internal sealed class PhysicsService : IPhysicsService
     {
-        private readonly Collider[] _hitColliderBuffer10 = new Collider[10];
         private readonly LayerMask _interactableLayerMask = 1 << LayerMask.NameToLayer("Interactable");
 
         public Vector3 Gravity => UnityEngine.Physics.gravity;
         
-        public Collider RaycastSphereForInteractable(Vector3 position, Vector3 forwardDirection, float radius)
+        public Collider RaycastForInteractable(Vector3 position, float distance, IEnumerable<Vector3> forwardDirections)
         {
-            int collisions = UnityEngine.Physics.OverlapSphereNonAlloc(position, radius, _hitColliderBuffer10, _interactableLayerMask);
-            
-            if(collisions == 0) 
-                return default(Collider);
-
-            Collider result = _hitColliderBuffer10[0];
-            float resultDot = Vector3.Dot(forwardDirection, result.transform.position - position);
-            for(int i = 1; i < collisions; i++)
-            {
-                Collider current = _hitColliderBuffer10[i];
-                Vector3 relativePosition = current.transform.position - position;
-                float currentDot = Vector3.Dot(forwardDirection, relativePosition.normalized);
-                if(!(currentDot > resultDot))
-                    continue;
-
-                result = current;
-                resultDot = currentDot;
-            }
-            
-            return result;
+            foreach(Vector3 forwardDirection in forwardDirections)
+                if(RaycastForInteractable(position, distance, forwardDirection, out RaycastHit hit))
+                    return hit.collider;
+            return null;
         }
+
+        private bool RaycastForInteractable(Vector3 position, float distance, Vector3 direction, out RaycastHit hit) =>
+            UnityEngine.Physics.Raycast(position, direction, out hit, distance, _interactableLayerMask);
     }
 }
