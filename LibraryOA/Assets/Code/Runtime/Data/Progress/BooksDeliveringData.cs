@@ -11,10 +11,12 @@ namespace Code.Runtime.Data.Progress
         private List<string> _preparedForDelivering = new();
 
         [JsonProperty]
-        private List<string> _delivered = new();
+        private List<string> _currentInLibraryBooks = new();
 
+        [JsonIgnore]
         public IReadOnlyList<string> PreparedForDelivering => _preparedForDelivering;
-        public IReadOnlyList<string> Delivered => _delivered;
+        [JsonIgnore]
+        public IReadOnlyList<string> CurrentInLibraryBooks => _currentInLibraryBooks;
 
         public void AddToPreparedForDelivering(string bookId) =>
             _preparedForDelivering.Add(bookId);
@@ -22,9 +24,12 @@ namespace Code.Runtime.Data.Progress
         public void AddToPreparedForDelivering(IEnumerable<string> bookId) =>
             _preparedForDelivering.AddRange(bookId);
 
+        public void RemoveFromLibrary(string book) =>
+            _currentInLibraryBooks.Remove(book);
+
         public void DeliverPrepared()
         {
-            _delivered.AddRange(_preparedForDelivering);
+            _currentInLibraryBooks.AddRange(_preparedForDelivering);
             _preparedForDelivering.Clear();
         }
     }

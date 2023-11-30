@@ -1,5 +1,5 @@
+using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.CustomersQueue;
-using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {
@@ -7,15 +7,19 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     {
         private readonly CustomerStateMachine _customerStateMachine;
         private readonly ICustomersQueueService _customersQueueService;
+        private readonly IBooksReceivingService _booksReceivingService;
 
-        public BookReceivingState(CustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService)
+        public BookReceivingState(CustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService)
         {
             _customerStateMachine = customerStateMachine;
             _customersQueueService = customersQueueService;
+            _booksReceivingService = booksReceivingService;
         }
 
-        public void Start() =>
-            Debug.Log($"Book receiving state entered. Gameobject name: {_customerStateMachine.gameObject.name}");
+        public void Start()
+        {
+            
+        }
 
         public void Exit() =>
             _customersQueueService.Dequeue();

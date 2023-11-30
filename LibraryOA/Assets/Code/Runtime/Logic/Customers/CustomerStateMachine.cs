@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates;
+using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.CustomersQueue;
 using UnityEngine;
 using Zenject;
@@ -20,12 +21,14 @@ namespace Code.Runtime.Logic.Customers
         private ICustomerState _activeState;
         private ICustomersQueueService _customersQueueService;
         private IStaticDataService _staticDataService;
+        private IBooksReceivingService _booksReceivingService;
 
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
 
         [Inject]
-        private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService)
+        private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService)
         {
+            _booksReceivingService = booksReceivingService;
             _staticDataService = staticDataService;
             _customersQueueService = customersQueueService;
         }
@@ -34,7 +37,7 @@ namespace Code.Runtime.Logic.Customers
             _states = new Dictionary<Type, ICustomerState>
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
-                [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService),
+                [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService, _booksReceivingService),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
                 [typeof(DeactivatedState)] = new DeactivatedState(),
             };
