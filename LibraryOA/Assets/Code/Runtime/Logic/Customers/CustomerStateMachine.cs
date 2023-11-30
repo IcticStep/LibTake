@@ -34,7 +34,7 @@ namespace Code.Runtime.Logic.Customers
             _states = new Dictionary<Type, ICustomerState>
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
-                [typeof(BookReceivingState)] = new BookReceivingState(this),
+                [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
                 [typeof(DeactivatedState)] = new DeactivatedState(),
             };

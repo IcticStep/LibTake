@@ -27,7 +27,6 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         public void Exit()
         {
-            _customersQueueService.Dequeue();
             _queueMember.Updated -= OnQueueMemberUpdated;
             _customerNavigator.PointReached -= OnPointReached;
         }
@@ -38,7 +37,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private void OnPointReached()
         {
             if(_queueMember.First)
-                _customerStateMachine.Enter<GoAwayState>();
+                _customerStateMachine.Enter<BookReceivingState>();
             else
                 WalkToQueuePlace();;
         }
