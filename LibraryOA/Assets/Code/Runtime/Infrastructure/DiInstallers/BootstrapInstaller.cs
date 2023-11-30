@@ -11,6 +11,7 @@ using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.CustomersQueue;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
+using Code.Runtime.Services.Interactions.BooksReceiving;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
@@ -69,6 +70,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
             Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
             Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
+            Container.Bind<IBooksReceivingInteractionsService>().To<IBooksReceivingInteractionsService>().AsSingle();
         }
 
         private void InstallFactories()
