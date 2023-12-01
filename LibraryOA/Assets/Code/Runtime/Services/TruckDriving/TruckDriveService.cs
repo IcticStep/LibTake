@@ -11,6 +11,7 @@ namespace Code.Runtime.Services.TruckDriving
     internal sealed class TruckDriveService : ITruckDriveService
     {
         private readonly IStaticDataService _staticDataService;
+        private Logic.TruckDriving _truckDriving;
         public GameObject Truck { get; private set; }
 
         private float DrivingSeconds => _staticDataService.Interactables.Truck.DrivingSeconds;
@@ -20,14 +21,17 @@ namespace Code.Runtime.Services.TruckDriving
             _staticDataService = staticDataService;
         }
 
-        public void RegisterTruck(GameObject truck) =>
+        public void RegisterTruck(GameObject truck)
+        {
             Truck = truck;
+            _truckDriving = Truck.GetComponentInChildren<Logic.TruckDriving>();
+        }
 
-        public UniTask DriveToLibrary(TruckWayStaticData way) =>
-            Truck.transform
-                .DOMove(way.LibraryPoint.Position, DrivingSeconds)
-                .SetEase(Ease.OutCirc)
-                .ToUniTask();
+        public UniTask DriveToLibrary() =>
+            _truckDriving.DriveToLibrary();
+        
+        public UniTask DriveAwayLibrary() =>
+            _truckDriving.DriveAwayLibrary();
 
         public void CleanUp() =>
             Truck = null;

@@ -1,33 +1,42 @@
-using System.Threading.Tasks;
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.TruckDriving;
-using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Level;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
-using IState = Code.Runtime.Infrastructure.States.Api.IState;
 
 namespace Code.Runtime.Infrastructure.States
 {
-    internal sealed class GameLoopState : IState
+    internal sealed class MorningState : IState
     {
         private readonly ITruckDriveService _truckDriveService;
         private readonly IStaticDataService _staticDataService;
         private readonly IBooksDeliveringService _booksDeliveringService;
         private readonly IInteractablesFactory _interactablesFactory;
+        private readonly ISaveLoadService _saveLoadService;
 
         private LevelStaticData _levelStaticData;
 
-        public GameLoopState(ITruckDriveService truckDriveService, IStaticDataService staticDataService, IBooksDeliveringService booksDeliveringService,
-            IInteractablesFactory interactablesFactory)
+        public MorningState(ITruckDriveService truckDriveService, IStaticDataService staticDataService, IBooksDeliveringService booksDeliveringService,
+            IInteractablesFactory interactablesFactory, ISaveLoadService saveLoadService)
         {
             _truckDriveService = truckDriveService;
             _staticDataService = staticDataService;
             _booksDeliveringService = booksDeliveringService;
             _interactablesFactory = interactablesFactory;
+            _saveLoadService = saveLoadService;
+        }
+
+        public void Start()
+        {
+            _saveLoadService.SaveProgress();
+            
+            _levelStaticData = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
+            DeliverBooks().Forget();
+            SpawnCustomers().Forget();
         }
 
         public void Exit()
@@ -35,17 +44,10 @@ namespace Code.Runtime.Infrastructure.States
             
         }
 
-        public void Start()
-        {
-            _levelStaticData = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
-            DeliverBooks().Forget();
-            SpawnCustomers().Forget();
-        }
-
         private async UniTask DeliverBooks()
         {
-            await _truckDriveService.DriveToLibrary(_levelStaticData.TruckWay);
             _booksDeliveringService.DeliverBooks();
+            await _truckDriveService.DriveToLibrary();
         }
 
         private async UniTask SpawnCustomers()

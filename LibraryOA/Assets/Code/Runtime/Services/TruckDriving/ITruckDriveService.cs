@@ -8,7 +8,8 @@ namespace Code.Runtime.Services.TruckDriving
     {
         GameObject Truck { get; }
         void RegisterTruck(GameObject truck);
-        public UniTask DriveToLibrary(TruckWayStaticData way);
+        UniTask DriveToLibrary();
+        UniTask DriveAwayLibrary();
         void CleanUp();
     }
 }
