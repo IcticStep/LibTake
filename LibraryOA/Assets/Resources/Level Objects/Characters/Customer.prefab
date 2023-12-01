@@ -596,6 +596,7 @@ MonoBehaviour:
   _customerNavigator: {fileID: 246090937149938568}
   _bookReceiver: {fileID: 129088601558807308}
   _progress: {fileID: 3523476079564100880}
+  _collider: {fileID: 114184501400878111}
 --- !u!114 &6101636625766974792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,10 +855,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.708912, z: 1}
-  m_Center: {x: 0, y: -0.15336394, z: 0}
+  m_Size: {x: 1.6281478, y: 2.708912, z: 1.1411568}
+  m_Center: {x: -0.010586828, y: -0.15336394, z: 0.070578456}
 --- !u!114 &129088601558807308
 MonoBehaviour:
   m_ObjectHideFlags: 0
