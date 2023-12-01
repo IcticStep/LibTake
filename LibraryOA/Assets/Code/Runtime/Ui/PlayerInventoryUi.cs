@@ -60,25 +60,30 @@ namespace Code.Runtime.Ui
         {
             if(!_playerInventoryService.HasBook)
                 return;
-            
-            _text.text = GenerateViewText();
+
+            StaticBook data = GetBookData();
+            _text.text = GenerateViewText(data);
+            _text.faceColor = GetBookUiColor(data);
         }
 
-        private string GenerateViewText()
+        private string GenerateViewText(StaticBook bookData)
         {
-            StaticBook bookData = GetBookData();
             string textResult = bookData.Title;
             if(_playerInventoryService.Count > 1)
-                textResult += $"(+{_playerInventoryService.Count - 1})";
+                textResult += $" (+{_playerInventoryService.Count - 1})";
 
             return textResult;
         }
 
+        private Color32 GetBookUiColor(StaticBook bookData) =>
+            bookData
+                .StaticBookType
+                .UiTextColor;
+
         private StaticBook GetBookData()
         {
             string bookId = _playerInventoryService.CurrentBookId;
-            StaticBook bookData = _staticDataService.ForBook(bookId);
-            return bookData;
+            return _staticDataService.ForBook(bookId);
         }
     }
 }
