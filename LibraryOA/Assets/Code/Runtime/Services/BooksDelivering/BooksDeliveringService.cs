@@ -25,7 +25,7 @@ namespace Code.Runtime.Services.BooksDelivering
             _randomService = randomService;
         }
 
-        public void DeliverBooks()
+        public void DeliverBooksInTruck()
         {
             IReadOnlyList<string> booksToChoose = GetBooksToChoose();
             for(int i = 0; i < DeliverBooksAmount; i++)

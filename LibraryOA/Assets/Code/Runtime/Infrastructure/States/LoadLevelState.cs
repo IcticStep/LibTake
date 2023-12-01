@@ -25,7 +25,7 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerProgressService _playerProgress;
         private readonly ICharactersFactory _charactersFactory;
         private readonly IHudFactory _hudFactory;
-        private readonly ITruckDriveService _truckDriveService;
+        private readonly ITruckProvider _truckProvider;
         private readonly ICustomersQueueService _customersQueueService;
 
         private string _levelName;
@@ -33,7 +33,7 @@ namespace Code.Runtime.Infrastructure.States
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IInteractablesFactory interactablesFactory,
-            ICharactersFactory charactersFactory, IHudFactory hudFactory, ITruckDriveService truckDriveService,
+            ICharactersFactory charactersFactory, IHudFactory hudFactory, ITruckProvider truckProvider,
             ICustomersQueueService customersQueueService)
         {
             _stateMachine = stateMachine;
@@ -44,7 +44,7 @@ namespace Code.Runtime.Infrastructure.States
             _playerProgress = playerProgress;
             _charactersFactory = charactersFactory;
             _hudFactory = hudFactory;
-            _truckDriveService = truckDriveService;
+            _truckProvider = truckProvider;
             _customersQueueService = customersQueueService;
         }
 
@@ -103,7 +103,6 @@ namespace Code.Runtime.Infrastructure.States
         private void InitTruck()
         {
             GameObject truck = _interactablesFactory.CreateTruck(_levelData.TruckWay);
-            _truckDriveService.RegisterTruck(truck);
         }
 
         private void InitCamera(GameObject player) =>

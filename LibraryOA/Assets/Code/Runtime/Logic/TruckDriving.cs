@@ -9,7 +9,7 @@ using Zenject;
 namespace Code.Runtime.Logic
 {
     [SelectionBase]
-    internal sealed class TruckDriving : MonoBehaviour
+    public sealed class TruckDriving : MonoBehaviour
     {
         private IStaticDataService _staticDataService;
         private float _drivingSeconds;
@@ -37,7 +37,7 @@ namespace Code.Runtime.Logic
             _driveAwayLibraryTween.Pause();
             
             _driveToLibraryTween.Restart();
-            return _driveToLibraryTween.ToUniTask();
+            return _driveToLibraryTween.AwaitForComplete();
         }
         
         public UniTask DriveAwayLibrary()
@@ -48,7 +48,7 @@ namespace Code.Runtime.Logic
             _driveToLibraryTween.Pause();
             
             _driveAwayLibraryTween.Restart();
-            return _driveAwayLibraryTween.ToUniTask();
+            return _driveAwayLibraryTween.AwaitForComplete();
         }
 
         private void InitTweens()
@@ -60,7 +60,7 @@ namespace Code.Runtime.Logic
                 .Pause();
 
             _driveAwayLibraryTween = gameObject.transform
-                .DOMove(_way.LibraryPoint.Position, _drivingSeconds)
+                .DOMove(_way.HiddenPoint.Position, _drivingSeconds)
                 .SetEase(Ease.InCirc)
                 .SetAutoKill(false)
                 .Pause();

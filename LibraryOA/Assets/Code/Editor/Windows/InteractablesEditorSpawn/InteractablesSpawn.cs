@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Markers;
 using Code.Runtime.Services.Interactions.Registry;
+using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEditor;
@@ -36,7 +37,8 @@ namespace Code.Editor.Windows.InteractablesEditorSpawn
                 new AssetProviderMock(),
                 new SaveLoadRegistry(), 
                 new InteractablesRegistry(),
-                window._staticDataService);
+                window._staticDataService,
+                new TruckProvider());
         }
 
         private void CreateGUI()
