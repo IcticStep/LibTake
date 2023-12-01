@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.BooksReceiving;
 using Cysharp.Threading.Tasks;
@@ -15,19 +16,10 @@ namespace Code.Runtime.Logic.Customers
         private IBooksReceivingInteractionsService _booksReceivingInteractionsService;
         
         public string BookId { get; private set; }
+        public bool Received { get; private set; }
         public UniTask ReceivingTask => _taskCompletionSource.Task;
 
-        public void Initialize(string bookIdRequested)
-        {
-            _taskCompletionSource = new UniTaskCompletionSource();
-            BookId = bookIdRequested;
-        }
-
-        public void ReceiveBook(string bookId)
-        {
-            _bookStorageHolder.BookStorage.InsertBook(bookId);
-            _taskCompletionSource.TrySetResult();
-        }
+        public event Action Updated;
 
         [Inject]
         private void Construct(IBooksReceivingInteractionsService booksReceivingInteractionsService) =>
@@ -37,6 +29,23 @@ namespace Code.Runtime.Logic.Customers
         {
             BookId = null;
             _taskCompletionSource = null;
+            Received = false;
+            Updated?.Invoke();
+        }
+
+        public void Initialize(string bookIdRequested)
+        {
+            _taskCompletionSource = new UniTaskCompletionSource();
+            BookId = bookIdRequested;
+            Updated?.Invoke();
+        }
+
+        public void ReceiveBook(string bookId)
+        {
+            _bookStorageHolder.BookStorage.InsertBook(bookId);
+            Received = true;
+            _taskCompletionSource.TrySetResult();
+            Updated?.Invoke();
         }
 
         public override bool CanInteract() =>
