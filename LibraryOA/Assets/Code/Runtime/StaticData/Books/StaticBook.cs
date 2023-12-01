@@ -7,7 +7,8 @@ namespace Code.Runtime.StaticData.Books
     [CreateAssetMenu(fileName = "Book", menuName = "Static data/Book")]
     public class StaticBook : ScriptableObject
     {
-        [field: ReadOnly, SerializeField] 
+        [field: ReadOnly]
+        [field: SerializeField] 
         public string Id { get; private set; } = Guid.NewGuid().ToString();
 
         [field: SerializeField]

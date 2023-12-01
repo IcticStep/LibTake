@@ -52,7 +52,12 @@ namespace Code.Runtime.Logic.Interactions
         private void UpdateProgress() =>
             UpdateProgress(_progressService.Progress);
 
-        public void UpdateProgress(PlayerProgress progress) =>
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            if(_storageId is null)
+                return;
+            
             progress.WorldData.BookHoldersState.SetDataForId(_storageId, new BookData(_bookStorage.CurrentBookId));
+        }
     }
 }

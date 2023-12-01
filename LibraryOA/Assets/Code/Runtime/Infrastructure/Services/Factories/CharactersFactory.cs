@@ -28,8 +28,5 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _saveLoadRegistry.RegisterAllComponents(player);
             return player;
         }
-
-        public GameObject CreateCustomer(Vector3 at) =>
-            _assetProvider.Instantiate(AssetPath.Customer, at);
     }
 }

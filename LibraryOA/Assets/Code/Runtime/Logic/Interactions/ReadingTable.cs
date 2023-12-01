@@ -19,7 +19,7 @@ namespace Code.Runtime.Logic.Interactions
         private IBookStorage _bookStorage;
         private IBookSlotInteractionService _bookSlotInteractionService;
         
-        public bool InProgress => _progress.InProgress;
+        public bool InProgress => _progress.Running;
 
         private void Start() =>
             _bookStorage = _bookStorageObject.BookStorage;
