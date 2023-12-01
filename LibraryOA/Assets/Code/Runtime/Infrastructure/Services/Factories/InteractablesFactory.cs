@@ -21,7 +21,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IInteractablesRegistry _interactablesRegistry;
         private readonly IStaticDataService _staticDataService;
-        private UniqueIdUpdater _uniqueIdUpdater;
+        private readonly UniqueIdUpdater _uniqueIdUpdater = new();
 
         public InteractablesFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry,
             IInteractablesRegistry interactablesRegistry, IStaticDataService staticDataService)
