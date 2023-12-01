@@ -55,8 +55,8 @@ namespace Code.Runtime.Logic.Customers
         {
             _activeState?.Exit();
             ICustomerState nextState = _states[typeof(TState)];
-            nextState.Start();
             _activeState = nextState;
+            _activeState.Start();
         }
     }
 }

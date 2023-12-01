@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Services.Random;
@@ -14,6 +15,8 @@ namespace Code.Runtime.Services.BooksReceiving
 
         private BooksDeliveringData BooksDeliveringData => _progressService.Progress.WorldData.BooksDeliveringData;
         private IReadOnlyList<string> CurrentInLibraryBooks => BooksDeliveringData.CurrentInLibraryBooks;
+
+        public bool LibraryHasBooks => CurrentInLibraryBooks.Any();
 
         public BooksReceivingService(IPlayerProgressService progressService, IRandomService randomService)
         {

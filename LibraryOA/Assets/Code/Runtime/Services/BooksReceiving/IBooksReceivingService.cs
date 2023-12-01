@@ -4,5 +4,6 @@ namespace Code.Runtime.Services.BooksReceiving
     {
         string SelectBookForReceiving();
         void ReceiveBook(string book);
+        bool LibraryHasBooks { get; }
     }
 }
