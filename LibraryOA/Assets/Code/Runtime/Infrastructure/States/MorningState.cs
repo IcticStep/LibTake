@@ -1,3 +1,5 @@
+using Code.Runtime.Data.Progress;
+using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.BooksDelivering;
@@ -12,19 +14,25 @@ namespace Code.Runtime.Infrastructure.States
         private readonly ITruckProvider _truckProvider;
         private readonly IBooksDeliveringService _booksDeliveringService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IPlayerProgressService _progressService;
+        
+        private TimeData DaysData => _progressService.Progress.WorldData.TimeData;
 
         public MorningState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
-            IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService)
+            IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
+            IPlayerProgressService progressService)
         {
             _gameStateMachine = gameStateMachine;
             _truckProvider = truckProvider;
             _booksDeliveringService = booksDeliveringService;
             _saveLoadService = saveLoadService;
+            _progressService = progressService;
         }
 
         public void Start()
         {
             _saveLoadService.SaveProgress();
+            DaysData.AddDay();
             DeliverBooks().Forget();
         }
 
