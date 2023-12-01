@@ -105,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5208047995914330343}
+  - component: {fileID: 5125192383801018463}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -129,6 +130,18 @@ Transform:
   - {fileID: 5611659026751793358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5125192383801018463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540948696682640839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06014c2db0fe47faab163b8ebcc7d7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &803892831066386091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,9 +245,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 803892831066386091}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1086040488442447911 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 304666239903213196, guid: 48bc1eaa4633bf043a0774bcbf56db21,
+--- !u!33 &4523069331085872154 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 3885810238408336049, guid: 48bc1eaa4633bf043a0774bcbf56db21,
     type: 3}
   m_PrefabInstance: {fileID: 803892831066386091}
   m_PrefabAsset: {fileID: 0}
@@ -256,7 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5cd3767cb94ade9cb2cc5c6af013bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Mesh>k__BackingField: {fileID: 1086040488442447911}
+  _meshFilter: {fileID: 4523069331085872154}
+  _skinnedMeshRenderer: {fileID: 0}
 --- !u!23 &6983484474630254611 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1458512738153439560, guid: 48bc1eaa4633bf043a0774bcbf56db21,

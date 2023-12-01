@@ -68,7 +68,7 @@ namespace Code.Runtime.Infrastructure.States
             InitCamera(player);
             InitUi();
             
-            _stateMachine.EnterState<GameLoopState>();
+            _stateMachine.EnterState<MorningState>();
         }
 
         private void InitGameWorld()

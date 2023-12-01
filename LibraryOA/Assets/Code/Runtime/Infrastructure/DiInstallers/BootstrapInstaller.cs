@@ -92,7 +92,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<WarmupState>().AsSingle();
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
-            Container.Bind<GameLoopState>().AsSingle();
+            Container.Bind<MorningState>().AsSingle();
         }
     }
 }
