@@ -18,9 +18,10 @@ namespace Code.Runtime.Logic
 
         public bool Empty => Value == 0;
         public bool Full => Value >= 1;
-        public bool InProgress => _fillingTask is not null;
-        public bool CanBeStarted => !InProgress && !Full;
+        public bool Running => _fillingTask is not null;
+        public bool CanBeStarted => !Running && !Full;
         public float MaxValue { get; private set; } = 1;
+        public bool JustReset { get; private set; }
         public UniTask Task => _externalTaskSource.Task;
         
         public float Value
@@ -35,18 +36,17 @@ namespace Code.Runtime.Logic
 
         public Action<float> Updated;
 
+        public void Initialize(float timeToFinish) =>
+            Initialize(null, timeToFinish);
+
         public void Initialize(string ownerId, float timeToFinish)
         {
+            _externalTaskSource = new UniTaskCompletionSource();
+            JustReset = false;
             _id = ownerId;
             _timeToFinish = timeToFinish;
         }
-        
-        public void Initialize(float timeToFinish)
-        {
-            _timeToFinish = timeToFinish;
-            _externalTaskSource = new UniTaskCompletionSource();
-        }
-        
+
         public void LoadProgress(PlayerProgress progress)
         {
             if(_id is null)
@@ -65,6 +65,7 @@ namespace Code.Runtime.Logic
 
         public void StartFilling(Action onFinishCallback = null)
         {
+            JustReset = false;
             _cancellationTokenSource = new CancellationTokenSource();
             _fillingTask = Fill(onFinishCallback, _cancellationTokenSource.Token);
             _fillingTask.Value.Forget();
@@ -72,6 +73,7 @@ namespace Code.Runtime.Logic
 
         public void Reset()
         {
+            JustReset = true;
             _externalTaskSource = null;
             StopFilling();
             Value = 0;
@@ -79,7 +81,7 @@ namespace Code.Runtime.Logic
 
         public void StopFilling()
         {
-            if(!InProgress)
+            if(!Running)
                 return;
             
             _cancellationTokenSource.Cancel();

@@ -60,6 +60,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private void OnTimeOut()
         {
             _bookReceiver.Reset();
+            _progress.Reset();
             Debug.Log("Receiving failed. Customer unsatisified.");
             _customerStateMachine.Enter<GoAwayState>();
         }
