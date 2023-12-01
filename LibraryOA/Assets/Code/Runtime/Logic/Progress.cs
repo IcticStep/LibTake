@@ -101,7 +101,7 @@ namespace Code.Runtime.Logic
             _cancellationTokenSource = null;
             _externalTaskSource?.TrySetResult();
             _externalTaskSource = null;
-            onFinishCallback.Invoke();
+            onFinishCallback?.Invoke();
         }
 
         private float CalculateFillingAmount() =>
