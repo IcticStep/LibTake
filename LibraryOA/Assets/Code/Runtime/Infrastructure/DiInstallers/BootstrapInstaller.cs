@@ -1,10 +1,12 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.BooksReceiving;
@@ -71,6 +73,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
             Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
+            Container.Bind<IHudProviderService>().To<HudProviderService>().AsSingle();
+            Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
         }
 
         private void InstallFactories()
