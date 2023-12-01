@@ -293,8 +293,11 @@ GameObject:
   - component: {fileID: 5446301442065758996}
   - component: {fileID: 5635223771919438870}
   - component: {fileID: 1251362350133296137}
+  - component: {fileID: 9103531641309416171}
+  - component: {fileID: 7617091250098364988}
+  - component: {fileID: 8144486238475078566}
   m_Layer: 5
-  m_Name: DayStart_background
+  m_Name: CentralMessage_background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,6 +361,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &9103531641309416171
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451281714583081715}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &7617091250098364988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451281714583081715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db04e76c39a44f229e86abdb207b339d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 9103531641309416171}
+  _duration: 0.3
+--- !u!114 &8144486238475078566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451281714583081715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c1f9f410bc4e3994482bc595f594c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoothFader: {fileID: 7617091250098364988}
+  _textMessage: {fileID: 5510879107743265223}
 --- !u!1 &5779760151879231866
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +532,7 @@ GameObject:
   - component: {fileID: 3912300233143982035}
   - component: {fileID: 5510879107743265223}
   m_Layer: 5
-  m_Name: DayStart_text
+  m_Name: CentralMessage_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -25,6 +26,19 @@ namespace Code.Runtime.Ui
                 .Pause();
         }
 
+        public UniTask FadeAsync()
+        {
+            if(_fadeTween.IsPlaying())
+                return UniTask.WaitWhile(_fadeTween.IsPlaying);
+
+            if(_canvasGroup.alpha == 0)
+                return UniTask.CompletedTask;
+            
+            _unFadeTween.Pause();
+            _fadeTween.Restart();
+            return _fadeTween.AwaitForComplete();
+        } 
+
         public void Fade()
         {
             if(_fadeTween.IsPlaying() || _canvasGroup.alpha == 0)
@@ -40,10 +54,17 @@ namespace Code.Runtime.Ui
             _canvasGroup.alpha = 0;
         }
         
-        public void UnFadeImmediately()
+        public UniTask UnFadeAsync()
         {
-            PauseTweens();
-            _canvasGroup.alpha = 1;
+            if(_unFadeTween.IsPlaying())
+                return UniTask.WaitWhile(_fadeTween.IsPlaying);
+
+            if(_canvasGroup.alpha == 1f)
+                return UniTask.CompletedTask;
+            
+            _fadeTween.Pause();
+            _unFadeTween.Restart();
+            return _unFadeTween.AwaitForComplete();
         }
 
         public void UnFade()
@@ -53,6 +74,12 @@ namespace Code.Runtime.Ui
             
             _fadeTween.Pause();
             _unFadeTween.Restart();
+        }
+
+        public void UnFadeImmediately()
+        {
+            PauseTweens();
+            _canvasGroup.alpha = 1;
         }
 
         private void PauseTweens()
