@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.States.Api;
+using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.States
 {
@@ -13,6 +14,9 @@ namespace Code.Runtime.Infrastructure.States
 
         public void Exit() { }
 
-        public void Start() { }
+        public void Start()
+        {
+            Debug.Log("Day started.");
+        }
     }
 }
