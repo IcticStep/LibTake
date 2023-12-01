@@ -50,10 +50,10 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         private async UniTaskVoid WaitForCompletion()
         {
-            await UniTask.WhenAny(_progress.Task, _bookReceiver.ReceivingTask);
-            if(_progress.Task.Status == UniTaskStatus.Succeeded)
+            int taskCompleted = await UniTask.WhenAny(_progress.Task, _bookReceiver.ReceivingTask);
+            if(taskCompleted == 0)
                 OnTimeOut();
-            else if(_bookReceiver.ReceivingTask.Status == UniTaskStatus.Succeeded)
+            else if(taskCompleted == 1)
                 OnBookReceived();
         }
 

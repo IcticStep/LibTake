@@ -14,13 +14,14 @@ namespace Code.Runtime.Logic
         private float _value;
         private UniTask? _fillingTask;
         private CancellationTokenSource _cancellationTokenSource;
+        private UniTaskCompletionSource _externalTaskSource;
 
         public bool Empty => Value == 0;
         public bool Full => Value >= 1;
         public bool InProgress => _fillingTask is not null;
         public bool CanBeStarted => !InProgress && !Full;
         public float MaxValue { get; private set; } = 1;
-        public UniTask Task => _fillingTask.Value;
+        public UniTask Task => _externalTaskSource.Task;
         
         public float Value
         {
@@ -43,6 +44,7 @@ namespace Code.Runtime.Logic
         public void Initialize(float timeToFinish)
         {
             _timeToFinish = timeToFinish;
+            _externalTaskSource = new UniTaskCompletionSource();
         }
         
         public void LoadProgress(PlayerProgress progress)
@@ -70,6 +72,7 @@ namespace Code.Runtime.Logic
 
         public void Reset()
         {
+            _externalTaskSource = null;
             StopFilling();
             Value = 0;
         }
@@ -96,6 +99,8 @@ namespace Code.Runtime.Logic
 
             _fillingTask = null;
             _cancellationTokenSource = null;
+            _externalTaskSource?.TrySetResult();
+            _externalTaskSource = null;
             onFinishCallback.Invoke();
         }
 
