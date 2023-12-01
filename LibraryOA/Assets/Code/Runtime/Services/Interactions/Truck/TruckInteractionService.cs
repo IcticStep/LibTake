@@ -24,13 +24,14 @@ namespace Code.Runtime.Services.Interactions.Truck
         public bool CanInteract() =>
             DeliveringData.PreparedForDelivering.Any() && !_playerInventoryService.HasBook;
 
-        public void Interact()
+        public bool TryInteract()
         {
             if(!CanInteract())
-                return;
+                return false;
 
             _playerInventoryService.InsertBooks(DeliveringData.PreparedForDelivering);
             DeliveringData.DeliverPrepared();
+            return true;
         }
     }
 }

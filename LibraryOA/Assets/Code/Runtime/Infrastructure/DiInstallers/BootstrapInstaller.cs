@@ -66,7 +66,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
             Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
-            Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
+            Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
             Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
             Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
@@ -93,6 +93,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
             Container.Bind<MorningState>().AsSingle();
+            Container.Bind<DayState>().AsSingle();
         }
     }
 }

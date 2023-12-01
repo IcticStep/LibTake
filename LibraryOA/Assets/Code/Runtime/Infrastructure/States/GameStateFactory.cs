@@ -21,6 +21,7 @@ namespace Code.Runtime.Infrastructure.States
                 [typeof(LoadProgressState)] = container.Resolve<LoadProgressState>,
                 [typeof(LoadLevelState)] = container.Resolve<LoadLevelState>,
                 [typeof(MorningState)] = container.Resolve<MorningState>,
+                [typeof(DayState)] = container.Resolve<DayState>,
             };
         }
 
