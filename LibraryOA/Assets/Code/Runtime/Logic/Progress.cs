@@ -20,6 +20,7 @@ namespace Code.Runtime.Logic
         public bool InProgress => _fillingTask is not null;
         public bool CanBeStarted => !InProgress && !Full;
         public float MaxValue { get; private set; } = 1;
+        public UniTask Task => _fillingTask.Value;
         
         public float Value
         {
@@ -39,13 +40,28 @@ namespace Code.Runtime.Logic
             _timeToFinish = timeToFinish;
         }
         
-        public void LoadProgress(PlayerProgress progress) =>
+        public void Initialize(float timeToFinish)
+        {
+            _timeToFinish = timeToFinish;
+        }
+        
+        public void LoadProgress(PlayerProgress progress)
+        {
+            if(_id is null)
+                return;
+            
             Value = progress.WorldData.ProgressesStates.GetDataForId(_id);
+        }
 
-        public void UpdateProgress(PlayerProgress progress) =>
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            if(_id is null)
+                return;
+
             progress.WorldData.ProgressesStates.SetDataForId(_id, Value);
+        }
 
-        public void StartFilling(Action onFinishCallback)
+        public void StartFilling(Action onFinishCallback = null)
         {
             _cancellationTokenSource = new CancellationTokenSource();
             _fillingTask = Fill(onFinishCallback, _cancellationTokenSource.Token);
