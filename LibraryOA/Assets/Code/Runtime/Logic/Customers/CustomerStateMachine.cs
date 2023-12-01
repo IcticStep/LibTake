@@ -20,6 +20,8 @@ namespace Code.Runtime.Logic.Customers
         private BookReceiver _bookReceiver;
         [SerializeField]
         private Progress _progress;
+        [SerializeField]
+        private Collider _collider;
 
         private Dictionary<Type, ICustomerState> _states;
         private ICustomerState _activeState;
@@ -42,7 +44,7 @@ namespace Code.Runtime.Logic.Customers
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
                 [typeof(BookReceivingState)] = 
-                    new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver, _progress, _staticDataService),
+                    new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver, _progress, _staticDataService, _collider),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
                 [typeof(DeactivatedState)] = new DeactivatedState(),
             };

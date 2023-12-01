@@ -12,11 +12,12 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private readonly ICustomersQueueService _customersQueueService;
         private readonly IBooksReceivingService _booksReceivingService;
         private readonly IStaticDataService _staticDataService;
+        private readonly Collider _collider;
         private readonly BookReceiver _bookReceiver;
         private readonly Progress _progress;
 
         public BookReceivingState(CustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService,
-            BookReceiver bookReceiver, Progress progress, IStaticDataService staticDataService)
+            BookReceiver bookReceiver, Progress progress, IStaticDataService staticDataService, Collider collider)
         {
             _customerStateMachine = customerStateMachine;
             _customersQueueService = customersQueueService;
@@ -24,6 +25,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _bookReceiver = bookReceiver;
             _progress = progress;
             _staticDataService = staticDataService;
+            _collider = collider;
         }
 
         public void Start()
@@ -39,14 +41,18 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             StartReceivingProgress();
         }
 
-        public void Exit() =>
+        public void Exit()
+        {
             _customersQueueService.Dequeue();
+            _collider.enabled = false;
+        }
 
         private void InitializeReceiving()
         {
             string targetBook = _booksReceivingService.SelectBookForReceiving();
             _bookReceiver.Initialize(targetBook);
             _progress.Initialize(_staticDataService.Customer.TimeToReceiveBook);
+            _collider.enabled = true;
         }
 
         private void StartReceivingProgress()
