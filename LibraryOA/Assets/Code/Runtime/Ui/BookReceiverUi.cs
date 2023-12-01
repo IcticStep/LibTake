@@ -50,7 +50,7 @@ namespace Code.Runtime.Ui
 
         private void SetVisibility()
         {
-            if(_bookReceiver.BookId is null)
+            if(_bookReceiver.BookId is null || _bookReceiver.Received)
                 _smoothFader.Fade();
             else
                 _smoothFader.UnFade();
