@@ -28,6 +28,13 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         public void Start()
         {
+            if(!_booksReceivingService.LibraryHasBooks)
+            {
+                Debug.Log("There is no books. Customer is leaving.");
+                _customerStateMachine.Enter<GoAwayState>();
+                return;
+            }
+            
             InitializeReceiving();
             StartReceivingProgress();
         }
