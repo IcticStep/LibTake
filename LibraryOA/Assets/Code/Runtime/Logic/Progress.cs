@@ -14,12 +14,15 @@ namespace Code.Runtime.Logic
         private float _value;
         private UniTask? _fillingTask;
         private CancellationTokenSource _cancellationTokenSource;
+        private UniTaskCompletionSource _externalTaskSource;
 
         public bool Empty => Value == 0;
         public bool Full => Value >= 1;
-        public bool InProgress => _fillingTask is not null;
-        public bool CanBeStarted => !InProgress && !Full;
+        public bool Running => _fillingTask is not null;
+        public bool CanBeStarted => !Running && !Full;
         public float MaxValue { get; private set; } = 1;
+        public bool JustReset { get; private set; }
+        public UniTask Task => _externalTaskSource.Task;
         
         public float Value
         {
@@ -33,20 +36,36 @@ namespace Code.Runtime.Logic
 
         public Action<float> Updated;
 
+        public void Initialize(float timeToFinish) =>
+            Initialize(null, timeToFinish);
+
         public void Initialize(string ownerId, float timeToFinish)
         {
+            _externalTaskSource = new UniTaskCompletionSource();
+            JustReset = false;
             _id = ownerId;
             _timeToFinish = timeToFinish;
         }
-        
-        public void LoadProgress(PlayerProgress progress) =>
-            Value = progress.WorldData.ProgressesStates.GetDataForId(_id);
 
-        public void UpdateProgress(PlayerProgress progress) =>
-            progress.WorldData.ProgressesStates.SetDataForId(_id, Value);
-
-        public void StartFilling(Action onFinishCallback)
+        public void LoadProgress(PlayerProgress progress)
         {
+            if(_id is null)
+                return;
+            
+            Value = progress.WorldData.ProgressesStates.GetDataForId(_id);
+        }
+
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            if(_id is null)
+                return;
+
+            progress.WorldData.ProgressesStates.SetDataForId(_id, Value);
+        }
+
+        public void StartFilling(Action onFinishCallback = null)
+        {
+            JustReset = false;
             _cancellationTokenSource = new CancellationTokenSource();
             _fillingTask = Fill(onFinishCallback, _cancellationTokenSource.Token);
             _fillingTask.Value.Forget();
@@ -54,13 +73,15 @@ namespace Code.Runtime.Logic
 
         public void Reset()
         {
+            JustReset = true;
+            _externalTaskSource = null;
             StopFilling();
             Value = 0;
         }
 
         public void StopFilling()
         {
-            if(!InProgress)
+            if(!Running)
                 return;
             
             _cancellationTokenSource.Cancel();
@@ -80,7 +101,9 @@ namespace Code.Runtime.Logic
 
             _fillingTask = null;
             _cancellationTokenSource = null;
-            onFinishCallback.Invoke();
+            _externalTaskSource?.TrySetResult();
+            _externalTaskSource = null;
+            onFinishCallback?.Invoke();
         }
 
         private float CalculateFillingAmount() =>

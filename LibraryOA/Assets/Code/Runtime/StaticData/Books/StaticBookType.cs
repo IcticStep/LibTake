@@ -9,5 +9,7 @@ namespace Code.Runtime.StaticData.Books
         public BookType BookType { get; private set; }
         [field: SerializeField]
         public Material Material { get; private set; }
+        [field: SerializeField]
+        public Color32 UiTextColor { get; private set; }
     }
 }

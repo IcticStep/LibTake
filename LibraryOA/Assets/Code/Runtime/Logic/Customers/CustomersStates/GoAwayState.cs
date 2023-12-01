@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

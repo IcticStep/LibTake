@@ -9,5 +9,6 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         GameObject CreateReadingTable(string objectId, Vector3 at, Quaternion rotation, string initialBookId = null);
         GameObject CreateBookSlot(BookSlotSpawnData spawnData);
         GameObject CreateTruck(TruckWayStaticData truckWayData);
+        GameObject CreateCustomer(Vector3 at);
     }
 }

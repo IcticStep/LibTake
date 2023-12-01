@@ -1,14 +1,13 @@
 using System;
 using System.Linq;
-using Code.Runtime.Logic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Code.Editor.Editors.Logic
+namespace Code.Runtime.Logic
 {
-    internal sealed class UniqueIdUpdater
+    public sealed class UniqueIdUpdater
     {
         public void UpdateUniqueId(UniqueId uniqueId)
         {

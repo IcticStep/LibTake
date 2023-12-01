@@ -21,6 +21,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IInteractablesRegistry _interactablesRegistry;
         private readonly IStaticDataService _staticDataService;
+        private readonly UniqueIdUpdater _uniqueIdUpdater = new();
 
         public InteractablesFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry,
             IInteractablesRegistry interactablesRegistry, IStaticDataService staticDataService)
@@ -65,18 +66,29 @@ namespace Code.Runtime.Infrastructure.Services.Factories
 
             return readingTable;
         }
-
-        private void InitInteractable(string id, GameObject bookSlot)
+        
+        public GameObject CreateCustomer(Vector3 at)
         {
-            Interactable interactable = bookSlot.GetComponentInChildren<Interactable>();
+            GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
+
+            UniqueId uniqueId = customer.GetComponentInChildren<UniqueId>();
+            _uniqueIdUpdater.UpdateUniqueId(uniqueId);
+            InitInteractable(uniqueId.Id, customer);
+
+            return customer;
+        }
+
+        private void InitInteractable(string id, GameObject gameObject)
+        {
+            Interactable interactable = gameObject.GetComponentInChildren<Interactable>();
             Collider collider = interactable.GetComponent<Collider>();
             interactable.InitId(id);
             _interactablesRegistry.Register(interactable, collider);
         }
 
-        private void InitBookStorage(string id, string initialBookId, GameObject bookSlot)
+        private void InitBookStorage(string id, string initialBookId, GameObject gameObject)
         {
-            BookStorageHolder bookStorage = bookSlot.GetComponentInChildren<BookStorageHolder>();
+            BookStorageHolder bookStorage = gameObject.GetComponentInChildren<BookStorageHolder>();
             _saveLoadRegistry.Register(bookStorage);
             bookStorage.Initialize(id, initialBookId);
         }
