@@ -17,17 +17,17 @@ namespace Code.Runtime.Infrastructure.States
         private readonly ITruckDriveService _truckDriveService;
         private readonly IStaticDataService _staticDataService;
         private readonly IBooksDeliveringService _booksDeliveringService;
-        private readonly ICharactersFactory _charactersFactory;
+        private readonly IInteractablesFactory _interactablesFactory;
 
         private LevelStaticData _levelStaticData;
 
         public GameLoopState(ITruckDriveService truckDriveService, IStaticDataService staticDataService, IBooksDeliveringService booksDeliveringService,
-            ICharactersFactory charactersFactory)
+            IInteractablesFactory interactablesFactory)
         {
             _truckDriveService = truckDriveService;
             _staticDataService = staticDataService;
             _booksDeliveringService = booksDeliveringService;
-            _charactersFactory = charactersFactory;
+            _interactablesFactory = interactablesFactory;
         }
 
         public void Exit()
@@ -53,7 +53,7 @@ namespace Code.Runtime.Infrastructure.States
             for(int i = 0; i < 10; i++)
             {
                 await UniTask.WaitForSeconds(0.5f);
-                _charactersFactory.CreateCustomer(_levelStaticData.Customers.SpawnPoint);
+                _interactablesFactory.CreateCustomer(_levelStaticData.Customers.SpawnPoint);
             }
         }
     }

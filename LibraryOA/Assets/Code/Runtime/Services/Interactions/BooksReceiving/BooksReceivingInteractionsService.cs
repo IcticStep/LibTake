@@ -26,8 +26,10 @@ namespace Code.Runtime.Services.Interactions.BooksReceiving
         {
             if(!CanInteract(bookReceiver))
                 return;
-            
-            _booksReceivingService.ReceiveBook(bookReceiver.BookId);
+
+            string bookId = _playerInventoryService.RemoveBook();
+            _booksReceivingService.ReceiveBook(bookId);
+            bookReceiver.ReceiveBook(bookId);
         }
     }
 }
