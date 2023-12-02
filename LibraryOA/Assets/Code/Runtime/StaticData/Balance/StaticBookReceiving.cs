@@ -1,4 +1,4 @@
-using System;
+using Code.Runtime.Data;
 using UnityEngine;
 
 namespace Code.Runtime.StaticData.Balance
@@ -12,7 +12,8 @@ namespace Code.Runtime.StaticData.Balance
         public int BooksPerDeliveringAmount { get; private set; } = 5;
         [field: SerializeField]
         public int BooksShouldLeftInLibrary { get; private set; } = 2;
+
         [field: SerializeField]
-        public float CustomersInterval { get; private set; } = 2;
+        public Range CustomersInterval { get; private set; } = new Range(3, 10);
     }
 }

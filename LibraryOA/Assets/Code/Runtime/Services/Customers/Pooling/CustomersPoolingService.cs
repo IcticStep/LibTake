@@ -91,6 +91,9 @@ namespace Code.Runtime.Services.Customers.Pooling
             _deactivatedCustomers.Push(customer);
         }
 
+        public bool CanActivateMore()
+            => ActiveCustomers < ActiveLimit;
+
         private void SetSpawnLimits(LevelStaticData levelData)
         {
             ActiveHardLimit = levelData.Customers.QueuePoints.Count;

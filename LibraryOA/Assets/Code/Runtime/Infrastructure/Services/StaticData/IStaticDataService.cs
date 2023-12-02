@@ -14,6 +14,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         StaticPlayer Player { get; }
         StaticBookReceiving BookReceiving { get; }
         IReadOnlyList<StaticBook> AllBooks { get; }
+        LevelStaticData CurrentLevelData { get; }
         void LoadAll();
         void LoadBooks();
         void LoadLevels();

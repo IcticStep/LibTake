@@ -8,6 +8,7 @@ using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Runtime.Infrastructure.Services.StaticData
 {
@@ -31,6 +32,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public StaticPlayer Player { get; private set; }
         public StaticBookReceiving BookReceiving { get; private set; }
         public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
+        public LevelStaticData CurrentLevelData => ForLevel(SceneManager.GetActiveScene().name);
 
         public void LoadAll()
         {
