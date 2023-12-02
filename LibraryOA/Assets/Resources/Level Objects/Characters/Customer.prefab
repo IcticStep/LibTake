@@ -597,6 +597,8 @@ MonoBehaviour:
   _bookReceiver: {fileID: 129088601558807308}
   _progress: {fileID: 3523476079564100880}
   _collider: {fileID: 114184501400878111}
+  _navMeshAgent: {fileID: 324633534625668468}
+  _bookStorageHolder: {fileID: 2871849467389682782}
 --- !u!114 &6101636625766974792
 MonoBehaviour:
   m_ObjectHideFlags: 0

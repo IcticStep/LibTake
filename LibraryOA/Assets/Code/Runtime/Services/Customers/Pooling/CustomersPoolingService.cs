@@ -7,7 +7,6 @@ using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.StaticData.Level;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Code.Runtime.Services.Customers.Pooling
 {
@@ -15,7 +14,7 @@ namespace Code.Runtime.Services.Customers.Pooling
     internal sealed class CustomersPoolingService : ICustomersPoolingService
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly InteractablesFactory _interactablesFactory;
+        private readonly IInteractablesFactory _interactablesFactory;
         private readonly Stack<CustomerStateMachine> _deactivatedCustomers = new();
         private readonly HashSet<CustomerStateMachine> _activeCustomers = new();
         
@@ -37,7 +36,7 @@ namespace Code.Runtime.Services.Customers.Pooling
 
         private Vector3 Spawn => _spawn ?? (_spawn = GetSpawnPoint()).Value;
 
-        public CustomersPoolingService(IStaticDataService staticDataService, InteractablesFactory interactablesFactory)
+        public CustomersPoolingService(IStaticDataService staticDataService, IInteractablesFactory interactablesFactory)
         {
             _staticDataService = staticDataService;
             _interactablesFactory = interactablesFactory;
@@ -54,6 +53,9 @@ namespace Code.Runtime.Services.Customers.Pooling
             for(int i = 0; i < ActiveLimit; i++)
             {
                 CustomerStateMachine customer = _interactablesFactory.CreateCustomer(Spawn);
+                customer.Enter<DeactivatedState>();
+                customer.DeactivateStateEntered += ReturnCustomer;
+                customer.gameObject.SetActive(false);
                 _deactivatedCustomers.Push(customer);
             }
         }
@@ -70,6 +72,7 @@ namespace Code.Runtime.Services.Customers.Pooling
             if(DeactivatedCustomers > 0)
             {
                 CustomerStateMachine customer = _deactivatedCustomers.Pop();
+                customer.gameObject.SetActive(true);
                 _activeCustomers.Add(customer);
                 customer.gameObject.transform.position = position;
                 return customer;
@@ -82,13 +85,30 @@ namespace Code.Runtime.Services.Customers.Pooling
 
         public void ReturnCustomer(CustomerStateMachine customer)
         {
+            if(_deactivatedCustomers.Contains(customer))
+            {
+                Debug.LogWarning("Tried to return customer twice.", customer.gameObject);
+                return;
+            }
+            
             if(!_activeCustomers.Contains(customer))
-                Debug.LogWarning("Untracked customer by pool returned to pool", customer.gameObject);
+                Debug.LogWarning("Untracked customer by pool returned to pool.", customer.gameObject);
             else
                 _activeCustomers.Remove(customer);
             
-            customer.Enter<DeactivatedState>();
+            if(customer.ActiveStateType != typeof(DeactivatedState))
+                customer.Enter<DeactivatedState>();
+            
+            customer.gameObject.SetActive(false);
             _deactivatedCustomers.Push(customer);
+        }
+
+        public void CleanUp()
+        {
+            foreach(CustomerStateMachine customer in _activeCustomers)
+                customer.DeactivateStateEntered -= ReturnCustomer;
+            foreach(CustomerStateMachine customer in _deactivatedCustomers)
+                customer.DeactivateStateEntered -= ReturnCustomer;
         }
 
         public bool CanActivateMore()

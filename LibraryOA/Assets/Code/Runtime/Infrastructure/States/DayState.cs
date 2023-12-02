@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.States
@@ -27,8 +28,7 @@ namespace Code.Runtime.Infrastructure.States
         public void Start()
         {
             ShowDayNumberMessage();
-            _customersDeliveringService.StartDeliveringCustomers();
-            //_customersDeliveringService.
+            ProceedDay().Forget();
         }
 
         public void Exit() { }
@@ -37,6 +37,12 @@ namespace Code.Runtime.Infrastructure.States
         {
             int day = CurrentDay;
             _uiMessagesService.ShowCenterMessage($"Day {day}");
+        }
+
+        private async UniTask ProceedDay()
+        {
+            await _customersDeliveringService.DeliverCustomers();
+            Debug.Log("All the customers have gone.");
         }
     }
 }
