@@ -11,7 +11,7 @@ namespace Code.Runtime.Logic.Interactions
 {
     public class BookStorageHolder : MonoBehaviour, IBookStorageHolder, ISavedProgress
     {
-        private readonly BookStorage _bookStorage = new BookStorage();
+        private BookStorage _bookStorage = new BookStorage();
         private string _storageId;
         private IPlayerProgressService _progressService;
 
@@ -21,17 +21,23 @@ namespace Code.Runtime.Logic.Interactions
         private void Construct(IPlayerProgressService progressService) =>
             _progressService = progressService;
 
+        private void Start() =>
+            _bookStorage.Updated += UpdateProgress;
+
+        private void OnDestroy() =>
+            _bookStorage.Updated -= UpdateProgress;
+
         public void Initialize(string storageId, string initialBookId)
         {
             _bookStorage.InsertBook(initialBookId);
             _storageId = storageId;
         }
 
-        private void Start() =>
-            _bookStorage.Updated += UpdateProgress;
-        
-        private void OnDestroy() =>
-            _bookStorage.Updated -= UpdateProgress;
+        public void HardReset()
+        {
+            _bookStorage = new BookStorage();
+            _storageId = null;
+        }
 
         public void LoadProgress(PlayerProgress progress)
         {
