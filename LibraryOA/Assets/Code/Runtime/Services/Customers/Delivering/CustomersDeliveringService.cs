@@ -18,18 +18,16 @@ namespace Code.Runtime.Services.Customers.Delivering
     internal sealed class CustomersDeliveringService : ICustomersDeliveringService
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly IPlayerProgressService _progressService;
         private readonly ICustomersPoolingService _customersPool;
         private readonly IBooksReceivingService _booksReceivingService;
         private readonly IRandomService _randomService;
 
         private StaticBookReceiving BookReceiving => _staticDataService.BookReceiving;
 
-        public CustomersDeliveringService(IStaticDataService staticDataService, IPlayerProgressService progressService, ICustomersPoolingService customersPool,
+        public CustomersDeliveringService(IStaticDataService staticDataService, ICustomersPoolingService customersPool,
             IBooksReceivingService booksReceivingService, IRandomService randomService)
         {
             _staticDataService = staticDataService;
-            _progressService = progressService;
             _customersPool = customersPool;
             _booksReceivingService = booksReceivingService;
             _randomService = randomService;
@@ -38,7 +36,7 @@ namespace Code.Runtime.Services.Customers.Delivering
         public void CreateCustomers() =>
             _customersPool.CreateCustomers();
 
-        public async UniTask StartDeliveringCustomers()
+        public async UniTask DeliverCustomers()
         {
             int customersToDeliver = _booksReceivingService.BooksInLibrary - BookReceiving.BooksShouldLeftInLibrary;
 
@@ -48,6 +46,8 @@ namespace Code.Runtime.Services.Customers.Delivering
                 await UniTask.WaitUntil(_customersPool.CanActivateMore);
                 DeliverCustomer();
             }
+
+            await UniTask.WaitUntil(() => _customersPool.ActiveCustomers == 0);
         }
 
         private UniTask WaitInterval()

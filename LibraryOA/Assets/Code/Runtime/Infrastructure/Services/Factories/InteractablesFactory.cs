@@ -78,11 +78,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _uniqueIdUpdater.UpdateUniqueId(uniqueId);
             
             InitInteractable(uniqueId.Id, customer);
-
-            CustomerStateMachine stateMachine = customer.GetComponent<CustomerStateMachine>();
-            stateMachine.Enter<DeactivatedState>();
-            
-            return stateMachine;
+            return customer.GetComponent<CustomerStateMachine>();
         }
 
         private void InitInteractable(string id, GameObject gameObject)
