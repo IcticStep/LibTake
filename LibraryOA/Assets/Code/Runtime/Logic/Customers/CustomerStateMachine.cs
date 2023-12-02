@@ -49,9 +49,6 @@ namespace Code.Runtime.Logic.Customers
                 [typeof(DeactivatedState)] = new DeactivatedState(),
             };
 
-        private void Start() =>
-            Enter<QueueMemberState>();
-
         public void Enter<TState>()
             where TState : ICustomerState
         {

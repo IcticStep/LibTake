@@ -2,6 +2,8 @@ using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
+using Code.Runtime.Logic.Customers;
+using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;
@@ -68,15 +70,19 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             return readingTable;
         }
         
-        public GameObject CreateCustomer(Vector3 at)
+        public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
 
             UniqueId uniqueId = customer.GetComponentInChildren<UniqueId>();
             _uniqueIdUpdater.UpdateUniqueId(uniqueId);
+            
             InitInteractable(uniqueId.Id, customer);
 
-            return customer;
+            CustomerStateMachine stateMachine = customer.GetComponent<CustomerStateMachine>();
+            stateMachine.Enter<DeactivatedState>();
+            
+            return stateMachine;
         }
 
         private void InitInteractable(string id, GameObject gameObject)
