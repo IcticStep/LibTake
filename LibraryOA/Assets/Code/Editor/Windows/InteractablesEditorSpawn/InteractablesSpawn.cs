@@ -60,7 +60,7 @@ namespace Code.Editor.Windows.InteractablesEditorSpawn
 
         private void SpawnInteractableObjectsPreview()
         {
-            LevelStaticData levelData = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
+            LevelStaticData levelData = _staticDataService.CurrentLevelData;
             List<GameObject> spawned = new();
             
             SpawnBookSlots(levelData, spawned);

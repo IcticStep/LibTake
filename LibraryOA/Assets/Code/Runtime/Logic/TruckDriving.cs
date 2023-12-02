@@ -23,8 +23,7 @@ namespace Code.Runtime.Logic
             _staticDataService = staticDataService;
             _drivingSeconds = _staticDataService.Interactables.Truck.DrivingSeconds;
 
-            string currentLevel = SceneManager.GetActiveScene().name;
-            _way = _staticDataService.ForLevel(currentLevel).TruckWay;
+            _way = _staticDataService.CurrentLevelData.TruckWay;
 
             InitTweens();
         }

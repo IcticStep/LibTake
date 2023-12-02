@@ -48,7 +48,7 @@ namespace Code.Runtime.Services.Customers.Pooling
         /// </summary>
         public void CreateCustomers()
         {
-            LevelStaticData levelData = GetLevelData();
+            LevelStaticData levelData = _staticDataService.CurrentLevelData;
             SetSpawnLimits(levelData);
 
             for(int i = 0; i < ActiveLimit; i++)
@@ -101,14 +101,9 @@ namespace Code.Runtime.Services.Customers.Pooling
         }
 
         private Vector3 GetSpawnPoint() =>
-            GetLevelData()
+            _staticDataService
+                .CurrentLevelData
                 .Customers
                 .SpawnPoint;
-
-        private LevelStaticData GetLevelData()
-        {
-            string level = SceneManager.GetActiveScene().name;
-            return _staticDataService.ForLevel(level);
-        }
     }
 }
