@@ -1,4 +1,4 @@
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Queue;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {

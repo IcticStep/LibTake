@@ -4,7 +4,7 @@ using Code.Runtime.Logic.Customers;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Services.CustomersQueue
+namespace Code.Runtime.Services.Customers.Queue
 {
     [UsedImplicitly]
     internal sealed class CustomersQueueService : ICustomersQueueService

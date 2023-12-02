@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Code.Runtime.Logic.Customers;
 using UnityEngine;
 
-namespace Code.Runtime.Services.CustomersQueue
+namespace Code.Runtime.Services.Customers.Queue
 {
     internal interface ICustomersQueueService
     {

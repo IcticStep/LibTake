@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.StaticData
+namespace Code.Runtime.StaticData.Balance
 {
     [CreateAssetMenu(fileName = "Customer", menuName = "Static data/Customer")]
     public class StaticCustomer : ScriptableObject

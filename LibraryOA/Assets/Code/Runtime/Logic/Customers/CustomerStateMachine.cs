@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Services.BooksReceiving;
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Queue;
 using UnityEngine;
 using Zenject;
 

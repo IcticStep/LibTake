@@ -5,7 +5,7 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Logic.Player;
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Level;
