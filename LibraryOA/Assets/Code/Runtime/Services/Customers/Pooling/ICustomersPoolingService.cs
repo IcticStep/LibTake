@@ -15,6 +15,7 @@ namespace Code.Runtime.Services.Customers.Pooling
 
         int ActiveCustomers { get; }
         int DeactivatedCustomers { get; }
+        bool CanActivateMore();
 
         /// <summary>
         /// Creates maximum amount in pull and set in spawn position in deactivated state. 
