@@ -5,8 +5,8 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Logic.Player;
+using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Queue;
-using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
@@ -25,16 +25,16 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerProgressService _playerProgress;
         private readonly ICharactersFactory _charactersFactory;
         private readonly IHudFactory _hudFactory;
-        private readonly ITruckProvider _truckProvider;
         private readonly ICustomersQueueService _customersQueueService;
+        private readonly ICustomersDeliveringService _customersDeliveringService;
 
         private string _levelName;
         private LevelStaticData _levelData;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IInteractablesFactory interactablesFactory,
-            ICharactersFactory charactersFactory, IHudFactory hudFactory, ITruckProvider truckProvider,
-            ICustomersQueueService customersQueueService)
+            ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
+            ICustomersDeliveringService customersDeliveringService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -44,8 +44,8 @@ namespace Code.Runtime.Infrastructure.States
             _playerProgress = playerProgress;
             _charactersFactory = charactersFactory;
             _hudFactory = hudFactory;
-            _truckProvider = truckProvider;
             _customersQueueService = customersQueueService;
+            _customersDeliveringService = customersDeliveringService;
         }
 
         public void Start(string payload)
@@ -76,7 +76,7 @@ namespace Code.Runtime.Infrastructure.States
             InitBookSlots();
             InitReadingTables();
             InitTruck();
-            InitCustomersQueue();
+            InitCustomers();
         }
 
         private GameObject InitPlayer() =>
@@ -97,13 +97,14 @@ namespace Code.Runtime.Infrastructure.States
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
         }
 
-        private void InitCustomersQueue() =>
-            _customersQueueService.Initialize(_levelData.Customers.QueuePoints);
-
-        private void InitTruck()
+        private void InitCustomers()
         {
-            GameObject truck = _interactablesFactory.CreateTruck(_levelData.TruckWay);
+            _customersQueueService.Initialize(_levelData.Customers.QueuePoints);
+            _customersDeliveringService.CreateCustomers();
         }
+
+        private void InitTruck() =>
+            _interactablesFactory.CreateTruck(_levelData.TruckWay);
 
         private void InitCamera(GameObject player) =>
             Camera.main!

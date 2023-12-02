@@ -6,5 +6,6 @@ namespace Code.Runtime.Services.Customers.Delivering
     {
         UniTask CustomersDeliveringTask { get; }
         void StartDeliveringCustomers();
+        void CreateCustomers();
     }
 }

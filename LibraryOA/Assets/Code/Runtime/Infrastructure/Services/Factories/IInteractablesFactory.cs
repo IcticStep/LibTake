@@ -1,3 +1,4 @@
+using Code.Runtime.Logic.Customers;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -9,6 +10,6 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         GameObject CreateReadingTable(string objectId, Vector3 at, Quaternion rotation, string initialBookId = null);
         GameObject CreateBookSlot(BookSlotSpawnData spawnData);
         GameObject CreateTruck(TruckWayStaticData truckWayData);
-        GameObject CreateCustomer(Vector3 at);
+        CustomerStateMachine CreateCustomer(Vector3 at);
     }
 }
