@@ -25,18 +25,11 @@ namespace Code.Editor.App
         private static void OnSceneSaved(Scene scene)
         {
             IStaticDataService staticData = LoadLevelsData();
-            LevelStaticData levelData = GetCurrentLevelData(staticData);
+            LevelStaticData levelData = staticData.CurrentLevelData;
             if(levelData is null)
                 return;
             
             LevelStaticDataEditor.UpdateLevelData(levelData);
-        }
-
-        private static LevelStaticData GetCurrentLevelData(IStaticDataService staticData)
-        {
-            string current = SceneManager.GetActiveScene().name;
-            LevelStaticData levelData = staticData.ForLevel(current);
-            return levelData;
         }
 
         private static IStaticDataService LoadLevelsData()
