@@ -12,7 +12,7 @@ namespace Code.Runtime.Logic.Customers
         public event Action Updated;
         public event Action BecameFirst;
 
-        private void Reset()
+        public void Reset()
         {
             CurrentPoint = null;
             First = false;
