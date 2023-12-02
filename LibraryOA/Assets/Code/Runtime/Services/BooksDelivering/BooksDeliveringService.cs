@@ -16,7 +16,7 @@ namespace Code.Runtime.Services.BooksDelivering
         private readonly IRandomService _randomService;
 
         private BooksDeliveringData DeliveringData => _progressService.Progress.WorldData.BooksDeliveringData;
-        private int DeliverBooksAmount => _staticDataService.BooksDelivering.BooksPerDeliveringAmount;
+        public int CurrentDayBooksDelivering => _staticDataService.BookReceiving.BooksPerDeliveringAmount;
 
         public BooksDeliveringService(IPlayerProgressService progressService, IStaticDataService staticDataService, IRandomService randomService)
         {
@@ -28,7 +28,7 @@ namespace Code.Runtime.Services.BooksDelivering
         public void DeliverBooksInTruck()
         {
             IReadOnlyList<string> booksToChoose = GetBooksToChoose();
-            for(int i = 0; i < DeliverBooksAmount; i++)
+            for(int i = 0; i < CurrentDayBooksDelivering; i++)
             {
                 int chosenIndex = _randomService.GetInRange(0, booksToChoose.Count);
                 string chosenId = booksToChoose[chosenIndex];

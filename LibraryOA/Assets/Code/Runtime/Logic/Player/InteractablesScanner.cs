@@ -5,7 +5,6 @@ using Code.Runtime.Data;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Physics;
-using Code.Runtime.Utils.Vector;
 using UnityEngine;
 using Zenject;
 
@@ -30,7 +29,7 @@ namespace Code.Runtime.Logic.Player
         private IPhysicsService _physicsService;
         private Interactable _currentFocusedInteractable;
         private IInteractablesRegistry _interactablesRegistry;
-        private Rotator _rotator;
+        private VectorRotator _vectorRotator;
         
         public IReadOnlyList<Line> CurrentRays { get; private set; }
         public Vector3 StartPointForward => _rayStartPoint.transform.forward;
@@ -72,14 +71,14 @@ namespace Code.Runtime.Logic.Player
         }
         
         private void Awake() =>
-            _rotator = CreateRayVectorsRotator();
+            _vectorRotator = CreateRayVectorsRotator();
         
         private void OnValidate() =>
-            _rotator = CreateRayVectorsRotator();
+            _vectorRotator = CreateRayVectorsRotator();
 
         private void Update()
         {
-            CurrentRays = _rotator.CreateVectorsRotated(_rayStartPoint.position, _rayStartPoint.forward);
+            CurrentRays = _vectorRotator.CreateVectorsRotated(_rayStartPoint.position, _rayStartPoint.forward);
             Interactable raycasted = FindInteractables(CurrentRays);
             if(raycasted == CurrentFocusedInteractable) 
                 return;
@@ -87,7 +86,7 @@ namespace Code.Runtime.Logic.Player
             CurrentFocusedInteractable = raycasted;
         }
 
-        public Rotator CreateRayVectorsRotator() =>
+        public VectorRotator CreateRayVectorsRotator() =>
             new(_rayLength, _raysCount, _raysDegreesInterval, Vector3.up);
 
         private Interactable FindInteractables(IReadOnlyList<Line> rays)

@@ -62,7 +62,7 @@ namespace Code.Runtime.Services.Customers.Pooling
         /// Returns active customers if any c
         /// Throws <see cref="InvalidOperationException"/> if trying to get more than <see cref="ActiveLimit"/> customers.
         /// </summary>
-        public CustomerStateMachine GetCustomer()
+        public CustomerStateMachine GetCustomer(Vector3 position)
         {
             if(ActiveCustomers >= ActiveLimit)
                 throw new InvalidOperationException($"Can't activate more than {ActiveLimit} customers!");
@@ -71,10 +71,11 @@ namespace Code.Runtime.Services.Customers.Pooling
             {
                 CustomerStateMachine customer = _deactivatedCustomers.Pop();
                 _activeCustomers.Add(customer);
+                customer.gameObject.transform.position = position;
                 return customer;
             }
 
-            CustomerStateMachine newCustomer = _interactablesFactory.CreateCustomer(Spawn);
+            CustomerStateMachine newCustomer = _interactablesFactory.CreateCustomer(position);
             _activeCustomers.Add(newCustomer);
             return newCustomer;
         }

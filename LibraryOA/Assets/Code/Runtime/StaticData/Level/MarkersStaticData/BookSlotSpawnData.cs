@@ -1,7 +1,7 @@
 using System;
+using Code.Runtime.Data;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Markers.Spawns;
-using Code.Runtime.Utils;
 using UnityEngine;
 
 namespace Code.Runtime.StaticData.Level.MarkersStaticData

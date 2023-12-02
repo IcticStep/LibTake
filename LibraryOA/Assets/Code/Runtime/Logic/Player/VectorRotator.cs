@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Code.Runtime.Data;
 using UnityEngine;
 
-namespace Code.Runtime.Utils.Vector
+namespace Code.Runtime.Logic.Player
 {
-    public sealed class Rotator
+    public sealed class VectorRotator
     {
         private readonly float _length;
         private readonly int _count;
@@ -13,7 +13,7 @@ namespace Code.Runtime.Utils.Vector
         private readonly List<Line> _resultCache;
         private readonly IReadOnlyList<Quaternion> _rotationsCache;
 
-        public Rotator(float length, int count, float intervalDegree, Vector3 axis)
+        public VectorRotator(float length, int count, float intervalDegree, Vector3 axis)
         {
             _length = length;
             _count = count;
