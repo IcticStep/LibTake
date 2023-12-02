@@ -1,6 +1,6 @@
+using Code.Runtime.Data;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
-using Code.Runtime.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 

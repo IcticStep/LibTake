@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Code.Runtime.Utils
+namespace Code.Runtime.Data
 {
     /// <summary>
     /// Used to mark data as read-only to prevent modifying from the inspector.

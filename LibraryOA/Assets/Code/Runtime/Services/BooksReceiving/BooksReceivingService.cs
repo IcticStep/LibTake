@@ -17,6 +17,7 @@ namespace Code.Runtime.Services.BooksReceiving
         private IReadOnlyList<string> CurrentInLibraryBooks => BooksDeliveringData.CurrentInLibraryBooks;
 
         public bool LibraryHasBooks => CurrentInLibraryBooks.Any();
+        public int BooksInLibrary => CurrentInLibraryBooks.Count;
 
         public BooksReceivingService(IPlayerProgressService progressService, IRandomService randomService)
         {
