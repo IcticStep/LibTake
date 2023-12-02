@@ -10,7 +10,8 @@ using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.BooksReceiving;
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Delivering;
+using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -75,6 +76,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
             Container.Bind<IHudProviderService>().To<HudProviderService>().AsSingle();
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
+            Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
         }
 
         private void InstallFactories()
