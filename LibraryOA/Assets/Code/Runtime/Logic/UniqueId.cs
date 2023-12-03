@@ -1,4 +1,4 @@
-using Code.Runtime.Utils;
+using Code.Runtime.Data;
 using UnityEngine;
 
 namespace Code.Runtime.Logic

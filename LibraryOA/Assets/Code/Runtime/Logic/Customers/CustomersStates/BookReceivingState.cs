@@ -1,6 +1,6 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.BooksReceiving;
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Queue;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -51,7 +51,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         {
             string targetBook = _booksReceivingService.SelectBookForReceiving();
             _bookReceiver.Initialize(targetBook);
-            _progress.Initialize(_staticDataService.Customer.TimeToReceiveBook);
+            _progress.Initialize(_staticDataService.BookReceiving.TimeToReceiveBook);
             _collider.enabled = true;
         }
 

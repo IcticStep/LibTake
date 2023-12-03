@@ -21,17 +21,24 @@ namespace Code.Runtime.Logic.Interactions
         private void Construct(IPlayerProgressService progressService) =>
             _progressService = progressService;
 
+        private void Start() =>
+            _bookStorage.Updated += UpdateProgress;
+
+        private void OnDestroy() =>
+            _bookStorage.Updated -= UpdateProgress;
+
         public void Initialize(string storageId, string initialBookId)
         {
             _bookStorage.InsertBook(initialBookId);
             _storageId = storageId;
         }
 
-        private void Start() =>
-            _bookStorage.Updated += UpdateProgress;
-        
-        private void OnDestroy() =>
-            _bookStorage.Updated -= UpdateProgress;
+        public void Reset()
+        {
+            _storageId = null;
+            if(_bookStorage.HasBook)
+                _bookStorage.RemoveBook();
+        }
 
         public void LoadProgress(PlayerProgress progress)
         {

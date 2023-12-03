@@ -20,7 +20,8 @@ namespace Code.Runtime.Infrastructure.States
                 [typeof(WarmupState)] = container.Resolve<WarmupState>,
                 [typeof(LoadProgressState)] = container.Resolve<LoadProgressState>,
                 [typeof(LoadLevelState)] = container.Resolve<LoadLevelState>,
-                [typeof(GameLoopState)] = container.Resolve<GameLoopState>,
+                [typeof(MorningState)] = container.Resolve<MorningState>,
+                [typeof(DayState)] = container.Resolve<DayState>,
             };
         }
 

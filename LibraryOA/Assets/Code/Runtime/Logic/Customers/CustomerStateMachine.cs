@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates;
+using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.BooksReceiving;
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Queue;
 using UnityEngine;
 using Zenject;
 
@@ -22,14 +23,18 @@ namespace Code.Runtime.Logic.Customers
         private Progress _progress;
         [SerializeField]
         private Collider _collider;
+        [SerializeField]
+        private BookStorageHolder _bookStorageHolder;
 
         private Dictionary<Type, ICustomerState> _states;
         private ICustomerState _activeState;
         private ICustomersQueueService _customersQueueService;
         private IStaticDataService _staticDataService;
         private IBooksReceivingService _booksReceivingService;
-
+        
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
+        public Type ActiveStateType => _activeState.GetType();
+        public event Action<CustomerStateMachine> DeactivateStateEntered;
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService)
@@ -46,11 +51,8 @@ namespace Code.Runtime.Logic.Customers
                 [typeof(BookReceivingState)] = 
                     new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver, _progress, _staticDataService, _collider),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
-                [typeof(DeactivatedState)] = new DeactivatedState(),
+                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorageHolder, _bookReceiver),
             };
-
-        private void Start() =>
-            Enter<QueueMemberState>();
 
         public void Enter<TState>()
             where TState : ICustomerState
@@ -59,6 +61,9 @@ namespace Code.Runtime.Logic.Customers
             ICustomerState nextState = _states[typeof(TState)];
             _activeState = nextState;
             _activeState.Start();
+            
+            if(_activeState is DeactivatedState)
+                DeactivateStateEntered?.Invoke(this);
         }
     }
 }
