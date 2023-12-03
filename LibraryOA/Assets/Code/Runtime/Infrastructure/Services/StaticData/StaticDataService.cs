@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.StaticData;
+using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Runtime.Infrastructure.Services.StaticData
 {
@@ -17,10 +19,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string ReadingTablePath = "Static Data/Interactables/ReadingTableData";
         private const string StartupSettingsPath = "Static Data/StartupSettings";
         private const string TruckPath = "Static Data/Interactables/Truck static data";
-        private const string BooksDeliveringPath = "Static Data/Books delivering";
         private const string BookSlotPath = "Static Data/Interactables/BookSlotData";
         private const string PlayerPath = "Static Data/Player";
-        private const string CustomerPath = "Static Data/Customer";
+        private const string BookReceivingPath = "Static Data/Book Receiving";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
@@ -28,19 +29,18 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public StartupSettings StartupSettings { get; private set; }
         public InteractablesStaticData Interactables { get; private set; }
         public StaticPlayer Player { get; private set; }
-        public StaticCustomer Customer { get; private set; }
-        public BooksDeliveringStaticData BooksDelivering { get; private set; }
+        public StaticBookReceiving BookReceiving { get; private set; }
         public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
+        public LevelStaticData CurrentLevelData => ForLevel(SceneManager.GetActiveScene().name);
 
         public void LoadAll()
         {
             LoadStartupSettings();
             LoadLevels();
             LoadPlayer();
-            LoadCustomer();
+            LoadBookReceiving();
             LoadBooks();
             LoadInteractables();
-            LoadBooksDelivering();
         }
 
         public void LoadBooks() =>
@@ -57,9 +57,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             Player = Resources
                 .Load<StaticPlayer>(PlayerPath);
 
-        public void LoadCustomer() =>
-            Customer = Resources
-                .Load<StaticCustomer>(CustomerPath);
+        public void LoadBookReceiving() =>
+            BookReceiving = Resources
+                .Load<StaticBookReceiving>(BookReceivingPath);
 
         public void LoadInteractables()
         {
@@ -73,11 +73,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public void LoadStartupSettings() =>
             StartupSettings = Resources
                 .Load<StartupSettings>(StartupSettingsPath);
-
-        public void LoadBooksDelivering() =>
-            BooksDelivering = Resources
-                .Load<BooksDeliveringStaticData>(BooksDeliveringPath);
-
+        
         public StaticBook ForBook(string id) =>
             _books.TryGetValue(id, out StaticBook result)
                 ? result

@@ -31,13 +31,10 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private void DeactivatedSelf() =>
             _customerStateMachine.Enter<DeactivatedState>();
 
-        private IReadOnlyList<Vector3> GetExitWay()
-        {
-            string currentLevel = SceneManager.GetActiveScene().name;
-            return _staticDataService
-                .ForLevel(currentLevel)
+        private IReadOnlyList<Vector3> GetExitWay() =>
+            _staticDataService
+                .CurrentLevelData
                 .Customers
                 .ExitWayPoints;
-        }
     }
 }

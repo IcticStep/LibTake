@@ -5,8 +5,8 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Logic.Player;
-using Code.Runtime.Services.CustomersQueue;
-using Code.Runtime.Services.TruckDriving;
+using Code.Runtime.Services.Customers.Delivering;
+using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
@@ -25,16 +25,13 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerProgressService _playerProgress;
         private readonly ICharactersFactory _charactersFactory;
         private readonly IHudFactory _hudFactory;
-        private readonly ITruckDriveService _truckDriveService;
         private readonly ICustomersQueueService _customersQueueService;
-
-        private string _levelName;
-        private LevelStaticData _levelData;
-
+        private readonly ICustomersDeliveringService _customersDeliveringService;
+        
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IInteractablesFactory interactablesFactory,
-            ICharactersFactory charactersFactory, IHudFactory hudFactory, ITruckDriveService truckDriveService,
-            ICustomersQueueService customersQueueService)
+            ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
+            ICustomersDeliveringService customersDeliveringService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -44,16 +41,12 @@ namespace Code.Runtime.Infrastructure.States
             _playerProgress = playerProgress;
             _charactersFactory = charactersFactory;
             _hudFactory = hudFactory;
-            _truckDriveService = truckDriveService;
             _customersQueueService = customersQueueService;
+            _customersDeliveringService = customersDeliveringService;
         }
 
-        public void Start(string payload)
-        {
-            _levelName = payload;
-            _levelData = _staticData.ForLevel(_levelName);
+        public void Start(string payload) =>
             _sceneLoader.LoadSceneAsync(payload, OnLevelLoaded).Forget();
-        }
 
         public void Exit()
         {
@@ -62,49 +55,50 @@ namespace Code.Runtime.Infrastructure.States
 
         private void OnLevelLoaded()
         {
-            GameObject player = InitPlayer();
-            InitGameWorld();
+            LevelStaticData levelData = _staticData.CurrentLevelData;
+            GameObject player = InitPlayer(levelData);
+            InitGameWorld(levelData);
             InformProgressReaders();
             InitCamera(player);
             InitUi();
             
-            _stateMachine.EnterState<GameLoopState>();
+            _stateMachine.EnterState<MorningState>();
         }
 
-        private void InitGameWorld()
+        private void InitGameWorld(LevelStaticData levelData)
         {
-            InitBookSlots();
-            InitReadingTables();
-            InitTruck();
-            InitCustomersQueue();
+            InitBookSlots(levelData);
+            InitReadingTables(levelData);
+            InitTruck(levelData);
+            InitCustomers(levelData);
         }
 
-        private GameObject InitPlayer() =>
-            _charactersFactory.CreatePlayer(_levelData.PlayerInitialPosition);
+        private GameObject InitPlayer(LevelStaticData levelData) =>
+            _charactersFactory.CreatePlayer(levelData.PlayerInitialPosition);
 
         private void InitUi() =>
             _hudFactory.Create();
 
-        private void InitBookSlots()
+        private void InitBookSlots(LevelStaticData levelData)
         {
-            foreach(BookSlotSpawnData spawn in _levelData.InteractablesSpawns.BookSlots)
+            foreach(BookSlotSpawnData spawn in levelData.InteractablesSpawns.BookSlots)
                 _interactablesFactory.CreateBookSlot(spawn);
         }
 
-        private void InitReadingTables()
+        private void InitReadingTables(LevelStaticData levelData)
         {
-            foreach(ReadingTableSpawnData readingTable in _levelData.InteractablesSpawns.ReadingTables)
+            foreach(ReadingTableSpawnData readingTable in levelData.InteractablesSpawns.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
         }
 
-        private void InitCustomersQueue() =>
-            _customersQueueService.Initialize(_levelData.Customers.QueuePoints);
-
-        private void InitTruck()
+        private void InitCustomers(LevelStaticData levelData)
         {
-            GameObject truck = _interactablesFactory.CreateTruck(_levelData.TruckWay);
-            _truckDriveService.RegisterTruck(truck);
+            _customersQueueService.Initialize(levelData.Customers.QueuePoints);
+            _customersDeliveringService.CreateCustomers();
         }
+
+        private void InitTruck(LevelStaticData levelData) =>
+            _interactablesFactory.CreateTruck(levelData.TruckWay);
 
         private void InitCamera(GameObject player) =>
             Camera.main!

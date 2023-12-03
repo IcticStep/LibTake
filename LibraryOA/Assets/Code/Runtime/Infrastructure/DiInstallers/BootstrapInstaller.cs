@@ -1,14 +1,18 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.BooksReceiving;
-using Code.Runtime.Services.CustomersQueue;
+using Code.Runtime.Services.Customers.Delivering;
+using Code.Runtime.Services.Customers.Pooling;
+using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -66,11 +70,15 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
             Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
-            Container.Bind<ITruckDriveService>().To<TruckDriveService>().AsSingle();
+            Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
             Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
             Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
+            Container.Bind<IHudProviderService>().To<HudProviderService>().AsSingle();
+            Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
+            Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
+            Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
         }
 
         private void InstallFactories()
@@ -92,7 +100,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<WarmupState>().AsSingle();
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
-            Container.Bind<GameLoopState>().AsSingle();
+            Container.Bind<MorningState>().AsSingle();
+            Container.Bind<DayState>().AsSingle();
         }
     }
 }

@@ -1,16 +1,16 @@
-using System.Linq;
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
+using Code.Runtime.Logic.Customers;
+using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.Registry;
-using Code.Runtime.StaticData;
+using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Splines;
 
 namespace Code.Runtime.Infrastructure.Services.Factories
 {
@@ -22,14 +22,16 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         private readonly IInteractablesRegistry _interactablesRegistry;
         private readonly IStaticDataService _staticDataService;
         private readonly UniqueIdUpdater _uniqueIdUpdater = new();
+        private readonly ITruckProvider _truckProvider;
 
         public InteractablesFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry,
-            IInteractablesRegistry interactablesRegistry, IStaticDataService staticDataService)
+            IInteractablesRegistry interactablesRegistry, IStaticDataService staticDataService, ITruckProvider truckProvider)
         {
             _assetProvider = assetProvider;
             _saveLoadRegistry = saveLoadRegistry;
             _interactablesRegistry = interactablesRegistry;
             _staticDataService = staticDataService;
+            _truckProvider = truckProvider;
         }
         
         public GameObject CreateBookSlot(BookSlotSpawnData spawnData)
@@ -49,8 +51,9 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             GameObject truck = _assetProvider.Instantiate(staticData.Prefab, truckWayData.HiddenPoint.Position, truckWayData.HiddenPoint.Rotation);
             
             string id = truck.GetComponentInChildren<UniqueId>().Id;
-            
             InitInteractable(id, truck);
+            
+            _truckProvider.RegisterTruck(truck);
 
             return truck;
         }
@@ -67,15 +70,15 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             return readingTable;
         }
         
-        public GameObject CreateCustomer(Vector3 at)
+        public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
 
             UniqueId uniqueId = customer.GetComponentInChildren<UniqueId>();
             _uniqueIdUpdater.UpdateUniqueId(uniqueId);
+            
             InitInteractable(uniqueId.Id, customer);
-
-            return customer;
+            return customer.GetComponent<CustomerStateMachine>();
         }
 
         private void InitInteractable(string id, GameObject gameObject)

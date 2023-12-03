@@ -1,12 +1,15 @@
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.Truck;
+using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace Code.Runtime.Logic
 {
-    internal sealed class Truck : Interactable
+    public sealed class Truck : Interactable
     {
+        private UniTaskCompletionSource _completionSource = new();
         private ITruckInteractionService _truckInteractionService;
+        public UniTask BooksTakenTask => _completionSource.Task;
 
         [Inject]
         private void Construct(ITruckInteractionService truckInteractionService) =>
@@ -15,6 +18,15 @@ namespace Code.Runtime.Logic
         public override bool CanInteract() =>
             _truckInteractionService.CanInteract();
 
-        public override void Interact() => _truckInteractionService.Interact();
+        public override void Interact()
+        {
+            bool result = _truckInteractionService.TryInteract();
+
+            if(!result)
+                return;
+
+            _completionSource.TrySetResult();
+            _completionSource = new UniTaskCompletionSource();
+        }
     }
 }
