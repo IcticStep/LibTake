@@ -6090,8 +6090,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _initialBook
       value: 
-      objectReference: {fileID: 11400000, guid: 41543c9f66d648f4bace87d694b3606f,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

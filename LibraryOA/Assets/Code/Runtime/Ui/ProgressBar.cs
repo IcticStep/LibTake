@@ -28,9 +28,9 @@ namespace Code.Runtime.Ui
         private void SetVisibility(float value, float maxValue)
         {
             bool shouldBeVisible = ValueIsMoreThanVisualMinimum(value, maxValue);
-            if(shouldBeVisible)
+            if(shouldBeVisible && !_smoothFader.IsFullyVisible)
                 _smoothFader.UnFade();
-            else
+            else if(!shouldBeVisible && !_smoothFader.IsFullyInvisible)
                 _smoothFader.Fade();
         }
 

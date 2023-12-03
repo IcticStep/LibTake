@@ -1548,7 +1548,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_66
+      name: Tick_icon
       rect:
         serializedVersion: 2
         x: 396
@@ -1674,7 +1674,6 @@ TextureImporter:
       GUI_63: 21300112
       GUI_64: 21300114
       GUI_65: 21300116
-      GUI_66: 21300118
       GUI_67: 21300120
       GUI_8: 21300016
       GUI_9: 21300018
@@ -1683,6 +1682,7 @@ TextureImporter:
       Round_button: 21300014
       RoundedButton_idle: 21300036
       RoundedButton_pressed: 21300034
+      Tick_icon: 21300118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
