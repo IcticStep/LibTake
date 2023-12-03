@@ -1590,7 +1590,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_68
+      name: DoubleCentralMessage
       rect:
         serializedVersion: 2
         x: 2152
@@ -1624,6 +1624,7 @@ TextureImporter:
       Button_idle: 21300022
       Button_pressed: 21300020
       CenterMessageBox: 21300102
+      DoubleCentralMessage: 21300122
       GUI_0: 21300000
       GUI_1: 21300002
       GUI_12: 21300024
@@ -1675,7 +1676,6 @@ TextureImporter:
       GUI_65: 21300116
       GUI_66: 21300118
       GUI_67: 21300120
-      GUI_68: 21300122
       GUI_8: 21300016
       GUI_9: 21300018
       ProgressBar_background: 21300046
