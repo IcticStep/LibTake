@@ -47,9 +47,16 @@ namespace Code.Runtime.Ui
 
         private void UpdateView()
         {
-            if(PlayerInteractor.CanInteract())
+            if(_smoothFader.AnimationInProgress)
+                return;
+            
+            if(PlayerInteractor.CanInteract() && !_smoothFader.IsFullyVisible)
+            {
                 _smoothFader.UnFade();
-            else
+                return;
+            }
+            
+            if(!_smoothFader.IsFullyInvisible)
                 _smoothFader.Fade();
         }
         

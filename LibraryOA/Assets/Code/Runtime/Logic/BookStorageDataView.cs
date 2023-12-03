@@ -1,4 +1,3 @@
-using System;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.ReadBook;
@@ -6,7 +5,6 @@ using Code.Runtime.StaticData.Books;
 using Code.Runtime.Ui;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Code.Runtime.Logic
@@ -16,7 +14,7 @@ namespace Code.Runtime.Logic
         [SerializeField]
         private TextMeshProUGUI _bookName;
         [SerializeField]
-        private Image _readTick;
+        private GameObject _readTick;
         [SerializeField]
         private BookStorageHolder _bookStorageHolder;
         [SerializeField]
@@ -44,14 +42,14 @@ namespace Code.Runtime.Logic
             StaticBook bookData = _staticDataService.ForBook(bookId);
             bool isRead = _readBookService.IsRead(bookId);
             _bookName.text = bookData.name;
-            _readTick.enabled = isRead;
+            _readTick.SetActive(isRead);
             _smoothFader.UnFade();
         }
 
         public void HideData()
         {
             _bookName.text = string.Empty;
-            _readTick.enabled = false;
+            _readTick.SetActive(false);
             _smoothFader.Fade();
         }
     }
