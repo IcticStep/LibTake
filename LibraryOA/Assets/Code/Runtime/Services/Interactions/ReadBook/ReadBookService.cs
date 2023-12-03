@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Books;
 using JetBrains.Annotations;
+using UnityEngine.Android;
 
 namespace Code.Runtime.Services.Interactions.ReadBook
 {
@@ -26,6 +27,9 @@ namespace Code.Runtime.Services.Interactions.ReadBook
             MarkAsRead(bookId);
             UpdateSkills(data);
         }
+
+        public bool IsRead(string bookId) =>
+            _playerProgress.Progress.PlayerData.ReadBooks.IsBookRead(bookId);
 
         private void MarkAsRead(string bookId) =>
             _playerProgress.Progress.PlayerData.ReadBooks.AddReadBook(bookId);
