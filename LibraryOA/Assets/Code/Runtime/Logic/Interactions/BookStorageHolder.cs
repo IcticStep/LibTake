@@ -33,7 +33,7 @@ namespace Code.Runtime.Logic.Interactions
             _storageId = storageId;
         }
 
-        public void HardReset()
+        public void Reset()
         {
             _storageId = null;
             if(_bookStorage.HasBook)

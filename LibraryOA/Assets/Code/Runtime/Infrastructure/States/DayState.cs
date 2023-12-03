@@ -31,18 +31,20 @@ namespace Code.Runtime.Infrastructure.States
             ProceedDay().Forget();
         }
 
-        public void Exit() { }
+        public void Exit() =>
+            Debug.Log($"Day {CurrentDay} finished.");
 
         private void ShowDayNumberMessage()
         {
-            int day = CurrentDay;
-            _uiMessagesService.ShowCenterMessage($"Day {day}");
+            Debug.Log($"Day {CurrentDay} began.");
+            _uiMessagesService.ShowCenterMessage($"Day {CurrentDay}");
         }
 
         private async UniTask ProceedDay()
         {
             await _customersDeliveringService.DeliverCustomers();
             Debug.Log("All the customers have gone.");
+            _gameStateMachine.EnterState<MorningState>();
         }
     }
 }

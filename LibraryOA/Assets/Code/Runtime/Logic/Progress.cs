@@ -36,6 +36,17 @@ namespace Code.Runtime.Logic
 
         public Action<float> Updated;
 
+        public void Reset()
+        {
+            JustReset = true;
+            _externalTaskSource = null;
+            StopFilling();
+            Value = 0;
+        }
+
+        public void OnDisable() =>
+            JustReset = false;
+
         public void Initialize(float timeToFinish) =>
             Initialize(null, timeToFinish);
 
@@ -69,14 +80,6 @@ namespace Code.Runtime.Logic
             _cancellationTokenSource = new CancellationTokenSource();
             _fillingTask = Fill(onFinishCallback, _cancellationTokenSource.Token);
             _fillingTask.Value.Forget();
-        }
-
-        public void Reset()
-        {
-            JustReset = true;
-            _externalTaskSource = null;
-            StopFilling();
-            Value = 0;
         }
 
         public void StopFilling()

@@ -5,6 +5,7 @@ using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.BooksDelivering;
 using Code.Runtime.Services.TruckDriving;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.States
 {
@@ -31,7 +32,9 @@ namespace Code.Runtime.Infrastructure.States
 
         public void Start()
         {
+            Debug.Log($"Morning state started.");
             _saveLoadService.SaveProgress();
+            Debug.Log($"Progress saved.");
             DaysData.AddDay();
             DeliverBooks().Forget();
         }

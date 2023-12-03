@@ -51,7 +51,7 @@ namespace Code.Runtime.Logic.Customers
                 [typeof(BookReceivingState)] = 
                     new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver, _progress, _staticDataService, _collider),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
-                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorageHolder),
+                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorageHolder, _bookReceiver),
             };
 
         public void Enter<TState>()
