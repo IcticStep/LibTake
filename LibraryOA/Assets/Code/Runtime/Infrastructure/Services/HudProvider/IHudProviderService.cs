@@ -7,6 +7,7 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
     {
         GameObject Hud { get; }
         CentralMessage CentralMessage { get; }
+        DoubleCentralMessage DoubleCentralMessage { get; }
         void RegisterHud(GameObject hud);
         void CleanUp();
     }
