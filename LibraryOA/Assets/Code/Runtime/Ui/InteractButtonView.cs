@@ -56,7 +56,7 @@ namespace Code.Runtime.Ui
                 return;
             }
             
-            if(!_smoothFader.IsFullyInvisible)
+            if(!PlayerInteractor.CanInteract() && !_smoothFader.IsFullyInvisible)
                 _smoothFader.Fade();
         }
         
