@@ -42,15 +42,12 @@ namespace Code.Runtime.Logic
             StaticBook bookData = _staticDataService.ForBook(bookId);
             bool isRead = _readBookService.IsRead(bookId);
             _bookName.text = bookData.name;
+            
             _readTick.SetActive(isRead);
             _smoothFader.UnFade();
         }
 
-        public void HideData()
-        {
-            _bookName.text = string.Empty;
-            _readTick.SetActive(false);
+        public void HideData() =>
             _smoothFader.Fade();
-        }
     }
 }
