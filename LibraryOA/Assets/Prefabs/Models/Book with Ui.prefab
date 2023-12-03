@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 6075837484505450221}
-  _duration: 0.2
+  _duration: 0.35
 --- !u!225 &6075837484505450221
 CanvasGroup:
   m_ObjectHideFlags: 0
