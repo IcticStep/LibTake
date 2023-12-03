@@ -6,6 +6,8 @@ namespace Code.Runtime.Ui
 {
     internal sealed class SmoothFader : MonoBehaviour
     {
+        private const float AlphaMinimalDelta = 0.01f;
+        
         [SerializeField]
         private CanvasGroup _canvasGroup;
         [SerializeField]
@@ -13,6 +15,10 @@ namespace Code.Runtime.Ui
         
         private Tween _fadeTween;
         private Tween _unFadeTween;
+
+        public bool IsFullyVisible => _canvasGroup.alpha > 1 - AlphaMinimalDelta;
+        public bool IsFullyInvisible => _canvasGroup.alpha == 0;
+        public bool AnimationInProgress => _fadeTween.IsPlaying() || _unFadeTween.IsPlaying();
 
         private void Awake()
         {
@@ -41,7 +47,7 @@ namespace Code.Runtime.Ui
 
         public void Fade()
         {
-            if(_fadeTween.IsPlaying() || _canvasGroup.alpha == 0)
+            if(_fadeTween.IsPlaying())
                 return;
             
             _unFadeTween.Pause();
@@ -59,7 +65,7 @@ namespace Code.Runtime.Ui
             if(_unFadeTween.IsPlaying())
                 return UniTask.WaitWhile(_fadeTween.IsPlaying);
 
-            if(_canvasGroup.alpha == 1f)
+            if(_canvasGroup.alpha == 1)
                 return UniTask.CompletedTask;
             
             _fadeTween.Pause();
@@ -69,7 +75,7 @@ namespace Code.Runtime.Ui
 
         public void UnFade()
         {
-            if(_unFadeTween.IsPlaying() || _canvasGroup.alpha != 0)
+            if(_unFadeTween.IsPlaying())
                 return;
             
             _fadeTween.Pause();
