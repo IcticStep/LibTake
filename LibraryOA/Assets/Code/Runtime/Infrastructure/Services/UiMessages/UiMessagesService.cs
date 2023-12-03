@@ -11,6 +11,7 @@ namespace Code.Runtime.Infrastructure.Services.UiMessages
         private readonly IHudProviderService _hudProviderService;
 
         private CentralMessage CentralMessage => _hudProviderService.CentralMessage;
+        private DoubleCentralMessage DoubleCentralMessage => _hudProviderService.DoubleCentralMessage;
         
         public UiMessagesService(IHudProviderService hudProviderService) 
         {
@@ -22,6 +23,13 @@ namespace Code.Runtime.Infrastructure.Services.UiMessages
             await CentralMessage.Show(text);
             await UniTask.WaitForSeconds(readingSecondsDelay);
             await CentralMessage.Hide();
+        }
+        
+        public async UniTask ShowDoubleCenterMessage(string header, string subHeader, float readingSecondsDelay = 1f)
+        {
+            await DoubleCentralMessage.Show(header, subHeader);
+            await UniTask.WaitForSeconds(readingSecondsDelay);
+            await DoubleCentralMessage.Hide();
         }
     }
 }
