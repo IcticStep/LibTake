@@ -105,7 +105,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8800051127091526988}
-  - component: {fileID: 7219790119627646056}
   m_Layer: 0
   m_Name: BookSlot
   m_TagString: Untagged
@@ -131,20 +130,6 @@ Transform:
   - {fileID: 6715496342875613841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7219790119627646056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5980478301530929324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f1062f96614b9486f9403810395da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bookStorageObject: {fileID: 5475589924342636869}
-  _bookObject: {fileID: 3073979114243199993}
 --- !u!1001 &6038218890402958848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,12 +222,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3126109772779417635}
   m_SourcePrefab: {fileID: 100100000, guid: 785cc0e4da199e146b7e47e57486ec58, type: 3}
---- !u!23 &4903722590639952516 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 785cc0e4da199e146b7e47e57486ec58,
-    type: 3}
-  m_PrefabInstance: {fileID: 6038218890402958848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5745466526864350737 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2051371261969305617, guid: 785cc0e4da199e146b7e47e57486ec58,
@@ -273,7 +252,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5cd3767cb94ade9cb2cc5c6af013bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Mesh>k__BackingField: {fileID: 4903722590639952516}
+  _meshFilter: {fileID: 7199411918840784462}
+  _skinnedMeshRenderer: {fileID: 0}
+--- !u!33 &7199411918840784462 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 785cc0e4da199e146b7e47e57486ec58,
+    type: 3}
+  m_PrefabInstance: {fileID: 6038218890402958848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7942580869341480769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,23 +353,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 8483257048658387528, guid: 2f4b9797faa27634b9222dfce2e41a27,
+        type: 3}
+      propertyPath: _bookStorageObject
+      value: 
+      objectReference: {fileID: 5475589924342636869}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4b9797faa27634b9222dfce2e41a27, type: 3}
---- !u!114 &3073979114243199993 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4940801252004336824, guid: 2f4b9797faa27634b9222dfce2e41a27,
-    type: 3}
-  m_PrefabInstance: {fileID: 7942580869341480769}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37da761601544618855c62071caa4fcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6715496342875613841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3678186833350536656, guid: 2f4b9797faa27634b9222dfce2e41a27,
