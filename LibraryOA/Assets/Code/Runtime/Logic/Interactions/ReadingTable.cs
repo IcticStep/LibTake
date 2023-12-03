@@ -14,6 +14,8 @@ namespace Code.Runtime.Logic.Interactions
         private BookStorageHolder _bookStorageObject;
         [SerializeField]
         private Progress _progress;
+        [SerializeField]
+        private BookStorageDataView _bookStorageDataView;
         
         private IReadingTableInteractionService _readingTableInteractionService;
         private IBookStorage _bookStorage;
@@ -38,12 +40,23 @@ namespace Code.Runtime.Logic.Interactions
         {
             _bookSlotInteractionService.Interact(_bookStorage);
             _readingTableInteractionService.Interact(_bookStorage, _progress);
+            
+            if(_bookStorage.HasBook)
+                _bookStorageDataView.ShowData();
+            else
+                _bookStorageDataView.HideData();
         }
 
-        public void OnHoverStart() =>
+        public void OnHoverStart()
+        {
             _readingTableInteractionService.StartReadingIfPossible(_bookStorage, _progress);
+            _bookStorageDataView.ShowData();
+        }
 
-        public void OnHoverEnd() =>
+        public void OnHoverEnd()
+        {
             _readingTableInteractionService.StopReading(_progress);
+            _bookStorageDataView.HideData();
+        }
     }
 }

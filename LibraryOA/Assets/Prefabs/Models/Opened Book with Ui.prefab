@@ -63,6 +63,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Opened Book with Ui
       objectReference: {fileID: 0}
+    - target: {fileID: 8791943453942099162, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791943453942099162, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00000011589687
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791943453942099162, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.0000002
+      objectReference: {fileID: 0}
     - target: {fileID: 9149672012563982124, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
       propertyPath: _meshRenderer
