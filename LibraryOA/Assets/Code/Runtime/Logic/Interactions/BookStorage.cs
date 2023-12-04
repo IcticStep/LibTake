@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    public class BookStorageHolder : MonoBehaviour, IBookStorage, ISavedProgress
+    public class BookStorage : MonoBehaviour, IBookStorage, ISavedProgress
     {
         private string _storageId;
         private IPlayerProgressService _progressService;

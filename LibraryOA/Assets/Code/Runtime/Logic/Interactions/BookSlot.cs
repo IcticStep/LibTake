@@ -8,7 +8,7 @@ namespace Code.Runtime.Logic.Interactions
     internal sealed class BookSlot : Interactable, IHoverStartListener, IHoverEndListener
     {
         [SerializeField] 
-        private BookStorageHolder _bookStorageObject;
+        private BookStorage _bookStorageObject;
         [SerializeField]
         private BookStorageDataView _bookStorageDataView;
         

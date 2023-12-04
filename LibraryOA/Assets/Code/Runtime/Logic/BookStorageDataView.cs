@@ -5,6 +5,7 @@ using Code.Runtime.StaticData.Books;
 using Code.Runtime.Ui;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic
@@ -15,8 +16,9 @@ namespace Code.Runtime.Logic
         private TextMeshProUGUI _bookName;
         [SerializeField]
         private GameObject _readTick;
+        [FormerlySerializedAs("_bookStorageHolder")]
         [SerializeField]
-        private BookStorageHolder _bookStorageHolder;
+        private BookStorage _bookStorage;
         [SerializeField]
         private SmoothFader _smoothFader;
         
@@ -35,10 +37,10 @@ namespace Code.Runtime.Logic
 
         public void ShowData()
         {
-            if(!_bookStorageHolder.HasBook)
+            if(!_bookStorage.HasBook)
                 return;
             
-            string bookId = _bookStorageHolder.CurrentBookId;
+            string bookId = _bookStorage.CurrentBookId;
             StaticBook bookData = _staticDataService.ForBook(bookId);
             bool isRead = _readBookService.IsRead(bookId);
             _bookName.text = bookData.name;
