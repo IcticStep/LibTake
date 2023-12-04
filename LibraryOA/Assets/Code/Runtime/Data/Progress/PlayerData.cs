@@ -1,5 +1,5 @@
 using System;
-using UnityEngine.Serialization;
+using System.Collections.Generic;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -8,6 +8,6 @@ namespace Code.Runtime.Data.Progress
     {
         public PlayerInventoryData Inventory = new();
         public SkillStats SkillStats = new();
-        public ReadBooks ReadBooks = new();
+        public List<string> BooksRead = new();
     }
 }
