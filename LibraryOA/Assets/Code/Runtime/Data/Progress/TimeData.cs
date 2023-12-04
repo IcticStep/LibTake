@@ -1,5 +1,4 @@
 using System;
-using Newtonsoft.Json;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -9,7 +8,6 @@ namespace Code.Runtime.Data.Progress
         /// <summary>
         /// 1-based index.
         /// </summary>
-        
         public int CurrentDay;
     }
 }

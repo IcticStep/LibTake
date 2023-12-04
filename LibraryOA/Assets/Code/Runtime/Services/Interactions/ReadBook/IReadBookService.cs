@@ -12,6 +12,5 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         bool CanReadBook(string bookId);
         bool IsRead(string bookId);
         event Action BookRead;
-        event Action SkillGained;
     }
 }

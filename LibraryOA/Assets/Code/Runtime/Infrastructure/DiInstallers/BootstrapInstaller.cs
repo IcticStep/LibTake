@@ -24,6 +24,7 @@ using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Random;
+using Code.Runtime.Services.Skills;
 using Code.Runtime.Services.TruckDriving;
 using UnityEngine;
 using Zenject;
@@ -81,6 +82,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
             Container.Bind<IDaysService>().To<DaysService>().AsSingle();
+            Container.Bind<ISkillService>().To<SkillService>().AsSingle();
         }
 
         private void InstallFactories()
