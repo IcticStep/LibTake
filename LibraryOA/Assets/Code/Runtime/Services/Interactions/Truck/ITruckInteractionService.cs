@@ -4,5 +4,6 @@ namespace Code.Runtime.Services.Interactions.Truck
     {
         bool CanInteract();
         bool TryInteract();
+        void PutBookInTruck(string book);
     }
 }

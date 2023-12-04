@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Services.Player;
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace Code.Runtime.Services.Interactions.Truck
 {
@@ -13,6 +13,8 @@ namespace Code.Runtime.Services.Interactions.Truck
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IPersistantProgressService _persistantProgressService;
 
+        private readonly List<string> _booksInTruck = new();
+        
         private BooksDeliveringData DeliveringData => _persistantProgressService.Progress.WorldData.BooksDeliveringData;
 
         public TruckInteractionService(IPlayerInventoryService playerInventoryService, IPersistantProgressService persistantProgressService)
@@ -21,16 +23,20 @@ namespace Code.Runtime.Services.Interactions.Truck
             _persistantProgressService = persistantProgressService;
         }
 
+        public void PutBookInTruck(string book) =>
+            _booksInTruck.Add(book);
+
         public bool CanInteract() =>
-            DeliveringData.PreparedForDelivering.Any() && !_playerInventoryService.HasBook;
+            _booksInTruck.Any() && !_playerInventoryService.HasBook;
 
         public bool TryInteract()
         {
             if(!CanInteract())
                 return false;
 
-            _playerInventoryService.InsertBooks(DeliveringData.PreparedForDelivering);
-            DeliveringData.DeliverPrepared();
+            _playerInventoryService.InsertBooks(_booksInTruck);
+            DeliveringData.AddDeliveredBooks(_booksInTruck);
+            _booksInTruck.Clear();
             return true;
         }
     }
