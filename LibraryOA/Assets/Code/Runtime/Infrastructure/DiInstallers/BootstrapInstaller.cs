@@ -13,6 +13,7 @@ using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Days;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -79,6 +80,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
             Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
+            Container.Bind<IDaysService>().To<DaysService>().AsSingle();
         }
 
         private void InstallFactories()
