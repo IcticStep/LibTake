@@ -69,8 +69,8 @@ namespace Code.Runtime.Ui
         private string GenerateViewText(StaticBook bookData)
         {
             string textResult = bookData.Title;
-            if(_playerInventoryService.Count > 1)
-                textResult += $" (+{_playerInventoryService.Count - 1})";
+            if(_playerInventoryService.BooksCount > 1)
+                textResult += $" (+{_playerInventoryService.BooksCount - 1})";
 
             return textResult;
         }
