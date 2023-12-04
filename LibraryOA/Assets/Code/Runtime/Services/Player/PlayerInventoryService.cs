@@ -14,7 +14,7 @@ namespace Code.Runtime.Services.Player
     [UsedImplicitly]
     internal sealed class PlayerInventoryService : IPlayerInventoryService
     {
-        private IPlayerProgressService _progressService;
+        private IPersistantProgressService _progressService;
 
         public string CurrentBookId => HasBook ? Inventory.Books.Peek() : null;
         public int Count => Inventory.Books.Count;
@@ -28,7 +28,7 @@ namespace Code.Runtime.Services.Player
         public event Action CoinsUpdated;
 
         [Inject]
-        private void Construct(IPlayerProgressService progressService) =>
+        private void Construct(IPersistantProgressService progressService) =>
             _progressService = progressService;
 
         public void InsertBooks(IEnumerable<string> bookIds)
@@ -70,7 +70,7 @@ namespace Code.Runtime.Services.Player
             Debug.Log($"Coins amount: {Coins}.");
         }
 
-        public void LoadProgress(PlayerProgress progress) =>
+        public void LoadProgress(Progress progress) =>
             BooksUpdated?.Invoke();
     }
 }

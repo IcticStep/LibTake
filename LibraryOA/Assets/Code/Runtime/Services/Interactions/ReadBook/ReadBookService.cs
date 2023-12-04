@@ -10,14 +10,14 @@ namespace Code.Runtime.Services.Interactions.ReadBook
     internal sealed class ReadBookService : IReadBookService
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly IPlayerProgressService _playerProgress;
+        private readonly IPersistantProgressService _persistantProgress;
         
         public bool ReadingAllowed { get; private set; } = true;
 
-        public ReadBookService(IStaticDataService staticDataService, IPlayerProgressService playerProgress)
+        public ReadBookService(IStaticDataService staticDataService, IPersistantProgressService persistantProgress)
         {
             _staticDataService = staticDataService;
-            _playerProgress = playerProgress;
+            _persistantProgress = persistantProgress;
         }
 
         public void AllowReading() =>
@@ -38,14 +38,14 @@ namespace Code.Runtime.Services.Interactions.ReadBook
             !IsRead(bookId) && ReadingAllowed;
 
         public bool IsRead(string bookId) =>
-            _playerProgress.Progress.PlayerData.ReadBooks.IsBookRead(bookId);
+            _persistantProgress.Progress.PlayerData.ReadBooks.IsBookRead(bookId);
 
         private void MarkAsRead(string bookId) =>
-            _playerProgress.Progress.PlayerData.ReadBooks.AddReadBook(bookId);
+            _persistantProgress.Progress.PlayerData.ReadBooks.AddReadBook(bookId);
 
         private void UpdateSkills(StaticBook data)
         {
-            SkillStats skillStats = _playerProgress.Progress.PlayerData.SkillStats;
+            SkillStats skillStats = _persistantProgress.Progress.PlayerData.SkillStats;
             skillStats.AddLevelsFor(data.StaticBookType.BookType, 1);
         }
     }

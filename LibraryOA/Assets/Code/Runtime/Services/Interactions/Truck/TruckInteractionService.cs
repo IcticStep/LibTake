@@ -11,14 +11,14 @@ namespace Code.Runtime.Services.Interactions.Truck
     internal sealed class TruckInteractionService : ITruckInteractionService
     {
         private readonly IPlayerInventoryService _playerInventoryService;
-        private readonly IPlayerProgressService _playerProgressService;
+        private readonly IPersistantProgressService _persistantProgressService;
 
-        private BooksDeliveringData DeliveringData => _playerProgressService.Progress.WorldData.BooksDeliveringData;
+        private BooksDeliveringData DeliveringData => _persistantProgressService.Progress.WorldData.BooksDeliveringData;
 
-        public TruckInteractionService(IPlayerInventoryService playerInventoryService, IPlayerProgressService playerProgressService)
+        public TruckInteractionService(IPlayerInventoryService playerInventoryService, IPersistantProgressService persistantProgressService)
         {
             _playerInventoryService = playerInventoryService;
-            _playerProgressService = playerProgressService;
+            _persistantProgressService = persistantProgressService;
         }
 
         public bool CanInteract() =>

@@ -10,7 +10,7 @@ namespace Code.Runtime.Services.BooksReceiving
     [UsedImplicitly]
     internal sealed class BooksReceivingService : IBooksReceivingService
     {
-        private readonly IPlayerProgressService _progressService;
+        private readonly IPersistantProgressService _progressService;
         private readonly IRandomService _randomService;
 
         private BooksDeliveringData BooksDeliveringData => _progressService.Progress.WorldData.BooksDeliveringData;
@@ -19,7 +19,7 @@ namespace Code.Runtime.Services.BooksReceiving
         public bool LibraryHasBooks => CurrentInLibraryBooks.Any();
         public int BooksInLibrary => CurrentInLibraryBooks.Count;
 
-        public BooksReceivingService(IPlayerProgressService progressService, IRandomService randomService)
+        public BooksReceivingService(IPersistantProgressService progressService, IRandomService randomService)
         {
             _progressService = progressService;
             _randomService = randomService;
