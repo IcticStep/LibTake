@@ -1,25 +1,20 @@
 using System;
-using Code.Runtime.Infrastructure.Services.PersistentProgress;
+using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions.Data;
-using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Player;
 using JetBrains.Annotations;
-using Progress = Code.Runtime.Logic.Progress;
 
 namespace Code.Runtime.Services.Interactions.ReadingTable
 {
     [UsedImplicitly]
     internal sealed class ReadingTableInteractionService : IReadingTableInteractionService
     {
-        private readonly IPlayerProgressService _playerProgressService;
         private readonly IReadBookService _readBookService;
         private readonly IPlayerInventoryService _playerInventoryService;
 
-        public ReadingTableInteractionService(IBookSlotInteractionService bookSlotInteractionService, IPlayerProgressService playerProgressService,
-            IReadBookService readBookService, IPlayerInventoryService playerInventoryService)
+        public ReadingTableInteractionService(IReadBookService readBookService, IPlayerInventoryService playerInventoryService)
         {
-            _playerProgressService = playerProgressService;
             _readBookService = readBookService;
             _playerInventoryService = playerInventoryService;
         }
@@ -51,10 +46,7 @@ namespace Code.Runtime.Services.Interactions.ReadingTable
             bookStorage.HasBook
             && !_playerInventoryService.HasBook
             && progress.CanBeStarted 
-            && !BookIsRead(bookStorage.CurrentBookId);
-
-        private bool BookIsRead(string bookStorage) =>
-            _playerProgressService.Progress.PlayerData.ReadBooks.IsBookRead(bookStorage);
+            && _readBookService.CanReadBook(bookStorage.CurrentBookId);
 
         private Action GetOnProgressFinishCallback(IBookStorage bookStorage) =>
             () => _readBookService.ReadBook(bookStorage.CurrentBookId);
