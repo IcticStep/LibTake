@@ -42,7 +42,7 @@ namespace Code.Runtime.Logic.Customers
 
         public void ReceiveBook(string bookId)
         {
-            _bookStorageHolder.BookStorage.InsertBook(bookId);
+            _bookStorageHolder.InsertBook(bookId);
             Received = true;
             _taskCompletionSource.TrySetResult();
             Updated?.Invoke();

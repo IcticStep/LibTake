@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    public class BookStorageHolder : MonoBehaviour, IBookStorage, IBookStorageHolder, ISavedProgress
+    public class BookStorageHolder : MonoBehaviour, IBookStorage, ISavedProgress
     {
         private string _storageId;
         private IPlayerProgressService _progressService;
@@ -16,8 +16,6 @@ namespace Code.Runtime.Logic.Interactions
         public bool HasBook => !string.IsNullOrWhiteSpace(CurrentBookId);
 
         public event Action Updated;
-
-        public IBookStorage BookStorage => this;
 
         [Inject]
         private void Construct(IPlayerProgressService progressService) =>

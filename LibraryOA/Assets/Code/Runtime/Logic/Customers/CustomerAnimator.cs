@@ -24,7 +24,7 @@ namespace Code.Runtime.Logic.Customers
 
         private void Start()
         {
-            _bookStorageHolder.BookStorage.Updated += UpdateAnimatorBook;
+            _bookStorageHolder.Updated += UpdateAnimatorBook;
             UpdateAnimatorSpeed();
             UpdateAnimatorBook();
         }
@@ -33,14 +33,14 @@ namespace Code.Runtime.Logic.Customers
             UpdateAnimatorSpeed();
 
         private void OnDestroy() =>
-            _bookStorageHolder.BookStorage.Updated -= UpdateAnimatorBook;
+            _bookStorageHolder.Updated -= UpdateAnimatorBook;
 
         private void UpdateAnimatorSpeed() =>
             _animator.SetFloat(_speedParameter, _customerNavigator.SpeedPercents);
 
         private void UpdateAnimatorBook() =>
             _animator.SetLayerWeight(_handleItemLayer,
-                _bookStorageHolder.BookStorage.HasBook 
+                _bookStorageHolder.HasBook 
                     ? 1
                     : 0);
     }

@@ -35,10 +35,10 @@ namespace Code.Runtime.Logic
 
         public void ShowData()
         {
-            if(!_bookStorageHolder.BookStorage.HasBook)
+            if(!_bookStorageHolder.HasBook)
                 return;
             
-            string bookId = _bookStorageHolder.BookStorage.CurrentBookId;
+            string bookId = _bookStorageHolder.CurrentBookId;
             StaticBook bookData = _staticDataService.ForBook(bookId);
             bool isRead = _readBookService.IsRead(bookId);
             _bookName.text = bookData.name;
