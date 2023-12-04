@@ -21,8 +21,11 @@ namespace Code.Runtime.Logic.Interactions
         public override bool CanInteract() =>
             _bookSlotInteractionService.CanInteract(_bookStorageObject);
 
-        public override void Interact() =>
+        public override void Interact()
+        {
             _bookSlotInteractionService.Interact(_bookStorageObject);
+            _bookStorageDataView.ShowData();
+        }
 
         public void OnHoverStart() =>
             _bookStorageDataView.ShowData();
