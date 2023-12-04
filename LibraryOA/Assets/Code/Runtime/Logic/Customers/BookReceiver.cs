@@ -3,14 +3,16 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.BooksReceiving;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Customers
 {
     public class BookReceiver : Interactable
     {
+        [FormerlySerializedAs("_bookStorageHolder")]
         [SerializeField]
-        private BookStorageHolder _bookStorageHolder;
+        private BookStorage _bookStorage;
 
         private UniTaskCompletionSource _taskCompletionSource;
         private IBooksReceivingInteractionsService _booksReceivingInteractionsService;
@@ -42,7 +44,7 @@ namespace Code.Runtime.Logic.Customers
 
         public void ReceiveBook(string bookId)
         {
-            _bookStorageHolder.BookStorage.InsertBook(bookId);
+            _bookStorage.InsertBook(bookId);
             Received = true;
             _taskCompletionSource.TrySetResult();
             Updated?.Invoke();
