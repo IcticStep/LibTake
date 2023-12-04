@@ -15,10 +15,10 @@ namespace Code.Runtime.Services.Player
     {
         private IPlayerProgressService _progressService;
 
-        public string CurrentBookId => HasBook ? Inventory.Peek() : null;
-        public int Count => Inventory.Count;
+        public string CurrentBookId => HasBook ? Inventory.Books.Peek() : null;
+        public int Count => Inventory.Books.Count;
         public bool HasBook => Count > 0;
-        public IReadOnlyList<string> Books => Inventory.AllBooks;
+        public IReadOnlyList<string> Books => Inventory.Books.AllBooks;
 
         private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
@@ -36,13 +36,13 @@ namespace Code.Runtime.Services.Player
 
         public void InsertBook(string id)
         {
-            Inventory.Push(id);
+            Inventory.Books.Push(id);
             Updated?.Invoke();
         }
 
         public string RemoveBook()
         {
-            string removedId = Inventory.Pop();
+            string removedId = Inventory.Books.Pop();
             Updated?.Invoke();
             return removedId;
         }
