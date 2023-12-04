@@ -26,13 +26,13 @@ namespace Code.Runtime.Ui
 
         private void Start()
         {
-            _playerInventoryService.Updated += UpdateView;
+            _playerInventoryService.BooksUpdated += UpdateView;
             SetVisibilityImmediately();
             UpdateView();
         }
         
         private void OnDestroy() =>
-            _playerInventoryService.Updated -= UpdateView;
+            _playerInventoryService.BooksUpdated -= UpdateView;
 
         private void UpdateView()
         {

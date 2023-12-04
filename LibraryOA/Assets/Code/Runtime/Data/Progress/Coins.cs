@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -7,6 +8,6 @@ namespace Code.Runtime.Data.Progress
     public class Coins
     {
         [JsonProperty]
-        public int Count;
+        public int Amount;
     }
 }

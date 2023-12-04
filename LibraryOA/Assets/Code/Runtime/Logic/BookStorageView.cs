@@ -23,12 +23,12 @@ namespace Code.Runtime.Logic
 
         private void Start()
         {
-            _bookStorage.Updated += UpdateView;
+            _bookStorage.BooksUpdated += UpdateView;
             UpdateView();
         }
 
         private void OnDestroy() =>
-            _bookStorage.Updated -= UpdateView;
+            _bookStorage.BooksUpdated -= UpdateView;
 
         private void UpdateView()
         {

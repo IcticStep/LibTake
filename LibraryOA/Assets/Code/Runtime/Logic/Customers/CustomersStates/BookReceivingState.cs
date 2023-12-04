@@ -1,6 +1,7 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Player;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -13,11 +14,13 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private readonly IBooksReceivingService _booksReceivingService;
         private readonly IStaticDataService _staticDataService;
         private readonly Collider _collider;
+        private readonly IPlayerInventoryService _playerInventoryService;
         private readonly BookReceiver _bookReceiver;
         private readonly Progress _progress;
 
         public BookReceivingState(CustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService,
-            BookReceiver bookReceiver, Progress progress, IStaticDataService staticDataService, Collider collider)
+            BookReceiver bookReceiver, Progress progress, IStaticDataService staticDataService, Collider collider,
+            IPlayerInventoryService playerInventoryService)
         {
             _customerStateMachine = customerStateMachine;
             _customersQueueService = customersQueueService;
@@ -26,6 +29,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _progress = progress;
             _staticDataService = staticDataService;
             _collider = collider;
+            _playerInventoryService = playerInventoryService;
         }
 
         public void Start()
@@ -81,6 +85,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private void OnBookReceived()
         {
             _progress.Reset();
+            _playerInventoryService.AddCoins(_staticDataService.BookReceiving.BookReceivedReward);
             Debug.Log("Receiving successful. Customer owns a book.");
             _customerStateMachine.Enter<GoAwayState>();
         }
