@@ -11,14 +11,14 @@ namespace Code.Runtime.Services.BooksDelivering
     [UsedImplicitly]
     internal sealed class BooksDeliveringService : IBooksDeliveringService
     {
-        private readonly IPlayerProgressService _progressService;
+        private readonly IPersistantProgressService _progressService;
         private readonly IStaticDataService _staticDataService;
         private readonly IRandomService _randomService;
 
         private BooksDeliveringData DeliveringData => _progressService.Progress.WorldData.BooksDeliveringData;
         public int CurrentDayBooksDelivering => _staticDataService.BookReceiving.BooksPerDeliveringAmount;
 
-        public BooksDeliveringService(IPlayerProgressService progressService, IStaticDataService staticDataService, IRandomService randomService)
+        public BooksDeliveringService(IPersistantProgressService progressService, IStaticDataService staticDataService, IRandomService randomService)
         {
             _progressService = progressService;
             _staticDataService = staticDataService;

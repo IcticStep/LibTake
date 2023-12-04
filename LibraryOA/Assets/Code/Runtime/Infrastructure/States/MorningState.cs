@@ -17,7 +17,7 @@ namespace Code.Runtime.Infrastructure.States
         private readonly ITruckProvider _truckProvider;
         private readonly IBooksDeliveringService _booksDeliveringService;
         private readonly ISaveLoadService _saveLoadService;
-        private readonly IPlayerProgressService _progressService;
+        private readonly IPersistantProgressService _progressService;
         private readonly IUiMessagesService _uiMessagesService;
         private readonly IReadBookService _readBookService;
 
@@ -26,7 +26,7 @@ namespace Code.Runtime.Infrastructure.States
 
         public MorningState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
-            IPlayerProgressService progressService, IUiMessagesService uiMessagesService,
+            IPersistantProgressService progressService, IUiMessagesService uiMessagesService,
             IReadBookService readBookService)
         {
             _gameStateMachine = gameStateMachine;

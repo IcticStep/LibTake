@@ -12,14 +12,14 @@ namespace Code.Runtime.Infrastructure.States
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly IUiMessagesService _uiMessagesService;
-        private readonly IPlayerProgressService _progressService;
+        private readonly IPersistantProgressService _progressService;
         private readonly ICustomersDeliveringService _customersDeliveringService;
         private readonly IReadBookService _readBookService;
 
         private int CurrentDay => _progressService.Progress.WorldData.TimeData.CurrentDay;
 
         public DayState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService,
-            IPlayerProgressService progressService, ICustomersDeliveringService customersDeliveringService,
+            IPersistantProgressService progressService, ICustomersDeliveringService customersDeliveringService,
             IReadBookService readBookService)
         {
             _gameStateMachine = gameStateMachine;

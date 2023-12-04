@@ -50,7 +50,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         private void InstallInfrastructureServices()
         {
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
-            Container.Bind<IPlayerProgressService>().To<PlayerProgressService>().AsSingle();
+            Container.Bind<IPersistantProgressService>().To<PersistantProgressService>().AsSingle();
             Container.Bind<ISaveLoadRegistry>().To<SaveLoadRegistry>().AsSingle();
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
