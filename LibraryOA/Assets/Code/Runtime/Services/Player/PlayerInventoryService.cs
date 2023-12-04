@@ -6,6 +6,7 @@ using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Logic.Interactions.Data;
 using JetBrains.Annotations;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Services.Player
@@ -15,14 +16,16 @@ namespace Code.Runtime.Services.Player
     {
         private IPlayerProgressService _progressService;
 
-        public string CurrentBookId => HasBook ? Inventory.Peek() : null;
-        public int Count => Inventory.Count;
+        public string CurrentBookId => HasBook ? Inventory.Books.Peek() : null;
+        public int Count => Inventory.Books.Count;
         public bool HasBook => Count > 0;
-        public IReadOnlyList<string> Books => Inventory.AllBooks;
+        public IReadOnlyList<string> Books => Inventory.Books.AllBooks;
+        public int Coins => Inventory.Coins.Amount;
 
         private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
-        public event Action Updated;
+        public event Action BooksUpdated;
+        public event Action CoinsUpdated;
 
         [Inject]
         private void Construct(IPlayerProgressService progressService) =>
@@ -36,18 +39,38 @@ namespace Code.Runtime.Services.Player
 
         public void InsertBook(string id)
         {
-            Inventory.Push(id);
-            Updated?.Invoke();
+            Inventory.Books.Push(id);
+            BooksUpdated?.Invoke();
         }
 
         public string RemoveBook()
         {
-            string removedId = Inventory.Pop();
-            Updated?.Invoke();
+            string removedId = Inventory.Books.Pop();
+            BooksUpdated?.Invoke();
             return removedId;
+        }
+        
+        public void AddCoins(int amount)
+        {
+            if(amount < 0)
+                throw new ArgumentOutOfRangeException($"Tried to add {amount} coins. Can't add coins amount less then zero!");
+
+            Inventory.Coins.Amount += amount;
+            CoinsUpdated?.Invoke();
+            Debug.Log($"Coins amount: {Coins}.");
+        }
+        
+        public void RemoveCoins(int amount)
+        {
+            if(amount < 0)
+                throw new ArgumentOutOfRangeException($"Tried to remove {amount} coins. Can't remove coins amount less then zero!");
+
+            Inventory.Coins.Amount -= amount;
+            CoinsUpdated?.Invoke();         
+            Debug.Log($"Coins amount: {Coins}.");
         }
 
         public void LoadProgress(PlayerProgress progress) =>
-            Updated?.Invoke();
+            BooksUpdated?.Invoke();
     }
 }

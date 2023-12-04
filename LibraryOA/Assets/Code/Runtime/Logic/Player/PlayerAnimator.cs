@@ -46,7 +46,7 @@ namespace Code.Runtime.Logic.Player
             UpdateAnimatorSpeed();
             UpdateAnimatorBook();
 
-            _playerInventory.Updated += UpdateAnimatorBook;
+            _playerInventory.BooksUpdated += UpdateAnimatorBook;
             _interactablesScanner.FocusedInteractable += UpdateDoAnimation;
         }
 
@@ -57,7 +57,7 @@ namespace Code.Runtime.Logic.Player
         }
 
         private void OnDestroy() =>
-            _playerInventory.Updated -= UpdateAnimatorBook;
+            _playerInventory.BooksUpdated -= UpdateAnimatorBook;
 
         private void UpdateAnimatorSpeed() =>
             _animator.SetFloat(_speedParameter, _inputService.GetMovement().magnitude);

@@ -6,7 +6,7 @@ namespace Code.Runtime.Logic.Interactions.Data
     {
         public string CurrentBookId { get; }
         public bool HasBook { get; }
-        public event Action Updated;
+        public event Action BooksUpdated;
         public void InsertBook(string id);
         public string RemoveBook();
     }

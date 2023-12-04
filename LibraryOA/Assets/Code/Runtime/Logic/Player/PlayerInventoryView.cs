@@ -25,13 +25,13 @@ namespace Code.Runtime.Logic.Player
         }
 
         private void Awake() =>
-            _playerInventoryService.Updated += UpdateView;
+            _playerInventoryService.BooksUpdated += UpdateView;
 
         private void Start() =>
             UpdateView();
 
         private void OnDestroy() =>
-            _playerInventoryService.Updated -= UpdateView;
+            _playerInventoryService.BooksUpdated -= UpdateView;
 
         private void UpdateView()
         {

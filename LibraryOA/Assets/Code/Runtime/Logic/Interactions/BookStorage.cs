@@ -15,17 +15,17 @@ namespace Code.Runtime.Logic.Interactions
         public string CurrentBookId { get; private set; }
         public bool HasBook => !string.IsNullOrWhiteSpace(CurrentBookId);
 
-        public event Action Updated;
+        public event Action BooksUpdated;
 
         [Inject]
         private void Construct(IPlayerProgressService progressService) =>
             _progressService = progressService;
 
         private void Start() =>
-            Updated += UpdateProgress;
+            BooksUpdated += UpdateProgress;
 
         private void OnDestroy() =>
-            Updated -= UpdateProgress;
+            BooksUpdated -= UpdateProgress;
 
         public void Reset()
         {
@@ -46,7 +46,7 @@ namespace Code.Runtime.Logic.Interactions
                 throw new InvalidOperationException("Can't insert more than one book into storage!");
 
             CurrentBookId = id;
-            Updated?.Invoke();
+            BooksUpdated?.Invoke();
         }
 
         public string RemoveBook()
@@ -56,7 +56,7 @@ namespace Code.Runtime.Logic.Interactions
 
             string removed = CurrentBookId;
             CurrentBookId = string.Empty;
-            Updated?.Invoke();
+            BooksUpdated?.Invoke();
             
             return removed;
         }
