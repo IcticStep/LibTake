@@ -9,7 +9,7 @@ namespace Code.Runtime.Logic
     internal sealed class BookStorageView : MonoBehaviour
     {
         [SerializeField] 
-        private BookStorageHolder _bookStorage;
+        private BookStorage _bookStorage;
         [SerializeField]
         private Book _bookObject;
         [SerializeField]

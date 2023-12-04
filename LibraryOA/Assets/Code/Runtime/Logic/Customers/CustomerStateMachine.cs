@@ -6,6 +6,7 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Customers
@@ -23,8 +24,9 @@ namespace Code.Runtime.Logic.Customers
         private Progress _progress;
         [SerializeField]
         private Collider _collider;
+        [FormerlySerializedAs("_bookStorageHolder")]
         [SerializeField]
-        private BookStorageHolder _bookStorageHolder;
+        private BookStorage _bookStorage;
 
         private Dictionary<Type, ICustomerState> _states;
         private ICustomerState _activeState;
@@ -51,7 +53,7 @@ namespace Code.Runtime.Logic.Customers
                 [typeof(BookReceivingState)] = 
                     new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver, _progress, _staticDataService, _collider),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
-                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorageHolder, _bookReceiver),
+                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
             };
 
         public void Enter<TState>()

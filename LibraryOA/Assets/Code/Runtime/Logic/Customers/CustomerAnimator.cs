@@ -1,5 +1,6 @@
 using Code.Runtime.Logic.Interactions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic.Customers
 {
@@ -9,8 +10,9 @@ namespace Code.Runtime.Logic.Customers
 
         [SerializeField]
         private Animator _animator;
+        [FormerlySerializedAs("_bookStorageHolder")]
         [SerializeField]
-        private BookStorageHolder _bookStorageHolder;
+        private BookStorage _bookStorage;
         [SerializeField]
         private CustomerNavigator _customerNavigator;
         
@@ -24,7 +26,7 @@ namespace Code.Runtime.Logic.Customers
 
         private void Start()
         {
-            _bookStorageHolder.Updated += UpdateAnimatorBook;
+            _bookStorage.Updated += UpdateAnimatorBook;
             UpdateAnimatorSpeed();
             UpdateAnimatorBook();
         }
@@ -33,14 +35,14 @@ namespace Code.Runtime.Logic.Customers
             UpdateAnimatorSpeed();
 
         private void OnDestroy() =>
-            _bookStorageHolder.Updated -= UpdateAnimatorBook;
+            _bookStorage.Updated -= UpdateAnimatorBook;
 
         private void UpdateAnimatorSpeed() =>
             _animator.SetFloat(_speedParameter, _customerNavigator.SpeedPercents);
 
         private void UpdateAnimatorBook() =>
             _animator.SetLayerWeight(_handleItemLayer,
-                _bookStorageHolder.HasBook 
+                _bookStorage.HasBook 
                     ? 1
                     : 0);
     }

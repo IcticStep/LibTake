@@ -11,7 +11,7 @@ namespace Code.Runtime.Logic.Interactions
     internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
     {
         [SerializeField] 
-        private BookStorageHolder _bookStorageObject;
+        private BookStorage _bookStorageObject;
         [SerializeField]
         private Progress _progress;
         [SerializeField]

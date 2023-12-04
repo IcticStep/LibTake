@@ -91,7 +91,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
 
         private void InitBookStorage(string id, string initialBookId, GameObject gameObject)
         {
-            BookStorageHolder bookStorage = gameObject.GetComponentInChildren<BookStorageHolder>();
+            BookStorage bookStorage = gameObject.GetComponentInChildren<BookStorage>();
             _saveLoadRegistry.Register(bookStorage);
             bookStorage.Initialize(id, initialBookId);
         }
