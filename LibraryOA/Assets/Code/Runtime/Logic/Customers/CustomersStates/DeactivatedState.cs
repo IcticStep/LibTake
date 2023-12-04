@@ -6,13 +6,13 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     internal sealed class DeactivatedState : ICustomerState
     {
         private readonly QueueMember _queueMember;
-        private readonly BookStorageHolder _bookStorageHolder;
+        private readonly BookStorage _bookStorage;
         private readonly BookReceiver _bookReceiver;
 
-        public DeactivatedState(QueueMember queueMember, BookStorageHolder bookStorageHolder, BookReceiver bookReceiver)
+        public DeactivatedState(QueueMember queueMember, BookStorage bookStorage, BookReceiver bookReceiver)
         {
             _queueMember = queueMember;
-            _bookStorageHolder = bookStorageHolder;
+            _bookStorage = bookStorage;
             _bookReceiver = bookReceiver;
         }
 
@@ -20,7 +20,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         {
             _queueMember.Reset();
             _bookReceiver.Reset();
-            _bookStorageHolder.Reset();
+            _bookStorage.Reset();
         }
 
         public void Exit()

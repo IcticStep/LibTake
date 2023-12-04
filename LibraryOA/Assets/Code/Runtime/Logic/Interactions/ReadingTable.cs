@@ -11,20 +11,16 @@ namespace Code.Runtime.Logic.Interactions
     internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
     {
         [SerializeField] 
-        private BookStorageHolder _bookStorageObject;
+        private BookStorage _bookStorageObject;
         [SerializeField]
         private Progress _progress;
         [SerializeField]
         private BookStorageDataView _bookStorageDataView;
         
         private IReadingTableInteractionService _readingTableInteractionService;
-        private IBookStorage _bookStorage;
         private IBookSlotInteractionService _bookSlotInteractionService;
         
         public bool InProgress => _progress.Running;
-
-        private void Start() =>
-            _bookStorage = _bookStorageObject.BookStorage;
 
         [Inject]
         private void Construct(IReadingTableInteractionService readingTableInteractionService, IBookSlotInteractionService bookSlotInteractionService)
@@ -34,14 +30,14 @@ namespace Code.Runtime.Logic.Interactions
         }
 
         public override bool CanInteract() =>
-            _bookSlotInteractionService.CanInteract(_bookStorage);
+            _bookSlotInteractionService.CanInteract(_bookStorageObject);
 
         public override void Interact()
         {
-            _bookSlotInteractionService.Interact(_bookStorage);
-            _readingTableInteractionService.Interact(_bookStorage, _progress);
+            _bookSlotInteractionService.Interact(_bookStorageObject);
+            _readingTableInteractionService.Interact(_bookStorageObject, _progress);
             
-            if(_bookStorage.HasBook)
+            if(_bookStorageObject.HasBook)
                 _bookStorageDataView.ShowData();
             else
                 _bookStorageDataView.HideData();
@@ -49,7 +45,7 @@ namespace Code.Runtime.Logic.Interactions
 
         public void OnHoverStart()
         {
-            _readingTableInteractionService.StartReadingIfPossible(_bookStorage, _progress);
+            _readingTableInteractionService.StartReadingIfPossible(_bookStorageObject, _progress);
             _bookStorageDataView.ShowData();
         }
 

@@ -1,8 +1,5 @@
-using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactions;
-using Code.Runtime.Logic.Interactions.Data;
-using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Books;
 using UnityEngine;
 using Zenject;
@@ -11,11 +8,13 @@ namespace Code.Runtime.Logic
 {
     internal sealed class BookStorageView : MonoBehaviour
     {
-        [SerializeField] private BookStorageHolder _bookStorageObject;
-        [SerializeField] private Book _bookObject;
-
-        private IBookStorage _bookStorage;
+        [SerializeField] 
+        private BookStorage _bookStorage;
+        [SerializeField]
+        private Book _bookObject;
+        [SerializeField]
         private MeshRenderer _bookMeshRenderer;
+        
         private IStaticDataService _staticData;
 
         [Inject]
@@ -24,9 +23,6 @@ namespace Code.Runtime.Logic
 
         private void Start()
         {
-            _bookStorage = _bookStorageObject.BookStorage;
-            _bookMeshRenderer = _bookObject.GetComponent<MeshRenderer>();
-
             _bookStorage.Updated += UpdateView;
             UpdateView();
         }
@@ -37,7 +33,7 @@ namespace Code.Runtime.Logic
         private void UpdateView()
         {
             SetMaterialIfAny();
-            _bookObject.gameObject.SetActive(_bookStorage.HasBook);
+            _bookMeshRenderer.enabled = _bookStorage.HasBook;
         }
 
         private void SetMaterialIfAny()
