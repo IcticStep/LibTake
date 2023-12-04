@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Skills;
 using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.States
@@ -17,9 +18,11 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IDaysService _daysService;
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IReadBookService _readBookService;
+        private readonly ISkillService _skillService;
 
         public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
-            IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService)
+            IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
+            ISkillService skillService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -27,6 +30,7 @@ namespace Code.Runtime.Infrastructure.States
             _daysService = daysService;
             _playerInventoryService = playerInventoryService;
             _readBookService = readBookService;
+            _skillService = skillService;
         }
 
         public void Start()
@@ -48,6 +52,7 @@ namespace Code.Runtime.Infrastructure.States
             _saveLoadRegistry.Register(_daysService);
             _saveLoadRegistry.Register(_playerInventoryService);
             _saveLoadRegistry.Register(_readBookService);
+            _saveLoadRegistry.Register(_skillService);
         }
     }
 }

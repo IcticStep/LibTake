@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Code.Runtime.StaticData.Books;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -7,7 +8,7 @@ namespace Code.Runtime.Data.Progress
     public sealed class PlayerData
     {
         public PlayerInventoryData Inventory = new();
-        public SkillStats SkillStats = new();
+        public Dictionary<BookType, int> Skills = new();
         public List<string> BooksRead = new();
     }
 }
