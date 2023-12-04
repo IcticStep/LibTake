@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
+using Code.Runtime.Services.Interactions.ReadBook;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -13,20 +14,24 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IUiMessagesService _uiMessagesService;
         private readonly IPlayerProgressService _progressService;
         private readonly ICustomersDeliveringService _customersDeliveringService;
+        private readonly IReadBookService _readBookService;
 
         private int CurrentDay => _progressService.Progress.WorldData.TimeData.CurrentDay;
 
         public DayState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService,
-            IPlayerProgressService progressService, ICustomersDeliveringService customersDeliveringService)
+            IPlayerProgressService progressService, ICustomersDeliveringService customersDeliveringService,
+            IReadBookService readBookService)
         {
             _gameStateMachine = gameStateMachine;
             _uiMessagesService = uiMessagesService;
             _progressService = progressService;
             _customersDeliveringService = customersDeliveringService;
+            _readBookService = readBookService;
         }
 
         public void Start()
         {
+            _readBookService.AllowReading();
             ShowDayNumberMessage();
             ProceedDay().Forget();
         }

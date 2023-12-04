@@ -1,10 +1,8 @@
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Books;
 using JetBrains.Annotations;
-using UnityEngine.Android;
 
 namespace Code.Runtime.Services.Interactions.ReadBook
 {
@@ -13,12 +11,20 @@ namespace Code.Runtime.Services.Interactions.ReadBook
     {
         private readonly IStaticDataService _staticDataService;
         private readonly IPlayerProgressService _playerProgress;
+        
+        public bool ReadingAllowed { get; private set; } = true;
 
         public ReadBookService(IStaticDataService staticDataService, IPlayerProgressService playerProgress)
         {
             _staticDataService = staticDataService;
             _playerProgress = playerProgress;
         }
+
+        public void AllowReading() =>
+            ReadingAllowed = true;
+
+        public void BlockReading() =>
+            ReadingAllowed = false;
 
         public void ReadBook(string bookId)
         {
@@ -27,6 +33,9 @@ namespace Code.Runtime.Services.Interactions.ReadBook
             MarkAsRead(bookId);
             UpdateSkills(data);
         }
+
+        public bool CanReadBook(string bookId) =>
+            !IsRead(bookId) && ReadingAllowed;
 
         public bool IsRead(string bookId) =>
             _playerProgress.Progress.PlayerData.ReadBooks.IsBookRead(bookId);
