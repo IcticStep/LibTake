@@ -1,5 +1,7 @@
+using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.States.Api;
+using Code.Runtime.Services.Days;
 using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.States
@@ -9,22 +11,32 @@ namespace Code.Runtime.Infrastructure.States
         private const string InitialSceneName = "Initial";
         private readonly GameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
+        private readonly ISaveLoadRegistry _saveLoadRegistry;
+        private readonly IDaysService _daysService;
 
-        public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader)
+        public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry, IDaysService daysService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
+            _saveLoadRegistry = saveLoadRegistry;
+            _daysService = daysService;
         }
 
-        public void Start() =>
+        public void Start()
+        {
+            RegisterServicesAsSavedProgress();
             _sceneLoader.LoadSceneAsync(InitialSceneName, OnInitSceneLoaded).Forget();
-
-        private void OnInitSceneLoaded() =>
-            _stateMachine.EnterState<WarmupState>();
+        }
 
         public void Exit()
         {
 
         }
+
+        private void OnInitSceneLoaded() =>
+            _stateMachine.EnterState<WarmupState>();
+
+        private void RegisterServicesAsSavedProgress() =>
+            _saveLoadRegistry.Register(_daysService);
     }
 }

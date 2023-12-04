@@ -1,7 +1,7 @@
-using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
+using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -12,21 +12,18 @@ namespace Code.Runtime.Infrastructure.States
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly IUiMessagesService _uiMessagesService;
-        private readonly IPersistantProgressService _progressService;
         private readonly ICustomersDeliveringService _customersDeliveringService;
         private readonly IReadBookService _readBookService;
+        private readonly IDaysService _daysService;
 
-        private int CurrentDay => _progressService.Progress.WorldData.TimeData.CurrentDay;
-
-        public DayState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService,
-            IPersistantProgressService progressService, ICustomersDeliveringService customersDeliveringService,
-            IReadBookService readBookService)
+        public DayState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService, ICustomersDeliveringService customersDeliveringService,
+            IReadBookService readBookService, IDaysService daysService)
         {
             _gameStateMachine = gameStateMachine;
             _uiMessagesService = uiMessagesService;
-            _progressService = progressService;
             _customersDeliveringService = customersDeliveringService;
             _readBookService = readBookService;
+            _daysService = daysService;
         }
 
         public void Start()
@@ -37,12 +34,12 @@ namespace Code.Runtime.Infrastructure.States
         }
 
         public void Exit() =>
-            Debug.Log($"Day {CurrentDay} finished.");
+            Debug.Log($"Day {_daysService.CurrentDay} finished.");
 
         private void ShowDayNumberMessage()
         {
-            Debug.Log($"Day {CurrentDay} began.");
-            _uiMessagesService.ShowCenterMessage($"Day {CurrentDay}");
+            Debug.Log($"Day {_daysService.CurrentDay} began.");
+            _uiMessagesService.ShowCenterMessage($"Day {_daysService.CurrentDay}");
         }
 
         private async UniTask ProceedDay()
