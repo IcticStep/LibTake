@@ -5,6 +5,7 @@ using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -33,14 +34,17 @@ namespace Code.Runtime.Logic.Customers
         private ICustomersQueueService _customersQueueService;
         private IStaticDataService _staticDataService;
         private IBooksReceivingService _booksReceivingService;
-        
+        private IPlayerInventoryService _playerInventoryService;
+
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
         public Type ActiveStateType => _activeState.GetType();
         public event Action<CustomerStateMachine> DeactivateStateEntered;
 
         [Inject]
-        private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService)
+        private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
+            IPlayerInventoryService playerInventoryService)
         {
+            _playerInventoryService = playerInventoryService;
             _booksReceivingService = booksReceivingService;
             _staticDataService = staticDataService;
             _customersQueueService = customersQueueService;
@@ -50,8 +54,8 @@ namespace Code.Runtime.Logic.Customers
             _states = new Dictionary<Type, ICustomerState>
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
-                [typeof(BookReceivingState)] = 
-                    new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver, _progress, _staticDataService, _collider),
+                [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver,
+                    _progress, _staticDataService, _collider, _playerInventoryService),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
                 [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
             };

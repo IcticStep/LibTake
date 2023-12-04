@@ -26,7 +26,7 @@ namespace Code.Runtime.Logic.Customers
 
         private void Start()
         {
-            _bookStorage.Updated += UpdateAnimatorBook;
+            _bookStorage.BooksUpdated += UpdateAnimatorBook;
             UpdateAnimatorSpeed();
             UpdateAnimatorBook();
         }
@@ -35,7 +35,7 @@ namespace Code.Runtime.Logic.Customers
             UpdateAnimatorSpeed();
 
         private void OnDestroy() =>
-            _bookStorage.Updated -= UpdateAnimatorBook;
+            _bookStorage.BooksUpdated -= UpdateAnimatorBook;
 
         private void UpdateAnimatorSpeed() =>
             _animator.SetFloat(_speedParameter, _customerNavigator.SpeedPercents);

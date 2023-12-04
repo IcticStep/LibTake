@@ -6,6 +6,7 @@ using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Logic.Interactions.Data;
 using JetBrains.Annotations;
+using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Services.Player
@@ -19,10 +20,12 @@ namespace Code.Runtime.Services.Player
         public int Count => Inventory.Books.Count;
         public bool HasBook => Count > 0;
         public IReadOnlyList<string> Books => Inventory.Books.AllBooks;
+        public int Coins => Inventory.Coins.Amount;
 
         private PlayerInventoryData Inventory => _progressService.Progress.PlayerData.PlayerInventory;
 
-        public event Action Updated;
+        public event Action BooksUpdated;
+        public event Action CoinsUpdated;
 
         [Inject]
         private void Construct(IPlayerProgressService progressService) =>
@@ -37,17 +40,37 @@ namespace Code.Runtime.Services.Player
         public void InsertBook(string id)
         {
             Inventory.Books.Push(id);
-            Updated?.Invoke();
+            BooksUpdated?.Invoke();
         }
 
         public string RemoveBook()
         {
             string removedId = Inventory.Books.Pop();
-            Updated?.Invoke();
+            BooksUpdated?.Invoke();
             return removedId;
+        }
+        
+        public void AddCoins(int amount)
+        {
+            if(amount < 0)
+                throw new ArgumentOutOfRangeException($"Tried to add {amount} coins. Can't add coins amount less then zero!");
+
+            Inventory.Coins.Amount += amount;
+            CoinsUpdated?.Invoke();
+            Debug.Log($"Coins amount: {Coins}.");
+        }
+        
+        public void RemoveCoins(int amount)
+        {
+            if(amount < 0)
+                throw new ArgumentOutOfRangeException($"Tried to remove {amount} coins. Can't remove coins amount less then zero!");
+
+            Inventory.Coins.Amount -= amount;
+            CoinsUpdated?.Invoke();         
+            Debug.Log($"Coins amount: {Coins}.");
         }
 
         public void LoadProgress(PlayerProgress progress) =>
-            Updated?.Invoke();
+            BooksUpdated?.Invoke();
     }
 }
