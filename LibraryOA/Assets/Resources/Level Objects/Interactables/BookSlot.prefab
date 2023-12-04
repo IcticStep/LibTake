@@ -201,6 +201,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788181422147137710, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
+      propertyPath: _bookStorage
+      value: 
+      objectReference: {fileID: 5475589924342636869}
+    - target: {fileID: 8788181422147137710, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: _bookMeshRenderer
+      value: 
+      objectReference: {fileID: 1309569269266171953}
+    - target: {fileID: 8788181422147137710, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
       propertyPath: _bookStorageObject
       value: 
       objectReference: {fileID: 5475589924342636869}
@@ -209,6 +219,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b4260316ef2684b9ccb962013f6ab3, type: 3}
+--- !u!23 &1309569269266171953 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 299409422511022181, guid: 64b4260316ef2684b9ccb962013f6ab3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1588417201059948628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2264132833492563472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 675788260337983044, guid: 64b4260316ef2684b9ccb962013f6ab3,
