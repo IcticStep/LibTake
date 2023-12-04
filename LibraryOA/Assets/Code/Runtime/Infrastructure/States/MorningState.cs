@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.BooksDelivering;
+using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.TruckDriving;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -17,14 +18,16 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IBooksDeliveringService _booksDeliveringService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IPlayerProgressService _progressService;
-        private IUiMessagesService _uiMessagesService;
+        private readonly IUiMessagesService _uiMessagesService;
+        private readonly IReadBookService _readBookService;
 
         private TimeData DaysData => _progressService.Progress.WorldData.TimeData;
         private int CurrentDay => _progressService.Progress.WorldData.TimeData.CurrentDay;
 
         public MorningState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
-            IPlayerProgressService progressService, IUiMessagesService uiMessagesService)
+            IPlayerProgressService progressService, IUiMessagesService uiMessagesService,
+            IReadBookService readBookService)
         {
             _gameStateMachine = gameStateMachine;
             _truckProvider = truckProvider;
@@ -32,12 +35,13 @@ namespace Code.Runtime.Infrastructure.States
             _saveLoadService = saveLoadService;
             _progressService = progressService;
             _uiMessagesService = uiMessagesService;
+            _readBookService = readBookService;
         }
 
         public void Start()
         {
-            _saveLoadService.SaveProgress();
-            Debug.Log($"Progress saved.");
+            _readBookService.BlockReading();
+            SaveGame();
             DaysData.AddDay();
             ShowDayNumberMessage();
             DeliverBooks().Forget();
@@ -47,7 +51,13 @@ namespace Code.Runtime.Infrastructure.States
         {
             
         }
-        
+
+        private void SaveGame()
+        {
+            _saveLoadService.SaveProgress();
+            Debug.Log($"Progress saved.");
+        }
+
         private void ShowDayNumberMessage()
         {
             Debug.Log($"Morning {CurrentDay}.");
