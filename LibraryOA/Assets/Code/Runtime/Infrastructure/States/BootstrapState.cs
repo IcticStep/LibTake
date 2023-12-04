@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.Player;
 using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.States
@@ -13,13 +14,16 @@ namespace Code.Runtime.Infrastructure.States
         private readonly ISceneLoader _sceneLoader;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
         private readonly IDaysService _daysService;
+        private readonly IPlayerInventoryService _playerInventoryService;
 
-        public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry, IDaysService daysService)
+        public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
+            IDaysService daysService, IPlayerInventoryService playerInventoryService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _saveLoadRegistry = saveLoadRegistry;
             _daysService = daysService;
+            _playerInventoryService = playerInventoryService;
         }
 
         public void Start()
@@ -36,7 +40,10 @@ namespace Code.Runtime.Infrastructure.States
         private void OnInitSceneLoaded() =>
             _stateMachine.EnterState<WarmupState>();
 
-        private void RegisterServicesAsSavedProgress() =>
+        private void RegisterServicesAsSavedProgress()
+        {
             _saveLoadRegistry.Register(_daysService);
+            _saveLoadRegistry.Register(_playerInventoryService);
+        }
     }
 }

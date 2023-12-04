@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace Code.Runtime.Data.Progress
 {
     [Serializable]
     public class PlayerInventoryData
-    {
-        public Books Books = new Books();
-        public Coins Coins = new Coins();
+    { 
+        public List<string> Books = new();
+        public int Coins;
     }
 }
