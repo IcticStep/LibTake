@@ -1,5 +1,6 @@
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
+using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
@@ -11,7 +12,6 @@ namespace Code.Runtime.Infrastructure.States
 {
     internal sealed class BootstrapState : IState
     {
-        private const string InitialSceneName = "Initial";
         private readonly GameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
@@ -19,10 +19,11 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IReadBookService _readBookService;
         private readonly ISkillService _skillService;
+        private readonly IStaticDataService _staticDataService;
 
         public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
             IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
-            ISkillService skillService)
+            ISkillService skillService, IStaticDataService staticDataService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -31,12 +32,16 @@ namespace Code.Runtime.Infrastructure.States
             _playerInventoryService = playerInventoryService;
             _readBookService = readBookService;
             _skillService = skillService;
+            _staticDataService = staticDataService;
         }
 
         public void Start()
         {
+            _staticDataService.LoadStartupSettings();
             RegisterServicesAsSavedProgress();
-            _sceneLoader.LoadSceneAsync(InitialSceneName, OnInitSceneLoaded).Forget();
+
+            string bootstrapSceneName = _staticDataService.StartupSettings.BootstrapScene;
+            _sceneLoader.LoadSceneAsync(bootstrapSceneName, OnInitSceneLoaded).Forget();
         }
 
         public void Exit()
