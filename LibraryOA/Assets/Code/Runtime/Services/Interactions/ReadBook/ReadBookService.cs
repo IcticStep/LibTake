@@ -1,7 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.StaticData.Books;
+using Code.Runtime.Services.Skills;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.ReadBook
@@ -9,15 +11,18 @@ namespace Code.Runtime.Services.Interactions.ReadBook
     [UsedImplicitly]
     internal sealed class ReadBookService : IReadBookService
     {
-        private readonly IStaticDataService _staticDataService;
-        private readonly IPlayerProgressService _playerProgress;
+        private readonly ISkillService _skillService;
+        
+        private HashSet<string> _booksRead = new();
+        private List<string> _booksReadCacheForSave;
         
         public bool ReadingAllowed { get; private set; } = true;
 
-        public ReadBookService(IStaticDataService staticDataService, IPlayerProgressService playerProgress)
+        public event Action BookRead;
+
+        public ReadBookService(ISkillService skillService)
         {
-            _staticDataService = staticDataService;
-            _playerProgress = playerProgress;
+            _skillService = skillService;
         }
 
         public void AllowReading() =>
@@ -26,27 +31,38 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         public void BlockReading() =>
             ReadingAllowed = false;
 
+        public bool IsRead(string bookId) =>
+            _booksRead.Contains(bookId);
+
         public void ReadBook(string bookId)
         {
-            StaticBook data = _staticDataService.ForBook(bookId);
-            
             MarkAsRead(bookId);
-            UpdateSkills(data);
+            _skillService.UpdateSkillsBy(bookId);
         }
 
         public bool CanReadBook(string bookId) =>
             !IsRead(bookId) && ReadingAllowed;
 
-        public bool IsRead(string bookId) =>
-            _playerProgress.Progress.PlayerData.ReadBooks.IsBookRead(bookId);
+        public void LoadProgress(Progress progress) =>
+            _booksRead = new HashSet<string>(progress.PlayerData.BooksRead);
 
-        private void MarkAsRead(string bookId) =>
-            _playerProgress.Progress.PlayerData.ReadBooks.AddReadBook(bookId);
-
-        private void UpdateSkills(StaticBook data)
+        public void UpdateProgress(Progress progress)
         {
-            SkillStats skillStats = _playerProgress.Progress.PlayerData.SkillStats;
-            skillStats.AddLevelsFor(data.StaticBookType.BookType, 1);
+            UpdateBooksReadCacheForSave();
+            progress.PlayerData.BooksRead = _booksReadCacheForSave;
+        }
+
+        private void MarkAsRead(string bookId)
+        {
+            _booksRead.Add(bookId);
+            BookRead?.Invoke();
+        }
+
+        private void UpdateBooksReadCacheForSave()
+        {
+            _booksReadCacheForSave ??= new List<string>(_booksRead.Count);
+            _booksReadCacheForSave.Clear();
+            _booksReadCacheForSave.AddRange(_booksRead);
         }
     }
 }

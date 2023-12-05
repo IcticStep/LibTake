@@ -22,14 +22,14 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IInteractablesFactory _interactablesFactory;
         private readonly IStaticDataService _staticData;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
-        private readonly IPlayerProgressService _playerProgress;
+        private readonly IPersistantProgressService _persistantProgress;
         private readonly ICharactersFactory _charactersFactory;
         private readonly IHudFactory _hudFactory;
         private readonly ICustomersQueueService _customersQueueService;
         private readonly ICustomersDeliveringService _customersDeliveringService;
         
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
-            ISaveLoadRegistry saveLoadRegistry, IPlayerProgressService playerProgress, IInteractablesFactory interactablesFactory,
+            ISaveLoadRegistry saveLoadRegistry, IPersistantProgressService persistantProgress, IInteractablesFactory interactablesFactory,
             ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
             ICustomersDeliveringService customersDeliveringService)
         {
@@ -38,7 +38,7 @@ namespace Code.Runtime.Infrastructure.States
             _interactablesFactory = interactablesFactory;
             _staticData = staticData;
             _saveLoadRegistry = saveLoadRegistry;
-            _playerProgress = playerProgress;
+            _persistantProgress = persistantProgress;
             _charactersFactory = charactersFactory;
             _hudFactory = hudFactory;
             _customersQueueService = customersQueueService;
@@ -108,7 +108,7 @@ namespace Code.Runtime.Infrastructure.States
         private void InformProgressReaders()
         {
             foreach(ISavedProgressReader progressReader in _saveLoadRegistry.ProgressReaders)
-                progressReader.LoadProgress(_playerProgress.Progress);
+                progressReader.LoadProgress(_persistantProgress.Progress);
         }
     }
 }

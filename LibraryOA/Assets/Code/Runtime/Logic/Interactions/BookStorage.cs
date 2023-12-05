@@ -11,14 +11,14 @@ namespace Code.Runtime.Logic.Interactions
     public class BookStorage : MonoBehaviour, IBookStorage, ISavedProgress
     {
         private string _storageId;
-        private IPlayerProgressService _progressService;
+        private IPersistantProgressService _progressService;
         public string CurrentBookId { get; private set; }
         public bool HasBook => !string.IsNullOrWhiteSpace(CurrentBookId);
 
         public event Action BooksUpdated;
 
         [Inject]
-        private void Construct(IPlayerProgressService progressService) =>
+        private void Construct(IPersistantProgressService progressService) =>
             _progressService = progressService;
 
         private void Start() =>
@@ -61,7 +61,7 @@ namespace Code.Runtime.Logic.Interactions
             return removed;
         }
 
-        public void LoadProgress(PlayerProgress progress)
+        public void LoadProgress(Runtime.Data.Progress.Progress progress)
         {
             BookData savedData = progress.WorldData.BookHoldersState.GetDataForId(_storageId);
 
@@ -80,7 +80,7 @@ namespace Code.Runtime.Logic.Interactions
         private void UpdateProgress() =>
             UpdateProgress(_progressService.Progress);
 
-        public void UpdateProgress(PlayerProgress progress)
+        public void UpdateProgress(Runtime.Data.Progress.Progress progress)
         {
             if(_storageId is null)
                 return;
