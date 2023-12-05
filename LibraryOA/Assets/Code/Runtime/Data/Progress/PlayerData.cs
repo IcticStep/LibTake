@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
+using Code.Runtime.StaticData.Books;
 
 namespace Code.Runtime.Data.Progress
 {
     [Serializable]
     public sealed class PlayerData
     {
-        public PlayerInventoryData PlayerInventory = new();
-        public SkillStats SkillStats = new();
-        public ReadBooks ReadBooks = new();
+        public PlayerInventoryData Inventory = new();
+        public Dictionary<BookType, int> Skills = new();
+        public List<string> BooksRead = new();
     }
 }

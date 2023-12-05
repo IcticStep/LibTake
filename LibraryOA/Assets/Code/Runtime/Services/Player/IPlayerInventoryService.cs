@@ -5,9 +5,9 @@ using Code.Runtime.Logic.Interactions.Data;
 
 namespace Code.Runtime.Services.Player
 {
-    internal interface IPlayerInventoryService : IBookStorage, ISavedProgressReader
+    internal interface IPlayerInventoryService : IBookStorage, ISavedProgress
     {
-        int Count { get; }
+        int BooksCount { get; }
         IReadOnlyList<string> Books { get; }
         int Coins { get; }
         void InsertBooks(IEnumerable<string> bookIds);

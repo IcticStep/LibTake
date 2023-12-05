@@ -11,15 +11,15 @@ namespace Code.Runtime.Infrastructure.States
         private const string MainSceneName = "Library";
         
         private readonly GameStateMachine _stateMachine;
-        private readonly IPlayerProgressService _playerProgressService;
+        private readonly IPersistantProgressService _persistantProgressService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IStaticDataService _staticDataService;
 
-        public LoadProgressState(GameStateMachine stateMachine, IPlayerProgressService playerProgressService,
+        public LoadProgressState(GameStateMachine stateMachine, IPersistantProgressService persistantProgressService,
             ISaveLoadService saveLoadService, IStaticDataService staticDataService)
         {
             _stateMachine = stateMachine;
-            _playerProgressService = playerProgressService;
+            _persistantProgressService = persistantProgressService;
             _saveLoadService = saveLoadService;
             _staticDataService = staticDataService;
         }
@@ -33,11 +33,11 @@ namespace Code.Runtime.Infrastructure.States
         }
 
         private void LoadProgressOrCreateNew() =>
-            _playerProgressService.Progress = 
+            _persistantProgressService.Progress = 
                 _saveLoadService.LoadProgress()
                 ?? CreateNewProgress();
 
-        private PlayerProgress CreateNewProgress() =>
+        private Progress CreateNewProgress() =>
             new();
 
         public void Exit()

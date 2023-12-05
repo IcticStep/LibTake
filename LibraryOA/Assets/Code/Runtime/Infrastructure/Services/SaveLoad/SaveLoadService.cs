@@ -10,10 +10,10 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
     internal sealed class SaveLoadService : ISaveLoadService
     {
         private const string ProgressKey = "Progress";
-        private readonly IPlayerProgressService _progressService;
+        private readonly IPersistantProgressService _progressService;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
 
-        public SaveLoadService(IPlayerProgressService progressService, ISaveLoadRegistry saveLoadRegistry)
+        public SaveLoadService(IPersistantProgressService progressService, ISaveLoadRegistry saveLoadRegistry)
         {
             _progressService = progressService;
             _saveLoadRegistry = saveLoadRegistry;
@@ -27,7 +27,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
             PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
         }
 
-        public PlayerProgress LoadProgress() =>
-            PlayerPrefs.GetString(ProgressKey).ToDeserialized<PlayerProgress>();
+        public Progress LoadProgress() =>
+            PlayerPrefs.GetString(ProgressKey).ToDeserialized<Progress>();
     }
 }

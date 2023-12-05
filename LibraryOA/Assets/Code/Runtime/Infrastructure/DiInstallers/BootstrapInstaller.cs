@@ -13,6 +13,7 @@ using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Days;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -23,6 +24,7 @@ using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Random;
+using Code.Runtime.Services.Skills;
 using Code.Runtime.Services.TruckDriving;
 using UnityEngine;
 using Zenject;
@@ -50,7 +52,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         private void InstallInfrastructureServices()
         {
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
-            Container.Bind<IPlayerProgressService>().To<PlayerProgressService>().AsSingle();
+            Container.Bind<IPersistantProgressService>().To<PersistantProgressService>().AsSingle();
             Container.Bind<ISaveLoadRegistry>().To<SaveLoadRegistry>().AsSingle();
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
@@ -79,6 +81,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
             Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
+            Container.Bind<IDaysService>().To<DaysService>().AsSingle();
+            Container.Bind<ISkillService>().To<SkillService>().AsSingle();
         }
 
         private void InstallFactories()
