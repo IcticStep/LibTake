@@ -109,6 +109,12 @@ namespace Code.Runtime.Services.Customers.Pooling
                 customer.DeactivateStateEntered -= ReturnCustomer;
             foreach(CustomerStateMachine customer in _deactivatedCustomers)
                 customer.DeactivateStateEntered -= ReturnCustomer;
+            
+            _activeCustomers.Clear();
+            _deactivatedCustomers.Clear();
+            _activeLimit = 0;
+            ActiveHardLimit = 0;
+            _spawn = null;
         }
 
         public bool CanActivateMore()

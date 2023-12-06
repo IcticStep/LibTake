@@ -1275,7 +1275,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_53
+      name: SimpleButton
       rect:
         serializedVersion: 2
         x: 2456
@@ -1661,7 +1661,6 @@ TextureImporter:
       GUI_5: 21300010
       GUI_51: 21300088
       GUI_52: 21300090
-      GUI_53: 21300092
       GUI_54: 21300094
       GUI_55: 21300096
       GUI_56: 21300098
@@ -1682,6 +1681,7 @@ TextureImporter:
       Round_button: 21300014
       RoundedButton_idle: 21300036
       RoundedButton_pressed: 21300034
+      SimpleButton: 21300092
       Tick_icon: 21300118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

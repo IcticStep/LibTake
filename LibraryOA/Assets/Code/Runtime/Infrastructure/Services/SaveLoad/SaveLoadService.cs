@@ -29,5 +29,11 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
 
         public Progress LoadProgress() =>
             PlayerPrefs.GetString(ProgressKey).ToDeserialized<Progress>();
+
+        public void DeleteProgress()
+        {
+            PlayerPrefs.DeleteKey(ProgressKey);
+            PlayerPrefs.Save();
+        }
     }
 }

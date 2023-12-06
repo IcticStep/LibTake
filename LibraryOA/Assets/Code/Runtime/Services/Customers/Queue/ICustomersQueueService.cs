@@ -12,5 +12,6 @@ namespace Code.Runtime.Services.Customers.Queue
         void Enqueue(QueueMember queueMember);
         void Dequeue();
         void Initialize(IReadOnlyList<Vector3> queuePoints);
+        void CleanUp();
     }
 }

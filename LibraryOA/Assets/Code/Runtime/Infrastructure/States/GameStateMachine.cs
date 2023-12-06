@@ -13,6 +13,8 @@ namespace Code.Runtime.Infrastructure.States
         private Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
+        public Type ActiveStateType => _activeState.GetType();
+
         public GameStateMachine(IGameStateFactory gameStateFactory)
         {
             _gameStateFactory = gameStateFactory;

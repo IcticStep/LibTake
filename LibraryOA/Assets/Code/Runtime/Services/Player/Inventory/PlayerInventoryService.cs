@@ -4,7 +4,7 @@ using Code.Runtime.Data.Progress;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Player
+namespace Code.Runtime.Services.Player.Inventory
 {
     [UsedImplicitly]
     internal sealed class PlayerInventoryService : IPlayerInventoryService

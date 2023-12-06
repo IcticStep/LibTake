@@ -4,16 +4,17 @@ using UnityEditor;
 
 namespace Code.Editor.Editors.StaticData
 {
-    [CustomEditor(typeof(StartupSettings))]
+    [CustomEditor(typeof(ScenesRouting))]
     internal sealed class StartupSettingsEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
-            StartupSettings settings = (StartupSettings)target;
+            ScenesRouting settings = (ScenesRouting)target;
             string[] scenes = GetAvailableScenes();
 
-            DrawSceneSelection("Bootstrap Scene", scenes, ref settings.BootstrapScene);
-            DrawSceneSelection("Target Scene", scenes, ref settings.TargetScene);
+            DrawSceneSelection("Bootstrap scene", scenes, ref settings.BootstrapScene);
+            DrawSceneSelection("Game scene", scenes, ref settings.TargetScene);
+            DrawSceneSelection("Game over scene", scenes, ref settings.GameOverScene);
         }
 
         private void DrawSceneSelection(string label, string[] scenes, ref string selectedScene)

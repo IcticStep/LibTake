@@ -1,4 +1,3 @@
-using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
@@ -7,5 +6,6 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
     {
         void SaveProgress();
         Progress LoadProgress();
+        void DeleteProgress();
     }
 }

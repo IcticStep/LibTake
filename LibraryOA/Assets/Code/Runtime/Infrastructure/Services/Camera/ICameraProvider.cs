@@ -4,5 +4,6 @@ namespace Code.Runtime.Infrastructure.Services.Camera
     {
         UnityEngine.Camera MainCamera { get; }
         void Initialize(UnityEngine.Camera main);
+        void CleanUp();
     }
 }
