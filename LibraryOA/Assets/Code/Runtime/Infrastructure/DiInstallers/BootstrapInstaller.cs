@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
+using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
@@ -61,6 +62,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
+            Container.Bind<IRestartService>().To<RestartService>().AsSingle();
         }
 
         private void InstallServices()
