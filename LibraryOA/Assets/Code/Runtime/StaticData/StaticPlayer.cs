@@ -7,5 +7,8 @@ namespace Code.Runtime.StaticData
     {
         [field: SerializeField]
         public GameObject Prefab { get; private set; }
+        
+        [field: SerializeField]
+        public int StartLivesCount { get; private set; }
     }
 }

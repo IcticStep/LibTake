@@ -40,10 +40,10 @@ namespace Code.Runtime.Services.Player.Lives
         }
 
         public void LoadProgress(Progress progress) =>
-            Lives = progress.PlayerData.Health;
+            Lives = progress.PlayerData.Lives;
 
         public void UpdateProgress(Progress progress) =>
-            progress.PlayerData.Health = Lives;
+            progress.PlayerData.Lives = Lives;
 
         private void FinishGame()
         {
