@@ -41,7 +41,7 @@ namespace Code.Runtime.Infrastructure.States
             _staticDataService.LoadStartupSettings();
             RegisterServicesAsSavedProgress();
 
-            string bootstrapSceneName = _staticDataService.StartupSettings.BootstrapScene;
+            string bootstrapSceneName = _staticDataService.ScenesRouting.BootstrapScene;
             _sceneLoader.LoadSceneAsync(bootstrapSceneName, OnInitSceneLoaded).Forget();
         }
 

@@ -17,7 +17,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string BooksPath = "Static Data/Books/Instances";
         private const string LevelsPath = "Static Data/Levels";
         private const string ReadingTablePath = "Static Data/Interactables/ReadingTableData";
-        private const string StartupSettingsPath = "Static Data/StartupSettings";
+        private const string ScenesRoutingPath = "Static Data/Scenes Routing";
         private const string TruckPath = "Static Data/Interactables/Truck static data";
         private const string BookSlotPath = "Static Data/Interactables/BookSlotData";
         private const string PlayerPath = "Static Data/Player";
@@ -26,7 +26,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
 
-        public StartupSettings StartupSettings { get; private set; }
+        public ScenesRouting ScenesRouting { get; private set; }
         public InteractablesStaticData Interactables { get; private set; }
         public StaticPlayer Player { get; private set; }
         public StaticBookReceiving BookReceiving { get; private set; }
@@ -71,8 +71,8 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         }
 
         public void LoadStartupSettings() =>
-            StartupSettings = Resources
-                .Load<StartupSettings>(StartupSettingsPath);
+            ScenesRouting = Resources
+                .Load<ScenesRouting>(ScenesRoutingPath);
         
         public StaticBook ForBook(string id) =>
             _books.TryGetValue(id, out StaticBook result)
