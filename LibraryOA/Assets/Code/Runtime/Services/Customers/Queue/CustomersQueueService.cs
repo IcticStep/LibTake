@@ -34,6 +34,9 @@ namespace Code.Runtime.Services.Customers.Queue
             UpdateMembersPoints();
         }
 
+        public void CleanUp() =>
+            _membersQueue.Clear();
+
         private void UpdateMembersPoints()
         {
             int index = 0;

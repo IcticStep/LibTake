@@ -18,7 +18,7 @@ namespace Code.Runtime.Services.Player.Provider
             PlayerInteractor = Player.GetComponentInChildren<PlayerInteractor>();
         }
 
-        public void UnregisterPlayer()
+        public void CleanUp()
         {
             Player = null;
             InteractablesScanner = null;

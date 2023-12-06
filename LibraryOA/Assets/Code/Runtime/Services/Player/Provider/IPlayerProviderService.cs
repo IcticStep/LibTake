@@ -9,6 +9,6 @@ namespace Code.Runtime.Services.Player.Provider
         InteractablesScanner InteractablesScanner { get; }
         PlayerInteractor PlayerInteractor { get; }
         void RegisterPlayer(GameObject player);
-        void UnregisterPlayer();
+        void CleanUp();
     }
 }

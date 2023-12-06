@@ -30,5 +30,6 @@ namespace Code.Runtime.Services.Customers.Pooling
         CustomerStateMachine GetCustomer(Vector3 position);
 
         void ReturnCustomer(CustomerStateMachine customer);
+        void CleanUp();
     }
 }
