@@ -5,6 +5,8 @@ using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
+using Code.Runtime.Services.Player.Lives;
 using Code.Runtime.Services.Skills;
 using Cysharp.Threading.Tasks;
 
@@ -20,10 +22,11 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IReadBookService _readBookService;
         private readonly ISkillService _skillService;
         private readonly IStaticDataService _staticDataService;
+        private readonly IPlayerLivesService _playerLivesService;
 
         public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
             IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
-            ISkillService skillService, IStaticDataService staticDataService)
+            ISkillService skillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -33,6 +36,7 @@ namespace Code.Runtime.Infrastructure.States
             _readBookService = readBookService;
             _skillService = skillService;
             _staticDataService = staticDataService;
+            _playerLivesService = playerLivesService;
         }
 
         public void Start()
@@ -40,7 +44,7 @@ namespace Code.Runtime.Infrastructure.States
             _staticDataService.LoadStartupSettings();
             RegisterServicesAsSavedProgress();
 
-            string bootstrapSceneName = _staticDataService.StartupSettings.BootstrapScene;
+            string bootstrapSceneName = _staticDataService.ScenesRouting.BootstrapScene;
             _sceneLoader.LoadSceneAsync(bootstrapSceneName, OnInitSceneLoaded).Forget();
         }
 
@@ -58,6 +62,7 @@ namespace Code.Runtime.Infrastructure.States
             _saveLoadRegistry.Register(_playerInventoryService);
             _saveLoadRegistry.Register(_readBookService);
             _saveLoadRegistry.Register(_skillService);
+            _saveLoadRegistry.Register(_playerLivesService);
         }
     }
 }

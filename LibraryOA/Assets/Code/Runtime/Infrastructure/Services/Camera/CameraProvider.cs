@@ -9,5 +9,8 @@ namespace Code.Runtime.Infrastructure.Services.Camera
 
         public void Initialize(UnityEngine.Camera main) =>
             MainCamera = main;
+
+        public void CleanUp() =>
+            MainCamera = null;
     }
 }

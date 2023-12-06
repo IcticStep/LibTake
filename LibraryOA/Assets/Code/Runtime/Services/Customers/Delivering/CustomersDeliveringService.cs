@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.StaticData;
@@ -36,24 +37,27 @@ namespace Code.Runtime.Services.Customers.Delivering
         public void CreateCustomers() =>
             _customersPool.CreateCustomers();
 
-        public async UniTask DeliverCustomers()
+        public async UniTask DeliverCustomers(CancellationToken cancellationToken)
         {
             int customersToDeliver = _booksReceivingService.BooksInLibrary - BookReceiving.BooksShouldLeftInLibrary;
 
             for(int i = 0; i < customersToDeliver; i++)
             {
-                await WaitInterval();
-                await UniTask.WaitUntil(_customersPool.CanActivateMore);
+                await WaitInterval(cancellationToken);
+                await UniTask.WaitUntil(_customersPool.CanActivateMore, cancellationToken: cancellationToken);
+                if(cancellationToken.IsCancellationRequested)
+                    return;
+                
                 DeliverCustomer();
             }
 
-            await UniTask.WaitUntil(() => _customersPool.ActiveCustomers == 0);
+            await UniTask.WaitUntil(() => _customersPool.ActiveCustomers == 0, cancellationToken: cancellationToken);
         }
 
-        private UniTask WaitInterval()
+        private UniTask WaitInterval(CancellationToken cancellationSourceToken)
         {
             float waitTime = _randomService.GetInRange(BookReceiving.CustomersInterval);
-            return UniTask.WaitForSeconds(waitTime);
+            return UniTask.WaitForSeconds(waitTime, cancellationToken: cancellationSourceToken);
         }
 
         private void DeliverCustomer()

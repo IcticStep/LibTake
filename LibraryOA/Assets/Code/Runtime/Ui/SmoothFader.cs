@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -30,6 +31,12 @@ namespace Code.Runtime.Ui
                 .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, _duration)
                 .SetAutoKill(false)
                 .Pause();
+        }
+
+        private void OnDestroy()
+        {
+            _fadeTween.Kill();
+            _unFadeTween.Kill();
         }
 
         public UniTask FadeAsync()

@@ -2,6 +2,8 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
+using Code.Runtime.Services.Player.Lives;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -15,12 +17,13 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private readonly IStaticDataService _staticDataService;
         private readonly Collider _collider;
         private readonly IPlayerInventoryService _playerInventoryService;
+        private readonly IPlayerLivesService _playerLivesService;
         private readonly BookReceiver _bookReceiver;
         private readonly Progress _progress;
 
         public BookReceivingState(CustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService,
             BookReceiver bookReceiver, Progress progress, IStaticDataService staticDataService, Collider collider,
-            IPlayerInventoryService playerInventoryService)
+            IPlayerInventoryService playerInventoryService, IPlayerLivesService playerLivesService)
         {
             _customerStateMachine = customerStateMachine;
             _customersQueueService = customersQueueService;
@@ -30,6 +33,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _staticDataService = staticDataService;
             _collider = collider;
             _playerInventoryService = playerInventoryService;
+            _playerLivesService = playerLivesService;
         }
 
         public void Start()
@@ -79,6 +83,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _bookReceiver.Reset();
             _progress.Reset();
             Debug.Log("Receiving failed. Customer unsatisified.");
+            _playerLivesService.WasteLife();
             _customerStateMachine.Enter<GoAwayState>();
         }
 

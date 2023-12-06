@@ -1,8 +1,10 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
+using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
+using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
@@ -22,7 +24,9 @@ using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Physics;
-using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
+using Code.Runtime.Services.Player.Lives;
+using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.Services.Random;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.Services.TruckDriving;
@@ -57,6 +61,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
+            Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
+            Container.Bind<IRestartService>().To<RestartService>().AsSingle();
         }
 
         private void InstallServices()
@@ -83,6 +89,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
             Container.Bind<IDaysService>().To<DaysService>().AsSingle();
             Container.Bind<ISkillService>().To<SkillService>().AsSingle();
+            Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
         }
 
         private void InstallFactories()
@@ -106,6 +113,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<LoadLevelState>().AsSingle();
             Container.Bind<MorningState>().AsSingle();
             Container.Bind<DayState>().AsSingle();
+            Container.Bind<GameOverState>().AsSingle();
         }
     }
 }

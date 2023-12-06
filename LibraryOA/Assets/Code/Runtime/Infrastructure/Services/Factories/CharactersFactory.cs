@@ -1,6 +1,7 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.StaticData;
 using JetBrains.Annotations;
 using UnityEngine;

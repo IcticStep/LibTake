@@ -8,8 +8,6 @@ namespace Code.Runtime.Infrastructure.States
 {
     internal sealed class LoadProgressState : IState
     {
-        private const string MainSceneName = "Library";
-        
         private readonly GameStateMachine _stateMachine;
         private readonly IPersistantProgressService _persistantProgressService;
         private readonly ISaveLoadService _saveLoadService;
@@ -28,7 +26,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             LoadProgressOrCreateNew();
             
-            string startScene = _staticDataService.StartupSettings.TargetScene;
+            string startScene = _staticDataService.ScenesRouting.TargetScene;
             _stateMachine.EnterState<LoadLevelState, string>(startScene);
         }
 
@@ -37,8 +35,12 @@ namespace Code.Runtime.Infrastructure.States
                 _saveLoadService.LoadProgress()
                 ?? CreateNewProgress();
 
-        private Progress CreateNewProgress() =>
-            new();
+        private Progress CreateNewProgress()
+        {
+            Progress newProgress = new();
+            newProgress.PlayerData.Lives = _staticDataService.Player.StartLivesCount;
+            return newProgress;
+        }
 
         public void Exit()
         {

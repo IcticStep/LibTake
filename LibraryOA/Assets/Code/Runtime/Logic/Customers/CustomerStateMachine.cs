@@ -6,6 +6,8 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
+using Code.Runtime.Services.Player.Lives;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -35,6 +37,7 @@ namespace Code.Runtime.Logic.Customers
         private IStaticDataService _staticDataService;
         private IBooksReceivingService _booksReceivingService;
         private IPlayerInventoryService _playerInventoryService;
+        private IPlayerLivesService _playerLivesService;
 
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
         public Type ActiveStateType => _activeState.GetType();
@@ -42,8 +45,9 @@ namespace Code.Runtime.Logic.Customers
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
-            IPlayerInventoryService playerInventoryService)
+            IPlayerInventoryService playerInventoryService, IPlayerLivesService playerLivesService)
         {
+            _playerLivesService = playerLivesService;
             _playerInventoryService = playerInventoryService;
             _booksReceivingService = booksReceivingService;
             _staticDataService = staticDataService;
@@ -55,7 +59,7 @@ namespace Code.Runtime.Logic.Customers
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
                 [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver,
-                    _progress, _staticDataService, _collider, _playerInventoryService),
+                    _progress, _staticDataService, _collider, _playerInventoryService, _playerLivesService),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
                 [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
             };
