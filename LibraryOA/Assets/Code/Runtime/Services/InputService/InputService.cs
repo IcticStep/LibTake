@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 namespace Code.Runtime.Services.InputService
 {
     [UsedImplicitly]
-    public sealed class InputService : IInputService, IDisposable
+    public sealed class InputService : IInputService
     {
         private const float MovementMinimal = 0.001f;
         private readonly Input _input = new();
@@ -24,7 +24,7 @@ namespace Code.Runtime.Services.InputService
         public void RegisterMovementProvider(IInputProvider<Vector2> movementProvide) =>
             _movementFallbackProviders.Add(movementProvide);
 
-        public void Dispose()
+        public void CleanUp()
         {
             _input.Player.Interact.started -= NotifyInteractButtonPressed;
             _movementFallbackProviders.Clear();

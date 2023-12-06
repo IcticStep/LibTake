@@ -16,7 +16,10 @@ namespace Code.Runtime.Services.TruckDriving
             TruckDriving = truckGameObject.GetComponentInChildren<Logic.TruckDriving>();
         }
         
-        public void CleanUp() =>
+        public void CleanUp()
+        {
             Truck = null;
+            TruckDriving = null;
+        }
     }
 }

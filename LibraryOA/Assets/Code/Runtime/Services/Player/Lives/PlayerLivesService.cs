@@ -25,7 +25,9 @@ namespace Code.Runtime.Services.Player.Lives
             
             Health--;
             Updated?.Invoke();
-            FinishGame();
+            
+            if(Health <= 0)
+                FinishGame();
         }
 
         public void RestoreLife()

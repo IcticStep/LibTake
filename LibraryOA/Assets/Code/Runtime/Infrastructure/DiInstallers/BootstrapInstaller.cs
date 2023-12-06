@@ -1,5 +1,6 @@
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
+using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
@@ -60,6 +61,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
+            Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
         }
 
         private void InstallServices()
