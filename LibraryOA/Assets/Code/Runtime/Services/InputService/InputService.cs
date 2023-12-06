@@ -24,11 +24,8 @@ namespace Code.Runtime.Services.InputService
         public void RegisterMovementProvider(IInputProvider<Vector2> movementProvide) =>
             _movementFallbackProviders.Add(movementProvide);
 
-        public void CleanUp()
-        {
-            _input.Player.Interact.started -= NotifyInteractButtonPressed;
+        public void CleanUp() =>
             _movementFallbackProviders.Clear();
-        }
 
         private void NotifyInteractButtonPressed(InputAction.CallbackContext obj) =>
             InteractButtonPressed?.Invoke();

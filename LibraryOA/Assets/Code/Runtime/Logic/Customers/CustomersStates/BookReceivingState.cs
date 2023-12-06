@@ -83,8 +83,8 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _bookReceiver.Reset();
             _progress.Reset();
             Debug.Log("Receiving failed. Customer unsatisified.");
-            _customerStateMachine.Enter<GoAwayState>();
             _playerLivesService.WasteLife();
+            _customerStateMachine.Enter<GoAwayState>();
         }
 
         private void OnBookReceived()

@@ -27,9 +27,6 @@ namespace Code.Runtime.Services.Player.Lives
             Lives--;
             Debug.Log($"Lives count: {Lives}.");
             Updated?.Invoke();
-            
-            if(Lives <= 0)
-                FinishGame();
         }
 
         public void RestoreLife()
@@ -44,11 +41,5 @@ namespace Code.Runtime.Services.Player.Lives
 
         public void UpdateProgress(Progress progress) =>
             progress.PlayerData.Lives = Lives;
-
-        private void FinishGame()
-        {
-            if(_gameStateMachine.ActiveStateType == typeof(DayState))
-                _gameStateMachine.EnterState<GameOverState>();
-        }
     }
 }
