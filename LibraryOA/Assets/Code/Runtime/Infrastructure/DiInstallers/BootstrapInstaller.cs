@@ -23,7 +23,6 @@ using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Physics;
-using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
 using Code.Runtime.Services.Player.Provider;

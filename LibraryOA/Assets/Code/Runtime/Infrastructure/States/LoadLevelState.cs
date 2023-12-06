@@ -1,3 +1,4 @@
+using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
@@ -27,11 +28,12 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IHudFactory _hudFactory;
         private readonly ICustomersQueueService _customersQueueService;
         private readonly ICustomersDeliveringService _customersDeliveringService;
-        
+        private readonly ICameraProvider _cameraProvider;
+
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPersistantProgressService persistantProgress, IInteractablesFactory interactablesFactory,
             ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
-            ICustomersDeliveringService customersDeliveringService)
+            ICustomersDeliveringService customersDeliveringService, ICameraProvider cameraProvider)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -43,6 +45,7 @@ namespace Code.Runtime.Infrastructure.States
             _hudFactory = hudFactory;
             _customersQueueService = customersQueueService;
             _customersDeliveringService = customersDeliveringService;
+            _cameraProvider = cameraProvider;
         }
 
         public void Start(string payload) =>
@@ -59,8 +62,9 @@ namespace Code.Runtime.Infrastructure.States
             GameObject player = InitPlayer(levelData);
             InitGameWorld(levelData);
             InformProgressReaders();
-            InitCamera(player);
+            InitCamera();
             InitUi();
+            CameraFollow(player);
             
             _stateMachine.EnterState<MorningState>();
         }
@@ -100,10 +104,14 @@ namespace Code.Runtime.Infrastructure.States
         private void InitTruck(LevelStaticData levelData) =>
             _interactablesFactory.CreateTruck(levelData.TruckWay);
 
-        private void InitCamera(GameObject player) =>
-            Camera.main!
+        private void InitCamera() =>
+            _cameraProvider.Initialize(Camera.main);
+
+        private void CameraFollow(GameObject target) =>
+            _cameraProvider
+                .MainCamera
                 .GetComponent<CameraFollow>()
-                .SetTarget(player.transform);
+                .SetTarget(target.transform);
 
         private void InformProgressReaders()
         {
