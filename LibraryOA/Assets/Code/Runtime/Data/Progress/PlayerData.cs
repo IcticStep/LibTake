@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.StaticData.Books;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Data.Progress
 {
@@ -10,6 +11,7 @@ namespace Code.Runtime.Data.Progress
         public PlayerInventoryData Inventory = new();
         public Dictionary<BookType, int> Skills = new();
         public List<string> BooksRead = new();
-        public int Health;
+        [FormerlySerializedAs("Health")]
+        public int Lives;
     }
 }
