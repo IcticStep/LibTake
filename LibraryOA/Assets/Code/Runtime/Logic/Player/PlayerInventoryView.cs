@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.StaticData.Books;
 using UnityEngine;
 using Zenject;

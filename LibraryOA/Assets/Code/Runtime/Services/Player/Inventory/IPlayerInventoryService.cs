@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Logic.Interactions.Data;
 
-namespace Code.Runtime.Services.Player
+namespace Code.Runtime.Services.Player.Inventory
 {
     internal interface IPlayerInventoryService : IBookStorage, ISavedProgress
     {

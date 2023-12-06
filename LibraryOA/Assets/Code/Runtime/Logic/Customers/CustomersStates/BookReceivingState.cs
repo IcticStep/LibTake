@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

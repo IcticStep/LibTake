@@ -6,6 +6,7 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;

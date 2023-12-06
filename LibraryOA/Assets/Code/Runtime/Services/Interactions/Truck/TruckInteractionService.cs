@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.Truck

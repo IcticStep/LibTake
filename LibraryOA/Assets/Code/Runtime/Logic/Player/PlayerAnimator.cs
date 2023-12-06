@@ -3,6 +3,7 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using UnityEngine;
 using Zenject;
 

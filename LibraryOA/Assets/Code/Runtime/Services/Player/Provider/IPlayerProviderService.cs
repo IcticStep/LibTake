@@ -1,7 +1,7 @@
 using Code.Runtime.Logic.Player;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Player
+namespace Code.Runtime.Services.Player.Provider
 {
     internal interface IPlayerProviderService
     {

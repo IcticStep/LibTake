@@ -1,5 +1,6 @@
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.BookSlotInteraction

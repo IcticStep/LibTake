@@ -1,6 +1,7 @@
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.BooksReceiving

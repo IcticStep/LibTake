@@ -10,5 +10,6 @@ namespace Code.Runtime.Data.Progress
         public PlayerInventoryData Inventory = new();
         public Dictionary<BookType, int> Skills = new();
         public List<string> BooksRead = new();
+        public int Health;
     }
 }
