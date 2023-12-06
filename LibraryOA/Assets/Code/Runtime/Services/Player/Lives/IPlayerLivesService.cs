@@ -7,7 +7,7 @@ namespace Code.Runtime.Services.Player.Lives
     {
         void WasteLife();
         void RestoreLife();
-        int Health { get; }
+        int Lives { get; }
         event Action Updated;
     }
 }
