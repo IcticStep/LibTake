@@ -22,6 +22,7 @@ namespace Code.Runtime.Infrastructure.States
                 [typeof(LoadLevelState)] = container.Resolve<LoadLevelState>,
                 [typeof(MorningState)] = container.Resolve<MorningState>,
                 [typeof(DayState)] = container.Resolve<DayState>,
+                [typeof(GameOverState)] = container.Resolve<GameOverState>,
             };
         }
 

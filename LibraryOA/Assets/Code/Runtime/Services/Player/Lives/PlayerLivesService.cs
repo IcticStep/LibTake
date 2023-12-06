@@ -43,7 +43,7 @@ namespace Code.Runtime.Services.Player.Lives
         private void FinishGame()
         {
             if(_gameStateMachine.ActiveStateType == typeof(DayState))
-                _gameStateMachine.EnterState<>();
+                _gameStateMachine.EnterState<GameOverState>();
         }
     }
 }

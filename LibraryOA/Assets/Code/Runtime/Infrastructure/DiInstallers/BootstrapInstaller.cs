@@ -110,6 +110,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<LoadLevelState>().AsSingle();
             Container.Bind<MorningState>().AsSingle();
             Container.Bind<DayState>().AsSingle();
+            Container.Bind<GameOverState>().AsSingle();
         }
     }
 }
