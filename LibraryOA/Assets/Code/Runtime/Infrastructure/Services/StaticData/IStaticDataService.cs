@@ -9,7 +9,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
 {
     public interface IStaticDataService
     {
-        StartupSettings StartupSettings { get; }
+        ScenesRouting ScenesRouting { get; }
         InteractablesStaticData Interactables { get; }
         StaticPlayer Player { get; }
         StaticBookReceiving BookReceiving { get; }
