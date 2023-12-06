@@ -8,8 +8,6 @@ namespace Code.Runtime.Infrastructure.States
 {
     internal sealed class LoadProgressState : IState
     {
-        private const string MainSceneName = "Library";
-        
         private readonly GameStateMachine _stateMachine;
         private readonly IPersistantProgressService _persistantProgressService;
         private readonly ISaveLoadService _saveLoadService;
