@@ -1,6 +1,7 @@
 using System.Collections;
 using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Provider;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;

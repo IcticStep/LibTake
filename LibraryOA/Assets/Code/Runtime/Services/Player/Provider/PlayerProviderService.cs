@@ -2,7 +2,7 @@ using Code.Runtime.Logic.Player;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Services.Player
+namespace Code.Runtime.Services.Player.Provider
 {
     [UsedImplicitly]
     internal sealed class PlayerProviderService : IPlayerProviderService

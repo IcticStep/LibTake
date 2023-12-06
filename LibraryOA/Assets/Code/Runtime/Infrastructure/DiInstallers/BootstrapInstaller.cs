@@ -23,6 +23,9 @@ using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player;
+using Code.Runtime.Services.Player.Inventory;
+using Code.Runtime.Services.Player.Lives;
+using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.Services.Random;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.Services.TruckDriving;
@@ -83,6 +86,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
             Container.Bind<IDaysService>().To<DaysService>().AsSingle();
             Container.Bind<ISkillService>().To<SkillService>().AsSingle();
+            Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
         }
 
         private void InstallFactories()
