@@ -729,7 +729,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_20
+      name: Life
       rect:
         serializedVersion: 2
         x: 50
@@ -750,7 +750,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_21
+      name: Coin
       rect:
         serializedVersion: 2
         x: 273
@@ -881,11 +881,11 @@ TextureImporter:
         serializedVersion: 2
         x: 748
         y: 529
-        width: 1395
+        width: 1275
         height: 926
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 114, y: 146, z: 0, w: 116}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -939,7 +939,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_30
+      name: Day
       rect:
         serializedVersion: 2
         x: 232
@@ -960,7 +960,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_31
+      name: Clock
       rect:
         serializedVersion: 2
         x: 397
@@ -1527,7 +1527,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_65
+      name: People
       rect:
         serializedVersion: 2
         x: 219
@@ -1624,6 +1624,9 @@ TextureImporter:
       Button_idle: 21300022
       Button_pressed: 21300020
       CenterMessageBox: 21300102
+      Clock: 21300062
+      Coin: 21300042
+      Day: 21300060
       DoubleCentralMessage: 21300122
       GUI_0: 21300000
       GUI_1: 21300002
@@ -1633,8 +1636,6 @@ TextureImporter:
       GUI_15: 21300030
       GUI_16: 21300032
       GUI_2: 21300004
-      GUI_20: 21300040
-      GUI_21: 21300042
       GUI_22: 21300044
       GUI_24: 21300048
       GUI_25: 21300050
@@ -1643,8 +1644,6 @@ TextureImporter:
       GUI_28: 21300056
       GUI_29: 21300058
       GUI_3: 21300006
-      GUI_30: 21300060
-      GUI_31: 21300062
       GUI_32: 21300064
       GUI_33: 21300066
       GUI_34: 21300068
@@ -1672,10 +1671,11 @@ TextureImporter:
       GUI_62: 21300110
       GUI_63: 21300112
       GUI_64: 21300114
-      GUI_65: 21300116
       GUI_67: 21300120
       GUI_8: 21300016
       GUI_9: 21300018
+      Life: 21300040
+      People: 21300116
       ProgressBar_background: 21300046
       ProgressBar_filling: 21300038
       Round_button: 21300014
