@@ -1,4 +1,5 @@
 using Code.Runtime.Ui;
+using Code.Runtime.Ui.Messages;
 using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.HudProvider
