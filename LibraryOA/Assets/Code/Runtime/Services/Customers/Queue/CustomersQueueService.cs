@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers;
 using JetBrains.Annotations;
@@ -17,6 +19,9 @@ namespace Code.Runtime.Services.Customers.Queue
         public int Capacity => _points.Count;
         public int MembersCount => _membersQueue.Count;
         public bool Full => Capacity == MembersCount;
+        public bool Any => _membersQueue.Any();
+
+        public event Action Updated;
 
         public void Initialize(IReadOnlyList<Vector3> queuePoints) =>
             _points = queuePoints;
@@ -25,6 +30,7 @@ namespace Code.Runtime.Services.Customers.Queue
         {
             _membersQueue.Enqueue(queueMember);
             UpdateMemberPoint(queueMember, _membersQueue.Count-1);
+            Updated?.Invoke();
         }
         
         public void Dequeue()
@@ -32,10 +38,17 @@ namespace Code.Runtime.Services.Customers.Queue
             QueueMember memberGone = _membersQueue.Dequeue();
             memberGone.UpdatePoint(null);
             UpdateMembersPoints();
+            Updated?.Invoke();
         }
 
-        public void CleanUp() =>
+        public QueueMember Peek() =>
+            _membersQueue.Peek();
+
+        public void CleanUp()
+        {
             _membersQueue.Clear();
+            Updated?.Invoke();
+        }
 
         private void UpdateMembersPoints()
         {

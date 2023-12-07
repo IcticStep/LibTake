@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Code.Runtime.Services.Customers.Registry
 {
     [UsedImplicitly]
-    internal sealed class CustomersRegistryService : ICustomersRegistryService
+    public sealed class CustomersRegistryService : ICustomersRegistryService
     {
         private readonly Dictionary<QueueMember, CustomerStateMachine> _registry = new();
 

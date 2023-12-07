@@ -538,8 +538,10 @@ GameObject:
   - component: {fileID: 1925592728286916396}
   - component: {fileID: 7491631038379649735}
   - component: {fileID: 8944396785946494299}
+  - component: {fileID: 5403409250246844589}
+  - component: {fileID: 7944143076860252423}
   m_Layer: 5
-  m_Name: People_icon (1)
+  m_Name: People_progressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,6 +604,36 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5403409250246844589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537048821071341243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb36491cf4184632903faac2573d970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 8944396785946494299}
+  _smoothFader: {fileID: 0}
+  _visualMinimum: 0.01
+  _invertedFilling: 1
+--- !u!114 &7944143076860252423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537048821071341243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3022d75e4a419aa0b1c79194dea022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressBar: {fileID: 5403409250246844589}
+  _updateInterval: 0.1
 --- !u!1 &2692604307030334302
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +721,7 @@ GameObject:
   - component: {fileID: 468923182297902954}
   - component: {fileID: 6277488998037138567}
   - component: {fileID: 4839090984123026056}
+  - component: {fileID: 8237287361406313943}
   m_Layer: 5
   m_Name: MainPanel
   m_TagString: Untagged
@@ -781,6 +814,29 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!223 &8237287361406313943
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271963500582766339}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &4666161500896818537
 GameObject:
   m_ObjectHideFlags: 0

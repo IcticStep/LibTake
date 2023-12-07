@@ -5,6 +5,7 @@ using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData.Interactables;
@@ -23,15 +24,18 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         private readonly IStaticDataService _staticDataService;
         private readonly UniqueIdUpdater _uniqueIdUpdater = new();
         private readonly ITruckProvider _truckProvider;
+        private readonly ICustomersRegistryService _customersRegistry;
 
         public InteractablesFactory(IAssetProvider assetProvider, ISaveLoadRegistry saveLoadRegistry,
-            IInteractablesRegistry interactablesRegistry, IStaticDataService staticDataService, ITruckProvider truckProvider)
+            IInteractablesRegistry interactablesRegistry, IStaticDataService staticDataService, ITruckProvider truckProvider, 
+            ICustomersRegistryService customersRegistry)
         {
             _assetProvider = assetProvider;
             _saveLoadRegistry = saveLoadRegistry;
             _interactablesRegistry = interactablesRegistry;
             _staticDataService = staticDataService;
             _truckProvider = truckProvider;
+            _customersRegistry = customersRegistry;
         }
         
         public GameObject CreateBookSlot(BookSlotSpawnData spawnData)
@@ -78,7 +82,10 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _uniqueIdUpdater.UpdateUniqueId(uniqueId);
             
             InitInteractable(uniqueId.Id, customer);
-            return customer.GetComponent<CustomerStateMachine>();
+            CustomerStateMachine customerStateMachine = customer.GetComponent<CustomerStateMachine>();
+            _customersRegistry.Register(customerStateMachine);
+            
+            return customerStateMachine;
         }
 
         private void InitInteractable(string id, GameObject gameObject)
