@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Markers;
+using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;
 using Code.Runtime.StaticData.Level;
@@ -38,7 +39,8 @@ namespace Code.Editor.Windows.InteractablesEditorSpawn
                 new SaveLoadRegistry(), 
                 new InteractablesRegistry(),
                 window._staticDataService,
-                new TruckProvider());
+                new TruckProvider(),
+                new CustomersRegistryService());
         }
 
         private void CreateGUI()
