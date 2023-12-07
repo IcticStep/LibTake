@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Player.Provider;
@@ -21,6 +22,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
         private readonly ICustomersQueueService _customersQueueService;
         private readonly IHudProviderService _hudProviderService;
         private readonly ICustomersPoolingService _customersPoolingService;
+        private readonly ICustomersRegistryService _customersRegistryService;
 
         public LevelCleanUpService(
             IInputService inputService,
@@ -30,7 +32,8 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             ITruckProvider truckProvider,
             ICustomersQueueService customersQueueService,
             IHudProviderService hudProviderService,
-            ICustomersPoolingService customersPoolingService)
+            ICustomersPoolingService customersPoolingService,
+            ICustomersRegistryService customersRegistryService)
         {
             _inputService = inputService;
             _interactablesRegistry = interactablesRegistry;
@@ -40,6 +43,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _customersQueueService = customersQueueService;
             _hudProviderService = hudProviderService;
             _customersPoolingService = customersPoolingService;
+            _customersRegistryService = customersRegistryService;
         }
 
         public void CleanUp()
@@ -52,6 +56,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _customersQueueService.CleanUp();
             _hudProviderService.CleanUp();
             _customersPoolingService.CleanUp();
+            _customersRegistryService.CleanUp();
         }
     }
 }

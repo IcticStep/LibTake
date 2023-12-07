@@ -15,6 +15,7 @@ using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
@@ -90,6 +91,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IDaysService>().To<DaysService>().AsSingle();
             Container.Bind<ISkillService>().To<SkillService>().AsSingle();
             Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
+            Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
         }
 
         private void InstallFactories()
