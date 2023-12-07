@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-namespace Code.Runtime.Ui
+namespace Code.Runtime.Ui.Messages
 {
     internal sealed class CentralMessage : MonoBehaviour
     {

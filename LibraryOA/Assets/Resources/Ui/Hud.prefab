@@ -937,6 +937,7 @@ GameObject:
   - component: {fileID: 6059565654370517799}
   - component: {fileID: 2008723776137186591}
   - component: {fileID: 5999856744085226527}
+  - component: {fileID: 5700724826384082032}
   m_Layer: 5
   m_Name: Coins_text
   m_TagString: Untagged
@@ -1060,6 +1061,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5700724826384082032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4992778134747289405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b7548912734d81982c8b14249cbc42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 5999856744085226527}
 --- !u!1 &5041678314631878646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1349,7 @@ GameObject:
   - component: {fileID: 5267133917513085876}
   - component: {fileID: 8752351302700333753}
   - component: {fileID: 5118101554718549944}
+  - component: {fileID: 871885387753192389}
   m_Layer: 5
   m_Name: Lives_text
   m_TagString: Untagged
@@ -1458,6 +1473,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &871885387753192389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265578003976136956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8534f296dd24f3d902634acef23c18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 5118101554718549944}
 --- !u!1 &7283893456317925930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,6 +1677,7 @@ GameObject:
   - component: {fileID: 5790940112005677120}
   - component: {fileID: 2560993240571534181}
   - component: {fileID: 2664506415568475240}
+  - component: {fileID: 7447334887692402704}
   m_Layer: 5
   m_Name: Days_text
   m_TagString: Untagged
@@ -1774,6 +1803,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7447334887692402704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808573191046411962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa812abf6094a28a602639facde0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 2664506415568475240}
 --- !u!1 &8259682513893097303
 GameObject:
   m_ObjectHideFlags: 0
