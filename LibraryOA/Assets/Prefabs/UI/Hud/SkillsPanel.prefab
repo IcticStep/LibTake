@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8115572207833710316}
   - component: {fileID: 5127460329193352538}
   m_Layer: 5
-  m_Name: People_container
+  m_Name: Physics_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 7411279603643050268}
   - component: {fileID: 1651506590018956395}
   m_Layer: 5
-  m_Name: Lives_text
+  m_Name: Chemistry_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294965650
-  m_fontColor: {r: 0.57254905, g: 0.9756595, b: 1, a: 1}
+    rgba: 4294280127
+  m_fontColor: {r: 0.74779737, g: 0.51290494, b: 0.9622642, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 2235462044303718499}
   - component: {fileID: 6123095474176367916}
   m_Layer: 5
-  m_Name: Lives_text
+  m_Name: Engeneering_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294965650
-  m_fontColor: {r: 0.57254905, g: 0.9756595, b: 1, a: 1}
+    rgba: 4285048829
+  m_fontColor: {r: 0.990566, g: 0.65497345, b: 0.40650588, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 3515262380745306155}
   - component: {fileID: 4470253911283813945}
   m_Layer: 5
-  m_Name: Lives_text
+  m_Name: Math_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,8 +417,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294965650
-  m_fontColor: {r: 0.57254905, g: 0.9756595, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 1344330037941114719}
   - component: {fileID: 3116126943234272294}
   m_Layer: 5
-  m_Name: Lives_text
+  m_Name: Programming_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,8 +565,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294965650
-  m_fontColor: {r: 0.57254905, g: 0.9756595, b: 1, a: 1}
+    rgba: 4285101306
+  m_fontColor: {r: 0.9811321, g: 0.45440632, b: 0.41189036, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 6887133982756191819}
   - component: {fileID: 9205103962983657195}
   m_Layer: 5
-  m_Name: People_container (5)
+  m_Name: Chemistry_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 3680169383434062006}
   - component: {fileID: 5827358241712948057}
   m_Layer: 5
-  m_Name: People_icon
+  m_Name: Math_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,7 +719,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 75, y: 0}
+  m_SizeDelta: {x: 75, y: -10}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3680169383434062006
 CanvasRenderer:
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4fd4940934c73f44ac364b7afd9cf7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cceb112d95708e744a0ebcdc6563b3f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 4347251654420119390}
   - component: {fileID: 6707176431668033693}
   m_Layer: 5
-  m_Name: People_container (1)
+  m_Name: Engeneering_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 8254737908898961970}
   - component: {fileID: 3997316811177808771}
   m_Layer: 5
-  m_Name: People_icon
+  m_Name: Engeneering_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4fd4940934c73f44ac364b7afd9cf7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ff9c61fa684bc641b01bbbf3905a000, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 938544091372087593}
   - component: {fileID: 4848571378615824038}
   m_Layer: 5
-  m_Name: Lives_text
+  m_Name: Biology_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,8 +1087,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294965650
-  m_fontColor: {r: 0.57254905, g: 0.9756595, b: 1, a: 1}
+    rgba: 4283236241
+  m_fontColor: {r: 0.5683707, g: 1, b: 0.2971698, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 6900876187408139457}
   - component: {fileID: 3863008125360200463}
   m_Layer: 5
-  m_Name: People_icon
+  m_Name: Biology_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,8 +1194,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 75, y: 0}
+  m_AnchoredPosition: {x: 0, y: 6}
+  m_SizeDelta: {x: 75, y: 2}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6900876187408139457
 CanvasRenderer:
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4fd4940934c73f44ac364b7afd9cf7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94b4f0375fa59f747a17e72823571fc6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 3279284040720831717}
   - component: {fileID: 2119779994640563591}
   m_Layer: 5
-  m_Name: People_container (4)
+  m_Name: Math_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 7779953167031819479}
   - component: {fileID: 3124685305227710275}
   m_Layer: 5
-  m_Name: People_icon
+  m_Name: Physics_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1368,7 +1368,7 @@ GameObject:
   - component: {fileID: 8087880609038081465}
   - component: {fileID: 2497840834421971852}
   m_Layer: 5
-  m_Name: People_icon
+  m_Name: Programming_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1391,7 +1391,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 75, y: 0}
+  m_SizeDelta: {x: 75, y: -14}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8087880609038081465
 CanvasRenderer:
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4fd4940934c73f44ac364b7afd9cf7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e577d9cac9f6b141b51e762b5000d57, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 1080177810277287852}
   - component: {fileID: 2535815371960360006}
   m_Layer: 5
-  m_Name: People_container (3)
+  m_Name: Programming_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 3827507398299865365}
   - component: {fileID: 2557023864807922995}
   m_Layer: 5
-  m_Name: People_icon
+  m_Name: Chemistry_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,7 +1512,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 75, y: 0}
+  m_SizeDelta: {x: 75, y: -10}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3827507398299865365
 CanvasRenderer:
@@ -1542,7 +1542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4fd4940934c73f44ac364b7afd9cf7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2936a5caadf84fc4e87f9788029db273, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1563,7 +1563,7 @@ GameObject:
   - component: {fileID: 2225678812883920429}
   - component: {fileID: 9078573443288927665}
   m_Layer: 5
-  m_Name: People_container (2)
+  m_Name: Biology_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 3693873849379125964}
   - component: {fileID: 3255475938581918747}
   m_Layer: 5
-  m_Name: Lives_text
+  m_Name: Physics_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
