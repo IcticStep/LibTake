@@ -28,7 +28,10 @@ namespace Code.Runtime.Services.Skills
             AddLevelsFor(bookData.StaticBookType.BookType, 1);
             Updated?.Invoke();
         }
-        
+
+        public int GetSkillByBookType(BookType bookType) =>
+            _levels.GetValueOrDefault(bookType);
+
         private void AddLevelsFor(BookType bookType, int levels)
         {
             _levels.TryAdd(bookType, 0);

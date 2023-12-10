@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic
 {
-    internal sealed class Progress : MonoBehaviour, ISavedProgress
+    public sealed class Progress : MonoBehaviour, ISavedProgress
     {
         private string _id;
         private float _timeToFinish;
