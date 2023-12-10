@@ -12,9 +12,9 @@ namespace Code.Runtime.StaticData.Books
         public string Id { get; private set; } = Guid.NewGuid().ToString();
 
         [field: SerializeField]
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
         [field: SerializeReference]
-        public StaticBookType StaticBookType { get; private set; }
+        public StaticBookType StaticBookType { get; set; }
     }
 }
