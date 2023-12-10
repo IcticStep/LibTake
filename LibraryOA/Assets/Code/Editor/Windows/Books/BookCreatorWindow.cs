@@ -7,50 +7,61 @@ namespace Code.Editor.Windows.Books
 {
     public class BookCreatorWindow : EditorWindow
     {
-        private string bookTitle = "";
-        private StaticBookType selectedBookType;
+        private string _bookTitle = "";
+        private StaticBookType _selectedBookType;
 
         [MenuItem("Tools/Book Creator")]
-        public static void ShowWindow()
-        {
+        public static void ShowWindow() =>
             GetWindow<BookCreatorWindow>("Book Creator");
-        }
 
         private void OnGUI()
         {
             GUILayout.Label("Create a New Book", EditorStyles.boldLabel);
 
-            bookTitle = EditorGUILayout.TextField("Title", bookTitle);
-
-            // Object field for selecting StaticBookType asset
-            selectedBookType = EditorGUILayout.ObjectField("Book Type", selectedBookType, typeof(StaticBookType), false) as StaticBookType;
+            _bookTitle = DrawBookTitleField();
+            _selectedBookType = DrawBookTypeField();
 
             if (GUILayout.Button("Create Book"))
             {
                 CreateBook();
-                bookTitle = "";
-                Repaint(); // This line will refresh the editor window to show the cleared field
+                CleanUpTool();
             }
         }
+
+        private string DrawBookTitleField() =>
+            EditorGUILayout.TextField("Title", _bookTitle);
+
+        private StaticBookType DrawBookTypeField() =>
+            EditorGUILayout.ObjectField("Book Type", _selectedBookType, typeof(StaticBookType), false) as StaticBookType;
 
         private void CreateBook()
         {
             StaticBook newBook = CreateInstance<StaticBook>();
-            newBook.Title = bookTitle;
-            newBook.StaticBookType = selectedBookType;
+            newBook.Title = _bookTitle;
+            newBook.StaticBookType = _selectedBookType;
     
-            string folderPath = Path.Combine("Assets/Resources/Static Data/Books/Instances", selectedBookType != null ? selectedBookType.name : "Other");
+            string folderPath = GetDirectoryPath();
             if (!Directory.Exists(folderPath))
-            {
                 Directory.CreateDirectory(folderPath);
-            }
 
-            string assetPath = Path.Combine(folderPath, bookTitle + ".asset");
+            string assetPath = GetBookPath(folderPath);
             AssetDatabase.CreateAsset(newBook, assetPath);
             AssetDatabase.SaveAssets();
 
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = newBook;
         }
+
+        private void CleanUpTool()
+        {
+            _bookTitle = "";
+            Repaint();
+        }
+
+        private string GetDirectoryPath() =>
+            Path.Combine("Assets/Resources/Static Data/Books/Instances", _selectedBookType != null ? _selectedBookType.name : "Other");
+
+        private string GetBookPath(string folderPath) =>
+            Path.Combine(folderPath, _bookTitle + ".asset");
     }
 }
