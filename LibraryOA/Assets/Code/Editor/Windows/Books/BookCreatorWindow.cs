@@ -28,6 +28,8 @@ namespace Code.Editor.Windows.Books
             if (GUILayout.Button("Create Book"))
             {
                 CreateBook();
+                bookTitle = "";
+                Repaint(); // This line will refresh the editor window to show the cleared field
             }
         }
 
@@ -36,7 +38,7 @@ namespace Code.Editor.Windows.Books
             StaticBook newBook = CreateInstance<StaticBook>();
             newBook.Title = bookTitle;
             newBook.StaticBookType = selectedBookType;
-            
+    
             string folderPath = Path.Combine("Assets/Resources/Static Data/Books/Instances", selectedBookType != null ? selectedBookType.name : "Other");
             if (!Directory.Exists(folderPath))
             {
