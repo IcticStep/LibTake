@@ -242,6 +242,7 @@ MonoBehaviour:
   _target: {fileID: 6387551372864453616}
   _smoothFader: {fileID: 3072851638680391312}
   _visualMinimum: 0.01
+  _invertedFilling: 0
 --- !u!1 &7604683331569489664
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3029714730872081771
 MonoBehaviour:
   m_ObjectHideFlags: 0

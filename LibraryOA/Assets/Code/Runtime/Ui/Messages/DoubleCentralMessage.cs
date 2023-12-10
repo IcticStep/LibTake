@@ -1,10 +1,8 @@
-
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Runtime.Ui
+namespace Code.Runtime.Ui.Messages
 {
     internal sealed class DoubleCentralMessage : MonoBehaviour
     {

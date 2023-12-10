@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
+using Code.Runtime.StaticData.Books;
 
 namespace Code.Runtime.Services.Skills
 {
@@ -7,5 +8,6 @@ namespace Code.Runtime.Services.Skills
     {
         event Action Updated;
         void UpdateSkillsBy(string bookId);
+        int GetSkillByBookType(BookType bookType);
     }
 }

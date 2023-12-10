@@ -17,7 +17,9 @@ namespace Code.Runtime.Ui
         public void SetProgress(float value, float maxValue)
         {
             _target.fillAmount = GetFillAmount(value, maxValue);
-            SetVisibility(value, maxValue);
+            
+            if(_smoothFader != null)
+                SetVisibility(value, maxValue);
         }
 
         private float GetFillAmount(float value, float maxValue) =>

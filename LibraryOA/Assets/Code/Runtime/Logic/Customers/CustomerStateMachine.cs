@@ -39,6 +39,8 @@ namespace Code.Runtime.Logic.Customers
         private IPlayerInventoryService _playerInventoryService;
         private IPlayerLivesService _playerLivesService;
 
+        public Progress Progress => _progress;
+
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
         public Type ActiveStateType => _activeState.GetType();
         public event Action<CustomerStateMachine> DeactivateStateEntered;
