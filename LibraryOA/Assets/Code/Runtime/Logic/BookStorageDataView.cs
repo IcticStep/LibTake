@@ -49,7 +49,12 @@ namespace Code.Runtime.Logic
             _smoothFader.UnFade();
         }
 
-        public void HideData() =>
+        public void HideData()
+        {
+            if(_smoothFader.IsFullyInvisible)
+                return;
+                
             _smoothFader.Fade();
+        }
     }
 }
