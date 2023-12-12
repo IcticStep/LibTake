@@ -24,6 +24,7 @@ using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Truck;
+using Code.Runtime.Services.Loading;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
@@ -92,6 +93,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ISkillService>().To<SkillService>().AsSingle();
             Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
             Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
+            Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
         }
 
         private void InstallFactories()
