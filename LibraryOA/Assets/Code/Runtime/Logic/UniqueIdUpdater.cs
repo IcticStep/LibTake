@@ -1,7 +1,5 @@
 using System;
 using System.Linq;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -32,7 +30,7 @@ namespace Code.Runtime.Logic
         private static bool HasNoId(UniqueId uniqueId) =>
             string.IsNullOrEmpty(uniqueId.Id);
 
-        private bool IsPrefab(UniqueId uniqueId) => 
+        private bool IsPrefab(UniqueId uniqueId) =>
             uniqueId.gameObject.scene.rootCount == 0;
 
         private bool IsUnique(UniqueId uniqueId)
@@ -46,11 +44,13 @@ namespace Code.Runtime.Logic
             string id = $"{uniqueId.gameObject.scene.name}_{Guid.NewGuid().ToString()}";
             uniqueId.InitId(id);
 
+#if UNITY_EDITOR
             if(Application.isPlaying)
                 return;
 
-            EditorUtility.SetDirty(uniqueId);
-            EditorSceneManager.MarkSceneDirty(uniqueId.gameObject.scene);
+            UnityEditor.EditorUtility.SetDirty(uniqueId);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(uniqueId.gameObject.scene);
+#endif
         }
     }
 }
