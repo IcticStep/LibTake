@@ -199,6 +199,17 @@ PrefabInstance:
       propertyPath: _bookStorageHolder
       value: 
       objectReference: {fileID: 5475589924342636869}
+    - target: {fileID: 6643162300184822928, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643162300184822928, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b9337efa25de3044a2c88a8cbba6750,
+        type: 3}
     - target: {fileID: 6963759028763700424, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
       propertyPath: m_Name
