@@ -339,11 +339,23 @@ PrefabInstance:
       propertyPath: _ease
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3324547501249591629, guid: dc35dd98b7333f34b939cbe737cc16b2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 161358383, guid: 7404c32a67fdb354f845d426393af723,
+        type: 3}
     - target: {fileID: 4754773549397298873, guid: dc35dd98b7333f34b939cbe737cc16b2,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6387551372864453616, guid: dc35dd98b7333f34b939cbe737cc16b2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -996277863, guid: 7404c32a67fdb354f845d426393af723,
+        type: 3}
     - target: {fileID: 6691821627766387088, guid: dc35dd98b7333f34b939cbe737cc16b2,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -503,6 +515,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4640352370649884595}
     m_Modifications:
+    - target: {fileID: 1087523792410779645, guid: a2d70c30a0eec1a44b077706e7d551bf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b4eb0c9a3cf8bd046bf0037b42bce0cf,
+        type: 3}
     - target: {fileID: 1393889602695255024, guid: a2d70c30a0eec1a44b077706e7d551bf,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -568,6 +586,27 @@ PrefabInstance:
       propertyPath: _bookStorageHolder
       value: 
       objectReference: {fileID: 4093452936799277596}
+    - target: {fileID: 4089614108221351296, guid: a2d70c30a0eec1a44b077706e7d551bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089614108221351296, guid: a2d70c30a0eec1a44b077706e7d551bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449521635452242872, guid: a2d70c30a0eec1a44b077706e7d551bf,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449521635452242872, guid: a2d70c30a0eec1a44b077706e7d551bf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b9337efa25de3044a2c88a8cbba6750,
+        type: 3}
     - target: {fileID: 7954539564736135046, guid: a2d70c30a0eec1a44b077706e7d551bf,
         type: 3}
       propertyPath: _bookStorage
@@ -589,7 +628,8 @@ PrefabInstance:
       value: Opened Book with Ui
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5899313533759681901, guid: a2d70c30a0eec1a44b077706e7d551bf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d70c30a0eec1a44b077706e7d551bf, type: 3}
