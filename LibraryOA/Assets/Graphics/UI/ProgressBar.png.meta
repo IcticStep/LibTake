@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -123,43 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ProgressBar_front
+      name: ProgressBar_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 194
-        width: 1011
-        height: 144
+        y: 101
+        width: 512
+        height: 71
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 1, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c3ac9203203fc64089f761c49994c96
-      internalID: 1936305126
+      spriteID: e54c0e9516253654492af52fabeadee8
+      internalID: -996277863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ProgressBar_back
+      name: ProgressBar_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1011
-        height: 172
+        width: 512
+        height: 89
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 7}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87616f2dc159194479c376f3648241d8
-      internalID: -1796433023
+      spriteID: c841c16d5c2dacd4f85554f2daf3dcd0
+      internalID: 161358383
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ProgressBar_back: -1796433023
-      ProgressBar_front: 1936305126
+      ProgressBar_0: -996277863
+      ProgressBar_1: 161358383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

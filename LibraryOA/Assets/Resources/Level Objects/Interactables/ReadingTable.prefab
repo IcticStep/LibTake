@@ -339,11 +339,23 @@ PrefabInstance:
       propertyPath: _ease
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3324547501249591629, guid: dc35dd98b7333f34b939cbe737cc16b2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 161358383, guid: 7404c32a67fdb354f845d426393af723,
+        type: 3}
     - target: {fileID: 4754773549397298873, guid: dc35dd98b7333f34b939cbe737cc16b2,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6387551372864453616, guid: dc35dd98b7333f34b939cbe737cc16b2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -996277863, guid: 7404c32a67fdb354f845d426393af723,
+        type: 3}
     - target: {fileID: 6691821627766387088, guid: dc35dd98b7333f34b939cbe737cc16b2,
         type: 3}
       propertyPath: m_AnchorMax.y
