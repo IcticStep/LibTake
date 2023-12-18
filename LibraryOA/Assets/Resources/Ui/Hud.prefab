@@ -1747,6 +1747,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 5830889624806139747, guid: 41c4d6264bd26c04397a5a3c34f2b359,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa83d7ef22b2b394aba754fd3a4dc3f7,
+        type: 3}
     - target: {fileID: 6182221913670294705, guid: 41c4d6264bd26c04397a5a3c34f2b359,
         type: 3}
       propertyPath: m_SizeDelta.x
