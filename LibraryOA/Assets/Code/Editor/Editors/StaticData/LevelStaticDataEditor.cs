@@ -1,11 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Markers.Customers;
 using Code.Runtime.Logic.Markers.Spawns;
 using Code.Runtime.Logic.Markers.Truck;
-using Code.Runtime.StaticData;
-using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEditor;

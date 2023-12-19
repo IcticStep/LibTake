@@ -4,6 +4,7 @@ using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
+using Code.Runtime.StaticData.Ui;
 
 namespace Code.Runtime.Infrastructure.Services.StaticData
 {
@@ -13,6 +14,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         InteractablesStaticData Interactables { get; }
         StaticPlayer Player { get; }
         StaticBookReceiving BookReceiving { get; }
+        UiData Ui { get; }
         IReadOnlyList<StaticBook> AllBooks { get; }
         LevelStaticData CurrentLevelData { get; }
         void LoadAll();
@@ -20,6 +22,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         void LoadLevels();
         void LoadPlayer();
         void LoadBookReceiving();
+        void LoadUi();
         void LoadInteractables();
         void LoadStartupSettings();
         StaticBook ForBook(string id);

@@ -5,6 +5,7 @@ using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
+using Code.Runtime.StaticData.Ui;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string BookSlotPath = "Static Data/Interactables/BookSlotData";
         private const string PlayerPath = "Static Data/Player";
         private const string BookReceivingPath = "Static Data/Book Receiving";
+        private const string UiPath = "Static Data/Ui Data";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
@@ -30,6 +32,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public InteractablesStaticData Interactables { get; private set; }
         public StaticPlayer Player { get; private set; }
         public StaticBookReceiving BookReceiving { get; private set; }
+        public UiData Ui { get; private set; }
         public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
         public LevelStaticData CurrentLevelData => ForLevel(SceneManager.GetActiveScene().name);
 
@@ -41,6 +44,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             LoadBookReceiving();
             LoadBooks();
             LoadInteractables();
+            LoadUi();
         }
 
         public void LoadBooks() =>
@@ -60,6 +64,10 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public void LoadBookReceiving() =>
             BookReceiving = Resources
                 .Load<StaticBookReceiving>(BookReceivingPath);
+        
+        public void LoadUi() =>
+            Ui = Resources
+                .Load<UiData>(UiPath);
 
         public void LoadInteractables()
         {
@@ -75,13 +83,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
                 .Load<ScenesRouting>(ScenesRoutingPath);
         
         public StaticBook ForBook(string id) =>
-            _books.TryGetValue(id, out StaticBook result)
-                ? result
-                : null;
+            _books.GetValueOrDefault(id);
         
         public LevelStaticData ForLevel(string key) =>
-            _levels.TryGetValue(key, out LevelStaticData result)
-                ? result
-                : null;
+            _levels.GetValueOrDefault(key);
     }
 }
