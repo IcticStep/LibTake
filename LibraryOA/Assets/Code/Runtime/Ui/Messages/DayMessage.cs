@@ -1,10 +1,11 @@
+using Code.Runtime.StaticData.Ui;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
 namespace Code.Runtime.Ui.Messages
 {
-    internal sealed class CentralMessage : MonoBehaviour
+    internal sealed class DayMessage : MonoBehaviour
     {
         [SerializeField]
         private SmoothFader _smoothFader;
@@ -25,5 +26,8 @@ namespace Code.Runtime.Ui.Messages
             _textMessage.text = string.Empty;
             await _smoothFader.FadeAsync();
         }
+        
+        public void ConfigureTimings(UiMessageIntervals intervals) =>
+            _smoothFader.Configure(intervals.ShowAnimationTime, intervals.HideAnimationTime);
     }
 }

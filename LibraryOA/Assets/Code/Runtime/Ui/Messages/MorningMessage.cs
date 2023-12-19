@@ -1,10 +1,11 @@
+using Code.Runtime.StaticData.Ui;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
 namespace Code.Runtime.Ui.Messages
 {
-    internal sealed class DoubleCentralMessage : MonoBehaviour
+    internal sealed class MorningMessage : MonoBehaviour
     {
         [SerializeField]
         private SmoothFader _smoothFader;
@@ -12,7 +13,7 @@ namespace Code.Runtime.Ui.Messages
         private TextMeshProUGUI _header;
         [SerializeField]
         private TextMeshProUGUI _subHeader;
-
+        
         private void Awake() =>
             _smoothFader.FadeImmediately();
 
@@ -29,5 +30,8 @@ namespace Code.Runtime.Ui.Messages
             _subHeader.text = string.Empty;
             await _smoothFader.FadeAsync();
         }
+        
+        public void ConfigureTimings(UiMessageIntervals intervals) =>
+            _smoothFader.Configure(intervals.ShowAnimationTime, intervals.HideAnimationTime);
     }
 }

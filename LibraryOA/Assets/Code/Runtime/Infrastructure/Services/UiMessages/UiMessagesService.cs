@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.Services.HudProvider;
+using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Ui;
 using Code.Runtime.Ui.Messages;
 using Cysharp.Threading.Tasks;
@@ -10,27 +11,31 @@ namespace Code.Runtime.Infrastructure.Services.UiMessages
     internal sealed class UiMessagesService : IUiMessagesService
     {
         private readonly IHudProviderService _hudProviderService;
+        private readonly IStaticDataService _staticDataService;
 
-        private CentralMessage CentralMessage => _hudProviderService.CentralMessage;
-        private DoubleCentralMessage DoubleCentralMessage => _hudProviderService.DoubleCentralMessage;
-        
-        public UiMessagesService(IHudProviderService hudProviderService) 
+        private DayMessage DayMessage => _hudProviderService.DayMessage;
+        private MorningMessage MorningMessage => _hudProviderService.MorningMessage;
+        private float MorningMessageDelay => _staticDataService.Ui.MorningMessageIntervals.OnScreenTime;
+        private float DayMessageDelay => _staticDataService.Ui.DayMessageIntervals.OnScreenTime;
+            
+        public UiMessagesService(IHudProviderService hudProviderService, IStaticDataService staticDataService)
         {
             _hudProviderService = hudProviderService;
+            _staticDataService = staticDataService;
         }
 
-        public async UniTask ShowCenterMessage(string text, float readingSecondsDelay = 1f)
+        public async UniTask ShowMorningMessage(string header, string subHeader)
         {
-            await CentralMessage.Show(text);
-            await UniTask.WaitForSeconds(readingSecondsDelay);
-            await CentralMessage.Hide();
+            await MorningMessage.Show(header, subHeader);
+            await UniTask.WaitForSeconds(MorningMessageDelay);
+            await MorningMessage.Hide();
         }
-        
-        public async UniTask ShowDoubleCenterMessage(string header, string subHeader, float readingSecondsDelay = 1f)
+
+        public async UniTask ShowDayMessage(string text)
         {
-            await DoubleCentralMessage.Show(header, subHeader);
-            await UniTask.WaitForSeconds(readingSecondsDelay);
-            await DoubleCentralMessage.Hide();
+            await DayMessage.Show(text);
+            await UniTask.WaitForSeconds(DayMessageDelay);
+            await DayMessage.Hide();
         }
     }
 }
