@@ -7,8 +7,8 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
     internal interface IHudProviderService
     {
         GameObject Hud { get; }
-        CentralMessage CentralMessage { get; }
-        DoubleCentralMessage DoubleCentralMessage { get; }
+        DayMessage DayMessage { get; }
+        MorningMessage MorningMessage { get; }
         void RegisterHud(GameObject hud);
         void CleanUp();
     }

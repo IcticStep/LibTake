@@ -57,7 +57,7 @@ namespace Code.Runtime.Infrastructure.States
         private void ShowDayNumberMessage()
         {
             Debug.Log($"Morning {_daysService.CurrentDay}.");
-            _uiMessagesService.ShowDoubleCenterMessage($"Morning {_daysService.CurrentDay}", "Books delivered!");
+            _uiMessagesService.ShowMorningMessage($"Morning {_daysService.CurrentDay}", "Books delivered!");
         }
 
         private async UniTask DeliverBooks()
