@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
-using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic
 {
@@ -35,6 +35,9 @@ namespace Code.Runtime.Logic
         }
 
         public Action<float> Updated;
+        public Action Started;
+        [FormerlySerializedAs("Finished")]
+        public Action Stopped;
 
         public void Reset()
         {
@@ -79,6 +82,7 @@ namespace Code.Runtime.Logic
             JustReset = false;
             _cancellationTokenSource = new CancellationTokenSource();
             _fillingTask = Fill(onFinishCallback, _cancellationTokenSource.Token);
+            Started?.Invoke();
             _fillingTask.Value.Forget();
         }
 
@@ -89,6 +93,7 @@ namespace Code.Runtime.Logic
             
             _cancellationTokenSource.Cancel();
             _fillingTask = null;
+            Stopped?.Invoke();
         }
 
         private async UniTask Fill(Action onFinishCallback, CancellationToken cancellationToken)
@@ -107,6 +112,7 @@ namespace Code.Runtime.Logic
             _externalTaskSource?.TrySetResult();
             _externalTaskSource = null;
             onFinishCallback?.Invoke();
+            Stopped?.Invoke();
         }
 
         private float CalculateFillingAmount() =>
