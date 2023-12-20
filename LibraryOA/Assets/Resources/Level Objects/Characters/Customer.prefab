@@ -505,7 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 2592862915530067126}
-  _duration: 0.2
+  _fadeDuration: 0.2
+  _unFadeDuration: 0.2
 --- !u!225 &2592862915530067126
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -608,6 +609,7 @@ GameObject:
   - component: {fileID: 6101636625766974792}
   - component: {fileID: 2871849467389682782}
   - component: {fileID: 246090937149938568}
+  - component: {fileID: 2010779792457505059}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -713,6 +715,21 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 324633534625668468}
   _updateInterval: 0.1
   _destinationReachedDistance: 0.3
+--- !u!114 &2010779792457505059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299036627364675959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c6d3520a314ae2b69c26a4147b0788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactable: {fileID: 129088601558807308}
+  _hoverMeshes:
+  - {fileID: 1360396628840278855}
 --- !u!1 &7710025772338265483
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +804,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 9064682514976031245}
-  _duration: 0.2
+  _fadeDuration: 0.2
+  _unFadeDuration: 0.2
 --- !u!114 &998345222966575883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,6 +1206,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6614725517295453049}
   m_SourcePrefab: {fileID: 100100000, guid: 7b4b8a795e3e4a7429ef8840d8864ea7, type: 3}
+--- !u!137 &1360396628840278855 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1201979742360625635, guid: 7b4b8a795e3e4a7429ef8840d8864ea7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9056928294582678874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &3231959341003720907 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 7b4b8a795e3e4a7429ef8840d8864ea7,
