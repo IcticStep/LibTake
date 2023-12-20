@@ -24,6 +24,9 @@ namespace Code.Runtime.Logic
             Generate(uniqueId);
         }
 
+        public void ForceUpdateUniqueId(UniqueId uniqueId) =>
+            Generate(uniqueId);
+
         private static bool HasPrefabId(UniqueId uniqueId) =>
             uniqueId.Id[0] == '_';
 
