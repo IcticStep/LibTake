@@ -79,7 +79,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
 
             UniqueId uniqueId = customer.GetComponentInChildren<UniqueId>();
-            _uniqueIdUpdater.UpdateUniqueId(uniqueId);
+            _uniqueIdUpdater.ForceUpdateUniqueId(uniqueId);
             
             InitInteractable(uniqueId.Id, customer);
             CustomerStateMachine customerStateMachine = customer.GetComponent<CustomerStateMachine>();
