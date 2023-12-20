@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2086143251755747177}
   - component: {fileID: 8367924536344103221}
   - component: {fileID: 4841188373155321836}
+  - component: {fileID: 3616246401360932450}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -96,7 +97,6 @@ MonoBehaviour:
   _bookStorageObject: {fileID: 4093452936799277596}
   _progress: {fileID: 2086143251755747177}
   _bookStorageDataView: {fileID: 9090452618575446732}
-  _particleSystem: {fileID: 7011703286712482255}
 --- !u!114 &4841188373155321836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +112,20 @@ MonoBehaviour:
   _interactable: {fileID: 8367924536344103221}
   _hoverMeshes:
   - {fileID: 6082577622256552433}
+--- !u!114 &3616246401360932450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862531959078406648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5d8a430a2b4a4686296c206b9e4144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoke: {fileID: 7011703286712482255}
+  _progress: {fileID: 2086143251755747177}
 --- !u!1 &3051894274289638350
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +559,7 @@ PrefabInstance:
     - target: {fileID: 9058497618237763720, guid: 4592e134413ee484c9d8681682b2e1d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.46
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 9058497618237763720, guid: 4592e134413ee484c9d8681682b2e1d2,
         type: 3}
