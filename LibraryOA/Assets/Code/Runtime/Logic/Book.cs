@@ -8,7 +8,7 @@ namespace Code.Runtime.Logic
         private MeshRenderer _meshRenderer;
 
         public void SetMaterial(Material material) =>
-            _meshRenderer.material = material;
+            _meshRenderer.sharedMaterial = material;
 
         public void Show() =>
             _meshRenderer.enabled = true;

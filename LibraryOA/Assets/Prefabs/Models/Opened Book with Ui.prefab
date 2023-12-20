@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Opened Book with Ui
       objectReference: {fileID: 0}
+    - target: {fileID: 8788181422147137710, guid: 64b4260316ef2684b9ccb962013f6ab3,
+        type: 3}
+      propertyPath: _bookMeshRenderer
+      value: 
+      objectReference: {fileID: 1393889602695255024}
     - target: {fileID: 8791943453942099162, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
       propertyPath: m_LocalPosition.z
