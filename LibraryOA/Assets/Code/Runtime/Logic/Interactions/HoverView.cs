@@ -9,7 +9,7 @@ namespace Code.Runtime.Logic.Interactions
     internal sealed class HoverView : MonoBehaviour
     {
         [SerializeField] private Interactable _interactable;
-        [SerializeField] private MeshRenderer[] _hoverMeshes;
+        [SerializeField] private Renderer[] _hoverMeshes;
 
         private IPlayerProviderService _playerProviderService;
         
