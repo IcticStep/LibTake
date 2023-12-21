@@ -1,11 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using Code.Editor.Editors;
-using Code.Editor.Editors.Logic;
 using Code.Runtime.Logic;
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Spawns;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -152,8 +148,8 @@ namespace Code.Editor.Windows.BookSlot
 
         private void AddObject()
         {
-            BookSlotSpawn spawn = PrefabUtility
-                .InstantiatePrefab(_bookSlotSpawnPrefab, Container.transform)
+            BookSlotSpawn spawn = ((GameObject)PrefabUtility
+                    .InstantiatePrefab(_bookSlotSpawnPrefab, Container.transform))
                 .GetComponentInChildren<BookSlotSpawn>();
 
             UniqueId uniqueId = spawn.GetComponentInChildren<UniqueId>();
