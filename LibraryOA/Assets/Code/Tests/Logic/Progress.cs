@@ -17,8 +17,8 @@ namespace Code.Tests.Logic
             // Act.
 
             // Assert.
-            Assert.That(progress.Value, Is.LessThanOrEqualTo(float.Epsilon));
-            Assert.True(progress.Empty);
+            Assert.That(progress.Value, Is.LessThanOrEqualTo(float.Epsilon), $"{nameof(progress)}.{nameof(progress.Value)}");
+            Assert.True(progress.Empty, $"{nameof(progress)}.{nameof(progress.Empty)}");
         }
 
         [UnityTest]
@@ -33,7 +33,7 @@ namespace Code.Tests.Logic
                 await UniTask.DelayFrame(2);
 
                 // Assert.
-                Assert.True(progress.Full);
+                Assert.True(progress.Full, $"{nameof(progress)}.{nameof(progress.Full)}");
             });
 
         [Test]
@@ -48,7 +48,7 @@ namespace Code.Tests.Logic
             progress.StartFilling();
 
             // Assert.
-            Assert.True(wasCalled, message: "Event fired");
+            Assert.True(wasCalled, message: $"{progress.Started} event fired");
         }
 
         [UnityTest]
@@ -60,7 +60,7 @@ namespace Code.Tests.Logic
 
                 // Act.
                 progress.StartFilling();
-                await UniTask.WaitForSeconds(0.01f);
+                await UniTask.WaitForSeconds(0.1f);
                 progress.StopFilling();
 
                 // Assert.
@@ -84,6 +84,63 @@ namespace Code.Tests.Logic
                 // Assert.
                 Assert.That(progress.Value, Is.LessThanOrEqualTo(float.Epsilon),
                     message: $"{nameof(progress)}.{nameof(progress.Value)}");
+            });
+        
+        [UnityTest]
+        public IEnumerator WhenReset_AndWasStarted_ThenJustResetIsTrue() =>
+            UniTask.ToCoroutine(async () =>
+            {
+                // Arrange.
+                Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+                progress.StartFilling();
+                
+                // Act.
+                progress.Reset();
+
+                // Assert.
+                Assert.IsTrue(progress.JustReset, $"{nameof(progress)}.{nameof(progress.JustReset)}");
+            });
+
+        [Test]
+        public void WhenCreated_And_ThenCanBeStarted()
+        {
+            // Arrange.
+            Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+            
+            // Act.
+
+            // Assert.
+            Assert.True(progress.CanBeStarted, $"{nameof(progress)}.{nameof(progress.CanBeStarted)}");
+        }
+
+        [Test]
+        public void WhenStartFilling_And_ThenCanNotBeStarted()
+        {
+            // Arrange.
+            Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+            
+            // Act.
+            progress.StartFilling();
+            
+            // Assert.
+            Assert.False(progress.CanBeStarted, $"{nameof(progress)}.{nameof(progress.CanBeStarted)}");
+        }
+
+        [UnityTest]
+        public IEnumerator WhenStartFilling_AndAwaited_ThenFilled() =>
+            UniTask.ToCoroutine(async () =>
+            {
+                // Arrange.
+                Progress progress = SetUp.ProgressWithSecondsToFinish(0.01f);
+                
+                // Act.
+                progress.StartFilling();
+                int finishedTask = await UniTask.WhenAny(progress.Task, UniTask.WaitForSeconds(0.5f));
+                if(finishedTask == 1)
+                    Assert.Fail($"Timeout on trying to await the progress task.");
+
+                // Assert.
+                Assert.True(progress.Full);
             });
     }
 }
