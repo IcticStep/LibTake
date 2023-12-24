@@ -1,11 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using Code.Editor.Editors;
-using Code.Editor.Editors.Logic;
 using Code.Runtime.Logic;
-using Code.Runtime.Logic.Markers;
 using Code.Runtime.Logic.Markers.Spawns;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -23,7 +19,7 @@ namespace Code.Editor.Windows.BookSlot
         private const string InfoLabelName = "InfoLabel";
 
         private readonly UniqueIdUpdater _uniqueIdUpdater = new();
-        
+
         [SerializeField]
         private VisualTreeAsset _visualTreeAsset;
         [SerializeField]
@@ -54,7 +50,7 @@ namespace Code.Editor.Windows.BookSlot
             VisualElement gui = _visualTreeAsset.Instantiate();
             VisualElement root = rootVisualElement;
             root.Add(gui);
-            
+
             _containerField = root.Q<ObjectField>(ContainerFieldName);
             _toolBox = root.Q<IMGUIContainer>(ToolBoxName);
             _circleRadiusSlider = root.Q<Slider>(CircleRadiusSliderName);
@@ -67,7 +63,7 @@ namespace Code.Editor.Windows.BookSlot
         {
             if(Application.isPlaying)
                 return;
-            
+
             SetToolBoxVisibility();
             if(!HasTarget)
             {
@@ -91,7 +87,7 @@ namespace Code.Editor.Windows.BookSlot
         {
             if(_initialized)
                 return;
-            
+
             _spawns = Container.GetComponentsInChildren<BookSlotSpawn>().ToList();
             _circleRadiusSlider.value = Container.CircleRadius;
             _skipObjectSlider.value = Container.ObjectsToSkip;
@@ -115,8 +111,8 @@ namespace Code.Editor.Windows.BookSlot
         {
             float angleStep = 2 * Mathf.PI / (TargetSpawnsCount + ObjectsToSkip);
             Vector3 containerPosition = Container.transform.position;
-            
-            for (int i = 0; i < TargetSpawnsCount; i++)
+
+            for(int i = 0; i < TargetSpawnsCount; i++)
             {
                 float angle = (i + ObjectsToSkip) * angleStep;
                 Vector3 position = new(
@@ -152,13 +148,13 @@ namespace Code.Editor.Windows.BookSlot
 
         private void AddObject()
         {
-            BookSlotSpawn spawn = PrefabUtility
-                .InstantiatePrefab(_bookSlotSpawnPrefab, Container.transform)
+            BookSlotSpawn spawn = ((GameObject)PrefabUtility
+                    .InstantiatePrefab(_bookSlotSpawnPrefab, Container.transform))
                 .GetComponentInChildren<BookSlotSpawn>();
 
             UniqueId uniqueId = spawn.GetComponentInChildren<UniqueId>();
             _uniqueIdUpdater.UpdateUniqueId(uniqueId);
-            
+
             _spawns.Add(spawn);
         }
 
@@ -166,7 +162,7 @@ namespace Code.Editor.Windows.BookSlot
         {
             BookSlotSpawn last = _spawns[^1];
             DestroyImmediate(last.gameObject);
-            _spawns.RemoveAt(_spawns.Count-1);
+            _spawns.RemoveAt(_spawns.Count - 1);
         }
     }
 }

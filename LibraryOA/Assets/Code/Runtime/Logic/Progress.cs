@@ -3,7 +3,6 @@ using System.Threading;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic
 {
@@ -23,7 +22,7 @@ namespace Code.Runtime.Logic
         public float MaxValue { get; private set; } = 1;
         public bool JustReset { get; private set; }
         public UniTask Task => _externalTaskSource.Task;
-        
+
         public float Value
         {
             get => _value;
@@ -36,7 +35,6 @@ namespace Code.Runtime.Logic
 
         public Action<float> Updated;
         public Action Started;
-        [FormerlySerializedAs("Finished")]
         public Action Stopped;
 
         public void Reset()
