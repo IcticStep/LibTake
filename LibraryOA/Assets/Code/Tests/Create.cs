@@ -1,11 +1,11 @@
 using Code.Runtime.Logic;
 using UnityEngine;
 
-namespace Code.Tests.Logic
+namespace Code.Tests
 {
     public static class Create
     {
-        public static Progress Progress() =>
+        public static Progress LogicProgress() =>
             new GameObject().AddComponent<Progress>();
     }
 }

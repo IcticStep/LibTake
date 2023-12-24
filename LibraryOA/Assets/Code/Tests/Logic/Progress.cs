@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine.TestTools;
@@ -6,13 +7,14 @@ using Progress = Code.Runtime.Logic.Progress;
 
 namespace Code.Tests.Logic
 {
+    [TestFixture]
     public class ProgressTests
     {
         [Test]
         public void WhenCreated_And_ThenProgressEmpty()
         {
             // Arrange.
-            Progress progress = Create.Progress();
+            Progress progress = Create.LogicProgress();
 
             // Act.
 
