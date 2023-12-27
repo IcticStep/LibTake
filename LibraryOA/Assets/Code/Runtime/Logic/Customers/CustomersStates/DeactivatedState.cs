@@ -1,5 +1,5 @@
+using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Logic.Interactions;
-using UnityEngine.AI;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {

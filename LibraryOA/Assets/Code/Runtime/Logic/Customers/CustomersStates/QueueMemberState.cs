@@ -1,3 +1,4 @@
+using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Services.Customers.Queue;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
