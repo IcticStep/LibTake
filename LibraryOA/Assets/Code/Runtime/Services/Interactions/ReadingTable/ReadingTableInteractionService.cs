@@ -20,10 +20,10 @@ namespace Code.Runtime.Services.Interactions.ReadingTable
             _playerInventoryService = playerInventoryService;
         }
 
-        public bool CanInteract(IBookStorage bookStorage, Progress progress) =>
+        public bool CanInteract(IBookStorage bookStorage, IProgress progress) =>
             CanRead(bookStorage, progress);
 
-        public void Interact(IBookStorage bookStorage, Progress progress)
+        public void Interact(IBookStorage bookStorage, IProgress progress)
         {
             if(!bookStorage.HasBook && !progress.Empty)
             {
@@ -34,16 +34,16 @@ namespace Code.Runtime.Services.Interactions.ReadingTable
             StartReadingIfPossible(bookStorage, progress);
         }
 
-        public void StartReadingIfPossible(IBookStorage bookStorage, Progress progress)
+        public void StartReadingIfPossible(IBookStorage bookStorage, IProgress progress)
         {
             if(CanRead(bookStorage, progress))
                 progress.StartFilling(GetOnProgressFinishCallback(bookStorage));
         }
 
-        public void StopReading(Progress progress) =>
+        public void StopReading(IProgress progress) =>
             progress.StopFilling();
 
-        private bool CanRead(IBookStorage bookStorage, Progress progress) =>
+        private bool CanRead(IBookStorage bookStorage, IProgress progress) =>
             bookStorage.HasBook
             && !_playerInventoryService.HasBook
             && progress.CanBeStarted 

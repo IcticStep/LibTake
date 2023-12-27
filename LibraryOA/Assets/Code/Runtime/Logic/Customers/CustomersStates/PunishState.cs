@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {
-    internal sealed class PunishState : ICustomerState
+    public sealed class PunishState : ICustomerState
     {
-        private readonly BookReceiver _bookReceiver;
-        private readonly Progress _progress;
+        private readonly IBookReceiver _bookReceiver;
+        private readonly IProgress _progress;
         private readonly IPlayerLivesService _playerLivesService;
-        private readonly CustomerStateMachine _customerStateMachine;
+        private readonly ICustomerStateMachine _customerStateMachine;
 
-        public PunishState(BookReceiver bookReceiver, Progress progress, IPlayerLivesService playerLivesService,
-            CustomerStateMachine customerStateMachine)
+        public PunishState(ICustomerStateMachine customerStateMachine, IBookReceiver bookReceiver, IProgress progress,
+            IPlayerLivesService playerLivesService)
         {
             _bookReceiver = bookReceiver;
             _progress = progress;

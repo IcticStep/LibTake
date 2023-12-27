@@ -7,9 +7,9 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     {
         private readonly QueueMember _queueMember;
         private readonly BookStorage _bookStorage;
-        private readonly BookReceiver _bookReceiver;
+        private readonly IBookReceiver _bookReceiver;
 
-        public DeactivatedState(QueueMember queueMember, BookStorage bookStorage, BookReceiver bookReceiver)
+        public DeactivatedState(QueueMember queueMember, BookStorage bookStorage, IBookReceiver bookReceiver)
         {
             _queueMember = queueMember;
             _bookStorage = bookStorage;

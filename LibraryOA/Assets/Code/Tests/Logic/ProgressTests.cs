@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Threading.Tasks;
+using Code.Runtime.Logic;
 using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine.TestTools;
@@ -14,7 +14,7 @@ namespace Code.Tests.Logic
         public void WhenCreated_And_ThenProgressEmpty()
         {
             // Arrange.
-            Progress progress = Create.LogicProgress();
+            IProgress progress = Create.LogicProgress();
 
             // Act.
 
@@ -28,7 +28,7 @@ namespace Code.Tests.Logic
             UniTask.ToCoroutine(async () =>
             {
                 // Arrange.
-                Progress progress = SetUp.ProgressWithSecondsToFinish(float.Epsilon);
+                IProgress progress = SetUp.ProgressWithSecondsToFinish(float.Epsilon);
                 
                 // Act.
                 progress.StartFilling();
@@ -58,7 +58,7 @@ namespace Code.Tests.Logic
             UniTask.ToCoroutine(async () =>
             {
                 // Arrange.
-                Progress progress = SetUp.ProgressWithSecondsToFinish(0.1f);
+                IProgress progress = SetUp.ProgressWithSecondsToFinish(0.1f);
 
                 // Act.
                 progress.StartFilling();
@@ -75,7 +75,7 @@ namespace Code.Tests.Logic
             UniTask.ToCoroutine(async () =>
             {
                 // Arrange.
-                Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+                IProgress progress = SetUp.ProgressWithSecondsToFinish(1f);
                 progress.StartFilling();
                 await UniTask.DelayFrame(5);
                 progress.StopFilling();
@@ -93,7 +93,7 @@ namespace Code.Tests.Logic
             UniTask.ToCoroutine(async () =>
             {
                 // Arrange.
-                Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+                IProgress progress = SetUp.ProgressWithSecondsToFinish(1f);
                 progress.StartFilling();
                 
                 // Act.
@@ -107,7 +107,7 @@ namespace Code.Tests.Logic
         public void WhenCreated_And_ThenCanBeStarted()
         {
             // Arrange.
-            Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+            IProgress progress = SetUp.ProgressWithSecondsToFinish(1f);
             
             // Act.
 
@@ -119,7 +119,7 @@ namespace Code.Tests.Logic
         public void WhenStartFilling_And_ThenCanNotBeStarted()
         {
             // Arrange.
-            Progress progress = SetUp.ProgressWithSecondsToFinish(1f);
+            IProgress progress = SetUp.ProgressWithSecondsToFinish(1f);
             
             // Act.
             progress.StartFilling();
@@ -133,7 +133,7 @@ namespace Code.Tests.Logic
             UniTask.ToCoroutine(async () =>
             {
                 // Arrange.
-                Progress progress = SetUp.ProgressWithSecondsToFinish(0.01f);
+                IProgress progress = SetUp.ProgressWithSecondsToFinish(0.01f);
                 
                 // Act.
                 progress.StartFilling();

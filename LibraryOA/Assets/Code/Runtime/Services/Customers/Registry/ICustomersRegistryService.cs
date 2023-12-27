@@ -5,7 +5,7 @@ namespace Code.Runtime.Services.Customers.Registry
     public interface ICustomersRegistryService
     {
         void Register(CustomerStateMachine customer);
-        CustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember);
+        ICustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember);
         void CleanUp();
     }
 }

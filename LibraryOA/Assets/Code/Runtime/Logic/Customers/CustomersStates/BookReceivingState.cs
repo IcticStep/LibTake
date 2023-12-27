@@ -9,16 +9,16 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 {
     internal class BookReceivingState : ICustomerState
     {
-        private readonly CustomerStateMachine _customerStateMachine;
+        private readonly ICustomerStateMachine _customerStateMachine;
         private readonly ICustomersQueueService _customersQueueService;
         private readonly IBooksReceivingService _booksReceivingService;
         private readonly IStaticDataService _staticDataService;
         private readonly Collider _collider;
-        private readonly BookReceiver _bookReceiver;
-        private readonly Progress _progress;
+        private readonly IBookReceiver _bookReceiver;
+        private readonly IProgress _progress;
 
-        public BookReceivingState(CustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService,
-            BookReceiver bookReceiver, Progress progress, IStaticDataService staticDataService,
+        public BookReceivingState(ICustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService,
+            IBookReceiver bookReceiver, IProgress progress, IStaticDataService staticDataService,
             Collider collider)
         {
             _customerStateMachine = customerStateMachine;

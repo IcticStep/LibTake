@@ -8,11 +8,11 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 {
     internal sealed class GoAwayState : ICustomerState
     {
-        private readonly CustomerStateMachine _customerStateMachine;
+        private readonly ICustomerStateMachine _customerStateMachine;
         private readonly IStaticDataService _staticDataService;
         private readonly CustomerNavigator _customerNavigator;
 
-        public GoAwayState(CustomerStateMachine customerStateMachine, IStaticDataService staticDataService, CustomerNavigator customerNavigator)
+        public GoAwayState(ICustomerStateMachine customerStateMachine, IStaticDataService staticDataService, CustomerNavigator customerNavigator)
         {
             _customerStateMachine = customerStateMachine;
             _staticDataService = staticDataService;

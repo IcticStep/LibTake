@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic
 {
-    public sealed class Progress : MonoBehaviour, ISavedProgress
+    public sealed class Progress : MonoBehaviour, ISavedProgress, IProgress
     {
         private string _id;
         private float _timeToFinish;
@@ -45,7 +45,7 @@ namespace Code.Runtime.Logic
             Value = 0;
         }
 
-        public void OnDisable() =>
+        private void OnDisable() =>
             JustReset = false;
 
         public void Initialize(float timeToFinish) =>

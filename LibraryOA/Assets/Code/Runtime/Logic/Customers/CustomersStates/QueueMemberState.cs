@@ -5,12 +5,12 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 {
     internal sealed class QueueMemberState : ICustomerState
     {
-        private readonly CustomerStateMachine _customerStateMachine;
+        private readonly ICustomerStateMachine _customerStateMachine;
         private readonly QueueMember _queueMember;
         private readonly ICustomersQueueService _customersQueueService;
         private readonly CustomerNavigator _customerNavigator;
 
-        public QueueMemberState(CustomerStateMachine customerStateMachine, QueueMember queueMember, ICustomersQueueService customersQueueService,
+        public QueueMemberState(ICustomerStateMachine customerStateMachine, QueueMember queueMember, ICustomersQueueService customersQueueService,
             CustomerNavigator customerNavigator)
         {
             _customerStateMachine = customerStateMachine;
