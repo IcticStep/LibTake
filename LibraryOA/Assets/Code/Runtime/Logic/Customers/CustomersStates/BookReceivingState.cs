@@ -1,6 +1,5 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
-using Code.Runtime.Logic.Customers.CustomersStates.Data;
 using Code.Runtime.Services.BooksReceiving;
 using Code.Runtime.Services.Customers.Queue;
 using Cysharp.Threading.Tasks;
@@ -61,15 +60,16 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private void StartReceivingProgress()
         {
             _progress.StartFilling();
-            WaitForCompletion().Forget();
+            GoToNextStateOnFinish().Forget();
         }
 
-        private async UniTaskVoid WaitForCompletion()
+        private async UniTaskVoid GoToNextStateOnFinish()
         {
             int taskCompleted = await UniTask.WhenAny(_progress.Task, _bookReceiver.ReceivingTask);
-            BookReceivingResult result = taskCompleted == 0 ? BookReceivingResult.Failed : BookReceivingResult.Success;
-            
-            _customerStateMachine.Enter<RewardState, BookReceivingResult>(result);
+            if(taskCompleted == 0)
+                _customerStateMachine.Enter<PunishState>();
+            if(taskCompleted == 1)
+                _customerStateMachine.Enter<RewardState>();
         }
     }
 }

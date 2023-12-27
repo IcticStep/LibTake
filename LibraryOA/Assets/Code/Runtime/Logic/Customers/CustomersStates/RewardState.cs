@@ -1,13 +1,12 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
-using Code.Runtime.Logic.Customers.CustomersStates.Data;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
 using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {
-    internal sealed class RewardState : IPayloadedCustomerState<BookReceivingResult>
+    internal sealed class RewardState : ICustomerState
     {
         private readonly BookReceiver _bookReceiver;
         private readonly Progress _progress;
@@ -25,41 +24,24 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _playerInventoryService = playerInventoryService;
             _staticDataService = staticDataService;
         }
-
-        public void Start(BookReceivingResult payload)
+        
+        public void Start()
         {
-            HandleResult(payload);
+            FinishWaiting();
+            Reward();
             _customerStateMachine.Enter<GoAwayState>();
         }
 
         public void Exit() { }
 
-        private void HandleResult(BookReceivingResult result)
-        {
-            switch(result)
-            {
-                case BookReceivingResult.Failed:
-                    PunishForFail();
-                    break;
-                case BookReceivingResult.Success:
-                    RewardForSuccess();
-                    break;
-            }
-        }
+        private void FinishWaiting() =>
+            _progress.Reset();
 
-        private void PunishForFail()
+        private void Reward()
         {
-            _bookReceiver.Reset();
-            _progress.Reset();
-            Debug.Log("Receiving failed. Customer unsatisified.");
-            _playerLivesService.WasteLife();
-        }
-        
-        private void RewardForSuccess()
-        {
-            _progress.Reset();
             _playerInventoryService.AddCoins(_staticDataService.BookReceiving.BookReceivedReward);
             Debug.Log("Receiving successful. Customer owns a book.");
         }
+
     }
 }
