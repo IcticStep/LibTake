@@ -5,7 +5,7 @@ using Code.Runtime.Logic.Interactions.Data;
 
 namespace Code.Runtime.Services.Player.Inventory
 {
-    internal interface IPlayerInventoryService : IBookStorage, ISavedProgress
+    public interface IPlayerInventoryService : IBookStorage, ISavedProgress
     {
         int BooksCount { get; }
         IReadOnlyList<string> Books { get; }

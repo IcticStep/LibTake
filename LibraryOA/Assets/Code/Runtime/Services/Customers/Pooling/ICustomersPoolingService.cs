@@ -27,7 +27,7 @@ namespace Code.Runtime.Services.Customers.Pooling
         /// Throws <see cref="InvalidOperationException"/> if trying to get more than <see cref="CustomersPoolingService.ActiveLimit"/> customers.
         /// </summary>
         /// <param name="posiotion"></param>
-        CustomerStateMachine GetCustomer(Vector3 position);
+        ICustomerStateMachine GetCustomer(Vector3 position);
 
         void ReturnCustomer(CustomerStateMachine customer);
         void CleanUp();

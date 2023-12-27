@@ -18,12 +18,12 @@ namespace Code.Runtime.Services.Interactions.BooksReceiving
             _playerInventoryService = playerInventoryService;
         }
 
-        public bool CanInteract(BookReceiver bookReceiver) =>
+        public bool CanInteract(IBookReceiver bookReceiver) =>
             _playerInventoryService.HasBook
             && _playerInventoryService.BooksCount == 1
             && _playerInventoryService.CurrentBookId == bookReceiver.BookId;
 
-        public void Interact(BookReceiver bookReceiver)
+        public void Interact(IBookReceiver bookReceiver)
         {
             if(!CanInteract(bookReceiver))
                 return;

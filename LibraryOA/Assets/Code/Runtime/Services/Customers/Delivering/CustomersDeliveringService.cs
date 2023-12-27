@@ -63,7 +63,7 @@ namespace Code.Runtime.Services.Customers.Delivering
         private void DeliverCustomer()
         {
             Vector3 spawnPoint = _staticDataService.CurrentLevelData.Customers.SpawnPoint;
-            CustomerStateMachine customer = _customersPool.GetCustomer(spawnPoint);
+            ICustomerStateMachine customer = _customersPool.GetCustomer(spawnPoint);
             customer.Enter<QueueMemberState>();
         }
     }

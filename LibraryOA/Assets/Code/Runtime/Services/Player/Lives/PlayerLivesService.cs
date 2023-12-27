@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Code.Runtime.Services.Player.Lives
 {
     [UsedImplicitly]
-    internal sealed class PlayerLivesService : IPlayerLivesService
+    public sealed class PlayerLivesService : IPlayerLivesService
     {
         private readonly GameStateMachine _gameStateMachine;
         public int Lives { get; private set; }

@@ -14,7 +14,7 @@ using Zenject;
 namespace Code.Runtime.Logic.Customers
 {
     [SelectionBase]
-    public sealed class CustomerStateMachine : MonoBehaviour
+    public sealed class CustomerStateMachine : MonoBehaviour, ICustomerStateMachine
     {
         [SerializeField]
         private QueueMember _queueMember;
@@ -23,7 +23,7 @@ namespace Code.Runtime.Logic.Customers
         [SerializeField]
         private BookReceiver _bookReceiver;
         [SerializeField]
-        private Progress _progress;
+        private IProgress _progress;
         [SerializeField]
         private Collider _collider;
         [SerializeField]
@@ -37,7 +37,7 @@ namespace Code.Runtime.Logic.Customers
         private IPlayerInventoryService _playerInventoryService;
         private IPlayerLivesService _playerLivesService;
 
-        public Progress Progress => _progress;
+        public IProgress Progress => _progress;
 
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
         public Type ActiveStateType => _activeState.GetType();
@@ -61,8 +61,9 @@ namespace Code.Runtime.Logic.Customers
                 [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver,
                     _progress, _staticDataService, _collider),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
-                [typeof(RewardState)] = new RewardState(this, _bookReceiver, _progress, _playerLivesService, _playerInventoryService, _staticDataService),
+                [typeof(RewardState)] = new RewardState(this, _progress, _playerInventoryService, _staticDataService),
                 [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
+                [typeof(PunishState)] = new PunishState(this, _bookReceiver, _progress, _playerLivesService),
             };
 
         public void Enter<TState>()
