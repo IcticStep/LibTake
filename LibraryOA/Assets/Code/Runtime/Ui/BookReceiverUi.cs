@@ -12,7 +12,7 @@ namespace Code.Runtime.Ui
     internal sealed class BookReceiverUi : MonoBehaviour
     {
         [SerializeField]
-        private IBookReceiver _bookReceiver;
+        private BookReceiver _bookReceiver;
         [SerializeField]
         private SmoothFader _smoothFader;
         [SerializeField]
