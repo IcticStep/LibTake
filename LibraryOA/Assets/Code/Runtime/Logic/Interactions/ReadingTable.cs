@@ -13,7 +13,7 @@ namespace Code.Runtime.Logic.Interactions
         [SerializeField] 
         private BookStorage _bookStorageObject;
         [SerializeField]
-        private IProgress _progress;
+        private Progress _progress;
         [SerializeField]
         private BookStorageDataView _bookStorageDataView;
         

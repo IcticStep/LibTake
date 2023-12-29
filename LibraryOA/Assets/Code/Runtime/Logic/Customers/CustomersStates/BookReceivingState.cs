@@ -52,7 +52,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private void InitializeReceiving()
         {
             string targetBook = _booksReceivingService.SelectBookForReceiving();
-            _bookReceiver.Initialize(targetBook);
+            _bookReceiver.Initialize(targetBook); 
             _progress.Initialize(_staticDataService.BookReceiving.TimeToReceiveBook);
             _collider.enabled = true;
         }

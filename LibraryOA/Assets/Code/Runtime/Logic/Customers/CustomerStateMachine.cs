@@ -23,7 +23,7 @@ namespace Code.Runtime.Logic.Customers
         [SerializeField]
         private BookReceiver _bookReceiver;
         [SerializeField]
-        private IProgress _progress;
+        private Progress _progress;
         [SerializeField]
         private Collider _collider;
         [SerializeField]
