@@ -13,11 +13,13 @@ namespace Code.Runtime.Ui
         [SerializeField]
         private CanvasGroup _canvasGroup;
         [SerializeField]
-        [FormerlySerializedAs("_duration")]
         private float _fadeDuration;
         [SerializeField]
-        [FormerlySerializedAs("_duration")]
         private float _unFadeDuration;
+        [SerializeField]
+        private Ease _fadeEase = Ease.InOutCubic;
+        [SerializeField]
+        private Ease _unFadeEase = Ease.InOutCubic;
         
         private Tween _fadeTween;
         private Tween _unFadeTween;
@@ -29,7 +31,7 @@ namespace Code.Runtime.Ui
         private void Awake()
         {
             if(_fadeTween is null || _unFadeTween is null)
-                CreateTweens(_fadeDuration, _unFadeDuration);
+                CreateTweens();
         }
 
         private void OnDestroy()
@@ -43,7 +45,7 @@ namespace Code.Runtime.Ui
             _fadeDuration = fadeDuration;
             _unFadeDuration = unFadeDuration;
             
-            CreateTweens(_fadeDuration, _unFadeDuration);
+            CreateTweens();
         }
 
         public UniTask FadeAsync()
@@ -102,15 +104,17 @@ namespace Code.Runtime.Ui
             _canvasGroup.alpha = 1;
         }
 
-        private void CreateTweens(float fadeDuration, float unFadeDuration)
+        private void CreateTweens()
         {
             _fadeTween = DOTween
-                .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, fadeDuration)
+                .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, _fadeDuration)
+                .SetEase(_fadeEase)
                 .SetAutoKill(false)
                 .Pause();
 
             _unFadeTween = DOTween
-                .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, unFadeDuration)
+                .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, _unFadeDuration)
+                .SetEase(_unFadeEase)
                 .SetAutoKill(false)
                 .Pause();
         }
