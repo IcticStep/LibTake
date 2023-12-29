@@ -1,5 +1,5 @@
-using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
+using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Player.Inventory;
 using UnityEngine;
 
@@ -10,20 +10,21 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private readonly IProgress _progress;
         private readonly ICustomerStateMachine _customerStateMachine;
         private readonly IPlayerInventoryService _playerInventoryService;
-        private readonly IStaticDataService _staticDataService;
+        private readonly IBookRewardService _bookRewardService;
 
-        public RewardState(ICustomerStateMachine customerStateMachine, IProgress progress, IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService)
+        public RewardState(ICustomerStateMachine customerStateMachine, IProgress progress, IPlayerInventoryService playerInventoryService,
+            IBookRewardService bookRewardService)
         {
             _progress = progress;
             _customerStateMachine = customerStateMachine;
             _playerInventoryService = playerInventoryService;
-            _staticDataService = staticDataService;
+            _bookRewardService = bookRewardService;
         }
         
         public void Start()
         {
-            FinishWaiting();
             Reward();
+            FinishWaiting();
             _customerStateMachine.Enter<GoAwayState>();
         }
 
@@ -34,8 +35,8 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         private void Reward()
         {
-            int rewardSize = _staticDataService.BookReceiving.BookRewards.GetRewardSize(_progress.Value);
-            _playerInventoryService.AddCoins(rewardSize);
+            int reward = _bookRewardService.GetRewardBy(_progress);
+            _playerInventoryService.AddCoins(reward);
             Debug.Log("Receiving successful. Customer owns a book.");
         }
     }

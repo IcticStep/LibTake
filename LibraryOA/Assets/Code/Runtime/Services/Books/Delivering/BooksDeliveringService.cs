@@ -5,7 +5,7 @@ using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Random;
 using JetBrains.Annotations;
 
-namespace Code.Runtime.Services.BooksDelivering
+namespace Code.Runtime.Services.Books.Delivering
 {
     [UsedImplicitly]
     internal sealed class BooksDeliveringService : IBooksDeliveringService

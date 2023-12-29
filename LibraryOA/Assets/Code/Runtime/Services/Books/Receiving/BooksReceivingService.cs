@@ -5,7 +5,7 @@ using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Services.Random;
 using JetBrains.Annotations;
 
-namespace Code.Runtime.Services.BooksReceiving
+namespace Code.Runtime.Services.Books.Receiving
 {
     [UsedImplicitly]
     internal sealed class BooksReceivingService : IBooksReceivingService

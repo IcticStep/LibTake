@@ -4,7 +4,8 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Logic.Interactions;
-using Code.Runtime.Services.BooksReceiving;
+using Code.Runtime.Services.Books.Receiving;
+using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
@@ -36,6 +37,7 @@ namespace Code.Runtime.Logic.Customers
         private IBooksReceivingService _booksReceivingService;
         private IPlayerInventoryService _playerInventoryService;
         private IPlayerLivesService _playerLivesService;
+        private IBookRewardService _bookRewardService;
 
         public IProgress Progress => _progress;
 
@@ -45,8 +47,9 @@ namespace Code.Runtime.Logic.Customers
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
-            IPlayerInventoryService playerInventoryService, IPlayerLivesService playerLivesService)
+            IPlayerInventoryService playerInventoryService, IPlayerLivesService playerLivesService, IBookRewardService bookRewardService)
         {
+            _bookRewardService = bookRewardService;
             _playerLivesService = playerLivesService;
             _playerInventoryService = playerInventoryService;
             _booksReceivingService = booksReceivingService;
@@ -61,7 +64,7 @@ namespace Code.Runtime.Logic.Customers
                 [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver,
                     _progress, _staticDataService, _collider),
                 [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
-                [typeof(RewardState)] = new RewardState(this, _progress, _playerInventoryService, _staticDataService),
+                [typeof(RewardState)] = new RewardState(this, _progress, _playerInventoryService, _bookRewardService),
                 [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
                 [typeof(PunishState)] = new PunishState(this, _bookReceiver, _progress, _playerLivesService),
             };

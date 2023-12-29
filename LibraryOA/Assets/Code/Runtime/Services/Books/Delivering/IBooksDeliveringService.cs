@@ -1,4 +1,4 @@
-namespace Code.Runtime.Services.BooksDelivering
+namespace Code.Runtime.Services.Books.Delivering
 {
     internal interface IBooksDeliveringService
     {

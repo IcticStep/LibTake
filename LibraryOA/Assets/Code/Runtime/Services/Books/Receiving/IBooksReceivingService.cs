@@ -1,4 +1,4 @@
-namespace Code.Runtime.Services.BooksReceiving
+namespace Code.Runtime.Services.Books.Receiving
 {
     internal interface IBooksReceivingService
     {
