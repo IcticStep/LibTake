@@ -1,6 +1,6 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
-using Code.Runtime.Services.BooksReceiving;
+using Code.Runtime.Services.Books.Receiving;
 using Code.Runtime.Services.Customers.Queue;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

@@ -10,9 +10,10 @@ namespace Code.Runtime.StaticData.Balance
         private float _percentsLowerBound;
         [SerializeField]
         private int _reward;
+        
         public float PercentsLowerBound => _percentsLowerBound;
         public int Reward => _reward;
-
+        
         public bool IsTrueFor(float percents) =>
             percents >= PercentsLowerBound;
     }

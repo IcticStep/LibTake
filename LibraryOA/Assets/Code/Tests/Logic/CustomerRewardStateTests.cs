@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
+using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.StaticData.Balance;
 using NSubstitute;
@@ -24,7 +25,7 @@ namespace Code.Tests.Logic
                 Substitute.For<ICustomerStateMachine>(),
                 Substitute.For<IProgress>(),
                 playerInventoryService,
-                staticDataService);
+                Substitute.For<IBookRewardService>());
             
             // Act.
             rewardState.Start();
