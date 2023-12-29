@@ -34,7 +34,8 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         private void Reward()
         {
-            _playerInventoryService.AddCoins(_staticDataService.BookReceiving.BookReceivedReward);
+            int rewardSize = _staticDataService.BookReceiving.BookRewards.GetRewardSize(_progress.Value);
+            _playerInventoryService.AddCoins(rewardSize);
             Debug.Log("Receiving successful. Customer owns a book.");
         }
     }

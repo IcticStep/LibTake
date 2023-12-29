@@ -14,7 +14,8 @@ namespace Code.Runtime.StaticData.Balance
         public int BooksShouldLeftInLibrary { get; private set; } = 2;
         [field: SerializeField]
         public Range CustomersInterval { get; private set; } = new Range(3, 10);
+
         [field: SerializeField]
-        public int BookReceivedReward { get; set; }
+        public BookRewards BookRewards { get; private set; } = new();
     }
 }
