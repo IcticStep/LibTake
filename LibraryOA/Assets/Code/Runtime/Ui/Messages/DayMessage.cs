@@ -23,8 +23,8 @@ namespace Code.Runtime.Ui.Messages
         
         public async UniTask Hide()
         {
-            _textMessage.text = string.Empty;
             await _smoothFader.FadeAsync();
+            _textMessage.text = string.Empty;
         }
         
         public void ConfigureTimings(UiMessageIntervals intervals) =>

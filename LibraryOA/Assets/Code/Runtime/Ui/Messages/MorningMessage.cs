@@ -26,9 +26,9 @@ namespace Code.Runtime.Ui.Messages
         
         public async UniTask Hide()
         {
+            await _smoothFader.FadeAsync();
             _header.text = string.Empty;
             _subHeader.text = string.Empty;
-            await _smoothFader.FadeAsync();
         }
         
         public void ConfigureTimings(UiMessageIntervals intervals) =>
