@@ -1,6 +1,7 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.Ui.Behaviours;
 using TMPro;
 using UnityEngine;
 using Zenject;

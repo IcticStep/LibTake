@@ -3,6 +3,7 @@ using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.Ui;
+using Code.Runtime.Ui.Behaviours;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;

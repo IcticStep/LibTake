@@ -2,6 +2,7 @@ using System;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.Ui.Behaviours;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
