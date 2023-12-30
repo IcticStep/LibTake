@@ -1,4 +1,5 @@
 using Code.Runtime.StaticData.Ui;
+using Code.Runtime.Ui.Behaviours;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;

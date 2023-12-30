@@ -1,10 +1,8 @@
-using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Runtime.Ui
+namespace Code.Runtime.Ui.Behaviours
 {
     internal sealed class SmoothFader : MonoBehaviour
     {
