@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Code.Editor.Editors.Logic
 {
-    [CustomEditor(typeof(CustomerStateMachine))]
+    [CustomEditor(typeof(ICustomerStateMachine))]
     public class CustomerStateMachineEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
-            CustomerStateMachine stateMachine = (CustomerStateMachine)target;
+            ICustomerStateMachine stateMachine = (ICustomerStateMachine)target;
             base.OnInspectorGUI();
             GUILayout.Label($"Current state: {stateMachine.ActiveStateName}");
         }

@@ -8,9 +8,8 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Customers
 {
-    public class BookReceiver : Interactable
+    public class BookReceiver : Interactable, IBookReceiver
     {
-        [FormerlySerializedAs("_bookStorageHolder")]
         [SerializeField]
         private BookStorage _bookStorage;
 

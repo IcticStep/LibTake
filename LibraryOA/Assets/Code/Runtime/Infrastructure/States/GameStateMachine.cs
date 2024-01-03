@@ -7,7 +7,7 @@ using IState = Code.Runtime.Infrastructure.States.Api.IState;
 namespace Code.Runtime.Infrastructure.States
 {
     [UsedImplicitly]
-    internal sealed class GameStateMachine
+    public sealed class GameStateMachine
     {
         private readonly IGameStateFactory _gameStateFactory;
         private Dictionary<Type, IExitableState> _states;

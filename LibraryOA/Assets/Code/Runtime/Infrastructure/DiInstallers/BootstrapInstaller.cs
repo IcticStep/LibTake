@@ -10,8 +10,9 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States;
-using Code.Runtime.Services.BooksDelivering;
-using Code.Runtime.Services.BooksReceiving;
+using Code.Runtime.Services.Books.Delivering;
+using Code.Runtime.Services.Books.Receiving;
+using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
@@ -94,6 +95,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
             Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
             Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
+            Container.Bind<IBookRewardService>().To<BookRewardService>().AsSingle();
         }
 
         private void InstallFactories()

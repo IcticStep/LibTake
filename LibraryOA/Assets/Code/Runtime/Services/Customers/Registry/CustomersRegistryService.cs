@@ -14,7 +14,7 @@ namespace Code.Runtime.Services.Customers.Registry
                 customer.GetComponentInChildren<QueueMember>(),
                 customer);
 
-        public CustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember) =>
+        public ICustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember) =>
             _registry.TryGetValue(queueMember, out CustomerStateMachine customer)
                 ? customer
                 : null;

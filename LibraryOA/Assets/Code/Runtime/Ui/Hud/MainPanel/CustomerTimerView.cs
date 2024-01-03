@@ -51,18 +51,18 @@ namespace Code.Runtime.Ui.Hud.MainPanel
                 return;
             }
 
-            CustomerStateMachine firstCustomer = GetFirstCustomer();
+            ICustomerStateMachine firstCustomer = GetFirstCustomer();
             if(firstCustomer.ActiveStateType != typeof(BookReceivingState))
             {
                 _progressBar.SetProgress(0, 1);
                 return;
             }
 
-            Progress progress = firstCustomer.Progress;
+            IProgress progress = firstCustomer.Progress;
             _progressBar.SetProgress(progress.Value, progress.MaxValue);
         }
 
-        private CustomerStateMachine GetFirstCustomer()
+        private ICustomerStateMachine GetFirstCustomer()
         {
             QueueMember firstCustomerMember = _customersQueueService.Peek();
             return _customersRegistryService.GetCustomerByQueueMember(firstCustomerMember);

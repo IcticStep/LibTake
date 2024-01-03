@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Logic.Customers;
+using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using UnityEngine;
 
 namespace Code.Runtime.Services.Customers.Pooling
@@ -27,9 +28,9 @@ namespace Code.Runtime.Services.Customers.Pooling
         /// Throws <see cref="InvalidOperationException"/> if trying to get more than <see cref="CustomersPoolingService.ActiveLimit"/> customers.
         /// </summary>
         /// <param name="posiotion"></param>
-        CustomerStateMachine GetCustomer(Vector3 position);
+        ICustomerStateMachine GetCustomer(Vector3 position);
 
-        void ReturnCustomer(CustomerStateMachine customer);
+        public void ReturnCustomer(CustomerStateMachine customer);
         void CleanUp();
     }
 }
