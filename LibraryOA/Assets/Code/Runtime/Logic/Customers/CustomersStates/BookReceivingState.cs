@@ -1,7 +1,6 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Services.Books.Receiving;
-using Code.Runtime.Services.Customers.Queue;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -10,19 +9,16 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
     internal class BookReceivingState : ICustomerState
     {
         private readonly ICustomerStateMachine _customerStateMachine;
-        private readonly ICustomersQueueService _customersQueueService;
         private readonly IBooksReceivingService _booksReceivingService;
         private readonly IStaticDataService _staticDataService;
         private readonly Collider _collider;
         private readonly IBookReceiver _bookReceiver;
         private readonly IProgress _progress;
 
-        public BookReceivingState(ICustomerStateMachine customerStateMachine, ICustomersQueueService customersQueueService, IBooksReceivingService booksReceivingService,
-            IBookReceiver bookReceiver, IProgress progress, IStaticDataService staticDataService,
-            Collider collider)
+        public BookReceivingState(ICustomerStateMachine customerStateMachine, IBooksReceivingService booksReceivingService, IBookReceiver bookReceiver,
+            IProgress progress, IStaticDataService staticDataService, Collider collider)
         {
             _customerStateMachine = customerStateMachine;
-            _customersQueueService = customersQueueService;
             _booksReceivingService = booksReceivingService;
             _bookReceiver = bookReceiver;
             _progress = progress;
@@ -43,11 +39,8 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             StartReceivingProgress();
         }
 
-        public void Exit()
-        {
-            _customersQueueService.Dequeue();
+        public void Exit() =>
             _collider.enabled = false;
-        }
 
         private void InitializeReceiving()
         {

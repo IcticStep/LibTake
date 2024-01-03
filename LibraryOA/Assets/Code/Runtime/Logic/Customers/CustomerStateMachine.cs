@@ -43,7 +43,8 @@ namespace Code.Runtime.Logic.Customers
 
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
         public Type ActiveStateType => _activeState.GetType();
-        public event Action<CustomerStateMachine, IExitableCustomerState> StateEntered; 
+
+        public event Action<CustomerStateMachine, IExitableCustomerState> StateEntered;
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
@@ -61,12 +62,12 @@ namespace Code.Runtime.Logic.Customers
             _states = new Dictionary<Type, IExitableCustomerState>
             {
                 [typeof(QueueMemberState)] = new QueueMemberState(this, _queueMember, _customersQueueService, _customerNavigator),
-                [typeof(BookReceivingState)] = new BookReceivingState(this, _customersQueueService, _booksReceivingService, _bookReceiver,
+                [typeof(BookReceivingState)] = new BookReceivingState(this, _booksReceivingService, _bookReceiver,
                     _progress, _staticDataService, _collider),
-                [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator),
-                [typeof(RewardState)] = new RewardState(this, _progress, _playerInventoryService, _bookRewardService),
-                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
+                [typeof(RewardState)] = new RewardState(this, _progress, _playerInventoryService, _bookRewardService, _staticDataService),
                 [typeof(PunishState)] = new PunishState(this, _bookReceiver, _progress, _playerLivesService),
+                [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator, _customersQueueService),
+                [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
             };
 
         public void Enter<TState>()

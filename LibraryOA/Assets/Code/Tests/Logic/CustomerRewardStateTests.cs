@@ -21,11 +21,12 @@ namespace Code.Tests.Logic
             IStaticDataService staticDataService = Substitute.For<IStaticDataService>();
             staticDataService.BookReceiving.Returns(Substitute.For<StaticBookReceiving>());
             
-            RewardState rewardState = new RewardState(
+            RewardState rewardState = new(
                 Substitute.For<ICustomerStateMachine>(),
                 Substitute.For<IProgress>(),
                 playerInventoryService,
-                Substitute.For<IBookRewardService>());
+                Substitute.For<IBookRewardService>(),
+                Substitute.For<IStaticDataService>());
             
             // Act.
             rewardState.Start();
