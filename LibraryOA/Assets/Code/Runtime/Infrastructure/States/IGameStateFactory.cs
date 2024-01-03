@@ -3,7 +3,7 @@ using Code.Runtime.Infrastructure.States.Api;
 
 namespace Code.Runtime.Infrastructure.States
 {
-    internal interface IGameStateFactory
+    public interface IGameStateFactory
     {
         IExitableState Create(Type type);
 

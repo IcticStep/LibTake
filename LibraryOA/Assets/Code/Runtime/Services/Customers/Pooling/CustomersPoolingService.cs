@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
+using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.StaticData.Level;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -54,7 +55,7 @@ namespace Code.Runtime.Services.Customers.Pooling
             {
                 CustomerStateMachine customer = _interactablesFactory.CreateCustomer(Spawn);
                 customer.Enter<DeactivatedState>();
-                customer.DeactivateStateEntered += ReturnCustomer;
+                customer.StateEntered += OnCustomerStateChanged;
                 customer.gameObject.SetActive(false);
                 _deactivatedCustomers.Push(customer);
             }
@@ -64,7 +65,7 @@ namespace Code.Runtime.Services.Customers.Pooling
         /// Returns active customers if any c
         /// Throws <see cref="InvalidOperationException"/> if trying to get more than <see cref="ActiveLimit"/> customers.
         /// </summary>
-        public CustomerStateMachine GetCustomer(Vector3 position)
+        public ICustomerStateMachine GetCustomer(Vector3 position)
         {
             if(ActiveCustomers >= ActiveLimit)
                 throw new InvalidOperationException($"Can't activate more than {ActiveLimit} customers!");
@@ -106,9 +107,9 @@ namespace Code.Runtime.Services.Customers.Pooling
         public void CleanUp()
         {
             foreach(CustomerStateMachine customer in _activeCustomers)
-                customer.DeactivateStateEntered -= ReturnCustomer;
+                customer.StateEntered -= OnCustomerStateChanged;
             foreach(CustomerStateMachine customer in _deactivatedCustomers)
-                customer.DeactivateStateEntered -= ReturnCustomer;
+                customer.StateEntered -= OnCustomerStateChanged;
             
             _activeCustomers.Clear();
             _deactivatedCustomers.Clear();
@@ -119,6 +120,14 @@ namespace Code.Runtime.Services.Customers.Pooling
 
         public bool CanActivateMore()
             => ActiveCustomers < ActiveLimit;
+
+        private void OnCustomerStateChanged(CustomerStateMachine customer, IExitableCustomerState state)
+        {
+            if(state is not DeactivatedState)
+                return;
+            
+            ReturnCustomer(customer);
+        }
 
         private void SetSpawnLimits(LevelStaticData levelData)
         {

@@ -5,7 +5,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
-using Code.Runtime.Services.BooksReceiving;
+using Code.Runtime.Services.Books.Receiving;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Random;
 using Code.Runtime.StaticData.Balance;
@@ -63,7 +63,7 @@ namespace Code.Runtime.Services.Customers.Delivering
         private void DeliverCustomer()
         {
             Vector3 spawnPoint = _staticDataService.CurrentLevelData.Customers.SpawnPoint;
-            CustomerStateMachine customer = _customersPool.GetCustomer(spawnPoint);
+            ICustomerStateMachine customer = _customersPool.GetCustomer(spawnPoint);
             customer.Enter<QueueMemberState>();
         }
     }

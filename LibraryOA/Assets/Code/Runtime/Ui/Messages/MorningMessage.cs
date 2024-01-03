@@ -1,4 +1,5 @@
 using Code.Runtime.StaticData.Ui;
+using Code.Runtime.Ui.Behaviours;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -26,9 +27,9 @@ namespace Code.Runtime.Ui.Messages
         
         public async UniTask Hide()
         {
+            await _smoothFader.FadeAsync();
             _header.text = string.Empty;
             _subHeader.text = string.Empty;
-            await _smoothFader.FadeAsync();
         }
         
         public void ConfigureTimings(UiMessageIntervals intervals) =>
