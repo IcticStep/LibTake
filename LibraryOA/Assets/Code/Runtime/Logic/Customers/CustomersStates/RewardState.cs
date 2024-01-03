@@ -1,3 +1,4 @@
+using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Player.Inventory;
@@ -12,14 +13,16 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         private readonly ICustomerStateMachine _customerStateMachine;
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IBookRewardService _bookRewardService;
+        private readonly IStaticDataService _staticDataService;
 
         public RewardState(ICustomerStateMachine customerStateMachine, IProgress progress, IPlayerInventoryService playerInventoryService,
-            IBookRewardService bookRewardService)
+            IBookRewardService bookRewardService, IStaticDataService staticDataService)
         {
             _progress = progress;
             _customerStateMachine = customerStateMachine;
             _playerInventoryService = playerInventoryService;
             _bookRewardService = bookRewardService;
+            _staticDataService = staticDataService;
         }
         
         public void Start()
@@ -31,7 +34,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
 
         private async UniTask GoToAwayStateAfterDelay()
         {
-            await UniTask.Yield();
+            await UniTask.WaitForSeconds(_staticDataService.BookReceiving.RewardSecondsDelay);
             _customerStateMachine.Enter<GoAwayState>();
         }
 
