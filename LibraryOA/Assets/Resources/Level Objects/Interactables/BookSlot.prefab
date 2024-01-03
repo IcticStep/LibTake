@@ -189,43 +189,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1767239298300072149, guid: 64b4260316ef2684b9ccb962013f6ab3,
+    - target: {fileID: 1107538343817381676, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b4eb0c9a3cf8bd046bf0037b42bce0cf,
-        type: 3}
-    - target: {fileID: 3409486304794307240, guid: 64b4260316ef2684b9ccb962013f6ab3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.25
+      propertyPath: _fadeDuration
+      value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 3409486304794307240, guid: 64b4260316ef2684b9ccb962013f6ab3,
+    - target: {fileID: 1107538343817381676, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.04
+      propertyPath: _unFadeDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3769826846778193338, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
       propertyPath: _bookStorage
       value: 
       objectReference: {fileID: 5475589924342636869}
-    - target: {fileID: 3769826846778193338, guid: 64b4260316ef2684b9ccb962013f6ab3,
-        type: 3}
-      propertyPath: _bookStorageHolder
-      value: 
-      objectReference: {fileID: 5475589924342636869}
-    - target: {fileID: 6643162300184822928, guid: 64b4260316ef2684b9ccb962013f6ab3,
-        type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6643162300184822928, guid: 64b4260316ef2684b9ccb962013f6ab3,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4b9337efa25de3044a2c88a8cbba6750,
-        type: 3}
     - target: {fileID: 6963759028763700424, guid: 64b4260316ef2684b9ccb962013f6ab3,
         type: 3}
       propertyPath: m_Name
@@ -236,19 +214,8 @@ PrefabInstance:
       propertyPath: _bookStorage
       value: 
       objectReference: {fileID: 5475589924342636869}
-    - target: {fileID: 8788181422147137710, guid: 64b4260316ef2684b9ccb962013f6ab3,
-        type: 3}
-      propertyPath: _bookMeshRenderer
-      value: 
-      objectReference: {fileID: 4739120520883892780}
-    - target: {fileID: 8788181422147137710, guid: 64b4260316ef2684b9ccb962013f6ab3,
-        type: 3}
-      propertyPath: _bookStorageObject
-      value: 
-      objectReference: {fileID: 5475589924342636869}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5066344525853702725, guid: 64b4260316ef2684b9ccb962013f6ab3, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b4260316ef2684b9ccb962013f6ab3, type: 3}
@@ -270,12 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f4fabd4abb40d59558aeda91e4e14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!23 &4739120520883892780 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6327429960675891832, guid: 64b4260316ef2684b9ccb962013f6ab3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1588417201059948628}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6038218890402958848
 PrefabInstance:
   m_ObjectHideFlags: 0
