@@ -87,21 +87,20 @@ namespace Code.Tests.Logic
                 Assert.That(progress.Value, Is.LessThanOrEqualTo(float.Epsilon),
                     message: $"{nameof(progress)}.{nameof(progress.Value)}");
             });
-        
-        [UnityTest]
-        public IEnumerator WhenReset_AndWasStarted_ThenJustResetIsTrue() =>
-            UniTask.ToCoroutine(async () =>
-            {
-                // Arrange.
-                IProgress progress = SetUp.ProgressWithSecondsToFinish(1f);
-                progress.StartFilling();
-                
-                // Act.
-                progress.Reset();
 
-                // Assert.
-                Assert.IsTrue(progress.JustReset, $"{nameof(progress)}.{nameof(progress.JustReset)}");
-            });
+        [Test]
+        public void WhenReset_AndWasStarted_ThenJustResetIsTrue()
+        {
+            // Arrange.
+            IProgress progress = SetUp.ProgressWithSecondsToFinish(1f);
+            progress.StartFilling();
+
+            // Act.
+            progress.Reset();
+
+            // Assert.
+            Assert.IsTrue(progress.JustReset, $"{nameof(progress)}.{nameof(progress.JustReset)}");
+        }
 
         [Test]
         public void WhenCreated_And_ThenCanBeStarted()

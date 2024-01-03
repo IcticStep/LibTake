@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Logic.Customers;
+using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using UnityEngine;
 
 namespace Code.Runtime.Services.Customers.Pooling
@@ -29,7 +30,7 @@ namespace Code.Runtime.Services.Customers.Pooling
         /// <param name="posiotion"></param>
         ICustomerStateMachine GetCustomer(Vector3 position);
 
-        void ReturnCustomer(CustomerStateMachine customer);
+        public void ReturnCustomer(CustomerStateMachine customer);
         void CleanUp();
     }
 }
