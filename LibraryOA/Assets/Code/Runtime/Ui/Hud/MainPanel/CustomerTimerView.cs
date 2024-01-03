@@ -4,6 +4,8 @@ using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;
+using Code.Runtime.Ui.Common;
+using Code.Runtime.Ui.Common.Progress;
 using UnityEngine;
 using Zenject;
 

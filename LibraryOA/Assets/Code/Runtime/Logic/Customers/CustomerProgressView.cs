@@ -1,4 +1,6 @@
 using Code.Runtime.Ui;
+using Code.Runtime.Ui.Common;
+using Code.Runtime.Ui.Common.Progress;
 using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers

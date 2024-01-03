@@ -2,22 +2,19 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.StaticData.Books;
-using Code.Runtime.Ui;
-using Code.Runtime.Ui.Behaviours;
+using Code.Runtime.Ui.Common;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Code.Runtime.Logic
+namespace Code.Runtime.Ui
 {
-    internal sealed class BookStorageDataView : MonoBehaviour
+    internal sealed class BookUi : MonoBehaviour
     {
         [SerializeField]
         private TextMeshProUGUI _bookName;
         [SerializeField]
         private GameObject _readTick;
-        [FormerlySerializedAs("_bookStorageHolder")]
         [SerializeField]
         private BookStorage _bookStorage;
         [SerializeField]

@@ -25,14 +25,10 @@ namespace Code.Runtime.Logic.Particles
             _progress.Stopped -= HideSmoke;
         }
 
-        private void ShowSmoke()
-        {
+        private void ShowSmoke() =>
             _smoke.Play();
-        }
 
-        private void HideSmoke()
-        {
+        private void HideSmoke() =>
             _smoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        }
     }
 }

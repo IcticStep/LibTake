@@ -3,7 +3,9 @@ using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadingTable;
+using Code.Runtime.Ui;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
@@ -14,8 +16,10 @@ namespace Code.Runtime.Logic.Interactions
         private BookStorage _bookStorageObject;
         [SerializeField]
         private Progress _progress;
+        [FormerlySerializedAs("_bookStorageUi")]
+        [FormerlySerializedAs("_bookStorageDataView")]
         [SerializeField]
-        private BookStorageDataView _bookStorageDataView;
+        private BookUi _bookUi;
         
         private IReadingTableInteractionService _readingTableInteractionService;
         private IBookSlotInteractionService _bookSlotInteractionService;
@@ -38,21 +42,21 @@ namespace Code.Runtime.Logic.Interactions
             _readingTableInteractionService.Interact(_bookStorageObject, _progress);
             
             if(_bookStorageObject.HasBook)
-                _bookStorageDataView.ShowData();
+                _bookUi.ShowData();
             else
-                _bookStorageDataView.HideData();
+                _bookUi.HideData();
         }
 
         public void OnHoverStart()
         {
             _readingTableInteractionService.StartReadingIfPossible(_bookStorageObject, _progress);
-            _bookStorageDataView.ShowData();
+            _bookUi.ShowData();
         }
 
         public void OnHoverEnd()
         {
             _readingTableInteractionService.StopReading(_progress);
-            _bookStorageDataView.HideData();
+            _bookUi.HideData();
         }
     }
 }
