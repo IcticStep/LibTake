@@ -1,8 +1,7 @@
-using Code.Runtime.Ui.Behaviours;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.Runtime.Ui
+namespace Code.Runtime.Ui.Common.Progress
 {
     internal sealed class ProgressBar : MonoBehaviour
     {

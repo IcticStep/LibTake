@@ -1,12 +1,11 @@
-using Code.Runtime.Logic;
 using UnityEngine;
 
-namespace Code.Runtime.Ui
+namespace Code.Runtime.Ui.Common.Progress
 {
     internal sealed class ProgressView : MonoBehaviour
     {
         [SerializeField]
-        private Progress _progress;
+        private Logic.Progress _progress;
         
         [SerializeField]
         private ProgressBar _progressBar;

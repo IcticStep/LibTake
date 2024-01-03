@@ -2,7 +2,7 @@ using Code.Runtime.Data;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Code.Runtime.Ui.Behaviours
+namespace Code.Runtime.Ui.Common
 {
     internal sealed class MoverY : MonoBehaviour
     {

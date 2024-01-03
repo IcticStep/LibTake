@@ -1,4 +1,4 @@
-using Code.Runtime.Ui.Behaviours;
+using Code.Runtime.Ui.Common;
 using UnityEngine;
 
 namespace Code.Runtime.Ui

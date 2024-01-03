@@ -2,7 +2,7 @@ using System;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
-using Code.Runtime.Ui.Behaviours;
+using Code.Runtime.Ui.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
