@@ -43,7 +43,7 @@ namespace Code.Runtime.Logic.Customers
 
         public string ActiveStateName => _activeState == null ? "none" : _activeState.ToString();
         public Type ActiveStateType => _activeState.GetType();
-        public event Action<CustomerStateMachine> DeactivateStateEntered;
+        public event Action<CustomerStateMachine, IExitableCustomerState> StateEntered; 
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
@@ -73,18 +73,16 @@ namespace Code.Runtime.Logic.Customers
             where TState : class, ICustomerState
         {
             TState nextState = ChangeState<TState>();
-            nextState.Start();
-
             SignalChanged();
+            nextState.Start();
         }
         
         public void Enter<TState, TPayload>(TPayload payload)
             where TState : class, IPayloadedCustomerState<TPayload>
         {
             TState nextState = ChangeState<TState>();
-            nextState.Start(payload);
-
             SignalChanged();
+            nextState.Start(payload);
         }
 
         private TState ChangeState<TState>()
@@ -96,10 +94,7 @@ namespace Code.Runtime.Logic.Customers
             return nextState;
         }
 
-        private void SignalChanged()
-        {
-            if(_activeState is DeactivatedState)
-                DeactivateStateEntered?.Invoke(this);
-        }
+        private void SignalChanged() =>
+            StateEntered?.Invoke(this, _activeState);
     }
 }

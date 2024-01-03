@@ -7,7 +7,7 @@ namespace Code.Runtime.Ui.Behaviours
     internal sealed class MoverY : MonoBehaviour
     {
         [SerializeField]
-        private Ease _ease;
+        private Ease _ease = Ease.OutQuint;
         [SerializeField]
         private float _duration;
         [SerializeField]

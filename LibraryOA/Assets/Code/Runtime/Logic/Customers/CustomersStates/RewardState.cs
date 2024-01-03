@@ -1,6 +1,7 @@
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Player.Inventory;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
@@ -25,6 +26,12 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         {
             Reward();
             FinishWaiting();
+            GoToAwayStateAfterDelay().Forget();
+        }
+
+        private async UniTask GoToAwayStateAfterDelay()
+        {
+            await UniTask.Yield();
             _customerStateMachine.Enter<GoAwayState>();
         }
 
