@@ -3,7 +3,9 @@ using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Ui.Behaviours;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.Runtime.Ui
 {
@@ -26,16 +28,17 @@ namespace Code.Runtime.Ui
             _customer.StateEntered -= OnStateChanged;
 
         private void OnStateChanged(CustomerStateMachine customer, IExitableCustomerState state)
-        {
+        { 
             if(state is RewardState)
-                ShowCoin();
+                ShowCoin().Forget();
         }
 
-        private void ShowCoin()
+        private async UniTask ShowCoin()
         {
-            _smoothFader.UnFadeImmediately();
-            //_smoothFader.Fade();
             _moverY.Move();
+            await _smoothFader.UnFadeAsync();
+            // ReSharper disable once MethodHasAsyncOverload
+            _smoothFader.Fade();
         }
     }
 }

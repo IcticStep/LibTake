@@ -22,11 +22,11 @@ namespace Code.Runtime.Ui.Behaviours
         private void Awake()
         {
             _transform = GetComponent<RectTransform>();
-            _startValue = _transform.position;
+            _startValue = _transform.localPosition;
             Vector3 endValue = _startValue.WithY(_targetY);
             
             _tween = DOTween
-                .To(() => _transform.position, x => _transform.position = x, endValue, _duration)
+                .To(() => _transform.localPosition, x => _transform.localPosition = x, endValue, _duration)
                 .SetEase(_ease)
                 .SetAutoKill(false)
                 .Pause();
@@ -39,6 +39,6 @@ namespace Code.Runtime.Ui.Behaviours
             _tween.Restart();
 
         private void ResetPosition() =>
-            _transform.position = _startValue;
+            _transform.localPosition = _startValue;
     }
 }
