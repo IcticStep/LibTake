@@ -1,6 +1,8 @@
 using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
+using Code.Runtime.Ui;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
@@ -9,8 +11,10 @@ namespace Code.Runtime.Logic.Interactions
     {
         [SerializeField] 
         private BookStorage _bookStorageObject;
+        [FormerlySerializedAs("_bookStorageUi")]
+        [FormerlySerializedAs("_bookStorageDataView")]
         [SerializeField]
-        private BookStorageDataView _bookStorageDataView;
+        private BookUi _bookUi;
         
         private IBookSlotInteractionService _bookSlotInteractionService;
 
@@ -24,13 +28,13 @@ namespace Code.Runtime.Logic.Interactions
         public override void Interact()
         {
             _bookSlotInteractionService.Interact(_bookStorageObject);
-            _bookStorageDataView.ShowData();
+            _bookUi.ShowData();
         }
 
         public void OnHoverStart() =>
-            _bookStorageDataView.ShowData();
+            _bookUi.ShowData();
 
         public void OnHoverEnd() =>
-            _bookStorageDataView.HideData();
+            _bookUi.HideData();
     }
 }

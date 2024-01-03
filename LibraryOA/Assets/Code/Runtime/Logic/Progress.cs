@@ -36,6 +36,7 @@ namespace Code.Runtime.Logic
         public Action<float> Updated;
         public Action Started;
         public Action Stopped;
+        public Action Finished;
 
         public void Reset()
         {
@@ -111,6 +112,7 @@ namespace Code.Runtime.Logic
             _externalTaskSource = null;
             onFinishCallback?.Invoke();
             Stopped?.Invoke();
+            Finished?.Invoke();
         }
 
         private float CalculateFillingAmount() =>
