@@ -3,7 +3,6 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
-using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Interactions;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
@@ -74,6 +73,18 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             return readingTable;
         }
         
+        public GameObject CreateScanner(string objectId, Vector3 at, Quaternion rotation, string initialBookId = null)
+        {
+            StaticScanner staticData = _staticDataService.Interactables.Scanner;
+            GameObject scanner = _assetProvider.Instantiate(staticData.Prefab, at, rotation);
+
+            InitInteractable(objectId, scanner);
+            InitScanningProgress(objectId, scanner, staticData);
+            InitBookStorage(objectId, initialBookId, scanner);
+
+            return scanner;
+        }
+
         public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
@@ -102,11 +113,18 @@ namespace Code.Runtime.Infrastructure.Services.Factories
             _saveLoadRegistry.Register(bookStorage);
             bookStorage.Initialize(id, initialBookId);
         }
-        
+
         private void InitReadingProgress(string objectId, GameObject gameObject, StaticReadingTable data)
         {
             Progress progress = gameObject.GetComponentInChildren<Progress>();
             progress.Initialize(objectId, data.SecondsToRead);
+            _saveLoadRegistry.Register(progress);
+        }
+
+        private void InitScanningProgress(string objectId, GameObject scanner, StaticScanner data)
+        {
+            Progress progress = scanner.GetComponentInChildren<Progress>();
+            progress.Initialize(objectId, data.SecondsToScan);
             _saveLoadRegistry.Register(progress);
         }
     }
