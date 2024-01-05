@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
+using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
@@ -23,10 +24,12 @@ namespace Code.Runtime.Infrastructure.States
         private readonly ISkillService _skillService;
         private readonly IStaticDataService _staticDataService;
         private readonly IPlayerLivesService _playerLivesService;
+        private readonly IScanBookService _scanBookService;
 
         public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
             IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
-            ISkillService skillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService)
+            ISkillService skillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService,
+            IScanBookService scanBookService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -37,6 +40,7 @@ namespace Code.Runtime.Infrastructure.States
             _skillService = skillService;
             _staticDataService = staticDataService;
             _playerLivesService = playerLivesService;
+            _scanBookService = scanBookService;
         }
 
         public void Start()
@@ -48,10 +52,7 @@ namespace Code.Runtime.Infrastructure.States
             _sceneLoader.LoadSceneAsync(bootstrapSceneName, OnInitSceneLoaded).Forget();
         }
 
-        public void Exit()
-        {
-
-        }
+        public void Exit() { }
 
         private void OnInitSceneLoaded() =>
             _stateMachine.EnterState<WarmupState>();
@@ -63,6 +64,7 @@ namespace Code.Runtime.Infrastructure.States
             _saveLoadRegistry.Register(_readBookService);
             _saveLoadRegistry.Register(_skillService);
             _saveLoadRegistry.Register(_playerLivesService);
+            _saveLoadRegistry.Register(_scanBookService);
         }
     }
 }
