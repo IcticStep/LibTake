@@ -156,7 +156,7 @@ MonoBehaviour:
   _rayLength: 1.6
   _raysCount: 5
   _raysDegreesInterval: 20.7
-  _logging: 0
+  _logging: 1
 --- !u!114 &2916898573159128639
 MonoBehaviour:
   m_ObjectHideFlags: 0
