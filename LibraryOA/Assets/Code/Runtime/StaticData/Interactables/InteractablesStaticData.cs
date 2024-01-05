@@ -10,11 +10,13 @@ namespace Code.Runtime.StaticData.Interactables
         public StaticBookSlot BookSlot { get; private set; }
         public StaticTruck Truck { get; private set; }
 
-        public InteractablesStaticData(StaticReadingTable readingTable, StaticBookSlot bookSlot, StaticTruck truck)
+        public InteractablesStaticData(StaticReadingTable readingTable, StaticBookSlot bookSlot, StaticTruck truck,
+            StaticScanner scanner)
         {
             ReadingTable = readingTable;
             BookSlot = bookSlot;
             Truck = truck;
+            Scanner = scanner;
         }
     }
 }
