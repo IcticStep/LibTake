@@ -10,7 +10,6 @@ using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Code.Editor.Windows.InteractablesEditorSpawn
@@ -67,6 +66,7 @@ namespace Code.Editor.Windows.InteractablesEditorSpawn
             
             SpawnBookSlots(levelData, spawned);
             SpawnReadingTables(levelData, spawned);
+            SpawnScanners(levelData, spawned);
             
             spawned.ForEach(x => x.AddComponent<PreviewMarker>());
             UpdateInfoBoxText();
@@ -82,6 +82,13 @@ namespace Code.Editor.Windows.InteractablesEditorSpawn
             UpdateInfoBoxText();
         }
 
+        private void SpawnBookSlots(LevelStaticData levelData, List<GameObject> spawned)
+        {
+            foreach(BookSlotSpawnData spawn in levelData.InteractablesSpawns.BookSlots)
+                spawned.Add(
+                    _interactablesFactory.CreateBookSlot(spawn));
+        }
+
         private void SpawnReadingTables(LevelStaticData levelData, List<GameObject> spawned)
         {
             foreach(ReadingTableSpawnData readingTable in levelData.InteractablesSpawns.ReadingTables)
@@ -92,11 +99,16 @@ namespace Code.Editor.Windows.InteractablesEditorSpawn
                     readingTable.InitialBookId));
         }
 
-        private void SpawnBookSlots(LevelStaticData levelData, List<GameObject> spawned)
+        private void SpawnScanners(LevelStaticData levelData, List<GameObject> spawned)
         {
-            foreach(BookSlotSpawnData spawn in levelData.InteractablesSpawns.BookSlots)
-                spawned.Add(
-                    _interactablesFactory.CreateBookSlot(spawn));
+            foreach(ScannerSpawnData scanner in levelData.InteractablesSpawns.Scanners)
+            {
+                spawned.Add(_interactablesFactory.CreateScanner(
+                    scanner.Id,
+                    scanner.Position,
+                    scanner.Rotation,
+                    scanner.InitialBookId));
+            }
         }
 
         private PreviewMarker[] FindPreviewMarkers() =>

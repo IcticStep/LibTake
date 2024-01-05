@@ -41,7 +41,7 @@ namespace Code.Runtime.Services.Interactions.ScannerInteraction
         }
 
         public void StopReading(Progress progress) =>
-            throw new System.NotImplementedException();
+            progress.StopFilling();
         
         private bool CanScan(IBookStorage bookStorage, IProgress progress) =>
             bookStorage.HasBook
