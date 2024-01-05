@@ -1,13 +1,13 @@
 using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
-using Code.Runtime.Services.Interactions.ReadingTable;
+using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Ui;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
+    internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
     {
         [SerializeField] 
         private BookStorage _bookStorageObject;
@@ -16,15 +16,15 @@ namespace Code.Runtime.Logic.Interactions
         [SerializeField]
         private BookUi _bookUi;
         
-        private IReadingTableInteractionService _readingTableInteractionService;
+        private IScannerInteractionService _scannerInteractionService;
         private IBookSlotInteractionService _bookSlotInteractionService;
         
         public bool InProgress => _progress.Running;
 
         [Inject]
-        private void Construct(IReadingTableInteractionService readingTableInteractionService, IBookSlotInteractionService bookSlotInteractionService)
+        private void Construct(IScannerInteractionService scannerInteractionService, IBookSlotInteractionService bookSlotInteractionService)
         {
-            _readingTableInteractionService = readingTableInteractionService;
+            _scannerInteractionService = scannerInteractionService;
             _bookSlotInteractionService = bookSlotInteractionService;
         }
 
@@ -34,7 +34,7 @@ namespace Code.Runtime.Logic.Interactions
         public override void Interact()
         {
             _bookSlotInteractionService.Interact(_bookStorageObject);
-            _readingTableInteractionService.Interact(_bookStorageObject, _progress);
+            _scannerInteractionService.Interact(_bookStorageObject, _progress);
             
             if(_bookStorageObject.HasBook)
                 _bookUi.ShowData();
@@ -44,13 +44,13 @@ namespace Code.Runtime.Logic.Interactions
 
         public void OnHoverStart()
         {
-            _readingTableInteractionService.StartReadingIfPossible(_bookStorageObject, _progress);
+            _scannerInteractionService.StartScanningIfPossible(_bookStorageObject, _progress);
             _bookUi.ShowData();
         }
 
         public void OnHoverEnd()
         {
-            _readingTableInteractionService.StopReading(_progress);
+            _scannerInteractionService.StopReading(_progress);
             _bookUi.HideData();
         }
     }

@@ -2,7 +2,6 @@ using System;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactions.Data;
 using Code.Runtime.Services.Interactions.ReadBook;
-using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Player.Inventory;
 using JetBrains.Annotations;
 

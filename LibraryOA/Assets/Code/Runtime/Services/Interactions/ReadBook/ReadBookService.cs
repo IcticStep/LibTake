@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Data.Progress;
-using Code.Runtime.Infrastructure.Services.PersistentProgress;
-using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Skills;
 using JetBrains.Annotations;
 
@@ -36,6 +34,9 @@ namespace Code.Runtime.Services.Interactions.ReadBook
 
         public void ReadBook(string bookId)
         {
+            if(!CanReadBook(bookId))
+                throw new InvalidOperationException();
+
             MarkAsRead(bookId);
             _skillService.UpdateSkillsBy(bookId);
         }
