@@ -1,13 +1,15 @@
+using System;
 using Code.Runtime.Logic.Interactions.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Ui;
+using Code.Runtime.Ui.Coin;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
 {
-    internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
+    internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner, ICoinRewardSource
     {
         [SerializeField] 
         private BookStorage _bookStorageObject;
@@ -15,11 +17,12 @@ namespace Code.Runtime.Logic.Interactions
         private Progress _progress;
         [SerializeField]
         private BookUi _bookUi;
-        
+
         private IScannerInteractionService _scannerInteractionService;
         private IBookSlotInteractionService _bookSlotInteractionService;
-        
+
         public bool InProgress => _progress.Running;
+        public event Action<int> Rewarded;
 
         [Inject]
         private void Construct(IScannerInteractionService scannerInteractionService, IBookSlotInteractionService bookSlotInteractionService)
@@ -34,7 +37,7 @@ namespace Code.Runtime.Logic.Interactions
         public override void Interact()
         {
             _bookSlotInteractionService.Interact(_bookStorageObject);
-            _scannerInteractionService.Interact(_bookStorageObject, _progress);
+            _scannerInteractionService.Interact(_bookStorageObject, _progress, this);
             
             if(_bookStorageObject.HasBook)
                 _bookUi.ShowData();
@@ -44,7 +47,7 @@ namespace Code.Runtime.Logic.Interactions
 
         public void OnHoverStart()
         {
-            _scannerInteractionService.StartScanningIfPossible(_bookStorageObject, _progress);
+            _scannerInteractionService.StartScanningIfPossible(_bookStorageObject, _progress, this);
             _bookUi.ShowData();
         }
 
@@ -53,5 +56,8 @@ namespace Code.Runtime.Logic.Interactions
             _scannerInteractionService.StopReading(_progress);
             _bookUi.HideData();
         }
+
+        public void NotifyRewarded(int reward) =>
+            Rewarded?.Invoke(reward);
     }
 }

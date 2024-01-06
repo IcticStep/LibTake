@@ -6,8 +6,8 @@ namespace Code.Runtime.Services.Interactions.ScannerInteraction
 {
     internal interface IScannerInteractionService
     {
-        void Interact(BookStorage bookStorage, Progress progress);
-        void StartScanningIfPossible(BookStorage bookStorage, Progress progress);
+        void Interact(BookStorage bookStorage, Progress progress, Scanner scanner);
+        void StartScanningIfPossible(BookStorage bookStorage, Progress progress, Scanner scanner);
         void StopReading(Progress progress);
         void CanInteract(IBookStorage bookStorage, IProgress progress);
     }
