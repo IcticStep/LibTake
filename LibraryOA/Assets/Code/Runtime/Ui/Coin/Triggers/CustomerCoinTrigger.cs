@@ -1,5 +1,4 @@
 using Code.Runtime.Logic.Customers;
-using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -38,6 +37,8 @@ namespace Code.Runtime.Ui.Coin.Triggers
         }
 
         private void ShowCoin(int coinsAmount) =>
-            _flyingCoin.ShowCoin(coinsAmount).Forget();
+            _flyingCoin
+                .ShowCoin(coinsAmount)
+                .Forget();
     }
 }
