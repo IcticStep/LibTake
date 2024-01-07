@@ -507,6 +507,8 @@ GameObject:
   - component: {fileID: 1041264329281250622}
   - component: {fileID: 1140989559569533951}
   - component: {fileID: 6366997080610304432}
+  - component: {fileID: 3088549296746013597}
+  - component: {fileID: 1457946371170252386}
   m_Layer: 0
   m_Name: ScanTable_Plane
   m_TagString: Untagged
@@ -580,6 +582,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3088549296746013597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666925308534617670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38c2bc2e5d8472181a8ccfa5e54bb9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planeObject: {fileID: 7666925308534617670}
+  _closingRotation: {x: 0, y: 0, z: -110}
+  _closingDuration: 0.25
+  _openingDuration: 0.25
+  _closingEase: 25
+  _openingEase: 25
+--- !u!114 &1457946371170252386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666925308534617670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45d5367f306458d92971ef77fd74484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progress: {fileID: 5819772149727886499}
+  _coddedAnimation: {fileID: 3088549296746013597}
 --- !u!1 &7929982001475578968
 GameObject:
   m_ObjectHideFlags: 0
