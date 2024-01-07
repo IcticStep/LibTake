@@ -1,5 +1,5 @@
 using System;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

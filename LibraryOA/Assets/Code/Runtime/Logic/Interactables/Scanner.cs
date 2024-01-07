@@ -1,5 +1,5 @@
 using System;
-using Code.Runtime.Logic.Interactions.Api;
+using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Ui;
@@ -7,7 +7,7 @@ using Code.Runtime.Ui.Coin;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactions
+namespace Code.Runtime.Logic.Interactables
 {
     internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner, ICoinRewardSource
     {
