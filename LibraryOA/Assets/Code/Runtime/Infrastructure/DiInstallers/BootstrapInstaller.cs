@@ -26,6 +26,7 @@ using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Services.Interactions.Scanning;
+using Code.Runtime.Services.Interactions.Statue;
 using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Loading;
 using Code.Runtime.Services.Physics;
@@ -100,6 +101,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IBookRewardService>().To<BookRewardService>().AsSingle();
             Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
             Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
+            Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
         }
 
         private void InstallFactories()
