@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
-using Code.Runtime.Logic.Interactions.Data;
+using Code.Runtime.Logic.Interactables.Data;
 
 namespace Code.Runtime.Services.Player.Inventory
 {

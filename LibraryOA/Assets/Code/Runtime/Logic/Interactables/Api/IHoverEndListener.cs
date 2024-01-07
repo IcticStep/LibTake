@@ -1,4 +1,4 @@
-namespace Code.Runtime.Logic.Interactions.Api
+namespace Code.Runtime.Logic.Interactables.Api
 {
     public interface IHoverEndListener
     {

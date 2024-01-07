@@ -1,11 +1,11 @@
-using Code.Runtime.Logic.Interactions.Api;
+using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Ui;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactions
+namespace Code.Runtime.Logic.Interactables
 {
     internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
     {

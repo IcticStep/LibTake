@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Interactions
+namespace Code.Runtime.Logic.Interactables
 {
     public abstract class Interactable : MonoBehaviour
     {

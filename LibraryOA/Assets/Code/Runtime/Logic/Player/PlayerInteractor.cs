@@ -1,4 +1,4 @@
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.InputService;
 using UnityEngine;
 using Zenject;

@@ -2,11 +2,11 @@ using System;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
-using Code.Runtime.Logic.Interactions.Data;
+using Code.Runtime.Logic.Interactables.Data;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactions
+namespace Code.Runtime.Logic.Interactables
 {
     public class BookStorage : MonoBehaviour, IBookStorage, ISavedProgress
     {

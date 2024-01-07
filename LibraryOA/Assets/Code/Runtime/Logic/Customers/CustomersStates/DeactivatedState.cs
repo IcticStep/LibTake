@@ -1,5 +1,5 @@
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {
