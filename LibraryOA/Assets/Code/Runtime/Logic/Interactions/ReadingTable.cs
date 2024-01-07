@@ -1,11 +1,8 @@
 using Code.Runtime.Logic.Interactions.Api;
-using Code.Runtime.Logic.Interactions.Data;
-using Code.Runtime.Services.Interactions;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Ui;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactions
@@ -16,8 +13,6 @@ namespace Code.Runtime.Logic.Interactions
         private BookStorage _bookStorageObject;
         [SerializeField]
         private Progress _progress;
-        [FormerlySerializedAs("_bookStorageUi")]
-        [FormerlySerializedAs("_bookStorageDataView")]
         [SerializeField]
         private BookUi _bookUi;
         

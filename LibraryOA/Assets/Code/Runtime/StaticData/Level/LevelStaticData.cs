@@ -20,7 +20,6 @@ namespace Code.Runtime.StaticData.Level
         [field: SerializeField]
         public InteractablesSpawnsData InteractablesSpawns { get; private set; }
 
-        [FormerlySerializedAs("CustomersData")]
         [field: SerializeField]
         public CustomersData Customers;
 
