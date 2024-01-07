@@ -1,10 +1,9 @@
 using Code.Runtime.Logic.Player;
-using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Player.Provider;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactions
+namespace Code.Runtime.Logic.Interactables
 {
     internal sealed class HoverView : MonoBehaviour
     {

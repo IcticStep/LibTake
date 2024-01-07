@@ -3,7 +3,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;

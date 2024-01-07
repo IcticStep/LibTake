@@ -1,4 +1,4 @@
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using UnityEngine;
 
 namespace Code.Runtime.Services.Interactions.Registry

@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Runtime.Logic.Interactions.Data
+namespace Code.Runtime.Logic.Interactables.Data
 {
     public interface IBookStorage
     {

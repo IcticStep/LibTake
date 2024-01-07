@@ -1,4 +1,4 @@
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.Interactions.Truck;
 using Cysharp.Threading.Tasks;
 using Zenject;

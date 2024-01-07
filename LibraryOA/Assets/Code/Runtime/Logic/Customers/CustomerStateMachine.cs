@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.Books.Receiving;
 using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Customers.Queue;
