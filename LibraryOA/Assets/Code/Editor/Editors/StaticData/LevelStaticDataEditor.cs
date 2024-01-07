@@ -52,8 +52,7 @@ namespace Code.Editor.Editors.StaticData
                 .Select(x => x.transform.position)
                 .ToList();
 
-            CustomersData customersData = new(spawnPoint, queuePoints, exitWayPoints);
-            return customersData;
+            return new CustomersData(spawnPoint, queuePoints, exitWayPoints);
         }
 
         private static InteractablesSpawnsData CollectInteractablesData()
@@ -70,7 +69,11 @@ namespace Code.Editor.Editors.StaticData
                 .Select(ScannerSpawnData.NewFrom)
                 .ToList();
 
-            return new(bookSlotsSpawns, readingTableSpawns, scannerSpawns);
+            List<StatueSpawnData> statueSpawns = FindObjectsOfType<StatueSpawnMarker>()
+                .Select(StatueSpawnData.NewFrom)
+                .ToList();
+            
+            return new InteractablesSpawnsData(bookSlotsSpawns, readingTableSpawns, scannerSpawns, statueSpawns);
         }
 
         private static TruckWayStaticData CollectTruckData()

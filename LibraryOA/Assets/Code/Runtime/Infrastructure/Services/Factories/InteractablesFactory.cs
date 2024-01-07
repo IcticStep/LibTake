@@ -84,7 +84,7 @@ namespace Code.Runtime.Infrastructure.Services.Factories
 
             return scanner;
         }
-
+        
         public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
