@@ -45,6 +45,7 @@ namespace Code.Runtime.Logic.Customers
         public Type ActiveStateType => _activeState.GetType();
 
         public event Action<CustomerStateMachine, IExitableCustomerState> StateEntered;
+        public event Action<CustomerStateMachine, IExitableCustomerState> StateExited;
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
@@ -90,6 +91,7 @@ namespace Code.Runtime.Logic.Customers
             where TState : class, IExitableCustomerState
         {
             _activeState?.Exit();
+            StateExited?.Invoke(this, _activeState);
             TState nextState = _states[typeof(TState)] as TState;
             _activeState = nextState;
             return nextState;

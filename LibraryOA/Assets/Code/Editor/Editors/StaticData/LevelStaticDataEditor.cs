@@ -65,8 +65,12 @@ namespace Code.Editor.Editors.StaticData
             List<ReadingTableSpawnData> readingTableSpawns = FindObjectsOfType<ReadingTableSpawn>()
                 .Select(ReadingTableSpawnData.NewFrom)
                 .ToList();
+            
+            List<ScannerSpawnData> scannerSpawns = FindObjectsOfType<ScannerSpawn>()
+                .Select(ScannerSpawnData.NewFrom)
+                .ToList();
 
-            return new(bookSlotsSpawns, readingTableSpawns);
+            return new(bookSlotsSpawns, readingTableSpawns, scannerSpawns);
         }
 
         private static TruckWayStaticData CollectTruckData()
