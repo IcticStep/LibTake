@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Ui
 {
-    internal sealed class ReadingBookUiUpdater : MonoBehaviour
+    internal sealed class OnProgressFinishBookUiUpdater : MonoBehaviour
     {
         [SerializeField]
         private Progress _progress;
