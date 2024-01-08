@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bookStorageObject: {fileID: 5475589924342636869}
-  _bookStorageDataView: {fileID: 2475339926657146350}
+  _bookUi: {fileID: 2475339926657146350}
 --- !u!114 &305989145435600299
 MonoBehaviour:
   m_ObjectHideFlags: 0
