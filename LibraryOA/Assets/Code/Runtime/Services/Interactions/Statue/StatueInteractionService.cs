@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Services.Interactions.Statue.Result;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
 using JetBrains.Annotations;
@@ -25,13 +26,14 @@ namespace Code.Runtime.Services.Interactions.Statue
             _playerLivesService.Lives < _playerLivesService.MaxLives
             && _playerInventoryService.Coins >= LifePrice;
 
-        public void Interact()
+        public Result.Result Interact()
         {
             if(!CanInteract())
-                return;
+                return new Fail();
             
             _playerInventoryService.RemoveCoins(LifePrice);
             _playerLivesService.RestoreLife();
+            return new Success(1, LifePrice);
         }
     }
 }

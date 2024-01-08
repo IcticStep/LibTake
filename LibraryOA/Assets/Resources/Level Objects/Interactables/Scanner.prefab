@@ -1033,16 +1033,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7994167060684511915, guid: 9781e47ff19acfa42a2a1e831876e718,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7994167060684511915, guid: 9781e47ff19acfa42a2a1e831876e718,
-        type: 3}
-      propertyPath: m_UseSpriteMesh
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1088,7 +1078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23607cd8464494abe7dabf0a05044db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactable: {fileID: 2725686778411078125}
+  _rewardSource: {fileID: 2725686778411078125}
   _flyingResource: {fileID: 3667653937569673582}
   _delaySeconds: 0
 --- !u!1001 &3326484725461082984

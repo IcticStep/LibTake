@@ -2,13 +2,14 @@ using System;
 using Code.Runtime.Logic.Interactables;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Code.Runtime.Ui.Coin.Triggers
+namespace Code.Runtime.Ui.FlyingResources.Triggers
 {
-    internal sealed class InteractableFlyResourceTrigger : MonoBehaviour
+    internal sealed class FlyResourceTrigger : MonoBehaviour
     {
         [SerializeField]
-        private Interactable _interactable;
+        private MonoBehaviour _rewardSource;
         [SerializeField]
         private FlyingResource _flyingResource;
         [SerializeField]
@@ -16,16 +17,26 @@ namespace Code.Runtime.Ui.Coin.Triggers
 
         private void Awake()
         {
-            if(_interactable is not IRewardSource rewardSource)
-                throw new InvalidOperationException($"{nameof(InteractableFlyResourceTrigger)} requires {nameof(IRewardSource)} implementation in {nameof(Interactable)}.");
-
-            rewardSource.Rewarded += ShowResource;
+            if(_rewardSource is IRewardSource rewardSource)
+                rewardSource.Rewarded += ShowResource;
         }
 
         private void OnDestroy()
         {
-            if(_interactable is IRewardSource coinRewardSource)
+            if(_rewardSource is IRewardSource coinRewardSource)
                 coinRewardSource.Rewarded -= ShowResource;
+        }
+
+        private void OnValidate()
+        {
+            if(_rewardSource is null)
+                return;
+
+            if(_rewardSource is IRewardSource)
+                return;
+
+            _rewardSource = null;
+            throw new InvalidOperationException($"{nameof(FlyResourceTrigger)} requires {nameof(IRewardSource)} implementation in {nameof(_rewardSource)} field.");
         }
 
         private void ShowResource(int amount) =>

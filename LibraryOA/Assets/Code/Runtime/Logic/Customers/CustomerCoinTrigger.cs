@@ -1,17 +1,14 @@
-using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
+using Code.Runtime.Ui.FlyingResources;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Runtime.Ui.Coin.Triggers
+namespace Code.Runtime.Logic.Customers
 {
     public class CustomerCoinTrigger : MonoBehaviour
     {
         [SerializeField]
         private CustomerStateMachine _customer;
-        [FormerlySerializedAs("_flyingResoruce")]
-        [FormerlySerializedAs("_flyingCoin")]
         [SerializeField]
         private FlyingResource _flyingResource;
         
