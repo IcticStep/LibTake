@@ -13,8 +13,5 @@ namespace Code.Runtime.StaticData
         
         [field: SerializeField]
         public int MaxLivesCount { get; private set; }
-        
-        [field: SerializeField]
-        public int LifeRestorePrice { get; private set; }
     }
 }
