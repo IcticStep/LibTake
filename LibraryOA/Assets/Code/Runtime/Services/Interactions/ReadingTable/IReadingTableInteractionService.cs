@@ -1,5 +1,5 @@
 using Code.Runtime.Logic;
-using Code.Runtime.Logic.Interactions.Data;
+using Code.Runtime.Logic.Interactables.Data;
 
 namespace Code.Runtime.Services.Interactions.ReadingTable
 {

@@ -1,6 +1,6 @@
 using System;
 using Code.Runtime.Data.Progress;
-using Code.Runtime.Infrastructure.States;
+using Code.Runtime.Infrastructure.Services.StaticData;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -9,14 +9,15 @@ namespace Code.Runtime.Services.Player.Lives
     [UsedImplicitly]
     public sealed class PlayerLivesService : IPlayerLivesService
     {
-        private readonly GameStateMachine _gameStateMachine;
-        public int Lives { get; private set; }
+        private readonly IStaticDataService _staticDataService;
 
+        public int Lives { get; private set; }
+        public int MaxLives => _staticDataService.Player.MaxLivesCount;
         public event Action Updated;
 
-        public PlayerLivesService(GameStateMachine gameStateMachine)
+        public PlayerLivesService(IStaticDataService staticDataService) 
         {
-            _gameStateMachine = gameStateMachine;
+            _staticDataService = staticDataService;
         }
 
         public void WasteLife()

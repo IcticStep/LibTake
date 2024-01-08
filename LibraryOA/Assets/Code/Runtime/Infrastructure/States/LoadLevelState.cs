@@ -36,8 +36,7 @@ namespace Code.Runtime.Infrastructure.States
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPersistantProgressService persistentProgress, IInteractablesFactory interactablesFactory,
             ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
-            ICustomersDeliveringService customersDeliveringService, ICameraProvider cameraProvider,
-            ILoadingCurtainService loadingCurtainService)
+            ICustomersDeliveringService customersDeliveringService, ICameraProvider cameraProvider, ILoadingCurtainService loadingCurtainService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -84,6 +83,7 @@ namespace Code.Runtime.Infrastructure.States
             InitReadingTables(levelData);
             InitScanners(levelData);
             InitTruck(levelData);
+            InitStatues(levelData);
             InitCustomers(levelData);
         }
 
@@ -109,6 +109,12 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(ScannerSpawnData scanner in levelData.InteractablesSpawns.Scanners)
                 _interactablesFactory.CreateScanner(scanner.Id, scanner.Position, scanner.Rotation, scanner.InitialBookId);
+        }
+
+        private void InitStatues(LevelStaticData levelData)
+        {
+            foreach(StatueSpawnData statue in levelData.InteractablesSpawns.Statues)
+                _interactablesFactory.CreateStatue(statue.Id, statue.Position, statue.Rotation);
         }
 
         private void InitCustomers(LevelStaticData levelData)

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using JetBrains.Annotations;
 using UnityEngine;
 

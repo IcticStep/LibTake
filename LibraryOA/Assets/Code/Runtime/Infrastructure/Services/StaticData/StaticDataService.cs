@@ -25,6 +25,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string BookReceivingPath = "Static Data/Book Receiving";
         private const string UiPath = "Static Data/Ui Data";
         private const string ScannerPath = "Static Data/Interactables/ScannerData";
+        private const string StatuePath = "Static Data/Interactables/StatueData";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
@@ -76,8 +77,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             StaticBookSlot bookSlot = Resources.Load<StaticBookSlot>(BookSlotPath);
             StaticTruck truck = Resources.Load<StaticTruck>(TruckPath);
             StaticScanner scanner = Resources.Load<StaticScanner>(ScannerPath);
+            StaticStatue statue = Resources.Load<StaticStatue>(StatuePath);
             
-            Interactables = new InteractablesStaticData(readingTable, bookSlot, truck, scanner);
+            Interactables = new InteractablesStaticData(readingTable, bookSlot, truck, scanner, statue);
         }
 
         public void LoadStartupSettings() =>

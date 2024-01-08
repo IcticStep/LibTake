@@ -3,7 +3,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;
@@ -84,7 +84,17 @@ namespace Code.Runtime.Infrastructure.Services.Factories
 
             return scanner;
         }
+        
+        public GameObject CreateStatue(string objectId, Vector3 at, Quaternion rotation)
+        {
+            StaticStatue staticData = _staticDataService.Interactables.Statue;
+            GameObject statue = _assetProvider.Instantiate(staticData.Prefab, at, rotation);
 
+            InitInteractable(objectId, statue);
+
+            return statue;
+        }
+        
         public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);

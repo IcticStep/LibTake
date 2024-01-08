@@ -1,6 +1,6 @@
 using System;
-using Code.Runtime.Logic.Interactions;
-using Code.Runtime.Logic.Interactions.Api;
+using Code.Runtime.Logic.Interactables;
+using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Player.Inventory;
