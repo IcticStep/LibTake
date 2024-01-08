@@ -3,7 +3,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Services.Books.Reward;
 using Code.Runtime.Services.Player.Inventory;
-using Code.Runtime.Ui.Coin;
+using Code.Runtime.Ui.FlyingResources;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

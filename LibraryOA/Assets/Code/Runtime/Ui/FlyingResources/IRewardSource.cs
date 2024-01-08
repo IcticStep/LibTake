@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Runtime.Ui.Coin
+namespace Code.Runtime.Ui.FlyingResources
 {
     public interface IRewardSource
     {

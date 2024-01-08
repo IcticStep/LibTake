@@ -3,7 +3,7 @@ using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Ui;
-using Code.Runtime.Ui.Coin;
+using Code.Runtime.Ui.FlyingResources;
 using UnityEngine;
 using Zenject;
 

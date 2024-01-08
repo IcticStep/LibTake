@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7474541689435430648}
   - component: {fileID: 4041606459491898900}
   m_Layer: 5
-  m_Name: FlyingCoinCointainer
+  m_Name: FlyingResource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 5973873956159444147}
   - component: {fileID: 1555688583262406052}
   m_Layer: 5
-  m_Name: Coin
+  m_Name: Resource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,9 +255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -319,3 +319,5 @@ MonoBehaviour:
   _smoothFader: {fileID: 2928516994959741163}
   _moverY: {fileID: 5973873956159444147}
   _coinsAmountText: {fileID: 5645996274970240317}
+  _image: {fileID: 7994167060684511915}
+  _sprite: {fileID: 21300000, guid: aa83d7ef22b2b394aba754fd3a4dc3f7, type: 3}
