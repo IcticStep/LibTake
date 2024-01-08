@@ -1,4 +1,4 @@
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using UnityEditor;
 using UnityEngine;
 

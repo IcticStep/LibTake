@@ -43,8 +43,8 @@ namespace Code.Runtime.Services.Customers.Delivering
 
             for(int i = 0; i < customersToDeliver; i++)
             {
-                await WaitInterval(cancellationToken);
                 await UniTask.WaitUntil(_customersPool.CanActivateMore, cancellationToken: cancellationToken);
+                await WaitInterval(cancellationToken);
                 if(cancellationToken.IsCancellationRequested)
                     return;
                 

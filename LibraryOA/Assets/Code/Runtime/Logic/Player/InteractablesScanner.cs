@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Data;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Physics;
 using UnityEngine;

@@ -992,6 +992,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinCointainer
       objectReference: {fileID: 0}
+    - target: {fileID: 1555688583262406052, guid: 9781e47ff19acfa42a2a1e831876e718,
+        type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa83d7ef22b2b394aba754fd3a4dc3f7,
+        type: 3}
     - target: {fileID: 4277540341641213475, guid: 9781e47ff19acfa42a2a1e831876e718,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1138,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customer: {fileID: 4862589054084425092}
-  _flyingCoin: {fileID: 1601441608380049081}
+  _flyingResource: {fileID: 1601441608380049081}
 --- !u!1001 &1353673813422578649
 PrefabInstance:
   m_ObjectHideFlags: 0

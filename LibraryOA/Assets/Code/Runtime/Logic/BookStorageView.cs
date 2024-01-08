@@ -1,5 +1,5 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Logic.Interactions;
+using Code.Runtime.Logic.Interactables;
 using Code.Runtime.StaticData.Books;
 using UnityEngine;
 using Zenject;
