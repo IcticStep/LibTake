@@ -12,7 +12,7 @@ namespace Code.Runtime.Services.Interactions.Statue
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IStaticDataService _staticDataService;
 
-        private int LifePrice => _staticDataService.Player.LifeRestorePrice;
+        private int LifePrice => _staticDataService.Interactables.Statue.LifeRestorePrice;
 
         public StatueInteractionService(IPlayerLivesService playerLivesService, IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService)
         {
