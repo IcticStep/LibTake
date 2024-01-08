@@ -1,6 +1,7 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Services.Interactions.ReadBook;
+using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.Ui.Common;
 using TMPro;
@@ -14,7 +15,9 @@ namespace Code.Runtime.Ui
         [SerializeField]
         private TextMeshProUGUI _bookName;
         [SerializeField]
-        private GameObject _readTick;
+        private GameObject _readBookIcon;
+        [SerializeField]
+        private GameObject _scannedBookIcon;
         [SerializeField]
         private BookStorage _bookStorage;
         [SerializeField]
@@ -22,10 +25,12 @@ namespace Code.Runtime.Ui
         
         private IStaticDataService _staticDataService;
         private IReadBookService _readBookService;
+        private IScanBookService _scanBookService;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService, IReadBookService readBookService)
+        private void Construct(IStaticDataService staticDataService, IReadBookService readBookService, IScanBookService scanBookService)
         {
+            _scanBookService = scanBookService;
             _readBookService = readBookService;
             _staticDataService = staticDataService;
         }
@@ -40,10 +45,11 @@ namespace Code.Runtime.Ui
             
             string bookId = _bookStorage.CurrentBookId;
             StaticBook bookData = _staticDataService.ForBook(bookId);
-            bool isRead = _readBookService.IsRead(bookId);
-            _bookName.text = bookData.name;
             
-            _readTick.SetActive(isRead);
+            SetBookName(bookData);
+            SetReadStatus(bookId);
+            SetScannedStatus(bookId);
+            
             _smoothFader.UnFade();
         }
 
@@ -54,5 +60,20 @@ namespace Code.Runtime.Ui
                 
             _smoothFader.Fade();
         }
+
+        private void SetReadStatus(string bookId)
+        {
+            bool isRead = _readBookService.IsRead(bookId);
+            _readBookIcon.SetActive(isRead);
+        }
+
+        private void SetScannedStatus(string bookId)
+        {
+            bool isScanned = _scanBookService.IsScanned(bookId);
+            _scannedBookIcon.SetActive(isScanned);
+        }
+
+        private void SetBookName(StaticBook bookData) =>
+            _bookName.text = bookData.name;
     }
 }

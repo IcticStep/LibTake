@@ -11,8 +11,6 @@ namespace Code.Runtime.Logic.Interactables
     {
         [SerializeField] 
         private BookStorage _bookStorageObject;
-        [FormerlySerializedAs("_bookStorageUi")]
-        [FormerlySerializedAs("_bookStorageDataView")]
         [SerializeField]
         private BookUi _bookUi;
         
