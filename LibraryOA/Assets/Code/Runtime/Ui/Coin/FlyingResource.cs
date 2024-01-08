@@ -1,11 +1,14 @@
+using System;
 using Code.Runtime.Ui.Common;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Code.Runtime.Ui.Coin
 {
-    internal sealed class FlyingCoin : MonoBehaviour
+    internal sealed class FlyingResource : MonoBehaviour
     {
         [SerializeField]
         private SmoothFader _smoothFader;
@@ -13,11 +16,26 @@ namespace Code.Runtime.Ui.Coin
         private MoverY _moverY;
         [SerializeField]
         private TextMeshProUGUI _coinsAmountText;
+        [SerializeField]
+        private Image _image;
+        [SerializeField]
+        private Sprite _sprite;
         
-        private void Start() =>
+        private void Start()
+        {
             _smoothFader.FadeImmediately();
-        
-        public async UniTask ShowCoin(int amount)
+            _image.sprite = _sprite;
+        }
+
+        private void OnValidate()
+        {
+            _smoothFader ??= GetComponent<SmoothFader>();
+            _moverY ??= GetComponent<MoverY>();
+            _image ??= GetComponent<Image>();
+            _sprite ??= _image.sprite;
+        }
+
+        public async UniTask FlyResource(int amount)
         {
             _moverY.Move();
             _coinsAmountText.text = "+" + amount;

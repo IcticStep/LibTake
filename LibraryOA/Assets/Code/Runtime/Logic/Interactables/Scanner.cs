@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Interactables
 {
-    internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner, ICoinRewardSource
+    internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner, IRewardSource
     {
         [SerializeField] 
         private BookStorage _bookStorageObject;

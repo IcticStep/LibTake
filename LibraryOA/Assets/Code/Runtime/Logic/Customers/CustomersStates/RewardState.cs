@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic.Customers.CustomersStates
 {
-    public sealed class RewardState : ICustomerState, ICoinRewardSource
+    public sealed class RewardState : ICustomerState, IRewardSource
     {
         private readonly IProgress _progress;
         private readonly ICustomerStateMachine _customerStateMachine;
