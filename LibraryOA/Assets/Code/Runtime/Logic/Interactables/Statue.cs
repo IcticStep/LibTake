@@ -14,7 +14,12 @@ namespace Code.Runtime.Logic.Interactables
         public override bool CanInteract() =>
             _statueInteractionService.CanInteract();
 
-        public override void Interact() =>
+        public override void Interact()
+        {
+            if(!CanInteract())
+                return;
+            
             _statueInteractionService.Interact();
+        }
     }
 }
