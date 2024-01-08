@@ -1089,7 +1089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactable: {fileID: 2725686778411078125}
-  _flyingCoin: {fileID: 3667653937569673582}
+  _flyingResource: {fileID: 3667653937569673582}
+  _delaySeconds: 0
 --- !u!1001 &3326484725461082984
 PrefabInstance:
   m_ObjectHideFlags: 0
