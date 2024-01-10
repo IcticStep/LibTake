@@ -4,14 +4,16 @@ using UnityEngine;
 namespace Code.Runtime.Data
 {
     [Serializable]
-    public class Range
+    public class RangeInt
     {
         [SerializeField]
-        public float Min;
+        public int Min;
         [SerializeField]
-        public float Max;
+        public int Max;
 
-        public Range(float min, float max)
+        public int Delta => Max - Min;
+
+        public RangeInt(int min, int max)
         {
             Min = min;
             Max = max;

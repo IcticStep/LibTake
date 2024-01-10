@@ -10,19 +10,7 @@ namespace Code.Runtime.StaticData.Balance
         public float TimeToReceiveBook { get; private set; }
         
         [field: SerializeField]
-        public int BooksShouldLeftInLibrary { get; private set; } = 2;
-        
-        [field: SerializeField]
-        public Range BooksInLibraryLimit { get; private set; }
-
-        [field: SerializeField]
-        public AnimationCurve BooksDeliveringCurve { get; private set; }
-        
-        [field: SerializeField]
-        public int BooksDeliveringDaysScale { get; private set; }
-        
-        [field: SerializeField]
-        public Range CustomersInterval { get; private set; } = new Range(3, 10);
+        public RangeFloat CustomersInterval { get; private set; } = new RangeFloat(3, 10);
 
         [field: SerializeField]
         public float RewardSecondsDelay { get; private set; }
