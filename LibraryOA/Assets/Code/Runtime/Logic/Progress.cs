@@ -51,6 +51,9 @@ namespace Code.Runtime.Logic
 
         public void Initialize(float timeToFinish) =>
             Initialize(null, timeToFinish);
+        
+        public void Initialize(string ownerId) =>
+            Initialize(ownerId, 1f);
 
         public void Initialize(string ownerId, float timeToFinish)
         {

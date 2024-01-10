@@ -81,6 +81,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             InitBookSlots(levelData);
             InitReadingTables(levelData);
+            InitCraftingTables(levelData);
             InitScanners(levelData);
             InitTruck(levelData);
             InitStatues(levelData);
@@ -103,6 +104,12 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(ReadingTableSpawnData readingTable in levelData.InteractablesSpawns.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
+        }
+        
+        private void InitCraftingTables(LevelStaticData levelData)
+        {
+            foreach(CraftingTableSpawnData craftingTable in levelData.InteractablesSpawns.CraftingTables)
+                _interactablesFactory.CreateCraftingTable(craftingTable.Id, craftingTable.Position, craftingTable.Rotation);
         }
 
         private void InitScanners(LevelStaticData levelData)

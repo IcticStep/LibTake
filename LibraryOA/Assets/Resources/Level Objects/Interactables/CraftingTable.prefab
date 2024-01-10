@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5d8a430a2b4a4686296c206b9e4144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smoke: {fileID: 0}
+  _smoke: {fileID: 2193215140129272063}
   _progress: {fileID: 2424559754935906697}
 --- !u!1 &7741744960597959949
 GameObject:
@@ -237,6 +237,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4592e134413ee484c9d8681682b2e1d2, type: 3}
+--- !u!198 &2193215140129272063 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3404748791719011085, guid: 4592e134413ee484c9d8681682b2e1d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3544268517005317106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5519718687918744442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9058497618237763720, guid: 4592e134413ee484c9d8681682b2e1d2,

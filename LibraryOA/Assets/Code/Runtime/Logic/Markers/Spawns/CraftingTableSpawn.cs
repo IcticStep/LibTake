@@ -8,8 +8,5 @@ namespace Code.Runtime.Logic.Markers.Spawns
     public sealed class CraftingTableSpawn : MonoBehaviour
     {
         [SerializeField] private StaticBook _initialBook;
-        
-        // ReSharper disable once Unity.NoNullPropagation
-        public string InitialBookId => _initialBook?.Id;
     }
 }
