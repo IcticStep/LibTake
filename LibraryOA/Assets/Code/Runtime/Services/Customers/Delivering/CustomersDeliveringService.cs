@@ -41,7 +41,8 @@ namespace Code.Runtime.Services.Customers.Delivering
         {
             int booksInLibrary = _booksReceivingService.BooksInLibrary;
             int booksShouldStayAfter = Mathf.CeilToInt(booksInLibrary * _staticDataService.BookDelivering.PercentsShouldLeftInLibrary);
-            int customersToDeliver = booksInLibrary - booksShouldStayAfter;
+            int shouldStayAfter = booksInLibrary - booksShouldStayAfter;
+            int customersToDeliver = Mathf.Max(shouldStayAfter, 1);
             Debug.Log($"Customers to deliver: {customersToDeliver}.");
             
             for(int i = 0; i < customersToDeliver; i++)
