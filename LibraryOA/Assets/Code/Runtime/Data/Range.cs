@@ -1,12 +1,15 @@
 using System;
+using UnityEngine;
 
 namespace Code.Runtime.Data
 {
     [Serializable]
-    public readonly struct Range
+    public class Range
     {
-        public readonly float Min;
-        public readonly float Max;
+        [SerializeField]
+        public float Min;
+        [SerializeField]
+        public float Max;
 
         public Range(float min, float max)
         {
