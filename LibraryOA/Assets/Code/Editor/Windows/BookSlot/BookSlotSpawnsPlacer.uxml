@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:IMGUIContainer name="Root" style="flex-shrink: 0; width: 100%; height: 100%;">
-        <uie:ObjectField label="Book slot container" name="ContainerField" type="Code.Runtime.Logic.Markers.Spawns.BookSlotSpawnContainer, Assembly-CSharp" />
+        <uie:ObjectField label="Book slot container" name="ContainerField" type="Code.Runtime.Logic.Markers.Spawns.BookSlotSpawnContainer, Runtime" />
         <ui:IMGUIContainer name="ToolBox">
             <ui:Slider picking-mode="Ignore" label="Circle radius" value="1" high-value="50" name="CircleRaidusSlider" show-input-field="true" low-value="0.01" />
             <ui:SliderInt picking-mode="Ignore" label="Objects total" value="42" high-value="100" name="ObjectCountsSlider" show-input-field="true" inverted="false" />
