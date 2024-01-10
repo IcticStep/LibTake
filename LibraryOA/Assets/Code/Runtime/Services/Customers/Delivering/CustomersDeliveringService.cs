@@ -1,8 +1,5 @@
 using System.Threading;
-using System.Threading.Tasks;
-using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Services.Books.Receiving;
