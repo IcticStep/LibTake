@@ -26,6 +26,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string UiPath = "Static Data/Ui Data";
         private const string ScannerPath = "Static Data/Interactables/ScannerData";
         private const string StatuePath = "Static Data/Interactables/StatueData";
+        private const string BookDeliveringPath = "Static Data/Books delivering";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
@@ -34,6 +35,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public InteractablesStaticData Interactables { get; private set; }
         public StaticPlayer Player { get; private set; }
         public StaticBookReceiving BookReceiving { get; private set; }
+        public StaticBooksDelivering BookDelivering { get; private set; }
         public UiData Ui { get; private set; }
         public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
         public LevelStaticData CurrentLevelData => ForLevel(SceneManager.GetActiveScene().name);
@@ -44,6 +46,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             LoadLevels();
             LoadPlayer();
             LoadBookReceiving();
+            LoadBookDelivering();
             LoadBooks();
             LoadInteractables();
             LoadUi();
@@ -66,6 +69,10 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public void LoadBookReceiving() =>
             BookReceiving = Resources
                 .Load<StaticBookReceiving>(BookReceivingPath);
+
+        public void LoadBookDelivering() =>
+            BookDelivering = Resources
+                .Load<StaticBooksDelivering>(BookDeliveringPath);
 
         public void LoadUi() =>
             Ui = Resources

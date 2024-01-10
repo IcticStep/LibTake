@@ -39,8 +39,11 @@ namespace Code.Runtime.Services.Customers.Delivering
 
         public async UniTask DeliverCustomers(CancellationToken cancellationToken)
         {
-            int customersToDeliver = _booksReceivingService.BooksInLibrary - BookReceiving.BooksShouldLeftInLibrary;
-
+            int booksInLibrary = _booksReceivingService.BooksInLibrary;
+            int booksShouldStayAfter = Mathf.CeilToInt(booksInLibrary * _staticDataService.BookDelivering.PercentsShouldLeftInLibrary);
+            int customersToDeliver = booksInLibrary - booksShouldStayAfter;
+            Debug.Log($"Customers to deliver: {customersToDeliver}.");
+            
             for(int i = 0; i < customersToDeliver; i++)
             {
                 await UniTask.WaitUntil(_customersPool.CanActivateMore, cancellationToken: cancellationToken);
