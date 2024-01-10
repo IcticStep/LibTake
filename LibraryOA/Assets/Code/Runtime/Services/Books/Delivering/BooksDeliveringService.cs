@@ -33,7 +33,8 @@ namespace Code.Runtime.Services.Books.Delivering
         public void DeliverBooksInTruck()
         {
             IReadOnlyList<string> booksToChoose = GetBooksToChoose();
-            for(int i = 0; i < GetCurrentDayBooksDelivering(); i++)
+            int booksToDeliver = GetCurrentDayBooksDelivering();
+            for(int i = 0; i < booksToDeliver; i++)
             {
                 int chosenIndex = _randomService.GetInRange(0, booksToChoose.Count);
                 string chosenId = booksToChoose[chosenIndex];
@@ -45,8 +46,11 @@ namespace Code.Runtime.Services.Books.Delivering
         {
             int day = _daysService.CurrentDay;
             int inLibrary = _booksReceivingService.BooksInLibrary;
-            Range limit = _staticDataService.BookReceiving.BooksInLibraryLimit;
-            return 5;
+            
+            int shouldBeInLibrary = _staticDataService.BookDelivering.GetBooksShouldBeInLibraryForDay(day);
+            int toDeliver = Mathf.Max(shouldBeInLibrary - inLibrary, 1);
+            Debug.Log($"Books to deliver: {toDeliver}.");
+            return toDeliver;
         }
 
         private IReadOnlyList<string> GetBooksToChoose() =>

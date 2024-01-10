@@ -5,6 +5,6 @@ namespace Code.Runtime.Services.Random
     internal interface IRandomService
     {
         int GetInRange(int min, int max);
-        float GetInRange(Range range);
+        float GetInRange(RangeFloat rangeFloat);
     }
 }
