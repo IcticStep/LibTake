@@ -94,7 +94,18 @@ namespace Code.Runtime.Infrastructure.Services.Factories
 
             return statue;
         }
-        
+
+        public GameObject CreateCraftingTable(string objectId, Vector3 at, Quaternion rotation)
+        {
+            StaticCraftingTable staticData = _staticDataService.Interactables.CraftingTable;
+            GameObject craftingTable = _assetProvider.Instantiate(staticData.Prefab, at, rotation);
+
+            InitInteractable(objectId, craftingTable);
+            InitCraftingTableProgress(objectId, craftingTable, staticData);
+
+            return craftingTable;
+        }
+
         public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
@@ -135,6 +146,13 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         {
             Progress progress = scanner.GetComponentInChildren<Progress>();
             progress.Initialize(objectId, data.SecondsToScan);
+            _saveLoadRegistry.Register(progress);
+        }
+
+        private void InitCraftingTableProgress(string objectId, GameObject craftingTable, StaticCraftingTable data)
+        {
+            Progress progress = craftingTable.GetComponentInChildren<Progress>();
+            progress.Initialize(objectId);
             _saveLoadRegistry.Register(progress);
         }
     }

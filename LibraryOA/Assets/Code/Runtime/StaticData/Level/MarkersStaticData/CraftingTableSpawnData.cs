@@ -13,25 +13,20 @@ namespace Code.Runtime.StaticData.Level.MarkersStaticData
         public string Id;
         
         [ReadOnly] 
-        public string InitialBookId;
-        
-        [ReadOnly] 
         public Vector3 Position;
 
         [ReadOnly] 
         public Quaternion Rotation;
 
-        public CraftingTableSpawnData(string id, string initialBookId, Vector3 position, Quaternion rotation)
+        public CraftingTableSpawnData(string id, Vector3 position, Quaternion rotation)
         {
             Id = id;
-            InitialBookId = initialBookId;
             Position = position;
             Rotation = rotation;
         }
 
         public static CraftingTableSpawnData NewFrom(CraftingTableSpawn readingTableSpawn) =>
             new(readingTableSpawn.GetComponent<UniqueId>().Id,
-                readingTableSpawn.GetComponent<CraftingTableSpawn>().InitialBookId,
                 readingTableSpawn.transform.position,
                 readingTableSpawn.transform.rotation);
     }

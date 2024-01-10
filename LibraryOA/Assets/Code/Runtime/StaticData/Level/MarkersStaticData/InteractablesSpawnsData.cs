@@ -18,7 +18,7 @@ namespace Code.Runtime.StaticData.Level.MarkersStaticData
         [SerializeField]
         private List<StatueSpawnData> _statues;
         [SerializeField]
-        private IReadOnlyList<CraftingTableSpawnData> _craftingTables;
+        private List<CraftingTableSpawnData> _craftingTables;
 
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
@@ -27,7 +27,7 @@ namespace Code.Runtime.StaticData.Level.MarkersStaticData
         public IReadOnlyList<CraftingTableSpawnData> CraftingTables => _craftingTables;
 
         public InteractablesSpawnsData(List<BookSlotSpawnData> bookSlots, List<ReadingTableSpawnData> readingTables, List<ScannerSpawnData> scanners,
-            List<StatueSpawnData> statues, IReadOnlyList<CraftingTableSpawnData> craftingTables)
+            List<StatueSpawnData> statues, List<CraftingTableSpawnData> craftingTables)
         {
             _bookSlots = bookSlots;
             _readingTables = readingTables;
