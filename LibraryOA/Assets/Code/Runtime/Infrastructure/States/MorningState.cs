@@ -5,6 +5,7 @@ using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Books.Delivering;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
+using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.TruckDriving;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -20,10 +21,12 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IUiMessagesService _uiMessagesService;
         private readonly IReadBookService _readBookService;
         private readonly IDaysService _daysService;
+        private readonly IScanBookService _scanBookService;
 
         public MorningState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
-            IUiMessagesService uiMessagesService, IReadBookService readBookService, IDaysService daysService)
+            IUiMessagesService uiMessagesService, IReadBookService readBookService, IDaysService daysService,
+            IScanBookService scanBookService)
         {
             _gameStateMachine = gameStateMachine;
             _truckProvider = truckProvider;
@@ -32,21 +35,20 @@ namespace Code.Runtime.Infrastructure.States
             _uiMessagesService = uiMessagesService;
             _readBookService = readBookService;
             _daysService = daysService;
+            _scanBookService = scanBookService;
         }
 
         public void Start()
         {
             _readBookService.BlockReading();
+            _scanBookService.BlockScanning();
             SaveGame();
             _daysService.AddDay();
             ShowDayNumberMessage();
             DeliverBooks().Forget();
         }
 
-        public void Exit()
-        {
-            
-        }
+        public void Exit() { }
 
         private void SaveGame()
         {

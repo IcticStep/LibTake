@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.ReadBook;
+using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Player.Lives;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -18,11 +19,11 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IReadBookService _readBookService;
         private readonly IDaysService _daysService;
         private readonly IPlayerLivesService _playerLivesService;
+        private readonly IScanBookService _scanBookService;
 
         public DayState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService, 
-            ICustomersDeliveringService customersDeliveringService,
-            IReadBookService readBookService, IDaysService daysService,
-            IPlayerLivesService playerLivesService)
+            ICustomersDeliveringService customersDeliveringService, IReadBookService readBookService, IDaysService daysService,
+            IPlayerLivesService playerLivesService, IScanBookService scanBookService)
         {
             _gameStateMachine = gameStateMachine;
             _uiMessagesService = uiMessagesService;
@@ -30,11 +31,13 @@ namespace Code.Runtime.Infrastructure.States
             _readBookService = readBookService;
             _daysService = daysService;
             _playerLivesService = playerLivesService;
+            _scanBookService = scanBookService;
         }
 
         public void Start()
         {
             _readBookService.AllowReading();
+            _scanBookService.AllowScanning();
             ShowDayNumberMessage();
             ProceedDay().Forget();
         }
