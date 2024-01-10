@@ -72,8 +72,12 @@ namespace Code.Editor.Editors.StaticData
             List<StatueSpawnData> statueSpawns = FindObjectsOfType<StatueSpawnMarker>()
                 .Select(StatueSpawnData.NewFrom)
                 .ToList();
+
+            List<CraftingTableSpawnData> craftingTables = FindObjectsOfType<CraftingTableSpawn>()
+                .Select(CraftingTableSpawnData.NewFrom)
+                .ToList();
             
-            return new InteractablesSpawnsData(bookSlotsSpawns, readingTableSpawns, scannerSpawns, statueSpawns);
+            return new InteractablesSpawnsData(bookSlotsSpawns, readingTableSpawns, scannerSpawns, statueSpawns, craftingTables);
         }
 
         private static TruckWayStaticData CollectTruckData()
