@@ -18,6 +18,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         IReadOnlyList<StaticBook> AllBooks { get; }
         LevelStaticData CurrentLevelData { get; }
         StaticBooksDelivering BookDelivering { get; }
+        IReadOnlyList<StaticBookType> BookTypes { get; }
         void LoadAll();
         void LoadBooks();
         void LoadLevels();
