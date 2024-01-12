@@ -2072,7 +2072,7 @@ GameObject:
   m_Layer: 0
   m_Name: ScannerSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2548,7 +2548,7 @@ GameObject:
   m_Layer: 0
   m_Name: CraftTableSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2965,11 +2965,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1083140269}
   - component: {fileID: 1083140271}
+  - component: {fileID: 1083140272}
   - component: {fileID: 1083140270}
   m_Layer: 3
   m_Name: ShowSecondFlorTrigger
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3002,7 +3003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _library: {fileID: 2147415424}
   _targetState: 1
-  _collider: {fileID: 1083140271}
+  _trigger: {fileID: 1083140272}
 --- !u!65 &1083140271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3024,6 +3025,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9355587, y: 4.8444657, z: 14.269538}
   m_Center: {x: -0.46777934, y: 1.9222329, z: -5.4234586}
+--- !u!114 &1083140272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083140268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb83860be8344039a9b80d02c14b45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1083140271}
+  _color:
+    serializedVersion: 2
+    rgba: 3354499175
 --- !u!1001 &1096280177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3505,7 +3522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8314502317434477a4c488be1990e721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraFollow: {fileID: 568110146}
+  _mainCamera: {fileID: 568110146}
 --- !u!1001 &1274137623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4503,11 +4520,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1442993040}
   - component: {fileID: 1442993042}
+  - component: {fileID: 1442993043}
   - component: {fileID: 1442993041}
   m_Layer: 3
   m_Name: HideSecondFlorTrigger
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4540,7 +4558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _library: {fileID: 2147415424}
   _targetState: 0
-  _collider: {fileID: 1442993042}
+  _trigger: {fileID: 1442993043}
 --- !u!65 &1442993042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4562,6 +4580,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9355587, y: 4.8444657, z: 4.640756}
   m_Center: {x: -0.46777934, y: 1.9222329, z: 0.15082622}
+--- !u!114 &1442993043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442993039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb83860be8344039a9b80d02c14b45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1442993042}
+  _color:
+    serializedVersion: 2
+    rgba: 2740966495
 --- !u!1 &1444405068
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,6 +4801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1520341315}
+  - component: {fileID: 1520341317}
   - component: {fileID: 1520341314}
   - component: {fileID: 1520341316}
   m_Layer: 3
@@ -4788,7 +4823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e32e9e822a47dc903515347625bbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 1520341316}
+  _trigger: {fileID: 1520341317}
 --- !u!4 &1520341315
 Transform:
   m_ObjectHideFlags: 0
@@ -4825,6 +4860,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4678426, y: 3.7674844, z: 5.080566}
   m_Center: {x: 0.7339213, y: 1.3837422, z: 1.5298965}
+--- !u!114 &1520341317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520341313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb83860be8344039a9b80d02c14b45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1520341316}
+  _color:
+    serializedVersion: 2
+    rgba: 3557090815
 --- !u!4 &1557788963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2267961524856301827, guid: d826446db0f17d44f9a7a1e88697ed28,
