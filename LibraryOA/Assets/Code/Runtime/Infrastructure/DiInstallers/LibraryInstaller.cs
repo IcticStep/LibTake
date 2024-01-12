@@ -11,10 +11,16 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         [SerializeField]
         private CameraFollow _mainCamera;
         
+        private ICameraProvider _cameraProvider;
+
+        [Inject]
+        public void Construct(ICameraProvider cameraProvider) =>
+            _cameraProvider = cameraProvider;
+
         public override void InstallBindings()
         {
             BindCamera();
-            BindSelfAsInitializable();
+            InitializeCameraProvider();
         }
 
         public void Initialize() =>
@@ -26,13 +32,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
                 .To<CameraFollow>()
                 .FromInstance(_mainCamera)
                 .AsSingle();
-
-        private void BindSelfAsInitializable() =>
-            Container.Bind<IInitializable>().To<LibraryInstaller>().FromInstance(this);
-
+        
         private void InitializeCameraProvider() =>
-            Container
-                .Resolve<ICameraProvider>()
-                .Initialize(_mainCamera);
+            _cameraProvider.Initialize(_mainCamera);
     }
 }
