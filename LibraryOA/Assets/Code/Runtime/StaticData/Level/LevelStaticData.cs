@@ -1,8 +1,6 @@
 using Code.Runtime.Data;
-using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.Level
 {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Interactables
 {
-    [CreateAssetMenu(fileName = "ReadingTableData", menuName = "Static data/Reading table")]
+    [CreateAssetMenu(fileName = "Reading table data", menuName = "Static data/Interactables/Reading table")]
     public class StaticReadingTable : ScriptableObject
     {
         [field: SerializeField]

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Interactables
 {
-    [CreateAssetMenu(fileName = "ScannerData", menuName = "Static data/Scanner")]
+    [CreateAssetMenu(fileName = "Scanner data", menuName = "Static data/Interactables/Scanner")]
     public class StaticScanner : ScriptableObject
     {
         [field: SerializeField]
