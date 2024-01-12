@@ -15,7 +15,7 @@ namespace Code.Runtime.Logic.CameraControl
         private Transform _target;
         private Transform _transform;
         
-        private Tween _tween;
+        private Tweener _tweener;
 
         public Camera Camera { get; private set; }
 
@@ -27,15 +27,21 @@ namespace Code.Runtime.Logic.CameraControl
 
         private void LateUpdate()
         {
-            if(_tween is not null)
+            if(_tweener is not null)
+            {
+                UpdateTweenerEndValue();
                 return;
+            }
             
             GoToTargetImmediately();
         }
 
+        private void UpdateTweenerEndValue() =>
+            _tweener.ChangeEndValue(GetPositionByTarget(_target));
+
         private void GoToTargetImmediately()
         {
-            if (_target == null)
+            if(_target == null)
                 return;
             
             _transform.position = GetPositionByTarget(_target);
@@ -50,19 +56,19 @@ namespace Code.Runtime.Logic.CameraControl
         private void AnimateTransition()
         {
             KillPreviousAnimationIfAny();
-            _tween = CreateTransitionTween();
+            _tweener = CreateTransitionTween();
         }
 
         private void KillPreviousAnimationIfAny()
         {
-            if(_tween is null)
+            if(_tweener is null)
                 return;
 
-            _tween.Kill();
-            _tween = null;
+            _tweener.Kill();
+            _tweener = null;
         }
 
-        private Tween CreateTransitionTween() =>
+        private Tweener CreateTransitionTween() =>
             transform
                 .DOMove(GetPositionByTarget(_target), _moveDuration)
                 .SetEase(_ease)
@@ -72,6 +78,6 @@ namespace Code.Runtime.Logic.CameraControl
             target.position + _offset;
 
         private void NullTween() =>
-            _tween = null;
+            _tweener = null;
     }
 }
