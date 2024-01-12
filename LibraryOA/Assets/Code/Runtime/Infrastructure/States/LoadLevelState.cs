@@ -5,7 +5,6 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
-using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Loading;
@@ -63,7 +62,6 @@ namespace Code.Runtime.Infrastructure.States
             GameObject player = InitPlayer(levelData);
             InitGameWorld(levelData);
             InformProgressReaders();
-            InitCamera();
             InitUi();
             CameraFollow(player);
             
@@ -132,14 +130,10 @@ namespace Code.Runtime.Infrastructure.States
 
         private void InitTruck(LevelStaticData levelData) =>
             _interactablesFactory.CreateTruck(levelData.TruckWay);
-
-        private void InitCamera() =>
-            _cameraProvider.Initialize(Camera.main);
-
+        
         private void CameraFollow(GameObject target) =>
             _cameraProvider
-                .MainCamera
-                .GetComponent<CameraFollow>()
+                .CameraFollow
                 .SetTarget(target.transform);
 
         private void InformProgressReaders()
