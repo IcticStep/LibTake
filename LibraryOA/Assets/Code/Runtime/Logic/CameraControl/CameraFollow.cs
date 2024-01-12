@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,11 +12,13 @@ namespace Code.Runtime.Logic.CameraControl
         private Ease _ease;
         [SerializeField]
         private float _moveDuration;
+        [SerializeField]
+        private int _animationUpdateValuesFramesInterval;
 
         private Transform _target;
         private Transform _transform;
-        
         private Tweener _tweener;
+        private float _tweenerElapsedTime = 0;
 
         public Camera Camera { get; private set; }
 
@@ -25,19 +28,29 @@ namespace Code.Runtime.Logic.CameraControl
             Camera = GetComponent<Camera>();
         }
 
+        private void Start() =>
+            StartCoroutine(UpdateTweenerEndValueCourotine());
+
         private void LateUpdate()
         {
-            if(_tweener is not null)
-            {
-                UpdateTweenerEndValue();
-                return;
-            }
-            
-            GoToTargetImmediately();
+            if(_tweener is null)
+                GoToTargetImmediately();
         }
 
-        private void UpdateTweenerEndValue() =>
-            _tweener.ChangeEndValue(GetPositionByTarget(_target));
+        private IEnumerator UpdateTweenerEndValueCourotine()
+        {
+            while(true)
+            {
+                for(int i = 0; i < _animationUpdateValuesFramesInterval; i++)
+                    yield return null;
+
+                if(_tweener is null)
+                    continue;
+                
+                _tweenerElapsedTime += _tweener.Elapsed();
+                _tweener.ChangeValues(_transform.position, GetPositionByTarget(_target), _moveDuration - _tweenerElapsedTime);
+            }
+        }
 
         private void GoToTargetImmediately()
         {
@@ -55,11 +68,13 @@ namespace Code.Runtime.Logic.CameraControl
 
         private void AnimateTransition()
         {
-            KillPreviousAnimationIfAny();
+            KillCurrentTweener();
             _tweener = CreateTransitionTween();
+            _tweenerElapsedTime = 0;
+            _tweener.Play();
         }
 
-        private void KillPreviousAnimationIfAny()
+        private void KillCurrentTweener()
         {
             if(_tweener is null)
                 return;
@@ -72,12 +87,9 @@ namespace Code.Runtime.Logic.CameraControl
             transform
                 .DOMove(GetPositionByTarget(_target), _moveDuration)
                 .SetEase(_ease)
-                .OnComplete(NullTween);
+                .OnComplete(KillCurrentTweener);
 
         private Vector3 GetPositionByTarget(Transform target) =>
             target.position + _offset;
-
-        private void NullTween() =>
-            _tweener = null;
     }
 }
