@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.StaticData.GlobalGoals;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Ui;
@@ -19,8 +20,8 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         LevelStaticData CurrentLevelData { get; }
         StaticBooksDelivering BookDelivering { get; }
         IReadOnlyList<StaticBookType> BookTypes { get; }
+        IReadOnlyList<GlobalGoal> GlobalGoals { get; }
         void LoadAll();
-        void LoadBooks();
         void LoadLevels();
         void LoadPlayer();
         void LoadBookReceiving();
@@ -30,5 +31,6 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         StaticBook ForBook(string id);
         LevelStaticData ForLevel(string key);
         void LoadBookDelivering();
+        void LoadBooks();
     }
 }

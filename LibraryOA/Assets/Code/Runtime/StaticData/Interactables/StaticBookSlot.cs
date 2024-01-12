@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Interactables
 {
-    [CreateAssetMenu(fileName = "BookSlotData", menuName = "Static data/BookSlotData", order = 0)]
+    [CreateAssetMenu(fileName = "Book slot data", menuName = "Static data/Interactables/Book Slot", order = 0)]
     public class StaticBookSlot : ScriptableObject
     {
         [field: SerializeField]

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Books
 {
-    [CreateAssetMenu(fileName = "Book", menuName = "Static data/Book")]
+    [CreateAssetMenu(fileName = "Book", menuName = "Static data/Books/Book")]
     public class StaticBook : ScriptableObject
     {
         [field: ReadOnly]

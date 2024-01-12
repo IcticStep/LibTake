@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Books
 {
-    [CreateAssetMenu(fileName = "BookType", menuName = "Static data/Book Type")]
+    [CreateAssetMenu(fileName = "BookType", menuName = "Static data/Books/Book Type")]
     public sealed class StaticBookType : ScriptableObject
     {
         [field: SerializeField]
