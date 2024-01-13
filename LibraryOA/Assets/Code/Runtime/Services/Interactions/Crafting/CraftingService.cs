@@ -10,7 +10,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
     [UsedImplicitly]
     internal sealed class CraftingService : ICraftingService
     {
-        private readonly StaticDataService _staticDataService;
+        private readonly IStaticDataService _staticDataService;
         private readonly ISkillService _skillService;
         private readonly IPlayerInventoryService _playerInventoryService;
 
@@ -22,7 +22,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
         public GlobalStep CurrentStep => Goal.GlobalSteps[CurrentStepIndex];
         public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count - 1;
 
-        public CraftingService(StaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService)
+        public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService)
         {
             _staticDataService = staticDataService;
             _skillService = skillService;
