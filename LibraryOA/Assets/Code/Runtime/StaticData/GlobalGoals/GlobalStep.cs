@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.GlobalGoals
 {
@@ -7,17 +8,12 @@ namespace Code.Runtime.StaticData.GlobalGoals
     public class GlobalStep : ScriptableObject
     {
         [SerializeField]
-        private string _name;
+        public string Name;
         [SerializeField]
-        private List<SkillConstraint> _levelRequirements;
+        public float Duration;
         [SerializeField]
-        private float _duration;
+        public float Cost;
         [SerializeField]
-        private float _cost;
-
-        public string Name => _name;
-        public IReadOnlyList<SkillConstraint> LevelRequirements => _levelRequirements;
-        public float Duration => _duration;
-        public float Cost => _cost;
+        public List<SkillConstraint> LevelRequirements;
     }
 }
