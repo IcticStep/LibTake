@@ -17,6 +17,9 @@ namespace Code.Runtime.StaticData.GlobalGoals
         
         [SerializeField]
         private List<GlobalStep> _globalSteps;
+
+        [SerializeField]
+        private Sprite _icon;
         
         public string Name => _name;
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;

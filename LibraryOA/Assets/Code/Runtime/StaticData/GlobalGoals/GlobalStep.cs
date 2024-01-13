@@ -9,10 +9,16 @@ namespace Code.Runtime.StaticData.GlobalGoals
     {
         [SerializeField]
         public string Name;
+        
         [SerializeField]
         public float Duration;
+        
         [SerializeField]
         public int Cost;
+
+        [SerializeField]
+        public Sprite Icon;
+        
         [FormerlySerializedAs("LevelRequirements")]
         [SerializeField]
         public List<SkillConstraint> SkillRequirements;
