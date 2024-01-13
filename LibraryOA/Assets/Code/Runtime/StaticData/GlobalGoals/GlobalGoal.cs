@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Code.Runtime.Data;
 using UnityEngine;
 
 namespace Code.Runtime.StaticData.GlobalGoals
@@ -8,10 +10,19 @@ namespace Code.Runtime.StaticData.GlobalGoals
     {
         [SerializeField]
         private string _name;
+        
+        [ReadOnly]
+        [SerializeField]
+        private string _uniqueId = Guid.NewGuid().ToString();
+        
         [SerializeField]
         private List<GlobalStep> _globalSteps;
         
         public string Name => _name;
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;
+        public string UniqueId => _uniqueId;
+
+        private void OnValidate() =>
+            _uniqueId = UniqueId ?? Guid.NewGuid().ToString();
     }
 }
