@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Services.Skills;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.StaticData.GlobalGoals;
 using TMPro;
@@ -10,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactables.Crafting.Ui
+namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequirementCheck
 {
     internal sealed class SkillRequirementView : MonoBehaviour
     {
