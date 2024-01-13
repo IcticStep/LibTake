@@ -46,7 +46,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequi
         private void OnRequirementsUpdated(IReadOnlyList<SkillConstraint> requirements)
         {
             SkillConstraint level = requirements.First(requirement => requirement.BookType == _bookType);
-            string textText = level.ToString();
+            string textText = level.RequiredLevel.ToString();
             _text.text = textText;
             _iconImage.sprite = _staticBookType.Icon;
         }

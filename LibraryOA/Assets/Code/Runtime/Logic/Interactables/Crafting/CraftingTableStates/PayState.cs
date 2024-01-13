@@ -25,7 +25,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
                 return;
                 
             _craftingService.PayForStep();
-            _craftingTableStateMachine.Enter<PayState>();
+            _craftingTableStateMachine.Enter<SkillCheckState>();
         }
     }
 }

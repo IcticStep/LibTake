@@ -46,7 +46,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
 
         public int PayForStep()
         {
-            if(CanPayForStep())
+            if(!CanPayForStep())
                 return 0;
 
             _playerInventoryService.RemoveCoins(CurrentStep.Cost);

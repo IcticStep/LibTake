@@ -7,7 +7,9 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Queue;
+using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Loading;
+using Code.Runtime.StaticData.GlobalGoals;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
@@ -31,11 +33,13 @@ namespace Code.Runtime.Infrastructure.States
         private readonly ICustomersDeliveringService _customersDeliveringService;
         private readonly ICameraProvider _cameraProvider;
         private readonly ILoadingCurtainService _loadingCurtainService;
+        private readonly ICraftingService _craftingService;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPersistantProgressService persistentProgress, IInteractablesFactory interactablesFactory,
             ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
-            ICustomersDeliveringService customersDeliveringService, ICameraProvider cameraProvider, ILoadingCurtainService loadingCurtainService)
+            ICustomersDeliveringService customersDeliveringService, ICameraProvider cameraProvider, ILoadingCurtainService loadingCurtainService,
+            ICraftingService craftingService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -49,6 +53,7 @@ namespace Code.Runtime.Infrastructure.States
             _customersDeliveringService = customersDeliveringService;
             _cameraProvider = cameraProvider;
             _loadingCurtainService = loadingCurtainService;
+            _craftingService = craftingService;
         }
 
         public void Start(string payload) =>
@@ -60,6 +65,8 @@ namespace Code.Runtime.Infrastructure.States
         {
             LevelStaticData levelData = _staticData.CurrentLevelData;
             GameObject player = InitPlayer(levelData);
+
+            InitGlobalGoal();
             InitGameWorld(levelData);
             InformProgressReaders();
             InitUi();
@@ -84,6 +91,12 @@ namespace Code.Runtime.Infrastructure.States
             InitTruck(levelData);
             InitStatues(levelData);
             InitCustomers(levelData);
+        }
+
+        private void InitGlobalGoal()
+        {
+            GlobalGoal globalGoal = _staticData.GlobalGoals[0];
+            _craftingService.SetGoal(globalGoal);
         }
 
         private GameObject InitPlayer(LevelStaticData levelData) =>
