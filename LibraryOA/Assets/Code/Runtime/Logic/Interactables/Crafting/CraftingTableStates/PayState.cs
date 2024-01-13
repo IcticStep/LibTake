@@ -1,5 +1,6 @@
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
+using Code.Runtime.StaticData.GlobalGoals;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {
@@ -8,7 +9,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
 
-        public int Price => _craftingService.FinishedGoal ? 0 : _craftingService.CurrentStep.Cost; 
+        public int Price => _craftingService.FinishedGoal ? 0 : _craftingService.CurrentStep.Cost;
+        public GlobalStep CurrentStep => _craftingService.CurrentStep; 
 
         public PayState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService)
         {

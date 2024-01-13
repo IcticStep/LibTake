@@ -24,6 +24,7 @@ namespace Code.Runtime.StaticData.GlobalGoals
         public string Name => _name;
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;
         public string UniqueId => _uniqueId;
+        public Sprite Icon => _icon;
 
         private void OnValidate() =>
             _uniqueId = UniqueId ?? Guid.NewGuid().ToString();

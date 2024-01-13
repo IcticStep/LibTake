@@ -331,7 +331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rocket
+  m_text: Some goal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -358,11 +358,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.45
+  m_fontSize: 0.35
   m_fontSizeBase: 0.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.3
+  m_fontSizeMin: 0.2
   m_fontSizeMax: 0.45
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.15, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.15, y: 0.05, z: 0.2, w: 0.05}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2264,6 +2264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012772957307723664}
   - component: {fileID: 2315609531539784002}
+  - component: {fileID: 2780502951961544431}
   m_Layer: 5
   m_Name: Step_container
   m_TagString: Untagged
@@ -2300,6 +2301,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4732416022254866487}
   m_CullTransparentMesh: 1
+--- !u!114 &2780502951961544431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732416022254866487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4711ca9b7ca74fdd83fcce48e9304831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 7494876717471985091}
+  _headerText: {fileID: 9126835012952463348}
+  _stepIndexText: {fileID: 7314992732033784105}
+  _craftingTableStateMachine: {fileID: 5033483543602875314}
 --- !u!1 &4754778935348579754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,6 +3335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6680070884506401839}
   - component: {fileID: 941056055160068921}
+  - component: {fileID: 5509240402156023789}
   m_Layer: 5
   m_Name: Goal_container
   m_TagString: Untagged
@@ -3354,6 +3372,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8235327280180332384}
   m_CullTransparentMesh: 1
+--- !u!114 &5509240402156023789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8235327280180332384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87d7f2ce6704e0aba8a324b21b2224b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 1676249202357809421}
+  _headerText: {fileID: 723118549314601046}
 --- !u!1 &8536914689042515223
 GameObject:
   m_ObjectHideFlags: 0
