@@ -8,6 +8,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
 
+        public int Price => _craftingService.FinishedGoal ? 0 : _craftingService.CurrentStep.Cost; 
+
         public PayState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService)
         {
             _craftingTableStateMachine = craftingTableStateMachine;
