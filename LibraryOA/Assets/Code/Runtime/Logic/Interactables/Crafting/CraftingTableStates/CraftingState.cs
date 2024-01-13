@@ -8,23 +8,37 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
     {
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
+        private readonly IProgress _progress;
 
-        public CraftingState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService)
+        public CraftingState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService, IProgress progress)
         {
             _craftingTableStateMachine = craftingTableStateMachine;
             _craftingService = craftingService;
+            _progress = progress;
         }
 
         public bool CanInteract() =>
-            throw new System.NotImplementedException();
+            false;
 
-        public void Interact() =>
-            throw new System.NotImplementedException();
+        public void Interact() { }
 
-        public void OnHoverStart() =>
-            throw new System.NotImplementedException();
+        public void OnHoverStart()
+        {
+            if(CanCraft(_progress))
+                _progress.StartFilling(OnCraftFinished);
+        }
 
         public void OnHoverEnd() =>
-            throw new System.NotImplementedException();
+            _progress.StopFilling();
+
+        private bool CanCraft(IProgress progress) =>
+            progress.CanBeStarted 
+            && _craftingService.CanCraftStep();
+
+        private void OnCraftFinished()
+        {
+            _craftingTableStateMachine.Enter<FinishCraftState>();
+            _craftingService.CraftStep();
+        }
     }
 }

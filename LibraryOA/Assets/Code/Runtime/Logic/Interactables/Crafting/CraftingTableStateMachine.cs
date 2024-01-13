@@ -29,7 +29,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting
             {
                 [typeof(PayState)] = new PayState(this, _craftingService),
                 [typeof(SkillCheckState)] = new SkillCheckState(this, _craftingService),
-                [typeof(CraftingState)] = new CraftingState(this, _craftingService),
+                [typeof(CraftingState)] = new CraftingState(this, _craftingService, _progress),
+                [typeof(FinishCraftState)] = new FinishCraftState(this),
             };
 
         private void Start() =>
