@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
+using Code.Runtime.StaticData.GlobalGoals;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {
@@ -7,6 +10,10 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
     {
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
+
+        public IReadOnlyList<SkillConstraint> SkillRequirements => _craftingService.FinishedGoal
+            ? Array.Empty<SkillConstraint>()
+            : _craftingService.CurrentStep.SkillRequirements;
 
         public SkillCheckState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService)
         {

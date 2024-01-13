@@ -21,6 +21,9 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         public bool InProgress => _progress.Running;
         public string ActiveStateName => _activeState is null ? "none" : _activeState.ToString();
 
+        public event Action<ICraftingTableState> EnterState;
+        public event Action<ICraftingTableState> ExitState;
+
         [Inject]
         public void Construct(ICraftingService craftingService) =>
             _craftingService = craftingService;
@@ -60,12 +63,14 @@ namespace Code.Runtime.Logic.Interactables.Crafting
             TState nextState = ChangeState<TState>();
             _activeState = nextState;
             (_activeState as IStartable)?.Start();
+            EnterState?.Invoke(_activeState);
         }
         
         private TState ChangeState<TState>()
             where TState : class, ICraftingTableState
         {
             (_activeState as IExitable)?.Exit();
+            ExitState?.Invoke(_activeState);
             TState nextState = _states[typeof(TState)] as TState;
             _activeState = nextState;
             return nextState;
