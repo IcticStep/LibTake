@@ -21,6 +21,7 @@ using Code.Runtime.Services.Days;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
+using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
@@ -102,6 +103,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
             Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
             Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
+            Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
         }
 
         private void InstallFactories()

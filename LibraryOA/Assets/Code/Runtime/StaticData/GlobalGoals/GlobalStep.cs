@@ -12,8 +12,9 @@ namespace Code.Runtime.StaticData.GlobalGoals
         [SerializeField]
         public float Duration;
         [SerializeField]
-        public float Cost;
+        public int Cost;
+        [FormerlySerializedAs("LevelRequirements")]
         [SerializeField]
-        public List<SkillConstraint> LevelRequirements;
+        public List<SkillConstraint> SkillRequirements;
     }
 }

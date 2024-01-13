@@ -25,8 +25,8 @@ namespace Code.Editor.Editors.StaticData
 
             foreach(BookType bookType in bookTypes)
             {
-                if(globalStep.LevelRequirements.All(skill => skill.BookType != bookType))
-                    globalStep.LevelRequirements.Add(new SkillConstraint(bookType));
+                if(globalStep.SkillRequirements.All(skill => skill.BookType != bookType))
+                    globalStep.SkillRequirements.Add(new SkillConstraint(bookType));
             }
         }
     }
