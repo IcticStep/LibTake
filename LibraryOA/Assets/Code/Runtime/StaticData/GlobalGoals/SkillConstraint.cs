@@ -15,5 +15,10 @@ namespace Code.Runtime.StaticData.GlobalGoals
         
         public BookType BookType => _bookType;
         public int RequiredLevel => _requiredLevel;
+
+        public SkillConstraint(BookType bookType) 
+        {
+            _bookType = bookType;
+        }
     }
 }
