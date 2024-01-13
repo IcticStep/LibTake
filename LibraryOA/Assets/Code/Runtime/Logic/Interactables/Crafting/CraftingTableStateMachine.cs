@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Interactables.Crafting
 {
-    internal sealed class CraftingTableStateMachine : Interactable, IHoverStartListener, IHoverEndListener
+    public sealed class CraftingTableStateMachine : Interactable, IHoverStartListener, IHoverEndListener
     {
         [SerializeField]
         private Progress _progress;
@@ -19,6 +19,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         private ICraftingService _craftingService;
 
         public bool InProgress => _progress.Running;
+        public string ActiveStateName => _activeState is null ? "none" : _activeState.ToString();
 
         [Inject]
         public void Construct(ICraftingService craftingService) =>

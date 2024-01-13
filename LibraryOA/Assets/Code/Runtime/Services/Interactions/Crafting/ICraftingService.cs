@@ -2,7 +2,7 @@ using Code.Runtime.StaticData.GlobalGoals;
 
 namespace Code.Runtime.Services.Interactions.Crafting
 {
-    internal interface ICraftingService
+    public interface ICraftingService
     {
         GlobalGoal Goal { get; }
         int CurrentStepIndex { get; }
