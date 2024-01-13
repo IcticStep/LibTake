@@ -16,7 +16,7 @@ namespace Code.Runtime.Ui.Hud.MainPanel
         private void Construct(IPlayerInventoryService playerInventoryService) =>
             _playerInventoryService = playerInventoryService;
 
-        private void Start()
+        private void Awake()
         {
             _playerInventoryService.CoinsUpdated += UpdateView;
             UpdateView();
