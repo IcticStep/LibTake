@@ -67,7 +67,7 @@ namespace Code.Runtime.Logic
             _timeToFinish = timeToFinish;
         }
 
-        public void LoadProgress(Data.Progress.Progress progress)
+        public void LoadProgress(Data.Progress.GameProgress progress)
         {
             if(_id is null)
                 return;
@@ -75,7 +75,7 @@ namespace Code.Runtime.Logic
             Value = progress.WorldData.ProgressesStates.GetDataForId(_id);
         }
 
-        public void UpdateProgress(Data.Progress.Progress progress)
+        public void UpdateProgress(Data.Progress.GameProgress progress)
         {
             if(_id is null)
                 return;
