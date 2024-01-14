@@ -1,4 +1,3 @@
-using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.StaticData.GlobalGoals;
@@ -32,15 +31,18 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
         private void Awake() =>
             _craftingTableStateMachine.EnterState += OnStateEntered;
 
+        private void Start() =>
+            UpdateView();
+
         private void OnDestroy() =>
             _craftingTableStateMachine.EnterState -= OnStateEntered;
 
-        private void OnStateEntered(ICraftingTableState state)
-        {
-            if(state is not PayState payState)
-                return;
+        private void OnStateEntered(ICraftingTableState state) =>
+            UpdateView();
 
-            GlobalStep step = payState.CurrentStep;
+        private void UpdateView()
+        {
+            GlobalStep step = _craftingService.CurrentStep;
             _icon.sprite = step.Icon;
             _headerText.text = step.Name;
             _stepIndexText.text = $"{_craftingService.CurrentStepIndex + 1}/{_craftingService.Goal.GlobalSteps.Count}";

@@ -45,7 +45,6 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
         {
             _craftingTableStateMachine.Enter<FinishCraftState>();
             _progress.Reset();
-            _craftingService.CraftStep();
         }
     }
 }
