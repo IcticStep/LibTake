@@ -15,6 +15,6 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
             true;
 
         public void Interact() =>
-            throw new System.NotImplementedException();
+            _craftingTableStateMachine.Enter<PayState>();
     }
 }

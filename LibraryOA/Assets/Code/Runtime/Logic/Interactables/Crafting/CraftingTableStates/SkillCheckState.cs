@@ -25,6 +25,6 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
             _craftingService.HaveEnoughSkillsToCraft();
 
         public void Interact() =>
-            throw new System.NotImplementedException();
+            _craftingTableStateMachine.Enter<CraftingState>();
     }
 }

@@ -49,9 +49,13 @@ namespace Code.Runtime.Logic
         private void OnDisable() =>
             JustReset = false;
 
-        public void Initialize(float timeToFinish) =>
-            Initialize(null, timeToFinish);
-        
+        public void Initialize(float timeToFinish)
+        {
+            _externalTaskSource = new UniTaskCompletionSource();
+            JustReset = false;
+            _timeToFinish = timeToFinish;
+        }
+
         public void Initialize(string ownerId) =>
             Initialize(ownerId, 1f);
 
