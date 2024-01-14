@@ -21,17 +21,26 @@ namespace Code.Editor.Editors.StaticData
             
             GUILayout.Label("Skills requirements");
             GlobalStep previousStep = null;
+            
             foreach(GlobalStep globalStep in globalGoal.GlobalSteps)
             {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.LabelField(globalStep.Name);
-
-                EditorGUI.indentLevel++;
-                DrawGlobalStepSkillRequirements(globalStep, previousStep);
+                DrawStep(globalStep, previousStep);
                 previousStep = globalStep;
-
-                EditorGUI.indentLevel -= 2;
             }
+        }
+
+        private void DrawStep(GlobalStep globalStep, GlobalStep previousStep)
+        {
+            EditorGUI.indentLevel++;
+            int delta = GetDeltaForStep(globalStep, previousStep);
+            string displayDelta = GetDeltaDisplay(delta);
+            
+            EditorGUILayout.LabelField($"{globalStep.Name} {displayDelta}");
+
+            EditorGUI.indentLevel++;
+            DrawGlobalStepSkillRequirements(globalStep, previousStep);
+
+            EditorGUI.indentLevel -= 2;
         }
 
         private void DrawGlobalStepSkillRequirements(GlobalStep globalStep, GlobalStep previousStep)
@@ -44,8 +53,8 @@ namespace Code.Editor.Editors.StaticData
             {
                 EditorGUILayout.BeginVertical();
 
-                int delta = GetDelta(previousStep, skillRequirement);
-                string deltaDisplay = delta > 0 ? $"(+{delta})" : string.Empty;
+                int delta = GetDeltaForSkill(previousStep, skillRequirement);
+                string deltaDisplay = GetDeltaDisplay(delta);
                 EditorGUILayout.LabelField(skillRequirement.BookType.ToString(), $"{skillRequirement.RequiredLevel} {deltaDisplay}");
                 EditorGUILayout.EndVertical();
             }
@@ -54,7 +63,7 @@ namespace Code.Editor.Editors.StaticData
             EditorGUILayout.EndHorizontal();
         }
 
-        private static int GetDelta(GlobalStep previousStep, SkillConstraint skillRequirement)
+        private static int GetDeltaForSkill(GlobalStep previousStep, SkillConstraint skillRequirement)
         {
             if(previousStep is null)
                 return 0;
@@ -64,5 +73,16 @@ namespace Code.Editor.Editors.StaticData
             delta = Mathf.Max(delta, 0);
             return delta;
         }
+
+        private static int GetDeltaForStep(GlobalStep step, GlobalStep previousStep) =>
+            step
+                .SkillRequirements
+                .Sum(skillRequirement => 
+                    previousStep is null 
+                        ? skillRequirement.RequiredLevel 
+                        : GetDeltaForSkill(previousStep, skillRequirement));
+
+        private static string GetDeltaDisplay(int delta) =>
+            delta > 0 ? $"(+{delta})" : string.Empty;
     }
 }
