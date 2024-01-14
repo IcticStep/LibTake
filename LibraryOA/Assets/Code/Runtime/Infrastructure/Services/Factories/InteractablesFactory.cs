@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Interactables;
+using Code.Runtime.Logic.Interactables.Crafting;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;
@@ -99,9 +100,11 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         {
             StaticCraftingTable staticData = _staticDataService.Interactables.CraftingTable;
             GameObject craftingTable = _assetProvider.Instantiate(staticData.Prefab, at, rotation);
+            CraftingTableStateMachine craftingTableStateMachine = craftingTable.GetComponentInChildren<CraftingTableStateMachine>();
 
             InitInteractable(objectId, craftingTable);
             InitCraftingTableProgress(objectId, craftingTable, staticData);
+            _saveLoadRegistry.Register(craftingTableStateMachine);
 
             return craftingTable;
         }

@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Skills;
@@ -15,7 +17,6 @@ namespace Code.Runtime.Services.Interactions.Crafting
         private readonly IPlayerInventoryService _playerInventoryService;
 
         private string _globalGoalId;
-        
         public GlobalGoal Goal { get; private set; }
         public int CurrentStepIndex { get; private set; }
         public bool PayedForStep { get; private set; }
@@ -74,6 +75,25 @@ namespace Code.Runtime.Services.Interactions.Crafting
             }
 
             return true;
+        }
+
+        public void LoadProgress(GameProgress progress)
+        {
+            GlobalGoalSavedData savedData = progress.PlayerData.GlobalGoal;
+            if(savedData.GoalId is null)
+                return;
+            
+            _globalGoalId = savedData.GoalId;
+            CurrentStepIndex = savedData.GoalStepIndex;
+            PayedForStep = savedData.PayedForStep;
+            Goal = _staticDataService.GlobalGoals.First(goal => goal.UniqueId == _globalGoalId);
+        }
+
+        public void UpdateProgress(GameProgress progress)
+        {
+            progress.PlayerData.GlobalGoal.GoalId = _globalGoalId;
+            progress.PlayerData.GlobalGoal.GoalStepIndex = CurrentStepIndex;
+            progress.PlayerData.GlobalGoal.PayedForStep = PayedForStep;
         }
     }
 }
