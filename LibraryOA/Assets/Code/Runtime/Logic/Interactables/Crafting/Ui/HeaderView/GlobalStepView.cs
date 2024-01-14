@@ -4,7 +4,6 @@ using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.StaticData.GlobalGoals;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -17,13 +16,13 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
 
         [SerializeField]
         private TextMeshProUGUI _headerText;
-        
+
         [SerializeField]
         private TextMeshProUGUI _stepIndexText;
 
         [SerializeField]
         private CraftingTableStateMachine _craftingTableStateMachine;
-        
+
         private ICraftingService _craftingService;
 
         [Inject]
