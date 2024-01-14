@@ -37,10 +37,10 @@ namespace Code.Runtime.Services.Player.Lives
             Updated?.Invoke();
         }
 
-        public void LoadProgress(Progress progress) =>
+        public void LoadProgress(GameProgress progress) =>
             Lives = progress.PlayerData.Lives;
 
-        public void UpdateProgress(Progress progress) =>
+        public void UpdateProgress(GameProgress progress) =>
             progress.PlayerData.Lives = Lives;
     }
 }

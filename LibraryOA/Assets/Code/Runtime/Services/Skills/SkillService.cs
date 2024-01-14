@@ -39,10 +39,10 @@ namespace Code.Runtime.Services.Skills
             Updated?.Invoke();
         }
 
-        public void LoadProgress(Progress progress) =>
+        public void LoadProgress(GameProgress progress) =>
             _levels = progress.PlayerData.Skills;
 
-        public void UpdateProgress(Progress progress) =>
+        public void UpdateProgress(GameProgress progress) =>
             progress.PlayerData.Skills = _levels;
     }
 }

@@ -4,6 +4,6 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
     public interface ISavedProgress : ISavedProgressReader
     {
-        public void UpdateProgress(Progress progress);
+        public void UpdateProgress(GameProgress progress);
     }
 }
