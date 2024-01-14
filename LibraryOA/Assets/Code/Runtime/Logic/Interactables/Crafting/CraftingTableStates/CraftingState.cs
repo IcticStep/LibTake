@@ -4,7 +4,7 @@ using Code.Runtime.Services.Interactions.Crafting;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {
-    internal sealed class CraftingState : ICraftingTableState, IHoverStartListener, IHoverEndListener
+    internal sealed class CraftingState : ICraftingTableState, IHoverStartListener, IHoverEndListener, IStartable
     {
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
@@ -22,6 +22,12 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 
         public void Interact() { }
 
+        public void Start()
+        {
+            _progress.Initialize(timeToFinish: _craftingService.CurrentStep.Duration);
+            _progress.StartFilling(OnCraftFinished);
+        }
+
         public void OnHoverStart()
         {
             if(CanCraft(_progress))
@@ -38,6 +44,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
         private void OnCraftFinished()
         {
             _craftingTableStateMachine.Enter<FinishCraftState>();
+            _progress.Reset();
             _craftingService.CraftStep();
         }
     }
