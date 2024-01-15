@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals;
+using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
 using Code.Runtime.Logic.GlobalProgress;
 using UnityEditor;
 using UnityEngine;
@@ -24,10 +25,10 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
             _globalGoalTestVisualizer.DrawTestVisualizationUi(GlobalGoalsInstaller);
         }
 
-        private static List<GlobalGoalVisualizationScheme> CollectGlobalGoalsSchemes() =>
-            FindObjectsByType<GlobalStepPartVisualizer>(FindObjectsSortMode.None)
+        private static List<GlobalGoalScheme> CollectGlobalGoalsSchemes() =>
+            FindObjectsByType<GlobalStepPartVisualizer>(FindObjectsInactive.Include, FindObjectsSortMode.None)
                 .GroupBy(visualizer => visualizer.GlobalGoal)
-                .Select(visualizerGroup => new GlobalGoalVisualizationScheme(visualizerGroup.Key, visualizerGroup.ToList()))
+                .Select(visualizerGroup => new GlobalGoalScheme(visualizerGroup.Key, visualizerGroup.ToList()))
                 .ToList();
     }
 }
