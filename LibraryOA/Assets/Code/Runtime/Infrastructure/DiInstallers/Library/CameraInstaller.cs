@@ -1,12 +1,11 @@
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Logic.CameraControl;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Code.Runtime.Infrastructure.DiInstallers
+namespace Code.Runtime.Infrastructure.DiInstallers.Library
 {
-    internal sealed class LibraryInstaller : MonoInstaller, IInitializable
+    internal sealed class CameraInstaller : MonoInstaller, IInitializable
     {
         [SerializeField]
         private CameraFollow _mainCamera;
