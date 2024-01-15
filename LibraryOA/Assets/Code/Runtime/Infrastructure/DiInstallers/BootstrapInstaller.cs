@@ -18,6 +18,7 @@ using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -104,6 +105,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
             Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
             Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
+            Container.Bind<IGlobalGoalsVisualizationService>().To<GlobalGoalsVisualizationService>().AsSingle();
         }
 
         private void InstallFactories()
