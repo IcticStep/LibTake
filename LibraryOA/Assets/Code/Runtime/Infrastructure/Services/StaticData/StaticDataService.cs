@@ -76,12 +76,12 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             Player = Resources
                 .Load<StaticPlayer>(PlayerPath);
 
-        private void LoadBookTypes() =>
+        public void LoadBookTypes() =>
             _bookTypes = Resources
                 .LoadAll<StaticBookType>(BookTypesPath)
                 .ToList();
 
-        private void LoadGlobalGoals() =>
+        public void LoadGlobalGoals() =>
             _globalGoals = Resources
                 .LoadAll<GlobalGoal>(GlobalGoalsPath)
                 .ToList();

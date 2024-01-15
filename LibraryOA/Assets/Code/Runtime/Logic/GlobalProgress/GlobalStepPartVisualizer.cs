@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Logic.GlobalProgress
 {
-    internal sealed class GlobalStepPartVisualizer : MonoBehaviour
+    public sealed class GlobalStepPartVisualizer : MonoBehaviour
     {
         [SerializeField]
         private GlobalGoal _globalGoal;

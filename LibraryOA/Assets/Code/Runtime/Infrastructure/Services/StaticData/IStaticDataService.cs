@@ -32,5 +32,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         LevelStaticData ForLevel(string key);
         void LoadBookDelivering();
         void LoadBooks();
+        void LoadBookTypes();
+        void LoadGlobalGoals();
     }
 }
