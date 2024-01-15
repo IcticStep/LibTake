@@ -5,23 +5,23 @@ using Code.Runtime.Logic.GlobalProgress;
 using UnityEditor;
 using UnityEngine;
 
-namespace Code.Editor.Editors.DiInstallers
+namespace Code.Editor.Editors.DiInstallers.GlobalGoals
 {
     [CustomEditor(typeof(GlobalGoalsInstaller))]
     public class GlobalGoalsInstallerEditor : UnityEditor.Editor
     {
+        private readonly GlobalGoalTestVisualizer _globalGoalTestVisualizer = new();
+        
+        private GlobalGoalsInstaller GlobalGoalsInstaller => (GlobalGoalsInstaller)target;
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             
             if(GUILayout.Button("Collect global goals data"))
-                CollectGlobalGoalsData();
-        }
+                GlobalGoalsInstaller.GlobalGoalsVisualizationSchemes = CollectGlobalGoalsSchemes();
 
-        private void CollectGlobalGoalsData()
-        {
-            GlobalGoalsInstaller globalGoalsInstaller = (GlobalGoalsInstaller)target;
-            globalGoalsInstaller.GlobalGoalsVisualizationSchemes = CollectGlobalGoalsSchemes();
+            _globalGoalTestVisualizer.DrawTestVisualizationUi(GlobalGoalsInstaller);
         }
 
         private static List<GlobalGoalVisualizationScheme> CollectGlobalGoalsSchemes() =>
