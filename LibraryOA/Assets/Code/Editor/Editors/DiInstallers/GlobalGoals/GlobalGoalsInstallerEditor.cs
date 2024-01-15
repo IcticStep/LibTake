@@ -18,9 +18,12 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            
+
             if(GUILayout.Button("Collect global goals data"))
+            {
+                _globalGoalTestVisualizer.UpdateData();
                 GlobalGoalsInstaller.GlobalGoalsVisualizationSchemes = CollectGlobalGoalsSchemes();
+            }
 
             _globalGoalTestVisualizer.DrawTestVisualizationUi(GlobalGoalsInstaller);
         }
