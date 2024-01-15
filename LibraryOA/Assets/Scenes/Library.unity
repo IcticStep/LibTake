@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215487504}
   m_Layer: 0
-  m_Name: RocketFinal
+  m_Name: RocketGlobalGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2482,6 +2482,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1278020299}
     m_Modifications:
+    - target: {fileID: 4331653320406150214, guid: 26e25087c3b57574ca2b04fbed212ca4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4694949453176858081, guid: 26e25087c3b57574ca2b04fbed212ca4,
         type: 3}
       propertyPath: m_Name
@@ -3721,7 +3726,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb0268e917647fc95303190bf4703d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalGoalsVisualizationSchemes: []
+  GlobalGoalsVisualizationSchemes:
+  - _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+    _globalPartsSwitchers:
+    - {fileID: 1764199391}
+    - {fileID: 1419947698}
+    - {fileID: 1996225436}
+    - {fileID: 1278020300}
+    - {fileID: 1419947697}
+    - {fileID: 1628581103}
+    - {fileID: 1744782505}
 --- !u!1001 &1274137623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3810,8 +3824,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1278020299}
+  - component: {fileID: 1278020300}
   m_Layer: 0
-  m_Name: Final
+  m_Name: RocketHull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3834,6 +3849,21 @@ Transform:
   - {fileID: 723066878}
   m_Father: {fileID: 215487504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1278020300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278020298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
+  _targetStateAfterStep: 1
 --- !u!1 &1287538640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,13 +4537,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1419947696}
+  - component: {fileID: 1419947697}
+  - component: {fileID: 1419947698}
   m_Layer: 0
   m_Name: RocketEngine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1419947696
 Transform:
   m_ObjectHideFlags: 0
@@ -4531,6 +4563,36 @@ Transform:
   - {fileID: 1103476653}
   m_Father: {fileID: 215487504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1419947697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419947695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
+  _targetStateAfterStep: 1
+--- !u!114 &1419947698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419947695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
+  _targetStateAfterStep: 0
 --- !u!1 &1421054266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,7 +5297,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1928974971688864542, guid: 29733a79d74b3a74983dee29d25e43ca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1628581103}
   m_SourcePrefab: {fileID: 100100000, guid: 29733a79d74b3a74983dee29d25e43ca, type: 3}
 --- !u!4 &1628581101 stripped
 Transform:
@@ -5243,6 +5309,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1628581100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1628581102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1928974971688864542, guid: 29733a79d74b3a74983dee29d25e43ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1628581100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1628581103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628581102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
+  _targetStateAfterStep: 1
 --- !u!1 &1677463034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,7 +5778,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 297473292462621874, guid: 727de090a3c0a3a458a05e39d18e0f06,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1764199391}
   m_SourcePrefab: {fileID: 100100000, guid: 727de090a3c0a3a458a05e39d18e0f06, type: 3}
 --- !u!4 &1764199389 stripped
 Transform:
@@ -5699,6 +5790,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1764199388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1764199390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 297473292462621874, guid: 727de090a3c0a3a458a05e39d18e0f06,
+    type: 3}
+  m_PrefabInstance: {fileID: 1764199388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1764199391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764199390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
+  _targetStateAfterStep: 0
 --- !u!1001 &1781407583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6155,10 +6267,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: RocketStart
       objectReference: {fileID: 0}
+    - target: {fileID: 1097304820958019430, guid: 66c507547baa88e4c946a0054af6a709,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1097304820958019430, guid: 66c507547baa88e4c946a0054af6a709,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1996225436}
   m_SourcePrefab: {fileID: 100100000, guid: 66c507547baa88e4c946a0054af6a709, type: 3}
 --- !u!4 &1996225434 stripped
 Transform:
@@ -6166,6 +6287,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1996225433}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1996225435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1097304820958019430, guid: 66c507547baa88e4c946a0054af6a709,
+    type: 3}
+  m_PrefabInstance: {fileID: 1996225433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1996225436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996225435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
+  _targetStateAfterStep: 1
 --- !u!1 &2000434426
 GameObject:
   m_ObjectHideFlags: 0
