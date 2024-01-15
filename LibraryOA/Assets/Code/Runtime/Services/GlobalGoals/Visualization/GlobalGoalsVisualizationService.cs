@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
-using Code.Runtime.Logic.GlobalProgress;
+using Code.Runtime.Logic.GlobalGoals;
 using Code.Runtime.StaticData.GlobalGoals;
 using JetBrains.Annotations;
 
@@ -24,7 +24,7 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
         public void VisualizeStep(GlobalStep step)
         {
             GlobalStepScheme stepScheme = _visualizers[step];
-            foreach(GlobalStepPartVisualizer visualizer in stepScheme.Visualizers)
+            foreach(GlobalStepPartVisualizer visualizer in stepScheme.AllVisualizers)
                 visualizer.Visualize();
         }
     }
