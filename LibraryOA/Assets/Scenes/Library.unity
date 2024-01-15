@@ -3641,6 +3641,7 @@ GameObject:
   - component: {fileID: 1246867813}
   - component: {fileID: 1246867812}
   - component: {fileID: 1246867814}
+  - component: {fileID: 1246867815}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -3708,6 +3709,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 568110146}
+--- !u!114 &1246867815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246867811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb0268e917647fc95303190bf4703d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalGoalsVisualizationSchemes: []
 --- !u!1001 &1274137623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5404,6 +5418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1744782504}
+  - component: {fileID: 1744782505}
   m_Layer: 0
   m_Name: RocketFuel
   m_TagString: Untagged
@@ -5429,6 +5444,21 @@ Transform:
   - {fileID: 898434634}
   m_Father: {fileID: 215487504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1744782505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744782503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d0f015447447068f3122c247a0838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
+  _globalStep: {fileID: 11400000, guid: 5d2dc22fddd59904ab9e617dfdb63119, type: 2}
+  _targetStateAfterStep: 1
 --- !u!1001 &1749139950
 PrefabInstance:
   m_ObjectHideFlags: 0
