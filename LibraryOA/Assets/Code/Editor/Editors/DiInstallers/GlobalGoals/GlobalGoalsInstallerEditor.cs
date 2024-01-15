@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
-using Code.Runtime.Logic.GlobalProgress;
+using Code.Runtime.Logic.GlobalGoals;
 using UnityEditor;
 using UnityEngine;
 

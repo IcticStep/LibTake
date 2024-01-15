@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Runtime.Logic.GlobalProgress;
+using Code.Runtime.Logic.GlobalGoals;
 using Code.Runtime.StaticData.GlobalGoals;
 using UnityEngine;
 using UnityEngine.Serialization;

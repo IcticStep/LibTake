@@ -8,6 +8,7 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
     {
         private int _testVisualizationGoalIndex;
         private bool _testVisualizationToggle;
+        private SerializedProperty _currentVisualizationStepSerialized;
 
         public void DrawTestVisualizationUi(GlobalGoalsInstaller globalGoalsInstaller)
         {
