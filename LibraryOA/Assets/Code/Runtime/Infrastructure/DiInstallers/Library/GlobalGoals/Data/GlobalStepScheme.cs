@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Code.Runtime.Logic.GlobalGoals;
 using Code.Runtime.StaticData.GlobalGoals;
 using UnityEngine;
@@ -14,21 +13,18 @@ namespace Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data
         private GlobalStep _globalStep;
         
         [SerializeField]
-        private List<GlobalStepPartVisualizer> _rootShowVisualizers;
+        private List<GlobalStepPartVisualizer> _visualizers;
 
-        [SerializeField]
-        private List<GlobalStepPartVisualizer> _allVisualizers;
-
-        public List<GlobalStepPartVisualizer> AllVisualizers => _allVisualizers;
+        public List<GlobalStepPartVisualizer> Visualizers => _visualizers;
         public GlobalStep Step => _globalStep;
 
-        public GlobalStepScheme(GlobalStep globalStep, List<GlobalStepPartVisualizer> allVisualizers)
+        public GlobalStepScheme(GlobalStep globalStep, List<GlobalStepPartVisualizer> visualizers)
         {
             _globalStep = globalStep;
-            _allVisualizers = allVisualizers;
-            _rootShowVisualizers = allVisualizers
-                .Where(visualizer => visualizer.RootStepObject && visualizer.TargetStateAfterStep)
-                .ToList();
+            _visualizers = visualizers;
         }
+
+        public override string ToString() =>
+            $"{nameof(GlobalStepScheme)} for step {_globalStep.name}";
     }
 }
