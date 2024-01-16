@@ -1,5 +1,6 @@
 using Code.Runtime.StaticData.GlobalGoals;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic.GlobalGoals
 {
@@ -12,14 +13,15 @@ namespace Code.Runtime.Logic.GlobalGoals
         [SerializeField]
         private bool _targetStateAfterStep;
         [SerializeField]
-        private bool _rootStepObject;
+        private bool _initialState;
 
         public GlobalGoal GlobalGoal => _globalGoal;
-        public GlobalStep Step => _globalStep;
-        public bool RootStepObject => _rootStepObject;
-        public bool TargetStateAfterStep => _targetStateAfterStep;
+        public GlobalStep GlobalStep => _globalStep;
 
         public void Visualize() =>
-            gameObject.SetActive(TargetStateAfterStep);
+            gameObject.SetActive(_targetStateAfterStep);
+
+        public void Reset() =>
+            gameObject.SetActive(_initialState);
     }
 }

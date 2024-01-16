@@ -24,9 +24,18 @@ namespace Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data
         {
             _globalGoal = globalGoal;
             _globalStepsSchemes = globalStepPartVisualizers
-                .GroupBy(visualizer => visualizer.Step)
+                .GroupBy(visualizer => visualizer.GlobalStep)
                 .Select(group => new GlobalStepScheme(group.Key, group.ToList()))
                 .ToList();
         }
+
+        public GlobalGoalScheme(GlobalGoal globalGoal, List<GlobalStepScheme> globalStepsSchemes)
+        {
+            _globalGoal = globalGoal;
+            _globalStepsSchemes = globalStepsSchemes;
+        }
+
+        public override string ToString() =>
+            $"{nameof(GlobalGoalScheme)} for goal {_globalGoal.name}";
     }
 }

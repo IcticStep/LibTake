@@ -3763,7 +3763,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
   _targetStateAfterStep: 1
-  _rootStepObject: 1
+  _initialState: 0
 --- !u!1 &1287538640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,7 +4478,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
   _targetStateAfterStep: 1
-  _rootStepObject: 1
+  _initialState: 0
 --- !u!114 &1419947698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4494,7 +4494,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
   _targetStateAfterStep: 0
-  _rootStepObject: 1
+  _initialState: 0
 --- !u!1 &1421054266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5232,7 +5232,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
   _targetStateAfterStep: 1
-  _rootStepObject: 1
+  _initialState: 0
 --- !u!1 &1677463034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5449,7 +5449,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: 5d2dc22fddd59904ab9e617dfdb63119, type: 2}
   _targetStateAfterStep: 1
-  _rootStepObject: 1
+  _initialState: 0
 --- !u!1001 &1749139950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5627,7 +5627,7 @@ PrefabInstance:
     - target: {fileID: 297473292462621874, guid: 727de090a3c0a3a458a05e39d18e0f06,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1110989218094964232, guid: 727de090a3c0a3a458a05e39d18e0f06,
         type: 3}
@@ -5715,7 +5715,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
   _targetStateAfterStep: 0
-  _rootStepObject: 0
+  _initialState: 0
 --- !u!1001 &1781407583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6213,7 +6213,7 @@ MonoBehaviour:
   _globalGoal: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1, type: 2}
   _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
   _targetStateAfterStep: 1
-  _rootStepObject: 1
+  _initialState: 0
 --- !u!1 &2000434426
 GameObject:
   m_ObjectHideFlags: 0
@@ -6945,6 +6945,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841794063616126810, guid: 0dde1991ffa38fd46bf1b79742880750,
+        type: 3}
+      propertyPath: GlobalGoalsVisualizationSchemes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841794063616126810, guid: 0dde1991ffa38fd46bf1b79742880750,
+        type: 3}
+      propertyPath: GlobalGoalsVisualizationSchemes.Array.data[0]._globalStepsSchemes.Array.data[0]._visualizers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841794063616126810, guid: 0dde1991ffa38fd46bf1b79742880750,
+        type: 3}
+      propertyPath: GlobalGoalsVisualizationSchemes.Array.data[0]._globalStepsSchemes.Array.data[1]._visualizers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841794063616126810, guid: 0dde1991ffa38fd46bf1b79742880750,
+        type: 3}
+      propertyPath: GlobalGoalsVisualizationSchemes.Array.data[0]._globalStepsSchemes.Array.data[2]._visualizers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841794063616126810, guid: 0dde1991ffa38fd46bf1b79742880750,
+        type: 3}
+      propertyPath: GlobalGoalsVisualizationSchemes.Array.data[0]._globalStepsSchemes.Array.data[3]._visualizers.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5841794063616126810, guid: 0dde1991ffa38fd46bf1b79742880750,
         type: 3}
