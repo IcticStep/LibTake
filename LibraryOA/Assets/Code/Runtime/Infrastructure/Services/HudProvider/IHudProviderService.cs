@@ -9,7 +9,9 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
         GameObject Hud { get; }
         DayMessage DayMessage { get; }
         MorningMessage MorningMessage { get; }
-        void RegisterHud(GameObject hud);
+        void RegisterHud(GameObject hud, Canvas mainCanvas);
         void CleanUp();
+        void Show();
+        void Hide();
     }
 }

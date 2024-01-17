@@ -8,12 +8,14 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
     [UsedImplicitly]
     internal sealed class HudProviderService : IHudProviderService
     {
+        private Canvas _mainCanvas;
         public GameObject Hud { get; private set; }
         public DayMessage DayMessage { get; private set; }
         public MorningMessage MorningMessage { get; private set; }
 
-        public void RegisterHud(GameObject hud)
+        public void RegisterHud(GameObject hud, Canvas mainCanvas)
         {
+            _mainCanvas = mainCanvas;
             Hud = hud;
             DayMessage = Hud.GetComponentInChildren<DayMessage>();
             MorningMessage = Hud.GetComponentInChildren<MorningMessage>();
@@ -25,5 +27,11 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
             DayMessage = null;
             MorningMessage = null;
         }
+
+        public void Show() =>
+            _mainCanvas.enabled = false;
+
+        public void Hide() =>
+            _mainCanvas.enabled = false;
     }
 }

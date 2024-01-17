@@ -21,6 +21,7 @@ namespace Code.Runtime.Logic.CameraControl
         private float _tweenerElapsedTime = 0;
 
         public Camera Camera { get; private set; }
+        public Transform Target => _target;
 
         private void Awake()
         {
@@ -48,16 +49,16 @@ namespace Code.Runtime.Logic.CameraControl
                     continue;
                 
                 _tweenerElapsedTime += _tweener.Elapsed();
-                _tweener.ChangeValues(_transform.position, GetPositionByTarget(_target), _moveDuration - _tweenerElapsedTime);
+                _tweener.ChangeValues(_transform.position, GetPositionByTarget(Target), _moveDuration - _tweenerElapsedTime);
             }
         }
 
         private void GoToTargetImmediately()
         {
-            if(_target == null)
+            if(Target == null)
                 return;
             
-            _transform.position = GetPositionByTarget(_target);
+            _transform.position = GetPositionByTarget(Target);
         }
 
         public void SetTarget(Transform target)
@@ -85,7 +86,7 @@ namespace Code.Runtime.Logic.CameraControl
 
         private Tweener CreateTransitionTween() =>
             transform
-                .DOMove(GetPositionByTarget(_target), _moveDuration)
+                .DOMove(GetPositionByTarget(Target), _moveDuration)
                 .SetEase(_ease)
                 .OnComplete(KillCurrentTweener);
 

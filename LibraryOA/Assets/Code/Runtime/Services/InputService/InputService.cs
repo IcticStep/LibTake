@@ -13,6 +13,7 @@ namespace Code.Runtime.Services.InputService
         private readonly Input _input = new();
         private readonly List<IInputProvider<Vector2>> _movementFallbackProviders = new();
 
+        public bool Enabled { get; private set; } = true;
         public event Action InteractButtonPressed;
 
         public InputService()
@@ -21,17 +22,31 @@ namespace Code.Runtime.Services.InputService
             _input.Player.Interact.started += NotifyInteractButtonPressed;
         }
 
+        public void Disable() =>
+            Enabled = false;
+        
+        public void Enable() =>
+            Enabled = true;
+
         public void RegisterMovementProvider(IInputProvider<Vector2> movementProvide) =>
             _movementFallbackProviders.Add(movementProvide);
 
         public void CleanUp() =>
             _movementFallbackProviders.Clear();
 
-        private void NotifyInteractButtonPressed(InputAction.CallbackContext obj) =>
+        private void NotifyInteractButtonPressed(InputAction.CallbackContext obj)
+        {
+            if(!Enabled)
+                return;
+            
             InteractButtonPressed?.Invoke();
+        }
 
         public Vector2 GetMovement()
         {
+            if(!Enabled)
+                return Vector2.zero;
+            
             Vector2 input = _input.Player.Movement.ReadValue<Vector2>();
             ValidateFallbackProviders();
             return HasInput(input) 

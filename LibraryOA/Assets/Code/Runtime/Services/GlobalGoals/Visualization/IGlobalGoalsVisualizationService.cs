@@ -8,6 +8,7 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
     public interface IGlobalGoalsVisualizationService
     {
         bool InitializedGlobalGoal { get; }
+        GlobalGoalScheme CurrentGoalScheme { get; }
         void InitializeVisualisationSchemes(IReadOnlyList<GlobalGoalScheme> allSchemes);
         void InitializeGlobalGoal(GlobalGoal globalGoal);
         void VisualizeStep(GlobalStep step);
