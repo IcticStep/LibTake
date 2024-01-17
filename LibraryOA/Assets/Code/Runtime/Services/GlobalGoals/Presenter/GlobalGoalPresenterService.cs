@@ -30,25 +30,24 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
             _globalGoalsVisualizationService = globalGoalsVisualizationService;
         }
 
-        public async UniTaskVoid ShowBuiltStep(GlobalStep globalStep)
+        public async UniTaskVoid ShowBuiltStep(GlobalStep globalStep, GlobalGoal globalGoal)
         {
             GlobalStepScheme scheme = GetGlobalStepScheme(globalStep);
             _inputService.Disable();
             _hudProviderService.Hide();
 
-            await ShowCameraAnimationAsync(scheme);
+            await ShowCameraAnimationAsync(globalGoal, scheme);
             
             _inputService.Enable();
             _hudProviderService.Show();
         }
 
-        private async UniTask ShowCameraAnimationAsync(GlobalStepScheme scheme)
+        private async UniTask ShowCameraAnimationAsync(GlobalGoal globalGoal, GlobalStepScheme scheme)
         {
             Transform oldCameraTarget = _cameraProvider.CameraFollow.Target;
-            _cameraProvider.CameraFollow.MoveToNewTarget(scheme.CameraTarget.transform);
-            await UniTask.WaitForSeconds(1f);
-            _cameraProvider.CameraFollow.MoveToNewTarget(oldCameraTarget);
-            await UniTask.WaitForSeconds(1f);
+            await _cameraProvider.CameraFollow.MoveToNewTargetAsync(scheme.CameraTarget.transform, globalGoal.CameraMoveDuration);
+            await UniTask.WaitForSeconds(globalGoal.CameraLookAtStepCompletedDelay);
+            await _cameraProvider.CameraFollow.MoveToNewTargetAsync(oldCameraTarget, globalGoal.CameraMoveDuration);
         }
 
         private GlobalStepScheme GetGlobalStepScheme(GlobalStep globalStep) =>

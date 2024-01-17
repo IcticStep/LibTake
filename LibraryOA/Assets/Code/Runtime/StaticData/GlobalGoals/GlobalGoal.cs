@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Runtime.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.GlobalGoals
 {
@@ -20,11 +21,20 @@ namespace Code.Runtime.StaticData.GlobalGoals
 
         [SerializeField]
         private Sprite _icon;
+
+        [SerializeField]
+        private float _cameraMoveDuration;
+
+        [FormerlySerializedAs("_cameraDelay")]
+        [SerializeField]
+        private float _cameraLookAtStepCompletedDelay;
         
         public string Name => _name;
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;
         public string UniqueId => _uniqueId;
         public Sprite Icon => _icon;
+        public float CameraMoveDuration => _cameraMoveDuration;
+        public float CameraLookAtStepCompletedDelay => _cameraLookAtStepCompletedDelay;
 
         private void OnValidate() =>
             _uniqueId = UniqueId ?? Guid.NewGuid().ToString();

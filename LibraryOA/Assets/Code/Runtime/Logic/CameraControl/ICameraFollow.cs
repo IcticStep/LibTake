@@ -7,7 +7,7 @@ namespace Code.Runtime.Logic.CameraControl
     {
         Camera Camera { get; }
         void MoveToNewTarget(Transform target);
-        UniTaskVoid MoveToNewTargetAsync(Transform target, float duration);
+        UniTask MoveToNewTargetAsync(Transform target, float duration);
         void MoveToNewTarget(Transform target, float duration);
     }
 }
