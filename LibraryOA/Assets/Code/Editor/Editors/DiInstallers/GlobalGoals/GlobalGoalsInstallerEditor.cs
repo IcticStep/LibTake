@@ -42,17 +42,29 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
                 .ToList();
         }
 
-        private static GlobalGoalScheme CreateGlobalGoalScheme(GlobalGoal globalGoal, GlobalStepPartVisualizer[] visualizers)
-        {
-            List<GlobalStepScheme> globalStepSchemes = globalGoal
+        private static GlobalGoalScheme CreateGlobalGoalScheme(GlobalGoal globalGoal, GlobalStepPartVisualizer[] visualizers) =>
+            new(globalGoal, CreateGlobalStepSchemes(globalGoal, visualizers));
+
+        private static List<GlobalStepScheme> CreateGlobalStepSchemes(GlobalGoal globalGoal, GlobalStepPartVisualizer[] visualizers) =>
+            globalGoal
                 .GlobalSteps
-                .Select(globalStep => new GlobalStepScheme(globalStep,
-                    visualizers
-                        .Where(visualizer => visualizer.GlobalStep == globalStep)
-                        .ToList()))
+                .Select(globalStep => new GlobalStepScheme(
+                    globalStep: globalStep,
+                    visualizers: GetGlobalStepVisualizers(visualizers, globalStep),
+                    cameraTarget: GetCameraTarget(visualizers, globalGoal, globalStep)))
                 .ToList();
 
-            return new GlobalGoalScheme(globalGoal, globalStepSchemes);
-        }
+        private static GlobalStepPartVisualizer GetCameraTarget(GlobalStepPartVisualizer[] visualizers, GlobalGoal globalGoal, GlobalStep globalStep) =>
+            visualizers
+                .FirstOrDefault(visualizer => 
+                    visualizer.GlobalGoal == globalGoal
+                    && visualizer.GlobalStep == globalStep
+                    && visualizer.IsCameraTarget
+                    && visualizer.TargetStateAfterStep);
+
+        private static List<GlobalStepPartVisualizer> GetGlobalStepVisualizers(GlobalStepPartVisualizer[] visualizers, GlobalStep globalStep) =>
+            visualizers
+                .Where(visualizer => visualizer.GlobalStep == globalStep)
+                .ToList();
     }
 }

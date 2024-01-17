@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215487504}
   m_Layer: 0
-  m_Name: RocketGlobalGoal
+  m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215487503}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.1, y: 0.36343575, z: -27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -724,7 +724,7 @@ Transform:
   - {fileID: 1419947696}
   - {fileID: 1744782504}
   - {fileID: 1278020299}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 374563823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &271798919
 PrefabInstance:
@@ -1272,6 +1272,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 370627734}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &374563822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 374563823}
+  m_Layer: 0
+  m_Name: GlobalGoals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &374563823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374563822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 215487504}
+  m_Father: {fileID: 1762189251}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &376017632
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,6 +3796,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
   _targetStateAfterStep: 1
   _initialState: 0
+  _isCameraTarget: 1
 --- !u!1 &1287538640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,6 +4512,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
   _targetStateAfterStep: 1
   _initialState: 0
+  _isCameraTarget: 1
 --- !u!114 &1419947698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4495,6 +4529,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
   _targetStateAfterStep: 0
   _initialState: 0
+  _isCameraTarget: 0
 --- !u!1 &1421054266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,6 +5268,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
   _targetStateAfterStep: 1
   _initialState: 0
+  _isCameraTarget: 1
 --- !u!1 &1677463034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5450,6 +5486,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: 5d2dc22fddd59904ab9e617dfdb63119, type: 2}
   _targetStateAfterStep: 1
   _initialState: 0
+  _isCameraTarget: 1
 --- !u!1001 &1749139950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5609,6 +5646,7 @@ Transform:
   - {fileID: 670728900}
   - {fileID: 721965649}
   - {fileID: 1314152695}
+  - {fileID: 374563823}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1764199388
@@ -5716,6 +5754,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
   _targetStateAfterStep: 0
   _initialState: 0
+  _isCameraTarget: 0
 --- !u!1001 &1781407583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6214,6 +6253,7 @@ MonoBehaviour:
   _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
   _targetStateAfterStep: 1
   _initialState: 0
+  _isCameraTarget: 0
 --- !u!1 &2000434426
 GameObject:
   m_ObjectHideFlags: 0
@@ -7192,4 +7232,3 @@ SceneRoots:
   - {fileID: 9149977666116708609}
   - {fileID: 1796631426}
   - {fileID: 1762189251}
-  - {fileID: 215487504}

@@ -19,16 +19,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data
         
         public GlobalGoal Goal => _globalGoal;
         public IReadOnlyList<GlobalStepScheme> GlobalStepsSchemes => _globalStepsSchemes;
-
-        public GlobalGoalScheme(GlobalGoal globalGoal, List<GlobalStepPartVisualizer> globalStepPartVisualizers) 
-        {
-            _globalGoal = globalGoal;
-            _globalStepsSchemes = globalStepPartVisualizers
-                .GroupBy(visualizer => visualizer.GlobalStep)
-                .Select(group => new GlobalStepScheme(group.Key, group.ToList()))
-                .ToList();
-        }
-
+        
         public GlobalGoalScheme(GlobalGoal globalGoal, List<GlobalStepScheme> globalStepsSchemes)
         {
             _globalGoal = globalGoal;
