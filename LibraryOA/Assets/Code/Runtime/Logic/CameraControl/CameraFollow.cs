@@ -78,7 +78,7 @@ namespace Code.Runtime.Logic.CameraControl
             AnimateTransition(duration);
         }
         
-        public async UniTaskVoid MoveToNewTargetAsync(Transform target, float duration)
+        public async UniTask MoveToNewTargetAsync(Transform target, float duration)
         {
             _target = target;
             AnimateTransition(duration);
