@@ -16,7 +16,7 @@ namespace Code.Runtime.Logic.Triggers
         private ICameraProvider _cameraProvider;
 
         [Inject]
-        public void Construct(IPlayerProviderService playerProviderService, ICameraProvider cameraProvider)
+        private void Construct(IPlayerProviderService playerProviderService, ICameraProvider cameraProvider)
         {
             _cameraProvider = cameraProvider;
             _playerProviderService = playerProviderService;

@@ -17,14 +17,14 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
         private GlobalGoalScheme CurrentGoalScheme => _goalSchemes[_currentGoal];
         public bool InitializedGlobalGoal => _currentGoal is not null;
 
-        public void InitializeVisualisationSchemes(IReadOnlyList<GlobalGoalScheme> allSchemes) =>
-            _goalSchemes = allSchemes.ToDictionary(scheme => scheme.Goal, scheme => scheme);
-
-        public void InitializeGlobalGoal(GlobalGoal globalGoal)
+        public void InitializeVisualisationSchemes(IReadOnlyList<GlobalGoalScheme> allSchemes)
         {
-            _currentGoal = globalGoal;
-            _currentGoalStepsSchemes = CurrentGoalScheme.GlobalStepsSchemes.ToDictionary(stepScheme => stepScheme.Step, stepScheme => stepScheme);
+            _goalSchemes = allSchemes.ToDictionary(scheme => scheme.Goal, scheme => scheme);
+            _currentGoalStepsSchemes = null;
         }
+
+        public void InitializeGlobalGoal(GlobalGoal globalGoal) =>
+            _currentGoal = globalGoal;
 
         public void VisualizeStep(GlobalStep step)
         {
@@ -81,7 +81,15 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
                     visualizer.Reset();
         }
 
-        private GlobalStepScheme GetCurrentGoalStepScheme(GlobalStep globalStep) =>
-            _currentGoalStepsSchemes[globalStep];
+        private GlobalStepScheme GetCurrentGoalStepScheme(GlobalStep globalStep)
+        {
+            InitializeCurrentGoalStepsSchemesIfNone();
+            return _currentGoalStepsSchemes[globalStep];
+        }
+
+        private void InitializeCurrentGoalStepsSchemesIfNone() =>
+            _currentGoalStepsSchemes ??= CurrentGoalScheme
+                .GlobalStepsSchemes
+                .ToDictionary(stepScheme => stepScheme.Step, stepScheme => stepScheme);
     }
 }

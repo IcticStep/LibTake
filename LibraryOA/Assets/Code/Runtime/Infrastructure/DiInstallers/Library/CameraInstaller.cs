@@ -13,7 +13,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers.Library
         private ICameraProvider _cameraProvider;
 
         [Inject]
-        public void Construct(ICameraProvider cameraProvider) =>
+        private void Construct(ICameraProvider cameraProvider) =>
             _cameraProvider = cameraProvider;
 
         public override void InstallBindings()

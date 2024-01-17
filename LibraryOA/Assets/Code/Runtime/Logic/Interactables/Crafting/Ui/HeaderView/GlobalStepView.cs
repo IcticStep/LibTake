@@ -25,7 +25,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
         private ICraftingService _craftingService;
 
         [Inject]
-        public void Construct(ICraftingService craftingService) =>
+        private void Construct(ICraftingService craftingService) =>
             _craftingService = craftingService;
 
         private void Awake() =>
