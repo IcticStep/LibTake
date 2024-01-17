@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic.CameraControl
 {
@@ -11,7 +14,7 @@ namespace Code.Runtime.Logic.CameraControl
         [SerializeField]
         private Ease _ease;
         [SerializeField]
-        private float _moveDuration;
+        private float _defaultMoveDuration;
         [SerializeField]
         private int _animationUpdateValuesFramesInterval;
 
@@ -19,9 +22,11 @@ namespace Code.Runtime.Logic.CameraControl
         private Transform _transform;
         private Tweener _tweener;
         private float _tweenerElapsedTime = 0;
+        private UniTaskCompletionSource _animationCompleteSource;
 
         public Camera Camera { get; private set; }
         public Transform Target => _target;
+        public event Action AnimationFinished; 
 
         private void Awake()
         {
@@ -30,7 +35,7 @@ namespace Code.Runtime.Logic.CameraControl
         }
 
         private void Start() =>
-            StartCoroutine(UpdateTweenerEndValueCourotine());
+            StartCoroutine(UpdateTweenerEndValueCoroutine());
 
         private void LateUpdate()
         {
@@ -38,7 +43,7 @@ namespace Code.Runtime.Logic.CameraControl
                 GoToTargetImmediately();
         }
 
-        private IEnumerator UpdateTweenerEndValueCourotine()
+        private IEnumerator UpdateTweenerEndValueCoroutine()
         {
             while(true)
             {
@@ -49,7 +54,7 @@ namespace Code.Runtime.Logic.CameraControl
                     continue;
                 
                 _tweenerElapsedTime += _tweener.Elapsed();
-                _tweener.ChangeValues(_transform.position, GetPositionByTarget(Target), _moveDuration - _tweenerElapsedTime);
+                _tweener.ChangeValues(_transform.position, GetPositionByTarget(Target), _defaultMoveDuration - _tweenerElapsedTime);
             }
         }
 
@@ -61,16 +66,32 @@ namespace Code.Runtime.Logic.CameraControl
             _transform.position = GetPositionByTarget(Target);
         }
 
-        public void SetTarget(Transform target)
+        public void MoveToNewTarget(Transform target)
         {
             _target = target;
             AnimateTransition();
         }
 
-        private void AnimateTransition()
+        public void MoveToNewTarget(Transform target, float duration)
         {
+            _target = target;
+            AnimateTransition(duration);
+        }
+        
+        public async UniTaskVoid MoveToNewTargetAsync(Transform target, float duration)
+        {
+            _target = target;
+            AnimateTransition(duration);
+            await _animationCompleteSource.Task;
+        }
+
+        private void AnimateTransition(float? duration = null)
+        {
+            _animationCompleteSource?.TrySetCanceled();
+            _animationCompleteSource = new UniTaskCompletionSource();
+            
             KillCurrentTweener();
-            _tweener = CreateTransitionTween();
+            _tweener = CreateTransitionTween(duration);
             _tweenerElapsedTime = 0;
             _tweener.Play();
         }
@@ -84,11 +105,19 @@ namespace Code.Runtime.Logic.CameraControl
             _tweener = null;
         }
 
-        private Tweener CreateTransitionTween() =>
+        private Tweener CreateTransitionTween(float? duration) =>
             transform
-                .DOMove(GetPositionByTarget(Target), _moveDuration)
+                .DOMove(GetPositionByTarget(Target), duration ?? _defaultMoveDuration)
                 .SetEase(_ease)
-                .OnComplete(KillCurrentTweener);
+                .OnComplete(OnTweenerCompete);
+
+        private void OnTweenerCompete()
+        {
+            KillCurrentTweener();
+            AnimationFinished?.Invoke();
+            _animationCompleteSource.TrySetResult();
+            _animationCompleteSource = null;
+        }
 
         private Vector3 GetPositionByTarget(Transform target) =>
             target.position + _offset;

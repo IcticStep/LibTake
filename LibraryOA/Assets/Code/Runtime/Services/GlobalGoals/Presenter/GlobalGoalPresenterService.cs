@@ -45,9 +45,9 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
         private async UniTask ShowCameraAnimationAsync(GlobalStepScheme scheme)
         {
             Transform oldCameraTarget = _cameraProvider.CameraFollow.Target;
-            _cameraProvider.CameraFollow.SetTarget(scheme.CameraTarget.transform);
+            _cameraProvider.CameraFollow.MoveToNewTarget(scheme.CameraTarget.transform);
             await UniTask.WaitForSeconds(1f);
-            _cameraProvider.CameraFollow.SetTarget(oldCameraTarget);
+            _cameraProvider.CameraFollow.MoveToNewTarget(oldCameraTarget);
             await UniTask.WaitForSeconds(1f);
         }
 

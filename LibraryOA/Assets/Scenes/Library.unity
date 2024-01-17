@@ -885,6 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trigger: {fileID: 279168547}
   _target: {fileID: 197257421}
+  _animationDuration: 1
 --- !u!1001 &282376530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6685,6 +6686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _moveDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 511489348650606633, guid: 26a922ed368707349bb707da7230c5d6,
+        type: 3}
+      propertyPath: _defaultMoveDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 511489348650606633, guid: 26a922ed368707349bb707da7230c5d6,
         type: 3}

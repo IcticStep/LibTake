@@ -11,6 +11,8 @@ namespace Code.Runtime.Logic.Triggers
         private Trigger _trigger;
         [SerializeField]
         private Transform _target;
+        [SerializeField]
+        private float _animationDuration;
         
         private IPlayerProviderService _playerProviderService;
         private ICameraProvider _cameraProvider;
@@ -37,11 +39,11 @@ namespace Code.Runtime.Logic.Triggers
         private void FollowTarget() =>
             _cameraProvider
                 .CameraFollow
-                .SetTarget(_target);
+                .MoveToNewTarget(_target, _animationDuration);
 
         private void FollowPlayer() =>
             _cameraProvider
                 .CameraFollow
-                .SetTarget(_playerProviderService.Transform);
+                .MoveToNewTarget(_playerProviderService.Transform, _animationDuration);
     }
 }

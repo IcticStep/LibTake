@@ -135,7 +135,7 @@ namespace Code.Runtime.Infrastructure.States
         private void CameraFollow(GameObject target) =>
             _cameraProvider
                 .CameraFollow
-                .SetTarget(target.transform);
+                .MoveToNewTarget(target.transform);
 
         private void InformProgressReaders()
         {
