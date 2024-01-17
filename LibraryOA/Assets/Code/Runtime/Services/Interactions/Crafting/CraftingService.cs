@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Services.GlobalGoals.Presenter;
+using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.StaticData.GlobalGoals;
@@ -15,6 +17,8 @@ namespace Code.Runtime.Services.Interactions.Crafting
         private readonly IStaticDataService _staticDataService;
         private readonly ISkillService _skillService;
         private readonly IPlayerInventoryService _playerInventoryService;
+        private readonly IGlobalGoalPresenterService _presenterService;
+        private readonly IGlobalGoalsVisualizationService _globalGoalsVisualizationService;
 
         private string _globalGoalId;
         public GlobalGoal Goal { get; private set; }
@@ -23,11 +27,14 @@ namespace Code.Runtime.Services.Interactions.Crafting
         public GlobalStep CurrentStep => Goal.GlobalSteps[CurrentStepIndex];
         public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count - 1;
 
-        public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService)
+        public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService,
+            IGlobalGoalPresenterService presenterService, IGlobalGoalsVisualizationService globalGoalsVisualizationService)
         {
             _staticDataService = staticDataService;
             _skillService = skillService;
             _playerInventoryService = playerInventoryService;
+            _presenterService = presenterService;
+            _globalGoalsVisualizationService = globalGoalsVisualizationService;
         }
 
         public void SetGoal(GlobalGoal globalGoal)
@@ -41,6 +48,8 @@ namespace Code.Runtime.Services.Interactions.Crafting
             if(!CanCraftStep())
                 throw new InvalidOperationException("Can't craft step!");
 
+            _globalGoalsVisualizationService.VisualizeStep(CurrentStep);
+            _presenterService.ShowBuiltStep(CurrentStep, Goal);
             CurrentStepIndex++;
             PayedForStep = false;
         }
@@ -87,6 +96,8 @@ namespace Code.Runtime.Services.Interactions.Crafting
             CurrentStepIndex = savedData.GoalStepIndex;
             PayedForStep = savedData.PayedForStep;
             Goal = _staticDataService.GlobalGoals.First(goal => goal.UniqueId == _globalGoalId);
+            _globalGoalsVisualizationService.InitializeGlobalGoal(Goal);
+            _globalGoalsVisualizationService.VisualizeStepAndAllBefore(CurrentStep);
         }
 
         public void UpdateProgress(GameProgress progress)
