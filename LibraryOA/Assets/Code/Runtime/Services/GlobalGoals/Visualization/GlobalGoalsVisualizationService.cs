@@ -14,8 +14,8 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
         private Dictionary<GlobalStep, GlobalStepScheme> _currentGoalStepsSchemes;
         private GlobalGoal _currentGoal;
 
-        private GlobalGoalScheme CurrentGoalScheme => _goalSchemes[_currentGoal];
         public bool InitializedGlobalGoal => _currentGoal is not null;
+        public GlobalGoalScheme CurrentGoalScheme => _goalSchemes[_currentGoal];
 
         public void InitializeVisualisationSchemes(IReadOnlyList<GlobalGoalScheme> allSchemes)
         {

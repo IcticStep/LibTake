@@ -31,11 +31,12 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         public void Create()
         {
             GameObject hud = _assetProvider.Instantiate(AssetPath.Hud);
+            Canvas mainCanvas = hud.GetComponent<Canvas>();
             
             SetUpJoystick(hud);
             SetUpMessages(hud);
 
-            _hudProviderService.RegisterHud(hud);
+            _hudProviderService.RegisterHud(hud, mainCanvas);
         }
 
         private void SetUpMessages(GameObject hud)

@@ -19,6 +19,7 @@ using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.GlobalGoals;
+using Code.Runtime.Services.GlobalGoals.Presenter;
 using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
@@ -108,6 +109,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
             Container.Bind<IGlobalGoalsVisualizationService>().To<GlobalGoalsVisualizationService>().AsSingle();
             Container.Bind<IGlobalGoalService>().To<GlobalGoalService>().AsSingle();
+            Container.Bind<IGlobalGoalPresenterService>().To<GlobalGoalPresenterService>().AsSingle();
         }
 
         private void InstallFactories()
