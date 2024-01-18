@@ -93,7 +93,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
             Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
-            Container.Bind<IHudProviderService>().To<HudProviderService>().AsSingle();
+            Container.Bind<IHudProviderService>().To<HudService>().AsSingle();
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
             Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
