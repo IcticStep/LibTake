@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Code.Runtime.Infrastructure.Services.HudProvider
 {
     [UsedImplicitly]
-    internal sealed class HudProviderService : IHudProviderService
+    internal sealed class HudService : IHudProviderService
     {
         private Canvas _mainCanvas;
         public GameObject Hud { get; private set; }
@@ -21,17 +21,17 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
             MorningMessage = Hud.GetComponentInChildren<MorningMessage>();
         }
 
+        public void Show() =>
+            _mainCanvas.enabled = true;
+
+        public void Hide() =>
+            _mainCanvas.enabled = false;
+
         public void CleanUp()
         {
             Hud = null;
             DayMessage = null;
             MorningMessage = null;
         }
-
-        public void Show() =>
-            _mainCanvas.enabled = true;
-
-        public void Hide() =>
-            _mainCanvas.enabled = false;
     }
 }
