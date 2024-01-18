@@ -21,7 +21,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
 
         [SerializeField]
         private CraftingTableStateMachine _craftingTableStateMachine;
-
+        
         private ICraftingService _craftingService;
 
         [Inject]
@@ -41,6 +41,14 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
             UpdateView();
 
         private void UpdateView()
+        {
+            if(_craftingService.FinishedGoal)
+                return;
+
+            VisualizeStep();
+        }
+
+        private void VisualizeStep()
         {
             GlobalStep step = _craftingService.CurrentStep;
             _icon.sprite = step.Icon;

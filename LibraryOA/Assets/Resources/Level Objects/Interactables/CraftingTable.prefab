@@ -3386,6 +3386,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 1676249202357809421}
   _headerText: {fileID: 723118549314601046}
+  _mainCanvas: {fileID: 5161808246721965070}
+  _craftingTableStateMachine: {fileID: 5033483543602875314}
 --- !u!1 &8536914689042515223
 GameObject:
   m_ObjectHideFlags: 0
