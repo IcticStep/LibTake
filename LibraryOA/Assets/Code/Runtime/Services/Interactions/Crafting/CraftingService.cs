@@ -24,8 +24,8 @@ namespace Code.Runtime.Services.Interactions.Crafting
         public GlobalGoal Goal { get; private set; }
         public int CurrentStepIndex { get; private set; }
         public bool PayedForStep { get; private set; }
-        public GlobalStep CurrentStep => Goal.GlobalSteps[CurrentStepIndex];
-        public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count - 1;
+        public GlobalStep CurrentStep => Goal.GlobalSteps[FinishedGoal ? CurrentStepIndex-1 : CurrentStepIndex];
+        public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count;
 
         public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService,
             IGlobalGoalPresenterService presenterService, IGlobalGoalsVisualizationService globalGoalsVisualizationService)

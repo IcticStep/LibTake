@@ -29,7 +29,7 @@ namespace Code.Runtime.Infrastructure.Services.HudProvider
         }
 
         public void Show() =>
-            _mainCanvas.enabled = false;
+            _mainCanvas.enabled = true;
 
         public void Hide() =>
             _mainCanvas.enabled = false;
