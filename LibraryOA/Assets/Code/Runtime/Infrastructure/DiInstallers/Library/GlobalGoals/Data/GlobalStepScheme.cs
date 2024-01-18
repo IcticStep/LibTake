@@ -13,20 +13,20 @@ namespace Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data
         private GlobalStep _globalStep;
         
         [SerializeField]
-        private GlobalStepPartVisualizer _cameraTarget;
+        private GlobalStepPartVisualizer _cameraTargetVisualizer;
 
         [SerializeField]
         private List<GlobalStepPartVisualizer> _visualizers;
 
         public List<GlobalStepPartVisualizer> Visualizers => _visualizers;
         public GlobalStep Step => _globalStep;
-        public GlobalStepPartVisualizer CameraTarget => _cameraTarget;
+        public Transform CameraTarget => _cameraTargetVisualizer.CameraTarget;
 
-        public GlobalStepScheme(GlobalStep globalStep, List<GlobalStepPartVisualizer> visualizers, GlobalStepPartVisualizer cameraTarget)
+        public GlobalStepScheme(GlobalStep globalStep, List<GlobalStepPartVisualizer> visualizers, GlobalStepPartVisualizer cameraTargetVisualizer)
         {
             _globalStep = globalStep;
             _visualizers = visualizers;
-            _cameraTarget = cameraTarget;
+            _cameraTargetVisualizer = cameraTargetVisualizer;
         }
 
         public override string ToString() =>

@@ -26,6 +26,7 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
             {
                 _globalGoalEditorVisualizer.UpdateData(GlobalGoalsInstaller);
                 GlobalGoalsInstaller.GlobalGoalsVisualizationSchemes = CollectGlobalGoalsSchemes();
+                EditorUtility.SetDirty(GlobalGoalsInstaller);
             }
 
             _globalGoalEditorVisualizer.DrawTestVisualizationUi(GlobalGoalsInstaller);
@@ -51,7 +52,7 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
                 .Select(globalStep => new GlobalStepScheme(
                     globalStep: globalStep,
                     visualizers: GetGlobalStepVisualizers(visualizers, globalStep),
-                    cameraTarget: GetCameraTarget(visualizers, globalGoal, globalStep)))
+                    cameraTargetVisualizer: GetCameraTarget(visualizers, globalGoal, globalStep)))
                 .ToList();
 
         private static GlobalStepPartVisualizer GetCameraTarget(GlobalStepPartVisualizer[] visualizers, GlobalGoal globalGoal, GlobalStep globalStep) =>
