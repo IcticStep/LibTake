@@ -3,11 +3,10 @@ using System.Collections;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Runtime.Logic.CameraControl
 {
-    internal sealed class CameraFollow : MonoBehaviour, ICameraFollow
+    internal sealed class CameraFollow : MonoBehaviour
     {
         [SerializeField]
         private Vector3 _offset;

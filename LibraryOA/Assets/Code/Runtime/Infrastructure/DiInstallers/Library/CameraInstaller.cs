@@ -16,21 +16,11 @@ namespace Code.Runtime.Infrastructure.DiInstallers.Library
         private void Construct(ICameraProvider cameraProvider) =>
             _cameraProvider = cameraProvider;
 
-        public override void InstallBindings()
-        {
-            BindCamera();
+        public override void InstallBindings() =>
             InitializeCameraProvider();
-        }
 
         public void Initialize() =>
             InitializeCameraProvider();
-
-        private void BindCamera() =>
-            Container
-                .Bind<ICameraFollow>()
-                .To<CameraFollow>()
-                .FromInstance(_mainCamera)
-                .AsSingle();
         
         private void InitializeCameraProvider() =>
             _cameraProvider.Initialize(_mainCamera);
