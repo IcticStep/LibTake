@@ -3825,7 +3825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1278020299
 Transform:
   m_ObjectHideFlags: 0
@@ -4480,7 +4480,7 @@ Transform:
   m_GameObject: {fileID: 1409588875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2500005, y: 11.75, z: 0}
+  m_LocalPosition: {x: 7.2500005, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4641,7 +4641,7 @@ MonoBehaviour:
   _targetStateAfterStep: 1
   _initialState: 0
   _isCameraTarget: 1
-  _cameraTarget: {fileID: 0}
+  _cameraTarget: {fileID: 148454241}
 --- !u!114 &1419947698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,7 +4659,7 @@ MonoBehaviour:
   _targetStateAfterStep: 0
   _initialState: 0
   _isCameraTarget: 0
-  _cameraTarget: {fileID: 148454241}
+  _cameraTarget: {fileID: 0}
 --- !u!1 &1421054266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5359,7 +5359,7 @@ PrefabInstance:
     - target: {fileID: 1928974971688864542, guid: 29733a79d74b3a74983dee29d25e43ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5586,7 +5586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1744782504
 Transform:
   m_ObjectHideFlags: 0
@@ -6352,7 +6352,7 @@ PrefabInstance:
     - target: {fileID: 1097304820958019430, guid: 66c507547baa88e4c946a0054af6a709,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6918,7 +6918,7 @@ PrefabInstance:
     - target: {fileID: 6870220189089437462, guid: 26a922ed368707349bb707da7230c5d6,
         type: 3}
       propertyPath: far clip plane
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7081,8 +7081,8 @@ MonoBehaviour:
     - _globalStep: {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
       _cameraTargetVisualizer: {fileID: 1419947697}
       _visualizers:
-      - {fileID: 1419947697}
       - {fileID: 1996225436}
+      - {fileID: 1419947697}
     - _globalStep: {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
       _cameraTargetVisualizer: {fileID: 1278020300}
       _visualizers:
