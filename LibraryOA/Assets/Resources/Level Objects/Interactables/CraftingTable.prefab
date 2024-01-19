@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 8711583921985604027}
   _craftingTableStateMachine: {fileID: 5033483543602875314}
+  _craftingTable: {fileID: 5033483543602875314}
 --- !u!1 &839968178083364840
 GameObject:
   m_ObjectHideFlags: 0
