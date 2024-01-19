@@ -5,7 +5,7 @@ using Code.Runtime.Ui;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactables
+namespace Code.Runtime.Logic.Interactables.Reading
 {
     internal sealed class ReadingTable : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner
     {

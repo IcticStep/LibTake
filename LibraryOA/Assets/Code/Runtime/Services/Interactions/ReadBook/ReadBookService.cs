@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Data.Progress;
+using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Logic;
 using Code.Runtime.Services.Skills;
+using Code.Runtime.StaticData.Books;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.ReadBook
@@ -10,17 +13,19 @@ namespace Code.Runtime.Services.Interactions.ReadBook
     internal sealed class ReadBookService : IReadBookService
     {
         private readonly ISkillService _skillService;
-        
+        private readonly IStaticDataService _staticDataService;
+
         private HashSet<string> _booksRead = new();
         private List<string> _booksReadCacheForSave;
         
         public bool ReadingAllowed { get; private set; } = true;
 
-        public event Action BookRead;
+        public event Action<StaticBook> BookRead;
 
-        public ReadBookService(ISkillService skillService)
+        public ReadBookService(ISkillService skillService, IStaticDataService staticDataService)
         {
             _skillService = skillService;
+            _staticDataService = staticDataService;
         }
 
         public void AllowReading() =>
@@ -56,7 +61,8 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         private void MarkAsRead(string bookId)
         {
             _booksRead.Add(bookId);
-            BookRead?.Invoke();
+            StaticBook bookRead = _staticDataService.ForBook(bookId);
+            BookRead?.Invoke(bookRead);
         }
 
         private void UpdateBooksReadCacheForSave()
