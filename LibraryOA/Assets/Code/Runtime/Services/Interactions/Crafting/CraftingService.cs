@@ -25,6 +25,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
         public int CurrentStepIndex { get; private set; }
         public bool PayedForStep { get; private set; }
         public GlobalStep CurrentStep => Goal.GlobalSteps[FinishedGoal ? CurrentStepIndex-1 : CurrentStepIndex];
+        public GlobalStep PreviousStep => CurrentStepIndex == 0 ? null : Goal.GlobalSteps[CurrentStepIndex - 1];
         public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count;
 
         public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService,
@@ -97,7 +98,9 @@ namespace Code.Runtime.Services.Interactions.Crafting
             PayedForStep = savedData.PayedForStep;
             Goal = _staticDataService.GlobalGoals.First(goal => goal.UniqueId == _globalGoalId);
             _globalGoalsVisualizationService.InitializeGlobalGoal(Goal);
-            _globalGoalsVisualizationService.VisualizeStepAndAllBefore(CurrentStep);
+            
+            if(PreviousStep is not null)
+                _globalGoalsVisualizationService.VisualizeStepAndAllBefore(PreviousStep);
         }
 
         public void UpdateProgress(GameProgress progress)
