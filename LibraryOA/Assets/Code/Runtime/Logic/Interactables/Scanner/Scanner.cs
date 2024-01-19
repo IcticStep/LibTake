@@ -2,6 +2,7 @@ using System;
 using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.ScannerInteraction;
+using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Ui;
 using Code.Runtime.Ui.FlyingResources;
 using UnityEngine;
@@ -20,16 +21,25 @@ namespace Code.Runtime.Logic.Interactables.Scanner
 
         private IScannerInteractionService _scannerInteractionService;
         private IBookSlotInteractionService _bookSlotInteractionService;
+        private IScanBookService _scanBookService;
 
         public bool InProgress => _progress.Running;
         public event Action<int> Rewarded;
 
         [Inject]
-        private void Construct(IScannerInteractionService scannerInteractionService, IBookSlotInteractionService bookSlotInteractionService)
+        private void Construct(IScannerInteractionService scannerInteractionService, IBookSlotInteractionService bookSlotInteractionService,
+            IScanBookService scanBookService)
         {
+            _scanBookService = scanBookService;
             _scannerInteractionService = scannerInteractionService;
             _bookSlotInteractionService = bookSlotInteractionService;
         }
+
+        private void Awake() =>
+            _scanBookService.ScanningPermissionChanged += OnScanningPermissionChanged;
+
+        private void OnDestroy() =>
+            _scanBookService.ScanningPermissionChanged -= OnScanningPermissionChanged;
 
         public override bool CanInteract() =>
             _bookSlotInteractionService.CanInteract(_bookStorageObject);
@@ -59,5 +69,11 @@ namespace Code.Runtime.Logic.Interactables.Scanner
 
         public void NotifyRewarded(int reward) =>
             Rewarded?.Invoke(reward);
+
+        private void OnScanningPermissionChanged(bool newValue)
+        {
+            if(newValue == false)
+                _progress.StopFilling();
+        }
     }
 }

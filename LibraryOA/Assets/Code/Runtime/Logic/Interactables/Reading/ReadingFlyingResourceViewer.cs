@@ -14,9 +14,7 @@ namespace Code.Runtime.Logic.Interactables.Reading
         private FlyingResource _flyingResource;
         
         private IReadBookService _readBookService;
-
-        public event Action<int> Rewarded;
-
+        
         [Inject]
         private void Construct(IReadBookService readBookService) =>
             _readBookService = readBookService;

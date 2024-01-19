@@ -1,5 +1,7 @@
+using System;
 using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
+using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Ui;
 using UnityEngine;
@@ -18,15 +20,24 @@ namespace Code.Runtime.Logic.Interactables.Reading
         
         private IReadingTableInteractionService _readingTableInteractionService;
         private IBookSlotInteractionService _bookSlotInteractionService;
-        
+        private IReadBookService _readBookService;
+
         public bool InProgress => _progress.Running;
 
         [Inject]
-        private void Construct(IReadingTableInteractionService readingTableInteractionService, IBookSlotInteractionService bookSlotInteractionService)
+        private void Construct(IReadingTableInteractionService readingTableInteractionService, IBookSlotInteractionService bookSlotInteractionService,
+            IReadBookService readBookService)
         {
+            _readBookService = readBookService;
             _readingTableInteractionService = readingTableInteractionService;
             _bookSlotInteractionService = bookSlotInteractionService;
         }
+
+        private void Awake() =>
+            _readBookService.ReadingPermissionChanged += OnReadingPermissionChanged;
+
+        private void OnDestroy() =>
+            _readBookService.ReadingPermissionChanged += OnReadingPermissionChanged;
 
         public override bool CanInteract() =>
             _bookSlotInteractionService.CanInteract(_bookStorageObject);
@@ -52,6 +63,12 @@ namespace Code.Runtime.Logic.Interactables.Reading
         {
             _readingTableInteractionService.StopReading(_progress);
             _bookUi.HideData();
+        }
+
+        private void OnReadingPermissionChanged(bool newValue)
+        {
+            if(newValue == false)
+                _progress.StopFilling();
         }
     }
 }
