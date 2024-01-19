@@ -11,6 +11,8 @@ namespace Code.Runtime.Logic.Player
 {
     internal sealed class PlayerAnimator : MonoBehaviour
     {
+        private const string HandleItemLayerName = "HandleItem";
+        private const string DoLayerName = "Do";
         private static readonly int _speedParameter = Animator.StringToHash("SpeedPercents");
 
         [SerializeField]
@@ -38,8 +40,8 @@ namespace Code.Runtime.Logic.Player
 
         private void Awake()
         {
-            _handleItemLayer = _animator.GetLayerIndex("HandleItem");
-            _doLayerIndex = _animator.GetLayerIndex("Do");
+            _handleItemLayer = _animator.GetLayerIndex(HandleItemLayerName);
+            _doLayerIndex = _animator.GetLayerIndex(DoLayerName);
         }
 
         private void Start()

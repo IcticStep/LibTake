@@ -7,6 +7,7 @@ using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
+using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.Ui.FlyingResources;
 using UnityEngine;
@@ -14,7 +15,7 @@ using Zenject;
 
 namespace Code.Runtime.Logic.Interactables.Crafting
 {
-    public sealed class CraftingTableStateMachine : Interactable, IHoverStartListener, IHoverEndListener, ISavedProgress, IRewardSource 
+    public sealed class CraftingTableStateMachine : Interactable, IHoverStartListener, IHoverEndListener, ISavedProgress, IRewardSource, IProgressOwner 
     {
         [SerializeField]
         private Progress _progress;
@@ -24,9 +25,11 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         private ICraftingService _craftingService;
         private IPlayerProviderService _playerProviderService;
         private IStaticDataService _staticDataService;
+        private IPlayerInventoryService _playerInventoryService;
 
         public string ActiveStateName => ActiveState is null ? "none" : ActiveState.ToString();
         public ICraftingTableState ActiveState => _activeState;
+        public bool InProgress => _progress.Running;
 
         public event Action<ICraftingTableState> EnterState;
         public event Action<ICraftingTableState> ExitState;
@@ -34,8 +37,10 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         public event Action<int> Rewarded;
 
         [Inject]
-        private void Construct(ICraftingService craftingService, IPlayerProviderService playerProviderService, IStaticDataService staticDataService)
+        private void Construct(ICraftingService craftingService, IPlayerProviderService playerProviderService, IStaticDataService staticDataService,
+            IPlayerInventoryService playerInventoryService)
         {
+            _playerInventoryService = playerInventoryService;
             _staticDataService = staticDataService;
             _playerProviderService = playerProviderService;
             _craftingService = craftingService;
@@ -46,7 +51,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
             {
                 [typeof(PayState)] = new PayState(this, _craftingService),
                 [typeof(SkillCheckState)] = new SkillCheckState(this, _craftingService),
-                [typeof(CraftingState)] = new CraftingState(this, _craftingService, _progress, _playerProviderService),
+                [typeof(CraftingState)] = new CraftingState(this, _craftingService, _progress, _playerProviderService, _playerInventoryService),
                 [typeof(FinishCraftState)] = new FinishCraftState(this, _craftingService, _staticDataService),
             };
 
@@ -57,8 +62,9 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         }
 
         public override bool CanInteract() =>
-            ActiveState.CanInteract() &&
-            _craftingService.CraftingAllowed;
+            ActiveState.CanInteract() 
+            && _craftingService.CraftingAllowed
+            && !_playerInventoryService.HasBook;
 
         public override void Interact()
         {
