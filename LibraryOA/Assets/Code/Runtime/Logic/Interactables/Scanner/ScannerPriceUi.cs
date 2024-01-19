@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Ui
+namespace Code.Runtime.Logic.Interactables.Scanner
 {
-    internal sealed class StatueLifePriceUi : MonoBehaviour
+    internal sealed class ScannerPriceUi : MonoBehaviour
     {
         [SerializeField]
         private TextMeshProUGUI _priceText;
@@ -16,6 +16,6 @@ namespace Code.Runtime.Ui
             _staticDataService = staticDataService;
 
         private void Start() =>
-            _priceText.text = "x" + _staticDataService.Interactables.Statue.LifeRestorePrice;
+            _priceText.text = "x" + _staticDataService.Interactables.Scanner.CoinsReward;
     }
 }
