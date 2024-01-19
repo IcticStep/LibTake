@@ -7,7 +7,12 @@ namespace Code.Runtime.StaticData.Ui
     {
         [field: SerializeField]
         public UiMessageIntervals MorningMessageIntervals { get; private set; }
+        
         [field: SerializeField]
         public UiMessageIntervals DayMessageIntervals { get; private set; }
+        
+        [field: SerializeField]
+        [field: Header("Additional icons")]
+        public Sprite CompletedIcon { get; private set; }
     }
 }
