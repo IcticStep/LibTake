@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Services.Skills;
 using Code.Runtime.StaticData.Books;
 using Code.Runtime.StaticData.GlobalGoals;
 using TMPro;
@@ -23,10 +24,16 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequi
         
         private IStaticDataService _staticDataService;
         private StaticBookType _staticBookType;
+        private ISkillService _skillService;
+
+        private Sprite CompletedIcon => _staticDataService.Ui.CompletedIcon;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService) =>
+        private void Construct(IStaticDataService staticDataService, ISkillService skillService)
+        {
+            _skillService = skillService;
             _staticDataService = staticDataService;
+        }
 
         private void OnValidate()
         {
@@ -45,10 +52,30 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequi
         
         private void OnRequirementsUpdated(IReadOnlyList<SkillConstraint> requirements)
         {
-            SkillConstraint level = requirements.First(requirement => requirement.BookType == _bookType);
-            string textText = level.RequiredLevel.ToString();
-            _text.text = textText;
+            SkillConstraint requirement = requirements.First(requirement => requirement.BookType == _bookType);
+            int level = _skillService.GetSkillByBookType(requirement.BookType);
+
+            if(level >= requirement.RequiredLevel)
+            {
+                ShowRequirementCompleted();
+                return;
+            }
+            
+            ShowRequirement(requirement);
+        }
+
+        private void ShowRequirement(SkillConstraint requirement)
+        {
+            string levelText = requirement.RequiredLevel.ToString();
+            _text.enabled = true;
+            _text.text = levelText;
             _iconImage.sprite = _staticBookType.Icon;
+        }
+
+        private void ShowRequirementCompleted()
+        {
+            _text.enabled = false;
+            _iconImage.sprite = CompletedIcon;
         }
     }
 }
