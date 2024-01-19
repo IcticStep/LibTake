@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
+using Code.Runtime.StaticData.Books;
 
 namespace Code.Runtime.Services.Interactions.ReadBook
 {
@@ -11,6 +12,6 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         void ReadBook(string bookId);
         bool CanReadBook(string bookId);
         bool IsRead(string bookId);
-        event Action BookRead;
+        event Action<StaticBook> BookRead;
     }
 }
