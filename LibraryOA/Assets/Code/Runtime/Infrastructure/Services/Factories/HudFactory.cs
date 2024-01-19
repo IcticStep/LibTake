@@ -43,9 +43,9 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         {
             UiData uiData = _staticDataService.Ui;
             MorningMessage morningMessage = hud.GetComponentInChildren<MorningMessage>();
-            morningMessage.ConfigureTimings(uiData.MorningMessageIntervals);
+            morningMessage.ConfigureTimings(uiData.Hud.MorningMessageIntervals);
             DayMessage dayMessage = hud.GetComponentInChildren<DayMessage>();
-            dayMessage.ConfigureTimings(uiData.DayMessageIntervals);
+            dayMessage.ConfigureTimings(uiData.Hud.DayMessageIntervals);
         }
 
         private void SetUpJoystick(GameObject hud)
