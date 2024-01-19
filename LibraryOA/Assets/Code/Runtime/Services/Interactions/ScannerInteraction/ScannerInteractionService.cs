@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Logic.Interactables.Data;
+using Code.Runtime.Logic.Interactables.Scanner;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Player.Inventory;
 using JetBrains.Annotations;

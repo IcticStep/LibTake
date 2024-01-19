@@ -1,6 +1,7 @@
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Logic.Interactables.Data;
+using Code.Runtime.Logic.Interactables.Scanner;
 
 namespace Code.Runtime.Services.Interactions.ScannerInteraction
 {
