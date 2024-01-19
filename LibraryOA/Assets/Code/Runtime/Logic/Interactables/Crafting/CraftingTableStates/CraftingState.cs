@@ -1,7 +1,9 @@
+using System;
 using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Player.Provider;
+using Code.Runtime.Ui.FlyingResources;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {

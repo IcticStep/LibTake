@@ -1,16 +1,20 @@
+using System;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.StaticData.GlobalGoals;
+using Code.Runtime.Ui.FlyingResources;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {
-    internal sealed class PayState : ICraftingTableState
+    internal sealed class PayState : ICraftingTableState, IRewardSource
     {
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
 
         public int Price => _craftingService.FinishedGoal ? 0 : _craftingService.CurrentStep.Cost;
-        public GlobalStep CurrentStep => _craftingService.CurrentStep; 
+        public GlobalStep CurrentStep => _craftingService.CurrentStep;
+        
+        public event Action<int> Rewarded;
 
         public PayState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService)
         {
@@ -26,7 +30,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
             if(!CanInteract())
                 return;
                 
-            _craftingService.PayForStep();
+            int payed = _craftingService.PayForStep();
+            Rewarded?.Invoke(-payed);
             _craftingTableStateMachine.Enter<SkillCheckState>();
         }
     }

@@ -7,12 +7,13 @@ using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Player.Provider;
+using Code.Runtime.Ui.FlyingResources;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Runtime.Logic.Interactables.Crafting
 {
-    public sealed class CraftingTableStateMachine : Interactable, IHoverStartListener, IHoverEndListener, ISavedProgress
+    public sealed class CraftingTableStateMachine : Interactable, IHoverStartListener, IHoverEndListener, ISavedProgress, IRewardSource 
     {
         [SerializeField]
         private Progress _progress;
@@ -28,6 +29,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         public event Action<ICraftingTableState> EnterState;
         public event Action<ICraftingTableState> ExitState;
         public event Action Hovered;
+        public event Action<int> Rewarded;
 
         [Inject]
         private void Construct(ICraftingService craftingService, IPlayerProviderService playerProviderService)
@@ -70,7 +72,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
 
         public void OnHoverEnd() =>
             (ActiveState as IHoverEndListener)?.OnHoverEnd();
-        
+
         public void Enter<TState>()
             where TState : class, ICraftingTableState
         {
@@ -86,12 +88,6 @@ namespace Code.Runtime.Logic.Interactables.Crafting
             StartState(nextState);
         }
 
-        private void ExitCurrentState()
-        {
-            (ActiveState as IExitable)?.Exit();
-            ExitState?.Invoke(ActiveState);
-        }
-
         private TState GetState<TState>()
             where TState : class, ICraftingTableState =>
             _states[typeof(TState)] as TState;
@@ -103,8 +99,25 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         {
             _activeState = nextState;
             (ActiveState as IStartable)?.Start();
+            
+            if(ActiveState is IRewardSource rewardSource)
+                rewardSource.Rewarded += NotifyRewarded;
+            
             EnterState?.Invoke(ActiveState);
         }
+
+        private void ExitCurrentState()
+        {
+            (ActiveState as IExitable)?.Exit();
+            
+            if(ActiveState is IRewardSource rewardSource)
+                rewardSource.Rewarded -= NotifyRewarded;
+            
+            ExitState?.Invoke(ActiveState);
+        }
+
+        private void NotifyRewarded(int amount) =>
+            Rewarded?.Invoke(amount);
 
         public void LoadProgress(GameProgress progress)
         {
