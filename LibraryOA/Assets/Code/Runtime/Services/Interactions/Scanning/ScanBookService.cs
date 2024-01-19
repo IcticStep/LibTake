@@ -14,12 +14,19 @@ namespace Code.Runtime.Services.Interactions.Scanning
         public bool ScanningAllowed { get; private set; } = true;
 
         public event Action BookScanned;
+        public event Action<bool> ScanningPermissionChanged;
 
-        public void AllowScanning() =>
+        public void AllowScanning()
+        {
             ScanningAllowed = true;
+            ScanningPermissionChanged?.Invoke(ScanningAllowed);
+        }
 
-        public void BlockScanning() =>
+        public void BlockScanning()
+        {
             ScanningAllowed = false;
+            ScanningPermissionChanged?.Invoke(ScanningAllowed);
+        }
 
         public bool IsScanned(string bookId) =>
             _booksScanned.Contains(bookId);
