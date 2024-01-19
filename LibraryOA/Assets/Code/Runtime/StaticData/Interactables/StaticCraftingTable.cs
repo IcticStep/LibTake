@@ -7,5 +7,8 @@ namespace Code.Runtime.StaticData.Interactables
     {
         [field: SerializeField]
         public GameObject Prefab { get; private set; }
+        
+        [field: SerializeField]
+        public float PayStateEnterSecondsDelay { get; private set; }
     }
 }
