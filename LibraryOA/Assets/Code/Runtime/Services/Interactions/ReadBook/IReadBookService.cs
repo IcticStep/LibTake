@@ -13,5 +13,6 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         bool CanReadBook(string bookId);
         bool IsRead(string bookId);
         event Action<StaticBook> BookRead;
+        event Action<bool> ReadingPermissionChanged;
     }
 }
