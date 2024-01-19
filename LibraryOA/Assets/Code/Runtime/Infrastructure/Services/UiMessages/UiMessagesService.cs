@@ -1,6 +1,5 @@
 using Code.Runtime.Infrastructure.Services.Hud;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Ui;
 using Code.Runtime.Ui.Messages;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
@@ -15,8 +14,8 @@ namespace Code.Runtime.Infrastructure.Services.UiMessages
 
         private DayMessage DayMessage => _hudProviderService.DayMessage;
         private MorningMessage MorningMessage => _hudProviderService.MorningMessage;
-        private float MorningMessageDelay => _staticDataService.Ui.MorningMessageIntervals.OnScreenTime;
-        private float DayMessageDelay => _staticDataService.Ui.DayMessageIntervals.OnScreenTime;
+        private float MorningMessageDelay => _staticDataService.Ui.Hud.MorningMessageIntervals.OnScreenTime;
+        private float DayMessageDelay => _staticDataService.Ui.Hud.DayMessageIntervals.OnScreenTime;
             
         public UiMessagesService(IHudProviderService hudProviderService, IStaticDataService staticDataService)
         {
