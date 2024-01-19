@@ -44,13 +44,13 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequi
         private void Awake()
         {
             _staticBookType = _staticDataService.BookTypes.First(type => type.BookType == _bookType);
-            _skillRequirementsCanvasView.RequirementsUpdated += OnRequirementsUpdated;
+            _skillRequirementsCanvasView.RequirementsRequested += OnRequirementsRequested;
         }
 
         private void OnDestroy() =>
-            _skillRequirementsCanvasView.RequirementsUpdated -= OnRequirementsUpdated;
+            _skillRequirementsCanvasView.RequirementsRequested -= OnRequirementsRequested;
         
-        private void OnRequirementsUpdated(IReadOnlyList<SkillConstraint> requirements)
+        private void OnRequirementsRequested(IReadOnlyList<SkillConstraint> requirements)
         {
             SkillConstraint requirement = requirements.First(requirement => requirement.BookType == _bookType);
             int level = _skillService.GetSkillByBookType(requirement.BookType);

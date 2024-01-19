@@ -22,10 +22,12 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         private ICraftingService _craftingService;
         private IPlayerProviderService _playerProviderService;
 
-        public string ActiveStateName => _activeState is null ? "none" : _activeState.ToString();
+        public string ActiveStateName => ActiveState is null ? "none" : ActiveState.ToString();
+        public ICraftingTableState ActiveState => _activeState;
 
         public event Action<ICraftingTableState> EnterState;
         public event Action<ICraftingTableState> ExitState;
+        public event Action Hovered;
 
         [Inject]
         private void Construct(ICraftingService craftingService, IPlayerProviderService playerProviderService)
@@ -45,26 +47,29 @@ namespace Code.Runtime.Logic.Interactables.Crafting
 
         private void Start()
         {
-            if(_activeState is null)
+            if(ActiveState is null)
                 Enter<PayState>();
         }
 
         public override bool CanInteract() =>
-            _activeState.CanInteract();
+            ActiveState.CanInteract();
 
         public override void Interact()
         {
             if(!CanInteract())
                 return;
 
-            _activeState.Interact();
+            ActiveState.Interact();
         }
 
-        public void OnHoverStart() =>
-            (_activeState as IHoverStartListener)?.OnHoverStart();
+        public void OnHoverStart()
+        {
+            (ActiveState as IHoverStartListener)?.OnHoverStart();
+            Hovered?.Invoke();
+        }
 
         public void OnHoverEnd() =>
-            (_activeState as IHoverEndListener)?.OnHoverEnd();
+            (ActiveState as IHoverEndListener)?.OnHoverEnd();
         
         public void Enter<TState>()
             where TState : class, ICraftingTableState
@@ -83,8 +88,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting
 
         private void ExitCurrentState()
         {
-            (_activeState as IExitable)?.Exit();
-            ExitState?.Invoke(_activeState);
+            (ActiveState as IExitable)?.Exit();
+            ExitState?.Invoke(ActiveState);
         }
 
         private TState GetState<TState>()
@@ -97,8 +102,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         private void StartState(ICraftingTableState nextState)
         {
             _activeState = nextState;
-            (_activeState as IStartable)?.Start();
-            EnterState?.Invoke(_activeState);
+            (ActiveState as IStartable)?.Start();
+            EnterState?.Invoke(ActiveState);
         }
 
         public void LoadProgress(GameProgress progress)
@@ -111,6 +116,6 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         }
 
         public void UpdateProgress(GameProgress progress) =>
-            progress.WorldData.CraftingTableStates.SetDataForId(Id, _activeState.GetType());
+            progress.WorldData.CraftingTableStates.SetDataForId(Id, ActiveState.GetType());
     }
 }

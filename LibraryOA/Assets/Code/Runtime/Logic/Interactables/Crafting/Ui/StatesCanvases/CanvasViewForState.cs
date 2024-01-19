@@ -17,10 +17,14 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases
             
             _craftingTableStateMachine.EnterState += OnStateEnter;
             _craftingTableStateMachine.ExitState += OnStateExit;
+            
+            OnAwaking();
         }
 
         private void OnDestroy()
         {
+            OnDestroying();
+            
             _craftingTableStateMachine.EnterState -= OnStateEnter;
             _craftingTableStateMachine.ExitState -= OnStateExit;
         }
@@ -45,6 +49,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases
         
         protected virtual void OnCanvasShow(TState state) { }
         protected virtual void AfterCanvasHide(TState state) { }
+        protected virtual void OnAwaking() { }
+        protected virtual void OnDestroying() { }
 
         private void HideCanvas() =>
             _canvas.enabled = false;
