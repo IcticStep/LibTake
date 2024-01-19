@@ -21,12 +21,18 @@ namespace Code.Runtime.Services.Interactions.Crafting
         private readonly IGlobalGoalsVisualizationService _globalGoalsVisualizationService;
 
         private string _globalGoalId;
+        
         public GlobalGoal Goal { get; private set; }
         public int CurrentStepIndex { get; private set; }
         public bool PayedForStep { get; private set; }
+        
+        public bool CraftingAllowed { get; private set; } = true;
+
         public GlobalStep CurrentStep => Goal.GlobalSteps[FinishedGoal ? CurrentStepIndex-1 : CurrentStepIndex];
         public GlobalStep PreviousStep => CurrentStepIndex == 0 ? null : Goal.GlobalSteps[CurrentStepIndex - 1];
         public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count;
+        
+        public event Action<bool> CraftingPermissionChanged;
 
         public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService,
             IGlobalGoalPresenterService presenterService, IGlobalGoalsVisualizationService globalGoalsVisualizationService)
@@ -42,6 +48,18 @@ namespace Code.Runtime.Services.Interactions.Crafting
         {
             Goal = globalGoal;
             _globalGoalId = Goal.UniqueId;
+        }
+        
+        public void AllowCrafting()
+        {
+            CraftingAllowed = true;
+            CraftingPermissionChanged?.Invoke(CraftingAllowed);
+        }
+        
+        public void BlockCrafting()
+        {
+            CraftingAllowed = false;
+            CraftingPermissionChanged?.Invoke(CraftingAllowed);
         }
 
         public void CraftStep()

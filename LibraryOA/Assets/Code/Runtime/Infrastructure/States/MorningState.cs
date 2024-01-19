@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Books.Delivering;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.TruckDriving;
@@ -22,11 +23,12 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IReadBookService _readBookService;
         private readonly IDaysService _daysService;
         private readonly IScanBookService _scanBookService;
+        private readonly ICraftingService _craftingService;
 
         public MorningState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
             IUiMessagesService uiMessagesService, IReadBookService readBookService, IDaysService daysService,
-            IScanBookService scanBookService)
+            IScanBookService scanBookService, ICraftingService craftingService)
         {
             _gameStateMachine = gameStateMachine;
             _truckProvider = truckProvider;
@@ -36,12 +38,15 @@ namespace Code.Runtime.Infrastructure.States
             _readBookService = readBookService;
             _daysService = daysService;
             _scanBookService = scanBookService;
+            _craftingService = craftingService;
         }
 
         public void Start()
         {
             _readBookService.BlockReading();
             _scanBookService.BlockScanning();
+            _craftingService.BlockCrafting();
+            
             SaveGame();
             _daysService.AddDay();
             ShowDayNumberMessage();

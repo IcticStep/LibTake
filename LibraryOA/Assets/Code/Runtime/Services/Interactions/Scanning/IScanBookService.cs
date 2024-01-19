@@ -14,7 +14,5 @@ namespace Code.Runtime.Services.Interactions.Scanning
         bool IsScanned(string bookId);
         void ScanBook(string bookId);
         bool CanScanBook(string bookId);
-        void LoadProgress(GameProgress progress);
-        void UpdateProgress(GameProgress progress);
     }
 }
