@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Logic;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.StaticData.Books;
 using JetBrains.Annotations;
@@ -21,6 +20,7 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         public bool ReadingAllowed { get; private set; } = true;
 
         public event Action<StaticBook> BookRead;
+        public event Action<bool> ReadingPermissionChanged;
 
         public ReadBookService(ISkillService skillService, IStaticDataService staticDataService)
         {
@@ -28,11 +28,17 @@ namespace Code.Runtime.Services.Interactions.ReadBook
             _staticDataService = staticDataService;
         }
 
-        public void AllowReading() =>
+        public void AllowReading()
+        {
             ReadingAllowed = true;
+            ReadingPermissionChanged?.Invoke(ReadingAllowed);
+        }
 
-        public void BlockReading() =>
+        public void BlockReading()
+        {
             ReadingAllowed = false;
+            ReadingPermissionChanged?.Invoke(ReadingAllowed);
+        }
 
         public bool IsRead(string bookId) =>
             _booksRead.Contains(bookId);

@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Player.Lives;
@@ -20,10 +21,11 @@ namespace Code.Runtime.Infrastructure.States
         private readonly IDaysService _daysService;
         private readonly IPlayerLivesService _playerLivesService;
         private readonly IScanBookService _scanBookService;
+        private readonly ICraftingService _craftingService;
 
         public DayState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService, 
             ICustomersDeliveringService customersDeliveringService, IReadBookService readBookService, IDaysService daysService,
-            IPlayerLivesService playerLivesService, IScanBookService scanBookService)
+            IPlayerLivesService playerLivesService, IScanBookService scanBookService, ICraftingService craftingService)
         {
             _gameStateMachine = gameStateMachine;
             _uiMessagesService = uiMessagesService;
@@ -32,12 +34,14 @@ namespace Code.Runtime.Infrastructure.States
             _daysService = daysService;
             _playerLivesService = playerLivesService;
             _scanBookService = scanBookService;
+            _craftingService = craftingService;
         }
 
         public void Start()
         {
             _readBookService.AllowReading();
             _scanBookService.AllowScanning();
+            _craftingService.AllowCrafting();
             ShowDayNumberMessage();
             ProceedDay().Forget();
         }
