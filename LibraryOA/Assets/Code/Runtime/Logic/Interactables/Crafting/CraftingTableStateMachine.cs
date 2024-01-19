@@ -6,6 +6,7 @@ using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
+using Code.Runtime.Services.Player.Provider;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +20,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         private ICraftingTableState _activeState;
         private Dictionary<Type, ICraftingTableState> _states;
         private ICraftingService _craftingService;
+        private IPlayerProviderService _playerProviderService;
 
         public string ActiveStateName => _activeState is null ? "none" : _activeState.ToString();
 
@@ -26,15 +28,18 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         public event Action<ICraftingTableState> ExitState;
 
         [Inject]
-        private void Construct(ICraftingService craftingService) =>
+        private void Construct(ICraftingService craftingService, IPlayerProviderService playerProviderService)
+        {
+            _playerProviderService = playerProviderService;
             _craftingService = craftingService;
+        }
 
         private void Awake() =>
             _states = new Dictionary<Type, ICraftingTableState>()
             {
                 [typeof(PayState)] = new PayState(this, _craftingService),
                 [typeof(SkillCheckState)] = new SkillCheckState(this, _craftingService),
-                [typeof(CraftingState)] = new CraftingState(this, _craftingService, _progress),
+                [typeof(CraftingState)] = new CraftingState(this, _craftingService, _progress, _playerProviderService),
                 [typeof(FinishCraftState)] = new FinishCraftState(this, _craftingService),
             };
 
