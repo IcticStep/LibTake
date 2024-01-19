@@ -57,7 +57,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         }
 
         public override bool CanInteract() =>
-            ActiveState.CanInteract();
+            ActiveState.CanInteract() &&
+            _craftingService.CraftingAllowed;
 
         public override void Interact()
         {
