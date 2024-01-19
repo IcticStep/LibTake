@@ -1,4 +1,4 @@
-using Code.Runtime.Infrastructure.Services.HudProvider;
+using Code.Runtime.Infrastructure.Services.Hud;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Ui;
 using Code.Runtime.Ui.Messages;

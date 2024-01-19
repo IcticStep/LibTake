@@ -1,5 +1,5 @@
 using Code.Runtime.Infrastructure.AssetManagement;
-using Code.Runtime.Infrastructure.Services.HudProvider;
+using Code.Runtime.Infrastructure.Services.Hud;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.InputService.JoystickPack;

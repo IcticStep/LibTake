@@ -1,7 +1,7 @@
 using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
 using Code.Runtime.Infrastructure.Services.Camera;
-using Code.Runtime.Infrastructure.Services.HudProvider;
+using Code.Runtime.Infrastructure.Services.Hud;
 using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.StaticData.GlobalGoals;

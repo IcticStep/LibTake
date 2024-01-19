@@ -2,7 +2,7 @@ using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
-using Code.Runtime.Infrastructure.Services.HudProvider;
+using Code.Runtime.Infrastructure.Services.Hud;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
