@@ -3,6 +3,7 @@ using Code.Runtime.Ui.Common;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.Runtime.Ui.FlyingResources
 {
@@ -17,6 +18,8 @@ namespace Code.Runtime.Ui.FlyingResources
         private MoverY _moverY;
         [SerializeField]
         private TextMeshProUGUI _coinsAmountText;
+        [SerializeField]
+        private Image _image;
 
         private void Start() =>
             _smoothFader.FadeImmediately();
@@ -35,6 +38,12 @@ namespace Code.Runtime.Ui.FlyingResources
             await _smoothFader.UnFadeAsync();
             // ReSharper disable once MethodHasAsyncOverload
             _smoothFader.Fade();
+        }
+
+        public async UniTask FlyResource(Sprite icon, int amount)
+        {
+            _image.sprite = icon;
+            await FlyResource(amount);
         }
 
         private static string GetPrefix(int amount) =>
