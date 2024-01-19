@@ -7,7 +7,7 @@ using Code.Runtime.Ui.FlyingResources;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Interactables
+namespace Code.Runtime.Logic.Interactables.Scanner
 {
     internal sealed class Scanner : Interactable, IHoverStartListener, IHoverEndListener, IProgressOwner, IRewardSource
     {
