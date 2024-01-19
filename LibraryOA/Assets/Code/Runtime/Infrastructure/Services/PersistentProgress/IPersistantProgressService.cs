@@ -4,6 +4,6 @@ namespace Code.Runtime.Infrastructure.Services.PersistentProgress
 {
     internal interface IPersistantProgressService
     {
-        Progress Progress { get; set; }
+        GameProgress Progress { get; set; }
     }
 }

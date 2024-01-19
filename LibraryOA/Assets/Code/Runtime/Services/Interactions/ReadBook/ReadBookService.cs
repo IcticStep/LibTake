@@ -44,10 +44,10 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         public bool CanReadBook(string bookId) =>
             !IsRead(bookId) && ReadingAllowed;
 
-        public void LoadProgress(Progress progress) =>
+        public void LoadProgress(GameProgress progress) =>
             _booksRead = new HashSet<string>(progress.PlayerData.BooksRead);
 
-        public void UpdateProgress(Progress progress)
+        public void UpdateProgress(GameProgress progress)
         {
             UpdateBooksReadCacheForSave();
             progress.PlayerData.BooksRead = _booksReadCacheForSave;

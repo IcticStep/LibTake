@@ -1,11 +1,9 @@
-using Code.Runtime.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 using RangeInt = Code.Runtime.Data.RangeInt;
 
 namespace Code.Runtime.StaticData.Balance
 {
-    [CreateAssetMenu(fileName = "Books delivering", menuName = "Static data/Books delivering")]
+    [CreateAssetMenu(fileName = "Books delivering data", menuName = "Static data/Books delivering")]
     public class StaticBooksDelivering : ScriptableObject
     {
         [SerializeField]

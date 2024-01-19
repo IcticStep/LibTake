@@ -60,7 +60,7 @@ namespace Code.Runtime.Services.Player.Inventory
             Debug.Log($"Coins amount: {Coins}.");
         }
 
-        public void LoadProgress(Progress progress)
+        public void LoadProgress(GameProgress progress)
         {
             _books = progress.PlayerData.Inventory.Books;
             BooksUpdated?.Invoke();
@@ -68,7 +68,7 @@ namespace Code.Runtime.Services.Player.Inventory
             CoinsUpdated?.Invoke();
         }
 
-        public void UpdateProgress(Progress progress)
+        public void UpdateProgress(GameProgress progress)
         {
             progress.PlayerData.Inventory.Books = _books;
             progress.PlayerData.Inventory.Coins = Coins;

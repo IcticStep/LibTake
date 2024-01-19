@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Ui.Messages
 {
-    internal sealed class MorningMessage : MonoBehaviour
+    public sealed class MorningMessage : MonoBehaviour
     {
         [SerializeField]
         private SmoothFader _smoothFader;
@@ -33,6 +33,6 @@ namespace Code.Runtime.Ui.Messages
         }
         
         public void ConfigureTimings(UiMessageIntervals intervals) =>
-            _smoothFader.Configure(intervals.ShowAnimationTime, intervals.HideAnimationTime);
+            _smoothFader.Initialize(intervals.ShowAnimationTime, intervals.HideAnimationTime);
     }
 }

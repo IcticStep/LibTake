@@ -35,9 +35,9 @@ namespace Code.Runtime.Infrastructure.States
                 _saveLoadService.LoadProgress()
                 ?? CreateNewProgress();
 
-        private Progress CreateNewProgress()
+        private GameProgress CreateNewProgress()
         {
-            Progress newProgress = new();
+            GameProgress newProgress = new();
             newProgress.PlayerData.Lives = _staticDataService.Player.StartLivesCount;
             return newProgress;
         }

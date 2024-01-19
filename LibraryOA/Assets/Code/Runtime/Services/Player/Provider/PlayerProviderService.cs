@@ -8,6 +8,7 @@ namespace Code.Runtime.Services.Player.Provider
     internal sealed class PlayerProviderService : IPlayerProviderService
     {
         public GameObject Player { get; private set; }
+        public Transform Transform { get; private set; }
         public InteractablesScanner InteractablesScanner { get; private set; }
         public PlayerInteractor PlayerInteractor { get; private set; }
 
@@ -16,6 +17,7 @@ namespace Code.Runtime.Services.Player.Provider
             Player = player;
             InteractablesScanner = Player.GetComponent<InteractablesScanner>();
             PlayerInteractor = Player.GetComponentInChildren<PlayerInteractor>();
+            Transform = player.transform;
         }
 
         public void CleanUp()
@@ -23,6 +25,7 @@ namespace Code.Runtime.Services.Player.Provider
             Player = null;
             InteractablesScanner = null;
             PlayerInteractor = null;
+            Transform = null;
         }
     }
 }

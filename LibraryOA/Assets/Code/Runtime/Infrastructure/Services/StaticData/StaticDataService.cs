@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.StaticData.GlobalGoals;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Ui;
@@ -27,9 +28,14 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private const string ScannerPath = "Static Data/Interactables/ScannerData";
         private const string StatuePath = "Static Data/Interactables/StatueData";
         private const string BookDeliveringPath = "Static Data/Books delivering";
+        private const string CraftingTablePath = "Static Data/Interactables/Crafting Table Data";
+        private const string BookTypesPath = "Static Data/Books/Types/";
+        private const string GlobalGoalsPath = "Static Data/Global Goals/";
 
         private Dictionary<string, StaticBook> _books = new();
         private Dictionary<string, LevelStaticData> _levels = new();
+        private List<StaticBookType> _bookTypes = new();
+        private List<GlobalGoal> _globalGoals = new();
 
         public ScenesRouting ScenesRouting { get; private set; }
         public InteractablesStaticData Interactables { get; private set; }
@@ -38,6 +44,8 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public StaticBooksDelivering BookDelivering { get; private set; }
         public UiData Ui { get; private set; }
         public IReadOnlyList<StaticBook> AllBooks => _books.Values.ToList();
+        public IReadOnlyList<StaticBookType> BookTypes => _bookTypes;
+        public IReadOnlyList<GlobalGoal> GlobalGoals => _globalGoals;
         public LevelStaticData CurrentLevelData => ForLevel(SceneManager.GetActiveScene().name);
 
         public void LoadAll()
@@ -48,7 +56,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             LoadBookReceiving();
             LoadBookDelivering();
             LoadBooks();
+            LoadBookTypes();
             LoadInteractables();
+            LoadGlobalGoals();
             LoadUi();
         }
 
@@ -65,6 +75,16 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         public void LoadPlayer() =>
             Player = Resources
                 .Load<StaticPlayer>(PlayerPath);
+
+        public void LoadBookTypes() =>
+            _bookTypes = Resources
+                .LoadAll<StaticBookType>(BookTypesPath)
+                .ToList();
+
+        public void LoadGlobalGoals() =>
+            _globalGoals = Resources
+                .LoadAll<GlobalGoal>(GlobalGoalsPath)
+                .ToList();
 
         public void LoadBookReceiving() =>
             BookReceiving = Resources
@@ -85,8 +105,9 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             StaticTruck truck = Resources.Load<StaticTruck>(TruckPath);
             StaticScanner scanner = Resources.Load<StaticScanner>(ScannerPath);
             StaticStatue statue = Resources.Load<StaticStatue>(StatuePath);
+            StaticCraftingTable craftingTable = Resources.Load<StaticCraftingTable>(CraftingTablePath);
             
-            Interactables = new InteractablesStaticData(readingTable, bookSlot, truck, scanner, statue);
+            Interactables = new InteractablesStaticData(readingTable, bookSlot, truck, scanner, statue, craftingTable);
         }
 
         public void LoadStartupSettings() =>

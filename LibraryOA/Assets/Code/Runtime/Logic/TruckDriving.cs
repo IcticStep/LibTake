@@ -18,7 +18,7 @@ namespace Code.Runtime.Logic
         private TruckWayStaticData _way;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService)
+        private void Construct(IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
             _drivingSeconds = _staticDataService.Interactables.Truck.DrivingSeconds;

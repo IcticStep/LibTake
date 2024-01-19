@@ -17,10 +17,10 @@ namespace Code.Runtime.Services.Days
             Updated?.Invoke();
         }
 
-        public void LoadProgress(Progress progress) =>
+        public void LoadProgress(GameProgress progress) =>
             CurrentDay = progress.WorldData.TimeData.CurrentDay;
 
-        public void UpdateProgress(Progress progress) =>
+        public void UpdateProgress(GameProgress progress) =>
             progress.WorldData.TimeData.CurrentDay = CurrentDay;
     }
 }

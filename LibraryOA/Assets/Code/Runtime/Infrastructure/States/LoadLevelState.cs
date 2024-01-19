@@ -5,7 +5,6 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.States.Api;
-using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Loading;
@@ -61,9 +60,9 @@ namespace Code.Runtime.Infrastructure.States
         {
             LevelStaticData levelData = _staticData.CurrentLevelData;
             GameObject player = InitPlayer(levelData);
+
             InitGameWorld(levelData);
             InformProgressReaders();
-            InitCamera();
             InitUi();
             CameraFollow(player);
             
@@ -81,12 +80,13 @@ namespace Code.Runtime.Infrastructure.States
         {
             InitBookSlots(levelData);
             InitReadingTables(levelData);
+            InitCraftingTables(levelData);
             InitScanners(levelData);
             InitTruck(levelData);
             InitStatues(levelData);
             InitCustomers(levelData);
         }
-
+        
         private GameObject InitPlayer(LevelStaticData levelData) =>
             _charactersFactory.CreatePlayer(levelData.PlayerInitialPosition);
 
@@ -103,6 +103,12 @@ namespace Code.Runtime.Infrastructure.States
         {
             foreach(ReadingTableSpawnData readingTable in levelData.InteractablesSpawns.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
+        }
+        
+        private void InitCraftingTables(LevelStaticData levelData)
+        {
+            foreach(CraftingTableSpawnData craftingTable in levelData.InteractablesSpawns.CraftingTables)
+                _interactablesFactory.CreateCraftingTable(craftingTable.Id, craftingTable.Position, craftingTable.Rotation);
         }
 
         private void InitScanners(LevelStaticData levelData)
@@ -125,15 +131,11 @@ namespace Code.Runtime.Infrastructure.States
 
         private void InitTruck(LevelStaticData levelData) =>
             _interactablesFactory.CreateTruck(levelData.TruckWay);
-
-        private void InitCamera() =>
-            _cameraProvider.Initialize(Camera.main);
-
+        
         private void CameraFollow(GameObject target) =>
             _cameraProvider
-                .MainCamera
-                .GetComponent<CameraFollow>()
-                .SetTarget(target.transform);
+                .CameraFollow
+                .MoveToNewTarget(target.transform);
 
         private void InformProgressReaders()
         {

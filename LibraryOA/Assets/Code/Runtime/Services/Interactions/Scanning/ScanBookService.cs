@@ -34,10 +34,10 @@ namespace Code.Runtime.Services.Interactions.Scanning
         public bool CanScanBook(string bookId) =>
             !IsScanned(bookId) && ScanningAllowed;
 
-        public void LoadProgress(Progress progress) =>
+        public void LoadProgress(GameProgress progress) =>
             _booksScanned = new HashSet<string>(progress.PlayerData.BooksScanned);
 
-        public void UpdateProgress(Progress progress)
+        public void UpdateProgress(GameProgress progress)
         {
             UpdateBooksScannedCacheForSave();
             progress.PlayerData.BooksScanned = _booksScanCacheForSave;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Interactables
 {
-    [CreateAssetMenu(fileName = "Truck static data", menuName = "Static data/Truck static data")]
+    [CreateAssetMenu(fileName = "Truck data", menuName = "Static data/Interactables/Truck")]
     public class StaticTruck : ScriptableObject
     {
         [field: SerializeField]

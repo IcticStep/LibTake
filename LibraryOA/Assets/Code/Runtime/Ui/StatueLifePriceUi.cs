@@ -12,7 +12,7 @@ namespace Code.Runtime.Ui
         private IStaticDataService _staticDataService;
 
         [Inject]
-        public void Construct(IStaticDataService staticDataService) =>
+        private void Construct(IStaticDataService staticDataService) =>
             _staticDataService = staticDataService;
 
         private void Start() =>

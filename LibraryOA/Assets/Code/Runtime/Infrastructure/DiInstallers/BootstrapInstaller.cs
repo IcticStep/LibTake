@@ -2,12 +2,12 @@ using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
-using Code.Runtime.Infrastructure.Services.HudProvider;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.Books.Delivering;
@@ -18,9 +18,13 @@ using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.GlobalGoals;
+using Code.Runtime.Services.GlobalGoals.Presenter;
+using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
+using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.ReadingTable;
 using Code.Runtime.Services.Interactions.Registry;
@@ -89,7 +93,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
             Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
-            Container.Bind<IHudProviderService>().To<HudProviderService>().AsSingle();
+            Container.Bind<IHudProviderService>().To<HudService>().AsSingle();
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
             Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
             Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
@@ -102,6 +106,10 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
             Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
             Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
+            Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
+            Container.Bind<IGlobalGoalsVisualizationService>().To<GlobalGoalsVisualizationService>().AsSingle();
+            Container.Bind<IGlobalGoalService>().To<GlobalGoalService>().AsSingle();
+            Container.Bind<IGlobalGoalPresenterService>().To<GlobalGoalPresenterService>().AsSingle();
         }
 
         private void InstallFactories()
