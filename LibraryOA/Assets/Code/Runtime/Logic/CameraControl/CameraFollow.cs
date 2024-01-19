@@ -21,6 +21,7 @@ namespace Code.Runtime.Logic.CameraControl
         private Transform _transform;
         private Tweener _tweener;
         private float _tweenerElapsedTime = 0;
+        private float _currentAnimationDuration;
         private UniTaskCompletionSource _animationCompleteSource;
 
         public Camera Camera { get; private set; }
@@ -53,7 +54,7 @@ namespace Code.Runtime.Logic.CameraControl
                     continue;
                 
                 _tweenerElapsedTime += _tweener.Elapsed();
-                _tweener.ChangeValues(_transform.position, GetPositionByTarget(Target), _defaultMoveDuration - _tweenerElapsedTime);
+                _tweener.ChangeValues(_transform.position, GetPositionByTarget(Target), _currentAnimationDuration - _tweenerElapsedTime);
             }
         }
 
@@ -68,18 +69,21 @@ namespace Code.Runtime.Logic.CameraControl
         public void MoveToNewTarget(Transform target)
         {
             _target = target;
+            _currentAnimationDuration = _defaultMoveDuration;
             AnimateTransition();
         }
 
         public void MoveToNewTarget(Transform target, float duration)
         {
             _target = target;
+            _currentAnimationDuration = duration;
             AnimateTransition(duration);
         }
         
         public async UniTask MoveToNewTargetAsync(Transform target, float duration)
         {
             _target = target;
+            _currentAnimationDuration = duration;
             AnimateTransition(duration);
             await _animationCompleteSource.Task;
         }
@@ -90,8 +94,8 @@ namespace Code.Runtime.Logic.CameraControl
             _animationCompleteSource = new UniTaskCompletionSource();
             
             KillCurrentTweener();
-            _tweener = CreateTransitionTween(duration);
             _tweenerElapsedTime = 0;
+            _tweener = CreateTransitionTween(duration);
             _tweener.Play();
         }
 

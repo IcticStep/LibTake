@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Runtime.Ui.Hud
+namespace Code.Runtime.Ui.HudComponents
 {
     public sealed class SkillView : MonoBehaviour
     {

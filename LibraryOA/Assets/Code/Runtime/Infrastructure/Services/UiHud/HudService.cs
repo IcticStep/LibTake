@@ -1,30 +1,32 @@
 using Code.Runtime.Ui.Messages;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services.Hud
+namespace Code.Runtime.Infrastructure.Services.UiHud
 {
     [UsedImplicitly]
     internal sealed class HudService : IHudProviderService
     {
         private Canvas _mainCanvas;
-        public GameObject Hud { get; private set; }
+        public Ui.HudComponents.Hud Hud { get; private set; }
         public DayMessage DayMessage { get; private set; }
         public MorningMessage MorningMessage { get; private set; }
 
-        public void RegisterHud(GameObject hud, Canvas mainCanvas)
+        private Tweener _currentTweener;
+
+        public void RegisterHud(Ui.HudComponents.Hud hud)
         {
-            _mainCanvas = mainCanvas;
             Hud = hud;
-            DayMessage = Hud.GetComponentInChildren<DayMessage>();
-            MorningMessage = Hud.GetComponentInChildren<MorningMessage>();
+            DayMessage = Hud.DayMessage;
+            MorningMessage = Hud.MorningMessage;
         }
 
         public void Show() =>
-            _mainCanvas.enabled = true;
+            Hud.Show();
 
         public void Hide() =>
-            _mainCanvas.enabled = false;
+            Hud.Hide();
 
         public void CleanUp()
         {

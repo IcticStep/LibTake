@@ -1,7 +1,7 @@
 using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
 using Code.Runtime.Infrastructure.Services.Camera;
-using Code.Runtime.Infrastructure.Services.Hud;
+using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.StaticData.GlobalGoals;
@@ -36,18 +36,13 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
             _inputService.Disable();
             _hudProviderService.Hide();
 
-            await ShowCameraAnimationAsync(globalGoal, scheme);
-            
-            _inputService.Enable();
-            _hudProviderService.Show();
-        }
-
-        private async UniTask ShowCameraAnimationAsync(GlobalGoal globalGoal, GlobalStepScheme scheme)
-        {
             Transform oldCameraTarget = _cameraProvider.CameraFollow.Target;
             await _cameraProvider.CameraFollow.MoveToNewTargetAsync(scheme.CameraTarget, globalGoal.CameraMoveDuration);
             await UniTask.WaitForSeconds(globalGoal.CameraLookAtStepCompletedDelay);
+            ShowHudOnHalfCameraWayBack(globalGoal.CameraMoveDuration).Forget();
             await _cameraProvider.CameraFollow.MoveToNewTargetAsync(oldCameraTarget, globalGoal.CameraMoveDuration);
+
+            _inputService.Enable();
         }
 
         private GlobalStepScheme GetGlobalStepScheme(GlobalStep globalStep) =>
@@ -55,5 +50,11 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
                 .CurrentGoalScheme
                 .GlobalStepsSchemes
                 .First(scheme => scheme.Step == globalStep);
+
+        private async UniTaskVoid ShowHudOnHalfCameraWayBack(float cameraReturningTime)
+        {
+            await UniTask.WaitForSeconds(cameraReturningTime / 2);
+            _hudProviderService.Show();
+        }
     }
 }

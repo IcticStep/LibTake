@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Code.Runtime.StaticData.Ui
@@ -11,5 +12,11 @@ namespace Code.Runtime.StaticData.Ui
 
         [field: SerializeField]
         public UiMessageIntervals DayMessageIntervals { get; private set; }
+        
+        [field: SerializeField]
+        public float ShowHideAnimationSeconds { get; private set; }
+        
+        [field: SerializeField]
+        public Ease ShowHideAnimationEase { get; private set; }
     }
 }
