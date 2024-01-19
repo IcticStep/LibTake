@@ -1,8 +1,7 @@
-using Code.Runtime.Ui;
 using Code.Runtime.Ui.Messages;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services.HudProvider
+namespace Code.Runtime.Infrastructure.Services.Hud
 {
     internal interface IHudProviderService
     {

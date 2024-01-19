@@ -1,9 +1,8 @@
-using Code.Runtime.Ui;
 using Code.Runtime.Ui.Messages;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services.HudProvider
+namespace Code.Runtime.Infrastructure.Services.Hud
 {
     [UsedImplicitly]
     internal sealed class HudService : IHudProviderService
