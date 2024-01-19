@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Ui.Hud
+namespace Code.Runtime.Ui.HudComponents
 {
     internal sealed class PlayerInventoryUi : MonoBehaviour
     {

@@ -1,5 +1,5 @@
-using Code.Runtime.Infrastructure.Services.Hud;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Ui.Messages;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;

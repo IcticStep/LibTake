@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Ui.Hud.MainPanel
+namespace Code.Runtime.Ui.HudComponents.MainPanel
 {
     internal sealed class LivesView : MonoBehaviour
     {

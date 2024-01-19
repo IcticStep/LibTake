@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace Code.Runtime.Ui.Hud
+namespace Code.Runtime.Ui.HudComponents
 {
     internal sealed class FpsCounter : MonoBehaviour
     {

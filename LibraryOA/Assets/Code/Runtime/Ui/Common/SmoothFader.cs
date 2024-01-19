@@ -1,3 +1,4 @@
+using Code.Runtime.Ui.Messages;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -38,10 +39,20 @@ namespace Code.Runtime.Ui.Common
             _unFadeTween.Kill();
         }
 
-        public void Configure(float unFadeDuration, float fadeDuration)
+        public void Initialize(float unFadeDuration, float fadeDuration)
         {
             _fadeDuration = fadeDuration;
             _unFadeDuration = unFadeDuration;
+            
+            CreateTweens();
+        }
+        
+        public void Initialize(float unFadeDuration, float fadeDuration, Ease unFadeEase, Ease fadeEase)
+        {
+            _fadeDuration = fadeDuration;
+            _unFadeDuration = unFadeDuration;
+            _fadeEase = fadeEase;
+            _unFadeEase = unFadeEase;
             
             CreateTweens();
         }

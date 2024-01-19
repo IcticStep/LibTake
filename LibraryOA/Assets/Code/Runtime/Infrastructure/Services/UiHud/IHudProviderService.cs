@@ -1,16 +1,15 @@
 using Code.Runtime.Ui.Messages;
-using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.Services.Hud
+namespace Code.Runtime.Infrastructure.Services.UiHud
 {
     internal interface IHudProviderService
     {
-        GameObject Hud { get; }
+        Ui.HudComponents.Hud Hud { get; }
         DayMessage DayMessage { get; }
         MorningMessage MorningMessage { get; }
-        void RegisterHud(GameObject hud, Canvas mainCanvas);
         void CleanUp();
         void Show();
         void Hide();
+        void RegisterHud(Ui.HudComponents.Hud hud);
     }
 }
