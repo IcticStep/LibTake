@@ -61,7 +61,7 @@ namespace Code.Runtime.Logic.Interactables
             return removed;
         }
 
-        public void LoadProgress(Runtime.Data.Progress.Progress progress)
+        public void LoadProgress(Runtime.Data.Progress.GameProgress progress)
         {
             BookData savedData = progress.WorldData.BookHoldersState.GetDataForId(_storageId);
 
@@ -80,7 +80,7 @@ namespace Code.Runtime.Logic.Interactables
         private void UpdateProgress() =>
             UpdateProgress(_progressService.Progress);
 
-        public void UpdateProgress(Runtime.Data.Progress.Progress progress)
+        public void UpdateProgress(Runtime.Data.Progress.GameProgress progress)
         {
             if(_storageId is null)
                 return;

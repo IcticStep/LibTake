@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.StaticData.GlobalGoals;
 using UnityEngine.Serialization;
 
 namespace Code.Runtime.Data.Progress
@@ -13,5 +14,6 @@ namespace Code.Runtime.Data.Progress
         public List<string> BooksRead = new();
         public List<string> BooksScanned = new();
         public int Lives;
+        public GlobalGoalSavedData GlobalGoal = new();
     }
 }

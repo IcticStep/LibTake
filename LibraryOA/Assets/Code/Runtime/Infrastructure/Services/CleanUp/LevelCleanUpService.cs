@@ -1,5 +1,5 @@
 using Code.Runtime.Infrastructure.Services.Camera;
-using Code.Runtime.Infrastructure.Services.HudProvider;
+using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;

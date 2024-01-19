@@ -7,7 +7,7 @@ namespace Code.Runtime.Logic.Triggers
     internal sealed class SaveTrigger : MonoBehaviour
     {
         [SerializeField]
-        private BoxCollider _collider;
+        private Trigger _trigger;
         
         private ISaveLoadService _saveLoadService;
 
@@ -15,20 +15,17 @@ namespace Code.Runtime.Logic.Triggers
         private void Construct(ISaveLoadService saveLoadService) =>
             _saveLoadService = saveLoadService;
         
-        private void OnTriggerEnter(Collider other)
+        private void Awake() =>
+            _trigger.Entered += Save;
+        
+        private void OnDestroy() =>
+            _trigger.Entered -= Save;
+        
+        private void Save()
         {
             _saveLoadService.SaveProgress();
             Debug.Log("Progress saved!");
             gameObject.SetActive(false);
-        }
-
-        private void OnDrawGizmos()
-        {
-            if(!_collider) 
-                return;
-      
-            Gizmos.color = new Color32(30, 200, 30, 130);
-            Gizmos.DrawCube(transform.position + _collider.center, _collider.size);
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Runtime.StaticData.Balance
 {
-    [CreateAssetMenu(fileName = "StaticBookReceiving", menuName = "Static data/StaticBookReceiving")]
+    [CreateAssetMenu(fileName = "Book receiving data", menuName = "Static data/Book Receiving")]
     public class StaticBookReceiving : ScriptableObject
     {
         [field: SerializeField]

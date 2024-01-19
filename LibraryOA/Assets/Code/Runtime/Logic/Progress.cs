@@ -49,8 +49,15 @@ namespace Code.Runtime.Logic
         private void OnDisable() =>
             JustReset = false;
 
-        public void Initialize(float timeToFinish) =>
-            Initialize(null, timeToFinish);
+        public void Initialize(float timeToFinish)
+        {
+            _externalTaskSource = new UniTaskCompletionSource();
+            JustReset = false;
+            _timeToFinish = timeToFinish;
+        }
+
+        public void Initialize(string ownerId) =>
+            Initialize(ownerId, 1f);
 
         public void Initialize(string ownerId, float timeToFinish)
         {
@@ -60,7 +67,7 @@ namespace Code.Runtime.Logic
             _timeToFinish = timeToFinish;
         }
 
-        public void LoadProgress(Data.Progress.Progress progress)
+        public void LoadProgress(Data.Progress.GameProgress progress)
         {
             if(_id is null)
                 return;
@@ -68,7 +75,7 @@ namespace Code.Runtime.Logic
             Value = progress.WorldData.ProgressesStates.GetDataForId(_id);
         }
 
-        public void UpdateProgress(Data.Progress.Progress progress)
+        public void UpdateProgress(Data.Progress.GameProgress progress)
         {
             if(_id is null)
                 return;

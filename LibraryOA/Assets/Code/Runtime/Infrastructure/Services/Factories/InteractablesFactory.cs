@@ -4,6 +4,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Logic.Interactables;
+using Code.Runtime.Logic.Interactables.Crafting;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.TruckDriving;
@@ -94,7 +95,20 @@ namespace Code.Runtime.Infrastructure.Services.Factories
 
             return statue;
         }
-        
+
+        public GameObject CreateCraftingTable(string objectId, Vector3 at, Quaternion rotation)
+        {
+            StaticCraftingTable staticData = _staticDataService.Interactables.CraftingTable;
+            GameObject craftingTable = _assetProvider.Instantiate(staticData.Prefab, at, rotation);
+            CraftingTableStateMachine craftingTableStateMachine = craftingTable.GetComponentInChildren<CraftingTableStateMachine>();
+
+            InitInteractable(objectId, craftingTable);
+            InitCraftingTableProgress(objectId, craftingTable, staticData);
+            _saveLoadRegistry.Register(craftingTableStateMachine);
+
+            return craftingTable;
+        }
+
         public CustomerStateMachine CreateCustomer(Vector3 at)
         {
             GameObject customer = _assetProvider.Instantiate(AssetPath.Customer, at);
@@ -135,6 +149,13 @@ namespace Code.Runtime.Infrastructure.Services.Factories
         {
             Progress progress = scanner.GetComponentInChildren<Progress>();
             progress.Initialize(objectId, data.SecondsToScan);
+            _saveLoadRegistry.Register(progress);
+        }
+
+        private void InitCraftingTableProgress(string objectId, GameObject craftingTable, StaticCraftingTable data)
+        {
+            Progress progress = craftingTable.GetComponentInChildren<Progress>();
+            progress.Initialize(objectId);
             _saveLoadRegistry.Register(progress);
         }
     }

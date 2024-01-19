@@ -6,8 +6,10 @@ namespace Code.Runtime.StaticData.Ui
     public class UiData : ScriptableObject
     {
         [field: SerializeField]
-        public UiMessageIntervals MorningMessageIntervals { get; private set; }
+        public HudData Hud { get; private set; }
+        
         [field: SerializeField]
-        public UiMessageIntervals DayMessageIntervals { get; private set; }
+        [field: Header("Additional icons")]
+        public Sprite CompletedIcon { get; private set; }
     }
 }

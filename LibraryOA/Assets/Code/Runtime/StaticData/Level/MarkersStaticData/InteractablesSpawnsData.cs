@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Code.Runtime.Logic.Markers.Spawns;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.Level.MarkersStaticData
 {
@@ -14,20 +16,24 @@ namespace Code.Runtime.StaticData.Level.MarkersStaticData
         [SerializeField]
         private List<ScannerSpawnData> _scanners;
         [SerializeField]
-        private List<StatueSpawnData> _statueSpawnData;
+        private List<StatueSpawnData> _statues;
+        [SerializeField]
+        private List<CraftingTableSpawnData> _craftingTables;
 
         public IReadOnlyList<BookSlotSpawnData> BookSlots => _bookSlots;
         public IReadOnlyList<ReadingTableSpawnData> ReadingTables => _readingTables;
         public IReadOnlyList<ScannerSpawnData> Scanners => _scanners;
-        public IReadOnlyList<StatueSpawnData> Statues => _statueSpawnData;
+        public IReadOnlyList<StatueSpawnData> Statues => _statues;
+        public IReadOnlyList<CraftingTableSpawnData> CraftingTables => _craftingTables;
 
         public InteractablesSpawnsData(List<BookSlotSpawnData> bookSlots, List<ReadingTableSpawnData> readingTables, List<ScannerSpawnData> scanners,
-            List<StatueSpawnData> statueSpawnData)
+            List<StatueSpawnData> statues, List<CraftingTableSpawnData> craftingTables)
         {
             _bookSlots = bookSlots;
             _readingTables = readingTables;
             _scanners = scanners;
-            _statueSpawnData = statueSpawnData;
+            _statues = statues;
+            _craftingTables = craftingTables;
         }
     }
 }
