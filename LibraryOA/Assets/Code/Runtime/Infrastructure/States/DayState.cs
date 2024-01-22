@@ -52,7 +52,7 @@ namespace Code.Runtime.Infrastructure.States
         private void ShowDayNumberMessage()
         {
             Debug.Log($"Day {_daysService.CurrentDay} began.");
-            _uiMessagesService.ShowDayMessage($"Day {_daysService.CurrentDay}");
+            _uiMessagesService.ShowDayMessage();
         }
 
         private async UniTask ProceedDay()
