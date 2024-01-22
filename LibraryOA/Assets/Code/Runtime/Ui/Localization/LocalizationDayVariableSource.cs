@@ -24,6 +24,6 @@ namespace Code.Runtime.Ui.Localization
             _daysService.Updated -= UpdateDaysVariable;
 
         private void UpdateDaysVariable() =>
-            CurrentDay = _daysService.CurrentDay;
+            CurrentDay = _daysService.CurrentDay+1;
     }
 }
