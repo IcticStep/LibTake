@@ -23,16 +23,16 @@ namespace Code.Runtime.Infrastructure.Services.UiMessages
             _staticDataService = staticDataService;
         }
 
-        public async UniTask ShowMorningMessage(string header, string subHeader)
+        public async UniTask ShowMorningMessage()
         {
-            await MorningMessage.Show(header, subHeader);
+            await MorningMessage.Show();
             await UniTask.WaitForSeconds(MorningMessageDelay);
             await MorningMessage.Hide();
         }
 
-        public async UniTask ShowDayMessage(string text)
+        public async UniTask ShowDayMessage()
         {
-            await DayMessage.Show(text);
+            await DayMessage.Show();
             await UniTask.WaitForSeconds(DayMessageDelay);
             await DayMessage.Hide();
         }
