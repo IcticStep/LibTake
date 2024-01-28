@@ -74,6 +74,6 @@ namespace Code.Runtime.Ui
         }
 
         private void SetBookName(StaticBook bookData) =>
-            _bookName.text = bookData.name;
+            _bookName.text = bookData.LocalizedTitle.GetLocalizedString();
     }
 }

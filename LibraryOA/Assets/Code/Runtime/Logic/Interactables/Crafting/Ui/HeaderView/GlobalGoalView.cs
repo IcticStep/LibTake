@@ -46,7 +46,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
         {
             GlobalGoal goal = _craftingService.Goal;
             _icon.sprite = goal.Icon;
-            _headerText.text = goal.Name;
+            _headerText.text = goal.LocalizedName.GetLocalizedString();
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
         {
             GlobalStep step = _craftingService.CurrentStep;
             _icon.sprite = step.Icon;
-            _headerText.text = step.Name;
+            _headerText.text = step.LocalizedName.GetLocalizedString();
             _stepIndexText.text = $"{_craftingService.CurrentStepIndex + 1}/{_craftingService.Goal.GlobalSteps.Count}";
         }
     }
