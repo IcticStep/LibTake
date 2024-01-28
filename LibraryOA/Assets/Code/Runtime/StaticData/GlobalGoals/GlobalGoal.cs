@@ -10,9 +10,6 @@ namespace Code.Runtime.StaticData.GlobalGoals
     [CreateAssetMenu(fileName = "Global Goal", menuName = "Static data/Global Goals/Global Goal", order = 0)]
     public class GlobalGoal : ScriptableObject
     {
-        [SerializeField]
-        private string _name;
-        
         [ReadOnly]
         [SerializeField]
         private string _uniqueId = Guid.NewGuid().ToString();
@@ -31,9 +28,8 @@ namespace Code.Runtime.StaticData.GlobalGoals
         private float _cameraLookAtStepCompletedDelay;
 
         [field: SerializeField]
-        public LocalizedString LocalizedName { get; private set; } 
-        
-        public string Name => _name;
+        public LocalizedString LocalizedName { get; private set; }
+
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;
         public string UniqueId => _uniqueId;
         public Sprite Icon => _icon;

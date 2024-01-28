@@ -23,7 +23,7 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
             _globalGoalsByNames = GetGlobalGoalsByNames();
             _globalGoalsNames = _globalGoalsByNames
                 .Values
-                .Select(goal => goal.Name)
+                .Select(goal => goal.name)
                 .ToArray();
 
             _globalGoalsVisualizationService = new GlobalGoalsVisualizationService();
@@ -113,7 +113,7 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
             return staticDataService
                 .GlobalGoals
                 .ToDictionary(
-                    goal => goal.Name, 
+                    goal => goal.name, 
                     goal => goal);
         }
     }

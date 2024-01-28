@@ -37,7 +37,7 @@ namespace Code.Editor.Editors.StaticData
             int delta = GetDeltaForStep(globalStep, previousSteps);
             string displayDelta = GetDeltaDisplay(delta);
             
-            EditorGUILayout.LabelField($"{globalStep.Name} {displayDelta}");
+            EditorGUILayout.LabelField($"{globalStep.name} {displayDelta}");
 
             EditorGUI.indentLevel++;
             DrawGlobalStepSkillRequirements(globalStep, previousSteps);
