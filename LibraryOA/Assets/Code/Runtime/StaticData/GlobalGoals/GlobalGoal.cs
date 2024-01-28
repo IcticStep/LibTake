@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Runtime.Data;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.GlobalGoals
@@ -28,6 +29,9 @@ namespace Code.Runtime.StaticData.GlobalGoals
         [FormerlySerializedAs("_cameraDelay")]
         [SerializeField]
         private float _cameraLookAtStepCompletedDelay;
+
+        [field: SerializeField]
+        public LocalizedString LocalizedName { get; private set; } 
         
         public string Name => _name;
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;

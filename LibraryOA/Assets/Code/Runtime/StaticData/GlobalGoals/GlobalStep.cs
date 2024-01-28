@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.GlobalGoals
@@ -9,6 +10,9 @@ namespace Code.Runtime.StaticData.GlobalGoals
     {
         [SerializeField]
         public string Name;
+
+        [SerializeField]
+        public LocalizedString LocalizedName;
         
         [SerializeField]
         public float Duration;
