@@ -1,7 +1,14 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.StaticData.Books;
 using UnityEditor;
+using UnityEditor.Localization;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 namespace Code.Editor.Windows.Books
 {
@@ -25,6 +32,36 @@ namespace Code.Editor.Windows.Books
             {
                 CreateBook();
                 CleanUpTool();
+            }
+            
+            EditorGUILayout.LabelField("Localization updater");
+            if(GUILayout.Button("Add localize string for all books miising"))
+            {
+                AddLocalizationForAllBooksMissing();
+            }
+        }
+
+        private static void AddLocalizationForAllBooksMissing()
+        {
+            IStaticDataService staticDataService = new StaticDataService();
+            staticDataService.LoadBooks();
+            IReadOnlyList<StaticBook> books = staticDataService.AllBooks;
+            StringTableCollection collection = LocalizationEditorSettings.GetStringTableCollection("Book Localization Table");
+                
+            foreach(StaticBook book in books)
+            {
+                if(!book.LocalizedTitle.IsEmpty)
+                    continue;
+
+                foreach(StringTable stringTable in collection.StringTables)
+                {
+                    stringTable.AddEntry(book.Title, book.Title);
+                    EditorUtility.SetDirty(stringTable);
+                    EditorUtility.SetDirty(stringTable.SharedData);
+                }
+
+                book.LocalizedTitle = new LocalizedString { TableReference = "Book Localization Table", TableEntryReference = book.Title};
+                EditorUtility.SetDirty(book);
             }
         }
 
