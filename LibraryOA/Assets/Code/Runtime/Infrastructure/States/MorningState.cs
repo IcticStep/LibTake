@@ -64,7 +64,7 @@ namespace Code.Runtime.Infrastructure.States
         private void ShowDayNumberMessage()
         {
             Debug.Log($"Morning {_daysService.CurrentDay}.");
-            _uiMessagesService.ShowMorningMessage($"Morning {_daysService.CurrentDay}", "Books delivered!");
+            _uiMessagesService.ShowMorningMessage();
         }
 
         private async UniTask DeliverBooks()

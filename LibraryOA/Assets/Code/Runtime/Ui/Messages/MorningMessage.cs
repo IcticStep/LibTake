@@ -18,13 +18,9 @@ namespace Code.Runtime.Ui.Messages
         private void Awake() =>
             _smoothFader.FadeImmediately();
 
-        public async UniTask Show(string header, string subHeader)
-        {
-            _header.text = header;
-            _subHeader.text = subHeader;
+        public async UniTask Show() =>
             await _smoothFader.UnFadeAsync();
-        }
-        
+
         public async UniTask Hide()
         {
             await _smoothFader.FadeAsync();

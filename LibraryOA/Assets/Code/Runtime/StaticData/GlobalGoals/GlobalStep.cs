@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Serialization;
 
 namespace Code.Runtime.StaticData.GlobalGoals
@@ -8,7 +9,7 @@ namespace Code.Runtime.StaticData.GlobalGoals
     public class GlobalStep : ScriptableObject
     {
         [SerializeField]
-        public string Name;
+        public LocalizedString LocalizedName;
         
         [SerializeField]
         public float Duration;

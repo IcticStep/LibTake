@@ -1,6 +1,7 @@
 using System;
 using Code.Runtime.Data;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Code.Runtime.StaticData.Books
 {
@@ -13,6 +14,9 @@ namespace Code.Runtime.StaticData.Books
 
         [field: SerializeField]
         public string Title { get; set; }
+        
+        [field: SerializeField]
+        public LocalizedString LocalizedTitle { get; set; }
 
         [field: SerializeReference]
         public StaticBookType StaticBookType { get; set; }
