@@ -32,6 +32,7 @@ namespace Code.Editor.Windows.Books
             {
                 CreateBook();
                 CleanUpTool();
+                AddLocalizationForAllBooksMissing();
             }
             
             EditorGUILayout.LabelField("Localization updater");

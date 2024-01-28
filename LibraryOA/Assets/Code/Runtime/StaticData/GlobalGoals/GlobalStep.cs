@@ -9,9 +9,6 @@ namespace Code.Runtime.StaticData.GlobalGoals
     public class GlobalStep : ScriptableObject
     {
         [SerializeField]
-        public string Name;
-
-        [SerializeField]
         public LocalizedString LocalizedName;
         
         [SerializeField]
