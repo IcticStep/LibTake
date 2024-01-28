@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 7611988767871235711}
+  _localizeStringEvent: {fileID: 0}
   _smoothFader: {fileID: 40627468672301696}
 --- !u!225 &5513491375095621600
 CanvasGroup:

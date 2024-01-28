@@ -20,7 +20,5 @@ namespace Code.Runtime.StaticData.Books
 
         [field: SerializeReference]
         public StaticBookType StaticBookType { get; set; }
-        
-        
     }
 }

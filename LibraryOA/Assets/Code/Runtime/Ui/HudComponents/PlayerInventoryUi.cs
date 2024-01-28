@@ -1,3 +1,4 @@
+using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.StaticData.Books;
@@ -17,7 +18,7 @@ namespace Code.Runtime.Ui.HudComponents
         
         private IPlayerInventoryService _playerInventoryService;
         private IStaticDataService _staticDataService;
-
+        
         [Inject]
         private void Construct(IPlayerInventoryService playerInventoryService, IStaticDataService staticDataService)
         {
@@ -63,13 +64,13 @@ namespace Code.Runtime.Ui.HudComponents
                 return;
 
             StaticBook data = GetBookData();
-            _text.text = GenerateViewText(data);
+            _text.text = GenerateViewTextPostfix(data);
             _text.faceColor = GetBookUiColor(data);
         }
 
-        private string GenerateViewText(StaticBook bookData)
+        private string GenerateViewTextPostfix(StaticBook data)
         {
-            string textResult = bookData.Title;
+            string textResult = data.LocalizedTitle.GetLocalizedString();
             if(_playerInventoryService.BooksCount > 1)
                 textResult += $" (+{_playerInventoryService.BooksCount - 1})";
 
