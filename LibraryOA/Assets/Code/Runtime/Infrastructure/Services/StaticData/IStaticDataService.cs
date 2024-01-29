@@ -12,27 +12,29 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
     public interface IStaticDataService
     {
         ScenesRouting ScenesRouting { get; }
-        InteractablesStaticData Interactables { get; }
+        LevelStaticData CurrentLevelData { get; }
+        StaticLevelStartingSettings LevelStartSettings { get; }
         StaticPlayer Player { get; }
         StaticBookReceiving BookReceiving { get; }
-        UiData Ui { get; }
-        IReadOnlyList<StaticBook> AllBooks { get; }
-        LevelStaticData CurrentLevelData { get; }
         StaticBooksDelivering BookDelivering { get; }
+        IReadOnlyList<StaticBook> AllBooks { get; }
         IReadOnlyList<StaticBookType> BookTypes { get; }
+        InteractablesStaticData Interactables { get; }
         IReadOnlyList<GlobalGoal> GlobalGoals { get; }
+        UiData Ui { get; }
         void LoadAll();
+        void LoadStartupSettings();
+        void LoadLevelStartSettings();
         void LoadLevels();
         void LoadPlayer();
         void LoadBookReceiving();
-        void LoadUi();
-        void LoadInteractables();
-        void LoadStartupSettings();
-        StaticBook ForBook(string id);
-        LevelStaticData ForLevel(string key);
         void LoadBookDelivering();
         void LoadBooks();
         void LoadBookTypes();
+        void LoadInteractables();
         void LoadGlobalGoals();
+        void LoadUi();
+        StaticBook ForBook(string id);
+        LevelStaticData ForLevel(string key);
     }
 }
