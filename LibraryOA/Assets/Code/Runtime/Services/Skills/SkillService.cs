@@ -32,17 +32,20 @@ namespace Code.Runtime.Services.Skills
         public int GetSkillByBookType(BookType bookType) =>
             _levels.GetValueOrDefault(bookType);
 
+        public void LoadProgress(GameProgress progress) =>
+            _levels = progress.PlayerData.Skills;
+
+        public void UpdateProgress(GameProgress progress) =>
+            progress.PlayerData.Skills = _levels;
+
+        public void CleanUp() =>
+            _levels.Clear();
+
         private void AddLevelsFor(BookType bookType, int levels)
         {
             _levels.TryAdd(bookType, 0);
             _levels[bookType] += levels;
             Updated?.Invoke();
         }
-
-        public void LoadProgress(GameProgress progress) =>
-            _levels = progress.PlayerData.Skills;
-
-        public void UpdateProgress(GameProgress progress) =>
-            progress.PlayerData.Skills = _levels;
     }
 }

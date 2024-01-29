@@ -40,5 +40,8 @@ namespace Code.Runtime.Services.Interactions.Truck
             _booksInTruck.Clear();
             return true;
         }
+
+        public void CleanUp() =>
+            _booksInTruck.Clear();
     }
 }

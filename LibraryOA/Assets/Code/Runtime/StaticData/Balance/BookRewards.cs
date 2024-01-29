@@ -14,6 +14,7 @@ namespace Code.Runtime.StaticData.Balance
         public int GetRewardSize(float percentsWaiting)
         {
             BookRewardStatement statement = _bookRewardStatements
+                .OrderByDescending(statement => statement.PercentsLowerBound)
                 .FirstOrDefault(statement => statement.IsTrueFor(percentsWaiting));
 
             return statement?.Reward ?? 1;
