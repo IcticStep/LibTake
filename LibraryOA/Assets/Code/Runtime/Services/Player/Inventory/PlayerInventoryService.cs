@@ -11,8 +11,8 @@ namespace Code.Runtime.Services.Player.Inventory
     {
         private List<string> _books = new();
 
-        public bool HasBook => BooksCount > 0;
         public int Coins { get; private set; } = 0;
+        public bool HasBook => BooksCount > 0;
         public int BooksCount => _books.Count;
         public string CurrentBookId => HasBook ? _books[^1] : null;
         public IReadOnlyList<string> Books => _books;
@@ -72,6 +72,12 @@ namespace Code.Runtime.Services.Player.Inventory
         {
             progress.PlayerData.Inventory.Books = _books;
             progress.PlayerData.Inventory.Coins = Coins;
+        }
+
+        public void CleanUp()
+        {
+            _books.Clear();
+            Coins = 0;
         }
     }
 }

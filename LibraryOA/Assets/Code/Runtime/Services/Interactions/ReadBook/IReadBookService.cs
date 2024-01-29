@@ -15,5 +15,6 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         bool IsRead(string bookId);
         void ReadBook(string bookId);
         bool CanReadBook(string bookId);
+        void CleanUp();
     }
 }

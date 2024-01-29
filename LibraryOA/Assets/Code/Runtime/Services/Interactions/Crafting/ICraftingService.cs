@@ -23,5 +23,6 @@ namespace Code.Runtime.Services.Interactions.Crafting
         bool CanCraftStep();
         bool CanPayForStep();
         bool HaveEnoughSkillsToCraft();
+        void CleanUp();
     }
 }

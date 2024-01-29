@@ -22,5 +22,8 @@ namespace Code.Runtime.Services.Days
 
         public void UpdateProgress(GameProgress progress) =>
             progress.WorldData.TimeData.CurrentDay = CurrentDay;
+
+        public void CleanUp() =>
+            CurrentDay = 0;
     }
 }

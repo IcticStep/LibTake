@@ -44,11 +44,8 @@ namespace Code.Runtime.Services.Customers.Queue
         public QueueMember Peek() =>
             _membersQueue.Peek();
 
-        public void CleanUp()
-        {
+        public void CleanUp() =>
             _membersQueue.Clear();
-            Updated?.Invoke();
-        }
 
         private void UpdateMembersPoints()
         {
