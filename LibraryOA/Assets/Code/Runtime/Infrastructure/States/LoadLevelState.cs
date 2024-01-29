@@ -17,8 +17,6 @@ namespace Code.Runtime.Infrastructure.States
 {
     internal sealed class LoadLevelState : IPayloadedState<string>
     {
-        private const float StartGameplayDelay = 0.3f;
-        
         private readonly GameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
         private readonly IInteractablesFactory _interactablesFactory;
@@ -72,7 +70,7 @@ namespace Code.Runtime.Infrastructure.States
         private async UniTaskVoid StartGameplay()
         {
             _loadingCurtainService.Hide();
-            await UniTask.WaitForSeconds(StartGameplayDelay);
+            await UniTask.WaitForSeconds(_staticData.LevelStartSettings.LevelStartDelay);
             _stateMachine.EnterState<MorningState>();
         }
 
