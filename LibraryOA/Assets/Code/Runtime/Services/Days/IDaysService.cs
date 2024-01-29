@@ -9,5 +9,8 @@ namespace Code.Runtime.Services.Days
         int CurrentDay { get; }
         event Action Updated;
         void AddDay();
+        void LoadProgress(GameProgress progress);
+        void UpdateProgress(GameProgress progress);
+        void CleanUp();
     }
 }

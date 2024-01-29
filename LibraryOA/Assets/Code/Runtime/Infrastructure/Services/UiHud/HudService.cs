@@ -8,13 +8,10 @@ namespace Code.Runtime.Infrastructure.Services.UiHud
     [UsedImplicitly]
     internal sealed class HudService : IHudProviderService
     {
-        private Canvas _mainCanvas;
         public Ui.HudComponents.Hud Hud { get; private set; }
         public DayMessage DayMessage { get; private set; }
         public MorningMessage MorningMessage { get; private set; }
-
-        private Tweener _currentTweener;
-
+        
         public void RegisterHud(Ui.HudComponents.Hud hud)
         {
             Hud = hud;

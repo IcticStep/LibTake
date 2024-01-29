@@ -50,6 +50,12 @@ namespace Code.Runtime.Services.Interactions.Scanning
             progress.PlayerData.BooksScanned = _booksScanCacheForSave;
         }
 
+        public void CleanUp()
+        {
+            _booksScanned.Clear();
+            _booksScanCacheForSave.Clear();
+        }
+
         private void MarkAsScanned(string bookId)
         {
             _booksScanned.Add(bookId);

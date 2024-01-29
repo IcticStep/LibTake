@@ -23,5 +23,8 @@ namespace Code.Runtime.Services.Interactions.Crafting
         bool CanCraftStep();
         bool CanPayForStep();
         bool HaveEnoughSkillsToCraft();
+        void LoadProgress(GameProgress progress);
+        void UpdateProgress(GameProgress progress);
+        void CleanUp();
     }
 }
