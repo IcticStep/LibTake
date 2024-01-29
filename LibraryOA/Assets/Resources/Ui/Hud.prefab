@@ -153,7 +153,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &2169728569439908138
 GameObject:
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -514,7 +514,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 7611988767871235711}
-  _localizeStringEvent: {fileID: 0}
   _smoothFader: {fileID: 40627468672301696}
 --- !u!225 &5513491375095621600
 CanvasGroup:
@@ -1502,6 +1501,11 @@ PrefabInstance:
       propertyPath: _unFadeDuration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2057867506373902129, guid: 43ab13d39ebb4cd40887172776de019f,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2544712772129808689, guid: 43ab13d39ebb4cd40887172776de019f,
         type: 3}
       propertyPath: m_Name
@@ -1510,7 +1514,7 @@ PrefabInstance:
     - target: {fileID: 6510475310014961325, guid: 43ab13d39ebb4cd40887172776de019f,
         type: 3}
       propertyPath: m_BlocksRaycasts
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8765758077539020222, guid: 43ab13d39ebb4cd40887172776de019f,
         type: 3}
