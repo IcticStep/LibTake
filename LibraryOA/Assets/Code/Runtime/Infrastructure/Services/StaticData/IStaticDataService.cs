@@ -15,24 +15,26 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         InteractablesStaticData Interactables { get; }
         StaticPlayer Player { get; }
         StaticBookReceiving BookReceiving { get; }
-        UiData Ui { get; }
-        IReadOnlyList<StaticBook> AllBooks { get; }
-        LevelStaticData CurrentLevelData { get; }
         StaticBooksDelivering BookDelivering { get; }
+        UiData Ui { get; }
+        StaticLevelStartingSettings LevelStartSettings { get; }
+        IReadOnlyList<StaticBook> AllBooks { get; }
         IReadOnlyList<StaticBookType> BookTypes { get; }
         IReadOnlyList<GlobalGoal> GlobalGoals { get; }
+        LevelStaticData CurrentLevelData { get; }
         void LoadAll();
+        void LoadStartupSettings();
+        void LoadLevelStartSettings();
+        void LoadBooks();
         void LoadLevels();
         void LoadPlayer();
-        void LoadBookReceiving();
-        void LoadUi();
-        void LoadInteractables();
-        void LoadStartupSettings();
-        StaticBook ForBook(string id);
-        LevelStaticData ForLevel(string key);
-        void LoadBookDelivering();
-        void LoadBooks();
         void LoadBookTypes();
         void LoadGlobalGoals();
+        void LoadBookReceiving();
+        void LoadBookDelivering();
+        void LoadUi();
+        void LoadInteractables();
+        StaticBook ForBook(string id);
+        LevelStaticData ForLevel(string key);
     }
 }
