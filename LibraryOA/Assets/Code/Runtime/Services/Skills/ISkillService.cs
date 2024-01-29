@@ -10,8 +10,6 @@ namespace Code.Runtime.Services.Skills
         event Action Updated;
         void UpdateSkillsBy(string bookId);
         int GetSkillByBookType(BookType bookType);
-        void LoadProgress(GameProgress progress);
-        void UpdateProgress(GameProgress progress);
         void CleanUp();
     }
 }
