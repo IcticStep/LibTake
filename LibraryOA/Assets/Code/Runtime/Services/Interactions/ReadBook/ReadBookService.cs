@@ -64,6 +64,12 @@ namespace Code.Runtime.Services.Interactions.ReadBook
             progress.PlayerData.BooksRead = _booksReadCacheForSave;
         }
 
+        public void CleanUp()
+        {
+            _booksRead.Clear();
+            _booksReadCacheForSave.Clear();
+        }
+
         private void MarkAsRead(string bookId)
         {
             _booksRead.Add(bookId);

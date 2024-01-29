@@ -15,9 +15,7 @@ namespace Code.Runtime.Services.Customers.Registry
                 customer);
 
         public ICustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember) =>
-            _registry.TryGetValue(queueMember, out CustomerStateMachine customer)
-                ? customer
-                : null;
+            _registry.GetValueOrDefault(queueMember);
 
         public void CleanUp() =>
             _registry.Clear();

@@ -127,5 +127,12 @@ namespace Code.Runtime.Services.Interactions.Crafting
             progress.PlayerData.GlobalGoal.GoalStepIndex = CurrentStepIndex;
             progress.PlayerData.GlobalGoal.PayedForStep = PayedForStep;
         }
+
+        public void CleanUp()
+        {
+            _globalGoalId = null;
+            CurrentStepIndex = 0;
+            PayedForStep = false;
+        }
     }
 }

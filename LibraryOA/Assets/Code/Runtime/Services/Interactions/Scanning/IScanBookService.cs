@@ -14,5 +14,6 @@ namespace Code.Runtime.Services.Interactions.Scanning
         bool IsScanned(string bookId);
         void ScanBook(string bookId);
         bool CanScanBook(string bookId);
+        void CleanUp();
     }
 }
