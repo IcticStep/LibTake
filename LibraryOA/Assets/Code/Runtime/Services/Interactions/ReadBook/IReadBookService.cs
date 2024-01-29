@@ -15,8 +15,6 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         bool IsRead(string bookId);
         void ReadBook(string bookId);
         bool CanReadBook(string bookId);
-        void LoadProgress(GameProgress progress);
-        void UpdateProgress(GameProgress progress);
         void CleanUp();
     }
 }
