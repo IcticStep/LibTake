@@ -26,7 +26,7 @@ namespace Code.Runtime.Infrastructure.States
         {
             LoadProgressOrCreateNew();
             
-            string startScene = _staticDataService.ScenesRouting.TargetScene;
+            string startScene = _staticDataService.ScenesRouting.LevelScene;
             _stateMachine.EnterState<LoadLevelState, string>(startScene);
         }
 
