@@ -5233,7 +5233,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 2.98
   m_Radius: 0.49
@@ -7580,6 +7580,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
         type: 3}

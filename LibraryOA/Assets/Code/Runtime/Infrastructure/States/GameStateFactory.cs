@@ -18,6 +18,7 @@ namespace Code.Runtime.Infrastructure.States
             {
                 [typeof(BootstrapState)] = container.Resolve<BootstrapState>,
                 [typeof(WarmupState)] = container.Resolve<WarmupState>,
+                [typeof(MenuState)] = container.Resolve<MenuState>,
                 [typeof(LoadProgressState)] = container.Resolve<LoadProgressState>,
                 [typeof(LoadLevelState)] = container.Resolve<LoadLevelState>,
                 [typeof(MorningState)] = container.Resolve<MorningState>,
