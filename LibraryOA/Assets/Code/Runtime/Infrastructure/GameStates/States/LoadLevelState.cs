@@ -1,10 +1,10 @@
+using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Loading;
@@ -13,7 +13,7 @@ using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.States
 {
     internal sealed class LoadLevelState : IPayloadedState<string>
     {

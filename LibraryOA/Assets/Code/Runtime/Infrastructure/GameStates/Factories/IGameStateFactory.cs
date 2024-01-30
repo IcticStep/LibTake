@@ -1,7 +1,7 @@
 using System;
-using Code.Runtime.Infrastructure.States.Api;
+using Code.Runtime.Infrastructure.GameStates.Api;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.Factories
 {
     public interface IGameStateFactory
     {

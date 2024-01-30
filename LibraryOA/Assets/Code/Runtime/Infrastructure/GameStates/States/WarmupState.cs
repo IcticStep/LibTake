@@ -1,12 +1,12 @@
+using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.GlobalGoals;
 using Code.Runtime.Services.Loading;
 using Code.Runtime.StaticData.GlobalGoals;
 using Cysharp.Threading.Tasks;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.States
 {
     internal class WarmupState : IState
     {
