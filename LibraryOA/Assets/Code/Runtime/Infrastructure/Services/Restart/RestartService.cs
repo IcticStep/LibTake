@@ -1,3 +1,4 @@
+using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.States;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
@@ -20,7 +21,7 @@ namespace Code.Runtime.Infrastructure.Services.Restart
         public void Restart()
         {
             _saveLoadService.DeleteProgress();
-            _gameStateMachine.EnterState<LoadProgressState>();
+            _gameStateMachine.EnterState<LoadProgressState, LoadProgressOption>(LoadProgressOption.ForceCreatingNewProgress);
         }
     }
 }

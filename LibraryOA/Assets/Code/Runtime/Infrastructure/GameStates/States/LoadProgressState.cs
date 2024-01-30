@@ -1,3 +1,5 @@
+using System;
+using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
@@ -6,7 +8,7 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
-    internal sealed class LoadProgressState : IState
+    internal sealed class LoadProgressState : IPayloadedState<LoadProgressOption>
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IPersistantProgressService _persistantProgressService;
@@ -22,18 +24,38 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _staticDataService = staticDataService;
         }
 
-        public void Start()
+        public void Start(LoadProgressOption payload)
         {
-            LoadProgressOrCreateNew();
-            
+            switch(payload)
+            {
+                case LoadProgressOption.LoadProgressIfAny:
+                    LoadProgressOrCreateNew();
+                    break;
+                case LoadProgressOption.ForceCreatingNewProgress:
+                    ForceCreatingNewProgress();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(payload), payload, "Uknown progress load option.");
+            }
+
             string startScene = _staticDataService.ScenesRouting.LevelScene;
             _stateMachine.EnterState<LoadLevelState, string>(startScene);
         }
 
+        private void ForceCreatingNewProgress() =>
+            _persistantProgressService.Progress = CreateNewProgress();
+
         private void LoadProgressOrCreateNew() =>
-            _persistantProgressService.Progress = 
-                _saveLoadService.LoadProgress()
-                ?? CreateNewProgress();
+            _persistantProgressService.Progress =
+                TryLoadProgress(out GameProgress progress)
+                    ? progress
+                    : CreateNewProgress();
+
+        private bool TryLoadProgress(out GameProgress progress)
+        {
+            progress = _saveLoadService.LoadProgress();
+            return progress is not null;
+        }
 
         private GameProgress CreateNewProgress()
         {
@@ -42,8 +64,6 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             return newProgress;
         }
 
-        public void Exit()
-        {
-        }
+        public void Exit() { }
     }
 }
