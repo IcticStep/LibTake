@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
@@ -13,6 +14,9 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
         private readonly IPersistantProgressService _progressService;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
 
+        public bool HasSavedProgress => PlayerPrefs.HasKey(ProgressKey);
+        public event Action Updated;
+
         public SaveLoadService(IPersistantProgressService progressService, ISaveLoadRegistry saveLoadRegistry)
         {
             _progressService = progressService;
@@ -25,6 +29,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
                 progressWriter.UpdateProgress(_progressService.Progress);
             
             PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
+            Updated?.Invoke();
         }
 
         public GameProgress LoadProgress() =>
@@ -32,6 +37,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
 
         public void DeleteProgress()
         {
+            Updated?.Invoke();
             PlayerPrefs.DeleteKey(ProgressKey);
             PlayerPrefs.Save();
         }
