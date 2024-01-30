@@ -129,6 +129,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         {
             Container.Bind<BootstrapState>().AsSingle();
             Container.Bind<WarmupState>().AsSingle();
+            Container.Bind<MenuState>().AsSingle();
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
             Container.Bind<MorningState>().AsSingle();
