@@ -1,4 +1,4 @@
-namespace Code.Runtime.Infrastructure.States.Api
+namespace Code.Runtime.Infrastructure.GameStates.Api
 {
     public interface IExitableState
     {

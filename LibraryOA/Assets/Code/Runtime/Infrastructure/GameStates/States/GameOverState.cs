@@ -1,10 +1,10 @@
+using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Infrastructure.States.Api;
 using JetBrains.Annotations;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.States
 {
     [UsedImplicitly]
     internal sealed class GameOverState : IState

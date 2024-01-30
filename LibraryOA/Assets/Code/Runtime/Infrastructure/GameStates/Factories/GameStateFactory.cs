@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Code.Runtime.Infrastructure.States.Api;
-using Code.Runtime.Infrastructure.States.Exceptions;
+using Code.Runtime.Infrastructure.GameStates.Api;
+using Code.Runtime.Infrastructure.GameStates.Exceptions;
+using Code.Runtime.Infrastructure.GameStates.States;
 using JetBrains.Annotations;
 using Zenject;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.Factories
 {
     [UsedImplicitly]
     internal sealed class GameStateFactory : IFactory<Type, IExitableState>, IGameStateFactory

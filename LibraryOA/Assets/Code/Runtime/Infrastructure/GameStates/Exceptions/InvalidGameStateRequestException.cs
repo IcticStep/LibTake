@@ -1,7 +1,8 @@
 using System;
 using Code.Runtime.Infrastructure.DiInstallers;
+using Code.Runtime.Infrastructure.GameStates.Factories;
 
-namespace Code.Runtime.Infrastructure.States.Exceptions
+namespace Code.Runtime.Infrastructure.GameStates.Exceptions
 {
     internal sealed class InvalidGameStateRequestException : Exception
     {

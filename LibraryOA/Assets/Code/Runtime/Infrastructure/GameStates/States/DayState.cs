@@ -1,6 +1,6 @@
 using System.Threading;
+using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.UiMessages;
-using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.Crafting;
@@ -10,7 +10,7 @@ using Code.Runtime.Services.Player.Lives;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.States
 {
     internal sealed class DayState : IState
     {

@@ -1,7 +1,7 @@
+using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
-using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
@@ -11,7 +11,7 @@ using Code.Runtime.Services.Player.Lives;
 using Code.Runtime.Services.Skills;
 using Cysharp.Threading.Tasks;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.States
 {
     internal sealed class BootstrapState : IState
     {

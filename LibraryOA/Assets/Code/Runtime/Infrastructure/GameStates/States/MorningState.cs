@@ -1,7 +1,6 @@
-using Code.Runtime.Data.Progress;
+using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.UiMessages;
-using Code.Runtime.Infrastructure.States.Api;
 using Code.Runtime.Services.Books.Delivering;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.Interactions.Crafting;
@@ -11,7 +10,7 @@ using Code.Runtime.Services.TruckDriving;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Runtime.Infrastructure.States
+namespace Code.Runtime.Infrastructure.GameStates.States
 {
     internal sealed class MorningState : IState
     {
