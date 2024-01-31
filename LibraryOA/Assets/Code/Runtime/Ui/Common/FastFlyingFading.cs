@@ -1,4 +1,6 @@
+using System;
 using System.Threading;
+using Code.Runtime.Data;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -13,23 +15,32 @@ namespace Code.Runtime.Ui.Common
         [SerializeField]
         private RectTransform _rectTransform;
         [SerializeField]
+        private float _offscreenDistance = 1000;
+        [SerializeField]
         private float _duration;
         [SerializeField]
-        private Vector3 _awayPosition = Vector3.up * 1000;
-        [SerializeField]
-        private Vector2 _onScreenPosition;
+        private Direction2d _direction;
         [SerializeField]
         private Ease _flyOnScreenEase = Ease.OutElastic;
         [SerializeField]
         private Ease _flyAwayEase = Ease.InOutQuint;
 
+        private Vector3 _awayPosition;
+        private Vector2 _onScreenPosition;
+
         private void OnValidate() =>
-            _rectTransform ??= GetComponent<RectTransform>(); 
+            _rectTransform ??= GetComponent<RectTransform>();
+
+        private void Awake()
+        {
+            _onScreenPosition = _rectTransform.anchoredPosition;
+            _awayPosition = _onScreenPosition + _direction.ToVector2() * _offscreenDistance;
+        }
 
         public UniTask FadeIn(CancellationToken cancellationToken)
         {
             _canvasGroup.alpha = 0f;
-            _rectTransform.transform.localPosition = _awayPosition;
+            _rectTransform.anchoredPosition = _awayPosition;
             _rectTransform
                 .DOAnchorPos(_onScreenPosition, _duration) 
                 .SetEase(_flyOnScreenEase)
@@ -43,7 +54,7 @@ namespace Code.Runtime.Ui.Common
         public UniTask FadeOut(CancellationToken cancellationToken)
         {
             _canvasGroup.alpha = 1f;
-            _rectTransform.transform.localPosition = Vector3.zero;
+            _rectTransform.anchoredPosition = _onScreenPosition;
             _rectTransform
                 .DOAnchorPos(_awayPosition, _duration)
                 .SetEase(_flyAwayEase)
@@ -53,5 +64,8 @@ namespace Code.Runtime.Ui.Common
                 .DOFade(0, _duration)
                 .ToUniTask(cancellationToken: cancellationToken);
         }
+
+        public void SetInOffScreenPosition() =>
+            _rectTransform.anchoredPosition = _awayPosition;
     }
 }
