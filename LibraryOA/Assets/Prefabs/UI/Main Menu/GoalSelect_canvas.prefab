@@ -613,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 11652032092836435}
   _rectTransform: {fileID: 8572257946407159059}
-  _offscreenDistance: 700
+  _offscreenDistance: 1200
   _duration: 0.5
   _direction: 2
   _flyOnScreenEase: 21
@@ -657,6 +657,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1,
         type: 2}
+    - target: {fileID: 2371488723437758878, guid: 4b22d3594e63ea44a96a4d4952a01743,
+        type: 3}
+      propertyPath: _globalGoalsContainer
+      value: 
+      objectReference: {fileID: 2575984694133577698}
     - target: {fileID: 2673525515143744879, guid: 4b22d3594e63ea44a96a4d4952a01743,
         type: 3}
       propertyPath: m_Pivot.x

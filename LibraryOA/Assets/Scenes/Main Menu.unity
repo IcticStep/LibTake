@@ -1230,6 +1230,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7606796451122964698}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741045640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2575984694133577698, guid: 24d924a636dcb634e8b49b979c43802c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7606796451122964698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d2e7b3a7ac4894afad38ce78da6f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1781407583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4646,6 +4658,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109283252}
     m_Modifications:
+    - target: {fileID: 951939329435188366, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: _gameName
+      value: 
+      objectReference: {fileID: 2125286153}
+    - target: {fileID: 951939329435188366, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: _globalsGoalsContainer
+      value: 
+      objectReference: {fileID: 1741045640}
     - target: {fileID: 3389964550228976771, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
         type: 3}
       propertyPath: m_Name
@@ -4756,11 +4778,6 @@ PrefabInstance:
       propertyPath: _gameName
       value: 
       objectReference: {fileID: 2125286153}
-    - target: {fileID: 6692074797595189186, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
-        type: 3}
-      propertyPath: _offscreenDistance
-      value: 3000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
