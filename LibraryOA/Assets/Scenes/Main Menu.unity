@@ -1676,8 +1676,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 229058511}
   - {fileID: 2125286148}
+  - {fileID: 229058511}
   - {fileID: 1741045631}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4756,6 +4756,11 @@ PrefabInstance:
       propertyPath: _gameName
       value: 
       objectReference: {fileID: 2125286153}
+    - target: {fileID: 6692074797595189186, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: _offscreenDistance
+      value: 3000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6200,6 +6205,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109283252}
     m_Modifications:
+    - target: {fileID: 1188523564105795441, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188523564105795441, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188523564105795441, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188523564105795441, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954566137185567291, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954566137185567291, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954566137185567291, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954566137185567291, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8202042884608831815, guid: 24d924a636dcb634e8b49b979c43802c,
         type: 3}
       propertyPath: m_Name
@@ -6304,6 +6349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636983155814628908, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: _offscreenDistance
+      value: 1200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
