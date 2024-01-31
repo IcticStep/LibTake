@@ -2,14 +2,16 @@ using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Ui.Menu.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Ui.Menu.MainButtons
 {
     internal sealed class MainButtonsGroup : MonoBehaviour
     {
+        [FormerlySerializedAs("_menuButtonsGroup")]
         [SerializeField]
-        private MenuButtonsGroup _menuButtonsGroup;
+        private MenuGroup _menuGroup;
         
         private IStaticDataService _staticDataService;
 
@@ -23,20 +25,20 @@ namespace Code.Runtime.Ui.Menu.MainButtons
 
         public async UniTask Show()
         {
-            _menuButtonsGroup.DisableInteractions();
-            await _menuButtonsGroup.Show();
-            _menuButtonsGroup.EnableInteractions();
+            _menuGroup.DisableInteractions();
+            await _menuGroup.Show();
+            _menuGroup.EnableInteractions();
         }
 
         public async UniTask Hide()
         {
-            _menuButtonsGroup.DisableInteractions();
-            await _menuButtonsGroup.Hide();
+            _menuGroup.DisableInteractions();
+            await _menuGroup.Hide();
         }
 
         private async UniTask PlayStartAnimation()
         {
-            _menuButtonsGroup.SetInOffScreenPosition();
+            _menuGroup.SetInOffScreenPosition();
             await UniTask.WaitForSeconds(_staticDataService.Ui.Menu.StartDelaySeconds);
             await Show();
         }
