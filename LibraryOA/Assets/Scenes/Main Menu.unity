@@ -474,6 +474,10 @@ GameObject:
   - component: {fileID: 229058512}
   - component: {fileID: 229058514}
   - component: {fileID: 229058515}
+  - component: {fileID: 229058517}
+  - component: {fileID: 229058516}
+  - component: {fileID: 229058519}
+  - component: {fileID: 229058518}
   m_Layer: 5
   m_Name: MainButtons_canvas
   m_TagString: Untagged
@@ -579,6 +583,64 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &229058516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229058510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c0b1c3dff44a7a9808bdbc1d8e0f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuButtonsGroup: {fileID: 229058517}
+--- !u!114 &229058517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229058510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479a18899ef2400ea2fe33ddf14af43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _graphicRaycaster: {fileID: 229058515}
+  _fader: {fileID: 229058519}
+--- !u!225 &229058518
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229058510}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &229058519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229058510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c25a1c31bd4397a7d32e7474b754da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 229058518}
+  _rectTransform: {fileID: 229058511}
+  _offscreenDistance: 700
+  _duration: 0.5
+  _direction: 0
+  _flyOnScreenEase: 21
+  _flyAwayEase: 16
 --- !u!1 &244152997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,6 +2685,9 @@ GameObject:
   - component: {fileID: 2125286148}
   - component: {fileID: 2125286150}
   - component: {fileID: 2125286149}
+  - component: {fileID: 2125286152}
+  - component: {fileID: 2125286151}
+  - component: {fileID: 2125286153}
   m_Layer: 5
   m_Name: GameName_canvas
   m_TagString: Untagged
@@ -2688,6 +2753,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125286147}
   m_CullTransparentMesh: 1
+--- !u!225 &2125286151
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125286147}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2125286152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125286147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c25a1c31bd4397a7d32e7474b754da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 2125286151}
+  _rectTransform: {fileID: 2125286148}
+  _offscreenDistance: 700
+  _duration: 0.5
+  _direction: 1
+  _flyOnScreenEase: 21
+  _flyAwayEase: 16
+--- !u!114 &2125286153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125286147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1838b774eb4a608db7378ceb53531d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fader: {fileID: 2125286152}
 --- !u!33 &74621564111428996
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3277,6 +3386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 600809157264018460}
+  _mainButtonsGroup: {fileID: 229058516}
+  _gameName: {fileID: 2125286153}
 --- !u!33 &634197047923940317
 MeshFilter:
   m_ObjectHideFlags: 0

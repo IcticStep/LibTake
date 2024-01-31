@@ -1,4 +1,3 @@
-using System;
 using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.States;
@@ -6,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Runtime.Ui.Menu
+namespace Code.Runtime.Ui.Menu.MainButtons
 {
     internal sealed class NewGameButton : MonoBehaviour
     {

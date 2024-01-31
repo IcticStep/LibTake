@@ -2,30 +2,38 @@ using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.States;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
+using Code.Runtime.Services.Loading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Runtime.Ui.Menu
+namespace Code.Runtime.Ui.Menu.MainButtons
 {
     internal sealed class ContinueButton : MonoBehaviour
     {
         [SerializeField]
         private Button _button;
+        [SerializeField]
+        private MainButtonsGroup _mainButtonsGroup;
+        [SerializeField]
+        private GameName _gameName;
         
         private GameStateMachine _gameStateMachine;
         private ISaveLoadService _saveLoadService;
+        private ILoadingCurtainService _loadingCurtainService;
 
         [Inject]
-        private void Construct(GameStateMachine gameStateMachine, ISaveLoadService saveLoadService)
+        private void Construct(GameStateMachine gameStateMachine, ISaveLoadService saveLoadService, ILoadingCurtainService loadingCurtainService)
         {
+            _loadingCurtainService = loadingCurtainService;
             _saveLoadService = saveLoadService;
             _gameStateMachine = gameStateMachine;
         }
 
         private void Awake()
         {
-            _button.onClick.AddListener(StartNewGame);
+            _button.onClick.AddListener(OnContinueButtonPressed);
             _saveLoadService.Updated += UpdateInteractableState;
         }
 
@@ -34,14 +42,22 @@ namespace Code.Runtime.Ui.Menu
 
         private void OnDestroy()
         {
-            _button.onClick.RemoveListener(StartNewGame);
+            _button.onClick.RemoveListener(OnContinueButtonPressed);
             _saveLoadService.Updated -= UpdateInteractableState;
         }
 
         private void UpdateInteractableState() =>
             _button.interactable = _saveLoadService.HasSavedProgress;
 
-        private void StartNewGame() =>
+        private void OnContinueButtonPressed() =>
+            ContinueGame()
+                .Forget();
+
+        private async UniTaskVoid ContinueGame()
+        {
+            _loadingCurtainService.Show();
+            await UniTask.WhenAll(_mainButtonsGroup.Hide(), _gameName.Hide());
             _gameStateMachine.EnterState<LoadProgressState, LoadProgressOption>(LoadProgressOption.LoadProgressIfAny);
+        }
     }
 }
