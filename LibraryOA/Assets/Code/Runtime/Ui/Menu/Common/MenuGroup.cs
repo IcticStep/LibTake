@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Code.Runtime.Ui.Menu.Common
 {
-    internal sealed class MenuButtonsGroup : MonoBehaviour
+    internal sealed class MenuGroup : MonoBehaviour
     {
         [SerializeField]
         private GraphicRaycaster _graphicRaycaster;
