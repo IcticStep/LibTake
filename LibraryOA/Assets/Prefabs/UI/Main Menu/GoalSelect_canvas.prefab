@@ -506,8 +506,8 @@ GameObject:
   - component: {fileID: 540493492770462921}
   - component: {fileID: 4253472891209340054}
   - component: {fileID: 31776054575491316}
-  - component: {fileID: 4371648845118585233}
   - component: {fileID: 8636983155814628908}
+  - component: {fileID: 2575984694133577698}
   - component: {fileID: 11652032092836435}
   m_Layer: 5
   m_Name: GoalSelect_canvas
@@ -599,19 +599,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _graphicRaycaster: {fileID: 4253472891209340054}
   _fader: {fileID: 8636983155814628908}
---- !u!114 &4371648845118585233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8202042884608831815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c0b1c3dff44a7a9808bdbc1d8e0f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menuGroup: {fileID: 31776054575491316}
 --- !u!114 &8636983155814628908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,9 +615,22 @@ MonoBehaviour:
   _rectTransform: {fileID: 8572257946407159059}
   _offscreenDistance: 700
   _duration: 0.5
-  _direction: 0
+  _direction: 2
   _flyOnScreenEase: 21
   _flyAwayEase: 16
+--- !u!114 &2575984694133577698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8202042884608831815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d2e7b3a7ac4894afad38ce78da6f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fader: {fileID: 8636983155814628908}
 --- !u!225 &11652032092836435
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -651,6 +651,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4517900286099084757}
     m_Modifications:
+    - target: {fileID: 2371488723437758878, guid: 4b22d3594e63ea44a96a4d4952a01743,
+        type: 3}
+      propertyPath: _goalView
+      value: 
+      objectReference: {fileID: 11400000, guid: 442bc450a5843ae4d8f54ec081bfe4d1,
+        type: 2}
     - target: {fileID: 2673525515143744879, guid: 4b22d3594e63ea44a96a4d4952a01743,
         type: 3}
       propertyPath: m_Pivot.x
@@ -775,6 +781,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4517900286099084757}
     m_Modifications:
+    - target: {fileID: 2371488723437758878, guid: 4b22d3594e63ea44a96a4d4952a01743,
+        type: 3}
+      propertyPath: _icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371488723437758878, guid: 4b22d3594e63ea44a96a4d4952a01743,
+        type: 3}
+      propertyPath: _header
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371488723437758878, guid: 4b22d3594e63ea44a96a4d4952a01743,
+        type: 3}
+      propertyPath: _playButton
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2673525515143744879, guid: 4b22d3594e63ea44a96a4d4952a01743,
         type: 3}
       propertyPath: m_Pivot.x
@@ -880,10 +901,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalGoal_container (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2371488723437758878, guid: 4b22d3594e63ea44a96a4d4952a01743, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2741707974028940410, guid: 4b22d3594e63ea44a96a4d4952a01743, type: 3}
     - {fileID: 929391610465590597, guid: 4b22d3594e63ea44a96a4d4952a01743, type: 3}
+    - {fileID: 3041413393139727971, guid: 4b22d3594e63ea44a96a4d4952a01743, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 123423028271497494, guid: 4b22d3594e63ea44a96a4d4952a01743,
         type: 3}
