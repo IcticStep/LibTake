@@ -29,15 +29,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         public void Start()
         {
             WarmupServices();
-            InitGlobalGoal();
-            
             GoToMenu().Forget();
-        }
-
-        private void InitGlobalGoal()
-        {
-            GlobalGoal globalGoal = _staticDataService.GlobalGoals[0];
-            _globalGoalService.SetGlobalGoal(globalGoal);
         }
 
         private void WarmupServices() =>

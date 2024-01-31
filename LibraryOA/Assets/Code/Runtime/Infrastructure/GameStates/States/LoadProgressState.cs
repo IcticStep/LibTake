@@ -31,7 +31,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
                 case LoadProgressOption.LoadProgressIfAny:
                     LoadProgressOrCreateNew();
                     break;
-                case LoadProgressOption.ForceCreatingNewProgress:
+                case LoadProgressOption.NewGame:
                     ForceCreatingNewProgress();
                     break;
                 default:

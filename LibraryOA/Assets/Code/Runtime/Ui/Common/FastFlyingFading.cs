@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Code.Runtime.Data;
 using Cysharp.Threading.Tasks;
@@ -27,6 +26,8 @@ namespace Code.Runtime.Ui.Common
 
         private Vector3 _awayPosition;
         private Vector2 _onScreenPosition;
+        
+        public float Duration => _duration;
 
         private void OnValidate() =>
             _rectTransform ??= GetComponent<RectTransform>();
@@ -42,12 +43,12 @@ namespace Code.Runtime.Ui.Common
             _canvasGroup.alpha = 0f;
             _rectTransform.anchoredPosition = _awayPosition;
             _rectTransform
-                .DOAnchorPos(_onScreenPosition, _duration) 
+                .DOAnchorPos(_onScreenPosition, Duration) 
                 .SetEase(_flyOnScreenEase)
                 .ToUniTask(cancellationToken: cancellationToken);
 
             return _canvasGroup
-                .DOFade(1, _duration)
+                .DOFade(1, Duration)
                 .ToUniTask(cancellationToken: cancellationToken);
         }
         
@@ -56,12 +57,12 @@ namespace Code.Runtime.Ui.Common
             _canvasGroup.alpha = 1f;
             _rectTransform.anchoredPosition = _onScreenPosition;
             _rectTransform
-                .DOAnchorPos(_awayPosition, _duration)
+                .DOAnchorPos(_awayPosition, Duration)
                 .SetEase(_flyAwayEase)
                 .ToUniTask(cancellationToken: cancellationToken);
 
             return _canvasGroup
-                .DOFade(0, _duration)
+                .DOFade(0, Duration)
                 .ToUniTask(cancellationToken: cancellationToken);
         }
 

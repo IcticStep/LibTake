@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.GlobalGoals;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.Scanning;
@@ -26,11 +27,12 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IPlayerLivesService _playerLivesService;
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
+        private readonly IGlobalGoalService _globalGoalService;
 
         public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
             IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
             ISkillService skillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService,
-            IScanBookService scanBookService, ICraftingService craftingService)
+            IScanBookService scanBookService, ICraftingService craftingService, IGlobalGoalService globalGoalService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -43,6 +45,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _playerLivesService = playerLivesService;
             _scanBookService = scanBookService;
             _craftingService = craftingService;
+            _globalGoalService = globalGoalService;
         }
 
         public void Start()
@@ -68,6 +71,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _saveLoadRegistry.Register(_playerLivesService);
             _saveLoadRegistry.Register(_scanBookService);
             _saveLoadRegistry.Register(_craftingService);
+            _saveLoadRegistry.Register(_globalGoalService);
         }
     }
 }
