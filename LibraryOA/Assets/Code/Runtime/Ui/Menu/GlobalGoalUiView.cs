@@ -1,4 +1,5 @@
 using Code.Runtime.StaticData.GlobalGoals;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ namespace Code.Runtime.Ui.Menu
         private Button _playButton;
         [SerializeField]
         private GlobalGoal _goalView;
+        [SerializeField]
+        private GlobalGoalsContainer _globalGoalsContainer;
         
         private void Awake()
         {
@@ -26,6 +29,11 @@ namespace Code.Runtime.Ui.Menu
         private void OnDestroy() =>
             _playButton.onClick.RemoveListener(OnPlayButton);
 
-        private void OnPlayButton() { }
+        private void OnPlayButton() =>
+            StartNewGame()
+                .Forget();
+
+        private async UniTask StartNewGame() =>
+            await _globalGoalsContainer.Hide();
     }
 }

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 909732009985794669}
   _rectTransform: {fileID: 3662318745331473888}
-  _offscreenDistance: 700
+  _offscreenDistance: 3000
   _duration: 0.5
   _direction: 0
   _flyOnScreenEase: 21
@@ -540,6 +540,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 5659327931031032675}
+  _globalsGoalsContainer: {fileID: 0}
+  _mainButtonsGroup: {fileID: 1374662162559806002}
+  _gameName: {fileID: 0}
 --- !u!114 &5659327931031032675 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6164638242218667866, guid: e020724eb079f9a4080e8a5b8859ad90,
