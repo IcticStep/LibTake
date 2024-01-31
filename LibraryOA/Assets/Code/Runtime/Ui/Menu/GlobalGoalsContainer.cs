@@ -9,6 +9,8 @@ namespace Code.Runtime.Ui.Menu
         [SerializeField]
         private FastFlyingFading _fader;
 
+        public float Duration => _fader.Duration;
+        
         private void Start() =>
             _fader.SetInOffScreenPosition();
 
