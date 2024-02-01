@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.Factories;
@@ -76,7 +77,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
             Container.Bind<IRestartService>().To<RestartService>().AsSingle();
-            Container.Bind<ILocalizationService>().To<LocalizationService>().AsSingle();
+            Container.Bind(typeof(ILocalizationService), typeof(IDisposable)).To<LocalizationService>().AsSingle();
         }
 
         private void InstallServices()
