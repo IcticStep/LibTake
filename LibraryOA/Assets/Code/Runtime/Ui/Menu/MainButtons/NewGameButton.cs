@@ -2,6 +2,7 @@ using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.States;
 using Code.Runtime.Ui.Menu.Common;
+using Code.Runtime.Ui.Menu.GlobalGoals;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;

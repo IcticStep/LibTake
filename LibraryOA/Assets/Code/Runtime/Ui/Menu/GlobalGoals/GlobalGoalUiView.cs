@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Runtime.Ui.Menu
+namespace Code.Runtime.Ui.Menu.GlobalGoals
 {
     internal sealed class GlobalGoalUiView : MonoBehaviour
     {

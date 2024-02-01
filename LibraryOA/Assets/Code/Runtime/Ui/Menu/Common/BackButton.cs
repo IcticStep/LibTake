@@ -1,10 +1,8 @@
-using Code.Runtime.Ui.Menu.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Code.Runtime.Ui.Menu
+namespace Code.Runtime.Ui.Menu.Common
 {
     [RequireComponent(typeof(Button))]
     internal sealed class BackButton : MonoBehaviour
