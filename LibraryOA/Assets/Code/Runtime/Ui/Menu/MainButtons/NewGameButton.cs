@@ -33,8 +33,8 @@ namespace Code.Runtime.Ui.Menu.MainButtons
 
         private async UniTaskVoid ShowGoalsSelection()
         {
-            _globalsGoalsContainer.Show().Forget();
             _gameName.Hide().Forget();
+            _globalsGoalsContainer.Show().Forget();
             await _mainButtonsGroup.Hide();
         }
     }

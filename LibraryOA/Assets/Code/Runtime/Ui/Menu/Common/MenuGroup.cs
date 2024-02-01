@@ -11,12 +11,6 @@ namespace Code.Runtime.Ui.Menu.Common
         private GraphicRaycaster _graphicRaycaster;
         [SerializeField]
         private FastFlyingFading _fader;
-        
-        public void EnableInteractions() =>
-            _graphicRaycaster.enabled = true;
-        
-        public void DisableInteractions() => 
-            _graphicRaycaster.enabled = false;
 
         public async UniTask Show()
         {
@@ -29,9 +23,22 @@ namespace Code.Runtime.Ui.Menu.Common
         {
             DisableInteractions();
             await _fader.FadeOut(this.GetCancellationTokenOnDestroy());
+            EnableInteractions();
         }
 
         public void SetInOffScreenPosition() =>
             _fader.SetInOffScreenPosition();
+
+        private void EnableInteractions()
+        {
+            if(_graphicRaycaster != null)
+                _graphicRaycaster.enabled = true;
+        }
+
+        private void DisableInteractions()
+        {
+            if(_graphicRaycaster != null)
+                _graphicRaycaster.enabled = false;
+        }
     }
 }
