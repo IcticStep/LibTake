@@ -1696,8 +1696,8 @@ RectTransform:
   m_Children:
   - {fileID: 1741045631}
   - {fileID: 2125286148}
-  - {fileID: 3662318746413322119}
   - {fileID: 229058511}
+  - {fileID: 3662318746413322119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2431,6 +2431,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameName_canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6081026865290072389, guid: 0488adec78e5ec44fa3cfdab901eb23f,
+        type: 3}
+      propertyPath: _duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081026865290072389, guid: 0488adec78e5ec44fa3cfdab901eb23f,
+        type: 3}
+      propertyPath: _offscreenDistance
+      value: 3000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2608,6 +2618,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109283252}
     m_Modifications:
+    - target: {fileID: 3884116487305915926, guid: 62571afc7052b68478c2732eed4b0f16,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884116487305915926, guid: 62571afc7052b68478c2732eed4b0f16,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4234493422069384147, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
       propertyPath: m_Name
@@ -2615,24 +2635,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6239010226859361510, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
-      propertyPath: _groupsToShow.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239010226859361510, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: _groupsToHide.Array.data[0]
-      value: 
-      objectReference: {fileID: 4575619478352511853}
-    - target: {fileID: 6239010226859361510, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
       propertyPath: _groupsToShow.Array.data[0]
       value: 
       objectReference: {fileID: 4938470798402056342}
-    - target: {fileID: 6239010226859361510, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: _groupsToShow.Array.data[1]
-      value: 
-      objectReference: {fileID: 2125286158}
     - target: {fileID: 6565040051719022613, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
       propertyPath: m_Pivot.x

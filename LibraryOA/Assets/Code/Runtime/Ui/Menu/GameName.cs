@@ -18,7 +18,8 @@ namespace Code.Runtime.Ui.Menu
             _staticDataService = staticDataService;
 
         private void Start() =>
-            PlayStartAnimation().Forget();
+            PlayStartAnimation()
+                .Forget();
 
         public UniTask Show() =>
             _fader.FadeIn(this.GetCancellationTokenOnDestroy());
