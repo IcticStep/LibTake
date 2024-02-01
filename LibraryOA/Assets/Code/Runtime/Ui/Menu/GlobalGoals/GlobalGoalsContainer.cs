@@ -2,7 +2,7 @@ using Code.Runtime.Ui.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Runtime.Ui.Menu
+namespace Code.Runtime.Ui.Menu.GlobalGoals
 {
     internal sealed class GlobalGoalsContainer : MonoBehaviour
     {

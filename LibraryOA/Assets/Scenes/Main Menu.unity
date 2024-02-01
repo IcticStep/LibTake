@@ -1224,6 +1224,37 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1725432384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6166308810143297345, guid: 62571afc7052b68478c2732eed4b0f16,
+    type: 3}
+  m_PrefabInstance: {fileID: 1236529374861717554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1725432386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6720025656351708938, guid: 62571afc7052b68478c2732eed4b0f16,
+    type: 3}
+  m_PrefabInstance: {fileID: 1236529374861717554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725432384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1725432389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725432384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fdb97a48d24fd1b5e282a88e6cf187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1725432386}
 --- !u!224 &1741045631 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8572257946407159059, guid: 24d924a636dcb634e8b49b979c43802c,
@@ -2741,7 +2772,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6166308810143297345, guid: 62571afc7052b68478c2732eed4b0f16,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1725432389}
   m_SourcePrefab: {fileID: 100100000, guid: 62571afc7052b68478c2732eed4b0f16, type: 3}
 --- !u!33 &1264596436292888646
 MeshFilter:
