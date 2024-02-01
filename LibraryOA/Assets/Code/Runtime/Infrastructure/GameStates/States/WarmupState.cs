@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.GameStates.Api;
+using Code.Runtime.Infrastructure.Locales;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.GlobalGoals;
@@ -15,35 +16,37 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IGlobalGoalService _globalGoalService;
         private readonly ISceneLoader _sceneLoader;
         private readonly ILoadingCurtainService _loadingCurtainService;
+        private readonly ILocalizationService _localizationService;
 
         public WarmupState(GameStateMachine stateMachine, IStaticDataService staticDataService, IGlobalGoalService globalGoalService,
-            ISceneLoader sceneLoader, ILoadingCurtainService loadingCurtainService)
+            ISceneLoader sceneLoader, ILoadingCurtainService loadingCurtainService, ILocalizationService localizationService)
         {
             _stateMachine = stateMachine;
             _staticDataService = staticDataService;
             _globalGoalService = globalGoalService;
             _sceneLoader = sceneLoader;
             _loadingCurtainService = loadingCurtainService;
+            _localizationService = localizationService;
         }
 
-        public void Start()
+        public void Start() =>
+            WarmupServices()
+                .Forget();
+
+        private async UniTaskVoid WarmupServices()
         {
-            WarmupServices();
-            GoToMenu().Forget();
+            _staticDataService.LoadAll();
+            await _localizationService.WarmUp();
+            await GoToMenu();
         }
 
-        private void WarmupServices() =>
-            _staticDataService.LoadAll();
-
-        private async UniTaskVoid GoToMenu()
+        private async UniTask GoToMenu()
         {
             await _sceneLoader.LoadSceneAsync(_staticDataService.ScenesRouting.MenuScene);
             _loadingCurtainService.Hide();
             _stateMachine.EnterState<MenuState>();
         }
 
-        public void Exit()
-        {
-        }
+        public void Exit() { }
     }
 }

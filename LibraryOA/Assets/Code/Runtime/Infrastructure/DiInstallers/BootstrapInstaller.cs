@@ -2,6 +2,7 @@ using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.Factories;
 using Code.Runtime.Infrastructure.GameStates.States;
+using Code.Runtime.Infrastructure.Locales;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
@@ -75,6 +76,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
             Container.Bind<IRestartService>().To<RestartService>().AsSingle();
+            Container.Bind<ILocalizationService>().To<LocalizationService>().AsSingle();
         }
 
         private void InstallServices()
