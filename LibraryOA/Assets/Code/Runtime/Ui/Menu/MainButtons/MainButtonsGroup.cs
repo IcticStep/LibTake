@@ -9,7 +9,6 @@ namespace Code.Runtime.Ui.Menu.MainButtons
 {
     internal sealed class MainButtonsGroup : MonoBehaviour
     {
-        [FormerlySerializedAs("_menuButtonsGroup")]
         [SerializeField]
         private MenuGroup _menuGroup;
         
@@ -23,24 +22,11 @@ namespace Code.Runtime.Ui.Menu.MainButtons
             PlayStartAnimation()
                 .Forget();
 
-        public async UniTask Show()
-        {
-            _menuGroup.DisableInteractions();
-            await _menuGroup.Show();
-            _menuGroup.EnableInteractions();
-        }
-
-        public async UniTask Hide()
-        {
-            _menuGroup.DisableInteractions();
-            await _menuGroup.Hide();
-        }
-
         private async UniTask PlayStartAnimation()
         {
             _menuGroup.SetInOffScreenPosition();
             await UniTask.WaitForSeconds(_staticDataService.Ui.Menu.StartDelaySeconds);
-            await Show();
+            await _menuGroup.Show();
         }
     }
 }

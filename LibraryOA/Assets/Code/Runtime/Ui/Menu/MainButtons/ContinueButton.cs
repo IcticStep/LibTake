@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.States;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Services.Loading;
+using Code.Runtime.Ui.Menu.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ namespace Code.Runtime.Ui.Menu.MainButtons
         [SerializeField]
         private Button _button;
         [SerializeField]
-        private MainButtonsGroup _mainButtonsGroup;
+        private MenuGroup _mainButtonsGroup;
         [SerializeField]
         private GameName _gameName;
         
