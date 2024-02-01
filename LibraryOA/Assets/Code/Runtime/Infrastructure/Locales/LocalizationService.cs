@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
@@ -11,6 +12,8 @@ namespace Code.Runtime.Infrastructure.Locales
     {
         private readonly List<Locale> _availableLocalizations = new();
         private int _selectedLocaleIndex;
+
+        public event Action LocaleChanged;
         
         public async UniTask WarmUp()
         {
@@ -18,12 +21,19 @@ namespace Code.Runtime.Infrastructure.Locales
 
             _availableLocalizations.AddRange(LocalizationSettings.AvailableLocales.Locales);
             _selectedLocaleIndex = _availableLocalizations.FindIndex(locale => locale == LocalizationSettings.SelectedLocale);
+            LocalizationSettings.SelectedLocaleChanged += NotifyLocalizationChanged;
         }
+
+        public void Dispose() =>
+            LocalizationSettings.SelectedLocaleChanged -= NotifyLocalizationChanged;
 
         public void SetNextLocale()
         {
             _selectedLocaleIndex = (_selectedLocaleIndex + 1) % _availableLocalizations.Count;
             LocalizationSettings.SelectedLocale = _availableLocalizations[_selectedLocaleIndex];
         }
+
+        private void NotifyLocalizationChanged(Locale locale) =>
+            LocaleChanged?.Invoke();
     }
 }
