@@ -18,11 +18,18 @@ namespace Code.Runtime.Ui.Menu.Common
         public void DisableInteractions() => 
             _graphicRaycaster.enabled = false;
 
-        public UniTask Show() =>
-            _fader.FadeIn(this.GetCancellationTokenOnDestroy());
-        
-        public UniTask Hide() =>
-            _fader.FadeOut(this.GetCancellationTokenOnDestroy());
+        public async UniTask Show()
+        {
+            DisableInteractions();
+            await _fader.FadeIn(this.GetCancellationTokenOnDestroy());
+            EnableInteractions();
+        }
+
+        public async UniTask Hide()
+        {
+            DisableInteractions();
+            await _fader.FadeOut(this.GetCancellationTokenOnDestroy());
+        }
 
         public void SetInOffScreenPosition() =>
             _fader.SetInOffScreenPosition();
