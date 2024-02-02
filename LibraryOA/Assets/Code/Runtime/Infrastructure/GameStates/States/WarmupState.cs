@@ -43,7 +43,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private async UniTask GoToMenu()
         {
             await _sceneLoader.LoadSceneAsync(_staticDataService.ScenesRouting.MenuScene);
-            _loadingCurtainService.Hide();
+            _loadingCurtainService.HideImageAsync().Forget();
             _stateMachine.EnterState<MenuState>();
         }
 

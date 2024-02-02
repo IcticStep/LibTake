@@ -1,5 +1,6 @@
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Services.Loading;
 using Code.Runtime.Ui.Menu.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -19,10 +20,12 @@ namespace Code.Runtime.Ui.Menu.MainButtons
         
         private ISceneLoader _sceneLoader;
         private IStaticDataService _staticDataService;
+        private ILoadingCurtainService _loadingCurtainService;
 
         [Inject]
-        private void Construct(ISceneLoader sceneLoader, IStaticDataService staticDataService)
+        private void Construct(ISceneLoader sceneLoader, IStaticDataService staticDataService, ILoadingCurtainService loadingCurtainService)
         {
+            _loadingCurtainService = loadingCurtainService;
             _staticDataService = staticDataService;
             _sceneLoader = sceneLoader;
         }
@@ -39,7 +42,10 @@ namespace Code.Runtime.Ui.Menu.MainButtons
 
         private async UniTaskVoid ShowSettings()
         {
-            await UniTask.WhenAll(_mainButtonsGroup.Hide(), _nameGroup.Hide());
+            await UniTask.WhenAll(
+                _mainButtonsGroup.Hide(),
+                _nameGroup.Hide(),
+                _loadingCurtainService.ShowBlackAsync());
             await _sceneLoader.LoadSceneAsync(_staticDataService.ScenesRouting.AuthorsScene);
         }
     }
