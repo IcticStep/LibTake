@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Data;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Serialization;
@@ -29,6 +30,11 @@ namespace Code.Runtime.StaticData.GlobalGoals
 
         [field: SerializeField]
         public LocalizedString LocalizedName { get; private set; }
+
+        [SerializeField]
+        private SceneAsset _endingScene;
+        
+        public string EndingSceneName => _endingScene.name;
 
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;
         public string UniqueId => _uniqueId;
