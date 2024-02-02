@@ -3883,8 +3883,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particlesGroup: {fileID: 723066879}
   _ladder: {fileID: 1764199390}
-  _targetY: 20
-  _launchDuration: 3
+  _targetY: 60
+  _launchDuration: 6
   _lauhcnDelay: 0.5
   _ease: 11
 --- !u!1 &1287538640
