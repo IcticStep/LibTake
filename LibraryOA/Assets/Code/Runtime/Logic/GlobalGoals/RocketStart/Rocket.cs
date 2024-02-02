@@ -51,6 +51,12 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
 
         public UniTask Launch()
         {
+#if UNITY_EDITOR
+            // if editor is playing
+            if(!Application.isPlaying)
+                return UniTask.CompletedTask;
+#endif
+            
             _particlesGroup.gameObject.SetActive(true);
             return DOTween
                 .Sequence()
