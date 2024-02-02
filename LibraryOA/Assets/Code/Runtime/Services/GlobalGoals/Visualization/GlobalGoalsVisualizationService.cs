@@ -68,6 +68,9 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
                 ResetVisualization(goalScheme);                
         }
 
+        public void PlayFinishCutscene() =>
+            CurrentGoalScheme.Director.PlayFinishCutscene();
+
         private static void VisualizeStepScheme(GlobalStepScheme stepScheme)
         {
             foreach(GlobalStepPartVisualizer visualizer in stepScheme.Visualizers)

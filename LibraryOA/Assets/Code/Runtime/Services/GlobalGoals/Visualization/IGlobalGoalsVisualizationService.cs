@@ -23,5 +23,6 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
         void VisualizeStepAndAllBefore(GlobalStep step);
         void ResetCurrentVisualization();
         void ResetAllVisualizations();
+        void PlayFinishCutscene();
     }
 }
