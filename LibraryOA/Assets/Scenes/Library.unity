@@ -2622,6 +2622,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 723066877}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &723066879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4331653320406150214, guid: 26e25087c3b57574ca2b04fbed212ca4,
+    type: 3}
+  m_PrefabInstance: {fileID: 723066877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &784501513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7548694501792137940, guid: 660d3835477ed4f4c8424af4f775de28,
@@ -3819,13 +3825,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1278020299}
   - component: {fileID: 1278020300}
+  - component: {fileID: 1278020301}
   m_Layer: 0
   m_Name: RocketHull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1278020299
 Transform:
   m_ObjectHideFlags: 0
@@ -3862,6 +3869,24 @@ MonoBehaviour:
   _initialState: 0
   _isCameraTarget: 1
   _cameraTarget: {fileID: 1409588876}
+--- !u!114 &1278020301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278020298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52178c31d7db484eaf9100a955373575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesGroup: {fileID: 723066879}
+  _ladder: {fileID: 1764199390}
+  _targetY: 20
+  _launchDuration: 3
+  _lauhcnDelay: 0.5
+  _ease: 11
 --- !u!1 &1287538640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5359,7 +5384,7 @@ PrefabInstance:
     - target: {fileID: 1928974971688864542, guid: 29733a79d74b3a74983dee29d25e43ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5586,7 +5611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1744782504
 Transform:
   m_ObjectHideFlags: 0
@@ -6352,7 +6377,7 @@ PrefabInstance:
     - target: {fileID: 1097304820958019430, guid: 66c507547baa88e4c946a0054af6a709,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
