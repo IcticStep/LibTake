@@ -31,11 +31,6 @@ namespace Code.Runtime.StaticData.GlobalGoals
         [field: SerializeField]
         public LocalizedString LocalizedName { get; private set; }
 
-        [SerializeField]
-        private SceneAsset _endingScene;
-        
-        public string EndingSceneName => _endingScene.name;
-
         public IReadOnlyList<GlobalStep> GlobalSteps => _globalSteps;
         public string UniqueId => _uniqueId;
         public Sprite Icon => _icon;
