@@ -1,4 +1,9 @@
+using System;
 using Code.Runtime.Infrastructure.AssetManagement;
+using Code.Runtime.Infrastructure.GameStates;
+using Code.Runtime.Infrastructure.GameStates.Factories;
+using Code.Runtime.Infrastructure.GameStates.States;
+using Code.Runtime.Infrastructure.Locales;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
@@ -9,7 +14,6 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Infrastructure.Services.UiMessages;
-using Code.Runtime.Infrastructure.States;
 using Code.Runtime.Services.Books.Delivering;
 using Code.Runtime.Services.Books.Receiving;
 using Code.Runtime.Services.Books.Reward;
@@ -73,6 +77,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
             Container.Bind<IRestartService>().To<RestartService>().AsSingle();
+            Container.Bind(typeof(ILocalizationService), typeof(IDisposable)).To<LocalizationService>().AsSingle();
         }
 
         private void InstallServices()
@@ -129,6 +134,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         {
             Container.Bind<BootstrapState>().AsSingle();
             Container.Bind<WarmupState>().AsSingle();
+            Container.Bind<MenuState>().AsSingle();
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
             Container.Bind<MorningState>().AsSingle();

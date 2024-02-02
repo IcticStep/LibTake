@@ -6,7 +6,9 @@ namespace Code.Runtime.StaticData
     public class ScenesRouting : ScriptableObject
     {
         public string BootstrapScene;
-        public string TargetScene;
+        public string MenuScene;
+        public string LevelScene;
         public string GameOverScene;
+        public string AuthorsScene;
     }
 }

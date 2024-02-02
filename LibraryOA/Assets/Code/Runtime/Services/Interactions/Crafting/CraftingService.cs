@@ -123,7 +123,6 @@ namespace Code.Runtime.Services.Interactions.Crafting
 
         public void UpdateProgress(GameProgress progress)
         {
-            progress.PlayerData.GlobalGoal.GoalId = _globalGoalId;
             progress.PlayerData.GlobalGoal.GoalStepIndex = CurrentStepIndex;
             progress.PlayerData.GlobalGoal.PayedForStep = PayedForStep;
         }

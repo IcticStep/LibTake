@@ -1,4 +1,5 @@
 using Code.Runtime.Data;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -37,6 +38,12 @@ namespace Code.Runtime.Ui.Common
 
         public void Move() =>
             _tween.Restart();
+        
+        public async UniTask MoveAsync()
+        {
+            _tween.Restart();
+            await _tween.AsyncWaitForCompletion();
+        }
 
         private void ResetPosition() =>
             _transform.localPosition = _startValue;
