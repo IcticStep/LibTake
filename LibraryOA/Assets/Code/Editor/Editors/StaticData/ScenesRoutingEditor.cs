@@ -1,32 +1,41 @@
 using System.Linq;
+using System.Reflection;
 using Code.Runtime.StaticData;
 using UnityEditor;
+using UnityEngine;
 
 namespace Code.Editor.Editors.StaticData
 {
     [CustomEditor(typeof(ScenesRouting))]
-    internal sealed class StartupSettingsEditor : UnityEditor.Editor
+    internal sealed class ScenesRoutingEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             ScenesRouting settings = (ScenesRouting)target;
             string[] scenes = GetAvailableScenes();
 
-            DrawSceneSelection("Bootstrap scene", scenes, ref settings.BootstrapScene);
-            DrawSceneSelection("Menu scene", scenes, ref settings.MenuScene);
-            DrawSceneSelection("Level scene", scenes, ref settings.LevelScene);
-            DrawSceneSelection("Game over scene", scenes, ref settings.GameOverScene);
-            DrawSceneSelection("Authors scene", scenes, ref settings.AuthorsScene);
+            // Using reflection to get all string fields from ScenesRouting
+            var stringFields = typeof(ScenesRouting).GetFields(BindingFlags.Public | BindingFlags.Instance)
+                .Where(field => field.FieldType == typeof(string));
+
+            foreach (var field in stringFields)
+            {
+                DrawSceneSelection(field, scenes, settings);
+            }
         }
 
-        private void DrawSceneSelection(string label, string[] scenes, ref string selectedScene)
+        private void DrawSceneSelection(FieldInfo field, string[] scenes, ScenesRouting settings)
         {
             EditorGUI.BeginChangeCheck();
-            string newScene = DrawScenePopup(label, scenes, selectedScene);
+
+            // Get current value of the field
+            string currentScene = (string)field.GetValue(settings);
+            string newScene = DrawScenePopup(ObjectNames.NicifyVariableName(field.Name), scenes, currentScene);
+
             if (EditorGUI.EndChangeCheck())
             {
-                Undo.RecordObject(target, $"Change {label}");
-                selectedScene = newScene;
+                Undo.RecordObject(target, $"Change {field.Name}");
+                field.SetValue(settings, newScene); // Set new value to the field
                 EditorUtility.SetDirty(target);
             }
         }
