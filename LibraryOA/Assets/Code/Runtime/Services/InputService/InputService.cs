@@ -24,7 +24,7 @@ namespace Code.Runtime.Services.InputService
 
         public void Disable() =>
             Enabled = false;
-        
+
         public void Enable() =>
             Enabled = true;
 

@@ -1,13 +1,11 @@
-using System;
 using Code.Runtime.Logic.Interactables;
 using Code.Runtime.Logic.Interactables.Api;
 using Code.Runtime.Services.InputService;
-using Code.Runtime.Services.Player;
 using Code.Runtime.Services.Player.Inventory;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic.Player
+namespace Code.Runtime.Logic.Player.Animations
 {
     internal sealed class PlayerAnimator : MonoBehaviour
     {
@@ -21,9 +19,9 @@ namespace Code.Runtime.Logic.Player
         private InteractablesScanner _interactablesScanner;
         
         private IPlayerInventoryService _playerInventory;
+        private IInputService _inputService;
         private int _handleItemLayer;
         private int _doLayerIndex;
-        private IInputService _inputService;
 
         [Inject]
         private void Construct(IPlayerInventoryService playerInventory, IInputService inputService)
