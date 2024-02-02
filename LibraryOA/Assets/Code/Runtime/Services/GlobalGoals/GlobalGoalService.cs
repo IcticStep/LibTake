@@ -16,6 +16,8 @@ namespace Code.Runtime.Services.GlobalGoals
         private IGlobalGoalsVisualizationService _globalGoalsVisualizationService;
         private GlobalGoal _globalGoal;
         private IStaticDataService _staticDataService;
+        
+        public GlobalGoal GlobalGoal => _globalGoal;
 
         [Inject]
         private void Construct(ICraftingService craftingService, IGlobalGoalsVisualizationService globalGoalsVisualizationService, IStaticDataService staticDataService)

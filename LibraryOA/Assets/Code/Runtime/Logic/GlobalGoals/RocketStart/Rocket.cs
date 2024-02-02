@@ -49,7 +49,11 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
             _transform.localScale = _startScale;
         }
 
-        public UniTask Launch()
+        public void Launch() =>
+            LaunchAsync()
+                .Forget();
+
+        public UniTask LaunchAsync()
         {
 #if UNITY_EDITOR
             // if editor is playing
@@ -66,7 +70,7 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
                 .Append(Scale())
                 .Join(ScaleParticles())
                 .Join(ScaleWhileFlying())
-                .ToUniTask();
+                .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
         }
 
         private TweenerCore<Vector3, Vector3, VectorOptions> Scale() =>

@@ -36,15 +36,16 @@ namespace Code.Editor.Editors.DiInstallers.GlobalGoals
         {
             _staticDataService.LoadGlobalGoals();
             GlobalStepPartVisualizer[] visualizers = FindObjectsByType<GlobalStepPartVisualizer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            GlobalGoalDirector[] directors = FindObjectsByType<GlobalGoalDirector>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
             return _staticDataService
                 .GlobalGoals
-                .Select(globalGoal => CreateGlobalGoalScheme(globalGoal, visualizers))
+                .Select(globalGoal => CreateGlobalGoalScheme(globalGoal, visualizers, directors))
                 .ToList();
         }
 
-        private static GlobalGoalScheme CreateGlobalGoalScheme(GlobalGoal globalGoal, GlobalStepPartVisualizer[] visualizers) =>
-            new(globalGoal, CreateGlobalStepSchemes(globalGoal, visualizers));
+        private static GlobalGoalScheme CreateGlobalGoalScheme(GlobalGoal globalGoal, GlobalStepPartVisualizer[] visualizers, GlobalGoalDirector[] directors) =>
+            new(globalGoal, CreateGlobalStepSchemes(globalGoal, visualizers), directors.FirstOrDefault(director => director.GlobalGoal == globalGoal));
 
         private static List<GlobalStepScheme> CreateGlobalStepSchemes(GlobalGoal globalGoal, GlobalStepPartVisualizer[] visualizers) =>
             globalGoal

@@ -1,33 +1,47 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
+using Code.Runtime.Services.GlobalGoals.Finish;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.StaticData.Interactables;
 using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {
-    internal class FinishCraftState : ICraftingTableState
+    internal class FinishCraftState : ICraftingTableState, IStartable
     {
         private readonly CraftingTableStateMachine _craftingTableStateMachine;
         private readonly ICraftingService _craftingService;
         private readonly IStaticDataService _staticDataService;
+        private readonly IGlobalGoalFinishService _globalGoalFinishService;
+
+        private bool _canInteract;
         
         private StaticCraftingTable CraftingTableData => _staticDataService.Interactables.CraftingTable;
 
-        public FinishCraftState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService, IStaticDataService staticDataService)
+        public FinishCraftState(CraftingTableStateMachine craftingTableStateMachine, ICraftingService craftingService, IStaticDataService staticDataService,
+            IGlobalGoalFinishService globalGoalFinishService)
         {
             _craftingTableStateMachine = craftingTableStateMachine;
             _craftingService = craftingService;
             _staticDataService = staticDataService;
+            _globalGoalFinishService = globalGoalFinishService;
         }
 
+        public void Start() =>
+            _canInteract = true;
+
         public bool CanInteract() =>
-            true;
+            _canInteract;
 
         public void Interact()
         {
+            _canInteract = false;
             _craftingService.CraftStep();
-            EnterPayStateDelayed().Forget();
+
+            if(_craftingService.FinishedGoal)
+                FinishGlobalGoal();
+            else
+                EnterPayStateDelayed().Forget();
         }
 
         private async UniTaskVoid EnterPayStateDelayed()
@@ -35,5 +49,8 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
             await UniTask.WaitForSeconds(CraftingTableData.PayStateEnterSecondsDelay);
             _craftingTableStateMachine.Enter<PayState>();
         }
+
+        private void FinishGlobalGoal() =>
+            _globalGoalFinishService.FinishGlobalGoal();
     }
 }

@@ -7,6 +7,9 @@ namespace Code.Runtime.Infrastructure.Services.Camera
         CameraFollow CameraFollow { get; }
         UnityEngine.Camera MainCamera { get; }
         void Initialize(CameraFollow main);
+        void EnableAnimator();
+        void DisableAnimator();
         void CleanUp();
+        void DisableFollow();
     }
 }
