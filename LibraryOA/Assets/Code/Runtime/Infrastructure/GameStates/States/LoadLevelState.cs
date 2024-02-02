@@ -67,13 +67,6 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             StartGameplay().Forget();
         }
 
-        private async UniTaskVoid StartGameplay()
-        {
-            _loadingCurtainService.Hide();
-            await UniTask.WaitForSeconds(_staticData.LevelStartSettings.LevelStartDelay);
-            _stateMachine.EnterState<MorningState>();
-        }
-
         private void InitGameWorld(LevelStaticData levelData)
         {
             InitBookSlots(levelData);
@@ -84,7 +77,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             InitStatues(levelData);
             InitCustomers(levelData);
         }
-        
+
         private GameObject InitPlayer(LevelStaticData levelData) =>
             _charactersFactory.CreatePlayer(levelData.PlayerInitialPosition);
 
@@ -102,7 +95,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             foreach(ReadingTableSpawnData readingTable in levelData.InteractablesSpawns.ReadingTables)
                 _interactablesFactory.CreateReadingTable(readingTable.Id, readingTable.Position, readingTable.Rotation, readingTable.InitialBookId);
         }
-        
+
         private void InitCraftingTables(LevelStaticData levelData)
         {
             foreach(CraftingTableSpawnData craftingTable in levelData.InteractablesSpawns.CraftingTables)
@@ -129,7 +122,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
 
         private void InitTruck(LevelStaticData levelData) =>
             _interactablesFactory.CreateTruck(levelData.TruckWay);
-        
+
         private void CameraFollow(GameObject target) =>
             _cameraProvider
                 .CameraFollow
@@ -139,6 +132,12 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         {
             foreach(ISavedProgressReader progressReader in _saveLoadRegistry.ProgressReaders)
                 progressReader.LoadProgress(_persistentProgress.Progress);
+        }
+
+        private async UniTaskVoid StartGameplay()
+        {
+            await _loadingCurtainService.HideImageAsync();
+            _stateMachine.EnterState<MorningState>();
         }
     }
 }

@@ -56,8 +56,7 @@ namespace Code.Runtime.Ui.Menu.MainButtons
 
         private async UniTaskVoid ContinueGame()
         {
-            _loadingCurtainService.Show();
-            await UniTask.WhenAll(_mainButtonsGroup.Hide(), _gameName.Hide());
+            await UniTask.WhenAll(_mainButtonsGroup.Hide(), _gameName.Hide(), _loadingCurtainService.ShowImageAsync());
             _gameStateMachine.EnterState<LoadProgressState, LoadProgressOption>(LoadProgressOption.LoadProgressIfAny);
         }
     }

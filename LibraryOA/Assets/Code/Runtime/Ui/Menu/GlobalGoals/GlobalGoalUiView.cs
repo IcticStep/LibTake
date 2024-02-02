@@ -70,9 +70,11 @@ namespace Code.Runtime.Ui.Menu.GlobalGoals
         private async UniTask StartNewGame()
         {
             _globalGoalService.SetGlobalGoal(_goalView);
-            _globalGoalsContainer.Hide().Forget();
-            _loadingCurtainService.Show();
-            await UniTask.WaitForSeconds(_globalGoalsContainer.Duration / 2);
+            
+            await UniTask.WhenAll(
+                _globalGoalsContainer.Hide(),
+                _loadingCurtainService.ShowImageAsync());
+            
             _gameStateMachine.EnterState<LoadProgressState, LoadProgressOption>(LoadProgressOption.NewGame);
         }
     }
