@@ -11,5 +11,8 @@ namespace Code.Runtime.StaticData.Ui
         [field: SerializeField]
         [field: Header("Additional icons")]
         public Sprite CompletedIcon { get; private set; }
+        
+        [field: SerializeField]
+        public MenuData Menu { get; private set; }
     }
 }

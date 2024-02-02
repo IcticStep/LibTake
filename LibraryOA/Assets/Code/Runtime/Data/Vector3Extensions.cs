@@ -20,6 +20,6 @@ namespace Code.Runtime.Data
         {
             vector3.z = z;
             return vector3;
-        }        
+        }
     }
 }

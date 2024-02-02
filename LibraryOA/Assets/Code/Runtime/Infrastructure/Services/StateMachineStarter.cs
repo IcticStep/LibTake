@@ -1,4 +1,5 @@
-using Code.Runtime.Infrastructure.States;
+using Code.Runtime.Infrastructure.GameStates;
+using Code.Runtime.Infrastructure.GameStates.States;
 using JetBrains.Annotations;
 using Zenject;
 

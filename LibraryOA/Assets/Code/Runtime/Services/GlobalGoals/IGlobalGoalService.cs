@@ -1,10 +1,9 @@
-using Code.Runtime.Services.GlobalGoals.Visualization;
-using Code.Runtime.Services.Interactions.Crafting;
+using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.StaticData.GlobalGoals;
 
 namespace Code.Runtime.Services.GlobalGoals
 {
-    internal interface IGlobalGoalService
+    internal interface IGlobalGoalService : ISavedProgress
     {
         void SetGlobalGoal(GlobalGoal globalGoal);
     }

@@ -13,8 +13,10 @@ namespace Code.Editor.Editors.StaticData
             string[] scenes = GetAvailableScenes();
 
             DrawSceneSelection("Bootstrap scene", scenes, ref settings.BootstrapScene);
-            DrawSceneSelection("Game scene", scenes, ref settings.TargetScene);
+            DrawSceneSelection("Menu scene", scenes, ref settings.MenuScene);
+            DrawSceneSelection("Level scene", scenes, ref settings.LevelScene);
             DrawSceneSelection("Game over scene", scenes, ref settings.GameOverScene);
+            DrawSceneSelection("Authors scene", scenes, ref settings.AuthorsScene);
         }
 
         private void DrawSceneSelection(string label, string[] scenes, ref string selectedScene)
