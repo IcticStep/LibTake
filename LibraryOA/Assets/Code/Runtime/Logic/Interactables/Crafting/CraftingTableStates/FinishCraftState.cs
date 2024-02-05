@@ -33,10 +33,14 @@ namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
         public bool CanInteract() =>
             _canInteract;
 
-        public void Interact()
+        public void Interact() =>
+            ProcessInteraction()
+                .Forget();
+
+        private async UniTaskVoid ProcessInteraction()
         {
             _canInteract = false;
-            _craftingService.CraftStep();
+            await _craftingService.CraftStep();
 
             if(_craftingService.FinishedGoal)
                 FinishGlobalGoal();

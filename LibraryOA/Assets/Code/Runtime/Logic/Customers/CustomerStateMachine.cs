@@ -87,6 +87,9 @@ namespace Code.Runtime.Logic.Customers
             nextState.Start(payload);
         }
 
+        public void ForceStop() =>
+            _progress.StopFilling();
+
         private TState ChangeState<TState>()
             where TState : class, IExitableCustomerState
         {

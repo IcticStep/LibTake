@@ -22,7 +22,7 @@ namespace Code.Runtime.Services.Customers.Queue
         public bool Any => _membersQueue.Any();
 
         public event Action Updated;
-
+        
         public void Initialize(IReadOnlyList<Vector3> queuePoints) =>
             _points = queuePoints;
 

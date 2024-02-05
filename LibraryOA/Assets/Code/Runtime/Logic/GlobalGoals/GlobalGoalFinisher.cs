@@ -13,9 +13,7 @@ namespace Code.Runtime.Logic.GlobalGoals
             FinishAsync()
                 .Forget();
 
-        private async UniTaskVoid FinishAsync()
-        {
-            await _rocket.LaunchAsync(); 
-        }
+        private async UniTaskVoid FinishAsync() =>
+            await _rocket.LaunchAsync();
     }
 }
