@@ -1,7 +1,7 @@
 using System;
-using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.StaticData.GlobalGoals;
+using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Services.Interactions.Crafting
 {
@@ -18,7 +18,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
         void SetGoal(GlobalGoal globalGoal);
         void AllowCrafting();
         void BlockCrafting();
-        void CraftStep();
+        UniTask CraftStep();
         int PayForStep();
         bool CanCraftStep();
         bool CanPayForStep();

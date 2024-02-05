@@ -14,5 +14,7 @@ namespace Code.Runtime.Logic.Customers
 
         void Enter<TState, TPayload>(TPayload payload)
             where TState : class, IPayloadedCustomerState<TPayload>;
+
+        void ForceStop();
     }
 }

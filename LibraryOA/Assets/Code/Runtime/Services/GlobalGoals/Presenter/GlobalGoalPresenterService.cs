@@ -30,7 +30,7 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
             _globalGoalsVisualizationService = globalGoalsVisualizationService;
         }
 
-        public async UniTaskVoid ShowBuiltStep(GlobalStep globalStep, GlobalGoal globalGoal)
+        public async UniTask ShowBuiltStep(GlobalStep globalStep, GlobalGoal globalGoal)
         {
             GlobalStepScheme scheme = GetGlobalStepScheme(globalStep);
             _inputService.Disable();

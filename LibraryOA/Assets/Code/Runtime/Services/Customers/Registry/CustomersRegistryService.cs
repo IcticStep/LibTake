@@ -8,6 +8,8 @@ namespace Code.Runtime.Services.Customers.Registry
     public sealed class CustomersRegistryService : ICustomersRegistryService
     {
         private readonly Dictionary<QueueMember, CustomerStateMachine> _registry = new();
+        
+        public IEnumerable<CustomerStateMachine> AllCustomers => _registry.Values;
 
         public void Register(CustomerStateMachine customer) =>
             _registry.Add(
