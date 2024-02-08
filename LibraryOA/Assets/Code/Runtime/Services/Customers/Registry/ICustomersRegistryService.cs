@@ -9,5 +9,6 @@ namespace Code.Runtime.Services.Customers.Registry
         ICustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember);
         void CleanUp();
         IEnumerable<CustomerStateMachine> AllCustomers { get; }
+        void ForceStopAllCustomers();
     }
 }
