@@ -21,5 +21,11 @@ namespace Code.Runtime.Services.Customers.Registry
 
         public void CleanUp() =>
             _registry.Clear();
+
+        public void ForceStopAllCustomers()
+        {
+            foreach (CustomerStateMachine customer in AllCustomers)
+                customer.ForceStop();
+        }
     }
 }

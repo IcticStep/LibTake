@@ -34,7 +34,7 @@ namespace Code.Runtime.Services.GlobalGoals.Finish
             _cameraProvider.EnableAnimator();
             _inputService.Disable();
             _hudProviderService.Hide();
-            _customersRegistryService.
+            _customersRegistryService.ForceStopAllCustomers();
             _globalGoalsVisualizationService.PlayFinishCutscene();
         }
     }
