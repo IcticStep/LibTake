@@ -23,6 +23,8 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
 
+        private UniTaskCompletionSource _forceExitCompletionSource;
+
         public DayGameState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService, 
             ICustomersDeliveringService customersDeliveringService, IReadBookService readBookService, IDaysService daysService,
             IPlayerLivesService playerLivesService, IScanBookService scanBookService, ICraftingService craftingService)
@@ -39,6 +41,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
 
         public void Start()
         {
+            _forceExitCompletionSource = new UniTaskCompletionSource();
             _readBookService.AllowReading();
             _scanBookService.AllowScanning();
             _craftingService.AllowCrafting();
@@ -46,8 +49,11 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             ProceedDay().Forget();
         }
 
-        public void Exit() =>
+        public void Exit()
+        {
+            _forceExitCompletionSource.TrySetResult();
             Debug.Log($"Day {_daysService.CurrentDay} finished.");
+        }
 
         private void ShowDayNumberMessage()
         {
@@ -63,7 +69,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             UniTask looseAllLives = UniTask.WaitUntil(() => _playerLivesService.Lives <= 0, 
                 cancellationToken: cancellationSource.Token);
 
-            int result = await UniTask.WhenAny(deliverCustomersTask, looseAllLives);
+            int result = await UniTask.WhenAny(deliverCustomersTask, looseAllLives, _forceExitCompletionSource.Task);
             cancellationSource.Cancel();
             
             switch(result)
@@ -75,6 +81,8 @@ namespace Code.Runtime.Infrastructure.GameStates.States
                 case 1:
                     Debug.Log("All lives are lost.");
                     _gameStateMachine.EnterState<GameOverGameState>();
+                    break;
+                case 2:
                     break;
             }
         }
