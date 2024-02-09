@@ -2,7 +2,7 @@ using System;
 using Code.Runtime.Data;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.States;
-using Code.Runtime.Infrastructure.Locales;
+using Code.Runtime.Infrastructure.Services.Locales;
 using Code.Runtime.Services.GlobalGoals;
 using Code.Runtime.Services.Loading;
 using Code.Runtime.StaticData.GlobalGoals;

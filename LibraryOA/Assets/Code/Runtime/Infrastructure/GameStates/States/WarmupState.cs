@@ -1,5 +1,5 @@
 using Code.Runtime.Infrastructure.GameStates.Api;
-using Code.Runtime.Infrastructure.Locales;
+using Code.Runtime.Infrastructure.Services.Locales;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.GlobalGoals;

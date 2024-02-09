@@ -10,6 +10,7 @@ using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Interactions.Truck;
+using Code.Runtime.Services.Library;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.Services.Skills;
@@ -37,6 +38,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
         private readonly ISkillService _skillService;
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
+        private readonly ILibraryService _libraryService;
 
         public LevelCleanUpService(
             IInputService inputService,
@@ -54,7 +56,8 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             IDaysService daysService,
             ISkillService skillService,
             IScanBookService scanBookService,
-            ICraftingService craftingService)
+            ICraftingService craftingService,
+            ILibraryService libraryService)
         {
             _inputService = inputService;
             _interactablesRegistry = interactablesRegistry;
@@ -72,6 +75,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _skillService = skillService;
             _scanBookService = scanBookService;
             _craftingService = craftingService;
+            _libraryService = libraryService;
         }
 
         public void CleanUp()
@@ -92,6 +96,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _skillService.CleanUp();
             _scanBookService.CleanUp();
             _craftingService.CleanUp();
+            _libraryService.CleanUp();
         }
     }
 }

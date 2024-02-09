@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-namespace Code.Runtime.Infrastructure.Locales
+namespace Code.Runtime.Infrastructure.Services.Locales
 {
     [UsedImplicitly]
     internal sealed class LocalizationService : ILocalizationService
