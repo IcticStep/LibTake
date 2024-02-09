@@ -22,7 +22,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IDaysService _daysService;
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IReadBookService _readBookService;
-        private readonly ISkillService _skillService;
+        private readonly IPlayerSkillService _playerSkillService;
         private readonly IStaticDataService _staticDataService;
         private readonly IPlayerLivesService _playerLivesService;
         private readonly IScanBookService _scanBookService;
@@ -31,7 +31,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
 
         public BootstrapGameState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
             IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
-            ISkillService skillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService,
+            IPlayerSkillService playerSkillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService,
             IScanBookService scanBookService, ICraftingService craftingService, IGlobalGoalService globalGoalService)
         {
             _stateMachine = stateMachine;
@@ -40,7 +40,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _daysService = daysService;
             _playerInventoryService = playerInventoryService;
             _readBookService = readBookService;
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _staticDataService = staticDataService;
             _playerLivesService = playerLivesService;
             _scanBookService = scanBookService;
@@ -67,7 +67,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _saveLoadRegistry.Register(_daysService);
             _saveLoadRegistry.Register(_playerInventoryService);
             _saveLoadRegistry.Register(_readBookService);
-            _saveLoadRegistry.Register(_skillService);
+            _saveLoadRegistry.Register(_playerSkillService);
             _saveLoadRegistry.Register(_playerLivesService);
             _saveLoadRegistry.Register(_scanBookService);
             _saveLoadRegistry.Register(_craftingService);

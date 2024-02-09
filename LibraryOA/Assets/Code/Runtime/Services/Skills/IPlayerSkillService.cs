@@ -5,7 +5,7 @@ using Code.Runtime.StaticData.Books;
 
 namespace Code.Runtime.Services.Skills
 {
-    internal interface ISkillService : ISavedProgress
+    internal interface IPlayerSkillService : ISavedProgress
     {
         event Action Updated;
         void UpdateSkillsBy(string bookId);

@@ -16,7 +16,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
     internal sealed class CraftingService : ICraftingService
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly ISkillService _skillService;
+        private readonly IPlayerSkillService _playerSkillService;
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IGlobalGoalPresenterService _presenterService;
         private readonly IGlobalGoalsVisualizationService _globalGoalsVisualizationService;
@@ -35,11 +35,11 @@ namespace Code.Runtime.Services.Interactions.Crafting
         
         public event Action<bool> CraftingPermissionChanged;
 
-        public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService,
+        public CraftingService(IStaticDataService staticDataService, IPlayerSkillService playerSkillService, IPlayerInventoryService playerInventoryService,
             IGlobalGoalPresenterService presenterService, IGlobalGoalsVisualizationService globalGoalsVisualizationService)
         {
             _staticDataService = staticDataService;
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _playerInventoryService = playerInventoryService;
             _presenterService = presenterService;
             _globalGoalsVisualizationService = globalGoalsVisualizationService;
@@ -100,7 +100,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
         {
             foreach(SkillConstraint skill in CurrentStep.SkillRequirements)
             {
-                int currentLevel = _skillService.GetSkillByBookType(skill.BookType);
+                int currentLevel = _playerSkillService.GetSkillByBookType(skill.BookType);
                 int neededLevel = skill.RequiredLevel;
 
                 if(currentLevel < neededLevel)
