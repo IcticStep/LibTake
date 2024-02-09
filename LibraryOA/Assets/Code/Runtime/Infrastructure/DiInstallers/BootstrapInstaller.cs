@@ -22,7 +22,6 @@ using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Days;
 using Code.Runtime.Services.GlobalGoals;
-using Code.Runtime.Services.GlobalGoals.Finish;
 using Code.Runtime.Services.GlobalGoals.Presenter;
 using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
@@ -115,7 +114,6 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IGlobalGoalsVisualizationService>().To<GlobalGoalsVisualizationService>().AsSingle();
             Container.Bind<IGlobalGoalService>().To<GlobalGoalService>().AsSingle();
             Container.Bind<IGlobalGoalPresenterService>().To<GlobalGoalPresenterService>().AsSingle();
-            Container.Bind<IGlobalGoalFinishService>().To<GlobalGoalFinishService>().AsSingle();
             Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
         }
 
@@ -143,6 +141,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<DayGameState>().AsSingle();
             Container.Bind<GameOverGameState>().AsSingle();
             Container.Bind<RestartGameState>().AsSingle();
+            Container.Bind<FinishGlobalGoalState>().AsSingle();
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Code.Runtime.Infrastructure.GameStates.Factories
                 [typeof(DayGameState)] = container.Resolve<DayGameState>,
                 [typeof(GameOverGameState)] = container.Resolve<GameOverGameState>,
                 [typeof(RestartGameState)] = container.Resolve<RestartGameState>,
+                [typeof(FinishGlobalGoalState)] = container.Resolve<FinishGlobalGoalState>,
             };
         }
 
