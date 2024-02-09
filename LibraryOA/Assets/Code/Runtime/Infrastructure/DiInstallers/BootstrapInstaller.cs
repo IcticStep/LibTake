@@ -3,10 +3,10 @@ using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.Factories;
 using Code.Runtime.Infrastructure.GameStates.States;
-using Code.Runtime.Infrastructure.Locales;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.Infrastructure.Services.Locales;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
@@ -37,6 +37,7 @@ using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Interactions.Statue;
 using Code.Runtime.Services.Interactions.Truck;
+using Code.Runtime.Services.Library;
 using Code.Runtime.Services.Loading;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player.Inventory;
@@ -117,6 +118,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IGlobalGoalService>().To<GlobalGoalService>().AsSingle();
             Container.Bind<IGlobalGoalPresenterService>().To<GlobalGoalPresenterService>().AsSingle();
             Container.Bind<IGlobalGoalFinishService>().To<GlobalGoalFinishService>().AsSingle();
+            Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
         }
 
         private void InstallFactories()
