@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 namespace Code.Runtime.Services.Skills
 {
     [UsedImplicitly]
-    internal sealed class SkillService : ISkillService
+    internal sealed class PlayerSkillService : IPlayerSkillService
     {
         private readonly IStaticDataService _staticDataService;
         
@@ -16,7 +16,7 @@ namespace Code.Runtime.Services.Skills
 
         public event Action Updated;
 
-        public SkillService(IStaticDataService staticDataService)
+        public PlayerSkillService(IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
         }

@@ -35,7 +35,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
         private readonly IReadBookService _readBookService;
         private readonly ITruckInteractionService _truckInteractionService;
         private readonly IDaysService _daysService;
-        private readonly ISkillService _skillService;
+        private readonly IPlayerSkillService _playerSkillService;
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
         private readonly ILibraryService _libraryService;
@@ -54,7 +54,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             IReadBookService readBookService,
             ITruckInteractionService truckInteractionService,
             IDaysService daysService,
-            ISkillService skillService,
+            IPlayerSkillService playerSkillService,
             IScanBookService scanBookService,
             ICraftingService craftingService,
             ILibraryService libraryService)
@@ -72,7 +72,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _readBookService = readBookService;
             _truckInteractionService = truckInteractionService;
             _daysService = daysService;
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _scanBookService = scanBookService;
             _craftingService = craftingService;
             _libraryService = libraryService;
@@ -93,7 +93,7 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _readBookService.CleanUp();
             _truckInteractionService.CleanUp();
             _daysService.CleanUp();
-            _skillService.CleanUp();
+            _playerSkillService.CleanUp();
             _scanBookService.CleanUp();
             _craftingService.CleanUp();
             _libraryService.CleanUp();

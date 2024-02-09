@@ -77,44 +77,79 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
             Container.Bind(typeof(ILocalizationService), typeof(IDisposable)).To<LocalizationService>().AsSingle();
+            Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
         }
 
         private void InstallServices()
         {
+            InstallWrappers();
+            InstallPlayerServices();
+            InstallInteractionsServices();
+            InstallLevelServices();
+            InstallUiServices();
+            InstallGlobalGoalsServices();
+            InstallGameplayServices();
+        }
+
+        private void InstallWrappers()
+        {
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IRandomService>().To<RandomService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
-            Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
+        }
+
+        private void InstallPlayerServices()
+        {
             Container.Bind<IPlayerProviderService>().To<PlayerProviderService>().AsSingle();
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
+            Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
+            Container.Bind<IPlayerSkillService>().To<PlayerSkillService>().AsSingle();
+        }
+
+        private void InstallInteractionsServices()
+        {
+            Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
             Container.Bind<IBookSlotInteractionService>().To<BookSlotInteractionService>().AsSingle();
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
-            Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
-            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
-            Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
-            Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
-            Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
-            Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
+            Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
+            Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
+        }
+
+        private void InstallLevelServices()
+        {
+            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
+            Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
+            Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
+        }
+
+        private void InstallUiServices()
+        {
             Container.Bind<IHudProviderService>().To<HudService>().AsSingle();
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
-            Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
-            Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
-            Container.Bind<IDaysService>().To<DaysService>().AsSingle();
-            Container.Bind<ISkillService>().To<SkillService>().AsSingle();
-            Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
-            Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
-            Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
-            Container.Bind<IBookRewardService>().To<BookRewardService>().AsSingle();
-            Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
-            Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
-            Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
-            Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
+        }
+
+        private void InstallGlobalGoalsServices()
+        {
             Container.Bind<IGlobalGoalsVisualizationService>().To<GlobalGoalsVisualizationService>().AsSingle();
             Container.Bind<IGlobalGoalService>().To<GlobalGoalService>().AsSingle();
             Container.Bind<IGlobalGoalPresenterService>().To<GlobalGoalPresenterService>().AsSingle();
-            Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
+        }
+
+        private void InstallGameplayServices()
+        {
+            Container.Bind<IDaysService>().To<DaysService>().AsSingle();
+            Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
+            Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
+            Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
+            Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
+            Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
+            Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
+            Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
+            Container.Bind<IBookRewardService>().To<BookRewardService>().AsSingle();
+            Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
+            Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
         }
 
         private void InstallFactories()

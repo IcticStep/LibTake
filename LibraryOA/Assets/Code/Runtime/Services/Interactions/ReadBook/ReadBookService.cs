@@ -11,7 +11,7 @@ namespace Code.Runtime.Services.Interactions.ReadBook
     [UsedImplicitly]
     internal sealed class ReadBookService : IReadBookService
     {
-        private readonly ISkillService _skillService;
+        private readonly IPlayerSkillService _playerSkillService;
         private readonly IStaticDataService _staticDataService;
 
         private HashSet<string> _booksRead = new();
@@ -22,9 +22,9 @@ namespace Code.Runtime.Services.Interactions.ReadBook
         public event Action<StaticBook> BookRead;
         public event Action<bool> ReadingPermissionChanged;
 
-        public ReadBookService(ISkillService skillService, IStaticDataService staticDataService)
+        public ReadBookService(IPlayerSkillService playerSkillService, IStaticDataService staticDataService)
         {
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _staticDataService = staticDataService;
         }
 
@@ -49,7 +49,7 @@ namespace Code.Runtime.Services.Interactions.ReadBook
                 throw new InvalidOperationException();
 
             MarkAsRead(bookId);
-            _skillService.UpdateSkillsBy(bookId);
+            _playerSkillService.UpdateSkillsBy(bookId);
         }
 
         public bool CanReadBook(string bookId) =>
