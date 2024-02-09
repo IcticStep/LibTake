@@ -137,7 +137,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private async UniTaskVoid StartGameplay()
         {
             await _loadingCurtainService.HideImageAsync();
-            _stateMachine.EnterState<MorningState>();
+            _stateMachine.EnterState<MorningGameState>();
         }
     }
 }

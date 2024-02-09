@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
-    internal sealed class MorningState : IState
+    internal sealed class MorningGameState : IGameState
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly ITruckProvider _truckProvider;
@@ -24,7 +24,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
 
-        public MorningState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
+        public MorningGameState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
             IUiMessagesService uiMessagesService, IReadBookService readBookService, IDaysService daysService,
             IScanBookService scanBookService, ICraftingService craftingService)
@@ -76,7 +76,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             await UniTask.WhenAll(driveTask, booksTakenTask);
             await _truckProvider.TruckDriving.DriveAwayLibrary();
             
-            _gameStateMachine.EnterState<DayState>();
+            _gameStateMachine.EnterState<DayGameState>();
         }
     }
 }

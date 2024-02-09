@@ -7,13 +7,13 @@ using JetBrains.Annotations;
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
     [UsedImplicitly]
-    internal sealed class GameOverState : IState
+    internal sealed class GameOverGameState : IGameState
     {
         private readonly ISceneLoader _sceneLoader;
         private readonly IStaticDataService _staticDataService;
         private readonly ILevelCleanUpService _levelCleanUpService;
 
-        public GameOverState(
+        public GameOverGameState(
             ISceneLoader sceneLoader, 
             IStaticDataService staticDataService,
             ILevelCleanUpService levelCleanUpService)

@@ -14,7 +14,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
-    internal sealed class BootstrapState : IState
+    internal sealed class BootstrapGameState : IGameState
     {
         private readonly GameStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
@@ -29,7 +29,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly ICraftingService _craftingService;
         private readonly IGlobalGoalService _globalGoalService;
 
-        public BootstrapState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
+        public BootstrapGameState(GameStateMachine stateMachine, ISceneLoader sceneLoader, ISaveLoadRegistry saveLoadRegistry,
             IDaysService daysService, IPlayerInventoryService playerInventoryService, IReadBookService readBookService,
             ISkillService skillService, IStaticDataService staticDataService, IPlayerLivesService playerLivesService,
             IScanBookService scanBookService, ICraftingService craftingService, IGlobalGoalService globalGoalService)
@@ -60,7 +60,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         public void Exit() { }
 
         private void OnInitSceneLoaded() =>
-            _stateMachine.EnterState<WarmupState>();
+            _stateMachine.EnterState<WarmupGameState>();
 
         private void RegisterServicesAsSavedProgress()
         {

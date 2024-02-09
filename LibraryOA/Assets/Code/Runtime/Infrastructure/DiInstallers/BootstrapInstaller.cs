@@ -8,7 +8,6 @@ using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
 using Code.Runtime.Infrastructure.Services.Locales;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
-using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
@@ -66,7 +65,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         public void Initialize()
         {
             Application.targetFrameRate = 60;
-            Container.Resolve<GameStateMachine>().EnterState<BootstrapState>();
+            Container.Resolve<GameStateMachine>().EnterState<BootstrapGameState>();
         }
 
         private void InstallInfrastructureServices()
@@ -78,7 +77,6 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
-            Container.Bind<IRestartService>().To<RestartService>().AsSingle();
             Container.Bind(typeof(ILocalizationService), typeof(IDisposable)).To<LocalizationService>().AsSingle();
         }
 
@@ -136,14 +134,15 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         private void InstallGlobalStates()
         {
-            Container.Bind<BootstrapState>().AsSingle();
-            Container.Bind<WarmupState>().AsSingle();
-            Container.Bind<MenuState>().AsSingle();
+            Container.Bind<BootstrapGameState>().AsSingle();
+            Container.Bind<WarmupGameState>().AsSingle();
+            Container.Bind<MenuGameState>().AsSingle();
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
-            Container.Bind<MorningState>().AsSingle();
-            Container.Bind<DayState>().AsSingle();
-            Container.Bind<GameOverState>().AsSingle();
+            Container.Bind<MorningGameState>().AsSingle();
+            Container.Bind<DayGameState>().AsSingle();
+            Container.Bind<GameOverGameState>().AsSingle();
+            Container.Bind<RestartGameState>().AsSingle();
         }
     }
 }

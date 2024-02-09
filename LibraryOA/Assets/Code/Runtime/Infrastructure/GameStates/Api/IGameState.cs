@@ -1,6 +1,6 @@
 namespace Code.Runtime.Infrastructure.GameStates.Api
 {
-    public interface IState : IExitableState
+    public interface IGameState : IExitableState
     {
         public void Start();
     }
