@@ -2,7 +2,7 @@ using Code.Runtime.Infrastructure.GameStates.Api;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
-    internal sealed class MenuState : IState
+    internal sealed class MenuGameState : IGameState
     {
         public void Start() { }
 

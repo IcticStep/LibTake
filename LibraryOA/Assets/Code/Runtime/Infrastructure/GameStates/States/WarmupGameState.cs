@@ -9,7 +9,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
-    internal class WarmupState : IState
+    internal class WarmupGameState : IGameState
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IStaticDataService _staticDataService;
@@ -18,7 +18,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly ILoadingCurtainService _loadingCurtainService;
         private readonly ILocalizationService _localizationService;
 
-        public WarmupState(GameStateMachine stateMachine, IStaticDataService staticDataService, IGlobalGoalService globalGoalService,
+        public WarmupGameState(GameStateMachine stateMachine, IStaticDataService staticDataService, IGlobalGoalService globalGoalService,
             ISceneLoader sceneLoader, ILoadingCurtainService loadingCurtainService, ILocalizationService localizationService)
         {
             _stateMachine = stateMachine;
@@ -44,7 +44,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         {
             await _sceneLoader.LoadSceneAsync(_staticDataService.ScenesRouting.MenuScene);
             _loadingCurtainService.HideImageAsync().Forget();
-            _stateMachine.EnterState<MenuState>();
+            _stateMachine.EnterState<MenuGameState>();
         }
 
         public void Exit() { }
