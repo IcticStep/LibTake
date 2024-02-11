@@ -35,6 +35,9 @@ namespace Code.Runtime.Services.Customers.Queue
         
         public void Dequeue()
         {
+            if(!_membersQueue.Any())
+                return;
+            
             QueueMember memberGone = _membersQueue.Dequeue();
             memberGone.UpdatePoint(null);
             UpdateMembersPoints();
