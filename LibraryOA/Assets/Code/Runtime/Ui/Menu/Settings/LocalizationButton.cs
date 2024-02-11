@@ -1,4 +1,4 @@
-using Code.Runtime.Infrastructure.Locales;
+using Code.Runtime.Infrastructure.Services.Locales;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;

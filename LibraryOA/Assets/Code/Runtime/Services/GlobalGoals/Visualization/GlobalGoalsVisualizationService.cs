@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
 using Code.Runtime.Logic.GlobalGoals;
 using Code.Runtime.StaticData.GlobalGoals;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.GlobalGoals.Visualization
@@ -67,6 +68,9 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
             foreach(GlobalGoalScheme goalScheme in _goalSchemes.Values)
                 ResetVisualization(goalScheme);                
         }
+
+        public UniTask PlayFinishCutscene() =>
+            CurrentGoalScheme.Director.PlayFinishCutscene();
 
         private static void VisualizeStepScheme(GlobalStepScheme stepScheme)
         {

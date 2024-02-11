@@ -7,6 +7,7 @@ using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.StaticData.GlobalGoals;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Code.Runtime.Services.Interactions.Crafting
@@ -15,7 +16,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
     internal sealed class CraftingService : ICraftingService
     {
         private readonly IStaticDataService _staticDataService;
-        private readonly ISkillService _skillService;
+        private readonly IPlayerSkillService _playerSkillService;
         private readonly IPlayerInventoryService _playerInventoryService;
         private readonly IGlobalGoalPresenterService _presenterService;
         private readonly IGlobalGoalsVisualizationService _globalGoalsVisualizationService;
@@ -28,17 +29,17 @@ namespace Code.Runtime.Services.Interactions.Crafting
         
         public bool CraftingAllowed { get; private set; } = true;
 
-        public GlobalStep CurrentStep => Goal.GlobalSteps[FinishedGoal ? CurrentStepIndex-1 : CurrentStepIndex];
+        public GlobalStep CurrentStep => FinishedGoal ? Goal.GlobalSteps[^1] : Goal.GlobalSteps[CurrentStepIndex];
         public GlobalStep PreviousStep => CurrentStepIndex == 0 ? null : Goal.GlobalSteps[CurrentStepIndex - 1];
         public bool FinishedGoal => CurrentStepIndex == Goal.GlobalSteps.Count;
         
         public event Action<bool> CraftingPermissionChanged;
 
-        public CraftingService(IStaticDataService staticDataService, ISkillService skillService, IPlayerInventoryService playerInventoryService,
+        public CraftingService(IStaticDataService staticDataService, IPlayerSkillService playerSkillService, IPlayerInventoryService playerInventoryService,
             IGlobalGoalPresenterService presenterService, IGlobalGoalsVisualizationService globalGoalsVisualizationService)
         {
             _staticDataService = staticDataService;
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _playerInventoryService = playerInventoryService;
             _presenterService = presenterService;
             _globalGoalsVisualizationService = globalGoalsVisualizationService;
@@ -62,13 +63,13 @@ namespace Code.Runtime.Services.Interactions.Crafting
             CraftingPermissionChanged?.Invoke(CraftingAllowed);
         }
 
-        public void CraftStep()
+        public async UniTask CraftStep()
         {
             if(!CanCraftStep())
                 throw new InvalidOperationException("Can't craft step!");
 
             _globalGoalsVisualizationService.VisualizeStep(CurrentStep);
-            _presenterService.ShowBuiltStep(CurrentStep, Goal);
+            await _presenterService.ShowBuiltStep(CurrentStep, Goal);
             CurrentStepIndex++;
             PayedForStep = false;
         }
@@ -83,8 +84,12 @@ namespace Code.Runtime.Services.Interactions.Crafting
             return CurrentStep.Cost;
         }
 
-        public bool CanCraftStep() =>
-            PayedForStep && HaveEnoughSkillsToCraft();
+        public bool CanCraftStep()
+        {
+            if(FinishedGoal)
+                return true;
+            return PayedForStep && HaveEnoughSkillsToCraft();
+        }
 
         public bool CanPayForStep() =>
             !FinishedGoal
@@ -95,7 +100,7 @@ namespace Code.Runtime.Services.Interactions.Crafting
         {
             foreach(SkillConstraint skill in CurrentStep.SkillRequirements)
             {
-                int currentLevel = _skillService.GetSkillByBookType(skill.BookType);
+                int currentLevel = _playerSkillService.GetSkillByBookType(skill.BookType);
                 int neededLevel = skill.RequiredLevel;
 
                 if(currentLevel < neededLevel)

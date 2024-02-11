@@ -16,6 +16,6 @@ namespace Code.Runtime.Infrastructure.Services
         }
 
         public void Initialize() =>
-            _stateMachine.EnterState<BootstrapState>();
+            _stateMachine.EnterState<BootstrapGameState>();
     }
 }

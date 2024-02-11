@@ -5,6 +5,7 @@ namespace Code.Runtime.Services.GlobalGoals
 {
     internal interface IGlobalGoalService : ISavedProgress
     {
+        GlobalGoal GlobalGoal { get; }
         void SetGlobalGoal(GlobalGoal globalGoal);
     }
 }

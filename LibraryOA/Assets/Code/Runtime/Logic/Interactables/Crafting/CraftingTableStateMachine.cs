@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Runtime.Data.Progress;
+using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Interactables.Api;
@@ -26,6 +27,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
         private IPlayerProviderService _playerProviderService;
         private IStaticDataService _staticDataService;
         private IPlayerInventoryService _playerInventoryService;
+        private GameStateMachine _gameStateMachine;
 
         public string ActiveStateName => ActiveState is null ? "none" : ActiveState.ToString();
         public ICraftingTableState ActiveState => _activeState;
@@ -38,8 +40,9 @@ namespace Code.Runtime.Logic.Interactables.Crafting
 
         [Inject]
         private void Construct(ICraftingService craftingService, IPlayerProviderService playerProviderService, IStaticDataService staticDataService,
-            IPlayerInventoryService playerInventoryService)
+            IPlayerInventoryService playerInventoryService, GameStateMachine gameStateMachine)
         {
+            _gameStateMachine = gameStateMachine;
             _playerInventoryService = playerInventoryService;
             _staticDataService = staticDataService;
             _playerProviderService = playerProviderService;
@@ -52,7 +55,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting
                 [typeof(PayState)] = new PayState(this, _craftingService),
                 [typeof(SkillCheckState)] = new SkillCheckState(this, _craftingService),
                 [typeof(CraftingState)] = new CraftingState(this, _craftingService, _progress, _playerProviderService, _playerInventoryService),
-                [typeof(FinishCraftState)] = new FinishCraftState(this, _craftingService, _staticDataService),
+                [typeof(FinishCraftState)] = new FinishCraftState(this, _craftingService, _staticDataService, _gameStateMachine),
             };
 
         private void Start()

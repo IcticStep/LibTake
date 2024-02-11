@@ -1,4 +1,4 @@
-using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
+ using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.StaticData.GlobalGoals;
 using TMPro;
@@ -40,20 +40,17 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.HeaderView
         private void OnStateEntered(ICraftingTableState state) =>
             UpdateView();
 
-        private void UpdateView()
-        {
-            if(_craftingService.FinishedGoal)
-                return;
-
+        private void UpdateView() =>
             VisualizeStep();
-        }
 
         private void VisualizeStep()
         {
             GlobalStep step = _craftingService.CurrentStep;
             _icon.sprite = step.Icon;
             _headerText.text = step.LocalizedName.GetLocalizedString();
-            _stepIndexText.text = $"{_craftingService.CurrentStepIndex + 1}/{_craftingService.Goal.GlobalSteps.Count}";
+            
+            int displayIndex = _craftingService.FinishedGoal ? _craftingService.CurrentStepIndex : _craftingService.CurrentStepIndex + 1;
+            _stepIndexText.text = $"{displayIndex}/{_craftingService.Goal.GlobalSteps.Count}";
         }
     }
 }

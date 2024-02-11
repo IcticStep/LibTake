@@ -17,14 +17,16 @@ namespace Code.Runtime.Infrastructure.GameStates.Factories
         {
             _statesResolvers = new Dictionary<Type, Func<IExitableState>>
             {
-                [typeof(BootstrapState)] = container.Resolve<BootstrapState>,
-                [typeof(WarmupState)] = container.Resolve<WarmupState>,
-                [typeof(MenuState)] = container.Resolve<MenuState>,
+                [typeof(BootstrapGameState)] = container.Resolve<BootstrapGameState>,
+                [typeof(WarmupGameState)] = container.Resolve<WarmupGameState>,
+                [typeof(MenuGameState)] = container.Resolve<MenuGameState>,
                 [typeof(LoadProgressState)] = container.Resolve<LoadProgressState>,
                 [typeof(LoadLevelState)] = container.Resolve<LoadLevelState>,
-                [typeof(MorningState)] = container.Resolve<MorningState>,
-                [typeof(DayState)] = container.Resolve<DayState>,
-                [typeof(GameOverState)] = container.Resolve<GameOverState>,
+                [typeof(MorningGameState)] = container.Resolve<MorningGameState>,
+                [typeof(DayGameState)] = container.Resolve<DayGameState>,
+                [typeof(GameOverGameState)] = container.Resolve<GameOverGameState>,
+                [typeof(RestartGameState)] = container.Resolve<RestartGameState>,
+                [typeof(FinishGlobalGoalState)] = container.Resolve<FinishGlobalGoalState>,
             };
         }
 

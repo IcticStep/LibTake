@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Code.Runtime.Logic.Customers;
 
 namespace Code.Runtime.Services.Customers.Registry
@@ -7,5 +8,7 @@ namespace Code.Runtime.Services.Customers.Registry
         void Register(CustomerStateMachine customer);
         ICustomerStateMachine GetCustomerByQueueMember(QueueMember queueMember);
         void CleanUp();
+        IEnumerable<CustomerStateMachine> AllCustomers { get; }
+        void ForceStopAllCustomers();
     }
 }

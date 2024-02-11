@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Code.Runtime.Infrastructure.GameStates.Api;
 using Code.Runtime.Infrastructure.GameStates.Factories;
 using JetBrains.Annotations;
-using IState = Code.Runtime.Infrastructure.GameStates.Api.IState;
 
 namespace Code.Runtime.Infrastructure.GameStates
 {
@@ -22,7 +21,7 @@ namespace Code.Runtime.Infrastructure.GameStates
         }
 
         public void EnterState<TState>()
-            where TState : class, IState
+            where TState : class, IGameState
         {
             TState state = ChangeState<TState>();
             state.Start();
