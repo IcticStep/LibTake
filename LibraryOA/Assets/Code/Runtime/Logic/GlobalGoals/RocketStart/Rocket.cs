@@ -31,6 +31,9 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
         private float _whileScaleFlyY;
         [SerializeField]
         private Ease _whileScaleFlyEase;
+        
+        [field: SerializeField]
+        public Transform CameraTargetOnFly { get; private set; }
 
         private Transform _transform;
         private Vector3 _startPosition;

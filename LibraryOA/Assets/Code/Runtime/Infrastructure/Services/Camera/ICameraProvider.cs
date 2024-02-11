@@ -1,4 +1,5 @@
 using Code.Runtime.Logic.CameraControl;
+using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.Camera
 {
@@ -9,7 +10,9 @@ namespace Code.Runtime.Infrastructure.Services.Camera
         void Initialize(CameraFollow main);
         void EnableAnimator();
         void DisableAnimator();
-        void CleanUp();
         void DisableFollow();
+        void StartLookingAfter(Transform target);
+        void StopLookingAfter();
+        void CleanUp();
     }
 }
