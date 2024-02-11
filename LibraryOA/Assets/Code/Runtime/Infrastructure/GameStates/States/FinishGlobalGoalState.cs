@@ -5,6 +5,7 @@ using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Library;
+using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
 {
@@ -31,8 +32,13 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         public void Start()
         {
             StopGameplay();
+            PlayFinal().Forget();
+        }
 
+        private async UniTaskVoid PlayFinal()
+        {
             _libraryService.ShowSecondFloor();
+            await _globalGoalsVisualizationService.PlayFinishCutscene();
         }
 
         public void Exit() { }
@@ -44,7 +50,6 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _inputService.Disable();
             _hudProviderService.Hide();
             _customersRegistryService.ForceStopAllCustomers();
-            _globalGoalsVisualizationService.PlayFinishCutscene();
         }
     }
 }
