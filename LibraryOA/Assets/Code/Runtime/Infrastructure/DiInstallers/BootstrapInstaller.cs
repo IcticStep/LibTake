@@ -3,12 +3,11 @@ using Code.Runtime.Infrastructure.AssetManagement;
 using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.GameStates.Factories;
 using Code.Runtime.Infrastructure.GameStates.States;
-using Code.Runtime.Infrastructure.Locales;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.Factories;
+using Code.Runtime.Infrastructure.Services.Locales;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
-using Code.Runtime.Infrastructure.Services.Restart;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
@@ -25,6 +24,7 @@ using Code.Runtime.Services.Days;
 using Code.Runtime.Services.GlobalGoals;
 using Code.Runtime.Services.GlobalGoals.Presenter;
 using Code.Runtime.Services.GlobalGoals.Visualization;
+using Code.Runtime.Services.GlobalRocket;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -36,8 +36,10 @@ using Code.Runtime.Services.Interactions.ScannerInteraction;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Interactions.Statue;
 using Code.Runtime.Services.Interactions.Truck;
+using Code.Runtime.Services.Library;
 using Code.Runtime.Services.Loading;
 using Code.Runtime.Services.Physics;
+using Code.Runtime.Services.Player.CutsceneCopyProvider;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
 using Code.Runtime.Services.Player.Provider;
@@ -64,7 +66,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         public void Initialize()
         {
             Application.targetFrameRate = 60;
-            Container.Resolve<GameStateMachine>().EnterState<BootstrapState>();
+            Container.Resolve<GameStateMachine>().EnterState<BootstrapGameState>();
         }
 
         private void InstallInfrastructureServices()
@@ -76,45 +78,82 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
-            Container.Bind<IRestartService>().To<RestartService>().AsSingle();
             Container.Bind(typeof(ILocalizationService), typeof(IDisposable)).To<LocalizationService>().AsSingle();
+            Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
         }
 
         private void InstallServices()
         {
+            InstallWrappers();
+            InstallPlayerServices();
+            InstallInteractionsServices();
+            InstallLevelServices();
+            InstallUiServices();
+            InstallGlobalGoalsServices();
+            InstallGameplayServices();
+        }
+
+        private void InstallWrappers()
+        {
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<IRandomService>().To<RandomService>().AsSingle();
             Container.Bind<IInputService>().To<InputService>().AsSingle();
-            Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
+        }
+
+        private void InstallPlayerServices()
+        {
             Container.Bind<IPlayerProviderService>().To<PlayerProviderService>().AsSingle();
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
+            Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
+            Container.Bind<IPlayerSkillService>().To<PlayerSkillService>().AsSingle();
+            Container.Bind<IPlayerCutsceneCopyProvider>().To<PlayerCutsceneCopyProvider>().AsSingle();
+        }
+
+        private void InstallInteractionsServices()
+        {
+            Container.Bind<IInteractablesRegistry>().To<InteractablesRegistry>().AsSingle();
             Container.Bind<IBookSlotInteractionService>().To<BookSlotInteractionService>().AsSingle();
             Container.Bind<IReadingTableInteractionService>().To<ReadingTableInteractionService>().AsSingle();
-            Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
-            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
-            Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
-            Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
             Container.Bind<ITruckInteractionService>().To<TruckInteractionService>().AsSingle();
-            Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
-            Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
             Container.Bind<IBooksReceivingInteractionsService>().To<BooksReceivingInteractionsService>().AsSingle();
+            Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
+            Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
+        }
+
+        private void InstallLevelServices()
+        {
+            Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
+            Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
+            Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
+            Container.Bind<IRocketProvider>().To<RocketProvider>().AsSingle();
+        }
+
+        private void InstallUiServices()
+        {
             Container.Bind<IHudProviderService>().To<HudService>().AsSingle();
             Container.Bind<IUiMessagesService>().To<UiMessagesService>().AsSingle();
-            Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
-            Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
-            Container.Bind<IDaysService>().To<DaysService>().AsSingle();
-            Container.Bind<ISkillService>().To<SkillService>().AsSingle();
-            Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
-            Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
-            Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
-            Container.Bind<IBookRewardService>().To<BookRewardService>().AsSingle();
-            Container.Bind<IScannerInteractionService>().To<ScannerInteractionService>().AsSingle();
-            Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
-            Container.Bind<IStatueInteractionService>().To<StatueInteractionService>().AsSingle();
-            Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
+        }
+
+        private void InstallGlobalGoalsServices()
+        {
             Container.Bind<IGlobalGoalsVisualizationService>().To<GlobalGoalsVisualizationService>().AsSingle();
             Container.Bind<IGlobalGoalService>().To<GlobalGoalService>().AsSingle();
             Container.Bind<IGlobalGoalPresenterService>().To<GlobalGoalPresenterService>().AsSingle();
+        }
+
+        private void InstallGameplayServices()
+        {
+            Container.Bind<IDaysService>().To<DaysService>().AsSingle();
+            Container.Bind<IReadBookService>().To<ReadBookService>().AsSingle();
+            Container.Bind<IBooksDeliveringService>().To<BooksDeliveringService>().AsSingle();
+            Container.Bind<ICustomersQueueService>().To<CustomersQueueService>().AsSingle();
+            Container.Bind<IBooksReceivingService>().To<BooksReceivingService>().AsSingle();
+            Container.Bind<ICustomersDeliveringService>().To<CustomersDeliveringService>().AsSingle();
+            Container.Bind<ICustomersPoolingService>().To<CustomersPoolingService>().AsSingle();
+            Container.Bind<ICustomersRegistryService>().To<CustomersRegistryService>().AsSingle();
+            Container.Bind<IBookRewardService>().To<BookRewardService>().AsSingle();
+            Container.Bind<IScanBookService>().To<ScanBookService>().AsSingle();
+            Container.Bind<ICraftingService>().To<CraftingService>().AsSingle();
         }
 
         private void InstallFactories()
@@ -132,14 +171,16 @@ namespace Code.Runtime.Infrastructure.DiInstallers
 
         private void InstallGlobalStates()
         {
-            Container.Bind<BootstrapState>().AsSingle();
-            Container.Bind<WarmupState>().AsSingle();
-            Container.Bind<MenuState>().AsSingle();
+            Container.Bind<BootstrapGameState>().AsSingle();
+            Container.Bind<WarmupGameState>().AsSingle();
+            Container.Bind<MenuGameState>().AsSingle();
             Container.Bind<LoadProgressState>().AsSingle();
             Container.Bind<LoadLevelState>().AsSingle();
-            Container.Bind<MorningState>().AsSingle();
-            Container.Bind<DayState>().AsSingle();
-            Container.Bind<GameOverState>().AsSingle();
+            Container.Bind<MorningGameState>().AsSingle();
+            Container.Bind<DayGameState>().AsSingle();
+            Container.Bind<GameOverGameState>().AsSingle();
+            Container.Bind<RestartGameState>().AsSingle();
+            Container.Bind<FinishGlobalGoalState>().AsSingle();
         }
     }
 }

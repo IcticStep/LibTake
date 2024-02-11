@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8263350080328071521}
   - component: {fileID: 1222545489101370250}
   - component: {fileID: 511489348650606633}
+  - component: {fileID: 4400625822843185835}
+  - component: {fileID: 5286083219645806426}
   m_Layer: 0
   m_Name: Level Camera
   m_TagString: MainCamera
@@ -67,7 +69,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 20
+  far clip plane: 150
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -151,3 +153,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: {x: 1, y: 8, z: 0}
+  _ease: 12
+  _defaultMoveDuration: 1
+  _animationUpdateValuesFramesInterval: 1
+--- !u!95 &4400625822843185835
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963101380140539655}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5286083219645806426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963101380140539655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb501bc2cc14793972a46e6f3342e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lookAtStartAnimationDuration: 0.3

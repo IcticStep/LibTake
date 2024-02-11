@@ -4,12 +4,15 @@ using Code.Runtime.Services.Customers.Pooling;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.GlobalRocket;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.Registry;
 using Code.Runtime.Services.Interactions.Scanning;
 using Code.Runtime.Services.Interactions.Truck;
+using Code.Runtime.Services.Library;
+using Code.Runtime.Services.Player.CutsceneCopyProvider;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.Services.Skills;
@@ -34,9 +37,12 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
         private readonly IReadBookService _readBookService;
         private readonly ITruckInteractionService _truckInteractionService;
         private readonly IDaysService _daysService;
-        private readonly ISkillService _skillService;
+        private readonly IPlayerSkillService _playerSkillService;
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
+        private readonly ILibraryService _libraryService;
+        private readonly IRocketProvider _rocketProvider;
+        private readonly IPlayerCutsceneCopyProvider _playerCutsceneCopyProvider;
 
         public LevelCleanUpService(
             IInputService inputService,
@@ -52,10 +58,14 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             IReadBookService readBookService,
             ITruckInteractionService truckInteractionService,
             IDaysService daysService,
-            ISkillService skillService,
+            IPlayerSkillService playerSkillService,
             IScanBookService scanBookService,
-            ICraftingService craftingService)
+            ICraftingService craftingService,
+            ILibraryService libraryService,
+            IRocketProvider rocketProvider,
+            IPlayerCutsceneCopyProvider playerCutsceneCopyProvider)
         {
+            _playerCutsceneCopyProvider = playerCutsceneCopyProvider;
             _inputService = inputService;
             _interactablesRegistry = interactablesRegistry;
             _playerProviderService = playerProviderService;
@@ -69,9 +79,11 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _readBookService = readBookService;
             _truckInteractionService = truckInteractionService;
             _daysService = daysService;
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _scanBookService = scanBookService;
             _craftingService = craftingService;
+            _libraryService = libraryService;
+            _rocketProvider = rocketProvider;
         }
 
         public void CleanUp()
@@ -89,9 +101,12 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
             _readBookService.CleanUp();
             _truckInteractionService.CleanUp();
             _daysService.CleanUp();
-            _skillService.CleanUp();
+            _playerSkillService.CleanUp();
             _scanBookService.CleanUp();
             _craftingService.CleanUp();
+            _libraryService.CleanUp();
+            _rocketProvider.CleanUp();
+            _playerCutsceneCopyProvider.CleanUp();
         }
     }
 }

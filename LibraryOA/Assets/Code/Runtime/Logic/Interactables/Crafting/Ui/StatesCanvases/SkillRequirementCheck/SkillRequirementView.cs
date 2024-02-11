@@ -24,14 +24,14 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequi
         
         private IStaticDataService _staticDataService;
         private StaticBookType _staticBookType;
-        private ISkillService _skillService;
+        private IPlayerSkillService _playerSkillService;
 
         private Sprite CompletedIcon => _staticDataService.Ui.CompletedIcon;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService, ISkillService skillService)
+        private void Construct(IStaticDataService staticDataService, IPlayerSkillService playerSkillService)
         {
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
             _staticDataService = staticDataService;
         }
 
@@ -53,7 +53,7 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Ui.StatesCanvases.SkillRequi
         private void OnRequirementsRequested(IReadOnlyList<SkillConstraint> requirements)
         {
             SkillConstraint requirement = requirements.First(requirement => requirement.BookType == _bookType);
-            int level = _skillService.GetSkillByBookType(requirement.BookType);
+            int level = _playerSkillService.GetSkillByBookType(requirement.BookType);
 
             if(level >= requirement.RequiredLevel)
             {

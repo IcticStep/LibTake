@@ -5,6 +5,6 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
 {
     internal interface IGlobalGoalPresenterService
     {
-        UniTaskVoid ShowBuiltStep(GlobalStep globalStep, GlobalGoal globalGoal);
+        UniTask ShowBuiltStep(GlobalStep globalStep, GlobalGoal globalGoal);
     }
 }

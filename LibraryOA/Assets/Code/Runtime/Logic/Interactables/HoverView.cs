@@ -25,13 +25,7 @@ namespace Code.Runtime.Logic.Interactables
             
             HideHover();
         }
-
-        private void OnDestroy()
-        {
-            InteractablesScanner.FocusedInteractable -= OnInteractableFocused;
-            InteractablesScanner.UnfocusedInteractable -= OnInteractableUnfocused;
-        }
-
+        
         private void OnInteractableFocused(Interactable interactable)
         {
             if(interactable.Id != _interactable.Id) 

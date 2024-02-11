@@ -3,6 +3,7 @@ using Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates.Api;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.StaticData.GlobalGoals;
 using Code.Runtime.Ui.FlyingResources;
+using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Logic.Interactables.Crafting.CraftingTableStates
 {

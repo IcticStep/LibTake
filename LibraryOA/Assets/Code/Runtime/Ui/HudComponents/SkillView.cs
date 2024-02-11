@@ -18,15 +18,15 @@ namespace Code.Runtime.Ui.HudComponents
         [SerializeField]
         private BookType _bookType;
         
-        private ISkillService _skillService;
+        private IPlayerSkillService _playerSkillService;
         private IStaticDataService _staticDataService;
         private StaticBookType _staticBookType;
 
         [Inject]
-        private void Construct(ISkillService skillService, IStaticDataService staticDataService)
+        private void Construct(IPlayerSkillService playerSkillService, IStaticDataService staticDataService)
         {
             _staticDataService = staticDataService;
-            _skillService = skillService;
+            _playerSkillService = playerSkillService;
         }
 
         private void OnValidate() =>
@@ -37,16 +37,16 @@ namespace Code.Runtime.Ui.HudComponents
 
         private void Start()
         {
-            _skillService.Updated += UpdateView;
+            _playerSkillService.Updated += UpdateView;
             UpdateView();
         }
 
         private void OnDestroy() =>
-            _skillService.Updated -= UpdateView;
+            _playerSkillService.Updated -= UpdateView;
 
         private void UpdateView()
         {
-            int skill = _skillService.GetSkillByBookType(_bookType); 
+            int skill = _playerSkillService.GetSkillByBookType(_bookType); 
             string textText = skill.ToString();
             _text.text = textText;
             _iconImage.sprite = _staticBookType.Icon;
