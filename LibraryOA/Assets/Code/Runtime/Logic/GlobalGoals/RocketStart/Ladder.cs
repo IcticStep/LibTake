@@ -18,7 +18,7 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
         private void Awake() =>
             _transform = transform;
 
-        public void Rotate()
+        public void Throw()
         {
             _duration = 1f;
             _transform
