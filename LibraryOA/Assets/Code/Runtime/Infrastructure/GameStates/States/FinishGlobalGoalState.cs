@@ -3,8 +3,10 @@ using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Services.Customers.Registry;
 using Code.Runtime.Services.GlobalGoals.Visualization;
+using Code.Runtime.Services.GlobalRocket;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Library;
+using Code.Runtime.Services.Player.CutsceneCopyProvider;
 using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Infrastructure.GameStates.States
@@ -17,9 +19,12 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IHudProviderService _hudProviderService;
         private readonly ICustomersRegistryService _customersRegistryService;
         private readonly ILibraryService _libraryService;
+        private readonly IPlayerCutsceneCopyProvider _playerCutsceneCopyProvider;
+        private readonly IRocketProvider _rocketProvider;
 
         public FinishGlobalGoalState(IInputService inputService, ICameraProvider cameraProvider, IGlobalGoalsVisualizationService globalGoalsVisualizationService,
-            IHudProviderService hudProviderService, ICustomersRegistryService customersRegistryService, ILibraryService libraryService)
+            IHudProviderService hudProviderService, ICustomersRegistryService customersRegistryService, ILibraryService libraryService,
+            IPlayerCutsceneCopyProvider playerCutsceneCopyProvider, IRocketProvider rocketProvider)
         {
             _inputService = inputService;
             _cameraProvider = cameraProvider;
@@ -27,18 +32,15 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _hudProviderService = hudProviderService;
             _customersRegistryService = customersRegistryService;
             _libraryService = libraryService;
+            _playerCutsceneCopyProvider = playerCutsceneCopyProvider;
+            _rocketProvider = rocketProvider;
         }
 
         public void Start()
         {
             StopGameplay();
+            SetUpFinal();
             PlayFinal().Forget();
-        }
-
-        private async UniTaskVoid PlayFinal()
-        {
-            _libraryService.ShowSecondFloor();
-            await _globalGoalsVisualizationService.PlayFinishCutscene();
         }
 
         public void Exit() { }
@@ -50,6 +52,20 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _inputService.Disable();
             _hudProviderService.Hide();
             _customersRegistryService.ForceStopAllCustomers();
+        }
+
+        private void SetUpFinal()
+        {
+            _libraryService.ShowSecondFloor();
+            _playerCutsceneCopyProvider.GameObject.SetActive(true);
+        }
+
+        private async UniTaskVoid PlayFinal()
+        {
+            await _globalGoalsVisualizationService.PlayFinishCutscene();
+            _cameraProvider.StartLookingAfter(_rocketProvider.Rocket.CameraTargetOnFly);
+            await _rocketProvider.Rocket.LaunchAsync();
+            _cameraProvider.StopLookingAfter();
         }
     }
 }
