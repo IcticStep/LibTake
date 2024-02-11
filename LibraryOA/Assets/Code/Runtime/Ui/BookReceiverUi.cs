@@ -61,7 +61,7 @@ namespace Code.Runtime.Ui
         {
             StaticBook data = GetBookData();
             _bookIcon.color = data.StaticBookType.UiTextColor;
-            _bookName.text = data.name;
+            _bookName.text = data.LocalizedTitle.GetLocalizedString();
         }
 
         private StaticBook GetBookData() =>
