@@ -41,8 +41,11 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             StartReceivingProgress();
         }
 
-        public void Exit() =>
-            _collider.enabled = false;
+        public void Exit()
+        {
+            if(_collider != null)
+                _collider.enabled = false;
+        }
 
         private void InitializeReceiving()
         {

@@ -47,6 +47,9 @@ namespace Code.Runtime.Ui.HudComponents
 
         private void UpdateView()
         {
+            if(_smoothFader == null || PlayerInteractor == null)
+                return;
+            
             if(_smoothFader.AnimationInProgress)
                 return;
             

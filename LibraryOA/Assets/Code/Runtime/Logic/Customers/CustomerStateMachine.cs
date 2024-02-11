@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Code.Runtime.Infrastructure.GameStates;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
@@ -38,6 +39,7 @@ namespace Code.Runtime.Logic.Customers
         private IPlayerInventoryService _playerInventoryService;
         private IPlayerLivesService _playerLivesService;
         private IBookRewardService _bookRewardService;
+        private GameStateMachine _gameStateMachine;
 
         public IProgress Progress => _progress;
 
@@ -49,8 +51,10 @@ namespace Code.Runtime.Logic.Customers
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
-            IPlayerInventoryService playerInventoryService, IPlayerLivesService playerLivesService, IBookRewardService bookRewardService)
+            IPlayerInventoryService playerInventoryService, IPlayerLivesService playerLivesService, IBookRewardService bookRewardService,
+            GameStateMachine gameStateMachine)
         {
+            _gameStateMachine = gameStateMachine;
             _bookRewardService = bookRewardService;
             _playerLivesService = playerLivesService;
             _playerInventoryService = playerInventoryService;
@@ -67,7 +71,7 @@ namespace Code.Runtime.Logic.Customers
                     _progress, _staticDataService, _collider),
                 [typeof(RewardState)] = new RewardState(this, _progress, _playerInventoryService, _bookRewardService, _staticDataService),
                 [typeof(PunishState)] = new PunishState(this, _bookReceiver, _progress, _playerLivesService),
-                [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator, _customersQueueService),
+                [typeof(GoAwayState)] = new GoAwayState(this, _staticDataService, _customerNavigator, _customersQueueService, _gameStateMachine),
                 [typeof(DeactivatedState)] = new DeactivatedState(_queueMember, _bookStorage, _bookReceiver),
             };
 
