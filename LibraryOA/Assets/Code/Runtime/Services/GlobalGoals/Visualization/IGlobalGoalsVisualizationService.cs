@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
 using Code.Runtime.StaticData.GlobalGoals;
+using Cysharp.Threading.Tasks;
 
 namespace Code.Runtime.Services.GlobalGoals.Visualization
 {
@@ -23,6 +24,6 @@ namespace Code.Runtime.Services.GlobalGoals.Visualization
         void VisualizeStepAndAllBefore(GlobalStep step);
         void ResetCurrentVisualization();
         void ResetAllVisualizations();
-        void PlayFinishCutscene();
+        UniTask PlayFinishCutscene();
     }
 }
