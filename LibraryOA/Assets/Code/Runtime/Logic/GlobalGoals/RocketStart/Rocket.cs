@@ -64,7 +64,7 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
             _particlesGroup.gameObject.SetActive(true);
             return DOTween
                 .Sequence()
-                .AppendCallback(() => _ladder.Rotate())
+                .AppendCallback(() => _ladder.Throw())
                 .AppendInterval(_launchDelay)
                 .Append(StartFly())
                 .Append(Scale())

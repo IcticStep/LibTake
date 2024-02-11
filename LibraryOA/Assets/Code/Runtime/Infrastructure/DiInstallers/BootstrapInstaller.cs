@@ -24,6 +24,7 @@ using Code.Runtime.Services.Days;
 using Code.Runtime.Services.GlobalGoals;
 using Code.Runtime.Services.GlobalGoals.Presenter;
 using Code.Runtime.Services.GlobalGoals.Visualization;
+using Code.Runtime.Services.GlobalRocket;
 using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.BookSlotInteraction;
 using Code.Runtime.Services.Interactions.BooksReceiving;
@@ -38,6 +39,7 @@ using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Library;
 using Code.Runtime.Services.Loading;
 using Code.Runtime.Services.Physics;
+using Code.Runtime.Services.Player.CutsceneCopyProvider;
 using Code.Runtime.Services.Player.Inventory;
 using Code.Runtime.Services.Player.Lives;
 using Code.Runtime.Services.Player.Provider;
@@ -104,6 +106,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<IPlayerInventoryService>().To<PlayerInventoryService>().AsSingle();
             Container.Bind<IPlayerLivesService>().To<PlayerLivesService>().AsSingle();
             Container.Bind<IPlayerSkillService>().To<PlayerSkillService>().AsSingle();
+            Container.Bind<IPlayerCutsceneCopyProvider>().To<PlayerCutsceneCopyProvider>().AsSingle();
         }
 
         private void InstallInteractionsServices()
@@ -122,6 +125,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ICameraProvider>().To<CameraProvider>().AsSingle();
             Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
             Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
+            Container.Bind<IRocketProvider>().To<RocketProvider>().AsSingle();
         }
 
         private void InstallUiServices()
