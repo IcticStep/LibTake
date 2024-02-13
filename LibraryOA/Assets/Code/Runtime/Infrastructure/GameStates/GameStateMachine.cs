@@ -14,6 +14,7 @@ namespace Code.Runtime.Infrastructure.GameStates
         private IExitableState _activeState;
 
         public Type ActiveStateType => _activeState.GetType();
+        public event Action StateChanged;
 
         public GameStateMachine(IGameStateFactory gameStateFactory)
         {
@@ -39,6 +40,7 @@ namespace Code.Runtime.Infrastructure.GameStates
             _activeState?.Exit();
             TState state = GetState<TState>();
             _activeState = state;
+            StateChanged?.Invoke();
             return state;
         }
 
