@@ -10,5 +10,6 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
         GameProgress LoadProgress();
         void DeleteProgress();
         event Action Updated;
+        event Action Saved;
     }
 }
