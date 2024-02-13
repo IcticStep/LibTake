@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priceText: {fileID: 6480089961397888797}
+  _hoverView: {fileID: 1829082394577208631}
+  _smoothFader: {fileID: 5051796652190880728}
 --- !u!1 &642875531203464063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1356,8 @@ GameObject:
   - component: {fileID: 156405197066018284}
   - component: {fileID: 8112114114125367559}
   - component: {fileID: 5393417003154270970}
+  - component: {fileID: 5051796652190880728}
+  - component: {fileID: 863921839611207633}
   m_Layer: 5
   m_Name: StaticPriceCanvas
   m_TagString: Untagged
@@ -1427,6 +1431,35 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
+--- !u!114 &5051796652190880728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946148168765524697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db04e76c39a44f229e86abdb207b339d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 863921839611207633}
+  _fadeDuration: 0.2
+  _unFadeDuration: 0.2
+  _fadeEase: 10
+  _unFadeEase: 10
+--- !u!225 &863921839611207633
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946148168765524697}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &9066275620718183501
 GameObject:
   m_ObjectHideFlags: 0
