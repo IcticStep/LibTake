@@ -810,7 +810,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7263183165636315492}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 168901554204299987}
+        m_TargetAssemblyTypeName: Code.Runtime.Ui.HudComponents.PauseView, Runtime
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5429927307703878536
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +835,7 @@ GameObject:
   - component: {fileID: 7665748212665779685}
   - component: {fileID: 7086058298866950755}
   - component: {fileID: 5340873409171260442}
+  - component: {fileID: 168901554204299987}
   m_Layer: 5
   m_Name: PauseWindow
   m_TagString: Untagged
@@ -913,6 +926,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &168901554204299987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429927307703878536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7c8db8122a4f4b88aa28f5e3b4b5c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fastFlyingFading: {fileID: 4504527487707764587}
+  _backgroundFader: {fileID: 5509488807787864679}
+  _windowPauseRaycaster: {fileID: 5340873409171260442}
 --- !u!1 &5779760151879231866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,9 +1097,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4497588602454943138}
   - component: {fileID: 7558468733767131669}
-  - component: {fileID: 4161264465522517083}
+  - component: {fileID: 8094132120789650923}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainElements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1124,7 +1152,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &4161264465522517083
+--- !u!114 &8094132120789650923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1133,20 +1161,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7081675813185135912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &7688953608118280477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1423,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5776868724785000815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 168901554204299987}
+        m_TargetAssemblyTypeName: Code.Runtime.Ui.HudComponents.PauseView, Runtime
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8151744009412481829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1447,8 @@ GameObject:
   - component: {fileID: 2880192226967886113}
   - component: {fileID: 8857287832180696601}
   - component: {fileID: 1902158088437910216}
+  - component: {fileID: 4504527487707764587}
+  - component: {fileID: 7964816846132960431}
   m_Layer: 5
   m_Name: Window
   m_TagString: Untagged
@@ -1479,6 +1515,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4504527487707764587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151744009412481829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c25a1c31bd4397a7d32e7474b754da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 7964816846132960431}
+  _rectTransform: {fileID: 2880192226967886113}
+  _offscreenDistance: 1000
+  _duration: 0.5
+  _direction: 2
+  _flyOnScreenEase: 24
+  _flyAwayEase: 16
+--- !u!225 &7964816846132960431
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151744009412481829}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8302100504367127445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,9 +1605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1565,6 +1632,8 @@ GameObject:
   - component: {fileID: 829212978140308687}
   - component: {fileID: 4009497108567916411}
   - component: {fileID: 1905163722611823}
+  - component: {fileID: 5509488807787864679}
+  - component: {fileID: 4143509469212606161}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1630,6 +1699,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5509488807787864679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513383521214739260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db04e76c39a44f229e86abdb207b339d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 4143509469212606161}
+  _fadeDuration: 0.3
+  _unFadeDuration: 0.3
+  _fadeEase: 10
+  _unFadeEase: 10
+--- !u!225 &4143509469212606161
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513383521214739260}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9148033662044891536
 GameObject:
   m_ObjectHideFlags: 0
