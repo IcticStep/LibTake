@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.Player.Provider;
 using UnityEngine;
@@ -13,6 +14,9 @@ namespace Code.Runtime.Logic.Interactables
         private IPlayerProviderService _playerProviderService;
         
         private InteractablesScanner InteractablesScanner => _playerProviderService.InteractablesScanner;
+
+        public event Action Focused;
+        public event Action Unfocused;
 
         [Inject]
         private void Construct(IPlayerProviderService playerProviderService) =>
@@ -31,6 +35,7 @@ namespace Code.Runtime.Logic.Interactables
             if(interactable.Id != _interactable.Id) 
                 return;
 
+            Focused?.Invoke();
             ShowHover();
         }
 
@@ -38,7 +43,8 @@ namespace Code.Runtime.Logic.Interactables
         {
             if(interactable.Id != _interactable.Id)
                 return;
-
+            
+            Unfocused?.Invoke();
             HideHover();
         }
 

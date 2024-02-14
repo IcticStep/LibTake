@@ -1,12 +1,7 @@
-using System.Collections;
-using Code.Runtime.Logic;
-using Code.Runtime.Logic.Customers;
-using Code.Runtime.Logic.Customers.CustomersStates;
-using Code.Runtime.Services.Customers.Queue;
-using Code.Runtime.Services.Customers.Registry;
+using Code.Runtime.Data;
 using Code.Runtime.Ui.Common.Progress;
+using DG.Tweening;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Runtime.Ui.HudComponents.MainPanel
 {
@@ -15,58 +10,57 @@ namespace Code.Runtime.Ui.HudComponents.MainPanel
         [SerializeField]
         private ProgressBar _progressBar;
         [SerializeField]
-        private float _updateInterval = 0.1f;
+        private CustomersTimerSource _customersTimerSource;
+        [SerializeField]
+        private RectTransform _animationTarget;
+        [SerializeField]
+        private RangeFloat _animationScaleRange = new RangeFloat(1f, 1.1f);
+        [SerializeField]
+        private RangeFloat _animationDurationRange = new RangeFloat(0.1f, 0.5f);
 
-        private ICustomersQueueService _customersQueueService;
-        private ICustomersRegistryService _customersRegistryService;
-        private WaitForSeconds _waitCached;
-
-        [Inject]
-        private void Construct(ICustomersQueueService customersQueueService,
-            ICustomersRegistryService customersRegistryService)
-        {
-            _customersRegistryService = customersRegistryService;
-            _customersQueueService = customersQueueService;
-        }
+        private Tweener _tweener;
 
         private void Awake() =>
-            _waitCached = new WaitForSeconds(_updateInterval);
-
-        private void Start() =>
-            StartCoroutine(UpdateViewCoroutine());
-
-        private IEnumerator UpdateViewCoroutine()
+            _customersTimerSource.Updated += OnCustomersTimerSourceUpdated;
+        
+        private void OnDestroy()
         {
-            while(true)
-            {
-                yield return _waitCached;
-                UpdateProgressBar();
-            }
+            _customersTimerSource.Updated -= OnCustomersTimerSourceUpdated;
+            KillTweenerIfAny();
         }
 
-        private void UpdateProgressBar()
+        private void OnCustomersTimerSourceUpdated(float value)
         {
-            if(!_customersQueueService.Any)
-            {
-                _progressBar.SetProgress(0, 1);
-                return;
-            }
+            _progressBar.SetProgress(value, 1);
 
-            ICustomerStateMachine firstCustomer = GetFirstCustomer();
-            if(firstCustomer.ActiveStateType != typeof(BookReceivingState))
-            {
-                _progressBar.SetProgress(0, 1);
-                return;
-            }
-
-            IProgress progress = firstCustomer.Progress;
-            _progressBar.SetProgress(progress.Value, progress.MaxValue);
+            Animate(value);
         }
 
-        private ICustomerStateMachine GetFirstCustomer()
+        private void Animate(float value)
         {
-            QueueMember firstCustomerMember = _customersQueueService.Peek();
-            return _customersRegistryService.GetCustomerByQueueMember(firstCustomerMember);
+            if(value == 0)
+            {
+                KillTweenerIfAny();
+                return;
+            }
+            
+            if(_tweener != null)
+                return;
+
+            Vector3 punch = Vector3.one * Mathf.Lerp(_animationScaleRange.Min, _animationScaleRange.Max, value);
+            float duration = _animationDurationRange.Max + _animationDurationRange.Min - Mathf.Lerp(_animationDurationRange.Min, _animationDurationRange.Max, value);
+            _tweener = _animationTarget
+                .DOPunchScale(punch, duration, 1, 0.5f)
+                .OnComplete(KillTweenerIfAny);
+        }
+
+        private void KillTweenerIfAny()
+        {
+            if(_tweener == null)
+                return;
+
+            _tweener.Kill(complete: true);
+            _tweener = null;
         }
     }
 }
