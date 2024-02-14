@@ -67,7 +67,7 @@ namespace Code.Runtime.Ui.Common
             
             _unFadeTween.Pause();
             _fadeTween.Restart();
-            return _fadeTween.AwaitForComplete();
+            return _fadeTween.AwaitForComplete(cancellationToken: this.GetCancellationTokenOnDestroy());
         }
 
         public void Fade()
@@ -95,7 +95,7 @@ namespace Code.Runtime.Ui.Common
             
             _fadeTween.Pause();
             _unFadeTween.Restart();
-            return _unFadeTween.AwaitForComplete();
+            return _unFadeTween.AwaitForComplete(cancellationToken: this.GetCancellationTokenOnDestroy());
         }
 
         public void UnFade()
