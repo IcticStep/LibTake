@@ -16,6 +16,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
 
         public bool HasSavedProgress => PlayerPrefs.HasKey(ProgressKey);
         public event Action Updated;
+        public event Action Saved;
 
         public SaveLoadService(IPersistantProgressService progressService, ISaveLoadRegistry saveLoadRegistry)
         {
@@ -30,6 +31,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
             
             PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
             Updated?.Invoke();
+            Saved?.Invoke();
         }
 
         public GameProgress LoadProgress() =>
