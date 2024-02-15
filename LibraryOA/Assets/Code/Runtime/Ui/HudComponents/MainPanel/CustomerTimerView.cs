@@ -1,5 +1,6 @@
 using Code.Runtime.Data;
 using Code.Runtime.Ui.Common.Progress;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -52,6 +53,9 @@ namespace Code.Runtime.Ui.HudComponents.MainPanel
             _tweener = _animationTarget
                 .DOPunchScale(punch, duration, 1, 0.5f)
                 .OnComplete(KillTweenerIfAny);
+                
+            _tweener
+                .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
         }
 
         private void KillTweenerIfAny()
