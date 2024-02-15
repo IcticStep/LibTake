@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d2cd23f5204ea4957a136881c67774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: BookSlotSpawn_a6613009-8efa-44c1-8ea2-4f6e76b08ba9
+  _id: BookSlotSpawn_0b77a526-e998-4744-b304-e96ab49f1127
 --- !u!114 &7073766934825612539
 MonoBehaviour:
   m_ObjectHideFlags: 0
