@@ -12,19 +12,21 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly ISceneLoader _sceneLoader;
         private readonly IStaticDataService _staticDataService;
         private readonly ILevelCleanUpService _levelCleanUpService;
+        private readonly GameStateMachine _gameStateMachine;
 
-        public GameOverGameState(
-            ISceneLoader sceneLoader, 
-            IStaticDataService staticDataService,
-            ILevelCleanUpService levelCleanUpService)
+        public GameOverGameState(ISceneLoader sceneLoader, IStaticDataService staticDataService, ILevelCleanUpService levelCleanUpService,
+            GameStateMachine gameStateMachine)
         {
             _sceneLoader = sceneLoader;
             _staticDataService = staticDataService;
             _levelCleanUpService = levelCleanUpService;
+            _gameStateMachine = gameStateMachine;
         }
 
         public void Start()
         {
+            _gameStateMachine.EnterState<MenuGameState>();
+            
             string gameOverScene = _staticDataService.ScenesRouting.GameOverScene;
             _sceneLoader.LoadSceneAsync(gameOverScene, OnSceneLoaded);
         }
@@ -32,8 +34,6 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private void OnSceneLoaded() =>
             _levelCleanUpService.CleanUp();
 
-        public void Exit()
-        {
-        }
+        public void Exit() { }
     }
 }

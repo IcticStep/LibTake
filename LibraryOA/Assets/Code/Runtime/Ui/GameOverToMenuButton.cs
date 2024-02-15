@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Code.Runtime.Ui
 {
-    internal sealed class RestartButton : MonoBehaviour
+    internal sealed class GameOverToMenuButton : MonoBehaviour
     {
         [SerializeField]
         private Button _button;
