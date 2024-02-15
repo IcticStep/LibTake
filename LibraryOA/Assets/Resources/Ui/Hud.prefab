@@ -2703,17 +2703,27 @@ PrefabInstance:
     - target: {fileID: 6120594426743379562, guid: 6fee0d8471c942948b9d80d3b93036d1,
         type: 3}
       propertyPath: m_margin.w
-      value: 148.76706
+      value: 125.19354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120594426743379562, guid: 6fee0d8471c942948b9d80d3b93036d1,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6120594426743379562, guid: 6fee0d8471c942948b9d80d3b93036d1,
         type: 3}
       propertyPath: m_margin.y
-      value: 32.60431
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120594426743379562, guid: 6fee0d8471c942948b9d80d3b93036d1,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6120594426743379562, guid: 6fee0d8471c942948b9d80d3b93036d1,
         type: 3}
       propertyPath: m_isRichText
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6120594426743379562, guid: 6fee0d8471c942948b9d80d3b93036d1,
         type: 3}
@@ -3755,7 +3765,7 @@ PrefabInstance:
     - target: {fileID: 3968946602169781461, guid: 85436b210425edf4cbe7cc5465017264,
         type: 3}
       propertyPath: m_isRichText
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3968946602169781461, guid: 85436b210425edf4cbe7cc5465017264,
         type: 3}
@@ -3885,7 +3895,7 @@ PrefabInstance:
     - target: {fileID: 4705520558029165392, guid: 85436b210425edf4cbe7cc5465017264,
         type: 3}
       propertyPath: m_isRichText
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4705520558029165392, guid: 85436b210425edf4cbe7cc5465017264,
         type: 3}
