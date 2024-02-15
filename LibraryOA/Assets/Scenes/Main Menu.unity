@@ -2849,10 +2849,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4000113796716831557, guid: 0488adec78e5ec44fa3cfdab901eb23f,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4064131033433928348, guid: 0488adec78e5ec44fa3cfdab901eb23f,
         type: 3}
       propertyPath: m_Name
       value: GameName_canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064131033433928348, guid: 0488adec78e5ec44fa3cfdab901eb23f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6081026865290072389, guid: 0488adec78e5ec44fa3cfdab901eb23f,
         type: 3}
@@ -2863,6 +2873,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _offscreenDistance
       value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672710595673928361, guid: 0488adec78e5ec44fa3cfdab901eb23f,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463844650472664446, guid: 0488adec78e5ec44fa3cfdab901eb23f,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3041,6 +3061,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109283252}
     m_Modifications:
+    - target: {fileID: 1215592119763666557, guid: 62571afc7052b68478c2732eed4b0f16,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3884116487305915926, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -3055,6 +3080,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Settings_canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234493422069384147, guid: 62571afc7052b68478c2732eed4b0f16,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582023627561761176, guid: 62571afc7052b68478c2732eed4b0f16,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6239010226859361510, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
@@ -5303,15 +5338,40 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 33.2
       objectReference: {fileID: 0}
+    - target: {fileID: 985976273001782942, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985976273001782942, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_parseCtrlCharacters
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1067836396138727561, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
         type: 3}
       propertyPath: m_fontSize
       value: 33.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1067836396138727561, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067836396138727561, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_parseCtrlCharacters
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3389964550228976771, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
         type: 3}
       propertyPath: m_Name
       value: MainButtons_canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389964550228976771, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3662318745331473888, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
         type: 3}
@@ -5448,10 +5508,30 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 33.2
       objectReference: {fileID: 0}
+    - target: {fileID: 9033258866991286233, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033258866991286233, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_parseCtrlCharacters
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9098703339867486153, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
         type: 3}
       propertyPath: m_fontSize
       value: 33.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098703339867486153, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098703339867486153, guid: 596a5bd38e1a7274bbd9a5002deb7c23,
+        type: 3}
+      propertyPath: m_parseCtrlCharacters
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8675866230531062569, guid: 596a5bd38e1a7274bbd9a5002deb7c23, type: 3}
@@ -7000,6 +7080,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109283252}
     m_Modifications:
+    - target: {fileID: 168975186509225340, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 168975186509225340, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956198921054974281, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1188523564105795441, guid: 24d924a636dcb634e8b49b979c43802c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -7018,6 +7113,11 @@ PrefabInstance:
     - target: {fileID: 1188523564105795441, guid: 24d924a636dcb634e8b49b979c43802c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492481216536031539, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_isRichText
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3054100532480073015, guid: 24d924a636dcb634e8b49b979c43802c,
@@ -7030,6 +7130,11 @@ PrefabInstance:
       propertyPath: _groupsToShow.Array.data[1]
       value: 
       objectReference: {fileID: 2125286158}
+    - target: {fileID: 3765854635924188295, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3954566137185567291, guid: 24d924a636dcb634e8b49b979c43802c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -7050,10 +7155,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572518143820089859, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8202042884608831815, guid: 24d924a636dcb634e8b49b979c43802c,
         type: 3}
       propertyPath: m_Name
       value: GoalSelect_canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202042884608831815, guid: 24d924a636dcb634e8b49b979c43802c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8572257946407159059, guid: 24d924a636dcb634e8b49b979c43802c,
         type: 3}
