@@ -1,5 +1,6 @@
 using System;
 using Code.Runtime.Services.Player.Inventory;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -36,7 +37,9 @@ namespace Code.Runtime.Ui.HudComponents.MainPanel
         private void UpdateView()
         {
             _text.text = _playerInventoryService.Coins.ToString();
-            _animationTarget.DOPunchScale(Vector3.one * 1.1f, 0.5f, 1, 0.5f);
+            _animationTarget
+                .DOPunchScale(Vector3.one * 1.1f, 0.5f, 1, 0.5f)
+                .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
         }
     }
 }
