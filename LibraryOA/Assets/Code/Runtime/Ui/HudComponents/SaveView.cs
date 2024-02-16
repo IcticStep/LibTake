@@ -14,6 +14,7 @@ namespace Code.Runtime.Ui.HudComponents
         private float _onScreenDelay = 0.3f;
 
         private ISaveLoadService _saveLoadService;
+        private bool _forceStop;
 
         [Inject]
         private void Construct(ISaveLoadService saveLoadService) =>
@@ -25,8 +26,11 @@ namespace Code.Runtime.Ui.HudComponents
         private void Start() =>
             _smoothFader.FadeImmediately();
 
-        private void OnDestroy() =>
+        private void OnDestroy()
+        {
             _saveLoadService.Saved -= OnSaved;
+            _forceStop = true;
+        }
 
         private void OnSaved() =>
             PlayAnimation()
@@ -35,7 +39,11 @@ namespace Code.Runtime.Ui.HudComponents
         private async UniTaskVoid PlayAnimation()
         {
             await _smoothFader.UnFadeAsync();
-            await UniTask.WaitForSeconds(_onScreenDelay);
+            if (_forceStop)
+                return;
+            await UniTask.WaitForSeconds(_onScreenDelay, cancellationToken: this.GetCancellationTokenOnDestroy());
+            if (_forceStop)
+                return;
             await _smoothFader.FadeAsync();
         }
     }
