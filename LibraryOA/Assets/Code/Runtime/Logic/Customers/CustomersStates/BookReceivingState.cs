@@ -1,6 +1,7 @@
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Logic.Customers.CustomersStates.Api;
 using Code.Runtime.Services.Books.Receiving;
+using Code.Runtime.StaticData.Balance;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -51,8 +52,10 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
         {
             _forceStopCompletionSource = new UniTaskCompletionSource();
             string targetBook = _booksReceivingService.SelectBookForReceiving();
-            _bookReceiver.Initialize(targetBook); 
-            _progress.Initialize(_staticDataService.BookReceiving.TimeToReceiveBook);
+            _bookReceiver.Initialize(targetBook);
+            float timeToReceiveBook = GetTimeToReceiveBook();
+            _progress.Initialize(timeToReceiveBook);
+            Debug.Log($"Customer is receiving book. Time to receive: {timeToReceiveBook}. Calculated based on books count: {_booksReceivingService.BooksInLibrary}.");
             _collider.enabled = true;
         }
 
@@ -87,6 +90,24 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
                     _customerStateMachine.Enter<GoAwayState>();
                     break;
             }
+        }
+
+        private float GetTimeToReceiveBook()
+        {
+            ReceivingTimeSettings timeSettings = _staticDataService.BookReceiving.ReceivingTimeSettings;
+            
+            float timeToReceiveBook = timeSettings.TimeToReceiveBook;
+            int booksCount = _booksReceivingService.BooksInLibrary;
+            float additionalTime = GetAdditionalBookReceivingTime(timeSettings, booksCount);
+            return timeToReceiveBook + additionalTime;
+        }
+
+        private static float GetAdditionalBookReceivingTime(ReceivingTimeSettings timeSettings, int booksCount)
+        {
+            if(booksCount <= timeSettings.NotAffectedByAdditionalTimeBooksCount)
+                return 0;
+            
+            return timeSettings.AdditionalTimePerBook * (booksCount - timeSettings.NotAffectedByAdditionalTimeBooksCount);
         }
     }
 }
