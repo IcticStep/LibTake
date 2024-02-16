@@ -6,8 +6,9 @@ namespace Code.Runtime.StaticData.Balance
     [CreateAssetMenu(fileName = "Book receiving data", menuName = "Static data/Book Receiving")]
     public class StaticBookReceiving : ScriptableObject
     {
+        
         [field: SerializeField]
-        public float TimeToReceiveBook { get; private set; }
+        public ReceivingTimeSettings ReceivingTimeSettings { get; private set; } = new();
         
         [field: SerializeField]
         public RangeFloat CustomersInterval { get; private set; } = new RangeFloat(3, 10);
