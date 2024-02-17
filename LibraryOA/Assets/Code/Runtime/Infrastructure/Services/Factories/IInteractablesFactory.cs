@@ -1,7 +1,6 @@
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using UnityEngine;
-using UnityEngine.Splines;
 
 namespace Code.Runtime.Infrastructure.Services.Factories
 {
