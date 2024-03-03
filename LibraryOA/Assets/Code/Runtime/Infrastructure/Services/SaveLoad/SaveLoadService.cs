@@ -44,9 +44,10 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
             PlayerPrefs.SetString(AudioSettingsKey, audioSettings.ToJson());
             PlayerPrefs.Save();
         }
-        
+
         public AudioSettings LoadAudioSettings() =>
-            PlayerPrefs.GetString(AudioSettingsKey).ToDeserialized<AudioSettings>();
+            PlayerPrefs.GetString(AudioSettingsKey).ToDeserialized<AudioSettings>()
+            ?? new AudioSettings();
 
         public void DeleteProgress()
         {

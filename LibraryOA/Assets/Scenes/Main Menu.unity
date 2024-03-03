@@ -1589,37 +1589,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1725432384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6166308810143297345, guid: 62571afc7052b68478c2732eed4b0f16,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236529374861717554}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1725432386 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6720025656351708938, guid: 62571afc7052b68478c2732eed4b0f16,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236529374861717554}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725432384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1725432389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725432384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0fdb97a48d24fd1b5e282a88e6cf187, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 1725432386}
 --- !u!224 &1741045631 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8572257946407159059, guid: 24d924a636dcb634e8b49b979c43802c,
@@ -2092,8 +2061,8 @@ RectTransform:
   m_Children:
   - {fileID: 1741045631}
   - {fileID: 2125286148}
-  - {fileID: 3662318746413322119}
   - {fileID: 229058511}
+  - {fileID: 3662318746413322119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3096,35 +3065,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109283252}
     m_Modifications:
-    - target: {fileID: 1215592119763666557, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3884116487305915926, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 3884116487305915926, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 4234493422069384147, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
       propertyPath: m_Name
       value: Settings_canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4234493422069384147, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5582023627561761176, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6239010226859361510, guid: 62571afc7052b68478c2732eed4b0f16,
         type: 3}
@@ -3234,11 +3178,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6166308810143297345, guid: 62571afc7052b68478c2732eed4b0f16,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1725432389}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62571afc7052b68478c2732eed4b0f16, type: 3}
 --- !u!33 &1264596436292888646
 MeshFilter:

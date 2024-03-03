@@ -16,7 +16,8 @@ namespace Code.Runtime.Infrastructure.Settings
         
         private AudioSettings _audioSettings;
 
-        public event Action Updated;
+        public event Action MusicToggled;
+        public event Action SfxToggled;
         
         public SettingsService(ISaveLoadService saveLoadService) 
         {
@@ -29,28 +30,28 @@ namespace Code.Runtime.Infrastructure.Settings
         public void TurnOnMusic()
         {
             _audioSettings.MusicEnabled = true;
-            Updated?.Invoke();
+            MusicToggled?.Invoke();
             _saveLoadService.SaveAudioSettings(_audioSettings);
         }
 
         public void TurnOffMusic()
         {
             _audioSettings.MusicEnabled = false;
-            Updated?.Invoke();
+            MusicToggled?.Invoke();
             _saveLoadService.SaveAudioSettings(_audioSettings);
         }
 
         public void TurnOnSfx()
         {
             _audioSettings.SfxEnabled = true;
-            Updated?.Invoke();
+            SfxToggled?.Invoke();
             _saveLoadService.SaveAudioSettings(_audioSettings);
         }
 
         public void TurnOffSfx()
         {
             _audioSettings.SfxEnabled = false;
-            Updated?.Invoke();
+            SfxToggled?.Invoke();
             _saveLoadService.SaveAudioSettings(_audioSettings);
         }
     }

@@ -6,10 +6,11 @@ namespace Code.Runtime.Infrastructure.Settings
     {
         bool MusicEnabled { get; }
         bool SfxEnabled { get; }
-        event Action Updated;
         void TurnOnMusic();
         void TurnOffMusic();
         void TurnOnSfx();
         void TurnOffSfx();
+        event Action MusicToggled;
+        event Action SfxToggled;
     }
 }
