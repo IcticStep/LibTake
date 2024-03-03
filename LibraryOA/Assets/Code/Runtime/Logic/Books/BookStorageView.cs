@@ -4,7 +4,7 @@ using Code.Runtime.StaticData.Books;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Logic
+namespace Code.Runtime.Logic.Books
 {
     internal sealed class BookStorageView : MonoBehaviour
     {

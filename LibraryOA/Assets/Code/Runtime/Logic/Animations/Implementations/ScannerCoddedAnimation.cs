@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Logic.Animations.Api;
 using DG.Tweening;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Code.Runtime.Logic.Animations.Implementations
         private Vector3 _openingRotation;
         private Sequence _sequence;
 
+        public event Action ScanIteration;
+
         public override bool Playing => _sequence.IsPlaying();
 
         private void Awake()
@@ -38,6 +41,7 @@ namespace Code.Runtime.Logic.Animations.Implementations
             DOTween
                 .Sequence()
                 .SetAutoKill(false)
+                .AppendCallback(NotifyScanIteration)
                 .Append(_planeObject.transform
                     .DORotate(_closingRotation, _closingDuration, RotateMode.LocalAxisAdd)
                     .SetEase(_closingEase)
@@ -48,5 +52,8 @@ namespace Code.Runtime.Logic.Animations.Implementations
                     .SetAutoKill(false))
                 .AppendCallback(NotifyFinished)
                 .Pause();
+
+        private void NotifyScanIteration() =>
+            ScanIteration?.Invoke();
     }
 }

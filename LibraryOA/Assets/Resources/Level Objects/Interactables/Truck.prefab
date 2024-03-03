@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6570818020380436067}
   - component: {fileID: 4701331181603859114}
   - component: {fileID: 7010231664513397675}
+  - component: {fileID: 6631038490965952709}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -96,6 +97,20 @@ MonoBehaviour:
   _interactable: {fileID: 4701331181603859114}
   _hoverMeshes:
   - {fileID: 6983484474630254611}
+--- !u!114 &6631038490965952709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562571156560651580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baddef2fb33849c0b3af8ed979f0e452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _truck: {fileID: 4701331181603859114}
+  _booksTakenSound: {fileID: 8300000, guid: 152e8c44cf0c55d4d989ef9d7ea3a96e, type: 3}
 --- !u!1 &5540948696682640839
 GameObject:
   m_ObjectHideFlags: 0

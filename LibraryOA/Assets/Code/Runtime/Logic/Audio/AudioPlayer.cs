@@ -44,9 +44,14 @@ namespace Code.Runtime.Logic.Audio
         public void StopSfx() =>
             _sfxSource.Stop();
 
-        public void PlaySfx(AudioClip clip) =>
+        public void PlaySfx(AudioClip clip)
+        {
+            if(!_settingsService.SfxEnabled)
+                return;
+            
             _sfxSource.PlayOneShot(clip);
-        
+        }
+
         private void UpdateMusicState()
         {
             if (_settingsService.MusicEnabled)
