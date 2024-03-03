@@ -17,11 +17,23 @@ namespace Code.Runtime.Logic.Audio
         private void Construct(ISettingsService settingsService) =>
             _settingsService = settingsService;
 
-        private void Awake() =>
-            _settingsService.Updated += OnSettingsUpdated;
+        private void Awake()
+        {
+            _settingsService.SfxToggled += UpdateSfxState;
+            _settingsService.MusicToggled += UpdateMusicState;
+        }
 
-        private void OnDestroy() =>
-            _settingsService.Updated -= OnSettingsUpdated;
+        private void Start()
+        {
+            if(_settingsService.MusicEnabled)
+                ResumeMusic();
+        }
+
+        private void OnDestroy()
+        {
+            _settingsService.SfxToggled -= UpdateSfxState;
+            _settingsService.MusicToggled -= UpdateMusicState;
+        }
 
         public void StopMusic() =>
             _musicSource.Pause();
@@ -34,14 +46,17 @@ namespace Code.Runtime.Logic.Audio
 
         public void PlaySfx(AudioClip clip) =>
             _sfxSource.PlayOneShot(clip);
-
-        private void OnSettingsUpdated()
+        
+        private void UpdateMusicState()
         {
             if (_settingsService.MusicEnabled)
                 ResumeMusic();
             else
                 StopMusic();
-            
+        }
+
+        private void UpdateSfxState()
+        {
             if (!_settingsService.SfxEnabled)
                 StopSfx();
         }
