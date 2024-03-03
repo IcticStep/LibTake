@@ -17,6 +17,8 @@ namespace Code.Runtime.Services.Interactions.ScannerInteraction
         private readonly IScanBookService _scanBookService;
         private readonly IStaticDataService _staticDataService;
 
+        private bool _isScanning;
+        
         public ScannerInteractionService(IPlayerInventoryService playerInventoryService, IScanBookService scanBookService, IStaticDataService staticDataService)
         {
             _playerInventoryService = playerInventoryService;

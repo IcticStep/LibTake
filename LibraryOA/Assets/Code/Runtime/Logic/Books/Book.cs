@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Runtime.Logic
+namespace Code.Runtime.Logic.Books
 {
     public class Book : MonoBehaviour
     {

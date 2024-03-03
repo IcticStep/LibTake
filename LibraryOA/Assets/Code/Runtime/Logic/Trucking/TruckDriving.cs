@@ -3,10 +3,9 @@ using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Code.Runtime.Logic
+namespace Code.Runtime.Logic.Trucking
 {
     [SelectionBase]
     public sealed class TruckDriving : MonoBehaviour
