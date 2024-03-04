@@ -8,7 +8,7 @@ using Code.Runtime.Services.Customers.Registry;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Runtime.Ui.HudComponents.MainPanel
+namespace Code.Runtime.Ui.HudComponents.MainPanel.CustomersTimer
 {
     internal sealed class CustomersTimerSource : MonoBehaviour
     {
