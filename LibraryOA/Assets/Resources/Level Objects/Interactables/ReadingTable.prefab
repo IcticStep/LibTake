@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4841188373155321836}
   - component: {fileID: 3616246401360932450}
   - component: {fileID: 9139045042341968396}
+  - component: {fileID: 3583002975818743884}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -146,6 +147,25 @@ MonoBehaviour:
   _bookInsertedSound:
   - {fileID: 8300000, guid: 93e28db73e0fe3e4d86a2c00ebea54c3, type: 3}
   - {fileID: 8300000, guid: d908327b53592594e9078f99eeaf465c, type: 3}
+--- !u!114 &3583002975818743884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862531959078406648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ca69e989d34a24a0a382d55478f6de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progress: {fileID: 2086143251755747177}
+  _readingSounds:
+  - {fileID: 8300000, guid: 5912363b82027a04fbf05b6e6f2d45d0, type: 3}
+  - {fileID: 8300000, guid: beecf82d652d8af4d9dcf8ab993c1510, type: 3}
+  - {fileID: 8300000, guid: f51c254d54a447245bc405915548f934, type: 3}
+  _readingFinishedSound: {fileID: 8300000, guid: 105323a0633ff8f449805f04b3581821,
+    type: 3}
 --- !u!1 &3051894274289638350
 GameObject:
   m_ObjectHideFlags: 0
