@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Data;
 using Code.Runtime.Logic.Audio;
 using Cysharp.Threading.Tasks;
@@ -27,8 +28,13 @@ namespace Code.Runtime.Logic.Interactables.Reading
         private void Awake()
         {
             _progress.Started += OnReadingStarted;
-            _progress.Stopped += OnReadingStopped;
             _progress.Finished += OnReadingFinished;
+        }
+
+        private void OnDestroy()
+        {
+            _progress.Started -= OnReadingStarted;
+            _progress.Finished -= OnReadingFinished;
         }
 
         private void OnReadingStarted() =>
@@ -48,9 +54,6 @@ namespace Code.Runtime.Logic.Interactables.Reading
             
             _playingReadingSounds = false;
         }
-
-        private void OnReadingStopped() =>
-            _audioPlayer.PlaySfx(_readingFinishedSound);
 
         private void OnReadingFinished() =>
             _audioPlayer.PlaySfx(_readingFinishedSound);

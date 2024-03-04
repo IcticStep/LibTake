@@ -18,5 +18,6 @@ namespace Code.Runtime.Logic.Customers
         void ForceStop();
         event Action CustomerFailed;
         void NotifyFailed();
+        void NotifyReward();
     }
 }
