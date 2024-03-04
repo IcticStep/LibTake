@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 2871849467389682782}
   - component: {fileID: 246090937149938568}
   - component: {fileID: 2010779792457505059}
+  - component: {fileID: 5947247110256808687}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -715,6 +716,21 @@ MonoBehaviour:
   _interactable: {fileID: 129088601558807308}
   _hoverMeshes:
   - {fileID: 1360396628840278855}
+--- !u!114 &5947247110256808687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299036627364675959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ca9f5c74f34f8fb8fd181315bf7782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customerStateMachine: {fileID: 4862589054084425092}
+  _customerFailedSound: {fileID: 8300000, guid: 1b374f4045038f44a8fa2ae91cea35de,
+    type: 3}
 --- !u!1 &7710025772338265483
 GameObject:
   m_ObjectHideFlags: 0
