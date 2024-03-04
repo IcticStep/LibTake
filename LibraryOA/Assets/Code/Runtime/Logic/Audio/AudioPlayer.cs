@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.Settings;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -50,6 +51,12 @@ namespace Code.Runtime.Logic.Audio
                 return;
             
             _sfxSource.PlayOneShot(clip);
+        }
+
+        public UniTask PlaySfxAsync(AudioClip clip)
+        {
+            PlaySfx(clip);
+            return UniTask.WaitForSeconds(clip.length);
         }
 
         private void UpdateMusicState()
