@@ -1,5 +1,6 @@
 using Code.Runtime.Infrastructure.Settings;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
@@ -11,8 +12,12 @@ namespace Code.Runtime.Logic.Audio
         private AudioSource _musicSource;
         [SerializeField]
         private AudioSource _sfxSource;
+        [SerializeField]
+        private AudioSource _ambientSource;
         
         private ISettingsService _settingsService;
+        private Tweener _musicTweener;
+        private Tweener _ambientTweener;
 
         [Inject]
         private void Construct(ISettingsService settingsService) =>
@@ -45,6 +50,52 @@ namespace Code.Runtime.Logic.Audio
         public void StopSfx() =>
             _sfxSource.Stop();
 
+        public void FadeOutMusic(float duration)
+        {
+            KillMusicTweenerIfAny();
+            _musicTweener = _musicSource
+                .DOFade(0, duration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(KillMusicTweenerIfAny);
+        }
+
+        public void FadeInMusic(float duration)
+        {
+            KillMusicTweenerIfAny();
+            _musicTweener = _musicSource
+                .DOFade(1, duration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(KillMusicTweenerIfAny);
+        }
+
+        public void FadeOutAmbient(float duration)
+        {
+            KillAmbientTweenerIfAny();
+            _ambientTweener = _ambientSource
+                .DOFade(0, duration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(KillAmbientTweenerIfAny);
+        }
+
+        public void FadeInAmbient(float duration)
+        {
+            KillAmbientTweenerIfAny();
+            _ambientTweener = _ambientSource
+                .DOFade(1, duration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(KillAmbientTweenerIfAny);
+        }
+
+        public void StartAmbientIfNot()
+        {
+            if(_ambientSource.isPlaying)
+                return;
+            _ambientSource.Play();
+        }
+
+        public void StopAmbient() =>
+            _ambientSource.Stop();
+        
         public void PlaySfx(AudioClip clip)
         {
             if(!_settingsService.SfxEnabled)
@@ -71,6 +122,18 @@ namespace Code.Runtime.Logic.Audio
         {
             if (!_settingsService.SfxEnabled)
                 StopSfx();
+        }
+        
+        private void KillMusicTweenerIfAny() =>
+            KillTweenerIfAny(ref _musicTweener);
+        
+        private void KillAmbientTweenerIfAny() =>
+            KillTweenerIfAny(ref _ambientTweener);
+        
+        private void KillTweenerIfAny(ref Tweener tweener)
+        {
+            tweener?.Kill();
+            tweener = null;
         }
     }
 }

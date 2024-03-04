@@ -3472,8 +3472,9 @@ GameObject:
   - component: {fileID: 1083140271}
   - component: {fileID: 1083140272}
   - component: {fileID: 1083140270}
+  - component: {fileID: 1083140273}
   m_Layer: 3
-  m_Name: ShowSecondFlorTrigger
+  m_Name: ExitBuildingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3546,6 +3547,21 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 3354499175
+--- !u!114 &1083140273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083140268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830d7b86e73842d4956c38170061ef6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trigger: {fileID: 1083140272}
+  _musicFadeInSeconds: 1
+  _ambientFadeInSeconds: 1
 --- !u!1001 &1096280177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5335,8 +5351,9 @@ GameObject:
   - component: {fileID: 1442993042}
   - component: {fileID: 1442993043}
   - component: {fileID: 1442993041}
+  - component: {fileID: 1442993044}
   m_Layer: 3
-  m_Name: HideSecondFlorTrigger
+  m_Name: EnterBuildingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5409,6 +5426,21 @@ MonoBehaviour:
   _color:
     serializedVersion: 2
     rgba: 2740966495
+--- !u!114 &1442993044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442993039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5a7de8f25b4a12ac439b52a9c30c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trigger: {fileID: 1442993043}
+  _musicFadeInSeconds: 1
+  _ambientFadeOutSeconds: 1
 --- !u!1 &1444405068
 GameObject:
   m_ObjectHideFlags: 0
