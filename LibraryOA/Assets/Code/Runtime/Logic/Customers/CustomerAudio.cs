@@ -11,6 +11,8 @@ namespace Code.Runtime.Logic.Customers
         private CustomerStateMachine _customerStateMachine;
         [SerializeField]
         private AudioClip _customerFailedSound;
+        [SerializeField]
+        private AudioClip _customerRewardSound;
         
         private AudioPlayer _audioPlayer;
 
@@ -18,13 +20,22 @@ namespace Code.Runtime.Logic.Customers
         private void Construct(AudioPlayer audioPlayer) =>
             _audioPlayer = audioPlayer;
 
-        private void Awake() =>
+        private void Awake()
+        {
             _customerStateMachine.CustomerFailed += OnCustomerFailed;
+            _customerStateMachine.CustomerReward += OnCustomerReward;
+        }
 
-        private void  OnDestroy() =>
+        private void OnDestroy()
+        {
             _customerStateMachine.CustomerFailed -= OnCustomerFailed;
+            _customerStateMachine.CustomerReward -= OnCustomerReward;
+        }
 
         private void OnCustomerFailed() =>
             _audioPlayer.PlaySfx(_customerFailedSound);
+        
+        private void OnCustomerReward() =>
+            _audioPlayer.PlaySfx(_customerRewardSound);
     }
 }

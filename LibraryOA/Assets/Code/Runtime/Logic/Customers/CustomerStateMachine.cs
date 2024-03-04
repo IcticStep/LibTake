@@ -49,6 +49,7 @@ namespace Code.Runtime.Logic.Customers
         public event Action<CustomerStateMachine, IExitableCustomerState> StateEntered;
         public event Action<CustomerStateMachine, IExitableCustomerState> StateExited;
         public event Action CustomerFailed;
+        public event Action CustomerReward;
 
         [Inject]
         private void Construct(ICustomersQueueService customersQueueService, IStaticDataService staticDataService, IBooksReceivingService booksReceivingService,
@@ -100,6 +101,9 @@ namespace Code.Runtime.Logic.Customers
         
         public void NotifyFailed() =>
             CustomerFailed?.Invoke();
+        
+        public void NotifyReward() =>
+            CustomerReward?.Invoke();
 
         private TState ChangeState<TState>()
             where TState : class, IExitableCustomerState
