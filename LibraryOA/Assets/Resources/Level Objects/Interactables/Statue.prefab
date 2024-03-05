@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 5173738081885620260}
   - component: {fileID: 7676804586094075941}
   - component: {fileID: 6750261194751965299}
+  - component: {fileID: 2488989642247184562}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -787,6 +788,20 @@ MonoBehaviour:
   _interactable: {fileID: 5173738081885620260}
   _hoverMeshes:
   - {fileID: 5106122941402669150}
+--- !u!114 &2488989642247184562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636601864335805377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f034fa623dff48f4bd76c68acd3ef35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statue: {fileID: 5173738081885620260}
+  _buyingSound: {fileID: 8300000, guid: 1ce268868c1800147bc51d0814e6689f, type: 3}
 --- !u!1 &7926173177410706989
 GameObject:
   m_ObjectHideFlags: 0
