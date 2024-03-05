@@ -731,7 +731,7 @@ MonoBehaviour:
   _customerStateMachine: {fileID: 4862589054084425092}
   _customerFailedSound: {fileID: 8300000, guid: 1b374f4045038f44a8fa2ae91cea35de,
     type: 3}
-  _customerRewardSound: {fileID: 8300000, guid: 74af6927b4d246f47b87f89e6357f97b,
+  _customerRewardSound: {fileID: 8300000, guid: 658555f77c1a3d040bd692c0b03d7d63,
     type: 3}
 --- !u!1 &7710025772338265483
 GameObject:

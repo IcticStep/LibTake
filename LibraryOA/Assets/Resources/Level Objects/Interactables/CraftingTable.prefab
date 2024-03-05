@@ -2666,6 +2666,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _craftingTableStateMachine: {fileID: 5033483543602875314}
   _buyingSound: {fileID: 8300000, guid: 1ce268868c1800147bc51d0814e6689f, type: 3}
+  _successCraftingStepSound: {fileID: 8300000, guid: a00e2d9705a5b154c85df2df8630d655,
+    type: 3}
+  _successGlobalStepSound: {fileID: 8300000, guid: af2646a7874697e498a7180c1f410353,
+    type: 3}
 --- !u!1 &5257572418706641196
 GameObject:
   m_ObjectHideFlags: 0
