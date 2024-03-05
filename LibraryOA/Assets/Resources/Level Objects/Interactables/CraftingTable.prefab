@@ -2554,6 +2554,7 @@ GameObject:
   - component: {fileID: 5033483543602875314}
   - component: {fileID: 5201939945795143079}
   - component: {fileID: 5005574882644125714}
+  - component: {fileID: 8460053224588234297}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -2651,6 +2652,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smoke: {fileID: 2193215140129272063}
   _progress: {fileID: 2424559754935906697}
+--- !u!114 &8460053224588234297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960443480424417234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc92ff44eb64cd59cbd7bf440a47b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _craftingTableStateMachine: {fileID: 5033483543602875314}
+  _buyingSound: {fileID: 8300000, guid: 1ce268868c1800147bc51d0814e6689f, type: 3}
 --- !u!1 &5257572418706641196
 GameObject:
   m_ObjectHideFlags: 0
