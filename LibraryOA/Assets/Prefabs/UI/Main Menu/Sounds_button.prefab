@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1722632928631936596}
   - component: {fileID: 8953468868746189368}
   - component: {fileID: 7664046740125150600}
+  - component: {fileID: 7652714516415089408}
   m_Layer: 5
   m_Name: Sounds_button
   m_TagString: Untagged
@@ -153,3 +154,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 1722632928631936596}
   _buttonSwitcherView: {fileID: 8953468868746189368}
+--- !u!114 &7652714516415089408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747361171078443703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6679a94e543acb0da29f5b37f861a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClickSound: {fileID: 8300000, guid: ab38ed783dcbae641b41d639de7cd4ab, type: 3}
+  _button: {fileID: 1722632928631936596}
