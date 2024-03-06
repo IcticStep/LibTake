@@ -4835,6 +4835,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6716979723646486242}
+    - targetCorrespondingSourceObject: {fileID: 4118354209618039792, guid: 894b2e694832a824ead423f1c375e0cc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8898791263293017795}
   m_SourcePrefab: {fileID: 100100000, guid: 894b2e694832a824ead423f1c375e0cc, type: 3}
 --- !u!1 &2257040495992487067 stripped
 GameObject:
@@ -4965,6 +4969,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progress: {fileID: 2424559754935906697}
   _coddedAnimation: {fileID: 7456697171859422401}
+--- !u!114 &8898791263293017795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440482166861784133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2865e028d34484897e7335ca42589fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hammerCoddedAnimation: {fileID: 7456697171859422401}
+  _hammerSounds:
+  - {fileID: 8300000, guid: d1e95091d65772a479308bf1a1d8d5bf, type: 3}
+  - {fileID: 8300000, guid: ffc58600072da70489fb281a64b7bcf8, type: 3}
+  - {fileID: 8300000, guid: 20220f555e7ab594c8f0df03ae1d692f, type: 3}
+  - {fileID: 8300000, guid: 5af211736d62fb3498c5aedaeaf7f678, type: 3}
 --- !u!33 &7945423558901637115 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 894b2e694832a824ead423f1c375e0cc,
