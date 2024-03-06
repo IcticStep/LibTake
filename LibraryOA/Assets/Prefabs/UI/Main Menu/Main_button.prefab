@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7935136672431057753}
   - component: {fileID: 3151135452965127267}
   - component: {fileID: 6164638242218667866}
+  - component: {fileID: 5205172129542518988}
   m_Layer: 5
   m_Name: Main_button
   m_TagString: Untagged
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5205172129542518988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2689630547501793866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6679a94e543acb0da29f5b37f861a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClickSound: {fileID: 8300000, guid: ab38ed783dcbae641b41d639de7cd4ab, type: 3}
+  _button: {fileID: 6164638242218667866}
 --- !u!1 &2870065986178178571
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +228,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.6
+  m_fontSize: 29.15
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7071772660448654347}
   - component: {fileID: 8898982452303747300}
   - component: {fileID: 5116082048853750140}
+  - component: {fileID: 2990982766356454036}
   m_Layer: 5
   m_Name: Back_button
   m_TagString: Untagged
@@ -27,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019288716252090941}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -139,3 +140,17 @@ MonoBehaviour:
   _groupsToShow:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &2990982766356454036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019288716252090941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6679a94e543acb0da29f5b37f861a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClickSound: {fileID: 8300000, guid: ab38ed783dcbae641b41d639de7cd4ab, type: 3}
+  _button: {fileID: 8898982452303747300}
