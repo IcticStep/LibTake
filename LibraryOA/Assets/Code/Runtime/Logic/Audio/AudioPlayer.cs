@@ -14,6 +14,8 @@ namespace Code.Runtime.Logic.Audio
         private AudioSource _sfxSource;
         [SerializeField]
         private AudioSource _ambientSource;
+        [SerializeField]
+        private AudioSource _unimportantSfxSource;
         
         private ISettingsService _settingsService;
         private Tweener _musicTweener;
@@ -102,6 +104,14 @@ namespace Code.Runtime.Logic.Audio
                 return;
             
             _sfxSource.PlayOneShot(clip);
+        }
+        
+        public void PlayUnimportantSfx(AudioClip clip)
+        {
+            if(!_settingsService.SfxEnabled)
+                return;
+            
+            _unimportantSfxSource.PlayOneShot(clip);
         }
 
         public UniTask PlaySfxAsync(AudioClip clip)
