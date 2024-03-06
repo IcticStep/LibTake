@@ -16,5 +16,8 @@ namespace Code.Runtime.Logic.Customers
             where TState : class, IPayloadedCustomerState<TPayload>;
 
         void ForceStop();
+        event Action CustomerFailed;
+        void NotifyFailed();
+        void NotifyReward();
     }
 }

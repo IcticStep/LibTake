@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Code.Runtime.Infrastructure.DiInstallers.Library.GlobalGoals.Data;
 using Code.Runtime.Infrastructure.Services.Camera;
@@ -20,6 +21,8 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
         private IInputService _inputService;
         private ICameraProvider _cameraProvider;
 
+        public event Action GlobalStepCompleted;
+
         [Inject]
         private void Construct(IGlobalGoalsVisualizationService globalGoalsVisualizationService, IHudProviderService hudProviderService, IInputService inputService,
             ICameraProvider cameraProvider)
@@ -37,6 +40,7 @@ namespace Code.Runtime.Services.GlobalGoals.Presenter
             _hudProviderService.Hide();
 
             Transform oldCameraTarget = _cameraProvider.CameraFollow.Target;
+            GlobalStepCompleted?.Invoke();
             await _cameraProvider.CameraFollow.MoveToNewTargetAsync(scheme.CameraTarget, globalGoal.CameraMoveDuration);
             await UniTask.WaitForSeconds(globalGoal.CameraLookAtStepCompletedDelay);
             ShowHudOnHalfCameraWayBack(globalGoal.CameraMoveDuration).Forget();

@@ -358,6 +358,8 @@ GameObject:
   - component: {fileID: 5819772149727886499}
   - component: {fileID: 1829082394577208631}
   - component: {fileID: 736471396720060256}
+  - component: {fileID: 8644310671542064163}
+  - component: {fileID: 8700645791538317837}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -470,6 +472,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smoke: {fileID: 101916786970378341}
   _progress: {fileID: 5819772149727886499}
+--- !u!114 &8644310671542064163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2680688818681265802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d564aef4f83400f9d1f49dfe198dbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bookStorage: {fileID: 6265150188223231389}
+  _bookRemovedSounds:
+  - {fileID: 8300000, guid: 93e28db73e0fe3e4d86a2c00ebea54c3, type: 3}
+  - {fileID: 8300000, guid: d908327b53592594e9078f99eeaf465c, type: 3}
+  _bookInsertedSound:
+  - {fileID: 8300000, guid: 93e28db73e0fe3e4d86a2c00ebea54c3, type: 3}
+  - {fileID: 8300000, guid: d908327b53592594e9078f99eeaf465c, type: 3}
+--- !u!114 &8700645791538317837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2680688818681265802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a047556834714026a124823ec8c4fd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scannerCoddedAnimation: {fileID: 3088549296746013597}
+  _scannerSound: {fileID: 8300000, guid: d26245810e4e1df41a986c31ba10bd15, type: 3}
 --- !u!1 &3173658151983828984
 GameObject:
   m_ObjectHideFlags: 0

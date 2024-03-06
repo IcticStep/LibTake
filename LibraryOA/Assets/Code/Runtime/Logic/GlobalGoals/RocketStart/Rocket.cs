@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DG.Tweening.Core;
@@ -39,6 +40,8 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
         private Vector3 _startPosition;
         private Vector3 _startScale;
 
+        public event Action RocketLaunch;
+
         private void Awake()
         {
             _transform = transform;
@@ -63,6 +66,7 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
             if(!Application.isPlaying)
                 return UniTask.CompletedTask;
 #endif
+            RocketLaunch?.Invoke();
             
             _particlesGroup.gameObject.SetActive(true);
             return DOTween

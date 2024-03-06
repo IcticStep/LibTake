@@ -33,6 +33,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             _bookReceiver.Reset();
             _progress.Reset();
             _playerLivesService.WasteLife();
+            _customerStateMachine.NotifyFailed();
             Debug.Log("Receiving failed. Customer unsatisified.");
         }
     }
