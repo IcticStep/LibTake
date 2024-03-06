@@ -4100,6 +4100,7 @@ GameObject:
   - component: {fileID: 1278020300}
   - component: {fileID: 1278020301}
   - component: {fileID: 1278020302}
+  - component: {fileID: 1278020303}
   m_Layer: 0
   m_Name: RocketHull
   m_TagString: Untagged
@@ -4187,6 +4188,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1278020303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278020298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3695938265484cd0a73fc2c38cc67e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rocket: {fileID: 1278020301}
+  _rocketSound: {fileID: 8300000, guid: 5c62439bab3c8df47a9939e3d2a7478e, type: 3}
 --- !u!1 &1287538640
 GameObject:
   m_ObjectHideFlags: 0
