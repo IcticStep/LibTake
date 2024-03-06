@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5475589924342636869}
   - component: {fileID: 2981744462768712211}
   - component: {fileID: 305989145435600299}
+  - component: {fileID: 7036443140772477958}
   m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
@@ -97,6 +98,25 @@ MonoBehaviour:
   _interactable: {fileID: 2981744462768712211}
   _hoverMeshes:
   - {fileID: 5745466526864350737}
+--- !u!114 &7036443140772477958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817948418896455810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d564aef4f83400f9d1f49dfe198dbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bookStorage: {fileID: 5475589924342636869}
+  _bookRemovedSounds:
+  - {fileID: 8300000, guid: 93e28db73e0fe3e4d86a2c00ebea54c3, type: 3}
+  - {fileID: 8300000, guid: d908327b53592594e9078f99eeaf465c, type: 3}
+  _bookInsertedSound:
+  - {fileID: 8300000, guid: 93e28db73e0fe3e4d86a2c00ebea54c3, type: 3}
+  - {fileID: 8300000, guid: d908327b53592594e9078f99eeaf465c, type: 3}
 --- !u!1 &5980478301530929324
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,6 +51,7 @@ namespace Code.Runtime.Logic.Customers.CustomersStates
             int reward = _bookRewardService.GetRewardBy(_progress);
             _playerInventoryService.AddCoins(reward);
             Rewarded?.Invoke(reward);
+            _customerStateMachine.NotifyReward();
             Debug.Log("Receiving successful. Customer owns a book.");
         }
     }

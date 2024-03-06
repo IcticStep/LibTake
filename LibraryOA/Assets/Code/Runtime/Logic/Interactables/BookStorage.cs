@@ -16,6 +16,8 @@ namespace Code.Runtime.Logic.Interactables
         public bool HasBook => !string.IsNullOrWhiteSpace(CurrentBookId);
 
         public event Action BooksUpdated;
+        public event Action BookInserted;
+        public event Action BookRemoved;
 
         [Inject]
         private void Construct(IPersistantProgressService progressService) =>
@@ -46,6 +48,7 @@ namespace Code.Runtime.Logic.Interactables
                 throw new InvalidOperationException("Can't insert more than one book into storage!");
 
             CurrentBookId = id;
+            BookInserted?.Invoke();
             BooksUpdated?.Invoke();
         }
 
@@ -56,6 +59,7 @@ namespace Code.Runtime.Logic.Interactables
 
             string removed = CurrentBookId;
             CurrentBookId = string.Empty;
+            BookRemoved?.Invoke();
             BooksUpdated?.Invoke();
             
             return removed;

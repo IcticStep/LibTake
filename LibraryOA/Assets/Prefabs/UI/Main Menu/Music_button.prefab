@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 7099707301344893686}
   - component: {fileID: 529408840012444582}
   - component: {fileID: 5621760973061365209}
+  - component: {fileID: 1740654898052138581}
+  - component: {fileID: 8824807170156268897}
+  - component: {fileID: 7459297873758658183}
   m_Layer: 5
   m_Name: Music_button
   m_TagString: Untagged
@@ -120,3 +123,48 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1740654898052138581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415092478327166106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb777b6cb2db434abdca8edb12a238fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 529408840012444582}
+  _disabledColor: {r: 0.39, g: 0.39, b: 0.39, a: 1}
+  _enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  _animationTime: 0.5
+  _ease: 6
+--- !u!114 &8824807170156268897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415092478327166106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72a7fb57f244b049d3a38ebe2ac642e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5621760973061365209}
+  _buttonSwitcherView: {fileID: 1740654898052138581}
+--- !u!114 &7459297873758658183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415092478327166106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6679a94e543acb0da29f5b37f861a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClickSound: {fileID: 8300000, guid: ab38ed783dcbae641b41d639de7cd4ab, type: 3}
+  _button: {fileID: 5621760973061365209}

@@ -13,6 +13,7 @@ using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Infrastructure.Services.UiMessages;
+using Code.Runtime.Logic.Audio;
 using Code.Runtime.Services.Books.Delivering;
 using Code.Runtime.Services.Books.Receiving;
 using Code.Runtime.Services.Books.Reward;
@@ -48,11 +49,15 @@ using Code.Runtime.Services.Skills;
 using Code.Runtime.Services.TruckDriving;
 using UnityEngine;
 using Zenject;
+using SettingsService = Code.Runtime.Infrastructure.Settings.SettingsService;
 
 namespace Code.Runtime.Infrastructure.DiInstallers
 {
     internal sealed class BootstrapInstaller : MonoInstaller, IInitializable
     {
+        [SerializeField]
+        private AudioPlayer _audioPlayer;
+        
         public override void InstallBindings()
         {
             Container.Bind<IInitializable>().To<BootstrapInstaller>().FromInstance(this).AsSingle();
@@ -80,6 +85,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ILevelCleanUpService>().To<LevelCleanUpService>().AsSingle();
             Container.Bind(typeof(ILocalizationService), typeof(IDisposable)).To<LocalizationService>().AsSingle();
             Container.Bind<ILoadingCurtainService>().To<LoadingCurtainService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SettingsService>().AsSingle();
+            Container.BindInstance(_audioPlayer).AsSingle();
         }
 
         private void InstallServices()
