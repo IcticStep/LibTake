@@ -1,9 +1,9 @@
 using System;
-using Code.Runtime.Logic.Animations.Api;
+using Code.Runtime.Logic.Animations;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Animations.Implementations
+namespace Code.Runtime.Logic.Interactables.Scanner
 {
     internal sealed class ScannerCoddedAnimation : CoddedAnimation
     {

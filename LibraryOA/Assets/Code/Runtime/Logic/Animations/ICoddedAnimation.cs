@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Code.Runtime.Logic.Animations.Api
+namespace Code.Runtime.Logic.Animations
 {
     internal abstract class CoddedAnimation : MonoBehaviour
     {
