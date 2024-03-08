@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Logic.Customers;
 using Code.Runtime.Services.Books.Receiving;
 using Code.Runtime.Services.Player.Inventory;
@@ -10,6 +11,8 @@ namespace Code.Runtime.Services.Interactions.BooksReceiving
     {
         private readonly IBooksReceivingService _booksReceivingService;
         private readonly IPlayerInventoryService _playerInventoryService;
+        
+        public event Action BookReceived;
 
         public BooksReceivingInteractionsService(IBooksReceivingService booksReceivingService, IPlayerInventoryService playerInventoryService)
         {
@@ -30,6 +33,7 @@ namespace Code.Runtime.Services.Interactions.BooksReceiving
             string bookId = _playerInventoryService.RemoveBook();
             _booksReceivingService.ReceiveBook(bookId);
             bookReceiver.ReceiveBook(bookId);
+            BookReceived?.Invoke();
         }
     }
 }

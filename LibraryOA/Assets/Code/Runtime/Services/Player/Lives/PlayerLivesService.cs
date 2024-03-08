@@ -13,7 +13,11 @@ namespace Code.Runtime.Services.Player.Lives
 
         public int Lives { get; private set; }
         public int MaxLives => _staticDataService.Player.MaxLivesCount;
+        public int StartLives => _staticDataService.Player.StartLivesCount;
+        public int RestoreLifePrice => _staticDataService.Interactables.Statue.LifeRestorePrice;
+        
         public event Action Updated;
+        public event Action RestoredLife;
 
         public PlayerLivesService(IStaticDataService staticDataService) 
         {
@@ -35,6 +39,7 @@ namespace Code.Runtime.Services.Player.Lives
             Lives++;
             Debug.Log($"Lives count: {Lives}.");
             Updated?.Invoke();
+            RestoredLife?.Invoke();
         }
 
         public void LoadProgress(GameProgress progress) =>
