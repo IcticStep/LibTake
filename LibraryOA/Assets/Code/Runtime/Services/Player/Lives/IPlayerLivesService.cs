@@ -9,6 +9,9 @@ namespace Code.Runtime.Services.Player.Lives
         void RestoreLife();
         int Lives { get; }
         int MaxLives { get; }
+        int StartLives { get; }
+        int RestoreLifePrice { get; }
         event Action Updated;
+        event Action RestoredLife;
     }
 }
