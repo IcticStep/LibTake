@@ -1,3 +1,5 @@
+using System;
+
 namespace Code.Runtime.Services.Interactions.Truck
 {
     internal interface ITruckInteractionService
@@ -6,5 +8,6 @@ namespace Code.Runtime.Services.Interactions.Truck
         bool CanInteract();
         bool TryInteract();
         void CleanUp();
+        event Action BooksTaken;
     }
 }

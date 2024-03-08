@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Runtime.Data.Progress;
@@ -17,6 +18,8 @@ namespace Code.Runtime.Services.Interactions.Truck
         private readonly List<string> _booksInTruck = new();
         
         private BooksDeliveringData DeliveringData => _persistantProgressService.Progress.WorldData.BooksDeliveringData;
+
+        public event Action BooksTaken;
 
         public TruckInteractionService(IPlayerInventoryService playerInventoryService, IPersistantProgressService persistantProgressService)
         {
@@ -38,6 +41,7 @@ namespace Code.Runtime.Services.Interactions.Truck
             _playerInventoryService.InsertBooks(_booksInTruck);
             DeliveringData.AddDeliveredBooks(_booksInTruck);
             _booksInTruck.Clear();
+            BooksTaken?.Invoke();
             return true;
         }
 
