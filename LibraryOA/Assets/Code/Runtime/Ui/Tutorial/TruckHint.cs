@@ -1,4 +1,3 @@
-using System;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Services.Interactions.Truck;
