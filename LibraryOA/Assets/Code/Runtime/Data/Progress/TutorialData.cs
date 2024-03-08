@@ -8,5 +8,6 @@ namespace Code.Runtime.Data.Progress
         public bool TruckHintShown;
         public bool BookStorageHintShown;
         public bool BookReceivingHintShown;
+        public bool BuyHealthHintShown;
     }
 }
