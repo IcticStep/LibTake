@@ -7,5 +7,6 @@ namespace Code.Runtime.Data.Progress
     {
         public PlayerData PlayerData = new();
         public WorldData WorldData = new();
+        public TutorialData TutorialData = new();
     }
 }
