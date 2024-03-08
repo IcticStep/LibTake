@@ -7,6 +7,6 @@ namespace Code.Runtime.Services.Interactions.BooksReceiving
     {
         bool CanInteract(IBookReceiver bookReceiver);
         void Interact(IBookReceiver bookReceiver);
-        event Action BooksReceived;
+        event Action BookReceived;
     }
 }
