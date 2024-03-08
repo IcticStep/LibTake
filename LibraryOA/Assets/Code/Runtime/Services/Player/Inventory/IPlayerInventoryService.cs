@@ -16,5 +16,6 @@ namespace Code.Runtime.Services.Player.Inventory
         void AddCoins(int amount);
         void RemoveCoins(int amount);
         void CleanUp();
+        event Action AllBooksRemoved;
     }
 }
