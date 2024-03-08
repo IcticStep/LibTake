@@ -19,6 +19,7 @@ namespace Code.Runtime.Services.Player.Inventory
 
         public event Action BooksUpdated;
         public event Action CoinsUpdated;
+        public event Action AllBooksRemoved;
         
         public void InsertBooks(IEnumerable<string> bookIds)
         {
@@ -37,6 +38,9 @@ namespace Code.Runtime.Services.Player.Inventory
             string removedId = _books[^1];
             _books.RemoveAt(_books.Count-1);
             BooksUpdated?.Invoke();
+            if(_books.Count == 0)
+                AllBooksRemoved?.Invoke();
+            
             return removedId;
         }
         

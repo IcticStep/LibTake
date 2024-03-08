@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Logic.Customers;
 
 namespace Code.Runtime.Services.Interactions.BooksReceiving
@@ -6,5 +7,6 @@ namespace Code.Runtime.Services.Interactions.BooksReceiving
     {
         bool CanInteract(IBookReceiver bookReceiver);
         void Interact(IBookReceiver bookReceiver);
+        event Action BooksReceived;
     }
 }

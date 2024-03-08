@@ -6,5 +6,6 @@ namespace Code.Runtime.Data.Progress
     public class TutorialData
     {
         public bool TruckHintShown;
+        public bool BookStorageHintShown;
     }
 }
