@@ -1,7 +1,7 @@
-name: HappyHarvest CI tests 🎮
+name: LibTake CI tests 🎮
 
 on: 
-  push:
+#  push:
   workflow_dispatch:
 
 env:
@@ -17,7 +17,7 @@ jobs:
 #      fail-fast: false
 #      matrix:
 #        projectPath:
-#          - "HappyHarvest"
+#          - "LibraryOA"
 #        testMode:
 #          - EditMode
 ##          - PlayMode
@@ -77,7 +77,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - "HappyHarvest"
+          - "LibraryOA"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
