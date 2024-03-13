@@ -110,9 +110,10 @@ jobs:
       - uses: game-ci/unity-builder@v4
         with:
           projectPath: ${{ matrix.projectPath }}
-          targetPlatform: StandaloneWindows64
+          targetPlatform: Android
+          buildName: "Libtake-development-${{ github.run_number }}"
 
       - uses: actions/upload-artifact@v2
         with:
-          name: build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          name: "Libtake-development-${{ github.run_number }}"
+          path: build/"Libtake-development-${{ github.run_number }}"
