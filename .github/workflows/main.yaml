@@ -1,4 +1,4 @@
-name: HappyHarvest CI tests 🎮
+name: LibTake CI tests 🎮
 
 on: push
 
@@ -75,7 +75,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - "HappyHarvest"
+          - "LibraryOA"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
