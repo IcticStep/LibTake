@@ -79,6 +79,17 @@ jobs:
         projectPath:
           - "LibraryOA"
     steps:
+      - name: Delete huge unnecessary tools folder
+        run: rm -rf /opt/hostedtoolcache
+
+      - name: free disk space
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+    
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -106,6 +117,8 @@ jobs:
           restore-keys: |
             Library-build-
             Library-
+
+        
 
       - uses: game-ci/unity-builder@v4
         with:
