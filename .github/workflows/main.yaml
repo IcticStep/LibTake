@@ -79,6 +79,17 @@ jobs:
         projectPath:
           - "LibraryOA"
     steps:
+      - name: Delete huge unnecessary tools folder
+        run: rm -rf /opt/hostedtoolcache
+
+      - name: free disk space
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+    
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -107,12 +118,15 @@ jobs:
             Library-build-
             Library-
 
+        
+
       - uses: game-ci/unity-builder@v4
         with:
           projectPath: ${{ matrix.projectPath }}
-          targetPlatform: StandaloneWindows64
+          targetPlatform: Android
+          buildName: "Libtake-development-${{ github.run_number }}"
 
       - uses: actions/upload-artifact@v2
         with:
-          name: build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          name: "Libtake-development-${{ github.run_number }}"
+          path: build/"Libtake-development-${{ github.run_number }}"
