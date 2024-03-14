@@ -69,9 +69,9 @@ jobs:
 #          name: Test results (${{ matrix.testMode }})
 #          path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-  buildWindows:
+  build:
 #    needs: testRunner
-    name: Build for Windows 🖥️
+    name: Build for Android 🖥️
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -124,9 +124,9 @@ jobs:
         with:
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: Android
-          buildName: "Libtake-development-${{ github.run_number }}"
+          buildName: Libtake-development-${{ github.run_number }}
 
       - uses: actions/upload-artifact@v2
         with:
           name: "Libtake-development-${{ github.run_number }}"
-          path: build/"Libtake-development-${{ github.run_number }}"
+          path: build
