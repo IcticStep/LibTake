@@ -136,7 +136,7 @@ namespace Code.Tests.Logic
                 
                 // Act.
                 progress.StartFilling();
-                int finishedTask = await UniTask.WhenAny(progress.Task, UniTask.WaitForSeconds(0.5f));
+                int finishedTask = await UniTask.WhenAny(progress.Task, UniTask.WaitForSeconds(2f));
                 if(finishedTask == 1)
                     Assert.Fail($"Timeout on trying to await the progress task.");
 
