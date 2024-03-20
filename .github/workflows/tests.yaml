@@ -1,4 +1,4 @@
-name: LibTake CI build android 🎮
+name: LibTake CI tests 🤬
 
 on: 
 #  push:
@@ -10,28 +10,21 @@ env:
   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
-
-  build:
-#    needs: testRunner
-    name: Build for Android 🖥️
+  testRunner:
+    name: Test in ${{ matrix.testMode }} ✨
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         projectPath:
           - "LibraryOA"
+        testMode:
+          - EditMode
+#          - PlayMode
     steps:
-      - name: Delete huge unnecessary tools folder
-        run: rm -rf /opt/hostedtoolcache
+#      - name: Unity - Activate
+#        uses: game-ci/unity-activate@v2.0.0
 
-      - name: free disk space
-        run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          docker rmi $(docker image ls -aq)
-          df -h
-    
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -54,21 +47,24 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-build-StandaloneWindows64
+          path: Library
+          key: Library-test-project-${{ matrix.targetPlatform }}
           restore-keys: |
-            Library-build-
+            Library-test-project-
             Library-
 
-        
-
-      - uses: game-ci/unity-builder@v4
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
-          targetPlatform: Android
-          buildName: Libtake-development-${{ github.run_number }}
+          testMode: ${{ matrix.testMode }}
+          checkName: ${{ matrix.testMode }} test results
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: "Libtake-development-${{ github.run_number }}"
-          path: build
+          name: Test results (${{ matrix.testMode }})
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
