@@ -1,7 +1,5 @@
 using Code.Runtime.Ui.Messages;
-using DG.Tweening;
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace Code.Runtime.Infrastructure.Services.UiHud
 {

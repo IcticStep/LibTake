@@ -39,6 +39,7 @@ using Code.Runtime.Services.Interactions.Statue;
 using Code.Runtime.Services.Interactions.Truck;
 using Code.Runtime.Services.Library;
 using Code.Runtime.Services.Loading;
+using Code.Runtime.Services.Pause;
 using Code.Runtime.Services.Physics;
 using Code.Runtime.Services.Player.CutsceneCopyProvider;
 using Code.Runtime.Services.Player.Inventory;
@@ -133,6 +134,7 @@ namespace Code.Runtime.Infrastructure.DiInstallers
             Container.Bind<ITruckProvider>().To<TruckProvider>().AsSingle();
             Container.Bind<ILibraryService>().To<LibraryService>().AsSingle();
             Container.Bind<IRocketProvider>().To<RocketProvider>().AsSingle();
+            Container.Bind<IPauseService>().To<PauseService>().AsSingle();
         }
 
         private void InstallUiServices()

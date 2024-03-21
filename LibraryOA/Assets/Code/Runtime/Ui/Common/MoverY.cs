@@ -30,7 +30,9 @@ namespace Code.Runtime.Ui.Common
                 .To(() => _transform.localPosition, x => _transform.localPosition = x, endValue, _duration)
                 .SetEase(_ease)
                 .SetAutoKill(false)
-                .Pause();
+                .Pause()
+                .SetLink(gameObject)
+                .SetLink(gameObject);
 
             if(_resetPositionOnFinish)
                 _tween.onStepComplete += ResetPosition;
