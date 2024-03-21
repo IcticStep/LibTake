@@ -45,13 +45,16 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Tools.Saw
                 .Append(_transform
                     .DOLocalMove(_movedLocalPosition, _movingOutDuration)
                     .SetEase(_movingOutEase)
+                    .SetLink(gameObject)
                     .SetAutoKill(false))
                 .AppendCallback(NotifyMovingIn)
                 .Append(_transform
                     .DOLocalMove(_startLocalPosition, _movingInDuration)
                     .SetEase(_movingInEase)
+                    .SetLink(gameObject)
                     .SetAutoKill(false))
                 .AppendCallback(NotifyFinished)
+                .SetLink(gameObject)
                 .Pause();
 
         private void NotifyMovingIn() =>

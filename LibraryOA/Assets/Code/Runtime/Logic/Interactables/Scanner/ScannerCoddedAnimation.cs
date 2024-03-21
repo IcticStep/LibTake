@@ -45,12 +45,15 @@ namespace Code.Runtime.Logic.Interactables.Scanner
                 .Append(_planeObject.transform
                     .DORotate(_closingRotation, _closingDuration, RotateMode.LocalAxisAdd)
                     .SetEase(_closingEase)
+                    .SetLink(gameObject)
                     .SetAutoKill(false))
                 .Append(_planeObject.transform
                     .DORotate(_openingRotation, _openingDuration, RotateMode.LocalAxisAdd)
                     .SetEase(_openingEase)
+                    .SetLink(gameObject)
                     .SetAutoKill(false))
                 .AppendCallback(NotifyFinished)
+                .SetLink(gameObject)
                 .Pause();
 
         private void NotifyScanIteration() =>

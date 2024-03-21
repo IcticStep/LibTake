@@ -51,10 +51,13 @@ namespace Code.Runtime.Logic.Player.Animations
                         speed => _animator.SetFloat(_speedParameter, speed),
                         endValue,
                         _walkingSwitchDuration)
-                    .SetEase(_walkingSwitchEase))
+                    .SetEase(_walkingSwitchEase)
+                    .SetLink(gameObject))
                 .Append(_transform
                     .DOScale(0, _scaleDuration)
-                    .SetEase(_scaleEase));
+                    .SetEase(_scaleEase)
+                    .SetLink(gameObject))
+                .SetLink(gameObject);
 
         private void StartDoAnimation() =>
             _animator.SetLayerWeight(_doLayerIndex, 1);

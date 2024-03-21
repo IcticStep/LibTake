@@ -196,6 +196,7 @@ MonoBehaviour:
   _unFadeDuration: 0.5
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 1
 --- !u!225 &775155524279602088
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -302,6 +303,7 @@ MonoBehaviour:
   _unFadeDuration: 0.5
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 1
 --- !u!225 &5879168924540190010
 CanvasGroup:
   m_ObjectHideFlags: 0
