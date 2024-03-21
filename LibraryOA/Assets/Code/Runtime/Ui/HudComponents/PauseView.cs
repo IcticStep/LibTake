@@ -1,7 +1,10 @@
+using System;
+using Code.Runtime.Services.Pause;
 using Code.Runtime.Ui.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Code.Runtime.Ui.HudComponents
 {
@@ -15,7 +18,12 @@ namespace Code.Runtime.Ui.HudComponents
         private GraphicRaycaster _windowPauseRaycaster;
 
         private bool _busy;
-        
+        private IPauseService _pauseService;
+
+        [Inject]
+        private void Construct(IPauseService pauseService) =>
+            _pauseService = pauseService;
+
         private void Start()
         {
             _windowPauseRaycaster.enabled = false;
@@ -23,12 +31,16 @@ namespace Code.Runtime.Ui.HudComponents
             _fastFlyingFading.FadeOut(this.GetCancellationTokenOnDestroy());
         }
 
+        private void OnDestroy() =>
+            _pauseService.Resume();
+
         public void Pause()
         {
             if(_busy)
                 return;
             
-            PauseAsync()
+            _pauseService.Pause();
+            ShowPauseWindowAsync()
                 .Forget();
         }
 
@@ -37,11 +49,12 @@ namespace Code.Runtime.Ui.HudComponents
             if(_busy)
                 return;
             
-            ResumeAsync()
+            _pauseService.Resume();
+            HidePauseWindowAsync()
                 .Forget();
         }
 
-        private async UniTaskVoid PauseAsync()
+        private async UniTaskVoid ShowPauseWindowAsync()
         {
             _busy = true;
             _windowPauseRaycaster.enabled = false;
@@ -51,7 +64,7 @@ namespace Code.Runtime.Ui.HudComponents
             _busy = false;
         }
 
-        private async UniTaskVoid ResumeAsync()
+        private async UniTaskVoid HidePauseWindowAsync()
         {
             _busy = true;
             _windowPauseRaycaster.enabled = false;

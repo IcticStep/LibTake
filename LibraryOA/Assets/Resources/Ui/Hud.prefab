@@ -217,6 +217,7 @@ MonoBehaviour:
   _unFadeDuration: 0
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 0
 --- !u!225 &2745060719780888555
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -399,6 +400,7 @@ MonoBehaviour:
   _unFadeDuration: 1
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 0
 --- !u!225 &2601044990572721369
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -679,6 +681,7 @@ MonoBehaviour:
   _unFadeDuration: 0.2
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 0
 --- !u!225 &3914691227491398197
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1102,6 +1105,7 @@ MonoBehaviour:
   _unFadeDuration: 0
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 0
 --- !u!1 &7081675813185135912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1553,7 @@ MonoBehaviour:
   _direction: 2
   _flyOnScreenEase: 24
   _flyAwayEase: 16
+  _ignoreTimeScale: 1
 --- !u!225 &7964816846132960431
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1731,6 +1736,7 @@ MonoBehaviour:
   _unFadeDuration: 0.3
   _fadeEase: 10
   _unFadeEase: 10
+  _ignoreTimeScale: 1
 --- !u!225 &4143509469212606161
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3141,6 +3147,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8953468868746189368, guid: ac87dec323a4e1d49a512a5da14a5922,
+        type: 3}
+      propertyPath: _ignoreTimeScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3486,6 +3497,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3776127212041412980}
     m_Modifications:
+    - target: {fileID: 1740654898052138581, guid: ac123351f64e2274dab97fff16245f1e,
+        type: 3}
+      propertyPath: _ignoreTimeScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3415092478327166106, guid: ac123351f64e2274dab97fff16245f1e,
         type: 3}
       propertyPath: m_Name

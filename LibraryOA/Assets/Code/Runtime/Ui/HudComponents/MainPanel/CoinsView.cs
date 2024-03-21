@@ -1,10 +1,8 @@
-using System;
 using Code.Runtime.Services.Player.Inventory;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Ui.HudComponents.MainPanel

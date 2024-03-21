@@ -29,8 +29,10 @@ namespace Code.Runtime.Logic.Interactables.Crafting.Tools.Gear
                 .Append(_transform
                     .DOLocalRotate(Vector3.forward * _degreesByIteration, _iterationDuration, RotateMode.LocalAxisAdd)
                     .SetEase(Ease.Linear)
+                    .SetLink(gameObject)
                     .SetAutoKill(false))
-                .AppendCallback(OnAnimationFinish);
+                .AppendCallback(OnAnimationFinish)
+                .SetLink(gameObject);
 
         private void OnAnimationFinish()
         {

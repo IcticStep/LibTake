@@ -18,6 +18,8 @@ namespace Code.Runtime.Ui.Menu.Settings
         private float _animationTime = 0.5f;
         [SerializeField]
         private Ease _ease = Ease.OutQuad;
+        [SerializeField]
+        private bool _ignoreTimeScale;
         
         private Tweener _tweener;
         
@@ -30,6 +32,8 @@ namespace Code.Runtime.Ui.Menu.Settings
             _tweener = _button
                 .DOColor(_disabledColor, _animationTime)
                 .SetEase(_ease)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .OnComplete(KillTweenerIfAny);
 
             _tweener.ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
@@ -41,6 +45,8 @@ namespace Code.Runtime.Ui.Menu.Settings
             _tweener = _button
                 .DOColor(_enabledColor, _animationTime)
                 .SetEase(_ease)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .OnComplete(KillTweenerIfAny);
             
             _tweener.ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());

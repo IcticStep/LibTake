@@ -23,6 +23,7 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
             _duration = 1f;
             _transform
                 .DOLocalRotate(_targetRotation, _duration, RotateMode.LocalAxisAdd)
+                .SetLink(gameObject)
                 .SetEase(_ease);
         }
     }

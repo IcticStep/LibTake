@@ -45,9 +45,7 @@ namespace Code.Runtime.Logic.Player
             ApplyVelocity();
 
             if (input != Vector2.zero)
-            {
                 SetRotation(direction);
-            }
         }
 
         private Vector3 GetMovementDirection(Vector2 input)
