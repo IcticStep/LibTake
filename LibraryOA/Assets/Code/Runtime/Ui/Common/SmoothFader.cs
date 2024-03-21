@@ -19,6 +19,8 @@ namespace Code.Runtime.Ui.Common
         private Ease _fadeEase = Ease.InOutCubic;
         [SerializeField]
         private Ease _unFadeEase = Ease.InOutCubic;
+        [SerializeField]
+        private bool _ignoreTimeScale;
         
         private Tween _fadeTween;
         private Tween _unFadeTween;
@@ -119,12 +121,16 @@ namespace Code.Runtime.Ui.Common
                 .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, _fadeDuration)
                 .SetEase(_fadeEase)
                 .SetAutoKill(false)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .Pause();
 
             _unFadeTween = DOTween
                 .To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, _unFadeDuration)
                 .SetEase(_unFadeEase)
                 .SetAutoKill(false)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .Pause();
         }
 

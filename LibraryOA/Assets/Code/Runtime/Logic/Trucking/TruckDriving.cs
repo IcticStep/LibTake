@@ -55,12 +55,14 @@ namespace Code.Runtime.Logic.Trucking
                 .DOMove(_way.LibraryPoint.Position, _drivingSeconds)
                 .SetEase(Ease.OutCirc)
                 .SetAutoKill(false)
+                .SetLink(gameObject)
                 .Pause();
 
             _driveAwayLibraryTween = gameObject.transform
                 .DOMove(_way.HiddenPoint.Position, _drivingSeconds)
                 .SetEase(Ease.InCirc)
                 .SetAutoKill(false)
+                .SetLink(gameObject)
                 .Pause();
         }
     }

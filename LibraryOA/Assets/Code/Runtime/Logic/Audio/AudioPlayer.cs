@@ -58,7 +58,8 @@ namespace Code.Runtime.Logic.Audio
             _musicTweener = _musicSource
                 .DOFade(0, duration)
                 .SetEase(Ease.OutQuad)
-                .OnComplete(KillMusicTweenerIfAny);
+                .OnComplete(KillMusicTweenerIfAny)
+                .SetLink(gameObject);
         }
 
         public void FadeInMusic(float duration)
@@ -67,7 +68,8 @@ namespace Code.Runtime.Logic.Audio
             _musicTweener = _musicSource
                 .DOFade(1, duration)
                 .SetEase(Ease.OutQuad)
-                .OnComplete(KillMusicTweenerIfAny);
+                .OnComplete(KillMusicTweenerIfAny)
+                .SetLink(gameObject);
         }
 
         public void FadeOutAmbient(float duration)
@@ -76,7 +78,8 @@ namespace Code.Runtime.Logic.Audio
             _ambientTweener = _ambientSource
                 .DOFade(0, duration)
                 .SetEase(Ease.OutQuad)
-                .OnComplete(KillAmbientTweenerIfAny);
+                .OnComplete(KillAmbientTweenerIfAny)
+                .SetLink(gameObject);
         }
 
         public void FadeInAmbient(float duration)
@@ -85,7 +88,8 @@ namespace Code.Runtime.Logic.Audio
             _ambientTweener = _ambientSource
                 .DOFade(1, duration)
                 .SetEase(Ease.OutQuad)
-                .OnComplete(KillAmbientTweenerIfAny);
+                .OnComplete(KillAmbientTweenerIfAny)
+                .SetLink(gameObject);
         }
 
         public void StartAmbientIfNot()

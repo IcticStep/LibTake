@@ -77,27 +77,32 @@ namespace Code.Runtime.Logic.GlobalGoals.RocketStart
                 .Append(Scale())
                 .Join(ScaleParticles())
                 .Join(ScaleWhileFlying())
+                .SetLink(gameObject)
                 .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
         }
 
         private TweenerCore<Vector3, Vector3, VectorOptions> Scale() =>
             _transform
                 .DOScale(0, _scaleDuration)
+                .SetLink(gameObject)
                 .SetEase(_scaleEase);
         
         private TweenerCore<Vector3, Vector3, VectorOptions> ScaleParticles() =>
             DOTween
                 .To(_particlesGroup.GetParticlesScale, _particlesGroup.SetParticlesLocalScale, Vector3.zero, _scaleDuration)
+                .SetLink(gameObject)
                 .SetEase(_scaleEase);
 
         private TweenerCore<Vector3, Vector3, VectorOptions> ScaleWhileFlying() =>
             _transform
                 .DOMoveY(_whileScaleFlyY, _launchDuration)
+                .SetLink(gameObject)
                 .SetEase(_whileScaleFlyEase);
 
         private TweenerCore<Vector3, Vector3, VectorOptions> StartFly() =>
             _transform
                 .DOMoveY(_targetY, _launchDuration)
+                .SetLink(gameObject)
                 .SetEase(_flyingEase);
     }
 }

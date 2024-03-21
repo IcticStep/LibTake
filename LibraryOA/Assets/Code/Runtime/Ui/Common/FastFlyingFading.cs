@@ -23,6 +23,8 @@ namespace Code.Runtime.Ui.Common
         private Ease _flyOnScreenEase = Ease.OutElastic;
         [SerializeField]
         private Ease _flyAwayEase = Ease.InOutQuint;
+        [SerializeField]
+        private bool _ignoreTimeScale;
 
         private Vector3 _awayPosition;
         private Vector2 _onScreenPosition;
@@ -45,10 +47,14 @@ namespace Code.Runtime.Ui.Common
             _rectTransform
                 .DOAnchorPos(_onScreenPosition, Duration) 
                 .SetEase(_flyOnScreenEase)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .ToUniTask(cancellationToken: cancellationToken);
 
             return _canvasGroup
                 .DOFade(1, Duration)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .ToUniTask(cancellationToken: cancellationToken);
         }
         
@@ -59,10 +65,14 @@ namespace Code.Runtime.Ui.Common
             _rectTransform
                 .DOAnchorPos(_awayPosition, Duration)
                 .SetEase(_flyAwayEase)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .ToUniTask(cancellationToken: cancellationToken);
 
             return _canvasGroup
                 .DOFade(0, Duration)
+                .SetUpdate(_ignoreTimeScale)
+                .SetLink(gameObject)
                 .ToUniTask(cancellationToken: cancellationToken);
         }
 

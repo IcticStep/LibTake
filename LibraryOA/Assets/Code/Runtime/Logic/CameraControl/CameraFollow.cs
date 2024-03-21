@@ -112,6 +112,7 @@ namespace Code.Runtime.Logic.CameraControl
             transform
                 .DOMove(GetPositionByTarget(Target), duration ?? _defaultMoveDuration)
                 .SetEase(_ease)
+                .SetLink(gameObject)
                 .OnComplete(OnTweenerCompete);
 
         private void OnTweenerCompete()
