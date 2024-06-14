@@ -1,4 +1,4 @@
-name: LibTake CI build android 🎮
+name: LibTake CI build debug android 🎮
 
 on: 
 #  push:
