@@ -57,3 +57,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Ignore temporaries from GameCI
+/[Aa]rtifacts/
+/[Cc]odeCoverage/
