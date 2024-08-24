@@ -57,10 +57,9 @@ namespace Code.Runtime.Ui.HudComponents
         private async UniTaskVoid ShowPauseWindowAsync()
         {
             _busy = true;
-            _windowPauseRaycaster.enabled = false;
+            _windowPauseRaycaster.enabled = true;
             await _backgroundFader.UnFadeAsync();
             await _fastFlyingFading.FadeIn(this.GetCancellationTokenOnDestroy());
-            _windowPauseRaycaster.enabled = true;
             _busy = false;
         }
 
