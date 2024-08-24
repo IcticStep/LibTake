@@ -60,6 +60,10 @@ jobs:
           name: Test results
           path: ${{ steps.tests.outputs.artifactsPath }}
 
+      # Restore branch
+      - name: Restore branch
+        run: git restore .
+
       # Build
       - uses: game-ci/unity-builder@v4
         with:
