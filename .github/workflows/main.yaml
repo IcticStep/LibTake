@@ -1,4 +1,5 @@
-name: Debug android 🎮 ${{ github.ref }}
+name: Debug android 🎮
+run-name: Debug android 🎮 ${{ github.ref }}
 
 on: 
 #  push:
