@@ -10,9 +10,7 @@ env:
   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
-
   build:
-    needs: testRunner
     name: Build for Android 🖥️
     runs-on: ubuntu-latest
     strategy:
