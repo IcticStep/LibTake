@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:27e2f13efa40971225187db0c8c15941ca63d0125273de184d460c922369da09
-size 909
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Cell Symphony
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 9a393ab7-008f-41ff-a2e5-f3b4da202038
+  <Title>k__BackingField: Cell Symphony
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Cell Symphony
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 8232aaf6057b0334fbb9c78e317dbcdd,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

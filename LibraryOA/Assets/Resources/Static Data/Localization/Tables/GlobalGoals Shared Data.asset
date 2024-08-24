@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:04274bad894e8d6e3ebf133c133cee5737782a4ce12972a8e48f5b572ab36961
-size 1222
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GlobalGoals Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: GlobalGoals
+  m_TableCollectionNameGuidString: 047881e3c470bb54a8b3e241a8e19031
+  m_Entries:
+  - m_Id: 501995511808
+    m_Key: Rocket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544114712576
+    m_Key: Control Module
+    m_Metadata:
+      m_Items: []
+  - m_Id: 599680851968
+    m_Key: Engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629376524288
+    m_Key: Fuel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 667251089408
+    m_Key: Hull
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5545443621864734731
+  references:
+    version: 2
+    RefIds:
+    - rid: 5545443621864734731
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1706476080971

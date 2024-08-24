@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3575659acdadbbc8bbba87bcc36e82e0d3b1a60618b58f4e335141627df822a3
-size 915
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Bridge Builders
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: d12664fd-0395-448e-a197-7a1ceceb878e
+  <Title>k__BackingField: Bridge Builders
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Bridge Builders
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 97e8ed4f296df364e926322ca109b3de,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

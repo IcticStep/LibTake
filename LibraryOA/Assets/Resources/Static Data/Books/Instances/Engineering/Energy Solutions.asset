@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e72f4137886e8cbbd6c1f24232fdab2bd761c0fd940642a3b68b253c0b6255ba
-size 918
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Energy Solutions
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 92ad6212-e23c-41b0-8990-29a64bf8c671
+  <Title>k__BackingField: Energy Solutions
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Energy Solutions
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 97e8ed4f296df364e926322ca109b3de,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

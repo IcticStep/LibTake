@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4f10fcdea1d4a3082bc0a11d201496ee101bf8d06c6c5a684f57a8aedb55eb47
-size 549
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2b4cc58e3e4a0f8499beabafc09d9c, type: 3}
+  m_Name: StatueData
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 7576306994729864643, guid: d26d1a1cd0e38bf44aea61440aa86fa5,
+    type: 3}
+  <LifeRestorePrice>k__BackingField: 50

@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e8ccce8aa4e3c8c4d3f6b2a00950f593de56a0ac6857173a5bcef1e9413abb32
-size 1014
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GlobalGoals_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 047881e3c470bb54a8b3e241a8e19031, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 501995511808
+    m_Localized: Rocket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544114712576
+    m_Localized: Control Module
+    m_Metadata:
+      m_Items: []
+  - m_Id: 599680851968
+    m_Localized: Engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629376524288
+    m_Localized: Fuel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 667251089408
+    m_Localized: Hull
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

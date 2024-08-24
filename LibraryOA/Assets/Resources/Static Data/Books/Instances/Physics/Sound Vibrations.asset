@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fd4366a6890b887b1c4912644270882a4055e915b057ff7189897a86821182aa
-size 918
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Sound Vibrations
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 510f6a04-fbb2-4183-aa4f-c4dac26c31d9
+  <Title>k__BackingField: Sound Vibrations
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Sound Vibrations
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: a7a16c37ad29782488d0b3deb39aa357,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3ec5df6132b81673fbc1f47abb29a89235969acc05b1ef9bd234286d3c2f4c90
-size 927
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Equation Adventures
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 6f47df2b-8c0f-4183-aa07-9a6fd98be108
+  <Title>k__BackingField: Equation Adventures
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Equation Adventures
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: fe48b735a918d794db97ec3536576330,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

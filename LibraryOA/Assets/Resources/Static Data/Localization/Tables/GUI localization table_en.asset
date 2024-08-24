@@ -1,3 +1,78 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:10cc4292d07e1064fd97af9dd8bae53c2547759699fb1b02fdebc25abdb9146e
-size 2013
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GUI localization table_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 26c110e7e94588f4e9ad702b3649bf58, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5545443478709993485
+  m_TableData:
+  - m_Id: 11978143932416
+    m_Localized: Morning {DayNumberSource.CurrentDay}
+    m_Metadata:
+      m_Items:
+      - rid: 5545443478709993485
+  - m_Id: 19403035090944
+    m_Localized: Books delivered!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23990378930176
+    m_Localized: Day {DayNumberSource.CurrentDay}
+    m_Metadata:
+      m_Items:
+      - rid: 5545443478709993485
+  - m_Id: 2321961544032256
+    m_Localized: 'Skills needed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3658591416590336
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3658775823360000
+    m_Localized: New game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3658964449599488
+    m_Localized: Authors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3659124147724288
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660766716862464
+    m_Localized: Global goals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660919028817920
+    m_Localized: Coming soon...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8735796752523264
+    m_Localized: Game over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8736159920529408
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5545443478709993485
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00a003e1e40a000000a003b2d1150000

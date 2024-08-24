@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:08bb6df41dc74607c98d6b1a909fa7688de65bdee7042b424145177d7e37aa2c
-size 918
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Engine Mechanics
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 2cb70133-f362-4b2e-ad70-d2b9241d9b53
+  <Title>k__BackingField: Engine Mechanics
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Engine Mechanics
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 97e8ed4f296df364e926322ca109b3de,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

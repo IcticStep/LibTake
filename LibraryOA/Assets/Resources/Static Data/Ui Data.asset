@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bfee17adb2b2d09f4a0da2635e0b84e7937d409f326ee35ed79acb1da3c68161
-size 1046
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95839aaaafe4d898f3cbe5f59e3548f, type: 3}
+  m_Name: Ui Data
+  m_EditorClassIdentifier: 
+  <Hud>k__BackingField:
+    <MorningMessageIntervals>k__BackingField:
+      <ShowAnimationTime>k__BackingField: 0.5
+      <OnScreenTime>k__BackingField: 2.5
+      <HideAnimationTime>k__BackingField: 0.5
+    <DayMessageIntervals>k__BackingField:
+      <ShowAnimationTime>k__BackingField: 0.5
+      <OnScreenTime>k__BackingField: 2.5
+      <HideAnimationTime>k__BackingField: 0.5
+    <ShowHideAnimationSeconds>k__BackingField: 0.5
+    <ShowHideAnimationEase>k__BackingField: 6
+  <CompletedIcon>k__BackingField: {fileID: 21300000, guid: b4eb0c9a3cf8bd046bf0037b42bce0cf,
+    type: 3}
+  <Menu>k__BackingField:
+    <StartDelaySeconds>k__BackingField: 0.5

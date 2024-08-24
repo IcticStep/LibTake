@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4094cc2ab61c8ba58e3c95971d7b3cc81d7cf5325fb9a68b8b2dab5320b722cc
-size 950
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e9161edf234a27a9b246fded651a89, type: 3}
+  m_Name: Book Receiving
+  m_EditorClassIdentifier: 
+  <ReceivingTimeSettings>k__BackingField:
+    <TimeToReceiveBook>k__BackingField: 20
+    <NotAffectedByAdditionalTimeBooksCount>k__BackingField: 3
+    <AdditionalTimePerBook>k__BackingField: 1
+  <CustomersInterval>k__BackingField:
+    Min: 3
+    Max: 10
+  <RewardSecondsDelay>k__BackingField: 0.5
+  <BookRewards>k__BackingField:
+    _bookRewardStatements:
+    - _percentsLowerBound: 0.6
+      _reward: 4
+    - _percentsLowerBound: 0.4
+      _reward: 3
+    - _percentsLowerBound: 0.15
+      _reward: 2
+    - _percentsLowerBound: 0
+      _reward: 1

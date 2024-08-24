@@ -1,3 +1,311 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e680f9e81116a63febac6a9fe5393d95a50fc3322f7754f0786d05be66f5dc4
-size 7150
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Book Localization Table_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8776444e98d239f4288c49afd34dbbfc, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 18791182606336
+    m_Localized: Animal Adaptations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791190994944
+    m_Localized: Bacteria World
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791190994945
+    m_Localized: Bee Dynamics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791190994946
+    m_Localized: Butterfly Life
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189248
+    m_Localized: Cell Symphony
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189249
+    m_Localized: DNA Dance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189250
+    m_Localized: Frog Tales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189251
+    m_Localized: Microbe Mysteries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189252
+    m_Localized: Ocean Secrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189253
+    m_Localized: Plant Wonders
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189254
+    m_Localized: Pollinator Power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189255
+    m_Localized: Talking Trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189256
+    m_Localized: Acid-Base Secrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189257
+    m_Localized: Atom Adventures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189258
+    m_Localized: Chemical Bonds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189259
+    m_Localized: Chemistry Fun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189260
+    m_Localized: Crystal Wonders
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189261
+    m_Localized: Elemental Quest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189262
+    m_Localized: Energy Equations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189263
+    m_Localized: Lab Mysteries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189264
+    m_Localized: Molecule Magic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189265
+    m_Localized: Organic Odyssey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189266
+    m_Localized: Periodic Puzzles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189267
+    m_Localized: Reaction Riddles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189268
+    m_Localized: Bridge Builders
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189269
+    m_Localized: Circuit Secrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189270
+    m_Localized: Digital Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189271
+    m_Localized: Energy Solutions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189272
+    m_Localized: Engine Mechanics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189273
+    m_Localized: Flight Innovations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189274
+    m_Localized: Gadget Genius
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189275
+    m_Localized: Innovation Insights
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189276
+    m_Localized: Material Marvels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189277
+    m_Localized: Robot Dreams
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189278
+    m_Localized: Structure Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189279
+    m_Localized: Tech Treasures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189280
+    m_Localized: Algebra Tricks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189281
+    m_Localized: Calculus Tales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189282
+    m_Localized: Equation Adventures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189283
+    m_Localized: Fraction Fun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189284
+    m_Localized: Geometry Quest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189285
+    m_Localized: Graph Games
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189286
+    m_Localized: Infinity Journey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189287
+    m_Localized: Math Magic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189288
+    m_Localized: Math Mysteries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189289
+    m_Localized: Number Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189290
+    m_Localized: Puzzle Logic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189291
+    m_Localized: Stat Secrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189292
+    m_Localized: Atomic Tales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189293
+    m_Localized: Energy Paths
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189294
+    m_Localized: Force Fields
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189295
+    m_Localized: Gravity Secrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189296
+    m_Localized: Light Waves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189297
+    m_Localized: Magnet Mysteries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189298
+    m_Localized: Motion Magic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189299
+    m_Localized: Particle Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189300
+    m_Localized: Quantum Quest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189301
+    m_Localized: Sound Vibrations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189302
+    m_Localized: Space Wonders
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189303
+    m_Localized: Thermodynamics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189304
+    m_Localized: AI Dreams
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189305
+    m_Localized: Algorithm Art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189306
+    m_Localized: App Adventures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189307
+    m_Localized: Bug Hunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791195189308
+    m_Localized: Code Conundrums
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383552
+    m_Localized: Cyber Puzzles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383553
+    m_Localized: Data Diving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383554
+    m_Localized: Digital Logic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383555
+    m_Localized: Game Coding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383556
+    m_Localized: Script Journeys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383557
+    m_Localized: Tech Tricks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18791199383558
+    m_Localized: Web Wizards
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

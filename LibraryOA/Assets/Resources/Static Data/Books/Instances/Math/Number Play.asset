@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:38caed58f06e815b2c0293996baa0e0b3f21442bbdf87cb9282d4b79b3a962e6
-size 903
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Number Play
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 9fb8a292-2fc6-439c-9f75-e076c9743dc9
+  <Title>k__BackingField: Number Play
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Number Play
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: fe48b735a918d794db97ec3536576330,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

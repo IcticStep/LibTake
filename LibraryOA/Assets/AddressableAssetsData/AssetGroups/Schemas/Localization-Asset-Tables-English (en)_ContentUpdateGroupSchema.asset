@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62ea8bd1b4df1e6bf3ceb7e7f0e41b44a7b0b87f81cf912d5c7af8c7aac40cea
-size 552
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Localization-Asset-Tables-English (en)_ContentUpdateGroupSchema
+  m_EditorClassIdentifier: 
+  m_Group: {fileID: 11400000, guid: 640a8300f8554fa41be351c170dcb427, type: 2}
+  m_StaticContent: 0

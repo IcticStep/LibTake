@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:552a0fd5ba1d39a6842870972a2edc49dfd61f80ff1ff55599e7566565267eda
-size 713
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97269afb30aa84742ae3f3342603618a, type: 3}
+  m_Name: Assets table_uk
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: uk
+  m_SharedData: {fileID: 11400000, guid: f5a9cbda073fc8f438a8e6377b6f3140, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 839230136320
+    m_Localized: e3f447358c72eb9479708eccca0f9bb4
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
