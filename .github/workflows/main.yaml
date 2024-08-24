@@ -1,4 +1,4 @@
-name: LibTake CI build debug android 🎮
+name: Debug android 🎮 ${{ github.ref }}
 
 on: 
 #  push:
