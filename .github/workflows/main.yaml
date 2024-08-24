@@ -62,10 +62,16 @@ jobs:
 
       # Test
       - name: Run tests
+        id: tests
         uses: game-ci/unity-test-runner@v4
         with:
           projectPath: ${{ matrix.projectPath }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Test results
+          path: ${{ steps.tests.outputs.artifactsPath }}
 
       # Build
       - uses: game-ci/unity-builder@v4
