@@ -60,6 +60,13 @@ jobs:
           restore-keys: |
             Library-
 
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v4
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
       # Build
       - uses: game-ci/unity-builder@v4
         with:
