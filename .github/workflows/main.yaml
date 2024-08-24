@@ -14,6 +14,10 @@ jobs:
   build:
     name: Build for Android 🖥️
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      checks: write
     strategy:
       fail-fast: false
       matrix:
