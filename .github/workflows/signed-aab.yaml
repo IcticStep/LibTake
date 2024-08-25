@@ -1,5 +1,5 @@
 name: Signed aab Android 🎮
-run-name: Debug android 🎮 ${{ github.ref }} ${{ github.sha }}
+run-name: Signed aab 🎮 ${{ github.ref }} ${{ github.sha }}
 
 on:
   workflow_dispatch:
