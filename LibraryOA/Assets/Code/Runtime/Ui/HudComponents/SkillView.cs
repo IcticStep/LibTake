@@ -65,10 +65,10 @@ namespace Code.Runtime.Ui.HudComponents
         {
             if(_skillValue == skill)
                 return;
-            
+
             _animationTarget
                 .DOPunchScale(Vector3.one * 1.1f, 0.5f, 1, 0.5f)
-                .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
+                .SetLink(gameObject);
             _skillValue = skill;
         }
     }
