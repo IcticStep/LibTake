@@ -29,22 +29,6 @@ jobs:
           - EditMode
 #          - PlayMode
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # this might remove tools that are actually needed,
-          # if set to "true" but frees about 6 GB
-          tool-cache: false
-          
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: false
-          docker-images: false
-          swap-storage: true
-    
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -66,8 +50,15 @@ jobs:
           testMode: ${{ matrix.testMode }}
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Test results
           path: ${{ steps.tests.outputs.artifactsPath }}
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Coverage results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.coveragePath }}
