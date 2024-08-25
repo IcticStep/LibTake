@@ -52,6 +52,7 @@ jobs:
       # Build
       - uses: game-ci/unity-builder@v4
         with:
+          versioning: Semantic
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: Android
           androidExportType: androidPackage
