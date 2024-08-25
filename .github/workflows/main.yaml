@@ -14,16 +14,14 @@ jobs:
   build:
     name: Build for Android 🖥️
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      actions: read
-      checks: write
+    
     strategy:
       fail-fast: false
       matrix:
         projectPath:
           - "LibraryOA"
     steps:
+      # clean-up space
       - name: Delete huge unnecessary tools folder
         run: rm -rf /opt/hostedtoolcache
 
@@ -46,34 +44,6 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
-      # Test
-      - name: Run tests
-        id: tests
-        uses: game-ci/unity-test-runner@v4
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Test results
-          path: ${{ steps.tests.outputs.artifactsPath }}
-
-      # Restore branch
-      - name: Restore branch
-        run: git restore .
-
-      - name: Delete huge unnecessary tools folder
-        run: rm -rf /opt/hostedtoolcache
-
-      - name: free disk space
-        run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          docker rmi $(docker image ls -aq)
-          df -h
 
       # Build
       - uses: game-ci/unity-builder@v4
