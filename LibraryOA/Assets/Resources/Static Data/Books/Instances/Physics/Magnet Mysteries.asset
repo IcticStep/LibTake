@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fc9a29ef80935d1c2758104d518cf9f2ab9cb7cc6a4e4b5fd8a9c3e21b15728c
-size 918
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: Magnet Mysteries
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: b8a4e29e-0b99-43f7-adca-4787d8cfc9cd
+  <Title>k__BackingField: Magnet Mysteries
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: Magnet Mysteries
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: a7a16c37ad29782488d0b3deb39aa357,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []

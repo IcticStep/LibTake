@@ -2,7 +2,6 @@
     "name": "Runtime",
     "rootNamespace": "",
     "references": [
-        "GUID:21d1eb854b91ade49bc69a263d12bee2",
         "GUID:9efe0015df241c94d8462cbd87ead1d7",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:029c1c1b674aaae47a6841a0b89ad80e",
@@ -10,8 +9,8 @@
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
-        "GUID:f2919b06c8fa8224685f921e8786e046",
-        "GUID:84651a3751eca9349aac36a66bba901b"
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:7daefe02937cc504290c70470b9f44e8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

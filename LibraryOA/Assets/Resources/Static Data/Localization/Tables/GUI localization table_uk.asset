@@ -1,3 +1,78 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:953e5774bee48ab923861cdf2c532b2a18fd23fd567e3cd10c5bd0af7d269b38
-size 2640
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GUI localization table_uk
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: uk
+  m_SharedData: {fileID: 11400000, guid: 26c110e7e94588f4e9ad702b3649bf58, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5545443478709993510
+  m_TableData:
+  - m_Id: 11978143932416
+    m_Localized: "\u0420\u0430\u043D\u043E\u043A {DayNumberSource.CurrentDay}"
+    m_Metadata:
+      m_Items:
+      - rid: 5545443478709993510
+  - m_Id: 19403035090944
+    m_Localized: "\u041A\u043D\u0438\u0433\u0438 \u0434\u043E\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u0456!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23990378930176
+    m_Localized: "\u0414\u0435\u043D\u044C {DayNumberSource.CurrentDay}"
+    m_Metadata:
+      m_Items:
+      - rid: 5545443478709993510
+  - m_Id: 2321961544032256
+    m_Localized: "\u041D\u0435\u043E\u0431\u0445\u0456\u0434\u043D\u0456 \u043D\u0430\u0432\u0438\u0447\u043A\u0438:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3658591416590336
+    m_Localized: "\u041F\u0440\u043E\u0434\u043E\u0432\u0436\u0438\u0442\u0438"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3658775823360000
+    m_Localized: "\u041D\u043E\u0432\u0430 \u0433\u0440\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3658964449599488
+    m_Localized: "\u0410\u0432\u0442\u043E\u0440\u0438"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3659124147724288
+    m_Localized: "\u041D\u0430\u043B\u0430\u0448\u0442\u0443\u0432\u0430\u043D\u043D\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660766716862464
+    m_Localized: "\u0413\u043B\u043E\u0431\u0430\u043B\u044C\u043D\u0456 \u0446\u0456\u043B\u0456"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3660919028817920
+    m_Localized: "\u0414\u0430\u043B\u0456 \u0431\u0443\u0434\u0435..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8735796752523264
+    m_Localized: "\u0413\u0440\u0430 \u043F\u0440\u043E\u0433\u0440\u0430\u043D\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8736159920529408
+    m_Localized: "\u0413\u043E\u043B\u043E\u0432\u043D\u0435 \u043C\u0435\u043D\u044E"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5545443478709993510
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00a003e1e40a000000a003b2d1150000

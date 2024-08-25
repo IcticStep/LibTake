@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5fb7bc3a541d51cb93766b214633c24145643a60db6853fd2dd1ea84c5924166
-size 702
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3630ec991c40008bd94760f189df1c, type: 3}
+  m_Name: Physics
+  m_EditorClassIdentifier: 
+  <BookType>k__BackingField: 0
+  <Material>k__BackingField: {fileID: 2100000, guid: 46675d01b4fa5224a8357bbdf01daa34,
+    type: 2}
+  <UiTextColor>k__BackingField:
+    serializedVersion: 2
+    rgba: 4291599400
+  <Icon>k__BackingField: {fileID: 21300000, guid: c4fd4940934c73f44ac364b7afd9cf7b,
+    type: 3}

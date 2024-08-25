@@ -1,3 +1,44 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7a3f3cf5d9796fb1ba7a92e5ee731b61822514cda7db34453bafea9d568f56b0
-size 1343
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Assets table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Assets table
+  m_TableCollectionNameGuidString: f5a9cbda073fc8f438a8e6377b6f3140
+  m_Entries:
+  - m_Id: 839230136320
+    m_Key: Localization Flag
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 4382920564173176836
+  m_KeyGenerator:
+    rid: 4382920564173176834
+  references:
+    version: 2
+    RefIds:
+    - rid: 4382920564173176834
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1706791959628
+    - rid: 4382920564173176836
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 839230136320
+          m_TableCodes:
+          - uk
+          - en
+        m_TypeString: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

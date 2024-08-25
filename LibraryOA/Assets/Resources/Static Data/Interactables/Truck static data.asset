@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:246593aaf7cdbdac8f32f6954a1539b56e93acf47df5a02ac20339bb107e96b8
-size 555
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466a096c3ea647da99c0d461337257d3, type: 3}
+  m_Name: Truck static data
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 5540948696682640839, guid: 45646c1f2a959254ba4fd29b6e5a91c2,
+    type: 3}
+  <DrivingSeconds>k__BackingField: 1.5

@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f5ad703dcd807b5db5e44e04f51946f91d39cdae13922ca75315af19dcc35ff7
-size 1290
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19788fb62cd4fd1a197f4baaad6c09b, type: 3}
+  m_Name: _Rocket
+  m_EditorClassIdentifier: 
+  _uniqueId: b414e92f-78ea-4b91-8d36-20a8cd80e450
+  _globalSteps:
+  - {fileID: 11400000, guid: 5d2dc22fddd59904ab9e617dfdb63119, type: 2}
+  - {fileID: 11400000, guid: 4d2ad192be8406443acb547d25b8291c, type: 2}
+  - {fileID: 11400000, guid: b7de89d4af05f0d4f827fb45d5eb09a3, type: 2}
+  - {fileID: 11400000, guid: 886f76c4c759d1440bb2cf95bdfb1b57, type: 2}
+  _icon: {fileID: 21300000, guid: cab4f4e893518c24ab2019d8b1dcd0c7, type: 3}
+  _cameraMoveDuration: 1.5
+  _cameraLookAtStepCompletedDelay: 0.75
+  <LocalizedName>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:047881e3c470bb54a8b3e241a8e19031
+    m_TableEntryReference:
+      m_KeyId: 501995511808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _endingScene: {fileID: 102900000, guid: c1168a29792b104488f42e5296571f28, type: 3}
+  references:
+    version: 2
+    RefIds: []

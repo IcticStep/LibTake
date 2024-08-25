@@ -1,3 +1,121 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1f32f6b207387d5067b93a0896956e09593e7638f48d0a537e123afe32650b9a
-size 5486
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f03a311cc84ee68c5077a111763204, type: 3}
+  m_Name: CharacterTest
+  m_EditorClassIdentifier: 
+  <LevelKey>k__BackingField: CharacterTest
+  <PlayerInitialPosition>k__BackingField: {x: -0.95, y: 1.39, z: 0.56}
+  _bookSlots:
+  - Id: Library_d416bef7-d903-4581-9728-7066a9784214
+    InitialBookId: 
+    Position: {x: -2.644827, y: 0, z: 31.718895}
+    TransformRotation: {x: -0, y: 0.98658395, z: -0, w: 0.16325526}
+  - Id: Library_2fcd4947-6b8a-493e-8a94-e4a19b24cf53
+    InitialBookId: 
+    Position: {x: 3.7550807, y: 0, z: 31.135532}
+    TransformRotation: {x: -0, y: 0.9676912, z: -0, w: -0.25213882}
+  - Id: Library_26156c8a-0b88-4d94-a1f6-2dcc0f874dc5
+    InitialBookId: 
+    Position: {x: -7.271919, y: 0, z: 20.927355}
+    TransformRotation: {x: -0, y: 0.5388313, z: -0, w: 0.84241384}
+  - Id: Library_ad06fc22-a9e2-4b21-b9e1-236a5236aefe
+    InitialBookId: 
+    Position: {x: -7.849326, y: 0, z: 25.775562}
+    TransformRotation: {x: -0, y: 0.7727791, z: -0, w: 0.6346752}
+  - Id: BookSlotSpawn_fcf770fe-41b0-4291-8798-2d67a05f10a0
+    InitialBookId: 286a7315-8e64-4b04-b125-248d075fc4df
+    Position: {x: 2.4448266, y: 0, z: 16.761105}
+    TransformRotation: {x: -0, y: -0.16325523, z: -0, w: 0.98658395}
+  - Id: Library_69fba0bd-2c0d-4476-9f1b-b2175280715c
+    InitialBookId: 
+    Position: {x: 5.1045003, y: 0, z: 30.183332}
+    TransformRotation: {x: -0, y: 0.93603444, z: -0, w: -0.35190883}
+  - Id: Library_eddc3354-a318-48aa-a6eb-822a7656deeb
+    InitialBookId: 
+    Position: {x: -7.360724, y: 0, z: 27.353182}
+    TransformRotation: {x: -0, y: 0.8348873, z: -0, w: 0.550421}
+  - Id: Library_06528fac-a021-4e36-831a-9d87a7e816a6
+    InitialBookId: 
+    Position: {x: -7.9992476, y: 0, z: 24.13083}
+    TransformRotation: {x: -0, y: 0.7022041, z: -0, w: 0.71197575}
+  - Id: Library_355028be-29cc-4ef2-bf53-a8e34a4dab9a
+    InitialBookId: 
+    Position: {x: 6.2264576, y: 0, z: 28.97138}
+    TransformRotation: {x: -0, y: 0.8941221, z: -0, w: -0.44782323}
+  - Id: Library_7fea6fa2-ff49-4ce7-aa90-25027cc4e760
+    InitialBookId: 
+    Position: {x: -4.1441646, y: 0, z: 31.026363}
+    TransformRotation: {x: -0, y: 0.9641145, z: -0, w: 0.26548693}
+  - Id: Library_a9b708fc-521b-473a-84ef-a29a15c220dc
+    InitialBookId: 
+    Position: {x: -1.0342671, y: 0, z: 32.08456}
+    TransformRotation: {x: -0, y: 0.99824417, z: -0, w: 0.059234828}
+  - Id: Library_b2098882-8d29-466d-afae-b3a8bbe9a6f2
+    InitialBookId: 
+    Position: {x: 7.1607237, y: 0, z: 21.126818}
+    TransformRotation: {x: -0, y: -0.550421, z: -0, w: 0.83488744}
+  - Id: Library_567825eb-c8c5-48bd-ad92-5d2d6a58a60c
+    InitialBookId: 
+    Position: {x: 7.7992473, y: 0, z: 24.349167}
+    TransformRotation: {x: -0, y: -0.7119757, z: -0, w: 0.7022042}
+  - Id: Library_d144499a-609e-4a6d-8502-8bd47dd51c03
+    InitialBookId: 
+    Position: {x: 7.649327, y: 0, z: 22.704437}
+    TransformRotation: {x: -0, y: -0.6346751, z: -0, w: 0.7727792}
+  - Id: Library_fe3adb30-a595-4f37-9b97-d1d99dccdc7a
+    InitialBookId: 
+    Position: {x: 5.266756, y: 0, z: 18.442762}
+    TransformRotation: {x: -0, y: -0.36481002, z: -0, w: 0.93108207}
+  - Id: Library_f7b78bdc-3ebc-4de9-b298-d2311b3fa2d6
+    InitialBookId: 
+    Position: {x: -5.4667563, y: 0, z: 30.037235}
+    TransformRotation: {x: -0, y: 0.931082, z: -0, w: 0.3648101}
+  - Id: Library_ac3a74a1-72b0-4b6e-8319-1e6adebe941d
+    InitialBookId: 
+    Position: {x: -6.554794, y: 0, z: 28.794739}
+    TransformRotation: {x: -0, y: 0.8878484, z: -0, w: 0.46013632}
+  - Id: Library_8a12e224-9f9b-4428-b780-d141124943de
+    InitialBookId: 
+    Position: {x: -7.8039317, y: 0, z: 22.490868}
+    TransformRotation: {x: -0, y: 0.6239354, z: -0, w: 0.78147596}
+  - Id: Library_adb24835-064b-4417-a1c2-7d242c8e489f
+    InitialBookId: 
+    Position: {x: 7.071919, y: 0, z: 27.552643}
+    TransformRotation: {x: -0, y: -0.84241384, z: -0, w: 0.5388313}
+  - Id: Library_3f85f1e1-d5f9-4a0f-95cb-47578b55fc86
+    InitialBookId: 
+    Position: {x: 0.6171249, y: 0, z: 32.107384}
+    TransformRotation: {x: -0, y: 0.9989674, z: -0, w: -0.045434594}
+  - Id: Library_397f3435-f82a-4bd7-96ae-f26e682965e1
+    InitialBookId: 
+    Position: {x: 6.354793, y: 0, z: 19.685257}
+    TransformRotation: {x: -0, y: -0.46013615, z: -0, w: 0.88784844}
+  - Id: Library_5f454422-34b8-4630-ac65-3277342567e7
+    InitialBookId: 
+    Position: {x: 7.603933, y: 0, z: 25.989128}
+    TransformRotation: {x: -0, y: -0.78147584, z: -0, w: 0.6239357}
+  - Id: Library_629469be-00d1-4a0a-8b5e-7d3ecaa0225b
+    InitialBookId: 21865609-0ba5-4a26-ad09-8e0c571523b2
+    Position: {x: 3.9441662, y: 0, z: 17.453636}
+    TransformRotation: {x: -0, y: -0.26548707, z: -0, w: 0.96411455}
+  - Id: Library_228e802f-60a2-4017-a24c-363cae0a7fef
+    InitialBookId: 
+    Position: {x: 2.2371762, y: 0, z: 31.786366}
+    TransformRotation: {x: -0, y: 0.9887458, z: -0, w: -0.14960629}
+  - Id: Library_b1943ff6-e806-4493-ae1d-1a25f7621cac
+    InitialBookId: 
+    Position: {x: -6.426458, y: 0, z: 19.508621}
+    TransformRotation: {x: -0, y: 0.44782326, z: -0, w: 0.8941221}
+  _readingTables:
+  - Id: Library_14bc67dc-2eb0-416f-9b6c-1b53d388a119
+    InitialBookId: 
+    Position: {x: -9.35, y: -0.8243594, z: 10.61}

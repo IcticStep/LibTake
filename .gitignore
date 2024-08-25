@@ -39,6 +39,7 @@
 /LibraryOA/ExportedObj/
 .consulo/
 *.csproj
+*.csproj.meta
 *.unityproj
 *.sln
 *.suo
@@ -57,3 +58,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Ignore temporaries from GameCI
+/[Aa]rtifacts/
+/[Cc]odeCoverage/

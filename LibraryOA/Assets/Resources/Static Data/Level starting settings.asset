@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d701b4223fbd97cf848ff6e430ef7ec740e4427b5d4b019c858e2eccfdd57754
-size 452
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcb0b77968a44498cd52bb9375d1cfa, type: 3}
+  m_Name: Level starting settings
+  m_EditorClassIdentifier: 
+  <LevelStartDelay>k__BackingField: 0.3

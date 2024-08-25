@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f67530e58245db5b13ca03a9df110bdd7483a4aa1fd6310e216b7ea167e0582
-size 897
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678a03aa127146cfa229a64950c9cf47, type: 3}
+  m_Name: AI Dreams
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: a031b7a5-07b9-436c-85f0-4f37d0d6d0f7
+  <Title>k__BackingField: AI Dreams
+  <LocalizedTitle>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: Book Localization Table
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: AI Dreams
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <StaticBookType>k__BackingField: {fileID: 11400000, guid: 4dcd4c8d58cbdb24a98b31d78de24d5c,
+    type: 2}
+  references:
+    version: 2
+    RefIds: []
