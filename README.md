@@ -19,7 +19,7 @@ Welcome to LibTake, an immersive library management and adventure game. This pro
 ## Run Locally
 
     1. Clone the project.
-    2. Open with unity 2022.3.10f1.
+    2. Open with respective unity editor version.
     3. Press "Play" button.
 
 ## Authors
