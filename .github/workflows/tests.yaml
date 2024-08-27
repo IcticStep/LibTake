@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches:
-      - main
+      - develop
 
 env:
   UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
@@ -27,7 +27,7 @@ jobs:
           - "LibraryOA"
         testMode:
           - EditMode
-#          - PlayMode
+          - PlayMode
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
