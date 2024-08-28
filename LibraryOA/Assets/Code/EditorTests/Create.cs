@@ -1,7 +1,7 @@
 using Code.Runtime.Logic;
 using UnityEngine;
 
-namespace Code.Tests
+namespace Code.EditorTests
 {
     public static class Create
     {

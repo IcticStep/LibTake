@@ -5,7 +5,7 @@ using Code.Runtime.Logic.Customers;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Code.Tests.Factories
+namespace Code.EditorTests.Factories
 {
     [TestFixture]
     public class InteractablesTests
