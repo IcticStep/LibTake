@@ -1,6 +1,9 @@
+using System.Threading;
+using Code.Runtime.Infrastructure.Services.CleanUp;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Runtime.Ui.Common
 {
@@ -23,15 +26,26 @@ namespace Code.Runtime.Ui.Common
         
         private Tween _fadeTween;
         private Tween _unFadeTween;
+        private CancellationTokenSource _cancellationTokenSource;
+        private ILevelCleanUpService _cleanUpService;
 
         public bool IsFullyVisible => _canvasGroup.alpha > 1 - AlphaMinimalDelta;
         public bool IsFullyInvisible => _canvasGroup.alpha == 0;
         public bool AnimationInProgress => _fadeTween.IsPlaying() || _unFadeTween.IsPlaying();
-        
+        private CancellationToken CancellationToken => _cancellationTokenSource.Token;
+
+        [Inject]
+        private void Construct(ILevelCleanUpService cleanUpService) =>
+            _cleanUpService = cleanUpService;
+
         private void Awake()
         {
             if(_fadeTween is null || _unFadeTween is null)
                 CreateTweens();
+            
+            _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(
+                this.GetCancellationTokenOnDestroy(),
+                _cleanUpService.RestartCancellationToken);
         }
 
         private void OnDestroy()
@@ -47,7 +61,7 @@ namespace Code.Runtime.Ui.Common
             
             CreateTweens();
         }
-        
+
         public void Initialize(float unFadeDuration, float fadeDuration, Ease unFadeEase, Ease fadeEase)
         {
             _fadeDuration = fadeDuration;
@@ -61,14 +75,14 @@ namespace Code.Runtime.Ui.Common
         public UniTask FadeAsync()
         {
             if(_fadeTween.IsPlaying())
-                return UniTask.WaitWhile(_fadeTween.IsPlaying);
+                return UniTask.WaitWhile(_fadeTween.IsPlaying, cancellationToken: CancellationToken);
 
             if(_canvasGroup.alpha == 0)
                 return UniTask.CompletedTask;
             
             _unFadeTween.Pause();
             _fadeTween.Restart();
-            return _fadeTween.AwaitForComplete(cancellationToken: this.GetCancellationTokenOnDestroy());
+            return _fadeTween.AwaitForComplete(cancellationToken: CancellationToken);
         }
 
         public void Fade()
@@ -89,14 +103,14 @@ namespace Code.Runtime.Ui.Common
         public UniTask UnFadeAsync()
         {
             if(_unFadeTween.IsPlaying())
-                return UniTask.WaitWhile(_fadeTween.IsPlaying);
+                return UniTask.WaitWhile(_fadeTween.IsPlaying, cancellationToken: CancellationToken);
 
             if(_canvasGroup.alpha == 1)
                 return UniTask.CompletedTask;
             
             _fadeTween.Pause();
             _unFadeTween.Restart();
-            return _unFadeTween.AwaitForComplete(cancellationToken: this.GetCancellationTokenOnDestroy());
+            return _unFadeTween.AwaitForComplete(cancellationToken: CancellationToken);
         }
 
         public void UnFade()

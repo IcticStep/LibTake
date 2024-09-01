@@ -1,4 +1,5 @@
 using Code.Runtime.Infrastructure.GameStates.Api;
+using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Services.Books.Delivering;
@@ -27,7 +28,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         public MorningGameState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
             IUiMessagesService uiMessagesService, IReadBookService readBookService, IDaysService daysService,
-            IScanBookService scanBookService, ICraftingService craftingService)
+            IScanBookService scanBookService, ICraftingService craftingService, ILevelCleanUpService cleanUpService)
         {
             _gameStateMachine = gameStateMachine;
             _truckProvider = truckProvider;

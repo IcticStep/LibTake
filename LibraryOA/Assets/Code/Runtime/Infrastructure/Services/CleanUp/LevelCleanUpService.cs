@@ -1,3 +1,4 @@
+using System.Threading;
 using Code.Runtime.Infrastructure.Services.Camera;
 using Code.Runtime.Infrastructure.Services.UiHud;
 using Code.Runtime.Services.Customers.Pooling;
@@ -43,6 +44,10 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
         private readonly ILibraryService _libraryService;
         private readonly IRocketProvider _rocketProvider;
         private readonly IPlayerCutsceneCopyProvider _playerCutsceneCopyProvider;
+        
+        private CancellationTokenSource _cancellationTokenSource = new();
+        
+        public CancellationToken RestartCancellationToken => _cancellationTokenSource.Token;
 
         public LevelCleanUpService(
             IInputService inputService,
@@ -88,6 +93,10 @@ namespace Code.Runtime.Infrastructure.Services.CleanUp
 
         public void CleanUp()
         {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+            _cancellationTokenSource = new CancellationTokenSource();
+            
             _inputService.CleanUp();
             _interactablesRegistry.CleanUp();
             _playerProviderService.CleanUp();

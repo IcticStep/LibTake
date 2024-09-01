@@ -1,3 +1,4 @@
+using System;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Ui.Common;
 using Cysharp.Threading.Tasks;
@@ -33,18 +34,26 @@ namespace Code.Runtime.Ui.HudComponents
         }
 
         private void OnSaved() =>
-            PlayAnimation()
-                .Forget();
+            PlayAnimation().Forget();
 
         private async UniTaskVoid PlayAnimation()
         {
-            await _smoothFader.UnFadeAsync();
-            if (_forceStop)
-                return;
-            await UniTask.WaitForSeconds(_onScreenDelay, cancellationToken: this.GetCancellationTokenOnDestroy());
-            if (_forceStop)
-                return;
-            await _smoothFader.FadeAsync();
+            try
+            {
+                await _smoothFader.UnFadeAsync();
+                if(_forceStop)
+                    return;
+
+                await UniTask.WaitForSeconds(_onScreenDelay, cancellationToken: this.GetCancellationTokenOnDestroy());
+                if(_forceStop)
+                    return;
+
+                await _smoothFader.FadeAsync();
+            }
+            catch (OperationCanceledException)
+            {
+                // ignored
+            }
         }
     }
 }
