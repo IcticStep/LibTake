@@ -9,7 +9,7 @@ using Code.Runtime.Services.TruckDriving;
 using NSubstitute;
 using UnityEngine;
 
-namespace Code.Tests
+namespace Code.EditorTests
 {
     public static class SetUp
     {

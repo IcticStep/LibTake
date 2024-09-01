@@ -31,7 +31,6 @@ namespace Code.Runtime.Ui.Common
                 .SetEase(_ease)
                 .SetAutoKill(false)
                 .Pause()
-                .SetLink(gameObject)
                 .SetLink(gameObject);
 
             if(_resetPositionOnFinish)

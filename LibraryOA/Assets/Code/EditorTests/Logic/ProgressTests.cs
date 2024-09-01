@@ -5,7 +5,7 @@ using NUnit.Framework;
 using UnityEngine.TestTools;
 using Progress = Code.Runtime.Logic.Progress;
 
-namespace Code.Tests.Logic
+namespace Code.EditorTests.Logic
 {
     [TestFixture]
     public class ProgressTests

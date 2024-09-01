@@ -1,5 +1,7 @@
+using System;
 using System.Threading;
 using Code.Runtime.Infrastructure.GameStates.Api;
+using Code.Runtime.Infrastructure.Services.CleanUp;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Days;
@@ -22,12 +24,14 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IPlayerLivesService _playerLivesService;
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
+        private readonly ILevelCleanUpService _levelCleanUpService;
 
         private UniTaskCompletionSource _forceExitCompletionSource;
 
         public DayGameState(GameStateMachine gameStateMachine, IUiMessagesService uiMessagesService, 
             ICustomersDeliveringService customersDeliveringService, IReadBookService readBookService, IDaysService daysService,
-            IPlayerLivesService playerLivesService, IScanBookService scanBookService, ICraftingService craftingService)
+            IPlayerLivesService playerLivesService, IScanBookService scanBookService, ICraftingService craftingService,
+            ILevelCleanUpService levelCleanUpService)
         {
             _gameStateMachine = gameStateMachine;
             _uiMessagesService = uiMessagesService;
@@ -37,6 +41,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _playerLivesService = playerLivesService;
             _scanBookService = scanBookService;
             _craftingService = craftingService;
+            _levelCleanUpService = levelCleanUpService;
         }
 
         public void Start()
@@ -63,27 +68,38 @@ namespace Code.Runtime.Infrastructure.GameStates.States
 
         private async UniTask ProceedDay()
         {
-            CancellationTokenSource cancellationSource = new();
+            using CancellationTokenSource cancellationSource = CancellationTokenSource.CreateLinkedTokenSource(_levelCleanUpService.RestartCancellationToken);
             
             UniTask deliverCustomersTask = _customersDeliveringService.DeliverCustomers(cancellationSource.Token);
             UniTask looseAllLives = UniTask.WaitUntil(() => _playerLivesService.Lives <= 0, 
                 cancellationToken: cancellationSource.Token);
 
-            int result = await UniTask.WhenAny(deliverCustomersTask, looseAllLives, _forceExitCompletionSource.Task);
-            cancellationSource.Cancel();
-            
-            switch(result)
+            int result = -1;
+            try
             {
-                case 0:
-                    Debug.Log("All the customers have gone.");
-                    _gameStateMachine.EnterState<MorningGameState>();
-                    break;
-                case 1:
-                    Debug.Log("All lives are lost.");
-                    _gameStateMachine.EnterState<GameOverGameState>();
-                    break;
-                case 2:
-                    break;
+                result = await UniTask.WhenAny(deliverCustomersTask, looseAllLives, _forceExitCompletionSource.Task);
+                cancellationSource.Cancel();
+            }
+            catch(OperationCanceledException)
+            {
+                // ignored
+            }
+            finally
+            {
+                switch(result)
+                {
+                    case 0:
+                        Debug.Log("All the customers have gone.");
+                        _gameStateMachine.EnterState<MorningGameState>();
+                        break;
+                    case 1:
+                        Debug.Log("All lives are lost.");
+                        _gameStateMachine.EnterState<GameOverGameState>();
+                        break;
+                    case 2:
+                    case -1:
+                        break;
+                }
             }
         }
     }

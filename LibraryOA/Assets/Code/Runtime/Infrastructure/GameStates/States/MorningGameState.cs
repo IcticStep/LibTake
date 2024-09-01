@@ -3,6 +3,7 @@ using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.UiMessages;
 using Code.Runtime.Services.Books.Delivering;
 using Code.Runtime.Services.Days;
+using Code.Runtime.Services.InputService;
 using Code.Runtime.Services.Interactions.Crafting;
 using Code.Runtime.Services.Interactions.ReadBook;
 using Code.Runtime.Services.Interactions.Scanning;
@@ -23,11 +24,12 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly IDaysService _daysService;
         private readonly IScanBookService _scanBookService;
         private readonly ICraftingService _craftingService;
+        private readonly IInputService _inputService;
 
         public MorningGameState(GameStateMachine gameStateMachine, ITruckProvider truckProvider,
             IBooksDeliveringService booksDeliveringService, ISaveLoadService saveLoadService,
             IUiMessagesService uiMessagesService, IReadBookService readBookService, IDaysService daysService,
-            IScanBookService scanBookService, ICraftingService craftingService)
+            IScanBookService scanBookService, ICraftingService craftingService, IInputService inputService)
         {
             _gameStateMachine = gameStateMachine;
             _truckProvider = truckProvider;
@@ -38,6 +40,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _daysService = daysService;
             _scanBookService = scanBookService;
             _craftingService = craftingService;
+            _inputService = inputService;
         }
 
         public void Start()
@@ -56,6 +59,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
 
         private void SaveGame()
         {
+            _inputService.Enable();
             _saveLoadService.SaveProgress();
             Debug.Log($"Progress saved.");
         }

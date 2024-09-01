@@ -44,6 +44,7 @@ namespace Code.Runtime.Logic.CameraControl
                     towards: CameraTarget.position,
                     duration: _lookAtStartAnimationDuration,
                     axisConstraint: AxisConstraint.None)
+                .SetLink(gameObject)
                 .OnComplete(KillTweenIfAny);
 
         private void KillTweenIfAny()

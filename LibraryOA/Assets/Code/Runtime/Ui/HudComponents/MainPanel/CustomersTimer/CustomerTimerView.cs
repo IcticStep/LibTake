@@ -55,10 +55,8 @@ namespace Code.Runtime.Ui.HudComponents.MainPanel.CustomersTimer
             float duration = _animationDurationRange.Max + _animationDurationRange.Min - Mathf.Lerp(_animationDurationRange.Min, _animationDurationRange.Max, value);
             _tweener = _animationTarget
                 .DOPunchScale(punch, duration, 1, 0.5f)
-                .OnComplete(OnClockTickComplete);
-                
-            _tweener
-                .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
+                .OnComplete(OnClockTickComplete)
+                .SetLink(gameObject);
         }
 
         private void OnClockTickComplete()

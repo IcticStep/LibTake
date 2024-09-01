@@ -5,7 +5,7 @@ using Code.Runtime.Services.Player.Lives;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Code.Tests.Logic
+namespace Code.EditorTests.Logic
 {
     [TestFixture]
     public class CustomerPunishStateTests

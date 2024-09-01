@@ -1,9 +1,7 @@
 using Code.Runtime.Services.Player.Lives;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Code.Runtime.Ui.HudComponents.MainPanel
@@ -38,7 +36,7 @@ namespace Code.Runtime.Ui.HudComponents.MainPanel
             _text.text = _livesService.Lives.ToString();
             _animationTarget
                 .DOPunchScale(Vector3.one * 1.1f, 0.5f, 1, 0.5f)
-                .ToUniTask(cancellationToken: this.GetCancellationTokenOnDestroy());
+                .SetLink(gameObject);
         }
     }
 }
