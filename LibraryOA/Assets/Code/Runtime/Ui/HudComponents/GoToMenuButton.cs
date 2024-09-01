@@ -31,19 +31,13 @@ namespace Code.Runtime.Ui.HudComponents
             _loadingCurtainService = loadingCurtainService;
         }
 
-        private void Awake() =>
-            _button.onClick.AddListener(OnButtonClicked);
-
-        private void OnDestroy() =>
-            _button.onClick.RemoveListener(OnButtonClicked);
-
-        private void OnButtonClicked()
+        public void GoToMenu()
         {
             _button.interactable = false;
-            GoToMenu().Forget();
+            GoToMenuAsync().Forget();
         }
 
-        private async UniTaskVoid GoToMenu()
+        private async UniTaskVoid GoToMenuAsync()
         {
             await _loadingCurtainService.ShowBlackAsync();
             _levelCleanUpService.CleanUp();

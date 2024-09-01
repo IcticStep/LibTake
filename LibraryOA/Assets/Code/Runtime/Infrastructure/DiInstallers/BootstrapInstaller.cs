@@ -48,6 +48,7 @@ using Code.Runtime.Services.Player.Provider;
 using Code.Runtime.Services.Random;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.Services.TruckDriving;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 using SettingsService = Code.Runtime.Infrastructure.Settings.SettingsService;
@@ -73,6 +74,8 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         {
             Application.targetFrameRate = 60;
             Container.Resolve<GameStateMachine>().EnterState<BootstrapGameState>();
+            UniTaskScheduler.PropagateOperationCanceledException = true;
+            UniTaskScheduler.UnobservedTaskException += Debug.LogException;
         }
 
         private void InstallInfrastructureServices()

@@ -14,19 +14,19 @@ namespace Code.PlayModeTests.Navigation
     {
         private const float AfterStepDelay = 2f;
 
-        public static async Task OpenMainMenu()
+        public static async UniTask OpenMainMenu()
         {
             await SceneManager.LoadSceneAsync(0);
             await UniTask.WaitForSeconds(AfterStepDelay);
         }
 
-        public static async Task StartNewGame()
+        public static async UniTask StartNewGame()
         {
             FindNewGameButton().SimulateClick();
             await UniTask.WaitForSeconds(AfterStepDelay);
         }
 
-        public static async Task StartFirstGlobalGoal()
+        public static async UniTask StartFirstGlobalGoal()
         {
             FindGlobalGoalButton().SimulateClick();
             await UniTask.WaitForSeconds(AfterStepDelay);
