@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Code.Runtime.Infrastructure.Services.CleanUp;
 using Cysharp.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Code.Runtime.Ui.Common
     internal sealed class SmoothFader : MonoBehaviour
     {
         private const float AlphaMinimalDelta = 0.01f;
-        
+
         [SerializeField]
         private CanvasGroup _canvasGroup;
         [SerializeField]
@@ -23,7 +24,7 @@ namespace Code.Runtime.Ui.Common
         private Ease _unFadeEase = Ease.InOutCubic;
         [SerializeField]
         private bool _ignoreTimeScale;
-        
+
         private Tween _fadeTween;
         private Tween _unFadeTween;
         private CancellationTokenSource _cancellationTokenSource;
@@ -42,10 +43,8 @@ namespace Code.Runtime.Ui.Common
         {
             if(_fadeTween is null || _unFadeTween is null)
                 CreateTweens();
-            
-            _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(
-                this.GetCancellationTokenOnDestroy(),
-                _cleanUpService.RestartCancellationToken);
+
+            _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
         }
 
         private void OnDestroy()
@@ -58,7 +57,7 @@ namespace Code.Runtime.Ui.Common
         {
             _fadeDuration = fadeDuration;
             _unFadeDuration = unFadeDuration;
-            
+
             CreateTweens();
         }
 
@@ -68,28 +67,37 @@ namespace Code.Runtime.Ui.Common
             _unFadeDuration = unFadeDuration;
             _fadeEase = fadeEase;
             _unFadeEase = unFadeEase;
-            
+
             CreateTweens();
         }
 
         public UniTask FadeAsync()
         {
-            if(_fadeTween.IsPlaying())
-                return UniTask.WaitWhile(_fadeTween.IsPlaying, cancellationToken: CancellationToken);
+            try
+            {
+                if(_fadeTween.IsPlaying())
+                    return UniTask.WaitWhile(_fadeTween.IsPlaying, cancellationToken: CancellationToken);
 
-            if(_canvasGroup.alpha == 0)
-                return UniTask.CompletedTask;
-            
-            _unFadeTween.Pause();
-            _fadeTween.Restart();
-            return _fadeTween.AwaitForComplete(cancellationToken: CancellationToken);
+                if(_canvasGroup.alpha == 0)
+                    return UniTask.CompletedTask;
+
+                _unFadeTween.Pause();
+                _fadeTween.Restart();
+                return _fadeTween.AwaitForComplete(cancellationToken: CancellationToken);
+            }
+            catch(OperationCanceledException)
+            {
+                // ignored
+            }
+
+            return UniTask.CompletedTask;
         }
 
         public void Fade()
         {
             if(_fadeTween.IsPlaying())
                 return;
-            
+
             _unFadeTween.Pause();
             _fadeTween.Restart();
         }
@@ -102,22 +110,31 @@ namespace Code.Runtime.Ui.Common
 
         public UniTask UnFadeAsync()
         {
-            if(_unFadeTween.IsPlaying())
-                return UniTask.WaitWhile(_fadeTween.IsPlaying, cancellationToken: CancellationToken);
+            try
+            {
+                if(_unFadeTween.IsPlaying())
+                    return UniTask.WaitWhile(_fadeTween.IsPlaying, cancellationToken: CancellationToken);
 
-            if(_canvasGroup.alpha == 1)
-                return UniTask.CompletedTask;
+                if(_canvasGroup.alpha == 1)
+                    return UniTask.CompletedTask;
+
+                _fadeTween.Pause();
+                _unFadeTween.Restart();
+                return _unFadeTween.AwaitForComplete(cancellationToken: CancellationToken);
+            }
+            catch(OperationCanceledException)
+            {
+                // ignored
+            }
             
-            _fadeTween.Pause();
-            _unFadeTween.Restart();
-            return _unFadeTween.AwaitForComplete(cancellationToken: CancellationToken);
+            return UniTask.CompletedTask;
         }
 
         public void UnFade()
         {
             if(_unFadeTween.IsPlaying())
                 return;
-            
+
             _fadeTween.Pause();
             _unFadeTween.Restart();
         }

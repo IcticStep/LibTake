@@ -74,8 +74,6 @@ namespace Code.Runtime.Infrastructure.DiInstallers
         {
             Application.targetFrameRate = 60;
             Container.Resolve<GameStateMachine>().EnterState<BootstrapGameState>();
-            UniTaskScheduler.PropagateOperationCanceledException = true;
-            UniTaskScheduler.UnobservedTaskException += Debug.LogException;
         }
 
         private void InstallInfrastructureServices()
