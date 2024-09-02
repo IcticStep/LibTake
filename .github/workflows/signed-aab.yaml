@@ -59,7 +59,7 @@ jobs:
           androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
           androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
           androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
-          androidTargetSdkVersion: AndroidApiLevel33
+          androidTargetSdkVersion: AndroidApiLevel34
           buildName: Libtake-signed-${{ github.run_number }}
 
       - uses: actions/upload-artifact@v3
