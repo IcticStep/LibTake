@@ -30,6 +30,7 @@ Welcome to LibTake, an immersive library management and adventure game. This pro
     - UI;
     - localization;
     - music and sounds;
+    - ci;
     - tools.
       
 - [@keroNight](https://www.github.com/keroNight)
