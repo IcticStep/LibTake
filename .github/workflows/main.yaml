@@ -64,7 +64,7 @@ jobs:
           androidTargetSdkVersion: AndroidApiLevel33
           buildName: Libtake-development-${{ github.run_number }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: "Libtake-development-${{ github.run_number }}"
           path: build
