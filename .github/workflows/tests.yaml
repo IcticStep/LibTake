@@ -66,8 +66,7 @@ jobs:
           testMode: ${{ matrix.testMode }}
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - uses: actions/upload-artifact@v4
         with:
           name: Test results
           path: ${{ steps.tests.outputs.artifactsPath }}
