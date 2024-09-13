@@ -3,6 +3,8 @@
 
 Welcome to LibTake, an immersive library management and adventure game. This project is built using Unity and offers a unique blend of gameplay elements, including book delivery, inventory management, and customer interaction.
 
+Google Play: [https://github.com/IcticStep/LibTake](https://play.google.com/store/apps/details?id=com.OstrohAcademy.Library)
+
 ![image](https://github.com/IcticStep/LibTake/assets/59373161/dc88ae5d-2d3a-4117-b0a0-bad68e1aa112)
 
 ## Features
