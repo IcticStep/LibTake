@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ee016f57e553a234daffe86e8995a3f6
   m_SerializeEntries:
+  - m_GUID: 047881e3c470bb54a8b3e241a8e19031
+    m_Address: Assets/Resources/Static Data/Localization/Tables/GlobalGoals Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26c110e7e94588f4e9ad702b3649bf58
     m_Address: Assets/Resources/Static Data/Localization/Tables/GUI localization
       table Shared Data.asset
@@ -26,12 +32,6 @@ MonoBehaviour:
   - m_GUID: 8776444e98d239f4288c49afd34dbbfc
     m_Address: Assets/Resources/Static Data/Localization/Tables/Book Localization
       Table Shared Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 047881e3c470bb54a8b3e241a8e19031
-    m_Address: Assets/Resources/Static Data/Localization/Tables/GlobalGoals Shared
-      Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

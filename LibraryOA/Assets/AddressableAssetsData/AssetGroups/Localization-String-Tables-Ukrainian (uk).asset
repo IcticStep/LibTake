@@ -23,14 +23,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-uk
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 80ba4a1b9135ac441844f3224ed88d70
-    m_Address: Book Localization Table_uk
+  - m_GUID: 2da2f21ef39feb747bc5369b149dc47d
+    m_Address: GlobalGoals_uk
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-uk
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2da2f21ef39feb747bc5369b149dc47d
-    m_Address: GlobalGoals_uk
+  - m_GUID: 80ba4a1b9135ac441844f3224ed88d70
+    m_Address: Book Localization Table_uk
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-uk
