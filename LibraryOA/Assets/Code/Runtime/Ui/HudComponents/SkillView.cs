@@ -2,7 +2,6 @@ using System.Linq;
 using Code.Runtime.Infrastructure.Services.StaticData;
 using Code.Runtime.Services.Skills;
 using Code.Runtime.StaticData.Books;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -23,11 +22,18 @@ namespace Code.Runtime.Ui.HudComponents
         [FormerlySerializedAs("_rectTransform")]
         [SerializeField]
         private RectTransform _animationTarget;
+        [SerializeField]
+        private Image _borderImage;
         
         private IPlayerSkillService _playerSkillService;
         private IStaticDataService _staticDataService;
         private StaticBookType _staticBookType;
         private int _skillValue;
+        
+        public BookType BookType => _bookType;
+        public TextMeshProUGUI Text => _text;
+        public Image IconImage => _iconImage;
+        public Image BorderImage => _borderImage;
 
         [Inject]
         private void Construct(IPlayerSkillService playerSkillService, IStaticDataService staticDataService)
@@ -35,7 +41,7 @@ namespace Code.Runtime.Ui.HudComponents
             _staticDataService = staticDataService;
             _playerSkillService = playerSkillService;
         }
-
+        
         private void OnValidate() =>
             _text ??= GetComponentInChildren<TextMeshProUGUI>();
 
