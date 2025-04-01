@@ -63,6 +63,18 @@ MonoBehaviour:
     m_Key: To menu button
     m_Metadata:
       m_Items: []
+  - m_Id: 157683474495676416
+    m_Key: CameraSettingsHeader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 157683526513434624
+    m_Key: CameraSettingsHigh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 157683573862932480
+    m_Key: CameraSettingsLow
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Runtime.Logic.CameraControl
 {
@@ -10,6 +12,10 @@ namespace Code.Runtime.Logic.CameraControl
     {
         [SerializeField]
         private Vector3 _offset;
+        [SerializeField]
+        private Vector3 _lowOffset;
+        [SerializeField]
+        private Vector3 _highOffset;
         [SerializeField]
         private Ease _ease;
         [SerializeField]
@@ -23,15 +29,27 @@ namespace Code.Runtime.Logic.CameraControl
         private float _tweenerElapsedTime = 0;
         private float _currentAnimationDuration;
         private UniTaskCompletionSource _animationCompleteSource;
+        private ISaveLoadService _saveLoadService;
 
         public Camera Camera { get; private set; }
         public Transform Target => _target;
-        public event Action AnimationFinished; 
+        public event Action AnimationFinished;
+
+        [Inject]
+        private void Construct(ISaveLoadService saveLoadService) =>
+            _saveLoadService = saveLoadService;
 
         private void Awake()
         {
             _transform = transform;
             Camera = GetComponent<Camera>();
+            CameraTypeId cameraSettings = _saveLoadService.LoadCameraSettings();
+            _offset = cameraSettings switch
+            {
+                CameraTypeId.Low => _lowOffset,
+                CameraTypeId.High => _highOffset,
+                _ => _lowOffset,
+            };
         }
 
         private void Start() =>
