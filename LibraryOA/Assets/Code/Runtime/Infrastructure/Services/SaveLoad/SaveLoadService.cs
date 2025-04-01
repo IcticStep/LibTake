@@ -2,6 +2,7 @@ using System;
 using Code.Runtime.Data;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Infrastructure.Services.PersistentProgress;
+using Code.Runtime.StaticData.CharacterSelection;
 using JetBrains.Annotations;
 using UnityEngine;
 using AudioSettings = Code.Runtime.Data.Settings.AudioSettings;
@@ -13,6 +14,8 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
     {
         private const string ProgressKey = "Progress";
         private const string AudioSettingsKey = "AudioSettings";
+        private const string CharacterSelectionKey = "CharacterSelection";
+        
         private readonly IPersistantProgressService _progressService;
         private readonly ISaveLoadRegistry _saveLoadRegistry;
 
@@ -48,6 +51,20 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
         public AudioSettings LoadAudioSettings() =>
             PlayerPrefs.GetString(AudioSettingsKey).ToDeserialized<AudioSettings>()
             ?? new AudioSettings();
+        
+        public CharacterTypeId LoadCharacterSelected()
+        {
+            CharacterTypeId characterSelected = PlayerPrefs.GetString(CharacterSelectionKey).ToDeserialized<CharacterTypeId>();
+            return characterSelected == CharacterTypeId.Unknown
+                ? CharacterTypeId.Man1
+                : characterSelected;
+        }
+        
+        public void SaveCharacterSelected(CharacterTypeId characterSelected)
+        {
+            PlayerPrefs.SetString(CharacterSelectionKey, characterSelected.ToJson());
+            PlayerPrefs.Save();
+        }
 
         public void DeleteProgress()
         {

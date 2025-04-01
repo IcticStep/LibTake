@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.StaticData.CharacterSelection;
 using Code.Runtime.StaticData.GlobalGoals;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
@@ -36,5 +37,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         void LoadUi();
         StaticBook ForBook(string id);
         LevelStaticData ForLevel(string key);
+        CharacterConfig ForCharacter(CharacterTypeId id);
+        IEnumerable<CharacterTypeId> GetAllAvailableCharacterTypes();
     }
 }

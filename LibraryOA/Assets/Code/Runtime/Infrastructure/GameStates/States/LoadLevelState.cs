@@ -5,10 +5,12 @@ using Code.Runtime.Infrastructure.Services.PersistentProgress;
 using Code.Runtime.Infrastructure.Services.SaveLoad;
 using Code.Runtime.Infrastructure.Services.SceneMenegment;
 using Code.Runtime.Infrastructure.Services.StaticData;
+using Code.Runtime.Logic.Player;
 using Code.Runtime.Services.Customers.Delivering;
 using Code.Runtime.Services.Customers.Queue;
 using Code.Runtime.Services.GlobalGoals.Visualization;
 using Code.Runtime.Services.Loading;
+using Code.Runtime.StaticData.CharacterSelection;
 using Code.Runtime.StaticData.Level;
 using Code.Runtime.StaticData.Level.MarkersStaticData;
 using Cysharp.Threading.Tasks;
@@ -31,12 +33,13 @@ namespace Code.Runtime.Infrastructure.GameStates.States
         private readonly ICameraProvider _cameraProvider;
         private readonly ILoadingCurtainService _loadingCurtainService;
         private readonly IGlobalGoalsVisualizationService _globalGoalsVisualizationService;
+        private readonly ISaveLoadService _saveLoadService;
 
         public LoadLevelState(GameStateMachine stateMachine, ISceneLoader sceneLoader, IStaticDataService staticData,
             ISaveLoadRegistry saveLoadRegistry, IPersistantProgressService persistentProgress, IInteractablesFactory interactablesFactory,
             ICharactersFactory charactersFactory, IHudFactory hudFactory, ICustomersQueueService customersQueueService,
             ICustomersDeliveringService customersDeliveringService, ICameraProvider cameraProvider, ILoadingCurtainService loadingCurtainService,
-            IGlobalGoalsVisualizationService globalGoalsVisualizationService)
+            IGlobalGoalsVisualizationService globalGoalsVisualizationService, ISaveLoadService saveLoadService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -51,6 +54,7 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             _cameraProvider = cameraProvider;
             _loadingCurtainService = loadingCurtainService;
             _globalGoalsVisualizationService = globalGoalsVisualizationService;
+            _saveLoadService = saveLoadService;
         }
 
         public void Start(string payload) =>
@@ -83,8 +87,12 @@ namespace Code.Runtime.Infrastructure.GameStates.States
             InitCustomers(levelData);
         }
 
-        private GameObject InitPlayer(LevelStaticData levelData) =>
-            _charactersFactory.CreatePlayer(levelData.PlayerInitialPosition);
+        private GameObject InitPlayer(LevelStaticData levelData)
+        {
+            CharacterTypeId characterSelected = _saveLoadService.LoadCharacterSelected();
+            Object.FindObjectOfType<PlayerView>(includeInactive: true).SetCharacter(characterSelected);
+            return _charactersFactory.CreatePlayer(levelData.PlayerInitialPosition);
+        }
 
         private void InitUi() =>
             _hudFactory.Create();

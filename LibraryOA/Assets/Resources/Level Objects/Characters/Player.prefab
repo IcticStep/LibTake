@@ -1101,6 +1101,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -9113339214027474115, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1203,6 +1208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2843909369972686622, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 88de8cfe5ba0a6c49990277be678ca1d, type: 2}
@@ -1225,6 +1235,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1356944241255443110, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1241119344797272812, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
         type: 3}
@@ -1319,6 +1334,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3931477541140450204}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7997613851401748899}
     - targetCorrespondingSourceObject: {fileID: -1356944241255443110, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
         type: 3}
       insertIndex: -1
@@ -1356,6 +1375,12 @@ SkinnedMeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 8227692651325716818}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &6599728485599196712 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6217130461543084166, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8227692651325716818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8476930784268197561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8e7aa225bf559c48a3f1f2a049be7eb,
@@ -1390,6 +1415,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 408141ad7e59194419c1b16d95ee1008, type: 3}
   - {fileID: 8300000, guid: a410d3db9c407d0469691fea7d944fbe, type: 3}
   - {fileID: 8300000, guid: cc21f38bd66ddba44a03383d25021741, type: 3}
+--- !u!114 &7997613851401748899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146752629996602371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f9d6cd88184a3c8428c39b86f9848c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaleMesh: {fileID: 3073361091779361200}
+  FemaleMesh: {fileID: 6599728485599196712}
 --- !u!1001 &9081000992093841583
 PrefabInstance:
   m_ObjectHideFlags: 0
