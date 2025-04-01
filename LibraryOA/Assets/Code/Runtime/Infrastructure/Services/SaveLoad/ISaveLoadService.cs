@@ -1,6 +1,7 @@
 using System;
 using Code.Runtime.Data.Progress;
 using Code.Runtime.Data.Settings;
+using Code.Runtime.StaticData.CharacterSelection;
 
 namespace Code.Runtime.Infrastructure.Services.SaveLoad
 {
@@ -14,5 +15,7 @@ namespace Code.Runtime.Infrastructure.Services.SaveLoad
         void SaveAudioSettings(AudioSettings audioSettings);
         AudioSettings LoadAudioSettings();
         void DeleteProgress();
+        CharacterTypeId LoadCharacterSelected();
+        void SaveCharacterSelected(CharacterTypeId characterSelected);
     }
 }

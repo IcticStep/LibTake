@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Runtime.StaticData;
 using Code.Runtime.StaticData.Balance;
 using Code.Runtime.StaticData.Books;
+using Code.Runtime.StaticData.CharacterSelection;
 using Code.Runtime.StaticData.GlobalGoals;
 using Code.Runtime.StaticData.Interactables;
 using Code.Runtime.StaticData.Level;
@@ -37,6 +38,7 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         private Dictionary<string, LevelStaticData> _levels = new();
         private List<StaticBookType> _bookTypes = new();
         private List<GlobalGoal> _globalGoals = new();
+        private Dictionary<CharacterTypeId, CharacterConfig> _characters;
 
         public ScenesRouting ScenesRouting { get; private set; }
         public LevelStaticData CurrentLevelData => ForLevel(SceneManager.GetActiveScene().name);
@@ -63,7 +65,13 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
             LoadInteractables();
             LoadGlobalGoals();
             LoadUi();
+            LoadCharacters();
         }
+
+        private void LoadCharacters() =>
+            _characters = Resources
+                .LoadAll<CharacterConfig>("Static Data/Characters")
+                .ToDictionary(x => x.Type, x => x);
 
         public void LoadStartupSettings() =>
             ScenesRouting = Resources
@@ -126,5 +134,11 @@ namespace Code.Runtime.Infrastructure.Services.StaticData
         
         public LevelStaticData ForLevel(string key) =>
             _levels.GetValueOrDefault(key);
+        
+        public CharacterConfig ForCharacter(CharacterTypeId id) =>
+            _characters[id];
+
+        public IEnumerable<CharacterTypeId> GetAllAvailableCharacterTypes() =>
+            _characters.Keys;
     }
 }
